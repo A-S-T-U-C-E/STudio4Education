@@ -1,0 +1,93 @@
+/**
+* @license
+* Copyright 2020 Sébastien CANET
+* SPDX-License-Identifier: BSD-3-Clause
+*/
+
+.blocklyToolboxDiv {
+    background-color: #F8F8F8;
+}
+.UIText {
+    vertical-align: middle;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+.UITextSmall {
+    vertical-align: middle;
+    color: #FFFFFF;
+    font-size: large;
+    font-weight: bold;
+}
+.iconButtons{
+    padding:2px;
+    line-height:0;
+    vertical-align: middle;
+    background: #00ABDF;
+    color: #FFFFFF;
+    font-size: x-large;
+}
+.iconButtons:hover{
+    background: #FFFFFF;
+    color: #000000;
+    cursor : pointer;
+}
+.iconButtons:active{
+    background: #FFCC00;
+}
+.iconButtons:active::after {
+    transition-property: background;
+    transition-duration: 10s;
+}
+.iconButtons:disabled{
+    background: #F3F1EF;
+    color: #03234B;
+    cursor : not-allowed;
+}
+.iconButtonsClicked{
+    padding:2px;
+    line-height:0;
+    vertical-align: middle;
+    background: #FFCC00;
+    color: #03234B;
+    font-size: x-large;
+}
+
+/* surcharger .iconButton */
+#boardMenu, #serialMenu{
+    color: #000000;
+    font-size:large;
+    border: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+#barre_h{
+    background-color : #00abdf;
+}
+
+/* boutons classiques */
+#verifyButton,
+#uploadButton,
+#serialConnectButton
+{
+    border-radius: 50%;
+}
+#resetButton{
+    background: #FF0000;
+}
+#resetButton:hover{
+    background: #FFFFFF;
+    cursor: no-drop;
+}
+#helpButton{
+    border-radius: 5px;
+    cursor: help;
+}
+#copyCodeButton{
+    position: absolute;
+    top: 75px;
+    right: 5px;
+    border-radius: 5px;
+    z-index: 5;
+}
