@@ -1,16 +1,16 @@
 # STudio4Education
-![logo](https://raw.githubusercontent.com/SebCanet/Studio4Education/gh-pages/S4E/media/STMicroelectronics_normal.png)
+![logo](https://raw.githubusercontent.com/A-S-T-U-C-E/STudio4Education/master/S4E/media/STMicroelectronics_normal.png)
 
 Designed for **Arrowhead** Tools Project: [https://www.arrowhead.eu/arrowheadtools](https://www.arrowhead.eu/arrowheadtools)
 
-![enter image description here](https://raw.githubusercontent.com/SebCanet/Studio4Education/gh-pages/S4E/media/arrowhead_tools.jpg)
+![enter image description here](https://raw.githubusercontent.com/A-S-T-U-C-E/STudio4Education/master/S4E/media/arrowhead_tools.jpg)
 
 
 STudio4Education is a **web-based visual programming editor for [ST microelectronics](https://www.st.com)** boards.
 
 STudio4Education is based on [Blockly](https://developers.google.com/blockly/), the web-based, graphical programming editor.
 
-![Blockly logo](https://raw.githubusercontent.com/SebCanet/Studio4Education/gh-pages/S4E/media/logo_built_on.png)
+![Blockly logo](https://raw.githubusercontent.com/A-S-T-U-C-E/STudio4Education/master/S4E/media/logo_built_on.png)
 
 STudio4Education provides static type language blocks and code generators for simple C programming.
 
@@ -57,7 +57,7 @@ The cursor controls how the user navigates the blocks, inputs, fields and connec
 
 ## Demo
 
-STudio4Education is a web tool. You can give it a try at [Web](http://sebcanet.github.io/Studio4Education/).
+STudio4Education is a web tool. You can give it a try at [Web](https://a-s-t-u-c-e.github.io/STudio4Education/).
 
 ## Run locally on your web browser
 
@@ -65,7 +65,7 @@ If you want to install it locally. Get code from github and open `index.html` in
 
 ## Integrated upload
 
-Soon an [Electron](https://www.electronjs.org/) version with [arduino-cli](https://github.com/arduino/arduino-cli) embbeded for an off-line version: [https://github.com/SebCanet/S4E_electron](https://github.com/SebCanet/S4E_electron)
+Soon an [Electron](https://www.electronjs.org/) version with [arduino-cli](https://github.com/arduino/arduino-cli) embbeded for an off-line version: [https://github.com/SebCanet/S4E_electron](https://github.com/A-S-T-U-C-E/S4E_Electron)
 
 ## Usage
 
@@ -77,7 +77,7 @@ Soon an [Electron](https://www.electronjs.org/) version with [arduino-cli](https
 
 ## ChangeLog
 
-Check changelog [here](https://github.com/SebCanet/Studio4Education/blob/gh-pages/CHANGELOG.txt)
+Check changelog [here](https://github.com/A-S-T-U-C-E/STudio4Education/blob/master/CHANGELOG.txt)
 
 ## Tools used
 
