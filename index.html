@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="google" value="notranslate">
+        <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
         <title>S4E</title>
         <link rel="icon" type="image/png" href="./S4E/media/logo_only.png" />
         <link rel="stylesheet" href="./css/font_awesome_all.min.css" />
@@ -191,6 +192,11 @@
                             </span>
                         </button>
                         <br>
+                        <button id="registerToOrchestrator" class="iconButtons CLI" onclick="">
+                            <span id="registerToOrchestrator_span">
+                                <i class="fas fa-plug"></i>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -362,7 +368,6 @@
             </div>
         </div>
     </body>
-    <!-- load JavaScript just before the closing HTML body tag ensures the scripts don’t block loading of other content and page content is readable before scripts are downloaded and executed -->
     <!-- Blockly libraries -->
     <script src="./@blockly/blockly_compressed.js"></script>
     <script src="./@blockly/blocks_compressed.js"></script>
@@ -381,8 +386,6 @@
     <!-- Blockly libraries of function, hacked from different demos -->
     <script src="./js/blockly/keyboard_nav.js"></script>
     <script src="./js/blockly/playground.js"></script>
-    <script src="./js/boards.json"></script>
-    <script src="./js/boards.js"></script>
     <script src="./js/init.js"></script>
     <script src="./js/typed_variable.js"></script>
     <script src="./js/buttons_functions.js"></script>
@@ -391,6 +394,9 @@
     <!-- S4E libraries of external functions -->
     <script src="./js/ace/ace.js" charset="utf-8"></script>
     <script src="./js/ace/ext-language_tools.js"></script>
+    <!-- S4E libraries of boards definition -->
+    <script src="./S4E/js/boards.json"></script>
+    <script src="./S4E/js/boards.js"></script>
     <!-- S4E specific: block design -->
     <script src="./S4E/blocks/blocks_colors.js" async></script>
     <script src="./S4E/blocks/board_base/board_base.js" async></script>
