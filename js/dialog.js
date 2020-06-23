@@ -78,6 +78,17 @@ function collapsibleContentInit() {
     }
 }
 
+function toggleEditorReadOnly(item){
+    if(item.checked) {
+        editor.setOptions({
+            readOnly: false
+        })
+    } else {
+        editor.setOptions({
+            readOnly: true
+        })
+    }
+}
 /*
  * Icons button mouser over
  */
@@ -259,5 +270,11 @@ document.getElementById('CLI_githubLinkButton').onmouseover = function () {
     document.getElementById("content_hoverButton").textContent = MSG['CLI_githubLinkButton_span'];
 };
 document.getElementById('CLI_githubLinkButton').onmouseout = function () {
+    document.getElementById("content_hoverButton").textContent = "";
+};
+document.getElementById('editorReadOnlyToggle').onmouseover = function () {
+    document.getElementById("content_hoverButton").textContent = MSG['editorReadOnlyToggle_span'];
+};
+document.getElementById('editorReadOnlyToggle').onmouseout = function () {
     document.getElementById("content_hoverButton").textContent = "";
 };

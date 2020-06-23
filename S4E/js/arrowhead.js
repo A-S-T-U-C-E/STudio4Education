@@ -1,46 +1,20 @@
-function startRegister () {
-  return initExpress()
-    .then(() => {
-      return new Promise((resolve) => {
-        app.listen(config.port, () => {
-          console.log('Provider started', {env: config.env, port: config.providerPort})
-          return resolve()
-        })
-      })
-    })
-    .then(async () => {
-      await register().catch((err) => console.log('Error registering service into SR', err))
-    })
-    .catch(async (e) => {
-      console.log(`Provider not started on ${os.hostname()}, now exiting.\n`, e)
-      process.exit()
-    })
-}
+var SERVER_PORT = 8443;
+var serviceVersion = 1;
+var serviceURI = "STudio4Education";
+var ssid = "STudio4Education";
+var password = "arrowhead";
 
+var serviceRegistry_addr = "http://arrowhead.tmit.bme.hu:8442";
+var serviceDefinition = "Studio4Education";
+var serviceInterface = "JSON_Insecure_S4E";
+var systemName = "InsecureBlocklyInterface";
 
-function initRegisterExpress () {
+var XHR = new XMLHttpRequest();
+var urlEncodedData = "";
+var urlEncodedDataPairs = [];
+var name;
 
-  if (config.env !== 'test' && config.env !== 'production') {
-    app.use(logger('dev'))
-  }
-  app.use(cors({
-    origin: true,
-    optionsSuccessStatus: 200,
-    credentials: true
-  }))
-  app.use(responseMiddleware())
-  app.use(bodyParser.json({limit: '5mb'}))
-  app.use(bodyParser.urlencoded({extended: false, limit: '5mb'}))
-
-  //Add your routes here
-  app.use('/', consumerRouter)
-
-  app.use((req, res, next) => {
-    const err = new Error('Not Found')
-    err.status = 404
-    res.locals.message = err.message
-    res.locals.error = config.env === 'development' ? err : {}
-    throw Boom.create(404, err)
-  })
-  app.use(errorMiddleware())
+function ArrowheadRegister() {
+    document.getElementById('content_serial').style.color = '#00FF00';
+    document.getElementById('content_serial').innerHTML = "connecting...";
 }

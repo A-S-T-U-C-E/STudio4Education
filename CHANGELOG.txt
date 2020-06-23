@@ -1,0 +1,4 @@
+S4E 0.7.1, 2020-06-24
+- add button switchable readnonly option in Ace Editor
+- fix last translation
+- WIP flat design + white everywhere for contrats enhancement

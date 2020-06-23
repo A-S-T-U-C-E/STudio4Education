@@ -76,3 +76,12 @@ Blockly.Msg.ARDUINO_NOTONE_HELPURL = "https://www.arduino.cc/reference/jp/langua
 Blockly.Msg.ARDUINO_SERIAL_PRINT_CONTENT = "シリアルでデータを送る　ポート:";
 Blockly.Msg.ARDUINO_SERIAL_PRINT_TOOLTIP = "データを送信してモニターで監視します";//"sends data over the serial port for sruvaillance by the monitor in ASCII";
 Blockly.Msg.ARDUINO_SERIAL_PRINT_HELPURL = "http://www.arduino.cc/en/Serial/Print";
+//Arduino base category blocks
+Blockly.Msg.ARDUINO_SERVO_MOVE_TOOLTIP = "0 ~ 180°　回転可能";
+Blockly.Msg.ARDUINO_SERVO_MOVE_HELPURL = "http://www.arduino.cc/playground/ComponentLib/servo";
+Blockly.Msg.ARDUINO_SERVO_PIN = "PIN#";
+Blockly.Msg.ARDUINO_SERVO_MOVE_INPUT1 = "サーボ駆動";
+Blockly.Msg.ARDUINO_SERVO_MOVE_DEGREE = "設定角度 (0~180°)";
+Blockly.Msg.ARDUINO_SERVO_READ_DEGREES_INPUT1 = "サーボモータの角度";
+Blockly.Msg.ARDUINO_SERVO_READ_DEGREES_TOOLTIP = "前回の回転角度を返す";
+Blockly.Msg.ARDUINO_SERVO_READ_DEGREES_HELPURL = "http://www.arduino.cc/playground/ComponentLib/servo";

@@ -21,18 +21,18 @@ var servoMediaFolder = "./S4E/blocks/servo/";
 Blockly.Blocks['servo_move'] = {
     init: function () {
         this.appendDummyInput()
-                .appendField("Servo")
+                .appendField(Blockly.Msg.ARDUINO_SERVO_MOVE_INPUT1)
                 .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", 64, 64))
-                .appendField("PIN#")
+                .appendField(Blockly.Msg.ARDUINO_SERVO_PIN)
                 .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN");
         this.appendValueInput("DEGREE")
                 .setCheck(intCompatibility)
                 .setAlign(Blockly.ALIGN_RIGHT)
-                .appendField("Degree (0~180)");
+                .appendField(Blockly.Msg.ARDUINO_SERVO_MOVE_DEGREE);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setTooltip('move between 0~180 degree');
-        this.setHelpUrl('http://playground.arduino.cc/ComponentLib/servo');
+        this.setTooltip(Blockly.Msg.ARDUINO_SERVO_MOVE_TOOLTIP);
+        this.setHelpUrl(Blockly.Msg.ARDUINO_SERVO_MOVE_HELPURL);
         this.setStyle('servo_blocks');
     }
 };
@@ -40,16 +40,16 @@ Blockly.Blocks['servo_move'] = {
 Blockly.Blocks['servo_read_degrees'] = {
     init: function () {
         this.appendDummyInput()
-                .appendField("Servo")
+                .appendField(Blockly.Msg.ARDUINO_SERVO_READ_DEGREES_INPUT1)
                 .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", 64, 64))
-                .appendField("PIN#")
+                .appendField(Blockly.Msg.ARDUINO_SERVO_PIN)
                 .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN");
         this.appendDummyInput()
                 .setAlign(Blockly.ALIGN_RIGHT)
-                .appendField("Read Degrees")
+                .appendField(Blockly.Msg.SERVO_DEFAULT_NAME)
         this.setOutput(true, "int");
-        this.setTooltip('return that degree with the last servo move.');
-        this.setHelpUrl('http://playground.arduino.cc/ComponentLib/servo');
+        this.setTooltip(Blockly.Msg.ARDUINO_SERVO_READ_DEGREES_TOOLTIP);
+        this.setHelpUrl(Blockly.Msg.ARDUINO_SERVO_READ_DEGREES_HELPURL);
         this.setStyle('servo_blocks');
     }
 };

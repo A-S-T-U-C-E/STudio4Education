@@ -75,3 +75,12 @@ Blockly.Msg.ARDUINO_NOTONE_HELPURL = "http://arduino.cc/en/Reference/AnalogWrite
 Blockly.Msg.ARDUINO_SERIAL_PRINT_CONTENT = "afficher sur le port série le texte";
 Blockly.Msg.ARDUINO_SERIAL_PRINT_TOOLTIP = "envoie des données sur le port série pour surveillance par le moniteur en ASCII";
 Blockly.Msg.ARDUINO_SERIAL_PRINT_HELPURL = "http://www.arduino.cc/en/Serial/Print";
+//Arduino base category blocks
+Blockly.Msg.ARDUINO_SERVO_MOVE_TOOLTIP = "rotation possible entre 0~180 degrés";
+Blockly.Msg.ARDUINO_SERVO_MOVE_HELPURL = "http://www.arduino.cc/playground/ComponentLib/servo";
+Blockly.Msg.ARDUINO_SERVO_PIN = "sur la broche";
+Blockly.Msg.ARDUINO_SERVO_MOVE_INPUT1 = "orienter le servo-moteur";
+Blockly.Msg.ARDUINO_SERVO_MOVE_DEGREE = "d'un angle (0~180°) de";
+Blockly.Msg.ARDUINO_SERVO_READ_DEGREES_INPUT1 = "l'angle du servo-moteur";
+Blockly.Msg.ARDUINO_SERVO_READ_DEGREES_TOOLTIP = "renvoie le nombre de degrés de la dernière rotation";
+Blockly.Msg.ARDUINO_SERVO_READ_DEGREES_HELPURL = "http://www.arduino.cc/playground/ComponentLib/servo";

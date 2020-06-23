@@ -17,7 +17,7 @@
             <table style="width: 100%; height: 100%;">
                 <tr id="optionsTop" style="height: 30px;">
                     <td style="width: 268px;white-space: nowrap;">
-                        <img src="./S4E/media/STMicroelectronics.png" style="width: 60px; vertical-align: middle;" />
+                        <img src="./S4E/media/STMicroelectronics.png" style="width: 40px; vertical-align: middle;" />
                             <span class="TitleText" id="appName"></span>
                     </td>
                     <td class="tabMiddle" style="width: 100%;">
@@ -104,7 +104,12 @@
                                 <div id="content_area">
                                     <div id="content_blocks"></div>
                                 </div>
-                                <div id="separator" ></div>
+                                <div id="separator">
+                                    <label id="editorReadOnlyToggle" class="switch">
+                                        <input type="checkbox" onclick="toggleEditorReadOnly(this)">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
                                 <button id="copyCodeButton" class="iconButtons" onclick="Code.copyToClipboard()">
                                     <span id="copyCodeButton_span">
                                         <i class="far fa-copy"></i>
@@ -115,7 +120,7 @@
                             <div id="barre_h">
                                 <div id="checkDetails">
                                     <input type="checkbox" name="detailedCompilation" id="detailedCompilation"/>
-                                    <span id="detailedCompilation_span" style="color: white;"> </span>
+                                    <span id="detailedCompilation_span"> </span>
                                 </div>
                             </div>
                             <div id="content_serial"></div>
@@ -192,7 +197,7 @@
                             </span>
                         </button>
                         <br>
-                        <button id="registerToOrchestrator" class="iconButtons CLI" onclick="">
+                        <button id="registerToOrchestrator" class="iconButtons CLI" onclick="ArrowheadRegister()">
                             <span id="registerToOrchestrator_span">
                                 <i class="fas fa-plug"></i>
                             </span>
@@ -426,6 +431,8 @@
     <!-- S4E external toolbox hacked -->
     <script src="./S4E/toolbox/toolbox_S4E.js"></script>
     <script src="./S4E/toolbox/toolbox_standard.js"></script>
+    <!-- S4E Arrowheadspecific -->
+    <script src="./S4E/js/arrowhead.js"></script>
     <script>
         ace.require("ace/ext/language_tools");
         var editor = ace.edit("content_code");

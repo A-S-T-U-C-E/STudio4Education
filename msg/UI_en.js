@@ -45,6 +45,7 @@ var MSG = {
     loadXML_error_span: "Error parsing XML:\n",
     resetButton_span: "Reset BlocklyDuino",
     helpButton_span: "help",
+    editorReadOnlyToggle_span: "code editor writable or read-only",
     copyCodeButton_span: "copy code to clipboard",
     accessibilitySpan: "enable Accessibility Mode (Shift + Ctrl + K):",
     defaultCursorSpan: "Default Cursor",

@@ -45,6 +45,7 @@ var MSG = {
     loadXML_error_span: "Erreur dans le fichier Blockly :\n",
     resetButton_span: "réinitialiser BlocklyDuino",
     helpButton_span: "aide",
+    editorReadOnlyToggle_span: "éditeur de code en lecture seule ou non",
     copyCodeButton_span: "copier le code dans le presse papiers",
     accessibilitySpan: "activer le contrôle clavier (Shift + Ctrl + K) :",
     defaultCursorSpan: "curseur par défaut",

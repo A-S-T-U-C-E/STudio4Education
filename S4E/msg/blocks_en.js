@@ -32,7 +32,7 @@ Blockly.Msg.CONTROLS_SWITCH_TOOLTIP_4 = "If the first value is true, then do the
 Blockly.Msg.CONTROLS_SWITCH_VAR_TOOLTIP = "Drag from the left into here to add";
 Blockly.Msg.CONTROLS_SWITCH_CASEBREAK_TOOLTIP = "Add additional case break do";
 Blockly.Msg.CONTROLS_SWITCH_DEFAULT_TOOLTIP = "Add optional default action";
-//Arduino base cateory blocks
+//Arduino base category blocks
 Blockly.Msg.VAR_CREATE_INT = "integer";
 Blockly.Msg.VAR_CREATE_FLOAT = "float";
 Blockly.Msg.VAR_CREATE_STRING = "string";
@@ -75,3 +75,12 @@ Blockly.Msg.ARDUINO_NOTONE_HELPURL = "http://arduino.cc/en/Reference/AnalogWrite
 Blockly.Msg.ARDUINO_SERIAL_PRINT_CONTENT = "send the data to the serial port:";
 Blockly.Msg.ARDUINO_SERIAL_PRINT_TOOLTIP = "sends data over the serial port for sruvaillance by the monitor in ASCII";
 Blockly.Msg.ARDUINO_SERIAL_PRINT_HELPURL = "http://www.arduino.cc/en/Serial/Print";
+//Arduino base category blocks
+Blockly.Msg.ARDUINO_SERVO_MOVE_TOOLTIP = "rotation possible between 0 ~ 180 degrees";
+Blockly.Msg.ARDUINO_SERVO_MOVE_HELPURL = "http://www.arduino.cc/playground/ComponentLib/servo";
+Blockly.Msg.ARDUINO_SERVO_PIN = "PIN#";
+Blockly.Msg.ARDUINO_SERVO_MOVE_INPUT1 = "rotate the Servomotor";
+Blockly.Msg.ARDUINO_SERVO_MOVE_DEGREE = "an angle (0~180°) of";
+Blockly.Msg.ARDUINO_SERVO_READ_DEGREES_INPUT1 = "the angle of the servo motor";
+Blockly.Msg.ARDUINO_SERVO_READ_DEGREES_TOOLTIP = "returns the number of degrees the last rotation";
+Blockly.Msg.ARDUINO_SERVO_READ_DEGREES_HELPURL = "http://www.arduino.cc/playground/ComponentLib/servo";

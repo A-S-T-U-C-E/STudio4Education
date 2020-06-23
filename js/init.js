@@ -85,12 +85,6 @@ Code.init = function () {
         comments: true,
         collapse: true,
         disable: true,
-        grid: {
-            spacing: 25,
-            length: 3,
-            colour: '#ccc',
-            snap: true
-        },
         maxBlocks: Infinity,
         maxInstances: {
             'test_basic_limit_instances': 3

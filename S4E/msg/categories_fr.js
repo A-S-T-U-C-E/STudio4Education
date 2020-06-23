@@ -14,7 +14,7 @@ goog.require('Blockly.Msg');
 Blockly.Msg.CAT_VAR_NUM = "numériques";
 Blockly.Msg.CAT_VAR_TEXT = "textes";
 Blockly.Msg.CAT_VAR_BOOLEAN = "logique";
-Blockly.Msg.CAT_BOARD = "Board";
+Blockly.Msg.CAT_BOARD = "carte";
 Blockly.Msg.CAT_BOARD_IO = "entrées / sorties";
 Blockly.Msg.CAT_SERVO = "servomoteurs";
 Blockly.Msg.CAT_SEEED = "Seeed studio";

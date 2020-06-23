@@ -347,7 +347,7 @@ BLOCKLY_TOOLBOX_XML['toolboxS4E'] =
 +        '<category name="%{BKY_CAT_BOARD_IO}" categorystyle="board_category">'
 +            '<block type="board_base_inout_buildin_led"></block>'
 +            '<block type="board_base_inout_digital_write"></block>'
-+           '<block type="board_base_inout_digital_read"></block>'
++            '<block type="board_base_inout_digital_read"></block>'
 +            '<block type="board_base_inout_highlow"></block>'
 +            '<block type="board_base_inout_analog_write">'
 +                '<value name="PWM">'
