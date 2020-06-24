@@ -313,3 +313,24 @@ Code.changeRenderingConstant = function (value) {
     // Refresh theme.
     Blockly.getMainWorkspace().setTheme(Blockly.getMainWorkspace().getTheme());
 };
+
+
+/**
+ * Hide/show the help modal.
+ * @param {boolean} state The state of the checkbox. True if checked, false
+ *     otherwise.
+ */
+ var HelpModalDisplay_ = false;
+ 
+function toggleDisplayHelpModal() {
+    if (!HelpModalDisplay_) {
+        document.getElementById('helpModal').style.display = 'block';
+        document.getElementById('helpModal').style.left = (top.innerWidth - document.getElementById('helpModal').offsetWidth) / 2 + "px";
+        document.getElementById('helpModal').style.top = (top.innerHeight - document.getElementById('helpModal').offsetHeight) / 2 + "px";
+        helpButton.className = 'iconButtonsClicked';
+    } else {
+        document.getElementById('helpModal').style.display = 'none';
+        helpButton.className = 'iconButtons';
+    }
+    HelpModalDisplay_ = !HelpModalDisplay_;
+}

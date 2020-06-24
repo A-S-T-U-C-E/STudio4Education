@@ -154,6 +154,25 @@ td.tabMiddle {
     font-size: x-large;
     color: #FFFFFF;
 }
+/* Help modal */
+#helpModal {
+    background-color: #ebebeb;
+    border: 1px solid black;
+    padding: 1em;
+    position: absolute;
+    z-index: 9;
+    text-align: center;
+    width: 500px;
+    height: auto;
+}
+#helpModal_header {
+    padding: 5px;
+    cursor: move;
+    z-index: 10;
+    background-color: #2196F3;
+    color: #fff;
+}
+
 
 /* Content blocks */
 .content_wrapper {

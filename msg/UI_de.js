@@ -45,6 +45,25 @@ var MSG = {
     loadXML_error_span: "Error parsing XML:\n",
     resetButton_span: "Reset BlocklyDuino",
     helpButton_span: "About",
+    helpModalSpan_title: "Help - About",
+    helpModalSpan_text:
+        '<table>' +
+        '<tbody>' +
+        '<tr>' +
+        '<td style="width: 142px;"><img src="https://raw.githubusercontent.com/A-S-T-U-C-E/STudio4Education/master/S4E/media/logo_only.png" alt="" width="129" height="144" /></td>' +
+        '<td>' +
+        '<p style="text-align: left;"><strong>STudio4Education</strong></p>' +
+        '<p style="text-align: left;">Designed for <strong>Arrowhead</strong> Tools Project (<a href="https://www.arrowhead.eu/arrowheadtools" rel="nofollow">https://www.arrowhead.eu/arrowheadtools</a>), STudio4Education is a <strong>web-based visual programming editor for <a href="https://www.st.com" rel="nofollow">ST microelectronics</a></strong> boards, thanks to <a href="https://developers.google.com/blockly/" rel="nofollow">Blockly</a>, the web-based, graphical programming editor.</p>' +
+        '<p style="text-align: left;">STudio4Education provides static type language blocks and code generators for simple C programming.</p>' +
+        '</td>' +
+        '</tr>' +
+        '</tbody>' +
+        '</table>' +
+        '<p style="text-align: left;">Accessibility: <a href="https://github.com/A-S-T-U-C-E/STudio4Education#accessibility">online documentation</a>.</p>' +
+        '<p style="text-align: left;">Official documentation: <a href="https://developers.google.com/blockly/guides/configure/web/keyboard-nav" rel="nofollow">Blockly developers</a>.</p>' +
+        '<p style="text-align: left;">Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">on Github</a>.</p>' +
+        '<p style="text-align: left;">A bug? Post it here: <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">on Github</a>.</p>' +
+        '<p style="text-aligne left;">v0.8.0',
     editorReadOnlyToggle_span: "code editor writable or read-only",
     copyCodeButton_span: "copy code to clipboard",
     accessibilitySpan: "Enable Accessibility Mode (Shift + Ctrl + K):",

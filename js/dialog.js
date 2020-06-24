@@ -10,9 +10,11 @@
  */
 
 /*
- * Make the DIV element draggable-keyboard-dialog draggable
+ * Make the DIV element draggable
  */
 dragElement(document.getElementById("keyboard_nav"));
+dragElement(document.getElementById("helpModal"));
+
 function dragElement(elmnt) {
     var pos1 = 0,
             pos2 = 0,
