@@ -66,7 +66,7 @@ var MSG = {
         '<p style="text-aligne left;">v0.8.0',
     editorReadOnlyToggle_span: "éditeur de code en lecture seule ou non",
     copyCodeButton_span: "copier le code dans le presse papiers",
-    accessibilitySpan: "activer le contrôle clavier (Shift + Ctrl + K) :",
+    accessibilitySpan: "activer le contrôle clavier :",
     defaultCursorSpan: "curseur par défaut",
     basicCursorSpan: "curseur classique",
     lineCursorSpan: "curseur ligne",
@@ -105,7 +105,6 @@ var MSG = {
     optionFontSizeBlocks: "police des blocs",
     optionFontSizePage: "police de l'interface",
     optionFontSpacingPage: "espacement entre les lettres",
-    keyMappingExplanationSpan: "accessibilité : documentation <a href='https://github.com/BlocklyDuino/BlocklyDuino-v2' target='_blank'>en ligne.</a>",
     //CLI_functions.js
     config_sideButton_span: "gestion du compilateur",
     CLI_githubLinkButton_span: "documentation",

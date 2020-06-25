@@ -66,7 +66,7 @@ var MSG = {
         '<p style="text-aligne left;">v0.8.0',
     editorReadOnlyToggle_span: "code editor writable or read-only",
     copyCodeButton_span: "Copia código a  portapapeles",
-    accessibilitySpan: "habilita modo accesibilidad (Shift + Ctrl + K):",
+    accessibilitySpan: "habilita modo accesibilidad:",
     defaultCursorSpan: "Cursor por defecto",
     basicCursorSpan: "Cursor básico",
     lineCursorSpan: "Cursor linia",
@@ -105,7 +105,6 @@ var MSG = {
     optionFontSizeBlocks: "Tamaño del tipo de letra bloques",
     optionFontSizePage: "Tamaño del tipo de letra página",
     optionFontSpacingPage: "Espaciado de letra página",
-    keyMappingExplanationSpan: "accessibility: <a href='https://github.com/BlocklyDuino/BlocklyDuino-v2' target='_blank'>online documentation</a>",
     //CLI_functions.js
     config_sideButton_span: "Control del compilador Arduino CLI",
     CLI_githubLinkButton_span: "documentación",

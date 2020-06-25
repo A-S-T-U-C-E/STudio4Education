@@ -66,7 +66,7 @@ var MSG = {
         '<p style="text-aligne left;">v0.8.0',
     editorReadOnlyToggle_span: "code editor writable or read-only",
     copyCodeButton_span: "copy code to clipboard",
-    accessibilitySpan: "enable Accessibility Mode (Shift + Ctrl + K):",
+    accessibilitySpan: "enable Accessibility Mode:",
     defaultCursorSpan: "Default Cursor",
     basicCursorSpan: "Basic Cursor",
     lineCursorSpan: "Line Cursor",
@@ -105,7 +105,6 @@ var MSG = {
     optionFontSizeBlocks: "Blocks Font Size",
     optionFontSizePage: "Page Font Size",
     optionFontSpacingPage: "Page Font Spacing",
-    keyMappingExplanationSpan: "accessibility: <a href='https://github.com/A-S-T-U-C-E/STudio4Education#accessibility' target='_blank'>online documentation</a>",
     //CLI_functions.js
     config_sideButton_span: "Arduino CLI control",
     CLI_githubLinkButton_span: "documentation",

@@ -340,7 +340,6 @@ Code.initLanguage = function () {
     document.getElementById('optionFontSizeBlocks').textContent = MSG['optionFontSizeBlocks'];
     document.getElementById('optionFontSizePage').textContent = MSG['optionFontSizePage'];
     document.getElementById('optionFontSpacingPage').textContent = MSG['optionFontSpacingPage'];
-    document.getElementById('keyMappingExplanationSpan').innerHTML = MSG['keyMappingExplanationSpan'];
     //keyboard nav
     Blockly.navigation.ACTION_PREVIOUS.name = MSG['actionName0'];
     Blockly.navigation.ACTION_OUT.name = MSG['actionName1'];
