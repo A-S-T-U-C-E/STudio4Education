@@ -8,9 +8,12 @@
  * @fileoverview Accessibility functions, forked from https://github.com/google/blockly/commit/21763b7e00fbfe8010595382bf196410cd30844e
  * @author scanet@libreduc.cc (Sébastien CANET)
  */
+ 
+// Custom requires for the playground.
 
 'use strict';
 var Code;
+
 
 function setRenderDebugOptionCheckboxState(overrideOptions) {
     Code.blockRendering.Debug.config = overrideOptions || {};
@@ -178,6 +181,6 @@ function configureContextualMenu(menuOptions, e) {
     menuOptions.push(screenshotOption);
 
     // Adds a default-sized workspace comment to the workspace.
-    // menuOptions.push(Blockly.ContextMenu.workspaceCommentOption(Code.workspace, e));
+    menuOptions.push(Blockly.ContextMenu.workspaceCommentOption(Code.workspace, e));
 }
 ;

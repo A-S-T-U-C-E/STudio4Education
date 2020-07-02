@@ -47,15 +47,15 @@ var goog = goog || {};
  * @type {!Global}
  */
 goog.global =
-        // Check `this` first for backwards compatibility.
-        // Valid unless running as an ES module or in a function wrapper called
-        //   without setting `this` properly.
-        // Note that base.js can't usefully be imported as an ES module, but it may
-        // be compiled into bundles that are loadable as ES modules.
-        this ||
-        // https://developer.mozilla.org/en-US/docs/Web/API/Window/self
-        // For in-page browser environments and workers.
-        self;
+    // Check `this` first for backwards compatibility.
+    // Valid unless running as an ES module or in a function wrapper called
+    //   without setting `this` properly.
+    // Note that base.js can't usefully be imported as an ES module, but it may
+    // be compiled into bundles that are loadable as ES modules.
+    this ||
+    // https://developer.mozilla.org/en-US/docs/Web/API/Window/self
+    // For in-page browser environments and workers.
+    self;
 
 /**
  * Builds an object structure for the provided namespace path, ensuring that
@@ -65,24 +65,24 @@ goog.global =
  * @param {string} name name of the object that this file defines.
  * @private
  */
-goog.exportPath_ = function (name) {
-    var parts = name.split('.');
-    var cur = goog.global;
+goog.exportPath_ = function(name) {
+  var parts = name.split('.');
+  var cur = goog.global;
 
-    // Internet Explorer exhibits strange behavior when throwing errors from
-    // methods externed in this manner.  See the testExportSymbolExceptions in
-    // base_test.html for an example.
-    if (!(parts[0] in cur) && typeof cur.execScript != 'undefined') {
-        cur.execScript('var ' + parts[0]);
-    }
+  // Internet Explorer exhibits strange behavior when throwing errors from
+  // methods externed in this manner.  See the testExportSymbolExceptions in
+  // base_test.html for an example.
+  if (!(parts[0] in cur) && typeof cur.execScript != 'undefined') {
+    cur.execScript('var ' + parts[0]);
+  }
 
-    for (var part; parts.length && (part = parts.shift()); ) {
-        if (cur[part] && cur[part] !== Object.prototype[part]) {
-            cur = cur[part];
-        } else {
-            cur = cur[part] = {};
-        }
+  for (var part; parts.length && (part = parts.shift());) {
+    if (cur[part] && cur[part] !== Object.prototype[part]) {
+      cur = cur[part];
+    } else {
+      cur = cur[part] = {};
     }
+  }
 };
 
 /**
@@ -107,24 +107,24 @@ goog.exportPath_ = function (name) {
  * @param {string} name Namespace provided by this file in the form
  *     "goog.package.part".
  */
-goog.provide = function (name) {
-    // Ensure that the same namespace isn't provided twice.
-    // A goog.module/goog.provide maps a goog.require to a specific file
-    if (goog.isProvided_(name)) {
-        throw Error('Namespace "' + name + '" already declared.');
+goog.provide = function(name) {
+  // Ensure that the same namespace isn't provided twice.
+  // A goog.module/goog.provide maps a goog.require to a specific file
+  if (goog.isProvided_(name)) {
+    throw Error('Namespace "' + name + '" already declared.');
+  }
+
+  delete goog.implicitNamespaces_[name];
+
+  var namespace = name;
+  while ((namespace = namespace.substring(0, namespace.lastIndexOf('.')))) {
+    if (goog.getObjectByName(namespace)) {
+      break;
     }
+    goog.implicitNamespaces_[namespace] = true;
+  }
 
-    delete goog.implicitNamespaces_[name];
-
-    var namespace = name;
-    while ((namespace = namespace.substring(0, namespace.lastIndexOf('.')))) {
-        if (goog.getObjectByName(namespace)) {
-            break;
-        }
-        goog.implicitNamespaces_[namespace] = true;
-    }
-
-    goog.exportPath_(name);
+  goog.exportPath_(name);
 };
 
 /**
@@ -143,9 +143,9 @@ goog.moduleLoaderState_ = null;
  * @return {boolean} Whether the name has been provided.
  * @private
  */
-goog.isProvided_ = function (name) {
-    return (!goog.implicitNamespaces_[name] &&
-            goog.isDefAndNotNull(goog.getObjectByName(name)));
+goog.isProvided_ = function(name) {
+  return (!goog.implicitNamespaces_[name] &&
+       goog.isDefAndNotNull(goog.getObjectByName(name)));
 };
 
 /**
@@ -175,16 +175,16 @@ goog.implicitNamespaces_ = {};
  *     |goog.global|.
  * @return {?} The value (object or primitive) or, if not found, null.
  */
-goog.getObjectByName = function (name, opt_obj) {
-    var parts = name.split('.');
-    var cur = opt_obj || goog.global;
-    for (var i = 0; i < parts.length; i++) {
-        cur = cur[parts[i]];
-        if (!goog.isDefAndNotNull(cur)) {
-            return null;
-        }
+goog.getObjectByName = function(name, opt_obj) {
+  var parts = name.split('.');
+  var cur = opt_obj || goog.global;
+  for (var i = 0; i < parts.length; i++) {
+    cur = cur[parts[i]];
+    if (!goog.isDefAndNotNull(cur)) {
+      return null;
     }
-    return cur;
+  }
+  return cur;
 };
 
 
@@ -196,8 +196,8 @@ goog.getObjectByName = function (name, opt_obj) {
  * @param {!Array<string>} requires An array of strings with
  *     the names of the objects this file requires.
  */
-goog.addDependency = function (relPath, provides, requires) {
-    goog.debugLoader_.addDependency(relPath, provides, requires);
+goog.addDependency = function(relPath, provides, requires) {
+  goog.debugLoader_.addDependency(relPath, provides, requires);
 };
 
 
@@ -235,19 +235,19 @@ goog.addDependency = function (relPath, provides, requires) {
  * @return {?} If called within a goog.module or ES6 module file, the associated
  *     namespace or module otherwise null.
  */
-goog.require = function (namespace) {
-    // If the object already exists we do not need to do anything.
-    if (!goog.isProvided_(namespace)) {
-        var moduleLoaderState = goog.moduleLoaderState_;
-        goog.moduleLoaderState_ = null;
-        try {
-            goog.debugLoader_.load_(namespace);
-        } finally {
-            goog.moduleLoaderState_ = moduleLoaderState;
-        }
+goog.require = function(namespace) {
+  // If the object already exists we do not need to do anything.
+  if (!goog.isProvided_(namespace)) {
+    var moduleLoaderState = goog.moduleLoaderState_;
+    goog.moduleLoaderState_ = null;
+    try {
+      goog.debugLoader_.load_(namespace);
+    } finally {
+      goog.moduleLoaderState_ = moduleLoaderState;
     }
+  }
 
-    return null;
+  return null;
 };
 
 /**
@@ -266,11 +266,11 @@ goog.require = function (namespace) {
  *     "goog.package.part".
  * @return {?}
  */
-goog.requireType = function (namespace) {
-    // Return an empty object so that single-level destructuring of the return
-    // value doesn't crash at runtime when using the debug loader. Multi-level
-    // destructuring isn't supported.
-    return {};
+goog.requireType = function(namespace) {
+  // Return an empty object so that single-level destructuring of the return
+  // value doesn't crash at runtime when using the debug loader. Multi-level
+  // destructuring isn't supported.
+  return {};
 };
 
 /**
@@ -286,21 +286,21 @@ goog.basePath = '';
  * @return {string}
  * @private
  */
-goog.normalizePath_ = function (path) {
-    var components = path.split('/');
-    var i = 0;
-    while (i < components.length) {
-        if (components[i] == '.') {
-            components.splice(i, 1);
-        } else if (
-                i && components[i] == '..' && components[i - 1] &&
-                components[i - 1] != '..') {
-            components.splice(--i, 2);
-        } else {
-            i++;
-        }
+goog.normalizePath_ = function(path) {
+  var components = path.split('/');
+  var i = 0;
+  while (i < components.length) {
+    if (components[i] == '.') {
+      components.splice(i, 1);
+    } else if (
+        i && components[i] == '..' && components[i - 1] &&
+        components[i - 1] != '..') {
+      components.splice(--i, 2);
+    } else {
+      i++;
     }
-    return components.join('/');
+  }
+  return components.join('/');
 };
 
 
@@ -314,9 +314,9 @@ goog.normalizePath_ = function (path) {
  * @param {?} val Variable to test.
  * @return {boolean} Whether variable is defined and not null.
  */
-goog.isDefAndNotNull = function (val) {
-    // Note that undefined == null.
-    return val != null;
+goog.isDefAndNotNull = function(val) {
+  // Note that undefined == null.
+  return val != null;
 };
 
 //==============================================================================
@@ -332,28 +332,28 @@ goog.isDefAndNotNull = function (val) {
  * Tries to detect the base path of base.js script that bootstraps Closure.
  * @private
  */
-goog.findBasePath_ = function () {
-    /** @type {!Document} */
-    var doc = goog.global.document;
-    // If we have a currentScript available, use it exclusively.
-    var currentScript = doc.currentScript;
-    if (currentScript) {
-        var scripts = [currentScript];
-    } else {
-        var scripts = doc.getElementsByTagName('SCRIPT');
+goog.findBasePath_ = function() {
+  /** @type {!Document} */
+  var doc = goog.global.document;
+  // If we have a currentScript available, use it exclusively.
+  var currentScript = doc.currentScript;
+  if (currentScript) {
+    var scripts = [currentScript];
+  } else {
+    var scripts = doc.getElementsByTagName('SCRIPT');
+  }
+  // Search backwards since the current script is in almost all cases the one
+  // that has base.js.
+  for (var i = scripts.length - 1; i >= 0; --i) {
+    var script = /** @type {!HTMLScriptElement} */ (scripts[i]);
+    var src = script.src;
+    var qmark = src.lastIndexOf('?');
+    var l = qmark == -1 ? src.length : qmark;
+    if (src.substr(l - 7, 7) == 'base.js') {
+      goog.basePath = src.substr(0, l - 7);
+      return;
     }
-    // Search backwards since the current script is in almost all cases the one
-    // that has base.js.
-    for (var i = scripts.length - 1; i >= 0; --i) {
-        var script = /** @type {!HTMLScriptElement} */ (scripts[i]);
-        var src = script.src;
-        var qmark = src.lastIndexOf('?');
-        var l = qmark == -1 ? src.length : qmark;
-        if (src.substr(l - 7, 7) == 'base.js') {
-            goog.basePath = src.substr(0, l - 7);
-            return;
-        }
-    }
+  }
 };
 
 goog.findBasePath_();
@@ -364,15 +364,15 @@ goog.findBasePath_();
  *
  * @struct @constructor @final @private
  */
-goog.DebugLoader_ = function () {
-    /** @private @const {!Object<string, !goog.Dependency>} */
-    this.dependencies_ = {};
-    /** @private @const {!Object<string, string>} */
-    this.idToPath_ = {};
-    /** @private @const {!Object<string, boolean>} */
-    this.written_ = {};
-    /** @private {!Array<!goog.Dependency>} */
-    this.depsToLoad_ = [];
+goog.DebugLoader_ = function() {
+  /** @private @const {!Object<string, !goog.Dependency>} */
+  this.dependencies_ = {};
+  /** @private @const {!Object<string, string>} */
+  this.idToPath_ = {};
+  /** @private @const {!Object<string, boolean>} */
+  this.written_ = {};
+  /** @private {!Array<!goog.Dependency>} */
+  this.depsToLoad_ = [];
 };
 
 
@@ -384,47 +384,47 @@ goog.DebugLoader_ = function () {
  * @param {string} namespace
  * @private
  */
-goog.DebugLoader_.prototype.load_ = function (namespace) {
-    if (!this.getPathFromDeps_(namespace)) {
-        throw Error('goog.require could not find: ' + namespace);
-    } else {
-        var loader = this;
+goog.DebugLoader_.prototype.load_ = function(namespace) {
+  if (!this.getPathFromDeps_(namespace)) {
+    throw Error('goog.require could not find: ' + namespace);
+  } else {
+    var loader = this;
 
-        var deps = [];
+    var deps = [];
 
-        /** @param {string} namespace */
-        var visit = function (namespace) {
-            var path = loader.getPathFromDeps_(namespace);
+    /** @param {string} namespace */
+    var visit = function(namespace) {
+      var path = loader.getPathFromDeps_(namespace);
 
-            if (!path) {
-                throw Error('Bad dependency path or symbol: ' + namespace);
-            }
+      if (!path) {
+        throw Error('Bad dependency path or symbol: ' + namespace);
+      }
 
-            if (loader.written_[path]) {
-                return;
-            }
+      if (loader.written_[path]) {
+        return;
+      }
 
-            loader.written_[path] = true;
+      loader.written_[path] = true;
 
-            var dep = loader.dependencies_[path];
-            for (var i = 0; i < dep.requires.length; i++) {
-                if (!goog.isProvided_(dep.requires[i])) {
-                    visit(dep.requires[i]);
-                }
-            }
-
-            deps.push(dep);
-        };
-
-        visit(namespace);
-
-        var wasLoading = !!this.depsToLoad_.length;
-        this.depsToLoad_ = this.depsToLoad_.concat(deps);
-
-        if (!wasLoading) {
-            this.loadDeps_();
+      var dep = loader.dependencies_[path];
+      for (var i = 0; i < dep.requires.length; i++) {
+        if (!goog.isProvided_(dep.requires[i])) {
+          visit(dep.requires[i]);
         }
+      }
+
+      deps.push(dep);
+    };
+
+    visit(namespace);
+
+    var wasLoading = !!this.depsToLoad_.length;
+    this.depsToLoad_ = this.depsToLoad_.concat(deps);
+
+    if (!wasLoading) {
+      this.loadDeps_();
     }
+  }
 };
 
 
@@ -433,21 +433,21 @@ goog.DebugLoader_.prototype.load_ = function (namespace) {
  *
  * @private
  */
-goog.DebugLoader_.prototype.loadDeps_ = function () {
-    var loader = this;
+goog.DebugLoader_.prototype.loadDeps_ = function() {
+  var loader = this;
 
-    while (this.depsToLoad_.length) {
-        (function () {
-            var loadCallDone = false;
-            var dep = loader.depsToLoad_.shift();
+  while (this.depsToLoad_.length) {
+    (function() {
+      var loadCallDone = false;
+      var dep = loader.depsToLoad_.shift();
 
-            try {
-                dep.load();
-            } finally {
-                loadCallDone = true;
-            }
-        })();
-    }
+      try {
+        dep.load();
+      } finally {
+        loadCallDone = true;
+      }
+    })();
+  }
 };
 
 
@@ -456,8 +456,8 @@ goog.DebugLoader_.prototype.loadDeps_ = function () {
  * @return {?string}
  * @private
  */
-goog.DebugLoader_.prototype.getPathFromDeps_ = function (absPathOrId) {
-    return this.idToPath_[absPathOrId];
+goog.DebugLoader_.prototype.getPathFromDeps_ = function(absPathOrId) {
+  return this.idToPath_[absPathOrId];
 };
 
 
@@ -476,11 +476,11 @@ goog.DebugLoader_.prototype.getPathFromDeps_ = function (absPathOrId) {
  *     this depends on.
  * @struct @constructor
  */
-goog.Dependency = function (path, requires) {
-    /** @const */
-    this.path = path;
-    /** @const */
-    this.requires = requires;
+goog.Dependency = function(path, requires) {
+  /** @const */
+  this.path = path;
+  /** @const */
+  this.requires = requires;
 };
 
 /**
@@ -500,11 +500,11 @@ goog.Dependency.callbackMap_ = {};
  * end up calling the loaded method of this dependency; there is no need to
  * call it explicitly.
  */
-goog.Dependency.prototype.load = function () {
-    /** @type {!HTMLDocument} */
-    var doc = goog.global.document;
-    doc.write('<script src="' + this.path + '" type="text/javascript"><' +
-            '/script>');
+goog.Dependency.prototype.load = function() {
+  /** @type {!HTMLDocument} */
+  var doc = goog.global.document;
+  doc.write('<script src="' + this.path + '" type="text/javascript"><' +
+      '/script>');
 };
 
 
@@ -514,16 +514,16 @@ goog.Dependency.prototype.load = function () {
  * @param {!Array<string>} requires
  * @see goog.addDependency
  */
-goog.DebugLoader_.prototype.addDependency = function (
-        relPath, provides, requires) {
-    relPath = relPath.replace(/\\/g, '/');
-    var path = goog.normalizePath_(goog.basePath + relPath);
-    var dep = new goog.Dependency(path, requires);
-    this.dependencies_[path] = dep;
-    for (var i = 0; i < provides.length; i++) {
-        this.idToPath_[provides[i]] = path;
-    }
-    this.idToPath_[relPath] = path;
+goog.DebugLoader_.prototype.addDependency = function(
+    relPath, provides, requires) {
+  relPath = relPath.replace(/\\/g, '/');
+  var path = goog.normalizePath_(goog.basePath + relPath);
+  var dep = new goog.Dependency(path, requires);
+  this.dependencies_[path] = dep;
+  for (var i = 0; i < provides.length; i++) {
+    this.idToPath_[provides[i]] = path;
+  }
+  this.idToPath_[relPath] = path;
 };
 
 

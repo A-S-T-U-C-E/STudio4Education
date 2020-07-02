@@ -85,6 +85,14 @@ Code.init = function () {
         comments: true,
         collapse: true,
         disable: true,
+        grid:
+          {
+            spacing: 25,
+            length: 0,
+            colour: '#ccc',
+            snap: true
+          },
+        horizontalLayout: false,
         maxBlocks: Infinity,
         maxInstances: {
             'test_basic_limit_instances': 3
@@ -94,13 +102,14 @@ Code.init = function () {
         sounds: true,
         oneBasedIndex: true,
         readOnly: false,
-        rtl: rtl,
+        rtl: false,
         move: {
             scrollbars: true,
             drag: true,
             wheel: false
         },
         toolbox: BLOCKLY_TOOLBOX_XML['toolboxS4E'],
+        toolboxPosition: 'start',
         renderer: renderer,
         zoom: {
             controls: true,
@@ -122,7 +131,7 @@ Code.init = function () {
     Code.workspace.registerToolboxCategoryCallback('VARIABLE_TYPED_TEXT', textVariablesCallBack);
     Code.workspace.registerToolboxCategoryCallback('VARIABLE_TYPED_BOOLEAN', booleanVariablesCallBack);
 
-    Code.workspace.configureContextMenu = configureContextualMenu;
+    Code.workspace.configureContextMenu = configureContextualMenu.bind(Code.workspace);
 
     // load blocks stored in session or passed by url
     var urlFile = Code.getStringParamFromUrl('url', '');
