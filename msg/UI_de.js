@@ -39,11 +39,11 @@ var MSG = {
     serialConnectButton_span: "Serial monitor",
     saveCodeButton_span: "Export Code",
     newButton_span: "New project",
-    saveXMLButton_span: "Save to BlocklyDuino file",
-    loadXMLfakeButton_span: "Load BlocklyDuino file",
+    saveXMLButton_span: "Save to S4E file",
+    loadXMLfakeButton_span: "Load S4E file",
     loadXML_span: "Replace existing blocks?\n'Cancel' will merge.",
     loadXML_error_span: "Error parsing XML:\n",
-    resetButton_span: "Reset BlocklyDuino",
+    resetButton_span: "Reset S4E",
     helpButton_span: "About",
     helpModalSpan_title: "Help - About",
     helpModalSpan_text:
@@ -63,7 +63,7 @@ var MSG = {
         '<p style="text-align: left;">Official documentation: <a href="https://developers.google.com/blockly/guides/configure/web/keyboard-nav" rel="nofollow">Blockly developers</a>.</p>' +
         '<p style="text-align: left;">Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">on Github</a>.</p>' +
         '<p style="text-align: left;">A bug? Post it here: <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">on Github</a>.</p>' +
-        '<p style="text-aligne left;">v0.8.0',
+        '<p style="text-aligne left;">v0.7.2',
     editorReadOnlyToggle_span: "code editor writable or read-only",
     copyCodeButton_span: "copy code to clipboard",
     accessibilitySpan: "Enable Accessibility Mode:",

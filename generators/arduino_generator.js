@@ -140,27 +140,27 @@ Blockly.Arduino.init = function (workspace) {
  */
 Blockly.Arduino.finish = function (code) {
     var includes = [],
-            definitions = [],
-            variables = [],
-            functions = [],
-            BLOCK_GLOBALS_ARRAY_SIZE = [];
+        definitions = [],
+        variables = [],
+        functions = [],
+        BLOCK_GLOBALS_ARRAY_SIZE = [];
     for (var name in Blockly.Arduino.includes_) {
         includes.push(Blockly.Arduino.includes_[name]);
     }
     if (includes.length) {
         includes.push('\n');
     }
-    for (var name in Blockly.Arduino.variables_) {
-        variables.push(Blockly.Arduino.variables_[name]);
-    }
-    if (variables.length) {
-        variables.push('\n');
-    }
     for (var name in Blockly.Arduino.definitions_) {
         definitions.push(Blockly.Arduino.definitions_[name]);
     }
     if (definitions.length) {
         definitions.push('\n');
+    }
+    for (var name in Blockly.Arduino.variables_) {
+        variables.push(Blockly.Arduino.variables_[name]);
+    }
+    if (variables.length) {
+        variables.push('\n');
     }
     for (var name in Blockly.Arduino.codeFunctions_) {
         functions.push(Blockly.Arduino.codeFunctions_[name]);
@@ -191,7 +191,7 @@ Blockly.Arduino.finish = function (code) {
     delete Blockly.Arduino.setups_;
     delete Blockly.Arduino.pins_;
     Blockly.Arduino.variableDB_.reset();
-    var allDefs = includes.join('\n') + variables.join('\n') + definitions.join('\n') + functions.join('\n');
+    var allDefs = includes.join('\n') + definitions.join('\n') + variables.join('\n') + functions.join('\n');
     var setup = 'void setup() {' + setups.join('\n  ') + '\n}\n\n';
     var loop = 'void loop() {\n  ' + code.replace(/\n/g, '\n  ') + '\n}';
     return allDefs + setup + loop;

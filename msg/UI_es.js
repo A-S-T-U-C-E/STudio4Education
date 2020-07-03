@@ -39,11 +39,11 @@ var MSG = {
     serialConnectButton_span: "Monitor serie",
     saveCodeButton_span: "Exporta código Arduino",
     newButton_span: "Proyecto nuevo",
-    saveXMLButton_span: "Guarda fichero BlocklyDuino",
-    loadXMLfakeButton_span: "Carga fichero BlocklyDuino",
+    saveXMLButton_span: "Guarda fichero S4E",
+    loadXMLfakeButton_span: "Carga fichero S4E",
     loadXML_span: "Replace existing blocks?\n'Cancel' will merge.",
     loadXML_error_span: "Error parsing XML:\n",
-    resetButton_span: "Restablece BlocklyDuino",
+    resetButton_span: "Restablece S4E",
     helpButton_span: "ayuda",
     helpModalSpan_title: "Help - About",
     helpModalSpan_text:
@@ -63,7 +63,7 @@ var MSG = {
         '<p style="text-align: left;">Official documentation: <a href="https://developers.google.com/blockly/guides/configure/web/keyboard-nav" rel="nofollow">Blockly developers</a>.</p>' +
         '<p style="text-align: left;">Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">on Github</a>.</p>' +
         '<p style="text-align: left;">A bug? Post it here: <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">on Github</a>.</p>' +
-        '<p style="text-aligne left;">v0.8.0',
+        '<p style="text-aligne left;">v0.7.2',
     editorReadOnlyToggle_span: "code editor writable or read-only",
     copyCodeButton_span: "Copia código a  portapapeles",
     accessibilitySpan: "habilita modo accesibilidad:",

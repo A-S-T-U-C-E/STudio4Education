@@ -77,6 +77,11 @@ Blockly.Themes.blackWhite.defaultBlockStyles = {
         "colourPrimary": "#000000",
         "colourSecondary": "#000000",
         "colourTertiary": "#000000"
+    },
+    "X-NUCLEO-IKS01A3_blocks": {
+        "colourPrimary": "#000000",
+        "colourSecondary": "#000000",
+        "colourTertiary": "#000000"
     }
 };
 
@@ -112,6 +117,9 @@ Blockly.Themes.blackWhite.categoryStyles = {
         "colour": "#000000"
     },
     "servo_category": {
+        "colour": "#000000"
+    },
+    "X-NUCLEO-IKS01A3_category": {
         "colour": "#000000"
     }
 };

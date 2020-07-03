@@ -22,6 +22,9 @@ Blockly.Themes.Classic.categoryStyles['grove_category'] = {
 Blockly.Themes.Classic.categoryStyles['servo_category'] = {
     "colour": "#343434"
 };
+Blockly.Themes.Classic.categoryStyles['X-NUCLEO-IKS01A3_category'] = {
+    "colour": "#0144c6"
+};
 //Modern theme
 Blockly.Themes.Modern.categoryStyles['board_category'] = {
     "colour": "#03234b"
@@ -34,6 +37,9 @@ Blockly.Themes.Modern.categoryStyles['grove_category'] = {
 };
 Blockly.Themes.Modern.categoryStyles['servo_category'] = {
     "colour": "#343434"
+};
+Blockly.Themes.Modern.categoryStyles['X-NUCLEO-IKS01A3_category'] = {
+    "colour": "#0144c6"
 };
 //Deuteranopia theme
 Blockly.Themes.Deuteranopia.categoryStyles['board_category'] = {
@@ -48,6 +54,9 @@ Blockly.Themes.Deuteranopia.categoryStyles['grove_category'] = {
 Blockly.Themes.Deuteranopia.categoryStyles['servo_category'] = {
     "colour": "#343434"
 };
+Blockly.Themes.Deuteranopia.categoryStyles['X-NUCLEO-IKS01A3_category'] = {
+    "colour": "#0144c6"
+};
 //Tritanopia theme
 Blockly.Themes.Tritanopia.categoryStyles['board_category'] = {
     "colour": "#03234b"
@@ -60,6 +69,9 @@ Blockly.Themes.Tritanopia.categoryStyles['grove_category'] = {
 };
 Blockly.Themes.Tritanopia.categoryStyles['servo_category'] = {
     "colour": "#343434"
+};
+Blockly.Themes.Tritanopia.categoryStyles['X-NUCLEO-IKS01A3_category'] = {
+    "colour": "#0144c6"
 };
 //Zelos theme
 Blockly.Themes.Zelos.categoryStyles['board_category'] = {
@@ -74,6 +86,9 @@ Blockly.Themes.Zelos.categoryStyles['grove_category'] = {
 Blockly.Themes.Zelos.categoryStyles['servo_category'] = {
     "colour": "#343434"
 };
+Blockly.Themes.Zelos.categoryStyles['X-NUCLEO-IKS01A3_category'] = {
+    "colour": "#0144c6"
+};
 //High Contrast theme
 Blockly.Themes.HighContrast.categoryStyles['board_category'] = {
     "colour": "#03234b"
@@ -87,6 +102,9 @@ Blockly.Themes.HighContrast.categoryStyles['grove_category'] = {
 Blockly.Themes.HighContrast.categoryStyles['servo_category'] = {
     "colour": "#343434"
 };
+Blockly.Themes.HighContrast.categoryStyles['X-NUCLEO-IKS01A3_category'] = {
+    "colour": "#0144c6"
+};
 //Dark Theme
 Blockly.Themes.Dark.categoryStyles['board_category'] = {
     "colour": "#03234b"
@@ -99,4 +117,7 @@ Blockly.Themes.Dark.categoryStyles['grove_category'] = {
 };
 Blockly.Themes.Dark.categoryStyles['servo_category'] = {
     "colour": "#343434"
+};
+Blockly.Themes.Dark.categoryStyles['X-NUCLEO-IKS01A3_category'] = {
+    "colour": "#0144c6"
 };

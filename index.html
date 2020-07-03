@@ -232,17 +232,9 @@
                         <!-- </select> -->
                         <span id="boardMenuSpan" class="UIText">...</span>
                         <select id="boardMenu" onchange="changeBoard()">
-                            <!-- <option value="none" selected="selected">...</option> -->
-                            <!-- <option value="arduino_leonardo">Arduino Leonardo</option> -->
-                            <!-- <option value="arduino_mega">Arduino Mega</option> -->
-                            <!-- <option value="arduino_micro">Arduino Micro</option> -->
-                            <!-- <option value="arduino_mini">Arduino Mini</option> -->
-                            <!-- <option value="arduino_nano">Arduino Nano</option> -->
-                            <!-- <option value="arduino_pro8">Arduino Pro Mini 3.3V</option> -->
-                            <!-- <option value="arduino_pro16">Arduino Pro Mini 5V</option> -->
-                            <!-- <option value="arduino_uno">Arduino Uno</option> -->
-                            <!-- <option value="arduino_yun">Arduino Yùn</option> -->
-                            <!-- <option value="lilypad">LilyPad</option> -->
+                            <option value="none" selected="selected">...</option>
+                            <option value="nucleo_L476RG" >Nucleo-64 STM32L476</option>
+                            <option value="mp157c_dk2" >STM32MP1 Discovery kits</option>
                         </select>
                         <br>
                         <br>
@@ -328,18 +320,11 @@
                     </div>
                     <div id="hideSelectScrollbar">
                         <select id="boardDescriptionSelector" size="11" onchange="Code.boardDescription()">
-                            <!-- <optgroup label="C / C++"> -->
-                            <!-- <option value="arduino_leonardo" >Arduino Léonardo</option> -->
-                            <!-- <option value="arduino_mega" >Arduino Mega</option> -->
-                            <!-- <option value="arduino_micro" >Arduino Micro</option> -->
-                            <!-- <option value="arduino_mini" >Arduino Mini</option> -->
-                            <!-- <option value="arduino_nano" >Arduino Nano</option> -->
-                            <!-- <option value="arduino_pro8" >Arduino Pro Mini 3.3V</option> -->
-                            <!-- <option value="arduino_pro16" >Arduino Pro Mini 5V</option> -->
-                            <!-- <option value="arduino_uno" >Arduino Uno</option> -->
-                            <!-- <option value="arduino_yun" >Arduino Yùn</option> -->
-                            <!-- <option value="lilypad" >LilyPad</option> -->
-                            <!-- </optgroup> -->
+                            <optgroup label="C / C++">
+                                <option value="none" >None</option>
+                                <option value="nucleo_L476RG" >Nucleo-64 STM32L476</option>
+                                <option value="mp157c_dk2" >STM32MP1 Discovery kits</option>
+                            </optgroup>
                         </select>
                     </div>
                 </div>
@@ -412,10 +397,12 @@
     <script src="./S4E/js/boards.js"></script>
     <!-- S4E specific: block design -->
     <script src="./S4E/blocks/blocks_colors.js" async></script>
-    <script src="./S4E/blocks/board_base/board_base.js" async></script>
+    <script src="./S4E/blocks/board/board_base.js" async></script>
+    <script src="./S4E/blocks/board/board_serial.js" async></script>
     <script src="./S4E/blocks/blockly/logic.js" async></script>
     <script src="./S4E/blocks/blockly/math.js" async></script>
     <script src="./S4E/blocks/servo/servo.js" async></script>
+    <script src="./S4E/blocks/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.js" async></script>
     <script src="./S4E/blocks/typed_variable.js" async></script>
     <!-- S4E specific: common generator code -->
     <script src="./generators/arduino_generator.js"></script>
@@ -427,9 +414,11 @@
     <script src="./S4E/arduino/blockly/procedures.js" async></script>
     <script src="./S4E/arduino/blockly/text.js" async></script>
     <!-- S4E specific: addon generator code -->
-    <script src="./S4E/arduino/board_base/board_base.js" async></script>
+    <script src="./S4E/arduino/board/board_base.js" async></script>
+    <script src="./S4E/arduino/board/board_serial.js" async></script>
     <script src="./S4E/arduino/typed_variable.js" async></script>
     <script src="./S4E/arduino/addon/servo.js" async></script>
+    <script src="./S4E/arduino/addon/X-NUCLEO-IKS01A3.js" async></script>
     <!-- S4E specific -->
     <!-- Blockly themes added -->
     <script src="./S4E/themes/bw.js" async></script>
@@ -465,9 +454,9 @@
         });
         editor.findNext();
         editor.findPrevious();
-        require('../CLI_functions.js');
-        require('../IDE_functions.js');
-        <!-- require('../resources/app.asar/CLI_functions.js'); -->
-        <!-- require('../resources/app.asar/IDE_functions.js'); -->
+        <!-- require('../CLI_functions.js'); -->
+        <!-- require('../IDE_functions.js'); -->
+        require('../resources/app.asar/CLI_functions.js');
+        require('../resources/app.asar/IDE_functions.js');
     </script>
 </HTML>

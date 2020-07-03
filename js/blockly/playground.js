@@ -10,6 +10,8 @@
  */
  
 // Custom requires for the playground.
+// goog.require('Blockly.WorkspaceCommentSvg');
+// goog.require('Blockly.WorkspaceCommentSvg.render');
 
 'use strict';
 var Code;

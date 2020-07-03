@@ -177,16 +177,3 @@ Blockly.Blocks['board_base_inout_notone'] = {
         this.setStyle('board_blocks');
     }
 };
-
-Blockly.Blocks['board_base_serial_print'] = {
-    init: function () {
-        this.appendValueInput("CONTENT", 'String')
-                .appendField(Blockly.Msg.ARDUINO_SERIAL_PRINT_CONTENT)
-                .setCheck(stringCompatibility);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setTooltip(Blockly.Msg.ARDUINO_SERIAL_PRINT_TOOLTIP);
-        this.setHelpUrl(Blockly.Msg.ARDUINO_SERIAL_PRINT_HELPURL);
-        this.setStyle('board_blocks');
-    }
-};

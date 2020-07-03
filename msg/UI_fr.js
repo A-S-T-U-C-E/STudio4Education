@@ -43,7 +43,7 @@ var MSG = {
     loadXMLfakeButton_span: "ouvrir un fichier Blockly",
     loadXML_span: "Remplacer les blocs déjà présents ?\n'Annuler' les rajoutera.",
     loadXML_error_span: "Erreur dans le fichier Blockly :\n",
-    resetButton_span: "réinitialiser BlocklyDuino",
+    resetButton_span: "réinitialiser S4E",
     helpButton_span: "aide",
     helpModalSpan_title: "Aide",
     helpModalSpan_text:
@@ -63,7 +63,7 @@ var MSG = {
         '<p style="text-align: left;">Documentation officielle : <a href="https://developers.google.com/blockly/guides/configure/web/keyboard-nav" rel="nofollow">développeurs Blockly</a>.</p>' +
         '<p style="text-align: left;">Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">on Github</a>.</p>' +
         '<p style="text-align: left;">Un bug ? Merci d\'écrire ici : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">sur Github</a>.</p>' +
-        '<p style="text-aligne left;">v0.8.0',
+        '<p style="text-aligne left;">v0.7.2',
     editorReadOnlyToggle_span: "éditeur de code en lecture seule ou non",
     copyCodeButton_span: "copier le code dans le presse papiers",
     accessibilitySpan: "activer le contrôle clavier :",

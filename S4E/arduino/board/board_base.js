@@ -91,13 +91,3 @@ Blockly.Arduino['board_base_inout_notone'] = function (block) {
     var code = "noTone(" + dropdown_pin + ");\n";
     return code;
 };
-
-Blockly.Arduino['board_base_serial_print'] = function (block) {
-    var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0'
-    //content = content.replace('(','').replace(')','');
-
-    Blockly.Arduino.setups_['setup_serial_' + profile.default.serial] = 'Serial.begin(9600);\n';
-
-    var code = 'Serial.println(' + content + ');\n';
-    return code;
-};
