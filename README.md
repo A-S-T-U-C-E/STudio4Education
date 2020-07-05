@@ -56,7 +56,7 @@ If you want to install it locally. Get code from github and open `index.html` in
 
 ## Integrated upload
 
-Soon an [Electron](https://www.electronjs.org/) version with [arduino-cli](https://github.com/arduino/arduino-cli) embbeded for an off-line version: [https://github.com/SebCanet/S4E_electron](https://github.com/A-S-T-U-C-E/S4E_Electron)
+An [Electron](https://www.electronjs.org/) version with [arduino-cli](https://github.com/arduino/arduino-cli) embbeded for an off-line version is also available: [https://github.com/A-S-T-U-C-E/S4E_Electron](https://github.com/A-S-T-U-C-E/S4E_Electron)
 
 ## Usage
 
