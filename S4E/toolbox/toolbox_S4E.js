@@ -14,7 +14,7 @@ var BLOCKLY_TOOLBOX_XML = BLOCKLY_TOOLBOX_XML || Object.create(null);
 BLOCKLY_TOOLBOX_XML['toolboxS4E'] =
 // From XML string/file, replace ^\s?(\s*)?(<.*>)$ with \+$1'$2'
 // Tweak first and last line.
-'<xml xmlns="https://developers.google.com/blockly/xml" id="blocklyduinoToolbox">'
+'<xml xmlns="https://developers.google.com/blockly/xml" id="blocklyToolbox">'
 + '<category name="%{BKY_CATLOGIC}" categorystyle="logic_category">'
 +   '<block type="controls_if"></block>'
 +   '<block type="logic_compare"></block>'

@@ -1,12 +1,11 @@
 /**
  * @license
- * Copyright 2012 Fred Lin
- * SPDX-License-Identifier: Apache-2.0
+ * Copyright 2020 Sébastien CANET
+ * SPDX-License-Identifier: BSD-3-Clause
  */
 
 /**
- * @fileoverview Servomotor blocks for Blockly.
- * @author gasolin@gmail.com (Fred Lin)
+ * @fileoverview X-NUCLEO-IKS01A3 blocks for Blockly.
  * @author scanet@libreduc.cc (Sébastien CANET)
  */
 

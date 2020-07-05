@@ -1,12 +1,11 @@
 /**
  * @license
- * Copyright 2012 Fred Lin
- * SPDX-License-Identifier: Apache-2.0
+ * Copyright 2020 Sébastien CANET
+ * SPDX-License-Identifier: BSD-3-Clause
  */
 
 /**
- * @fileoverview Basics board command blocks for Blockly.
- * @author gasolin@gmail.com (Fred Lin)
+ * @fileoverview Basics serial command blocks for Blockly.
  * @author scanet@libreduc.cc (Sébastien Canet)
  */
 

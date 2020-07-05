@@ -1,14 +1,14 @@
 /**
  * @license
- * Copyright 2012 Fred Lin
- * SPDX-License-Identifier: Apache-2.0
+ * Copyright 2020 Sébastien CANET
+ * SPDX-License-Identifier: BSD-3-Clause
  */
 
 /**
- * @fileoverview Generating Arduino code for math blocks.
- * @author gasolin@gmail.com (Fred Lin)
+ * @fileoverview Generating Arduino code for maths blocks.
  * @author scanet@libreduc.cc (Sébastien CANET)
  */
+ 
 'use strict';
 
 goog.provide('Blockly.Arduino.MathArduino');

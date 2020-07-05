@@ -194,7 +194,7 @@ Code.saveXmlBlocklyFile = function () {
     var fileNameSave = prompt(MSG['saveXML_span']);
     if (fileNameSave !== null) {
         var fakeDownloadLink = document.createElement("a");
-        fakeDownloadLink.download = fileNameSave + ".bduino";
+        fakeDownloadLink.download = fileNameSave + ".S4E";
         fakeDownloadLink.href = window.URL.createObjectURL(blob);
         fakeDownloadLink.onclick = function destroyClickedElement(event) {
             document.body.removeChild(event.target);

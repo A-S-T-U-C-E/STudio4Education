@@ -50,7 +50,7 @@ var MSG = {
         '<table>' +
         '<tbody>' +
         '<tr>' +
-        '<td style="width: 142px;"><img src="https://raw.githubusercontent.com/A-S-T-U-C-E/STudio4Education/master/S4E/media/logo_only.png" alt="" width="129" height="144" /></td>' +
+        '<td style="width: 142px;"><img src="./S4E/media/logo_only.png" alt="" width="129" height="144" /></td>' +
         '<td>' +
         '<p style="text-align: left;"><strong>STudio4Education</strong></p>' +
         '<p style="text-align: left;">Créé pour le projet <strong>Arrowhead</strong> (<a href="https://www.arrowhead.eu/arrowheadtools" rel="nofollow">https://www.arrowhead.eu/arrowheadtools</a>), STudio4Education est un <strong>programme web d\'édition et de programmation visuelle par blocs pour les cartes <a href="https://www.st.com" rel="nofollow">ST microelectronics</a></strong>, il est basé sur <a href="https://developers.google.com/blockly/" rel="nofollow">Blockly</a>, l\'éditeur graphique de programmation en ligne.</p>' +
@@ -63,10 +63,10 @@ var MSG = {
         '<p style="text-align: left;">Documentation officielle : <a href="https://developers.google.com/blockly/guides/configure/web/keyboard-nav" rel="nofollow">développeurs Blockly</a>.</p>' +
         '<p style="text-align: left;">Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">on Github</a>.</p>' +
         '<p style="text-align: left;">Un bug ? Merci d\'écrire ici : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">sur Github</a>.</p>' +
-        '<p style="text-aligne left;">v0.7.2',
+        '<p style="text-align: center;">v0.7.2',
     editorReadOnlyToggle_span: "éditeur de code en lecture seule ou non",
     copyCodeButton_span: "copier le code dans le presse papiers",
-    accessibilitySpan: "activer le contrôle clavier :",
+    accessibilitySpan: "activer le contrôle clavier",
     defaultCursorSpan: "curseur par défaut",
     basicCursorSpan: "curseur classique",
     lineCursorSpan: "curseur ligne",

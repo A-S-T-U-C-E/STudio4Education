@@ -8,6 +8,7 @@
  * @fileoverview Generating Arduino code for text blocks.
  * @author scanet@libreduc.cc (Sébastien CANET)
  */
+ 
 'use strict';
 
 goog.provide('Blockly.Arduino.texts');

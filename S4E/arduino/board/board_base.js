@@ -1,12 +1,11 @@
 /**
  * @license
- * Copyright 2012 Fred Lin
- * SPDX-License-Identifier: Apache-2.0
+ * Copyright 2020 Sébastien CANET
+ * SPDX-License-Identifier: BSD-3-Clause
  */
-
+ 
 /**
  * @fileoverview Generating Arduino code for basics board command blocks.
- * @author gasolin@gmail.com (Fred Lin)
  * @author scanet@libreduc.cc (Sébastien CANET)
  */
 

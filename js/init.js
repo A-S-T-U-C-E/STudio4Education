@@ -385,7 +385,7 @@ document.write('<script src="./@blockly/demos/code/msg/' + Code.LANG + '.js"></s
 // Load Blockly's language strings.
 document.write('<script src="./@blockly/msg/js/' + Code.LANG + '.js"></script>\n');
 
-// Load BlocklyDuino's language strings.
+// Load language strings.
 document.write('<script src="./msg/UI_' + Code.LANG + '.js"></script>\n');
 document.write('<script src="./S4E/msg/blocks_' + Code.LANG + '.js"></script>\n');
 document.write('<script src="./S4E/msg/categories_' + Code.LANG + '.js"></script>\n');
