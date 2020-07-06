@@ -50,7 +50,7 @@ The cursor controls how the user navigates the blocks, inputs, fields and connec
 
 STudio4Education is a web tool. You can give it a try at [Web](https://a-s-t-u-c-e.github.io/STudio4Education/).
 
-## Run locally on your web browser
+### Run locally on your web browser
 
 If you want to install it locally. Get code from github and open `index.html` in your browser.
 
