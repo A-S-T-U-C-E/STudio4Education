@@ -86,13 +86,18 @@ Code.copyToClipboard = function () {
         var range = document.body.createTextRange();
         range.moveToElementText(document.getElementsByClassName("ace_content")[0]);
         range.select();
+        document.execCommand("copy");
     } else if (window.getSelection) {
-        var range = document.createRange();
-        range.selectNode(document.getElementsByClassName("ace_content")[0]);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
+        // var range = document.createRange();
+        // range.selectNode(document.getElementsByClassName("ace_content")[0]);
+        // window.getSelection().removeAllRanges();
+        // window.getSelection().addRange(range);
+    // }
+    // document.execCommand("copy");
+        navigator.clipboard.writeText(document.getElementsByClassName("ace_content")[0].innerText)
+                .then(() => {console.log('Code copied!') })
+                .catch((error) => { console.log('Copy failed! ${error}') });
     }
-    document.execCommand("copy");
 };
 
 /**
@@ -136,6 +141,7 @@ Code.portsListModalHide = function (event) {
         document.getElementById('portListModal').classList.remove('show');
     }
 };
+
 /**
  * change information in the boards modal
  **/
@@ -149,6 +155,7 @@ Code.boardDescription = function () {
     document.getElementById("board_voltage").textContent = profile[boardValue][0]['voltage'];
     document.getElementById("board_inout").textContent = profile[boardValue][0]['inout'];
 };
+
 
 /**
  * Undo/redo functions

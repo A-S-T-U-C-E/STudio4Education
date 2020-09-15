@@ -26,14 +26,14 @@
     padding:2px;
     line-height:0;
     vertical-align: middle;
-    background: #00ABDF;
+    background: #03234b;
     color: #FFFFFF;
     font-size: 1.5em;
     width: 32px;
 }
 .iconButtons:hover{
     background: #FFFFFF;
-    color: #000000;
+    color: #03234b;
     cursor : pointer;
     transition: 0.5s ease;
 }
@@ -98,6 +98,7 @@
     cursor: help;
 }
 #copyCodeButton{
+    visibility: hidden;
     position: absolute;
     top: 85px;
     right: 5px;
