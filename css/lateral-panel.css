@@ -13,7 +13,6 @@
     display: grid;
     align-items: center;
     text-align: center;
-    /* color: #03234B; */
     color: #FFFFFF;
 }
 #CLI_title {
@@ -99,9 +98,8 @@
     font-weight: bold;
 }
 .accordion:after {
-  content: "\02795"; /* Unicode character for "plus" sign (+) */
+  content: "\0271A"; /* Unicode character for "plus" sign (+) */
   font-size: x-large;
-  color: #FFFFFF;
   float: right;
   margin-left: 5px;
 }

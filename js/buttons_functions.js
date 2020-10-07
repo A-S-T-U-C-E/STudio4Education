@@ -156,7 +156,6 @@ Code.boardDescription = function () {
     document.getElementById("board_inout").textContent = profile[boardValue][0]['inout'];
 };
 
-
 /**
  * Undo/redo functions
  */
