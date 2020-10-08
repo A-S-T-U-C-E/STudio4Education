@@ -127,18 +127,12 @@ function fontSpacingPageModify(classToModify, spacingToModify) {
 function setOnOffLine() {
     // Set background colour to differentiate server vs local copy.
     if (location.protocol === 'file:') {
-        document.body.style.backgroundColor = '#03234B';
-        document.getElementById('CLI_content').style.backgroundColor = '#03234B';
-        document.getElementById('setup_content').style.backgroundColor = '#03234B';
         document.getElementById('verifyButton').disabled = false;
         document.getElementById('serialButton').disabled = false;
         document.getElementById('uploadButton').disabled = false;
         document.getElementById('serialConnectButton').disabled = false;
         document.getElementById('serialMenu').disabled = false;
     } else {
-        document.body.style.backgroundColor = '#00abdf';
-        document.getElementById('CLI_content').style.backgroundColor = '#00abdf';
-        document.getElementById('setup_content').style.backgroundColor = '#00abdf';
         document.getElementById('verifyButton').disabled = true;
         document.getElementById('serialButton').disabled = true;
         document.getElementById('uploadButton').disabled = true;

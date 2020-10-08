@@ -1,0 +1,50 @@
+/**
+* @license
+* Copyright 2020 Sébastien CANET
+* SPDX-License-Identifier: BSD-3-Clause
+*/
+
+/* CSS specific added for the theme */
+
+body {
+    background-color: #03234B;
+}
+#separator {
+    background-color: #03234B;
+}
+#helpModal_header {
+    background-color: #03234B;
+}
+.config_content {
+    background-color: #03234B;
+}
+.modal-header {
+    background-color: #03234B;
+}
+.accordion {
+  background-color: #03234B;
+}
+.accordion:hover {
+  color: #03234B;
+}
+.active {
+    color: #03234B;
+  background-color: #FFCC00;
+}
+.collapsibleButton {
+    background-color: #03234B;
+}
+.active:after {
+    color: #03234B;
+}
+#lateral-panel-setup-label {
+    color: #03234B;
+}
+.closeModal:hover,
+.closeModal:focus {
+    color: #FFCC00;
+}
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsibleButton:hover {
+    background-color: #FFCC00;
+}
