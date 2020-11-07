@@ -1,0 +1,14 @@
+[{
+        "id": "ds18b20",
+		"name": "capteur extérieur",
+		"level": 1,2,3
+    }, {
+        "id": "relay"
+		"name": "relay",
+		"level": 1,2,3
+    }, {
+        "id": "vbutton"
+		"name": "BP",
+		"level": 1,2,3
+    }
+]

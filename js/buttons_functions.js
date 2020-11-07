@@ -106,6 +106,8 @@ Code.copyToClipboard = function () {
 Code.boardsListModalShow = function () {
     document.getElementById('overlayForModals').style.display = "block";
     document.getElementById('boardListModal').classList.add('show');
+    for (var i = 0; i < document.getElementById("boardDescriptionSelector").length; i++)
+        document.getElementById("boardDescriptionSelector").options[i].style.backgroundColor = 'white';
     var boardValue = document.getElementById("boardMenu").value;
     if (boardValue !== 'none') {
         document.getElementById("boardDescriptionSelector").selectedIndex = boardValue;
@@ -118,6 +120,11 @@ Code.boardsListModalShow = function () {
 Code.portsListModalShow = function () {
     document.getElementById('overlayForModals').style.display = "block";
     document.getElementById('portListModal').classList.add('show');
+    var portValue = document.getElementById("serialMenu").value;
+    if (portValue !== 'none') {
+        document.getElementById("serialMenu").selectedIndex = portValue;
+        document.getElementById("serialMenu").value = portValue;
+    }
     window.addEventListener('click', Code.portsListModalHide, 'once');
 };
 document.getElementById("closeModalBoards").onclick = function () {
@@ -136,7 +143,7 @@ Code.boardsListModalHide = function (event) {
     }
 };
 Code.portsListModalHide = function (event) {
-    if (!document.getElementById('boardListModal').contains(event.target)) {
+    if (!document.getElementById('portListModal').contains(event.target)) {
         document.getElementById('overlayForModals').style.display = "none";
         document.getElementById('portListModal').classList.remove('show');
     }
@@ -313,7 +320,7 @@ Code.ResetWorkspace = function () {
             Blockly.Events.disable();
             Blockly.getMainWorkspace().clear();
             Blockly.getMainWorkspace().trashcan.contents_ = [];
-            Blockly.getMainWorkspace().trashcan.setOpen('false');
+            Blockly.getMainWorkspace().trashcan.setLidOpen('false');
             window.removeEventListener('unload', auto_save_and_restore_blocks, false);
             localStorage.clear();
             sessionStorage.clear();
@@ -361,11 +368,13 @@ var HelpModalDisplay_ = false;
 function toggleDisplayHelpModal() {
     if (!HelpModalDisplay_) {
         document.getElementById('helpModal').style.display = 'block';
+    document.getElementById('helpModal').classList.add('show');
         document.getElementById('helpModal').style.left = (top.innerWidth - document.getElementById('helpModal').offsetWidth) / 2 + "px";
         document.getElementById('helpModal').style.top = (top.innerHeight - document.getElementById('helpModal').offsetHeight) / 2 + "px";
         helpButton.className = 'iconButtonsClicked';
     } else {
         document.getElementById('helpModal').style.display = 'none';
+    document.getElementById('helpModal').classList.remove('show');
         helpButton.className = 'iconButtons';
     }
     HelpModalDisplay_ = !HelpModalDisplay_;

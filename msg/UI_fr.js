@@ -9,14 +9,14 @@ var MSG = {
     appName: "udio4Education",
     blocks: "Blocs",
     prog: "Programme",
-    catLogic: "💡 Logique",
-    catLoops: "↻ Boucles",
-    catMath: "+ Math",
-    catText: "ℜ Texte",
-    catLists: "☰ Listes",
-    catColour: "🌈 Couleurs",
-    catVariables: "❓ Variables",
-    catFunctions: "ƒ(x) Fonctions",
+    catLogic: "Logique",
+    catLoops: "Boucles",
+    catMath: "Math",
+    catText: "Texte",
+    catLists: "Listes",
+    catColour: "Couleurs",
+    catVariables: "Variables",
+    catFunctions: "Fonctions",
     // listVariable: "liste",
     // textVariable: "texte",
     screenshot: "Télécharger une capture d'écran",
@@ -60,10 +60,10 @@ var MSG = {
         '</tbody>' +
         '</table>' +
         '<p style="text-align: left;">Accessibilité : <a href="https://github.com/A-S-T-U-C-E/STudio4Education#accessibility">documentation en ligne</a>.</p>' +
-        '<p style="text-align: left;">Documentation officielle : <a href="https://developers.google.com/blockly/guides/configure/web/keyboard-nav" rel="nofollow">développeurs Blockly</a>.</p>' +
+        '<p style="text-align: left;">Documentation officielle de Blockly : <a href="https://developers.google.com/blockly/guides/configure/web/keyboard-nav" rel="nofollow">développeurs Blockly</a>.</p>' +
         '<p style="text-align: left;">Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">on Github</a>.</p>' +
         '<p style="text-align: left;">Un bug ? Merci d\'écrire ici : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">sur Github</a>.</p>' +
-        '<p style="text-align: center;">v0.7.5 - BSD3 license',
+        '<p style="text-align: center;">v0.7.8 - BSD3 license - Sébastien CANET',
     editorReadOnlyToggle_span: "éditeur de code en lecture seule ou non",
     copyCodeButton_span: "copier le code dans le presse papiers",
     accessibilitySpan: "activer le contrôle clavier",
@@ -125,6 +125,29 @@ var MSG = {
     searchlLibButton_span: "chercher cette bibliothèque",
     installLibInput_span: "taper le nom exact de la bibliothèque à installer",
     installLibButton_span: "installer cette bibliothèque",
+    //categories panel
+    categories_title_span: "catégories de blocs",
+    //arrowhead panel
+    arrowhead_title_span: "Arrowhead gestion",
+    //modals
+    boardListModalHeader_span: "Liste des cartes",
+    boardListModalButton_span: "Détails",
+    boardModal_connect: "Connecteur",
+    boardModal_voltage: "Tension de fonctionnement",
+    boardModal_voltage_normal: "Tension d'alimentation (recommandée)",
+    boardModal_voltage_maxi: "Tension d'alimentation (limites)",
+    boardModal_cpu: "Microcontrôleur µC",
+    boardModal_speed: "Vitesse d'horloge",
+    boardModal_inout: "Nombre d'E/S logiques",
+    boardModal_in_analog: "Nombre d'E/S analogiques",
+    boardModal_out_analog: "Nombre de sorties PWM",
+    boardModal_i_max_out: "Intensité maxi par broche (5V)",
+    boardModal_i_max3: "Intensité maxi la sortie 3.3V",
+    boardModal_i_max_5: "Intensité maxi la sortie 5V",
+    boardModal_flash: "Mémoire flash",
+    boardModal_sram: "Mémoire SRAM",
+    boardModal_eeprom: "EEPROM",
+    portListModalHeader_span: "Liste des ports de communication",
     //IDE_functions.js
     IDE_connect: 'Connexion au port ',
     IDE_select_port: 'Sélectionner un port COM !!!',

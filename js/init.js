@@ -44,7 +44,7 @@ Code.renderContent = function () {
 
 /**
  * Initialize Blockly.  Called on page load.
- */
+ */ 
 Code.init = function () {
     // board menu as  URL choice
     Code.setBoard();
@@ -55,22 +55,6 @@ Code.init = function () {
     //define resizable workspace
     var container = document.getElementById('content_area');
     var blocklyDiv = document.getElementById('content_blocks');
-    var onresize = function (e) {
-        var element = container;
-        var x = 0;
-        var y = 0;
-        do {
-            x += element.offsetLeft;
-            y += element.offsetTop;
-            element = element.offsetParent;
-        } while (element);
-        blocklyDiv.style.left = x + 'px';
-        blocklyDiv.style.top = y + 'px';
-        blocklyDiv.style.width = container.offsetWidth + 'px';
-        blocklyDiv.style.height = container.offsetHeight + 'px';
-        Blockly.svgResize(Code.workspace);
-    };
-    window.addEventListener('resize', onresize, false);
 
     for (var messageKey in MSG) {
         if (messageKey.indexOf('cat') === 0) {
@@ -108,7 +92,7 @@ Code.init = function () {
             drag: true,
             wheel: false
         },
-        toolbox: BLOCKLY_TOOLBOX_XML['toolboxS4E'],
+        toolbox: Code.buildToolbox(),
         toolboxPosition: 'start',
         renderer: renderer,
         zoom: {
@@ -120,7 +104,36 @@ Code.init = function () {
             scaleSpeed: 1.1
         }
     });
-
+    const metrics = Code.workspace.getMetrics();
+    var onresize = function (e) {
+        var element = container;
+        var x = 0;
+        var y = 0;
+        do {
+            x += element.offsetLeft;
+            y += element.offsetTop;
+            element = element.offsetParent;
+        } while (element);
+        blocklyDiv.style.left = x + 'px';
+        blocklyDiv.style.top = y + 'px';
+        blocklyDiv.style.width = container.offsetWidth + 'px';
+        blocklyDiv.style.height = container.offsetHeight + 'px';
+        Blockly.svgResize(Code.workspace);
+//        if (Code.workspace.RTL) {
+//          blocklyDiv.style.left = metrics.absoluteLeft + 'px';
+//          blocklyDiv.style.right = 'auto';
+//        } else {
+//          blocklyDiv.style.left = 'auto';
+//          if (metrics.toolboxPosition === Blockly.TOOLBOX_AT_RIGHT) {
+//            blocklyDiv.style.right = metrics.toolboxWidth + 'px';
+//          } else {
+//            blocklyDiv.style.right = '0';
+//          }
+//        }
+//        blocklyDiv.style.top = metrics.absoluteTop + 'px';
+    };
+    window.addEventListener('resize', onresize, false);
+    
     //button callback register with functions
     Code.workspace.registerButtonCallback('createVarBtnInt', createVarBtnIntCallBack);
     Code.workspace.registerButtonCallback('createVarBtnFloat', createVarBtnFloatCallBack);
@@ -245,7 +258,7 @@ Code.init = function () {
 
     Code.renderContent();
     Code.workspace.addChangeListener(Code.renderContent);
-    renderingConstantInit();
+    Code.renderingConstantsInit();
 };
 
 /**
@@ -294,7 +307,6 @@ Code.initLanguage = function () {
     document.getElementById('codeEditorColorSpan').textContent = MSG['codeEditorColorSpan'];
     document.getElementById('themeSpan').textContent = MSG['themeSpan'];
     document.getElementById('renderSpan').textContent = MSG['renderSpan'];
-    document.getElementById('boardButton').title = MSG['boardButtonSpan'];
     document.getElementById('serialButton').title = MSG['serialButtonSpan'];
     document.getElementById('fullScreenButton').title = MSG['fullScreenButton_span'];
     document.getElementById('undoButton').title = MSG['undoButton_span'];
@@ -345,6 +357,29 @@ Code.initLanguage = function () {
     document.getElementById('optionFontSizeBlocks').textContent = MSG['optionFontSizeBlocks'];
     document.getElementById('optionFontSizePage').textContent = MSG['optionFontSizePage'];
     document.getElementById('optionFontSpacingPage').textContent = MSG['optionFontSpacingPage'];
+    //categories panel
+    document.getElementById('categories_title_span').textContent = MSG['categories_title_span'];
+    //arrowhead panel
+    document.getElementById('arrowhead_title_span').textContent = MSG['arrowhead_title_span'];
+    //board list modal
+    document.getElementById('boardListModalHeader_span').textContent = MSG['boardListModalHeader_span'];
+    document.getElementById('boardListModalButton_span').textContent = MSG['boardListModalButton_span'];
+    document.getElementById('boardModal_connect').textContent = MSG['boardModal_connect'];
+    document.getElementById('boardModal_voltage').textContent = MSG['boardModal_voltage'];
+    document.getElementById('boardModal_voltage_normal').textContent = MSG['boardModal_voltage_normal'];
+    document.getElementById('boardModal_voltage_maxi').textContent = MSG['boardModal_voltage_maxi'];
+    document.getElementById('boardModal_cpu').textContent = MSG['boardModal_cpu'];
+    document.getElementById('boardModal_speed').textContent = MSG['boardModal_speed'];
+    document.getElementById('boardModal_inout').textContent = MSG['boardModal_inout'];
+    document.getElementById('boardModal_in_analog').textContent = MSG['boardModal_in_analog'];
+    document.getElementById('boardModal_out_analog').textContent = MSG['boardModal_out_analog'];
+    document.getElementById('boardModal_i_max_out').textContent = MSG['boardModal_i_max_out'];
+    document.getElementById('boardModal_i_max3').textContent = MSG['boardModal_i_max3'];
+    document.getElementById('boardModal_i_max_5').textContent = MSG['boardModal_i_max_5'];
+    document.getElementById('boardModal_flash').textContent = MSG['boardModal_flash'];
+    document.getElementById('boardModal_sram').textContent = MSG['boardModal_sram'];
+    document.getElementById('boardModal_eeprom').textContent = MSG['boardModal_eeprom'];
+    document.getElementById('portListModalHeader_span').textContent = MSG['portListModalHeader_span'];
     //keyboard nav
     Blockly.navigation.ACTION_PREVIOUS.name = MSG['actionName0'];
     Blockly.navigation.ACTION_OUT.name = MSG['actionName1'];

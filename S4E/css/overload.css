@@ -5,7 +5,6 @@
 */
 
 /* CSS specific added for the theme */
-
 body {
     background-color: #03234B;
 }
@@ -18,7 +17,7 @@ body {
 .config_content {
     background-color: #03234B;
 }
-.modal-header {
+.modal-header, .modal-footer {
     background-color: #03234B;
 }
 .accordion {
@@ -47,4 +46,32 @@ body {
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .collapsibleButton:hover {
     background-color: #FFCC00;
+}
+
+/**
+ * @fileoverview Toolbox modification, override css style
+ * @source https://blocklycodelabs.dev/codelabs/custom-toolbox
+ */
+/* Makes label white */
+.blocklyTreeLabel {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+/* Adds padding around the group of categories and separators */
+.blocklyToolboxContents {
+  padding: .2em;
+}
+/* Adds space between the categories, rounds the corners and adds space around the label */
+.blocklyTreeRow {
+  padding: 2px;
+  border-radius: 4px;
+  height: initial;
+}
+/* Changes color of the icon to white */
+.customIcon {
+  color: white;
+  margin-left: 5px;
+  vertical-align: middle;
+  width: 25px;
 }

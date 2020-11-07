@@ -1,5 +1,5 @@
 # STudio4Education
-![logo](https://raw.githubusercontent.com/A-S-T-U-C-E/STudio4Education/master/S4E/media/logos.png)
+![logo](https://github.com/A-S-T-U-C-E/S4E_Electron/blob/master/www/S4E/media/logos.png)
 
 Designed for **Arrowhead** Tools Project ([https://www.arrowhead.eu/arrowheadtools](https://www.arrowhead.eu/arrowheadtools)), STudio4Education is a **web-based visual programming editor for [ST microelectronics](https://www.st.com)** boards, thanks to [Blockly](https://developers.google.com/blockly/), the web-based, graphical programming editor.
 

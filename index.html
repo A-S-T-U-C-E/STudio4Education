@@ -21,6 +21,10 @@
                         <img src="./S4E/media/STMicroelectronics.png" style="width: 40px; vertical-align: middle;" />
                             <span class="TitleText" id="appName"></span>
                     </td>
+                    <!-- <span class="sketch_name_wrapper"> -->
+                        <!-- <i class="mdi-image-edit sketch_name_icon active"></i> -->
+                        <!-- <input id="sketch_name" class="sketch_name" type="text" size="10"> -->
+                    <!-- </span>         -->
                     <td  id="optionsTopInteractiveHelp" class="tabMiddle">
                         <span id="content_hoverButton"></span>
                     </td>
@@ -131,7 +135,7 @@
                 </tr>
             </table>
         </div>
-        <div id="helpModal">
+        <div id="helpModal" class="helpModal">
             <div id="helpModal_header">
                 <span id="helpModalSpan_title"></span>
             </div>
@@ -164,13 +168,10 @@
                         <!-- <option value="simple">Simple</option> -->
                         <!-- <option value="test-blocks">Test Blocks</option> -->
                         <!-- </select> -->
-                        <select id="boardMenu" onchange="changeBoard()" style='display:none'>
-                            <option value="none" selected="selected">...</option>
+                        <select id="boardMenu" style='display:none'>
                             <option value="nucleo_L476RG" >Nucleo-64 STM32L476</option>
+                            <option value="stm32f103c8_blue_pills" >STM32F103C8 Blue Pill</option>
                             <option value="mp157c_dk2" >STM32MP1 Discovery kits</option>
-                        </select>
-                        <select id="serialMenu" style='display:none'>
-                            <option value="none">...</option>
                         </select>
                         <br>
                         <span id="languageSpan" class="UIText">...</span>
@@ -289,20 +290,41 @@
                             </span>
                         </button>
                         <br>
-                        <button id="registerToOrchestrator" class="iconButtons CLI" onclick="ArrowheadRegister()">
-                            <span id="registerToOrchestrator_span">
-                                <i class="fas fa-plug"></i>
-                            </span>
-                        </button>
                     </div>
+                </div>
+                <button class="accordion">
+                    <span id="categories_title_span" aria-expanded="false" aria-controls="accordion_categories_content"></span>
+                </button>
+                <div id="categories_content" class="side_content config_content panel UIText">
+                </div>
+                <button class="accordion">
+                    <span id="arrowhead_title_span" aria-expanded="false" aria-controls="accordion_categories_content"></span>
+                </button>
+                <div id="arrowhead_controls" class="side_content config_content panel UIText">
+                    <button id="launchWebServer" class="iconButtons CLI">
+                        <span id="launchWebServer_span">
+                            <i class="fas fa-network-wired"></i>
+                        </span>
+                    </button>
+                    <button id="papyrusConnect" class="iconButtons CLI" onclick="papyrusConnect()">
+                        <span id="papyrusConnect_span">
+                            <img src="./S4E/media/Eclipse_papyrus_logo.png" style="width: 30px; height: 30px; vertical-align: middle;"/>
+                        </span>
+                    </button>
+                    <button id="registerToOrchestrator" class="iconButtons CLI" onclick="ArrowheadRegister()">
+                        <span id="registerToOrchestrator_span">
+                            <i class="fas fa-plug"></i>
+                        </span>
+                    </button>
                 </div>
             </div>
         </div>
         <div id="overlayForModals" class="overlay"></div>
         <div id="boardListModal" class="modal">
             <div class="modal-content">
-                <div class="modal-header"> 
-                    <i class="fa fa-microchip"></i>Boards description
+                <div class="modal-header">
+                    <i class="fas fa-microchip"></i>
+                    <span id="boardListModalHeader_span"></span>
                     <span class="closeModal" id="closeModalBoards">&times;</span>
                 </div>
                 <div class="modal-body">
@@ -312,45 +334,52 @@
                     <div id="hideSelectScrollbar">
                         <select id="boardDescriptionSelector" size="11" onchange="Code.boardDescription()">
                             <optgroup label="C / C++">
-                                <option value="none" >None</option>
+                                <option value="none" >...</option>
                                 <option value="nucleo_L476RG" >Nucleo-64 STM32L476</option>
+                                <option value="stm32f103c8_blue_pills" >STM32F103C8 Blue Pill</option>
                                 <option value="mp157c_dk2" >STM32MP1 Discovery kits</option>
                             </optgroup>
                         </select>
                     </div>
                 </div>
-                <button id="boardListModalDialogOkay" onclick="changeBoard()" style="border: none; font-size: xx-large; background-color: #4CAF50; border-radius: 12px; box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); margin: 5px; position: relative; left: 68px;">&#10004;</button>
-                <button type="button" class="collapsibleButton">Details</button>
+                <button id="boardListModalDialogOkay" onclick="Code.changeBoard()">&#10004;</button>
+                <button type="button" class="collapsibleButton">
+                    <span id="boardListModalButton_span">Details</span>
+                </button>
                 <div class="collapsibleContent" id="collapsibleContent">
-                    <span id="boardModal_connect">Connecteur</span><span id="boardModal_connect_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_voltage">Tension de fonctionnement</span><span id="boardModal_voltage_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_voltage_normal">Tension d'alimentation (recommandée)</span><span id="boardModal_voltage_normal_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_voltage_maxi">Tension d'alimentation (limites)</span><span id="boardModal_voltage_maxi_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_cpu">Microcontrôleur µC</span><span id="boardModal_cpu_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_speed"></span>Vitesse d'horloge<span id="boardModal_speed_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_inout">Nombre d'E/S logiques</span><span id="boardModal_inout_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_in_analog">Nombre d'E/S analogiques</span><span id="boardModal_in_analog_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_out_analog">Nombre de sorties PWM</span><span id="boardModal_out_analog_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_i_max_out">Intensité maxi par broche (5V)</span><span id="boardModal_i_max_out_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_i_max3">Intensité maxi la sortie 3.3V</span><span id="boardModal_i_max3_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_i_max_5">Intensité maxi la sortie 5V</span><span id="boardModal_i_max_5_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_flash">Mémoire flash</span><span id="boardModal_flash_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_sram"></span>Mémoire SRAM<span id="boardModal_sram_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_eeprom"></span>EEPROM<span id="boardModal_eeprom_span" class="modalBoard_info">...</span><br>
+                    <span id="boardModal_connect"></span><span id="boardModal_connect_span" class="modalBoard_info">...</span><br>
+                    <span id="boardModal_voltage"></span><span id="boardModal_voltage_span" class="modalBoard_info">...</span><br>
+                    <span id="boardModal_voltage_normal"></span><span id="boardModal_voltage_normal_span" class="modalBoard_info">...</span><br>
+                    <span id="boardModal_voltage_maxi"></span><span id="boardModal_voltage_maxi_span" class="modalBoard_info">...</span><br>
+                    <span id="boardModal_cpu"></span><span id="boardModal_cpu_span" class="modalBoard_info">...</span><br>
+                    <span id="boardModal_speed"></span><span id="boardModal_speed_span" class="modalBoard_info">...</span><br>
+                    <span id="boardModal_inout"></span><span id="boardModal_inout_span" class="modalBoard_info">...</span><br>
+                    <span id="boardModal_in_analog"></span><span id="boardModal_in_analog_span" class="modalBoard_info">...</span><br>
+                    <span id="boardModal_out_analog"></span><span id="boardModal_out_analog_span" class="modalBoard_info">...</span><br>
+                    <span id="boardModal_i_max_out"></span><span id="boardModal_i_max_out_span" class="modalBoard_info">...</span><br>
+                    <span id="boardModal_i_max3"></span><span id="boardModal_i_max3_span" class="modalBoard_info">...</span><br>
+                    <span id="boardModal_i_max_5"></span><span id="boardModal_i_max_5_span" class="modalBoard_info">...</span><br>
+                    <span id="boardModal_flash"></span><span id="boardModal_flash_span" class="modalBoard_info">...</span><br>
+                    <span id="boardModal_sram"></span><span id="boardModal_sram_span" class="modalBoard_info">...</span><br>
+                    <span id="boardModal_eeprom"></span><span id="boardModal_eeprom_span" class="modalBoard_info">...</span><br>
                 </div> 
             </div>
         </div>
         <div id="portListModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <i class="fab fa-usb"></i>Modal Header Ports
+                    <i class="fab fa-usb"></i>
+                    <span id="portListModalHeader_span"></span>
                     <span class="closeModal" id="closeModalPorts">&times;</span>
                 </div>
                 <div class="modal-body" id="portListModalBody">
                 </div>
-                <!-- <div class="modal-footer"> -->
-                <!-- <h3>Modal Footer</h3> -->
-                <!-- </div> -->
+                <div class="modal-footer">
+                    <select id="serialMenu">
+                        <option value="none">...</option>
+                    </select>
+                    <button id="portListModalDialogOkay" onclick="Code.setPort()">&#10004;</button>
+                </div>
             </div>
         </div>
     </body>
@@ -380,10 +409,14 @@
     <script src="./js/buttons_functions.js"></script>
     <script src="./js/dialog.js"></script>
     <script src="./js/renderingConstant.js"></script>
+    <script src="./js/toolbox.js"></script>
     <script src="./@blockly/demos/custom-dialogs/custom-dialog.js"></script>
     <!-- S4E libraries of external functions -->
     <script src="./js/ace/ace.js" charset="utf-8"></script>
     <script src="./js/ace/ext-language_tools.js"></script>
+    <!-- S4E libraries of specific funtions definition -->
+    <script src="./S4E/js/arrowhead.js"></script>
+    <script src="./S4E/js/papyrus_toolbox.js"></script>
     <!-- S4E libraries of boards definition -->
     <script src="./S4E/js/boards.json"></script>
     <script src="./S4E/js/boards.js"></script>
@@ -393,6 +426,8 @@
     <script src="./S4E/blocks/board/board_serial.js" async></script>
     <script src="./S4E/blocks/blockly/logic.js" async></script>
     <script src="./S4E/blocks/blockly/math.js" async></script>
+    <script src="./S4E/blocks/ds18b20/ds18b20.js" async></script>
+    <script src="./S4E/blocks/relay/relay.js" async></script>
     <script src="./S4E/blocks/servo/servo.js" async></script>
     <script src="./S4E/blocks/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.js" async></script>
     <script src="./S4E/blocks/typed_variable.js" async></script>
@@ -409,6 +444,8 @@
     <script src="./S4E/arduino/board/board_base.js" async></script>
     <script src="./S4E/arduino/board/board_serial.js" async></script>
     <script src="./S4E/arduino/typed_variable.js" async></script>
+    <script src="./S4E/arduino/addon/ds18b20.js" async></script>
+    <script src="./S4E/arduino/addon/relay.js" async></script>
     <script src="./S4E/arduino/addon/servo.js" async></script>
     <script src="./S4E/arduino/addon/X-NUCLEO-IKS01A3.js" async></script>
     <!-- S4E specific -->
@@ -418,10 +455,9 @@
     <script src="./S4E/themes/themes_categories.js" async></script>
     <script src="./S4E/themes/themes_components_override.js" async></script>
     <!-- S4E external toolbox hacked -->
+    <!-- <script src="./S4E/toolbox/toolbox_standard.js"></script> -->
     <script src="./S4E/toolbox/toolbox_S4E.js"></script>
-    <script src="./S4E/toolbox/toolbox_standard.js"></script>
-    <!-- S4E Arrowheadspecific -->
-    <script src="./S4E/js/arrowhead.js"></script>
+    <!-- <script src="./S4E/toolbox/toolbox_S4E.json"></script> -->
     <script>
         ace.require("ace/ext/language_tools");
         var editor = ace.edit("content_code");
@@ -450,5 +486,6 @@
         <!-- require('../IDE_functions.js'); -->
         require('../resources/app.asar/CLI_functions.js');
         require('../resources/app.asar/IDE_functions.js');
+        require('../electron/js/webServer.js');
     </script>
 </HTML>

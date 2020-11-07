@@ -9,14 +9,14 @@ var MSG = {
     appName: "udio4Education",
     blocks: "ブロック",
     prog: "Program",
-    catLogic: "💡 論理",
-    catLoops: "↻ 繰り返し",
-    catMath: "+ 数学",
-    catText: "ℜ テキスト",
-    catLists: "☰ リスト",
-    catColour: "🌈 色",
-    catVariables: "❓ 変数",
-    catFunctions: "ƒ(x) 関数",
+    catLogic: "論理",
+    catLoops: "繰り返し",
+    catMath: "数学",
+    catText: "テキスト",
+    catLists: "リスト",
+    catColour: "色",
+    catVariables: "変数",
+    catFunctions: "関数",
     listVariable: "リスト",
     textVariable: "テキスト",
     screenshot: "Download Screenshot",
@@ -60,10 +60,10 @@ var MSG = {
         '</tbody>' +
         '</table>' +
         '<p style="text-align: left;">Accessibility: <a href="https://github.com/A-S-T-U-C-E/STudio4Education#accessibility">online documentation</a>.</p>' +
-        '<p style="text-align: left;">Official documentation: <a href="https://developers.google.com/blockly/guides/configure/web/keyboard-nav" rel="nofollow">Blockly developers</a>.</p>' +
+        '<p style="text-align: left;">Blockly official documentation: <a href="https://developers.google.com/blockly/guides/configure/web/keyboard-nav" rel="nofollow">Blockly developers</a>.</p>' +
         '<p style="text-align: left;">Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">on Github</a>.</p>' +
         '<p style="text-align: left;">A bug? Post it here: <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">on Github</a>.</p>' +
-        '<p style="text-align: center;">v0.7.5 - BSD3 license',
+        '<p style="text-align: center;">v0.7.8 - BSD3 license - Sébastien CANET',
     editorReadOnlyToggle_span: "code editor writable or read-only",
     copyCodeButton_span: "copy code to clipboard",
     accessibilitySpan: "Enable Accessibility Mode",
@@ -125,6 +125,29 @@ var MSG = {
     searchlLibButton_span: "search this library",
     installLibInput_span: "name of library to install",
     installLibButton_span: "install this library",
+    //categories panel
+    categories_title_span: "categories choice",
+    //arrowhead panel
+    arrowhead_title_span: "Arrowhead control",
+    //modals
+    boardListModalHeader_span: "Boards list",
+    boardListModalButton_span: "Details",
+    boardModal_connect: "Connector",
+    boardModal_voltage: "Operating voltage",
+    boardModal_voltage_normal: "Operating voltage (recommended)",
+    boardModal_voltage_maxi: "Operating voltage (limits)",
+    boardModal_cpu: "Microcontroler µC",
+    boardModal_speed: "Clock speed",
+    boardModal_inout: "Number of logical I/Os",
+    boardModal_in_analog: "Number of analogue I/Os",
+    boardModal_out_analog: "Number of PWM ouput",
+    boardModal_i_max_out: "Max. current per pin (5V)",
+    boardModal_i_max3: "Max. output current on pin 3.3V",
+    boardModal_i_max_5: "Max. output current on pin 5V",
+    boardModal_flash: "Flash memory",
+    boardModal_sram: "SRAM memory",
+    boardModal_eeprom: "EEPROM",
+    portListModalHeader_span: "COMM port list",
     //IDE_functions.js
     IDE_connect: 'Connect to port ',
     IDE_select_port: 'Select a port !',

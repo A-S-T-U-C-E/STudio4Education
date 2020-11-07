@@ -13,7 +13,6 @@
     display: grid;
     align-items: center;
     text-align: center;
-    color: #FFFFFF;
 }
 #CLI_title {
     display:flex;
@@ -22,7 +21,7 @@
 #installBoardsInput,
 #searchlLibInput,
 #installLibInput {
-    width: 250px;
+    width: 230px;
     font-size:20px;
 }
 

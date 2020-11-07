@@ -25,3 +25,5 @@ Blockly.Msg.CAT_GROVE_IO = "- basiques";
 Blockly.Msg.CAT_GROVE_ANALOG = "- analogique";
 Blockly.Msg.CAT_GROVE_LCD = "- LCD";
 Blockly.Msg.CAT_GROVE_MOTOR = "- moteurs";
+Blockly.Msg.CAT_DS18B20 = "thermistance DS18B20";
+Blockly.Msg.CAT_RELAY = "relais";

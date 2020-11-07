@@ -32,9 +32,9 @@ Blockly.Blocks['servo_move'] = {
                 .appendField(Blockly.Msg.SERVO_MOVE_DEGREE);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
+        this.setStyle('servo_blocks');
         this.setTooltip(Blockly.Msg.SERVO_MOVE_TOOLTIP);
         this.setHelpUrl(Blockly.Msg.SERVO_MOVE_HELPURL);
-        this.setStyle('servo_blocks');
     }
 };
 
@@ -46,8 +46,8 @@ Blockly.Blocks['servo_read_degrees'] = {
                 .appendField(Blockly.Msg.SERVO_PIN)
                 .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN");
         this.setOutput(true, "int");
+        this.setStyle('servo_blocks');
         this.setTooltip(Blockly.Msg.SERVO_READ_DEGREES_TOOLTIP);
         this.setHelpUrl(Blockly.Msg.SERVO_READ_DEGREES_HELPURL);
-        this.setStyle('servo_blocks');
     }
 };
