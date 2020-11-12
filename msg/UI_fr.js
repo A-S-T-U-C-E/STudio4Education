@@ -22,11 +22,11 @@ var MSG = {
     screenshot: "Télécharger une capture d'écran",
     xmlError: "Impossible de charger le fichier de sauvegarde.  Peut être a t-il été créé avec une autre version de Blockly ?",
     badXml: "Erreur d’analyse du fichier :\n%1\n\nSélectionner 'OK' pour abandonner vos modifications ou 'Annuler' pour continuer à modifier le fichier.",
-    languageSpan: "choix de la langue",
-    interfaceColorSpan: "choix du thème de l'interface",
-    codeEditorColorSpan: "choix du thème du code",
-    themeSpan: "choix du thème des blocs",
-    renderSpan: "choix de la forme des blocs",
+    languageSpan: "langue",
+    interfaceColorSpan: "thème de l'interface",
+    codeEditorColorSpan: "thème du code",
+    themeSpan: "thème des blocs",
+    renderSpan: "forme des blocs",
     fullScreenButton_span: "plein écran",
     undoButton_span: "annuler",
     redoButton_span: "refaire",
@@ -63,9 +63,24 @@ var MSG = {
         '<p style="text-align: left;">Documentation officielle de Blockly : <a href="https://developers.google.com/blockly/guides/configure/web/keyboard-nav" rel="nofollow">développeurs Blockly</a>.</p>' +
         '<p style="text-align: left;">Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">on Github</a>.</p>' +
         '<p style="text-align: left;">Un bug ? Merci d\'écrire ici : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">sur Github</a>.</p>' +
-        '<p style="text-align: center;">v0.7.8 - BSD3 license - Sébastien CANET',
+        '<p style="text-align: center;">v0.8.0 - BSD3 license - Sébastien CANET',
+    //menu tools
+    toolsButton_span: "outils",
+    wiringButton_span: "câblage de circuits",
+    factoryButton_span: "la fabrique à blocs",
+    htmlButton_span: "constructeur HTML",
+    colorConversionButton_span: "encodage de couleurs",
+    dataConversionButton_span: "encodage de données",
+    //menu IoT
+    iotConnectButton_span: "connexion aux serveurs",
+    launchWebServer_span: "lancer le serveur local",
+    papyrusConnect_span: "connexion à Papyrus",
+    registerToOrchestrator_span: "connexion à Arrowhead",
+    blynkConnect_span: "connexion à Blynk",
+    //ace editor
     editorReadOnlyToggle_span: "éditeur de code en lecture seule ou non",
     copyCodeButton_span: "copier le code dans le presse papiers",
+    //lateral panel
     accessibilitySpan: "activer le contrôle clavier",
     defaultCursorSpan: "curseur par défaut",
     basicCursorSpan: "curseur classique",
@@ -102,7 +117,12 @@ var MSG = {
     actionName13: "basculer la navigation clavier",
     setup_sideButton_span: "configuration",
     config_UI_title_span: "interface",
-    fontSizeSpan: "choix de la taille",
+    displaySpan: "afficher",
+    displayChoiceButtons: "boutons seuls",
+    displayChoiceBandT: "boutons + texte",
+    displayChoiceText: "textes seuls",
+    fontSpan: "police",
+    fontSizeSpan: "taille de",
     optionFontSizeBlocks: "police des blocs",
     optionFontSizePage: "police de l'interface",
     optionFontSpacingPage: "espacement entre les lettres",
@@ -128,7 +148,7 @@ var MSG = {
     //categories panel
     categories_title_span: "catégories de blocs",
     //arrowhead panel
-    arrowhead_title_span: "Arrowhead gestion",
+    iot_title_span: "Internet des Objets",
     //modals
     boardListModalHeader_span: "Liste des cartes",
     boardListModalButton_span: "Détails",

@@ -1,4 +1,4 @@
-/**
+fontSizeSpan/**
  * @license
  * Copyright 2020 Sébastien CANET
  * SPDX-License-Identifier: BSD-3-Clause
@@ -145,7 +145,7 @@ Code.init = function () {
     Code.workspace.registerToolboxCategoryCallback('VARIABLE_TYPED_BOOLEAN', booleanVariablesCallBack);
 
     Code.workspace.configureContextMenu = configureContextualMenu.bind(Code.workspace);
-
+	Code.buildControlPanelForToolbox();
     // load blocks stored in session or passed by url
     var urlFile = Code.getStringParamFromUrl('url', '');
     var loadOnce = null;
@@ -258,7 +258,6 @@ Code.init = function () {
 
     Code.renderContent();
     Code.workspace.addChangeListener(Code.renderContent);
-    Code.renderingConstantsInit();
 };
 
 /**
@@ -319,6 +318,13 @@ Code.initLanguage = function () {
     document.getElementById('saveXMLButton').title = MSG['saveXMLButton_span'];
     document.getElementById('loadXMLfakeButton').title = MSG['loadXMLfakeButton_span'];
     document.getElementById('resetButton').title = MSG['resetButton_span'];
+    document.getElementById('newButton_span_menu').textContent = MSG['newButton_span'];
+    document.getElementById('loadXMLfakeButton_span_menu').textContent = MSG['loadXMLfakeButton_span'];
+    document.getElementById('saveXMLButton_span_menu').textContent = MSG['saveXMLButton_span'];
+    document.getElementById('saveCodeButton_span_menu').textContent = MSG['saveCodeButton_span'];
+    document.getElementById('parametersButton_span_menu').textContent = MSG['setup_sideButton_span'];
+    document.getElementById('resetButton_span_menu').textContent = MSG['resetButton_span'];
+    document.getElementById('helpButton_span_menu').textContent = MSG['helpButton_span'];
     document.getElementById('lateral-panel-setup-label').title = MSG['setup_sideButton_span'];
     document.getElementById('helpButton').title = MSG['helpButton_span'];
     document.getElementById('helpModalSpan_title').innerHTML = MSG['helpModalSpan_title'];
@@ -326,6 +332,28 @@ Code.initLanguage = function () {
     document.getElementById('copyCodeButton').title = MSG['copyCodeButton_span'];
     document.getElementById('keyMappingModalSpan').textContent = MSG['keyMappingModalSpan'];
     document.getElementById('detailedCompilation_span').textContent = MSG['detailedCompilation_span'];
+    // menu tools
+    document.getElementById('toolsButton').title = MSG['toolsButton_span'];
+    document.getElementById('wiringButton').title = MSG['wiringButton_span'];
+    document.getElementById('factoryButton').title = MSG['factoryButton_span'];
+    document.getElementById('htmlButton').title = MSG['htmlButton_span'];
+    document.getElementById('colorConversionButton').title = MSG['colorConversionButton_span'];
+    document.getElementById('dataConversionButton').title = MSG['dataConversionButton_span'];
+    document.getElementById('wiringButton_span_menu').textContent = MSG['wiringButton_span'];
+    document.getElementById('factoryButton_span_menu').textContent = MSG['factoryButton_span'];
+    document.getElementById('htmlButton_span_menu').textContent = MSG['htmlButton_span'];
+    document.getElementById('colorConversionButton_span_menu').textContent = MSG['colorConversionButton_span'];
+    document.getElementById('dataConversionButton_span_menu').textContent = MSG['dataConversionButton_span'];
+    // menu IoT
+    document.getElementById('iotConnectButton').title = MSG['iotConnectButton_span'];
+    document.getElementById('launchWebServer').title = MSG['launchWebServer_span'];
+    document.getElementById('papyrusConnect').title = MSG['papyrusConnect_span'];
+    document.getElementById('registerToOrchestrator').title = MSG['registerToOrchestrator_span'];
+    document.getElementById('blynkConnect').title = MSG['blynkConnect_span'];
+    document.getElementById('launchWebServer_span_menu').textContent = MSG['launchWebServer_span'];
+    document.getElementById('papyrusConnect_span_menu').textContent = MSG['loadXMLfakeButton_span'];
+    document.getElementById('registerToOrchestrator_span_menu').textContent = MSG['registerToOrchestrator_span'];
+    document.getElementById('blynkConnect_span_menu').textContent = MSG['blynkConnect_span'];
     // CLI panel
     document.getElementById('CLI_title_span').textContent = MSG['CLI_title_span'];
     document.getElementById('CLI_githubLinkButton').title = MSG['CLI_githubLinkButton_span'];
@@ -353,14 +381,19 @@ Code.initLanguage = function () {
     document.getElementById('themeHighContrastSpan').textContent = MSG['themeHighContrastSpan'];
     document.getElementById('themeDarkSpan').textContent = MSG['themeDarkSpan'];
     document.getElementById('themeBwSpan').textContent = MSG['themeBwSpan'];
+    document.getElementById('displaySpan').textContent = MSG['displaySpan'];
+    document.getElementById('displayChoiceButtons').textContent = MSG['displayChoiceButtons'];
+    document.getElementById('displayChoiceBandT').textContent = MSG['displayChoiceBandT'];
+    document.getElementById('displayChoiceText').textContent = MSG['displayChoiceText'];
+    document.getElementById('fontSpan').textContent = MSG['fontSpan'];
     document.getElementById('fontSizeSpan').textContent = MSG['fontSizeSpan'];
     document.getElementById('optionFontSizeBlocks').textContent = MSG['optionFontSizeBlocks'];
     document.getElementById('optionFontSizePage').textContent = MSG['optionFontSizePage'];
     document.getElementById('optionFontSpacingPage').textContent = MSG['optionFontSpacingPage'];
     //categories panel
     document.getElementById('categories_title_span').textContent = MSG['categories_title_span'];
-    //arrowhead panel
-    document.getElementById('arrowhead_title_span').textContent = MSG['arrowhead_title_span'];
+    //IoT panel
+    document.getElementById('iot_title_span').textContent = MSG['iot_title_span'];
     //board list modal
     document.getElementById('boardListModalHeader_span').textContent = MSG['boardListModalHeader_span'];
     document.getElementById('boardListModalButton_span').textContent = MSG['boardListModalButton_span'];

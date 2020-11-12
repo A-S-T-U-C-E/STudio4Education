@@ -174,6 +174,17 @@ Code.Redo = function () {
 };
 
 /**
+ * Luanch blockFatcory with language argument
+ */
+Code.BlockFactory = function () {
+    var lang = Code.getStringParamFromUrl('lang', '');
+    if (!lang) {
+        lang = "en";
+    }
+    parent.open('tools/blockFactory/blockFactory.html?lang=' + lang);
+};
+
+/**
  * Creates an INO file containing the Arduino code from the Blockly workspace and
  * prompts the users to save it into their local file system.
  */
@@ -368,13 +379,13 @@ var HelpModalDisplay_ = false;
 function toggleDisplayHelpModal() {
     if (!HelpModalDisplay_) {
         document.getElementById('helpModal').style.display = 'block';
-    document.getElementById('helpModal').classList.add('show');
+    	document.getElementById('helpModal').classList.add('show');
         document.getElementById('helpModal').style.left = (top.innerWidth - document.getElementById('helpModal').offsetWidth) / 2 + "px";
         document.getElementById('helpModal').style.top = (top.innerHeight - document.getElementById('helpModal').offsetHeight) / 2 + "px";
         helpButton.className = 'iconButtonsClicked';
     } else {
         document.getElementById('helpModal').style.display = 'none';
-    document.getElementById('helpModal').classList.remove('show');
+    	document.getElementById('helpModal').classList.remove('show');
         helpButton.className = 'iconButtons';
     }
     HelpModalDisplay_ = !HelpModalDisplay_;

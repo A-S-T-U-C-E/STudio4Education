@@ -18,9 +18,7 @@
     display:flex;
     text-align: center;
 }
-#installBoardsInput,
-#searchlLibInput,
-#installLibInput {
+.controlPanelInput {
     width: 230px;
     font-size:20px;
 }

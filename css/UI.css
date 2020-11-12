@@ -30,7 +30,79 @@ html[dir=rtl] {
     font-size: x-large;
     font-weight: bold;
 }
-
+/* Popup box  */
+.popup_bckgrd{
+    background:rgba(0,0,0,.4);
+    cursor:pointer;
+    display:none;
+    height:100%;
+    position:fixed;
+    text-align:center;
+    top:0;
+    width:100%;
+    z-index:10000;
+}
+.popup_bckgrd > div {
+    background-color: #fff;
+    box-shadow: 10px 10px 60px #555;
+    display: inline-block;
+    height: auto;
+    max-width: 551px;
+    min-height: 100px;
+    /* vertical-align: middle; */
+    width: 60%;
+    position: relative;
+    border-radius: 8px;
+    padding: 15px 5%;
+}
+#menuButton.active{
+    transform: rotate(90deg);
+}
+#buttonsMenuPopup{
+    animation: fadein 0.5s;
+    position: absolute;
+    top: 70px;
+    left: 5px;
+    padding: 5px;
+    margin: 5px;
+    width: auto;
+}
+#buttonsMenuPopupInside,
+#buttonsToolsPopupInside,
+#buttonsIotPopupInside{
+    background-color: #03234b;
+    padding: 5px;
+}
+#buttonsToolsPopup{
+    animation: fadein 0.5s;
+    position: absolute;
+    top: 70px;
+    left: 145px;
+    padding: 5px;
+    margin: 5px;
+    width: auto;
+}
+#buttonsIotPopup{
+    animation: fadein 0.5s;
+    position: absolute;
+    top: 70px;
+    left: 185px;
+    padding: 5px;
+    margin: 5px;
+    width: auto;
+}
+@keyframes fadein {
+    from {opacity:0;} to {opacity:1;}
+}
+.menu_text{
+    background-color: #03234b;
+    color: white;
+    display: inline; 
+}
+.menu_div{
+    align-content: start;
+    text-align: left;
+}
 /*****************/
 /*  Sketch name  */
 /*****************/
@@ -289,13 +361,13 @@ td.tabMiddle {
 .wrapper_up {
     width: 100%;
     /* Firefox */
-    height: -moz-calc(100% - 35px);
+    height: -moz-calc(100% - 41px);
     /* WebKit */
-    height: -webkit-calc(100% - 35px);
+    height: -webkit-calc(100% - 41px);
     /* Opera */
-    height: -o-calc(100% - 35px);
+    height: -o-calc(100% - 41px);
     /* Standard */
-    height: calc(100% - 35px);
+    height: calc(100% - 41px);
     min-height: 5px;
     display: flex;
 }
@@ -341,7 +413,9 @@ td.tabMiddle {
     -ms-user-select: none;
     user-select: none;
 }
-#detailedCompilation_span{
+#detailedCompilation_span,
+#boardSelected_span,
+#portSelected_span{
     color: white;
     vertical-align: middle;
 }

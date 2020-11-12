@@ -63,9 +63,24 @@ var MSG = {
         '<p style="text-align: left;">Blockly Blockly official documentation: <a href="https://developers.google.com/blockly/guides/configure/web/keyboard-nav" rel="nofollow">Blockly developers</a>.</p>' +
         '<p style="text-align: left;">Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">on Github</a>.</p>' +
         '<p style="text-align: left;">A bug? Post it here: <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">on Github</a>.</p>' +
-        '<p style="text-align: center;">v0.7.8 - BSD3 license - Sébastien CANET - Sébastien CANET',
+        '<p style="text-align: center;">v0.8.0 - BSD3 license - Sébastien CANET - Sébastien CANET',
+    //menu tools
+    toolsButton_span: "tools",
+    wiringButton_span: "wiring",
+    factoryButton_span: "block factory",
+    htmlButton_span: "HTML factory",
+    colorConversionButton_span: "colors encoding",
+    dataConversionButton_span: "data encoding",
+    //menu IoT
+    iotConnectButton_span: "servers",
+    launchWebServer_span: "local server",
+    papyrusConnect_span: "Papyrus connect",
+    registerToOrchestrator_span: "Arrowhead connect",
+    blynkConnect_span: "Blynk connect",
+    //ace editor
     editorReadOnlyToggle_span: "code editor writable or read-only",
     copyCodeButton_span: "copy code to clipboard",
+    //lateral panel
     accessibilitySpan: "enable Accessibility Mode",
     defaultCursorSpan: "Default Cursor",
     basicCursorSpan: "Basic Cursor",
@@ -102,6 +117,11 @@ var MSG = {
     actionName13: "toggle keyboard navigation",
     setup_sideButton_span: "setup",
     config_UI_title_span: "interface",
+    displaySpan: "display choice",
+    displayChoiceButtons: "buttons only",
+    displayChoiceBandT: "buttons + text",
+    displayChoiceText: "text only",
+    fontSpan: "font choice",
     fontSizeSpan: "rendering",
     optionFontSizeBlocks: "Blocks Font Size",
     optionFontSizePage: "Page Font Size",
@@ -128,7 +148,7 @@ var MSG = {
     //categories panel
     categories_title_span: "categories choice",
     //arrowhead panel
-    arrowhead_title_span: "Arrowhead control",
+    iot_title_span: "IoT control",
     //modals
     boardListModalHeader_span: "Boards list",
     boardListModalButton_span: "Details",

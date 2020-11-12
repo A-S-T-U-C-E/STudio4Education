@@ -66,6 +66,8 @@ Code.changeBoard = function ()  {
     profile["default"] = profile[newBoard][0];
 	document.getElementById("boardDescriptionSelector").selectedIndex = newBoard;
 	document.getElementById("boardDescriptionSelector").value = newBoard;
+	document.getElementById("boardSelected_span").textContent = profile["default"].description;
+	document.getElementById("portSelected_span").textContent = ' : ' + document.getElementById('serialMenu').options[document.getElementById('serialMenu').selectedIndex].value;
 	window.history.pushState({}, "S4E", window.location.host + window.location.pathname + search);
 	// "reboot" elements
 	document.getElementById('overlayForModals').style.display = "none";
@@ -83,9 +85,9 @@ Code.changeBoard = function ()  {
 Code.setPort = function ()  {
     var serialPortMenu = document.getElementById('serialMenu');
     var newPort = encodeURIComponent(serialPortMenu.options[serialPortMenu.selectedIndex].value);
-	console.log(newPort);
 	document.getElementById('overlayForModals').style.display = "none";
 	document.getElementById('portListModal').classList.remove('show');
+	document.getElementById("portSelected_span").textContent = ' : ' + newPort;
 	if (newPort != 'none') {
 		document.getElementById('serialButton').classList.add('active');
 		document.getElementById('serialButton').title = newPort;
