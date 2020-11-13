@@ -5,6 +5,7 @@
 */
 
 /* CSS specific added for the theme */
+
 body {
     background-color: #03234B;
 }
@@ -13,6 +14,15 @@ body {
 }
 #helpModal_header {
     background-color: #03234B;
+}
+#keyboard_nav_header {
+    background-color: #2196F3;
+}
+#buttonsMenuPopupInside,
+#buttonsToolsPopupInside,
+#buttonsIotPopupInside{
+    background-color: #03234b;
+    padding: 5px;
 }
 .config_content {
     background-color: #03234B;
@@ -46,6 +56,19 @@ body {
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .collapsibleButton:hover {
     background-color: #FFCC00;
+}
+
+/* enhance sliders behavior */
+input:checked + .slider {
+  background-color: #00abdf;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #00abdf;
+}
+input:checked + .slider:before {
+  -webkit-transform: translateY(27px);
+  -ms-transform: translateY(27px);
+  transform: translateY(27px);
 }
 
 /**

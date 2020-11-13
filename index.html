@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="./css/lateral-panel.css" />
         <link rel="stylesheet" href="./css/UI.css" />
         <link rel="stylesheet" href="./S4E/css/S4E.css" />
-        <link rel="stylesheet" href="./S4E/css/override.css" />
+        <link rel="stylesheet" href="./S4E/css/override_css.css" />
     </head>
     <body>
         <div class="table_wrapper">
@@ -286,6 +286,7 @@
                 <div id="setup_content" class="side_content config_content panel">
                     <form id="options">
                         <select id="boardMenu" style='display:none'>
+                            <option value="none" selected="selected">...</option>
                             <option value="nucleo_L476RG" >Nucleo-64 STM32L476</option>
                             <option value="stm32f103c8_blue_pills" >STM32F103C8 Blue Pill</option>
                             <option value="mp157c_dk2" >STM32MP1 Discovery kits</option>
@@ -297,12 +298,12 @@
                         <br>
                         <span id="interfaceColorSpan" class="UIText">...</span>
                         <select id="interfaceColorMenu">
-                            <option value="arduino" selected="selected">S4E2</option>
+                            <option value="S4E" selected="selected">S4E</option>
                         </select>
                         <br>
                         <span id="codeEditorColorSpan" class="UIText">...</span>
                         <select id="codeEditorColorMenu">
-                            <option value="arduino" selected="selected">S4E2</option>
+                            <option value="S4E" selected="selected">S4E</option>
                         </select>
                         <br>
                         <br>
@@ -556,7 +557,6 @@
     <script src="./@blockly/demos/keyboard_nav/line_cursor.js" async></script>
     <script src="./@blockly/tests/playgrounds/screenshot.js" async></script>
     <!-- S4E external toolbox hacked -->
-    <!-- <script src="./S4E/toolbox/toolbox_S4E.js"></script> -->
     <script src="./S4E/toolbox/toolbox_ds18b20.json"></script>
     <script src="./S4E/toolbox/toolbox_relay.json"></script>
     <script src="./S4E/toolbox/toolbox_servo.json"></script>
@@ -578,12 +578,12 @@
     <script src="./js/ace/ext-language_tools.js"></script>
     <!-- S4E libraries of specific funtions definition -->
     <script src="./S4E/js/arrowhead.js"></script>
-    <script src="./S4E/js/papyrus_toolbox.js"></script>
+    <script src="./S4E/js/override_toolbox.js"></script>
     <!-- S4E libraries of boards definition -->
     <script src="./S4E/js/boards.json"></script>
     <script src="./S4E/js/boards.js"></script>
     <!-- S4E specific: block design -->
-    <script src="./S4E/blocks/blocks_colors.js" async></script>
+    <!-- <script src="./S4E/blocks/blocks_colors.js" async></script> -->
     <script src="./S4E/blocks/board/board_base.js" async></script>
     <script src="./S4E/blocks/board/board_serial.js" async></script>
     <script src="./S4E/blocks/blockly/logic.js" async></script>
@@ -644,6 +644,6 @@
         <!-- require('../IDE_functions.js'); -->
         require('../resources/app.asar/CLI_functions.js');
         require('../resources/app.asar/IDE_functions.js');
-        require('../electron/js/webServer.js');
+        require('../nodejs/js/webServer.js');
     </script>
 </HTML>

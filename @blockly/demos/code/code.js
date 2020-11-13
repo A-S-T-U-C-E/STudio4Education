@@ -5,9 +5,11 @@
  */
 
 /**
- * @fileoverview JavaScript for Blockly's Code demo.
+ * @fileoverview JavaScript for Blockly's Code demo, truncated.
  * @author fraser@google.com (Neil Fraser)
+ * @author scanet@libreduc.cc (Sébastien CANET)
  */
+
 'use strict';
 
 /**
@@ -20,7 +22,7 @@ var Code = {};
  */
 Code.LANGUAGE_NAME = {
   'ar': 'العربية',
-  'ca': 'Català',
+  'ca': 'Català - Valencià',
   'de': 'Deutsch',
   'en': 'English',
   'es': 'Español',

@@ -67,12 +67,6 @@ html[dir=rtl] {
     margin: 5px;
     width: auto;
 }
-#buttonsMenuPopupInside,
-#buttonsToolsPopupInside,
-#buttonsIotPopupInside{
-    background-color: #03234b;
-    padding: 5px;
-}
 #buttonsToolsPopup{
     animation: fadein 0.5s;
     position: absolute;
@@ -95,7 +89,6 @@ html[dir=rtl] {
     from {opacity:0;} to {opacity:1;}
 }
 .menu_text{
-    background-color: #03234b;
     color: white;
     display: inline; 
 }
@@ -206,17 +199,7 @@ html[dir=rtl] {
   -webkit-transition: .4s;
   transition: .4s;
 }
-input:checked + .slider {
-  background-color: #00abdf;
-}
-input:focus + .slider {
-  box-shadow: 0 0 1px #00abdf;
-}
-input:checked + .slider:before {
-  -webkit-transform: translateY(27px);
-  -ms-transform: translateY(27px);
-  transform: translateY(27px);
-}
+
 /* Table */
 .table_wrapper {
     height: -moz-calc(100%);

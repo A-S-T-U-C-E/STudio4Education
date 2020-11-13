@@ -12,6 +12,9 @@ goog.require('Blockly.Msg');
 
 //text in blocks
 Blockly.Msg.FIELDDROPDOWN = [["HIGH", "HIGH"], ["LOW", "LOW"]];
+Blockly.Msg.FIELDDROPDOWN_ONOFF = [["turn on", "ON"], ["turn off", "OFF"]];
+Blockly.Msg.FIELDDROPDOWN_ONOFF2 = [["switch on", "HIGH"], ["switch off", "LOW"]];
+Blockly.Msg.FIELDDROPDOWN_ONOFF3 = [["close", "HIGH"], ["open", "LOW"]];
 
 //blockly logic
 Blockly.Msg.CONTROLS_SWITCH_CASEBREAK_TOOLTIP = "Legen Sie eine Entscheidungsbedingung in dem 'case' Block fest.";

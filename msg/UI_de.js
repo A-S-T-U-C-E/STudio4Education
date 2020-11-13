@@ -10,7 +10,7 @@ var MSG = {
     blocks: "Bausteine",
     prog: "Program",
     catLogic: "Logik",
-    catLoops: "⟳ Schleifen",
+    catLoops: "Schleifen",
     catMath: "Mathematik",
     catText: "Text",
     catLists: "Listen",

@@ -17,5 +17,6 @@ goog.require('Blockly.Msg');
 
 // color definition
 Blockly.Msg["BOARD_BASE_HUE"] = "#03234b";
+Blockly.Msg["GROVE_HUE"] = "#018770";
 Blockly.Msg["IKS01A3__HUE"] = "#0144c6";
 Blockly.Msg["SERVO_HUE"] = "#343434";

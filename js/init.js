@@ -1,4 +1,4 @@
-fontSizeSpan/**
+/**
  * @license
  * Copyright 2020 Sébastien CANET
  * SPDX-License-Identifier: BSD-3-Clause
