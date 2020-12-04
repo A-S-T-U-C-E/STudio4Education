@@ -261,6 +261,13 @@ Code.init = function () {
 };
 
 /**
+ * React to window resizing
+ */
+
+
+ 
+
+/**
  * Initialize the page language.
  */
 Code.initLanguage = function () {

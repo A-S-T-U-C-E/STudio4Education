@@ -10,57 +10,38 @@
 .UIText {
     vertical-align: middle;
     color: #FFFFFF;
-    font-weight: bold;
 }
 .UITextSmall {
     vertical-align: middle;
     color: #FFFFFF;
     font-size: large;
-    font-weight: bold;
 }
 .iconButtons{
-    border: 0;
-    background: none;
-    box-shadow: none;
-    border-radius: 0px;
-    padding:2px;
-    line-height:0;
-    vertical-align: middle;
-    background: #03234b;
-    color: #FFFFFF;
-    font-size: 1.5em;
-    width: 32px;
+	border-radius: 5px;
+	padding: 5px;
+	background: #f3f3f3;
+	color: #03234b;
+	font-size: 1.2em;
+	width: 2em;
 }
 .iconButtons:hover{
-    background: #FFFFFF;
-    color: #03234b;
+    background: #03234b;
+    color: #fff;
     cursor : pointer;
-    transition: 0.5s ease;
+    transition: 0.2s ease;
 }
 .iconButtons:active{
     background: #FFCC00;
 }
-.iconButtons:active::after {
-    transition-property: background;
-    transition-duration: 10s;
-}
 .iconButtons:disabled{
-    background: #F3F1EF;
-    color: #03234B;
+    background: #DADADA;
+    color: #a7a7a7;
     cursor : not-allowed;
 }
-.iconButtonsClicked{
-    border: 0;
-    background: none;
-    box-shadow: none;
-    border-radius: 0px;
-    padding:2px;
-    line-height:0;
-    vertical-align: middle;
-    background: #FFCC00;
-    color: #03234B;
-    font-size: x-large;
-    width: 32px;
+#buttonsMenuPopupInside > .iconButtons, #buttonsToolsPopupInside > .iconButtons, #buttonsIotPopupInside > .iconButtons {
+    padding: 2px;
+    height: 1.8em;
+    width: 1.8em;
 }
 .CLI {
     margin: 5px;
@@ -88,7 +69,7 @@
 #uploadButton,
 #serialConnectButton
 {
-    border-radius: 50%;
+    /*border-radius: 50%;*/
 }
 #resetButton{
     background: #FF0000;

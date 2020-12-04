@@ -47,7 +47,10 @@ body {
     color: #03234B;
 }
 #lateral-panel-setup-label {
-    color: #03234B;
+	color: #03234B;
+	padding: 2px;
+	border-radius: 5px;
+	margin: 5px;
 }
 .closeModal:hover,
 .closeModal:focus {
@@ -78,8 +81,6 @@ input:checked + .slider:before {
 /* Makes label white */
 .blocklyTreeLabel {
   color: white;
-  font-weight: bold;
-  font-size: 20px;
 }
 /* Adds padding around the group of categories and separators */
 .blocklyToolboxContents {
@@ -87,9 +88,10 @@ input:checked + .slider:before {
 }
 /* Adds space between the categories, rounds the corners and adds space around the label */
 .blocklyTreeRow {
-  padding: 2px;
-  border-radius: 4px;
-  height: initial;
+	padding: 5px;
+	padding-left: 5px !important; /* FIXME : Pour rectifier temporairement le inline css...*/
+	border-radius: 4px;
+	height: 1.5em;
 }
 /* Changes color of the icon to white */
 .customIcon {

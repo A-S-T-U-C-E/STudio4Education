@@ -20,7 +20,6 @@
 }
 .controlPanelInput {
     width: 230px;
-    font-size:20px;
 }
 
 #lateral-panel-setup {
@@ -53,7 +52,6 @@
     width: 28px;
     height: 28px;
     cursor: pointer;
-    font-size: 1.5em;
 }
 #lateral-panel-CLI-bloc,
 #lateral-panel-setup-label,
@@ -89,12 +87,9 @@
   outline: none;
   transition: 0.4s;
 	vertical-align: middle;
-    font-size: x-large;
-    font-weight: bold;
 }
 .accordion:after {
   content: "\0271A"; /* Unicode character for "plus" sign (+) */
-  font-size: x-large;
   float: right;
   margin-left: 5px;
 }

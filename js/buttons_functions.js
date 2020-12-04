@@ -69,7 +69,7 @@ function fullScreen(_element) {
 
 function exitFullScreen() {
     if (fullScreen_ === false) {
-        fullScreenButton.className = 'iconButtonsClicked';
+        fullScreenButton.className = 'iconButtons active';
         fullScreen_ = true;
     } else {
         fullScreenButton.className = 'iconButtons';

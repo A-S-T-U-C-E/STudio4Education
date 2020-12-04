@@ -10,8 +10,6 @@ html, body {
 
 body {
     font-family: sans-serif;
-    font-size: large;
-    font-weight: bold;
     margin: 0;
     overflow: hidden;
 }
@@ -19,10 +17,12 @@ body {
 html[dir=rtl] {
     text-align: right;
 }
-
+button {
+    border: 2px solid #03234B;
+}
 .blocklyTrash,
 .blocklyZoom > image {
-    opacity: 1 !important;
+    opacity: 1 !important; /* FIXME */
 }
 .TitleText {
     vertical-align: middle;
@@ -55,11 +55,8 @@ html[dir=rtl] {
     border-radius: 8px;
     padding: 15px 5%;
 }
-#menuButton.active{
-    transform: rotate(90deg);
-}
 #buttonsMenuPopup{
-    animation: fadein 0.5s;
+    animation: fadein 0.2s;
     position: absolute;
     top: 70px;
     left: 5px;
@@ -68,7 +65,7 @@ html[dir=rtl] {
     width: auto;
 }
 #buttonsToolsPopup{
-    animation: fadein 0.5s;
+    animation: fadein 0.2s;
     position: absolute;
     top: 70px;
     left: 145px;
@@ -77,7 +74,7 @@ html[dir=rtl] {
     width: auto;
 }
 #buttonsIotPopup{
-    animation: fadein 0.5s;
+    animation: fadein 0.2s;
     position: absolute;
     top: 70px;
     left: 185px;
@@ -90,7 +87,8 @@ html[dir=rtl] {
 }
 .menu_text{
     color: white;
-    display: inline; 
+    display: inline;
+    font-size: smaller;
 }
 .menu_div{
     align-content: start;
@@ -104,22 +102,22 @@ html[dir=rtl] {
   padding-left: 5px;
 }
 .sketch_name_icon {
-  display: inline !important;
-  font-size: 1.2rem !important;
+  display: inline !important; /* FIXME */
+  font-size: 1.2rem !important; /* FIXME */
   float: right;
   padding-top: 3px;
 }
 .sketch_name {
-  width: auto !important;
+  width: auto !important; /* FIXME */ 
   max-width: 400px;
   line-height: 64px;
-  height: 3rem !important;
-  font-size: 1.5rem !important;
-  border-bottom: 0px solid #EEE !important;
+  height: 3rem !important; /* FIXME */
+  font-size: 1.5rem !important; /* FIXME */
+  border-bottom: 0px solid #EEE !important; /* FIXME */
   font-style: italic;
 }
 .sketch_name:focus {
-    border-bottom: 1px solid #EEE !important;
+    border-bottom: 1px solid #EEE !important; /* FIXME */
 }
 @media only screen and (min-width: 0px) and (max-width: 600px) {
   .sketch_name {
@@ -146,17 +144,21 @@ html[dir=rtl] {
     height: 100%;
 }
 #optionsTop {
-    height: 30px;
+    height: 3em;
 }
 #optionsTopTitle {
-    width: 268px;
+	padding: 5px 0 5px 15px;
     white-space: nowrap;
 }
 #optionsTopInteractiveHelp {
     width: 100%;
 }
 #functionsIcons {
-    height: 30px;
+	height: 3.5em;
+	background: #efefef;
+}
+#functionsIcons > td {
+	padding: 5px 0 5px 10px;
 }
 #globalWorkspace {
     width: 100%;
@@ -164,7 +166,7 @@ html[dir=rtl] {
 }
 /* ace editor */
 .ace_content{
-    left: 0px !important;
+    left: 0px !important; /* FIXME */
 }
 .switch {
   position: relative;
@@ -241,14 +243,13 @@ table table {
     width: 100%;
 }
 td {
-    padding: 2px;
     vertical-align: middle;
 }
 
 td.tabMiddle {
-    border-top-style: none !important;
-    border-left-style: none !important;
-    border-right-style: none !important;
+    border-top-style: none !important; /* FIXME */
+    border-left-style: none !important; /* FIXME */
+    border-right-style: none !important; /* FIXME */
     padding-right: 5px;
     text-align: center;
     vertical-align: middle;
@@ -272,7 +273,6 @@ td.tabMiddle {
     margin: 5px;
     padding: 10px;
     border-radius: 4px;
-    font-size: x-large;
     color: #FFFFFF;
 }
 /* Help modal */
@@ -295,7 +295,7 @@ td.tabMiddle {
     left: calc(50% - 500px);
     top: -100%;
     opacity: 0;
-    transition: top 0.5s, opacity 0.4s;
+    transition: top 0.2s, opacity 0.4;
 }
 .helpModal.show {
     /* Firefox */
@@ -317,7 +317,6 @@ td.tabMiddle {
 /* modal buttons */
 #boardListModalDialogOkay{
     border: none;
-    font-size: x-large;
     background-color: #4CAF50;
     border-radius: 12px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
@@ -327,7 +326,6 @@ td.tabMiddle {
 }
 #portListModalDialogOkay{
     border: none;
-    font-size: large;
     background-color: #4CAF50;
     border-radius: 12px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
@@ -355,7 +353,7 @@ td.tabMiddle {
     display: flex;
 }
 .content_blocks{
-    width: 100% !important;
+    width: 100% !important; /* FIXME */
     overflow: hidden;
 }
 #content_area{
@@ -370,11 +368,10 @@ td.tabMiddle {
     height: 97%;
     right: 0px;
     bottom: 0px;
-    padding: 5px;
     margin: 0;
     border: 0;
     background-color: #ffffff;
-    overflow: auto !important;
+    overflow: auto !important; /* FIXME */
 }
 .config_content {
     margin: 5px;
@@ -430,7 +427,7 @@ td.tabMiddle {
     overflow: hidden; /* Enable scroll if needed */
     top: -100%;
     opacity: 0;
-    transition: top 0.5s, opacity 0.4s;
+    transition: top 0.2s, opacity 0.4;
 }
 .overlay{
     position: absolute;
@@ -457,9 +454,9 @@ td.tabMiddle {
 .modal-content {
     position: relative;
     background-color: #fefefe;
-    -webkit-border-radius: 15px !important;
-    -moz-border-radius: 15px !important;
-    border-radius: 15px !important;
+    -webkit-border-radius: 15px !important; /* FIXME */
+    -moz-border-radius: 15px !important; /* FIXME */
+    border-radius: 15px !important; /* FIXME */
     padding: 5px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
@@ -467,8 +464,6 @@ td.tabMiddle {
 .closeModal {
     color: #FFFFFF;
     float: right;
-    font-size: 28px;
-    font-weight: bold;
     -ms-transform: translateY(-20%);
     transform: translateY(-20%);
 }
@@ -482,10 +477,10 @@ td.tabMiddle {
 .modal-header {
     padding: 10px;
     color: white;
-    -webkit-border-radius: 15px !important;
-    -moz-border-radius: 15px !important;
-    border-top-left-radius: 15px !important;
-    border-top-right-radius: 15px !important;
+    -webkit-border-radius: 15px !important; /* FIXME */
+    -moz-border-radius: 15px !important; /* FIXME */
+    border-top-left-radius: 15px !important; /* FIXME */
+    border-top-right-radius: 15px !important; /* FIXME */
 }
 /* Modal Body */
 .modal-body {
@@ -495,10 +490,10 @@ td.tabMiddle {
 .modal-footer {
     padding: 10px;
     color: white;
-    -webkit-border-radius: 15px !important;
-    -moz-border-radius: 15px !important;
-    border-top-left-radius: 15px !important;
-    border-top-right-radius: 15px !important;
+    -webkit-border-radius: 15px !important; /* FIXME */
+    -moz-border-radius: 15px !important; /* FIXME */
+    border-top-left-radius: 15px !important; /* FIXME */
+    border-top-right-radius: 15px !important; /* FIXME */
 }
 
 /* Modal board selector information */
@@ -539,8 +534,6 @@ td.tabMiddle {
     border: none;
     text-align: left;
     outline: none;
-    font-size: large;
-    font-weight: bold;
 }
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .collapsibleButton:hover {

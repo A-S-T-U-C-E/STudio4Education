@@ -509,7 +509,7 @@ html[dir="RTL"] #select_all {
 }
 
 .blocklyFlyoutBackground {
-	fill: #FFFFFF !important;
+	fill: #F00 !important;
 	fill-opacity: 1;
 	box-shadow: 5px 5px 5px grey !important;
 }
