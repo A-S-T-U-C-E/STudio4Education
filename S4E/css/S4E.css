@@ -24,6 +24,7 @@
 	font-size: 1.2em;
 	width: 2em;
 	height: 2em;
+    margin: 3px;
 }
 .iconButtons:hover{
     background: #03234b;
@@ -45,7 +46,9 @@
     width: 1.8em;
 }
 .CLI {
+/*
     margin: 5px;
+*/
 }
 /* surcharger .iconButton */
 #boardMenu, #serialMenu{

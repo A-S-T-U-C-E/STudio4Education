@@ -373,7 +373,9 @@ td.tabMiddle {
     overflow: auto !important; /* FIXME */
 }
 .config_content {
+/*
     margin: 5px;
+*/
 }
 #content_code {
     height: 100%;
