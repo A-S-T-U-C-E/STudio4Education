@@ -133,6 +133,7 @@ Code.init = function () {
 //        blocklyDiv.style.top = metrics.absoluteTop + 'px';
     };
     window.addEventListener('resize', onresize, false);
+
     
     //button callback register with functions
     Code.workspace.registerButtonCallback('createVarBtnInt', createVarBtnIntCallBack);
@@ -256,16 +257,37 @@ Code.init = function () {
     dragElement(document.getElementById("barre_h"), "V", document.getElementById("wrapper_up"), document.getElementById("content_serial"));
     dragElement(document.getElementById("separator"), "H", document.getElementById("content_area"), document.getElementById("content_code"));
 
+	window.addEventListener('resize', resetHBarPosition, false);
+	window.addEventListener('resize', resetVBarPosition, false);
+	window.addEventListener('resize', resetBarsPositionOnMinimizedWindow, false);
+
+	
     Code.renderContent();
     Code.workspace.addChangeListener(Code.renderContent);
 };
 
 /**
  * React to window resizing
+ * FIXME: doesn't react to window minimizing on slow computers, because Blockly's canvas takes too long to resize (maybe it's a animated transitions related issue ?)
  */
-
-
  
+function resetHBarPosition(e){
+	/* FIXME: currently resets barre_h position and content_serial height, needs to evolve to change heights and positions in a more natural way */
+	document.getElementById("barre_h").style.position = "absolute";
+	document.getElementById("barre_h").style.bottom = "0";
+	document.getElementById("barre_h").style.top = "";
+	document.getElementById("content_serial").style.position = "absolute";
+	document.getElementById("content_serial").style.bottom = "calc(-2.2em + 3px)";
+	document.getElementById("content_serial").style.height = "1px";
+	document.getElementById("wrapper_up").style.height = "";
+		console.log("positions reset !");
+
+}	
+
+function resetVBarPosition(e) {
+	document.getElementById("separator").style.position = "absolute";
+	document.getElementById("separator").style.right = "0";	
+}
 
 /**
  * Initialize the page language.

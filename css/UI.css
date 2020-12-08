@@ -36,9 +36,12 @@ button {
     cursor:pointer;
     display:none;
     height:100%;
-    position:fixed;
+    position:absolute;
     text-align:center;
     top:0;
+    right:0;
+    bottom:0;
+    left:0;
     width:100%;
     z-index:10000;
 }
@@ -260,13 +263,16 @@ td.tabMiddle {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='30'><path d='M2 0 v30 M5 0 v30 M8 0 v30' fill='white' stroke='white'/></svg>");
     background-repeat: no-repeat;
     background-position: center;
-    width: 15px;
+    width: 1em;
     min-width: 15px;
     height: 100%;
     /* prevent browser's built-in drag from interfering */
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    position:absolute;
+    right:0;
+    z-index:990;
 }
 
 #content_hoverButton {
@@ -341,15 +347,8 @@ td.tabMiddle {
 }
 .wrapper_up {
     width: 100%;
-    /* Firefox */
-    height: -moz-calc(100% - 41px);
-    /* WebKit */
-    height: -webkit-calc(100% - 41px);
-    /* Opera */
-    height: -o-calc(100% - 41px);
-    /* Standard */
-    height: calc(100% - 41px);
-    min-height: 5px;
+	height: calc(100% - 2.2em);
+    min-height: 50px;
     display: flex;
 }
 .content_blocks{
@@ -357,7 +356,7 @@ td.tabMiddle {
     overflow: hidden;
 }
 #content_area{
-    width: calc(100% - 50px);
+    width: calc(100% - 1em);
     height: 100%;
     min-width: 10px;
 }
@@ -377,9 +376,8 @@ td.tabMiddle {
     margin: 5px;
 }
 #content_code {
-    width: 40px;
     height: 100%;
-    min-width: 5px;
+    min-width: 1px;
 }
 
 #barre_h{
@@ -404,10 +402,13 @@ td.tabMiddle {
     background: #000000;
     color: rgba(29, 147, 47, 1);
     width: 100%;
-    height: 10px;
-    min-height: 10px;
+    height: 2em;
+    min-height: 2em;
     white-space: pre-wrap;
     overflow-y: scroll;
+    position:absolute;
+    bottom: calc(-2.2em + 3px);
+    z-index: 998;
 }
 
 /* The boards list modal (background) */

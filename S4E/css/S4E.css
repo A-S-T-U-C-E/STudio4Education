@@ -23,6 +23,7 @@
 	color: #03234b;
 	font-size: 1.2em;
 	width: 2em;
+	height: 2em;
 }
 .iconButtons:hover{
     background: #03234b;
@@ -57,11 +58,24 @@
     border-radius: 5px;
 }
 #barre_h{
-    background-color : #00abdf;
+    background-color : #5B80A5;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items:center;
+    height: 2.2em;
+    min-height: 30px;
+    position: absolute;
+    bottom:0;
+    z-index:999;
+}
+
+#checkDetails {
+    padding-left: 5px;
+}
+
+#detailedCompilation {
+    transform: scale(1.5);
 }
 
 /* boutons classiques */
