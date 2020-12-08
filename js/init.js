@@ -259,7 +259,6 @@ Code.init = function () {
 
 	window.addEventListener('resize', resetHBarPosition, false);
 	window.addEventListener('resize', resetVBarPosition, false);
-	window.addEventListener('resize', resetBarsPositionOnMinimizedWindow, false);
 
 	
     Code.renderContent();
@@ -280,13 +279,18 @@ function resetHBarPosition(e){
 	document.getElementById("content_serial").style.bottom = "calc(-2.2em + 3px)";
 	document.getElementById("content_serial").style.height = "1px";
 	document.getElementById("wrapper_up").style.height = "";
-		console.log("positions reset !");
 
 }	
 
 function resetVBarPosition(e) {
 	document.getElementById("separator").style.position = "absolute";
-	document.getElementById("separator").style.right = "0";	
+	document.getElementById("separator").style.right = "0";
+	document.getElementById("separator").style.left = "";
+	document.getElementById("content_code").style.position = "absolute";
+	document.getElementById("content_code").style.right = "-1em";
+	document.getElementById("content_code").style.width = "1px";
+	document.getElementById("content_area").style.width = "";
+	document.getElementById("copyCodeButton").style.visibility = "hidden";
 }
 
 /**
