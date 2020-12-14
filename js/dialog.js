@@ -154,6 +154,24 @@ for (var i = 0; i < acc.length; i++) {
 /*
  * Icons button mouser over
  */
+document.getElementById('btn_fake_min').onmouseover = function () {
+    document.getElementById("content_hoverButton").textContent = MSG['btnMinimize'];
+};
+document.getElementById('btn_fake_min').onmouseout = function () {
+    document.getElementById("content_hoverButton").textContent = "";
+};
+document.getElementById('btn_fake_max').onmouseover = function () {
+    document.getElementById("content_hoverButton").textContent = MSG['btnMaximize'];
+};
+document.getElementById('btn_fake_max').onmouseout = function () {
+    document.getElementById("content_hoverButton").textContent = "";
+};
+document.getElementById('btn_fake_close').onmouseover = function () {
+    document.getElementById("content_hoverButton").textContent = MSG['btnClose'];
+};
+document.getElementById('btn_fake_close').onmouseout = function () {
+    document.getElementById("content_hoverButton").textContent = "";
+};
 document.getElementById('fullScreenButton').onmouseover = function () {
     document.getElementById("content_hoverButton").textContent = MSG['fullScreenButton_span'];
 };
@@ -230,6 +248,12 @@ document.getElementById('parametersButton').onmouseover = function () {
     document.getElementById("content_hoverButton").textContent = MSG['setup_sideButton_span'];
 };
 document.getElementById('parametersButton').onmouseout = function () {
+    document.getElementById("content_hoverButton").textContent = "";
+};
+document.getElementById('sketch_name_wrapper').onmouseover = function () {
+    document.getElementById("content_hoverButton").textContent = MSG['sketch_name_wrapper'];
+};
+document.getElementById('sketch_name_wrapper').onmouseout = function () {
     document.getElementById("content_hoverButton").textContent = "";
 };
 document.getElementById('helpButton').onmouseover = function () {

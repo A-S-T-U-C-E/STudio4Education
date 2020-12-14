@@ -263,3 +263,187 @@ Blockly.Arduino.scrub_ = function (block, code, opt_thisOnly) {
     var nextCode = Blockly.Arduino.blockToCode(nextBlock);
     return commentCode + code + nextCode;
 };
+
+/**
+ * Adds a string of "include" code to be added to the sketch.
+ * Once a include is added it will not get overwritten with new code.
+ * @param {!string} includeTag Identifier for this include code.
+ * @param {!string} code Code to be included at the very top of the sketch.
+ */
+Blockly.Arduino.addInclude = function(includeTag, code) {
+  if (Blockly.Arduino.includes_[includeTag] === undefined) {
+    Blockly.Arduino.includes_[includeTag] = code;
+  }
+};
+
+/**
+ * Adds a string of code to be declared globally to the sketch.
+ * Once it is added it will not get overwritten with new code.
+ * @param {!string} declarationTag Identifier for this declaration code.
+ * @param {!string} code Code to be added below the includes.
+ */
+Blockly.Arduino.addDeclaration = function(declarationTag, code) {
+  if (Blockly.Arduino.definitions_[declarationTag] === undefined) {
+    Blockly.Arduino.definitions_[declarationTag] = code;
+  }
+};
+
+/**
+ * Adds a string of code to declare a variable globally to the sketch.
+ * Only if overwrite option is set to true it will overwrite whatever
+ * value the identifier held before.
+ * @param {!string} varName The name of the variable to declare.
+ * @param {!string} code Code to be added for the declaration.
+ * @param {boolean=} overwrite Flag to ignore previously set value.
+ * @return {!boolean} Indicates if the declaration overwrote a previous one.
+ */
+Blockly.Arduino.addVariable = function(varName, code, overwrite) {
+  var overwritten = false;
+  if (overwrite || (Blockly.Arduino.variables_[varName] === undefined)) {
+    Blockly.Arduino.variables_[varName] = code;
+    overwritten = true;
+  }
+  return overwritten;
+};
+
+/**
+ * Adds a string of code into the Arduino setup() function. It takes an
+ * identifier to not repeat the same kind of initialisation code from several
+ * blocks. If overwrite option is set to true it will overwrite whatever
+ * value the identifier held before.
+ * @param {!string} setupTag Identifier for the type of set up code.
+ * @param {!string} code Code to be included in the setup() function.
+ * @param {boolean=} overwrite Flag to ignore previously set value.
+ * @return {!boolean} Indicates if the new setup code overwrote a previous one.
+ */
+Blockly.Arduino.addSetup = function(setupTag, code, overwrite) {
+  var overwritten = false;
+  if (overwrite || (Blockly.Arduino.setups_[setupTag] === undefined)) {
+    Blockly.Arduino.setups_[setupTag] = code;
+    overwritten = true;
+  }
+  return overwritten;
+};
+
+/**
+ * Adds a string of code as a function. It takes an identifier (meant to be the
+ * function name) to only keep a single copy even if multiple blocks might
+ * request this function to be created.
+ * A function (and its code) will only be added on first request.
+ * @param {!string} preferedName Identifier for the function.
+ * @param {!string} code Code to be included in the setup() function.
+ * @return {!string} A unique function name based on input name.
+ */
+Blockly.Arduino.addFunction = function (preferedName, code) {
+  if (Blockly.Arduino.codeFunctions_[preferedName] === undefined) {
+    var uniqueName = Blockly.Arduino.variableDB_.getDistinctName(
+        preferedName, Blockly.Generator.NAME_TYPE);
+    Blockly.Arduino.codeFunctions_[preferedName] =
+        code.replace(Blockly.Arduino.DEF_FUNC_NAME, uniqueName);
+    Blockly.Arduino.functionNames_[preferedName] = uniqueName;
+  }
+  return Blockly.Arduino.functionNames_[preferedName];
+};
+
+/**
+ * Adds a string of "include" code to be added to the sketch.
+ * Once a include is added it will not get overwritten with new code.
+ * @param {!string} includeTag Identifier for this include code.
+ * @param {!string} code Code to be included at the very top of the sketch.
+ */
+Blockly.Arduino.addInclude = function(includeTag, code) {
+  if (Blockly.Arduino.includes_[includeTag] === undefined) {
+    Blockly.Arduino.includes_[includeTag] = code;
+  }
+};
+
+/**
+ * Adds a string of code to be declared globally to the sketch.
+ * Once it is added it will not get overwritten with new code.
+ * @param {!string} declarationTag Identifier for this declaration code.
+ * @param {!string} code Code to be added below the includes.
+ */
+Blockly.Arduino.addDeclaration = function(declarationTag, code) {
+  if (Blockly.Arduino.definitions_[declarationTag] === undefined) {
+    Blockly.Arduino.definitions_[declarationTag] = code;
+  }
+};
+
+/**
+ * Adds a string of code to declare a variable globally to the sketch.
+ * Only if overwrite option is set to true it will overwrite whatever
+ * value the identifier held before.
+ * @param {!string} varName The name of the variable to declare.
+ * @param {!string} code Code to be added for the declaration.
+ * @param {boolean=} overwrite Flag to ignore previously set value.
+ * @return {!boolean} Indicates if the declaration overwrote a previous one.
+ */
+Blockly.Arduino.addVariable = function(varName, code, overwrite) {
+  var overwritten = false;
+  if (overwrite || (Blockly.Arduino.variables_[varName] === undefined)) {
+    Blockly.Arduino.variables_[varName] = code;
+    overwritten = true;
+  }
+  return overwritten;
+};
+
+/**
+ * Adds a string of code into the Arduino setup() function. It takes an
+ * identifier to not repeat the same kind of initialisation code from several
+ * blocks. If overwrite option is set to true it will overwrite whatever
+ * value the identifier held before.
+ * @param {!string} setupTag Identifier for the type of set up code.
+ * @param {!string} code Code to be included in the setup() function.
+ * @param {boolean=} overwrite Flag to ignore previously set value.
+ * @return {!boolean} Indicates if the new setup code overwrote a previous one.
+ */
+Blockly.Arduino.addSetup = function(setupTag, code, overwrite) {
+  var overwritten = false;
+  if (overwrite || (Blockly.Arduino.setups_[setupTag] === undefined)) {
+    Blockly.Arduino.setups_[setupTag] = code;
+    overwritten = true;
+  }
+  return overwritten;
+};
+
+/**
+ * Adds a string of code as a function. It takes an identifier (meant to be the
+ * function name) to only keep a single copy even if multiple blocks might
+ * request this function to be created.
+ * A function (and its code) will only be added on first request.
+ * @param {!string} preferedName Identifier for the function.
+ * @param {!string} code Code to be included in the setup() function.
+ * @return {!string} A unique function name based on input name.
+ */
+Blockly.Arduino.addFunction = function(preferedName, code) {
+  if (Blockly.Arduino.codeFunctions_[preferedName] === undefined) {
+    var uniqueName = Blockly.Arduino.variableDB_.getDistinctName(
+        preferedName, Blockly.Generator.NAME_TYPE);
+    Blockly.Arduino.codeFunctions_[preferedName] =
+        code.replace(Blockly.Arduino.DEF_FUNC_NAME, uniqueName);
+    Blockly.Arduino.functionNames_[preferedName] = uniqueName;
+  }
+  return Blockly.Arduino.functionNames_[preferedName];
+};
+
+/**
+ * Description.
+ * @param {!Blockly.Block} block Description.
+ * @param {!string} pin Description.
+ * @param {!string} pinType Description.
+ * @param {!string} warningTag Description.
+ */
+Blockly.Arduino.reservePin = function(block, pin, pinType, warningTag) {
+  if (Blockly.Arduino.pins_[pin] !== undefined) {
+    if (Blockly.Arduino.pins_[pin] != pinType) {
+      block.setWarningText(Blockly.Msg.ARD_PIN_WARN1.replace('%1', pin)
+		.replace('%2', warningTag).replace('%3', pinType)
+		.replace('%4', Blockly.Arduino.pins_[pin]), warningTag);
+    } else {
+      block.setWarningText(null, warningTag);
+    }
+  } else {
+    Blockly.Arduino.pins_[pin] = pinType;
+    block.setWarningText(null, warningTag);
+  }
+};

@@ -17,7 +17,7 @@ goog.provide('Blockly.Constants.servo');
 goog.require('Blockly.Blocks');
 goog.require('Blockly');
 
-var servoMediaFolder = "./S4E/blocks/servo/";
+var servoMediaFolder = "./S4E/categories/servo/";
 
 Blockly.Blocks['servo_move'] = {
     init: function () {

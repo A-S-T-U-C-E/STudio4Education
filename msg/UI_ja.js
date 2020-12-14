@@ -7,6 +7,9 @@
 var MSG = {
     title: "S4E",
     appName: "udio4Education",
+    btnMinimize: "minimize",
+    btnMaximize: "maximize",
+    btnClose: "close application",
     blocks: "ブロック",
     prog: "Program",
     catLogic: "論理",
@@ -38,6 +41,8 @@ var MSG = {
     saveCodeButton_span: "Export Code",
     newButton_span: "New project",
     save_span: "Save file name?",
+    sketch_name_default: "sketch_name",
+    sketch_name_wrapper: "project sketch name",
     saveXMLButton_span: "Save to S4E file",
     loadXMLfakeButton_span: "Load S4E file",
     loadXML_span: "Replace existing blocks?\n'Cancel' will merge.",

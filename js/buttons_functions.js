@@ -209,7 +209,7 @@ Code.saveCodeFile = function () {
     var blob = new Blob([dataToSave], {
         type: 'text/plain;charset=utf-8'
     });
-    Blockly.prompt(MSG['save_span'], 'code', function (fileNameSave) {
+    Blockly.prompt(MSG['save_span'], document.getElementById('sketch_name').value, function (fileNameSave) {
         if (fileNameSave) {
             var fakeDownloadLink = document.createElement("a");
             fakeDownloadLink.download = fileNameSave + ".ino";
@@ -234,7 +234,7 @@ Code.saveXmlBlocklyFile = function () {
     var blob = new Blob([dataToSave], {
         type: 'text/xml;charset=utf-8'
     });
-    Blockly.prompt(MSG['save_span'], 'blockly', function (fileNameSave) {
+    Blockly.prompt(MSG['save_span'], document.getElementById('sketch_name').value, function (fileNameSave) {
         if (fileNameSave) {
             var fakeDownloadLink = document.createElement("a");
             fakeDownloadLink.download = fileNameSave + ".S4E";

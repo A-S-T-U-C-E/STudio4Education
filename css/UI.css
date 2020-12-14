@@ -6,6 +6,7 @@
 
 html, body {
     height: 100%;
+    width:100%;
 }
 
 body {
@@ -96,65 +97,38 @@ html[dir=rtl] {
     align-content: start;
     text-align: left;
 }
-/*****************/
-/*  Sketch name  */
-/*****************/
-.sketch_name_wrapper {
-  display: inline-block;
-  padding-left: 5px;
-}
-.sketch_name_icon {
-  display: inline !important;
-  font-size: 1.2rem !important;
-  float: right;
-  padding-top: 3px;
-}
-.sketch_name {
-  width: auto !important;
-  max-width: 400px;
-  line-height: 64px;
-  height: 3rem !important;
-  font-size: 1.5rem !important;
-  border-bottom: 0px solid #EEE !important;
-  font-style: italic;
-}
-.sketch_name:focus {
-    border-bottom: 1px solid #EEE !important;
-}
-@media only screen and (min-width: 0px) and (max-width: 600px) {
-  .sketch_name {
-    max-width: 200px;
-  }
-  /* Remove the title only leaving the sketch name */
-  .app_title {
-    display: none;
-  }
-}
-@media only screen and (min-width : 600px) {
-  .sketch_name {
-    max-width: 275px;
-  }
-}
-@media only screen and (min-width : 993px) {
-  .sketch_name {
-    max-width: 350px;
-  }
-}
 
 #globalTable {
+    table-layout: auto;
     width: 100%;
     height: 100%;
-}
-#optionsTop {
-    height: 30px;
-}
-#optionsTopTitle {
-    width: 268px;
     white-space: nowrap;
 }
-#optionsTopInteractiveHelp {
-    width: 100%;
+#optionsTop {
+    height: 30px !important;
+    /* draggable for desktop version */
+    -webkit-app-region: drag;
 }
+#optionsTopTitle {
+    /* width: 268px; */
+    width: 100vw;
+    /* draggable for desktop version */
+    -webkit-app-region: drag;
+}
+#optionsTopButtons {
+    width: 110px;
+    height: 30px !important;
+    /* draggable for desktop version */
+    -webkit-app-region: no-drag;
+}
+#interSpace {
+    height: 0px;
+    background-color: white;
+}
+#btn_fake_restore {
+  display: none;
+}
+
 #functionsIcons {
     height: 30px;
 }
@@ -241,16 +215,6 @@ table table {
     width: 100%;
 }
 td {
-    padding: 2px;
-    vertical-align: middle;
-}
-
-td.tabMiddle {
-    border-top-style: none !important;
-    border-left-style: none !important;
-    border-right-style: none !important;
-    padding-right: 5px;
-    text-align: center;
     vertical-align: middle;
 }
 

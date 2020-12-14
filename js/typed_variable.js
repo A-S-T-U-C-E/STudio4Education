@@ -10,10 +10,11 @@
  * @author scanet@libreduc.cc (Sébastien CANET)
  */
 
-var intCompatibility = ['int', 'Number'];
-var floatCompatibility = ['int', 'float', 'Number'];
-var stringCompatibility = ['String'];
-var booleanCompatibility = ['Boolean'];
+var intCompatibility = ['int', 'Number', 'Array'];
+var floatCompatibility = ['int', 'float', 'Number', 'Array'];
+var numberCompatibility = ['int', 'float', 'Number'];
+var stringCompatibility = ['String', 'Array'];
+var booleanCompatibility = ['Boolean', 'Array'];
 
 var createVarBtnIntCallBack = function (button) {
     Blockly.Variables.createVariableButtonHandler(button.getTargetWorkspace(), null, 'int');

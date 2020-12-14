@@ -42,10 +42,10 @@ Blockly.Blocks['math_single'] = {
                 {
                     "type": "input_value",
                     "name": "NUM",
-                    "check": "Number"
+                    "check": numberCompatibility
                 }
             ],
-            "output": "Number",
+            "output": "float",
             "style": "math_blocks",
             "helpUrl": Blockly.Msg.MATH_SINGLE_HELPURL
         });
@@ -85,7 +85,7 @@ Blockly.Blocks['math_trig'] = {
                 {
                     "type": "input_value",
                     "name": "NUM",
-                    "check": "Number"
+                    "check": numberCompatibility
                 }
             ],
             "output": "float",
@@ -151,7 +151,7 @@ Blockly.Blocks['math_number_property'] = {
                     [Blockly.Msg.MATH_IS_DIVISIBLE_BY, 'DIVISIBLE_BY']];
         this.setStyle("math_blocks");
         this.appendValueInput('NUMBER_TO_CHECK')
-                .setCheck('Number');
+                .setCheck(numberCompatibility);
         var dropdown = new Blockly.FieldDropdown(PROPERTIES, function (option) {
             var divisorInput = (option == 'DIVISIBLE_BY');
             this.sourceBlock_.updateShape_(divisorInput);
@@ -219,7 +219,7 @@ Blockly.Blocks['math_change'] = {
                 {
                     "type": "input_value",
                     "name": "DELTA",
-                    "check": "Number"
+                    "check": numberCompatibility
                 }
             ],
             "previousStatement": null,
@@ -248,7 +248,7 @@ Blockly.Blocks['math_modulo'] = {
                 {
                     "type": "input_value",
                     "name": "DIVIDEND",
-                    "check": "Number"
+                    "check": numberCompatibility
                 },
                 {
                     "type": "input_value",
@@ -257,7 +257,7 @@ Blockly.Blocks['math_modulo'] = {
                 }
             ],
             "inputsInline": true,
-            "output": "Number",
+            "output": "float",
             "style": "math_blocks",
             "tooltip": Blockly.Msg.MATH_MODULO_TOOLTIP,
             "helpUrl": Blockly.Msg.MATH_MODULO_HELPURL
@@ -277,12 +277,12 @@ Blockly.Blocks['math_random_int'] = {
                 {
                     "type": "input_value",
                     "name": "FROM",
-                    "check": "Number"
+                    "check": "int"
                 },
                 {
                     "type": "input_value",
                     "name": "TO",
-                    "check": "Number"
+                    "check": "int"
                 }
             ],
             "inputsInline": true,

@@ -257,6 +257,8 @@ Code.init = function () {
     dragElement(document.getElementById("separator"), "H", document.getElementById("content_area"), document.getElementById("content_code"));
 
     Code.renderContent();
+    Code.sketchNameSizeEffect();
+    Code.sketchNameSet();
     Code.workspace.addChangeListener(Code.renderContent);
 };
 
@@ -300,6 +302,9 @@ Code.initLanguage = function () {
     // Inject language strings.
     document.title = MSG['title'];
     document.getElementById('appName').textContent = MSG['appName'];
+    document.getElementById('btn_fake_min').title = MSG['btnMinimize'];
+    document.getElementById('btn_fake_max').title = MSG['btnMaximize'];
+    document.getElementById('btn_fake_close').title = MSG['btnClose'];
     //change Blockly title buttons by this one
     document.getElementById('languageSpan').textContent = MSG['languageSpan'];
     document.getElementById('interfaceColorSpan').textContent = MSG['interfaceColorSpan'];
@@ -324,8 +329,9 @@ Code.initLanguage = function () {
     document.getElementById('saveCodeButton_span_menu').textContent = MSG['saveCodeButton_span'];
     document.getElementById('parametersButton_span_menu').textContent = MSG['setup_sideButton_span'];
     document.getElementById('resetButton_span_menu').textContent = MSG['resetButton_span'];
-    document.getElementById('helpButton_span_menu').textContent = MSG['helpButton_span'];
+    // document.getElementById('helpButton_span_menu').textContent = MSG['helpButton_span'];
     document.getElementById('lateral-panel-setup-label').title = MSG['setup_sideButton_span'];
+    document.getElementById('sketch_name_wrapper').title = MSG['sketch_name_wrapper'];
     document.getElementById('helpButton').title = MSG['helpButton_span'];
     document.getElementById('helpModalSpan_title').innerHTML = MSG['helpModalSpan_title'];
     document.getElementById('helpModalSpan_text').innerHTML = MSG['helpModalSpan_text'];

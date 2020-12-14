@@ -7,6 +7,9 @@
 var MSG = {
     title: "S4E",
     appName: "udio4Education",
+    btnMinimize: "minimize",
+    btnMaximize: "maximize",
+    btnClose: "close application",
     blocks: "Blocs",
     prog: "Program",
     catLogic: "Lògica",
@@ -38,6 +41,8 @@ var MSG = {
     saveCodeButton_span: "Exporta codi Arduino",
     newButton_span: "Projecte nou",
     save_span: "Save file name?",
+    sketch_name_default: "sketch_name",
+    sketch_name_wrapper: "project sketch name",
     saveXMLButton_span: "Desa fitxer S4E",
     loadXMLfakeButton_span: "Carrega fitxer S4E",
     loadXML_span: "Replace existing blocks?\n'Cancel' will merge.",

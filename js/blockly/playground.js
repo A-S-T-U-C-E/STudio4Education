@@ -127,6 +127,7 @@ function fontSpacingPageModify(classToModify, spacingToModify) {
 function setOnOffLine() {
     // Set different config online vs local copy.
     if (location.protocol === 'file:') {
+        document.getElementById('optionsTopButtons').style.display = "inline";
         document.getElementById('verifyButton').disabled = false;
         document.getElementById('serialButton').disabled = false;
         document.getElementById('uploadButton').disabled = false;
@@ -142,6 +143,7 @@ function setOnOffLine() {
         document.getElementById('saveXMLButton_span').innerHTML = '<i class="far fa-save"></i>';
         document.getElementById('saveCodeButton_span').innerHTML = '<i class="far fa-file-code"></i>';
     } else {
+        document.getElementById('optionsTopButtons').style.display = "none";
         document.getElementById('verifyButton').disabled = true;
         document.getElementById('serialButton').disabled = true;
         document.getElementById('uploadButton').disabled = true;

@@ -7,6 +7,9 @@
 var MSG = {
     title: "S4E",
     appName: "udio4Education",
+    btnMinimize: "réduire",
+    btnMaximize: "agrandir",
+    btnClose: "fermer le logiciel",
     blocks: "Blocs",
     prog: "Programme",
     catLogic: "Logique",
@@ -38,6 +41,8 @@ var MSG = {
     saveCodeButton_span: "exporte le code",
     newButton_span: "nouveau projet",
     save_span: "nom du fichier de sauvegarde ?",
+    sketch_name_default: "nom_du_projet",
+    sketch_name_wrapper: "nom de sauvegarde du projet",
     saveXMLButton_span: "enregistrer le fichier Blockly",
     loadXMLfakeButton_span: "ouvrir un fichier Blockly",
     loadXML_span: "Remplacer les blocs déjà présents ?\n'Annuler' les rajoutera.",

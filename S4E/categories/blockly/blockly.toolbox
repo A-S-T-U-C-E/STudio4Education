@@ -131,7 +131,7 @@ var toolbox_standard = {
                     "type": "text_join"
                 }, {
                   "kind": "block",
-                  "blockxml": "<block type='text_append'><value name='TEXT'><shadow type='text'></shadow></value></block>"
+                  "blockxml": "<block type='text_append'><value name='TEXT'></value></block>"
                 }, {
                   "kind": "block",
                   "blockxml": "<block type='text_length'><value name='VALUE'><shadow type='text'><field name='TEXT'>abc</field></shadow></value></block>"
@@ -140,31 +140,19 @@ var toolbox_standard = {
                   "blockxml": "<block type='text_isEmpty'><value name='VALUE'><shadow type='text'><field name='TEXT'></field></shadow></value></block>"
                 }, {
                   "kind": "block",
-                  "blockxml": "<block type='text_indexOf'><value name='VALUE'> <block type='variables_get'> <field name='VAR'>text</field> </block> </value> <value name='FIND'> <shadow type='text'> <field name='TEXT'>abc</field> </shadow> </value></block>"
+                  "blockxml": "<block type='text_indexOf'><value name='VALUE'></value> <value name='FIND'> <shadow type='text'> <field name='TEXT'>abc</field> </shadow> </value></block>"
                 }, {
                   "kind": "block",
-                  "blockxml": "<block type='text_charAt'><value name='VALUE'> <block type='variables_get'> <field name='VAR'>text</field> </block> </value></block>"
+                  "blockxml": "<block type='text_charAt'><value name='VALUE'></value></block>"
                 }, {
                   "kind": "block",
-                  "blockxml": "<block type='text_getSubstring'><value name='STRING'> <block type='variables_get'> <field name='VAR'>text</field> </block> </value></block>"
+                  "blockxml": "<block type='text_getSubstring'><value name='STRING'></value></block>"
                 }, {
                   "kind": "block",
                   "blockxml": "<block type='text_changeCase'><value name='TEXT'> <shadow type='text'> <field name='TEXT'>abc</field> </shadow> </value></block>"
                 }, {
                   "kind": "block",
                   "blockxml": "<block type='text_trim'><value name='TEXT'> <shadow type='text'> <field name='TEXT'>abc</field> </shadow> </value></block>"
-                }, {
-                  "kind": "block",
-                  "blockxml": "<block type='text_count'><value name='SUB'> <shadow type='text'></shadow> </value> <value name='TEXT'> <shadow type='text'></shadow> </value></block>"
-                }, {
-                  "kind": "block",
-                  "blockxml": "<block type='text_replace'><value name='FROM'> <shadow type='text'></shadow> </value> <value name='TO'> <shadow type='text'></shadow> </value> <value name='TEXT'> <shadow type='text'></shadow> </value></block>"
-                }, {
-                  "kind": "block",
-                  "blockxml": "<block type='text_count'><value name='TEXT'> <shadow type='text'></shadow> </value></block>"
-                }, {
-                  "kind": "block",
-                  "blockxml": "<block type='text_print'><value name='TEXT'> <shadow type='text'> <field name='TEXT'>abc</field> </shadow> </value></block>"
                 }, {
                   "kind": "block",
                   "blockxml": "<block type='text_prompt_ext'><value name='TEXT'> <shadow type='text'> <field name='TEXT'>abc</field> </shadow> </value></block>"
@@ -185,16 +173,16 @@ var toolbox_standard = {
                   "blockxml": "<block type='lists_create_with'><mutation items='0'></mutation></block>"
                 }, {
                   "kind": "block",
-                    "type": "lists_create_with"
+                  "type": "lists_create_with"
                 }, {
                   "kind": "block",
                   "blockxml": "<block type='lists_repeat'><value name='TEXT'> <shadow type='text'> <field name='TEXT'>abc</field> </shadow> </value></block>"
                 }, {
                   "kind": "block",
-                    "type": "lists_length"
+                  "type": "lists_length"
                 }, {
                   "kind": "block",
-                    "type": "lists_isEmpty"
+                  "type": "lists_isEmpty"
                 }, {
                   "kind": "block",
                   "blockxml": "<block type='lists_indexOf'><value name='VALUE'> <block type='variables_get'> <field name='VAR'>list</field> </block> </value></block>"

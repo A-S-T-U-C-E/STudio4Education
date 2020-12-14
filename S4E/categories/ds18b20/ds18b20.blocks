@@ -16,7 +16,7 @@ goog.provide('Blockly.Constants.ds18b20');
 goog.require('Blockly.Blocks');
 goog.require('Blockly');
 
-var ds18b20MediaFolder = "./S4E/blocks/ds18b20/";
+var ds18b20MediaFolder = "./S4E/categories/ds18b20/";
 
 Blockly.Blocks['ds18b20_search'] = {
 	init: function() {

@@ -17,19 +17,29 @@
         <div class="table_wrapper">
             <table id="globalTable">
                 <tr id="optionsTop">
-                    <td  id="optionsTopTitle">
+                    <td id="optionsTopTitle">
                         <img src="./S4E/media/STMicroelectronics.png" style="width: 40px; vertical-align: middle;" />
-                            <span class="TitleText" id="appName"></span>
+                        <span class="TitleText" id="appName"></span>
                     </td>
-                    <!-- <span class="sketch_name_wrapper"> -->
-                        <!-- <i class="mdi-image-edit sketch_name_icon active"></i> -->
-                        <!-- <input id="sketch_name" class="sketch_name" type="text" size="10"> -->
-                    <!-- </span>         -->
-                    <td  id="optionsTopInteractiveHelp" class="tabMiddle">
-                        <span id="content_hoverButton"></span>
+                    <td id="optionsTopButtons" align="center">
+                        <button id="btn_fake_min" type="button" class="iconButtons">
+                            <i class="far fa-window-minimize"></i>
+                        </button>
+                        <button id="btn_fake_max" type="button" class="iconButtons">
+                            <i class="far fa-window-maximize"></i>
+                        </button>
+                        <button id="btn_fake_restore" type="button" class="iconButtons">
+                            <i class="far fa-window-restore"></i>
+                        </button>
+                        <button id="btn_fake_close" type="button" class="iconButtons">
+                            <i class="far fa-window-close"></i>
+                        </button>
                     </td>
                 </tr>
-                <tr  id="functionsIcons">
+                <tr id="interSpace">
+                    <td colspan="2"></td>
+                </tr>
+                <tr id="functionsIcons">
                     <td colspan="2">
                         <button id="menuButton" class="iconButtons" onclick="document.getElementById('menuPopup').style.display = 'block';document.getElementById('menuButton').classList.toggle('active');">
                             <span id="menuButtonButton_span">
@@ -74,14 +84,14 @@
                                         </span>
                                     </button>
                                     <span id="resetButton_span_menu" class="menu_text"></span>
-                                    <br>
-                                    <hr>
-                                    <button id="helpButton" class="iconButtons" onclick="toggleDisplayHelpModal()">
-                                        <span id="helpButton_span">
-                                            <i class="fas fa-question"></i>
-                                        </span>
-                                    </button>
-                                    <span id="helpButton_span_menu" class="menu_text"></span>
+                                    <!-- <br> -->
+                                    <!-- <hr> -->
+                                    <!-- <button id="helpButton" class="iconButtons" onclick="toggleDisplayHelpModal()"> -->
+                                        <!-- <span id="helpButton_span"> -->
+                                            <!-- <i class="fas fa-question"></i> -->
+                                        <!-- </span> -->
+                                    <!-- </button> -->
+                                    <!-- <span id="helpButton_span_menu" class="menu_text"></span> -->
                                 </div>
                             </div>
                         </div>
@@ -173,7 +183,7 @@
                                     <span id="papyrusConnect_span_menu" class="menu_text"></span>
                                     <br>
                                     <hr>
-                                    <button id="registerToOrchestrator" class="iconButtons CLI" onclick="ArrowheadRegister()">
+                                    <button id="registerToOrchestrator_auto" class="iconButtons CLI">
                                         <span id="registerToOrchestrator_span">
                                             <img src="./S4E/media/arrowheadtools_invert.png" style="width: 30px; height: 30px; vertical-align: middle;"/>
                                         </span>
@@ -215,6 +225,16 @@
                                 <i class="fas fa-search"></i>
                             </span>
                         </button>
+                        <span class="sketch_name_wrapper" id="sketch_name_wrapper">
+                            <i class="sketch_name_icon fas fa-pen"></i>
+                            <input id="sketch_name" class="sketch_name" type="text" size="10">
+                        </span>      
+                        <button id="helpButton" class="iconButtons" onclick="toggleDisplayHelpModal()">
+                            <span id="helpButton_span">
+                                <i class="fas fa-question"></i>
+                            </span>
+                        </button>
+                        <span id="content_hoverButton"></span>
                     </td>
                 </tr>
                 <tr id="globalWorkspace">
@@ -557,12 +577,12 @@
     <script src="./@blockly/demos/keyboard_nav/line_cursor.js" async></script>
     <script src="./@blockly/tests/playgrounds/screenshot.js" async></script>
     <!-- S4E external toolbox hacked -->
-    <script src="./S4E/toolbox/toolbox_ds18b20.json"></script>
-    <script src="./S4E/toolbox/toolbox_relay.json"></script>
-    <script src="./S4E/toolbox/toolbox_servo.json"></script>
-    <script src="./S4E/toolbox/toolbox_ST.json"></script>
-    <script src="./S4E/toolbox/toolbox_standard.json"></script>
-    <script src="./S4E/toolbox/toolbox_X_NUCLEO_IKS01A3.json"></script>
+    <script src="./S4E/categories/board/board.toolbox"></script>
+    <script src="./S4E/categories/ds18b20/ds18b20.toolbox"></script>
+    <script src="./S4E/categories/relay/relay.toolbox"></script>
+    <script src="./S4E/categories/servo/servo.toolbox"></script>
+    <script src="./S4E/categories/blockly/blockly.toolbox"></script>
+    <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.toolbox"></script>
     <!-- Blockly libraries of function, hacked from different demos -->
     <script src="./js/blockly/keyboard_nav.js"></script>
     <script src="./js/blockly/playground.js"></script>
@@ -583,33 +603,32 @@
     <script src="./S4E/js/boards.json"></script>
     <script src="./S4E/js/boards.js"></script>
     <!-- S4E specific: block design -->
-    <!-- <script src="./S4E/blocks/blocks_colors.js" async></script> -->
-    <script src="./S4E/blocks/board/board_base.js" async></script>
-    <script src="./S4E/blocks/board/board_serial.js" async></script>
-    <script src="./S4E/blocks/blockly/logic.js" async></script>
-    <script src="./S4E/blocks/blockly/math.js" async></script>
-    <script src="./S4E/blocks/ds18b20/ds18b20.js" async></script>
-    <script src="./S4E/blocks/relay/relay.js" async></script>
-    <script src="./S4E/blocks/servo/servo.js" async></script>
-    <script src="./S4E/blocks/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.js" async></script>
-    <script src="./S4E/blocks/typed_variable.js" async></script>
+    <script src="./S4E/categories/blockly/logic.blocks" async></script>
+    <script src="./S4E/categories/blockly/math.blocks" async></script>
+    <script src="./S4E/categories/blockly/typed_variable.blocks" async></script>
+    <script src="./S4E/categories/board/board_base.blocks" async></script>
+    <script src="./S4E/categories/board/board_serial.blocks" async></script>
+    <script src="./S4E/categories/ds18b20/ds18b20.blocks" async></script>
+    <script src="./S4E/categories/relay/relay.blocks" async></script>
+    <script src="./S4E/categories/servo/servo.blocks" async></script>
+    <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.blocks" async></script>
     <!-- S4E specific: common generator code -->
     <script src="./generators/arduino_generator.js"></script>
-    <script src="./S4E/arduino/blockly/colour.js" async></script>
-    <script src="./S4E/arduino/blockly/lists.js" async></script>
-    <script src="./S4E/arduino/blockly/logic.js" async></script>
-    <script src="./S4E/arduino/blockly/loops.js" async></script>
-    <script src="./S4E/arduino/blockly/math.js" async></script>
-    <script src="./S4E/arduino/blockly/procedures.js" async></script>
-    <script src="./S4E/arduino/blockly/text.js" async></script>
+    <script src="./S4E/categories/blockly/colour.arduino" async></script>
+    <script src="./S4E/categories/blockly/lists.arduino" async></script>
+    <script src="./S4E/categories/blockly/logic.arduino" async></script>
+    <script src="./S4E/categories/blockly/loops.arduino" async></script>
+    <script src="./S4E/categories/blockly/math.arduino" async></script>
+    <script src="./S4E/categories/blockly/procedures.arduino" async></script>
+    <script src="./S4E/categories/blockly/text.arduino" async></script>
     <!-- S4E specific: addon generator code -->
-    <script src="./S4E/arduino/board/board_base.js" async></script>
-    <script src="./S4E/arduino/board/board_serial.js" async></script>
-    <script src="./S4E/arduino/typed_variable.js" async></script>
-    <script src="./S4E/arduino/addon/ds18b20.js" async></script>
-    <script src="./S4E/arduino/addon/relay.js" async></script>
-    <script src="./S4E/arduino/addon/servo.js" async></script>
-    <script src="./S4E/arduino/addon/X-NUCLEO-IKS01A3.js" async></script>
+    <script src="./S4E/categories/blockly/typed_variable.arduino" async></script>
+    <script src="./S4E/categories/board/board_base.arduino" async></script>
+    <script src="./S4E/categories/board/board_serial.arduino" async></script>
+    <script src="./S4E/categories/ds18b20/ds18b20.arduino" async></script>
+    <script src="./S4E/categories/relay/relay.arduino" async></script>
+    <script src="./S4E/categories/servo/servo.arduino" async></script>
+    <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.arduino" async></script>
     <!-- S4E specific -->
     <!-- Blockly themes added -->
     <script src="./S4E/themes/bw.js" async></script>
@@ -644,6 +663,6 @@
         <!-- require('../IDE_functions.js'); -->
         require('../resources/app.asar/CLI_functions.js');
         require('../resources/app.asar/IDE_functions.js');
-        require('../nodejs/js/webServer.js');
+        require('../resources/app.asar/renderer.js');
     </script>
 </HTML>

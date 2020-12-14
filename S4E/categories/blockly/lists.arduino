@@ -18,7 +18,7 @@ goog.require('Blockly.Arduino');
 
 Blockly.Arduino['lists_create_empty'] = function (block) {
     // Create an empty list.
-    return ['[]', Blockly.Arduino.ORDER_ATOMIC];
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino['lists_create_with'] = function (block) {
@@ -28,7 +28,8 @@ Blockly.Arduino['lists_create_with'] = function (block) {
         elements[i] = Blockly.Arduino.valueToCode(block, 'ADD' + i,
                 Blockly.Arduino.ORDER_COMMA) || 'null';
     }
-    var code = '[' + elements.join(', ') + ']';
+    // var code = '[' + elements.join(', ') + ']';
+	var code = this.outputConnection.targetConnection.getChecks();
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
