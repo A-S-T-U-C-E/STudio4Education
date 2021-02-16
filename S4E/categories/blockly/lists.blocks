@@ -370,7 +370,7 @@ Blockly.Blocks['lists_create_with_item'] = {
     }
 };
 
-Blockly.Blocks.lists_getIndex = {
+Blockly.Blocks['lists_getIndex'] = {
     init: function () {
         this.setStyle('lists_blocks');
         this.setOutput(true, Number);
@@ -385,7 +385,7 @@ Blockly.Blocks.lists_getIndex = {
     }
 };
 
-Blockly.Blocks.lists_setIndex = {
+Blockly.Blocks['lists_setIndex'] = {
     init: function () {
         this.setStyle('lists_blocks');
         this.appendValueInput('AT')

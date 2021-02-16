@@ -185,7 +185,7 @@ var MSG = {
     IDE_upload_ok: '\nUpload: OK',
     serial_btn_start: "<span class='fa fa-play'></span> Start",
     serial_info_stop: 'stop<br>',
-    serial_btn_stop: "<span class='fa fa-pause'></span> Stop",
+    serial_btn_stop: "<span class='fas fa-stop'></span> Stop",
     serial_info_start: 'communication starting<br>',
     serial_CSV: 'Export data to CSV',
     inputTextSerial: 'Text',

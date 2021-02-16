@@ -191,7 +191,7 @@
                                     <span id="registerToOrchestrator_span_menu" class="menu_text"></span>
                                     <br>
                                     <hr>
-                                    <button id="blynkConnect" class="iconButtons CLI" onclick="">
+                                    <button id="blynkConnect" class="iconButtons CLI">
                                         <span id="blynkConnect_span">
                                             <img src="./S4E/media/blynk.png" style="width: 30px; height: 30px; vertical-align: middle;"/>
                                         </span>
@@ -661,8 +661,9 @@
         editor.findPrevious();
         <!-- require('../CLI_functions.js'); -->
         <!-- require('../IDE_functions.js'); -->
-        require('../resources/app.asar/CLI_functions.js');
-        require('../resources/app.asar/IDE_functions.js');
         require('../resources/app.asar/renderer.js');
+        require('../resources/app.asar/menu_functions.js');
+        require('../resources/app.asar/menu_CLI_functions.js');
+        require('../resources/app.asar/menu_IDE_functions.js');
     </script>
 </HTML>
