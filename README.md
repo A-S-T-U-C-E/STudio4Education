@@ -74,6 +74,10 @@ Check changelog [here](https://github.com/A-S-T-U-C-E/STudio4Education/blob/mast
 
 [Ace editor](https://ace.c9.io)
 
+[Font Awesome](https://fontawesome.com/)
+[Font Bitter](https://fr.allfont.net/download/bitter/)
+[Font Luciole](https://luciole-vision.com/)
+
 
 ## Authors and Contributors
 
