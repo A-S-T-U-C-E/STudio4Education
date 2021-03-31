@@ -20,7 +20,9 @@ body {
 }
 #buttonsMenuPopupInside,
 #buttonsToolsPopupInside,
-#buttonsIotPopupInside{
+#buttonsIotPopupInside,
+#buttonsSerialPopupInside
+{
     background-color: #03234b;
     padding: 5px;
 }

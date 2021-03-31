@@ -97,6 +97,14 @@ var toolbox_ST = {
                   {
                      "kind": "block",
                      "type": "board_serial_flush"
+                  },
+                  {
+                     "kind": "block",
+                     "type": "board_serial_formatCSV"
+                  },
+                  {
+                     "kind": "block",
+                     "type": "board_serial_autoFormatCSV"
                   }
                ]
             }

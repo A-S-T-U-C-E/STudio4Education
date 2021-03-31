@@ -167,6 +167,14 @@
                         <div id="iotPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('iotPopup').style.display = 'none';document.getElementById('iotConnectButton').classList.toggle('active');">
                             <div id="buttonsIotPopup" class="menu_div">
                                 <div id="buttonsIotPopupInside">
+                                    <button id="launchRedServer" class="iconButtons CLI">
+                                        <span id="launchRedServer_span">
+                                            <img src="../nodejs/media/node-red.png" style="width: 30px; height: 30px; vertical-align: middle;"/>
+                                        </span>
+                                    </button>
+                                    <span id="launchRedServer_span_menu" class="menu_text"></span>
+                                    <br>
+                                    <hr>
                                     <button id="launchWebServer" class="iconButtons CLI">
                                         <span id="launchWebServer_span">
                                             <i class="fas fa-network-wired"></i>
@@ -220,11 +228,39 @@
                                 <i class="fas fa-sign-out-alt"></i>
                             </span>
                         </button>
-                        <button id="serialConnectButton" class="iconButtons">
+                        <button id="serialConnectButton" class="iconButtons" onclick="document.getElementById('serialPopup').style.display = 'block';document.getElementById('serialConnectButton').classList.toggle('active');">
                             <span id="serialConnectButton_span">
-                                <i class="fas fa-search"></i>
+                                <i class="fas fa-glasses"></i>
                             </span>
                         </button>
+                        <div id="serialPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('serialPopup').style.display = 'none';document.getElementById('serialConnectButton').classList.toggle('active');">
+                            <div id="buttonsSerialPopup" class="menu_div">
+                                <div id="buttonsSerialPopupInside">
+                                    <button id="serialMonitorButton" class="iconButtons CLI">
+                                        <span id="serialMonitorButton_span">
+                                            <i class="fas fa-search"></i>
+                                        </span>
+                                    </button>
+                                    <span id="serialMonitorButton_span_menu" class="menu_text"></span>
+                                    <br>
+                                    <hr>
+                                    <button id="nodeRedFlowButton" class="iconButtons CLI" onclick="Code.flowsListModalShow()">
+                                        <span id="nodeRedFlowButton_span">
+                                            <i class="fas fa-tachometer-alt"></i>
+                                        </span>
+                                    </button>
+                                    <span id="nodeRedFlowButton_span_menu" class="menu_text"></span>
+                                    <br>
+                                    <hr>
+                                    <button id="supervisionButton" class="iconButtons CLI">
+                                        <span id="supervisionButton_span">
+                                            <i class="fas fa-exchange-alt"></i>
+                                        </span>
+                                    </button>
+                                    <span id="supervisionButton_span_menu" class="menu_text"></span>
+                                </div>
+                            </div>
+                        </div>
                         <span class="sketch_name_wrapper" id="sketch_name_wrapper">
                             <i class="sketch_name_icon fas fa-pen"></i>
                             <input id="sketch_name" class="sketch_name" type="text" size="10">
@@ -510,8 +546,9 @@
                         <select id="boardDescriptionSelector" size="11" onchange="Code.boardDescription()">
                             <optgroup label="C / C++">
                                 <option value="none" >...</option>
-                                <option value="nucleo_L476RG" >Nucleo-64 STM32L476</option>
-                                <option value="stm32f103c8_blue_pills" >STM32F103C8 Blue Pill</option>
+                                <option value="nucleo_G431KB" >Nucleo-32 G431KB</option>
+                                <option value="nucleo_L476RG" >Nucleo-64 L476RG</option>
+                                <option value="nucleo_H753ZI" >Nucleo-144 H753ZI</option>
                                 <option value="mp157c_dk2" >STM32MP1 Discovery kits</option>
                             </optgroup>
                         </select>
@@ -554,6 +591,21 @@
                         <option value="none">...</option>
                     </select>
                     <button id="portListModalDialogOkay" onclick="Code.setPort()">&#10004;</button>
+                </div>
+            </div>
+        </div>
+        <div id="flowsListModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fab fa-usb"></i>
+                    <span id="flowsListModalHeader_span"></span>
+                    <span class="closeModal" id="closeModalFlows">&times;</span>
+                </div>
+                <div class="modal-body" id="filesFlowListModalBody">
+                    <ul id="filesFlowList">
+                    </ul> 
+                </div>
+                <div class="modal-footer">
                 </div>
             </div>
         </div>
@@ -659,8 +711,6 @@
         });
         editor.findNext();
         editor.findPrevious();
-        <!-- require('../CLI_functions.js'); -->
-        <!-- require('../IDE_functions.js'); -->
         require('../resources/app.asar/renderer.js');
         require('../resources/app.asar/menu_functions.js');
         require('../resources/app.asar/menu_CLI_functions.js');

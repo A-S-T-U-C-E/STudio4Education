@@ -127,6 +127,11 @@ Code.portsListModalShow = function () {
     }
     window.addEventListener('click', Code.portsListModalHide, 'once');
 };
+Code.flowsListModalShow = function () {
+    document.getElementById('overlayForModals').style.display = "block";
+    document.getElementById('flowsListModal').classList.add('show');
+    window.addEventListener('click', Code.flowsListModalHide, 'once');
+};
 document.getElementById("closeModalBoards").onclick = function () {
     document.getElementById('overlayForModals').style.display = "none";
     document.getElementById('boardListModal').classList.remove('show');
@@ -134,6 +139,10 @@ document.getElementById("closeModalBoards").onclick = function () {
 document.getElementById("closeModalPorts").onclick = function () {
     document.getElementById('overlayForModals').style.display = "none";
     document.getElementById('portListModal').classList.remove('show');
+};
+document.getElementById("closeModalFlows").onclick = function () {
+    document.getElementById('overlayForModals').style.display = "none";
+    document.getElementById('flowsListModal').classList.remove('show');
 };
 // When the user clicks anywhere outside of the modal, close it
 Code.boardsListModalHide = function (event) {
@@ -146,6 +155,12 @@ Code.portsListModalHide = function (event) {
     if (!document.getElementById('portListModal').contains(event.target)) {
         document.getElementById('overlayForModals').style.display = "none";
         document.getElementById('portListModal').classList.remove('show');
+    }
+};
+Code.flowsListModalHide = function (event) {
+    if (!document.getElementById('flowsListModal').contains(event.target)) {
+        document.getElementById('overlayForModals').style.display = "none";
+        document.getElementById('flowsListModal').classList.remove('show');
     }
 };
 

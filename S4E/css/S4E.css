@@ -29,7 +29,7 @@
     background: #03234b;
     color: #FFFFFF;
     font-size: 1.5em;
-    width: 32px;
+    width: 35px;
 }
 .iconButtons:hover{
     background: #FFFFFF;
@@ -70,7 +70,6 @@
     color: #000000;
     font-size:large;
     border: none;
-    -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -o-border-radius: 5px;
     border-radius: 5px;
@@ -86,7 +85,7 @@
 /* boutons classiques */
 #verifyButton,
 #uploadButton,
-#serialConnectButton
+#serialMonitorButton
 {
     border-radius: 50%;
 }

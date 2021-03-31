@@ -214,6 +214,24 @@ document.getElementById('serialConnectButton').onmouseover = function () {
 document.getElementById('serialConnectButton').onmouseout = function () {
     document.getElementById("content_hoverButton").textContent = "";
 };
+document.getElementById('serialMonitorButton').onmouseover = function () {
+    document.getElementById("content_hoverButton").textContent = MSG['serialMonitorButton_span'];
+};
+document.getElementById('serialMonitorButton').onmouseout = function () {
+    document.getElementById("content_hoverButton").textContent = "";
+};
+document.getElementById('nodeRedFlowButton').onmouseover = function () {
+    document.getElementById("content_hoverButton").textContent = MSG['nodeRedFlowButton_span'];
+};
+document.getElementById('nodeRedFlowButton').onmouseout = function () {
+    document.getElementById("content_hoverButton").textContent = "";
+};
+document.getElementById('supervisionButton').onmouseover = function () {
+    document.getElementById("content_hoverButton").textContent = MSG['supervisionButton_span'];
+};
+document.getElementById('supervisionButton').onmouseout = function () {
+    document.getElementById("content_hoverButton").textContent = "";
+};
 document.getElementById('saveCodeButton').onmouseover = function () {
     document.getElementById("content_hoverButton").textContent = MSG['saveCodeButton_span'];
 };
@@ -304,6 +322,12 @@ document.getElementById('iotConnectButton').onmouseover = function () {
 document.getElementById('iotConnectButton').onmouseout = function () {
     document.getElementById("content_hoverButton").textContent = "";
 };
+document.getElementById('launchRedServer').onmouseover = function () {
+    document.getElementById("content_hoverButton").textContent = MSG['launchRedServer_span'];
+};
+document.getElementById('launchRedServer').onmouseout = function () {
+    document.getElementById("content_hoverButton").textContent = "";
+};
 document.getElementById('launchWebServer').onmouseover = function () {
     document.getElementById("content_hoverButton").textContent = MSG['launchWebServer_span'];
 };
@@ -316,10 +340,10 @@ document.getElementById('papyrusConnect').onmouseover = function () {
 document.getElementById('papyrusConnect').onmouseout = function () {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('registerToOrchestrator').onmouseover = function () {
+document.getElementById('registerToOrchestrator_auto').onmouseover = function () {
     document.getElementById("content_hoverButton").textContent = MSG['registerToOrchestrator_span'];
 };
-document.getElementById('registerToOrchestrator').onmouseout = function () {
+document.getElementById('registerToOrchestrator_auto').onmouseout = function () {
     document.getElementById("content_hoverButton").textContent = "";
 };
 document.getElementById('blynkConnect').onmouseover = function () {

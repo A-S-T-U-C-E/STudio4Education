@@ -317,7 +317,6 @@ Code.initLanguage = function () {
     document.getElementById('redoButton').title = MSG['redoButton_span'];
     document.getElementById('verifyButton').title = MSG['verifyButton_span'];
     document.getElementById('uploadButton').title = MSG['uploadButton_span'];
-    document.getElementById('serialConnectButton').title = MSG['serialConnectButton_span'];
     document.getElementById('saveCodeButton').title = MSG['saveCodeButton_span'];
     document.getElementById('newButton').title = MSG['newButton_span'];
     document.getElementById('saveXMLButton').title = MSG['saveXMLButton_span'];
@@ -338,6 +337,10 @@ Code.initLanguage = function () {
     document.getElementById('copyCodeButton').title = MSG['copyCodeButton_span'];
     document.getElementById('keyMappingModalSpan').textContent = MSG['keyMappingModalSpan'];
     document.getElementById('detailedCompilation_span').textContent = MSG['detailedCompilation_span'];
+    // menu serial
+    document.getElementById('serialMonitorButton_span_menu').textContent = MSG['serialMonitorButton_span'];
+    document.getElementById('nodeRedFlowButton_span_menu').textContent = MSG['nodeRedFlowButton_span'];
+    document.getElementById('supervisionButton_span_menu').textContent = MSG['supervisionButton_span'];
     // menu tools
     document.getElementById('toolsButton').title = MSG['toolsButton_span'];
     document.getElementById('wiringButton').title = MSG['wiringButton_span'];
@@ -356,8 +359,9 @@ Code.initLanguage = function () {
     document.getElementById('papyrusConnect').title = MSG['papyrusConnect_span'];
     document.getElementById('registerToOrchestrator').title = MSG['registerToOrchestrator_span'];
     document.getElementById('blynkConnect').title = MSG['blynkConnect_span'];
+    document.getElementById('launchRedServer_span_menu').textContent = MSG['launchRedServer_span'];
     document.getElementById('launchWebServer_span_menu').textContent = MSG['launchWebServer_span'];
-    document.getElementById('papyrusConnect_span_menu').textContent = MSG['loadXMLfakeButton_span'];
+    document.getElementById('papyrusConnect_span_menu').textContent = MSG['papyrusConnect_span'];
     document.getElementById('registerToOrchestrator_span_menu').textContent = MSG['registerToOrchestrator_span'];
     document.getElementById('blynkConnect_span_menu').textContent = MSG['blynkConnect_span'];
     // CLI panel

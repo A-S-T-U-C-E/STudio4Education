@@ -86,6 +86,15 @@ html[dir=rtl] {
     margin: 5px;
     width: auto;
 }
+#buttonsSerialPopup{
+    animation: fadein 0.5s;
+    position: absolute;
+    top: 70px;
+    left: 385px;
+    padding: 5px;
+    margin: 5px;
+    width: auto;
+}
 @keyframes fadein {
     from {opacity:0;} to {opacity:1;}
 }
@@ -422,7 +431,6 @@ td {
     position: relative;
     background-color: #fefefe;
     -webkit-border-radius: 15px !important;
-    -moz-border-radius: 15px !important;
     border-radius: 15px !important;
     padding: 5px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -447,7 +455,6 @@ td {
     padding: 10px;
     color: white;
     -webkit-border-radius: 15px !important;
-    -moz-border-radius: 15px !important;
     border-top-left-radius: 15px !important;
     border-top-right-radius: 15px !important;
 }
@@ -460,7 +467,6 @@ td {
     padding: 10px;
     color: white;
     -webkit-border-radius: 15px !important;
-    -moz-border-radius: 15px !important;
     border-top-left-radius: 15px !important;
     border-top-right-radius: 15px !important;
 }
