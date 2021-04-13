@@ -107,6 +107,19 @@ var toolbox_ST = {
                      "type": "board_serial_autoFormatCSV"
                   }
                ]
+            },
+            {
+               "kind": "category",
+               "name": "%{BKY_CAT_BOARD_IOT}",
+				"level": "3",
+				"levels": "2,3",
+               "categorystyle": "board_category",
+               "contents": [
+                  {
+                     "kind": "block",
+                     "type": "board_iot_autoFormatWebsocket"
+                  }
+               ]
             }
          ]
     }]

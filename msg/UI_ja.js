@@ -86,6 +86,7 @@ var MSG = {
     papyrusConnect_span: "Papyrus connect",
     registerToOrchestrator_span: "Arrowhead connect",
     blynkConnect_span: "Blynk connect",
+    serialConnectIOT_span: "connect serial to IoT",
     //ace editor
     editorReadOnlyToggle_span: "code editor writable or read-only",
     copyCodeButton_span: "copy code to clipboard",

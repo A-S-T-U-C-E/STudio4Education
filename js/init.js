@@ -358,12 +358,14 @@ Code.initLanguage = function () {
     document.getElementById('launchWebServer').title = MSG['launchWebServer_span'];
     document.getElementById('papyrusConnect').title = MSG['papyrusConnect_span'];
     document.getElementById('registerToOrchestrator').title = MSG['registerToOrchestrator_span'];
-    document.getElementById('blynkConnect').title = MSG['blynkConnect_span'];
+    // document.getElementById('blynkConnect').title = MSG['blynkConnect_span'];
+    document.getElementById('serialConnectIOT').title = MSG['serialConnectIOT_span'];
     document.getElementById('launchRedServer_span_menu').textContent = MSG['launchRedServer_span'];
     document.getElementById('launchWebServer_span_menu').textContent = MSG['launchWebServer_span'];
     document.getElementById('papyrusConnect_span_menu').textContent = MSG['papyrusConnect_span'];
     document.getElementById('registerToOrchestrator_span_menu').textContent = MSG['registerToOrchestrator_span'];
-    document.getElementById('blynkConnect_span_menu').textContent = MSG['blynkConnect_span'];
+    // document.getElementById('blynkConnect_span_menu').textContent = MSG['blynkConnect_span'];
+    document.getElementById('serialConnectIOT_span_menu').textContent = MSG['serialConnectIOT_span'];
     // CLI panel
     document.getElementById('CLI_title_span').textContent = MSG['CLI_title_span'];
     document.getElementById('CLI_githubLinkButton').title = MSG['CLI_githubLinkButton_span'];

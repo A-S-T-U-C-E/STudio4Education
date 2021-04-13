@@ -346,10 +346,16 @@ document.getElementById('registerToOrchestrator_auto').onmouseover = function ()
 document.getElementById('registerToOrchestrator_auto').onmouseout = function () {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('blynkConnect').onmouseover = function () {
-    document.getElementById("content_hoverButton").textContent = MSG['blynkConnect_span'];
+// document.getElementById('blynkConnect').onmouseover = function () {
+    // document.getElementById("content_hoverButton").textContent = MSG['blynkConnect_span'];
+// };
+// document.getElementById('blynkConnect').onmouseout = function () {
+    // document.getElementById("content_hoverButton").textContent = "";
+// };
+document.getElementById('serialConnectIOT').onmouseover = function () {
+    document.getElementById("content_hoverButton").textContent = MSG['serialConnectIOT_span'];
 };
-document.getElementById('blynkConnect').onmouseout = function () {
+document.getElementById('serialConnectIOT').onmouseout = function () {
     document.getElementById("content_hoverButton").textContent = "";
 };
 document.getElementById('lateral-panel-setup-label').onmouseover = function () {

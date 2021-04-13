@@ -212,7 +212,7 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
         console.log(this.dataCount_);
         console.log(this.sepCount_);
         console.log('domToMutation');
-        this.updateShape_();
+        this.rebuildShape_();
     },
     /**
      * Populate the mutator's dialog with this block's components.
@@ -309,6 +309,42 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
         // console.log('i' + i);
         // console.log('j' + j);
         console.log('saveConnections');
+    },
+    /**
+     * Reconstructs the block with all child blocks attached.
+     * @this {Blockly.Block}
+     */
+    rebuildShape_: function () {
+        var valueConnection_ = [null];
+        var i = 0;   
+        var j = 0;
+        var k = 0;
+        console.log(this.totalCount_);
+        while (i < this.totalCount_) {
+                console.log(i,j,k);
+                console.log(this.stack_);
+            switch (this.stack_[i]) {
+                case 'd':
+                    var inputData = this.getInput('DATA' + j);
+                    console.log(inputData);
+                    valueConnection_.push(inputData.connection.targetConnection);
+                    j++;
+                    break;
+                case 's':
+                    var inputSep = this.getInput('SEP' + k);
+                    console.log(inputSep);
+                    valueConnection_.push(inputSep.connection.targetConnection);
+                    k++;
+                    break;
+            }
+            i++;
+        }
+        this.totalCount_ = i;
+        console.log('rebuildShape_');
+        console.log(valueConnection_);
+        // console.log(separatorConnections);
+        this.updateShape_();
+        // this.reconnectChildBlocks_(valueConnection_);
     },
     /**
      * Modify this block to have the correct number of inputs.

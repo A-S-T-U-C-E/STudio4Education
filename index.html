@@ -197,14 +197,21 @@
                                         </span>
                                     </button>
                                     <span id="registerToOrchestrator_span_menu" class="menu_text"></span>
+                                    <!-- <br> -->
+                                    <!-- <hr> -->
+                                    <!-- <button id="blynkConnect" class="iconButtons CLI"> -->
+                                        <!-- <span id="blynkConnect_span"> -->
+                                            <!-- <img src="./S4E/media/blynk.png" style="width: 30px; height: 30px; vertical-align: middle;"/> -->
+                                        <!-- </span> -->
+                                    <!-- </button> -->
                                     <br>
                                     <hr>
-                                    <button id="blynkConnect" class="iconButtons CLI">
-                                        <span id="blynkConnect_span">
-                                            <img src="./S4E/media/blynk.png" style="width: 30px; height: 30px; vertical-align: middle;"/>
+                                    <button id="serialConnectIOT" class="iconButtons CLI">
+                                        <span id="serialConnectIOT_span">
+                                            <i class="fas fa-cloud-upload-alt"></i>
                                         </span>
                                     </button>
-                                    <span id="blynkConnect_span_menu" class="menu_text"></span>
+                                    <span id="serialConnectIOT_span_menu" class="menu_text"></span>
                                 </div>
                             </div>
                         </div>
@@ -519,12 +526,20 @@
                             <img src="./S4E/media/arrowheadtools_invert.png" style="width: 30px; height: 30px; vertical-align: middle;"/>
                         </span>
                     </button>
+                    <!-- <br> -->
+                    <!-- <br> -->
+                    <!-- <input type="text" class="controlPanelInput" id="blynkConnectInput" name="blynkConnectInput"> -->
+                    <!-- <button id="blynkConnect" class="iconButtons CLI" onclick=""> -->
+                        <!-- <span id="blynkConnect_span"> -->
+                            <!-- <img src="./S4E/media/blynk.png" style="width: 30px; height: 30px; vertical-align: middle;"/> -->
+                        <!-- </span> -->
+                    <!-- </button> -->
                     <br>
                     <br>
-                    <input type="text" class="controlPanelInput" id="blynkConnectInput" name="blynkConnectInput">
-                    <button id="blynkConnect" class="iconButtons CLI" onclick="">
-                        <span id="blynkConnect_span">
-                            <img src="./S4E/media/blynk.png" style="width: 30px; height: 30px; vertical-align: middle;"/>
+                    <input type="text" class="controlPanelInput" id="blynkConnectInput" name="serialConnectIOTInput">
+                    <button id="serialConnectIOT_save" class="iconButtons CLI" onclick="">
+                        <span id="serialConnectIOT_span">
+                            <i class="fas fa-cloud-upload-alt"></i>
                         </span>
                     </button>
                 </div>
@@ -659,6 +674,7 @@
     <script src="./S4E/categories/blockly/math.blocks" async></script>
     <script src="./S4E/categories/blockly/typed_variable.blocks" async></script>
     <script src="./S4E/categories/board/board_base.blocks" async></script>
+    <script src="./S4E/categories/board/board_iot.blocks" async></script>
     <script src="./S4E/categories/board/board_serial.blocks" async></script>
     <script src="./S4E/categories/ds18b20/ds18b20.blocks" async></script>
     <script src="./S4E/categories/relay/relay.blocks" async></script>
@@ -676,6 +692,7 @@
     <!-- S4E specific: addon generator code -->
     <script src="./S4E/categories/blockly/typed_variable.arduino" async></script>
     <script src="./S4E/categories/board/board_base.arduino" async></script>
+    <script src="./S4E/categories/board/board_iot.arduino" async></script>
     <script src="./S4E/categories/board/board_serial.arduino" async></script>
     <script src="./S4E/categories/ds18b20/ds18b20.arduino" async></script>
     <script src="./S4E/categories/relay/relay.arduino" async></script>

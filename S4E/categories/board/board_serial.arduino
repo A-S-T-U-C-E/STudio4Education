@@ -93,7 +93,6 @@ Blockly.Arduino['board_serial_autoFormatCSV'] = function(block) {
         code += "Serial.print(" + elements[i] + ");\n";
         code += "Serial.print(';');\n";
   }
-  console.log(code.length);
   code = code.substring(0, code.length - 19);
   code += "Serial.println();\n";
   return code;

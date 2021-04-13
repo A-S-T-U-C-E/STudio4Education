@@ -86,6 +86,7 @@ var MSG = {
     papyrusConnect_span: "connexion à Papyrus",
     registerToOrchestrator_span: "connexion à Arrowhead",
     blynkConnect_span: "connexion à Blynk",
+    serialConnectIOT_span: "envoi de données IdO",
     //ace editor
     editorReadOnlyToggle_span: "éditeur de code en lecture seule ou non",
     copyCodeButton_span: "copier le code dans le presse papiers",
