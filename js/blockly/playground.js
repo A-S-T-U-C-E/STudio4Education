@@ -150,9 +150,9 @@ function setOnOffLine() {
         document.getElementById('serialConnectButton').disabled = true;
         document.getElementById('serialMenu').disabled = true;
         // not same button if in Electron or browser, if web just webpages launched in browser
-        document.getElementById('wiringButton').onclick = function() {parent.open('./tools/hackcable/index.html')};
-		document.getElementById('factoryButton').onclick = function() {Code.BlockFactory()};
-		document.getElementById('htmlButton').onclick = function() {parent.open('./tools/html/html_factory.html')};
+        document.getElementById('wiringButton').onclick = "window.open('./tools/hackcable/index.html')";
+		document.getElementById('factoryButton').onclick = "Code.BlockFactory()";
+		document.getElementById('htmlButton').onclick = "window.open('./tools/html/html_factory.html')";
         //modifiy icons in menu button to be precise, if it's online or local file
         document.getElementById('newButton_span').innerHTML = '<i class="far fa-file"></i>';
         document.getElementById('loadXMLfakeButton_span').innerHTML = '<i class="fas fa-file-upload"></i>';
