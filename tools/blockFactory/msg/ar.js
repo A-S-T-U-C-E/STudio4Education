@@ -7,8 +7,8 @@ goog.require('Blockly.Msg');
 Blockly.Msg.BF_title =  "مصنع اللبنات" ;
 Blockly.Msg.BF_preview =  "معاينة - الإتجاه:";
 Blockly.Msg.BF_help = "- مستندات : <a href='https://github.com/A-S-T-U-C-E/STudio4Education/wiki' target='blank'> wiki</a> - Merci de partager sur le <a href='https://github.com/A-S-T-U-C-E/STudio4Education/issues' target='blank'> forum</a>";
-Blockly.Msg.BF_divBlocks =  "رمز (كود) لرسم الكتلة (\\blocs\\):";
-Blockly.Msg.BF_divGenerators =  "كود لمولد (منشئ) Arduino (\\generators\\arduino\\):";
+Blockly.Msg.BF_divBlocks =  "رمز (كود) لرسم الكتلة (\\categories\\name_of_block\\name_of_block.blocks)";
+Blockly.Msg.BF_divGenerators =  "كود لمولد (منشئ) Arduino (\\categories\\name_of_block\\name_of_block.arduino):";
 Blockly.Msg.BF_CAT_INPUT = "اتصالات";
 Blockly.Msg.BF_CAT_FIELD =  "الحقول";
 Blockly.Msg.BF_CAT_FIELD =  "الحقول" ،

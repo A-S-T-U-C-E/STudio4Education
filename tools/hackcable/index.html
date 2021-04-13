@@ -9,20 +9,46 @@
 		<link rel="stylesheet" href="../../css/font_awesome_all.min.css" />
 		<script src="./js/addon/konva6.min.js"></script>
 	</head>
+	<style>
+      #preview {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        border: 1px solid grey;
+        background-color: lightgrey;
+      }
+    </style>
 	<body>
+		<!-- delete it if dynamic mini screen on top upper right -->
+		<img id="preview" />
 		<div class="sideBar">
 			<div class="functionMenu">
-				<button id="btn_save_img"  class="iconButtons" onclick="" title="Enregistrer l'media">
+				<button id="btn_new_kanva"  class="iconButtons" onclick="" title="Nouveau plan">
+					<span id="btn_new_kanva_span">
+						<i class="far fa-file"></i>
+					</span>
+				</button>
+				<button id="btn_save_kanva"  class="iconButtons" onclick="" title="Sauver le plan">
+					<span id="btn_save_kanva_span">
+						<i class="fas fa-file-download"></i>
+					</span>
+				</button>
+				<button id="btn_load_kanva"  class="iconButtons" onclick="" title="Ouvrir un plan">
+					<span id="btn_load_kanva_span">
+						<i class="far fa-folder-open"></i>
+					</span>
+				</button>
+				<button id="btn_save_img"  class="iconButtons" onclick="" title="Enregistrer le media">
 					<span id="btn_save_img_span">
 						<i class="fas fa-camera"></i>
 					</span>
 				</button>
 				<!-- <button id="btn_grid_onoff"  class="iconButtons" onclick="backgroundShowHide()" title="Activer la grille"> -->
-				<button id="btn_grid_onoff"  class="iconButtons" onclick="isGrid = !isGrid;isGrid ? $(this).addClass('active') : $(this).removeClass('active')" title="Activer la grille">
-					<span id="btn_grid_onoff_span">
-						<i class="fas fa-border-all"></i>
-					</span>
-				</button>
+				<!-- <button id="btn_grid_onoff"  class="iconButtons" onclick="isGrid = !isGrid;isGrid ? $(this).addClass('active') : $(this).removeClass('active')" title="Activer la grille"> -->
+					<!-- <span id="btn_grid_onoff_span"> -->
+						<!-- <i class="fas fa-border-all"></i> -->
+					<!-- </span> -->
+				<!-- </button> -->
 				<button id="btn_zoom_plus"  class="iconButtons" onclick="changeScale(1.2)" title="Zoom +">
 					<span id="btn_zoom_plus_span">
 						<i class="fa fa-search-plus"></i>
@@ -60,7 +86,7 @@
 			</div>
 		</div>
 		<div id="konvaContainer"></div>
-		<div id="konvaPreview"></div>
+		<!-- <div id="konvaPreview"></div> -->
 	</body>
 	<script src="./parts/components_database.js"></script>
 	<script src="../blockFactory/libs/jquery-2.1.3.min.js"></script>

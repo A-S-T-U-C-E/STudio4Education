@@ -26,7 +26,7 @@
       }
 
       #blocklyArea  {grid-area: blockly; -ms-grid-row:1;-ms-grid-column:1; -ms-grid-row-span:4;}
-      #menubar      {background: #a9d0f7; grid-area: menubar; font-family: sans-serif; font-size: 18px; padding: 5px 10px; display: -ms-grid; display: grid; grid-template-columns: auto 36% auto; -ms-grid-row:1;-ms-grid-column:2; -ms-grid-columns: 32% 36% 32%; }
+      #menubar      {background: #03234b; width: 100%; grid-area: menubar; font-family: sans-serif; }
       #title        {grid-area: title; width: 100%; background-color: #444; color:white; text-align:center; font-size: 20px; font-family: sans-serif; padding-top: 5px; -ms-grid-row:2;-ms-grid-column:2;}
       #websiteFrame {grid-area: website; border: 5px solid #444;  -ms-grid-row:3;-ms-grid-column:2;}
       <!-- #sourcecode   {display: none;grid-area: code; border: 5px solid lightgray;overflow: scroll; margin:0px;  -ms-grid-row:4;-ms-grid-column:2;} -->
@@ -47,7 +47,27 @@
     <script src="./en.js"></script>
     <script src="./html_generators.js"></script>
     <script src="./html_blocks.js"></script>
-
+    <style>
+        .menu {
+            width:100%;
+            height: 100%;
+            border:0px;
+            padding:0px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #FFFFFF; 
+        }
+        .menu th {
+            border:0px;
+            padding:0px;
+        }
+        .menu td {
+            width:33%;
+            border:0px;
+            text-align:center;
+            padding:0px;
+        }
+    </style>
     <!-- For JS-Blocks only -->
     <script src="./javascript_compressed.js"></script>
   </head>
@@ -55,9 +75,20 @@
     <div id="container">
       <div id="blocklyArea"></div>
       <div id="menubar">
-        <div><span id="saveText">💾 Save blocks:</span> <input type="button" value="Save" id="saveButton" /></div>
-        <div><span id="loadText">📂 Load blocks:</span> <input type="file" id="fileButton" style="max-width:200px" /></div>
-        <div><span id="exportText">📄 Export webpage as HTML:</span> <input type="button" value="Export" id="exportButton" /></div>
+      <table class="menu">
+        <tbody>
+        <tr>
+            <td><span id="saveText">💾 Save blocks:</span></td>
+            <td><span id="loadText">📂 Load blocks:</span></td>
+            <td><span id="exportText">📄 Export webpage as HTML:</span></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="Save" id="saveButton" /></td>
+            <td><input type="file" id="fileButton" style="max-width:200px" /><br></td>
+            <td><input type="button" value="Export" id="exportButton" /></td>
+        </tr>
+        </tbody>
+      </table>
         <script>
           if (typeof(Msg) == "object" && Msg.buttons) {
             document.getElementById("saveText").textContent   = Msg.buttons.save.desc;
@@ -717,13 +748,13 @@
       function saveWorkspaceToDownload() {
         var xml = Blockly.Xml.workspaceToDom(workspace);
         var xml_text = Blockly.Xml.domToText(xml);
-        newWindow = window.open("data:application/octet-stream," + encodeURIComponent(xml_text), 'webseite.blockly.xml');
+        newWindow = window.open("data:application/octet-stream," + encodeURIComponent(xml_text), 'website.blockly.xml');
       }
       document.getElementById("saveButton").onclick = saveWorkspaceToDownload;
 
       function saveHtmlToDownload() {
         var code = HtmlGenerator.workspaceToCode(workspace);
-        newWindow = window.open("data:application/octet-stream," + encodeURIComponent(code), 'webseite.html');
+        newWindow = window.open("data:application/octet-stream," + encodeURIComponent(code), 'website.html');
       }
       document.getElementById("exportButton").onclick = saveHtmlToDownload;
 

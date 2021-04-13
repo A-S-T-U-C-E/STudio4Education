@@ -189,7 +189,7 @@ Code.Redo = function () {
 };
 
 /**
- * Luanch blockFatcory with language argument
+ * Launch blockFatcory with language argument
  */
 Code.BlockFactory = function () {
     var lang = Code.getStringParamFromUrl('lang', '');

@@ -72,20 +72,25 @@ function backgroundShowHide() {
 }
 
 // mini workspace on upper right
-let previewLayerBackground = background.clone({ hitGraphEnabled: false });
-let previewLayerLine = lineLayer.clone({ hitGraphEnabled: false });
-previewStage.add(previewLayerBackground);
-previewStage.add(previewLayerLine);
+// let previewLayerBackground = background.clone({ hitGraphEnabled: false });
+// let previewLayerLine = lineLayer.clone({ hitGraphEnabled: false });
+// previewStage.add(previewLayerBackground);
+// previewStage.add(previewLayerLine);
 
-previewStage.on("mousedown", function () {
-    updatePreview();
-});
+// previewStage.on("mousedown", function () {
+    // updatePreview();
+// });
 
 // https://konvajs.org/docs/sandbox/Stage_Preview.html
-function updatePreview() {
+// function updatePreview() {
 	// lineLayer.children.forEach(shape => {
 		// const clone = previewLayerLine.findOne('.' + shape.name());
 		// clone.position(shape.position());
 	// });
 	// previewLayerLine.batchDraw();
+// }
+function updatePreview() {
+	const scale = 1 / 10;
+	const url = stage.toDataURL({ pixelRatio: scale });
+	document.getElementById('preview').src = url;
 }
