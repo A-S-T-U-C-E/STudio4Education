@@ -1,19 +1,18 @@
 var toolbox_arrowheadframework = {
-   "kind": "categoryToolbox",
-   "contents": [{
-	  "kind": "category",
-	  "name": "%{BKY_CAT_ARROWHEADFRAMEWORK}",
-		"toolboxitemid": "AHF",
-		"levels": "1,2,3",
-		"level": "1",
-	  "categorystyle": "arrowheadframework_category",
-		"cssConfig": {
-		  "icon": "customIcon url(arrowheadframework.svg)"
-		},
-	  "contents": [{
-		 "kind": "block",
-		 "type": "ahf_custom_parameters"
-		 }
-	  ]
-   }]
+    "kind": "categoryToolbox",
+    "contents": [{
+        "kind": "category",
+        "name": "%{BKY_CAT_ARROWHEADFRAMEWORK}",
+        "toolboxitemid": "AHF",
+        "levels": "1,2,3",
+        "level": "1",
+        "categorystyle": "arrowheadframework_category",
+        "cssConfig": {
+            "icon": "customIcon url(arrowheadframework.svg)"
+        },
+        "contents": [{
+            "kind": "block",
+            "type": "ahf_custom_parameters"
+        }]
+    }]
 };

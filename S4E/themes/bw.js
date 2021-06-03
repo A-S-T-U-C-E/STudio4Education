@@ -1,7 +1,7 @@
 /**
  * @license
  * Copyright 2020 Sébastien CANET
- * SPDX-License-Identifier: BSD-3-Clause
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -97,6 +97,11 @@ Blockly.Themes.blackWhite.defaultBlockStyles = {
         "colourPrimary": "#000000",
         "colourSecondary": "#000000",
         "colourTertiary": "#000000"
+    },
+    "DHT_blocks": {
+        "colourPrimary": "#68CCF0",
+        "colourSecondary": "#68CCF0",
+        "colourTertiary": "#68CCF0"
     }
 };
 
@@ -145,12 +150,15 @@ Blockly.Themes.blackWhite.categoryStyles = {
     },
     "arrowheadframework_category": {
         "colour": "#000000"
+    },
+    "DHT_blocks": {
+        "colour": "#68CCF0"
     }
 };
 
 Blockly.Themes.blackWhite =
-        new Blockly.Theme('blackWhite', Blockly.Themes.blackWhite.defaultBlockStyles,
-                Blockly.Themes.blackWhite.categoryStyles);
+    new Blockly.Theme('blackWhite', Blockly.Themes.blackWhite.defaultBlockStyles,
+        Blockly.Themes.blackWhite.categoryStyles);
 
 Blockly.Themes.blackWhite.setComponentStyle('toolboxBackgroundColour', '#f9f9f9');
 Blockly.Themes.blackWhite.setComponentStyle('toolboxForegroundColour', '#000000');

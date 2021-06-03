@@ -1,0 +1,3 @@
+Blockly.Blocks.ahf_custom_parameters.getBlockType = function() {
+    return Blockly.Types.NUMBER;
+};

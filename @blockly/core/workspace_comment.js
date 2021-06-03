@@ -33,76 +33,76 @@ goog.require('Blockly.utils.xml');
  * @constructor
  */
 Blockly.WorkspaceComment = function(workspace, content, height, width, opt_id) {
-  /** @type {string} */
-  this.id = (opt_id && !workspace.getCommentById(opt_id)) ?
-      opt_id : Blockly.utils.genUid();
+    /** @type {string} */
+    this.id = (opt_id && !workspace.getCommentById(opt_id)) ?
+        opt_id : Blockly.utils.genUid();
 
-  workspace.addTopComment(this);
+    workspace.addTopComment(this);
 
-  /**
-   * The comment's position in workspace units.  (0, 0) is at the workspace's
-   * origin; scale does not change this value.
-   * @type {!Blockly.utils.Coordinate}
-   * @protected
-   */
-  this.xy_ = new Blockly.utils.Coordinate(0, 0);
+    /**
+     * The comment's position in workspace units.  (0, 0) is at the workspace's
+     * origin; scale does not change this value.
+     * @type {!Blockly.utils.Coordinate}
+     * @protected
+     */
+    this.xy_ = new Blockly.utils.Coordinate(0, 0);
 
-  /**
-   * The comment's height in workspace units.  Scale does not change this value.
-   * @type {number}
-   * @private
-   */
-  this.height_ = height;
+    /**
+     * The comment's height in workspace units.  Scale does not change this value.
+     * @type {number}
+     * @private
+     */
+    this.height_ = height;
 
-  /**
-   * The comment's width in workspace units.  Scale does not change this value.
-   * @type {number}
-   * @private
-   */
-  this.width_ = width;
+    /**
+     * The comment's width in workspace units.  Scale does not change this value.
+     * @type {number}
+     * @private
+     */
+    this.width_ = width;
 
-  /**
-   * @type {!Blockly.Workspace}
-   */
-  this.workspace = workspace;
+    /**
+     * @type {!Blockly.Workspace}
+     */
+    this.workspace = workspace;
 
-  /**
-   * @protected
-   * @type {boolean}
-   */
-  this.RTL = workspace.RTL;
+    /**
+     * @protected
+     * @type {boolean}
+     */
+    this.RTL = workspace.RTL;
 
-  /**
-   * @type {boolean}
-   * @private
-   */
-  this.deletable_ = true;
+    /**
+     * @type {boolean}
+     * @private
+     */
+    this.deletable_ = true;
 
-  /**
-   * @type {boolean}
-   * @private
-   */
-  this.movable_ = true;
+    /**
+     * @type {boolean}
+     * @private
+     */
+    this.movable_ = true;
 
-  /**
-   * @type {boolean}
-   * @private
-   */
-  this.editable_ = true;
+    /**
+     * @type {boolean}
+     * @private
+     */
+    this.editable_ = true;
 
-  /**
-   * @protected
-   * @type {string}
-   */
-  this.content_ = content;
+    /**
+     * @protected
+     * @type {string}
+     */
+    this.content_ = content;
 
-  /**
-   * @package
-   * @type {boolean}
-   */
-  this.isComment = true;
+    /**
+     * @package
+     * @type {boolean}
+     */
+    this.isComment = true;
 
-  Blockly.WorkspaceComment.fireCreateEvent(this);
+    Blockly.WorkspaceComment.fireCreateEvent(this);
 };
 
 /**
@@ -110,18 +110,18 @@ Blockly.WorkspaceComment = function(workspace, content, height, width, opt_id) {
  * @package
  */
 Blockly.WorkspaceComment.prototype.dispose = function() {
-  if (!this.workspace) {
-    // The comment has already been deleted.
-    return;
-  }
+    if (!this.workspace) {
+        // The comment has already been deleted.
+        return;
+    }
 
-  if (Blockly.Events.isEnabled()) {
-    Blockly.Events.fire(new Blockly.Events.CommentDelete(this));
-  }
+    if (Blockly.Events.isEnabled()) {
+        Blockly.Events.fire(new Blockly.Events.CommentDelete(this));
+    }
 
-  // Remove from the list of top comments and the comment database.
-  this.workspace.removeTopComment(this);
-  this.workspace = null;
+    // Remove from the list of top comments and the comment database.
+    this.workspace.removeTopComment(this);
+    this.workspace = null;
 };
 
 // Height, width, x, and y are all stored on even non-rendered comments, to
@@ -133,7 +133,7 @@ Blockly.WorkspaceComment.prototype.dispose = function() {
  * @package
  */
 Blockly.WorkspaceComment.prototype.getHeight = function() {
-  return this.height_;
+    return this.height_;
 };
 
 /**
@@ -142,7 +142,7 @@ Blockly.WorkspaceComment.prototype.getHeight = function() {
  * @package
  */
 Blockly.WorkspaceComment.prototype.setHeight = function(height) {
-  this.height_ = height;
+    this.height_ = height;
 };
 
 /**
@@ -151,7 +151,7 @@ Blockly.WorkspaceComment.prototype.setHeight = function(height) {
  * @package
  */
 Blockly.WorkspaceComment.prototype.getWidth = function() {
-  return this.width_;
+    return this.width_;
 };
 
 /**
@@ -160,7 +160,7 @@ Blockly.WorkspaceComment.prototype.getWidth = function() {
  * @package
  */
 Blockly.WorkspaceComment.prototype.setWidth = function(width) {
-  this.width_ = width;
+    this.width_ = width;
 };
 
 /**
@@ -170,7 +170,7 @@ Blockly.WorkspaceComment.prototype.setWidth = function(width) {
  * @package
  */
 Blockly.WorkspaceComment.prototype.getXY = function() {
-  return new Blockly.utils.Coordinate(this.xy_.x, this.xy_.y);
+    return new Blockly.utils.Coordinate(this.xy_.x, this.xy_.y);
 };
 
 /**
@@ -180,10 +180,10 @@ Blockly.WorkspaceComment.prototype.getXY = function() {
  * @package
  */
 Blockly.WorkspaceComment.prototype.moveBy = function(dx, dy) {
-  var event = new Blockly.Events.CommentMove(this);
-  this.xy_.translate(dx, dy);
-  event.recordNew();
-  Blockly.Events.fire(event);
+    var event = new Blockly.Events.CommentMove(this);
+    this.xy_.translate(dx, dy);
+    event.recordNew();
+    Blockly.Events.fire(event);
 };
 
 /**
@@ -192,8 +192,8 @@ Blockly.WorkspaceComment.prototype.moveBy = function(dx, dy) {
  * @package
  */
 Blockly.WorkspaceComment.prototype.isDeletable = function() {
-  return this.deletable_ &&
-      !(this.workspace && this.workspace.options.readOnly);
+    return this.deletable_ &&
+        !(this.workspace && this.workspace.options.readOnly);
 };
 
 /**
@@ -202,7 +202,7 @@ Blockly.WorkspaceComment.prototype.isDeletable = function() {
  * @package
  */
 Blockly.WorkspaceComment.prototype.setDeletable = function(deletable) {
-  this.deletable_ = deletable;
+    this.deletable_ = deletable;
 };
 
 /**
@@ -211,8 +211,8 @@ Blockly.WorkspaceComment.prototype.setDeletable = function(deletable) {
  * @package
  */
 Blockly.WorkspaceComment.prototype.isMovable = function() {
-  return this.movable_ &&
-      !(this.workspace && this.workspace.options.readOnly);
+    return this.movable_ &&
+        !(this.workspace && this.workspace.options.readOnly);
 };
 
 /**
@@ -221,7 +221,7 @@ Blockly.WorkspaceComment.prototype.isMovable = function() {
  * @package
  */
 Blockly.WorkspaceComment.prototype.setMovable = function(movable) {
-  this.movable_ = movable;
+    this.movable_ = movable;
 };
 
 /**
@@ -229,8 +229,8 @@ Blockly.WorkspaceComment.prototype.setMovable = function(movable) {
  * @return {boolean} True if editable.
  */
 Blockly.WorkspaceComment.prototype.isEditable = function() {
-  return this.editable_ &&
-      !(this.workspace && this.workspace.options.readOnly);
+    return this.editable_ &&
+        !(this.workspace && this.workspace.options.readOnly);
 };
 
 /**
@@ -238,7 +238,7 @@ Blockly.WorkspaceComment.prototype.isEditable = function() {
  * @param {boolean} editable True if editable.
  */
 Blockly.WorkspaceComment.prototype.setEditable = function(editable) {
-  this.editable_ = editable;
+    this.editable_ = editable;
 };
 
 /**
@@ -247,7 +247,7 @@ Blockly.WorkspaceComment.prototype.setEditable = function(editable) {
  * @package
  */
 Blockly.WorkspaceComment.prototype.getContent = function() {
-  return this.content_;
+    return this.content_;
 };
 
 /**
@@ -256,11 +256,11 @@ Blockly.WorkspaceComment.prototype.getContent = function() {
  * @package
  */
 Blockly.WorkspaceComment.prototype.setContent = function(content) {
-  if (this.content_ != content) {
-    Blockly.Events.fire(
-        new Blockly.Events.CommentChange(this, this.content_, content));
-    this.content_ = content;
-  }
+    if (this.content_ != content) {
+        Blockly.Events.fire(
+            new Blockly.Events.CommentChange(this, this.content_, content));
+        this.content_ = content;
+    }
 };
 
 /**
@@ -270,12 +270,12 @@ Blockly.WorkspaceComment.prototype.setContent = function(content) {
  * @package
  */
 Blockly.WorkspaceComment.prototype.toXmlWithXY = function(opt_noId) {
-  var element = this.toXml(opt_noId);
-  element.setAttribute('x', Math.round(this.xy_.x));
-  element.setAttribute('y', Math.round(this.xy_.y));
-  element.setAttribute('h', this.height_);
-  element.setAttribute('w', this.width_);
-  return element;
+    var element = this.toXml(opt_noId);
+    element.setAttribute('x', Math.round(this.xy_.x));
+    element.setAttribute('y', Math.round(this.xy_.y));
+    element.setAttribute('h', this.height_);
+    element.setAttribute('w', this.width_);
+    return element;
 };
 
 /**
@@ -287,12 +287,12 @@ Blockly.WorkspaceComment.prototype.toXmlWithXY = function(opt_noId) {
  * @package
  */
 Blockly.WorkspaceComment.prototype.toXml = function(opt_noId) {
-  var commentElement = Blockly.utils.xml.createElement('comment');
-  if (!opt_noId) {
-    commentElement.id = this.id;
-  }
-  commentElement.textContent = this.getContent();
-  return commentElement;
+    var commentElement = Blockly.utils.xml.createElement('comment');
+    if (!opt_noId) {
+        commentElement.id = this.id;
+    }
+    commentElement.textContent = this.getContent();
+    return commentElement;
 };
 
 /**
@@ -301,19 +301,19 @@ Blockly.WorkspaceComment.prototype.toXml = function(opt_noId) {
  * @package
  */
 Blockly.WorkspaceComment.fireCreateEvent = function(comment) {
-  if (Blockly.Events.isEnabled()) {
-    var existingGroup = Blockly.Events.getGroup();
-    if (!existingGroup) {
-      Blockly.Events.setGroup(true);
+    if (Blockly.Events.isEnabled()) {
+        var existingGroup = Blockly.Events.getGroup();
+        if (!existingGroup) {
+            Blockly.Events.setGroup(true);
+        }
+        try {
+            Blockly.Events.fire(new Blockly.Events.CommentCreate(comment));
+        } finally {
+            if (!existingGroup) {
+                Blockly.Events.setGroup(false);
+            }
+        }
     }
-    try {
-      Blockly.Events.fire(new Blockly.Events.CommentCreate(comment));
-    } finally {
-      if (!existingGroup) {
-        Blockly.Events.setGroup(false);
-      }
-    }
-  }
 };
 
 /**
@@ -324,19 +324,19 @@ Blockly.WorkspaceComment.fireCreateEvent = function(comment) {
  * @package
  */
 Blockly.WorkspaceComment.fromXml = function(xmlComment, workspace) {
-  var info = Blockly.WorkspaceComment.parseAttributes(xmlComment);
+    var info = Blockly.WorkspaceComment.parseAttributes(xmlComment);
 
-  var comment = new Blockly.WorkspaceComment(
-      workspace, info.content, info.h, info.w, info.id);
+    var comment = new Blockly.WorkspaceComment(
+        workspace, info.content, info.h, info.w, info.id);
 
-  var commentX = parseInt(xmlComment.getAttribute('x'), 10);
-  var commentY = parseInt(xmlComment.getAttribute('y'), 10);
-  if (!isNaN(commentX) && !isNaN(commentY)) {
-    comment.moveBy(commentX, commentY);
-  }
+    var commentX = parseInt(xmlComment.getAttribute('x'), 10);
+    var commentY = parseInt(xmlComment.getAttribute('y'), 10);
+    if (!isNaN(commentX) && !isNaN(commentY)) {
+        comment.moveBy(commentX, commentY);
+    }
 
-  Blockly.WorkspaceComment.fireCreateEvent(comment);
-  return comment;
+    Blockly.WorkspaceComment.fireCreateEvent(comment);
+    return comment;
 };
 
 /**
@@ -347,27 +347,27 @@ Blockly.WorkspaceComment.fromXml = function(xmlComment, workspace) {
  * @package
  */
 Blockly.WorkspaceComment.parseAttributes = function(xml) {
-  var xmlH = xml.getAttribute('h');
-  var xmlW = xml.getAttribute('w');
+    var xmlH = xml.getAttribute('h');
+    var xmlW = xml.getAttribute('w');
 
-  return {
-    // @type {string}
-    id: xml.getAttribute('id'),
-    // The height of the comment in workspace units, or 100 if not specified.
-    // @type {number}
-    h: xmlH ? parseInt(xmlH, 10) : 100,
-    // The width of the comment in workspace units, or 100 if not specified.
-    // @type {number}
-    w: xmlW ? parseInt(xmlW, 10) : 100,
-    // The x position of the comment in workspace coordinates, or NaN if not
-    // specified in the XML.
-    // @type {number}
-    x: parseInt(xml.getAttribute('x'), 10),
-    // The y position of the comment in workspace coordinates, or NaN if not
-    // specified in the XML.
-    // @type {number}
-    y: parseInt(xml.getAttribute('y'), 10),
-    // @type {string}
-    content: xml.textContent
-  };
+    return {
+        // @type {string}
+        id: xml.getAttribute('id'),
+        // The height of the comment in workspace units, or 100 if not specified.
+        // @type {number}
+        h: xmlH ? parseInt(xmlH, 10) : 100,
+        // The width of the comment in workspace units, or 100 if not specified.
+        // @type {number}
+        w: xmlW ? parseInt(xmlW, 10) : 100,
+        // The x position of the comment in workspace coordinates, or NaN if not
+        // specified in the XML.
+        // @type {number}
+        x: parseInt(xml.getAttribute('x'), 10),
+        // The y position of the comment in workspace coordinates, or NaN if not
+        // specified in the XML.
+        // @type {number}
+        y: parseInt(xml.getAttribute('y'), 10),
+        // @type {string}
+        content: xml.textContent
+    };
 };

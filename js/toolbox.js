@@ -10,8 +10,8 @@
  */
 
 var jsonToolbox = {
-	"kind": "categoryToolbox",
-	"contents": []
+    "kind": "categoryToolbox",
+    "contents": []
 };
 jsonToolbox["contents"][0] = toolbox_standard["contents"][0];
 jsonToolbox["contents"][1] = toolbox_standard["contents"][1];
@@ -27,54 +27,54 @@ jsonToolbox["contents"][10] = toolbox_ST["contents"][0];
 jsonToolbox["contents"][11] = toolbox_servo["contents"][0];
 jsonToolbox["contents"][12] = toolbox_X_NUCLEO_IKS01A3["contents"][0];
 jsonToolbox["contents"][13] = toolbox_arrowheadframework["contents"][0];
+jsonToolbox["contents"][14] = toolbox_DHT["contents"][0];
 
 /**
  * Build the toolbox using toolbox definition in json files
  */
 Code.buildToolbox = function() {
-	// set the toolbox from url 
-	var toolboxIds = Code.getStringParamFromUrl('toolboxids', '');
-	var boardSelected = Code.getStringParamFromUrl('board', '');
-	// set the default toolbox if none
-	if (toolboxIds === undefined || toolboxIds === "") {
-		if (boardSelected) {
-			toolboxIds = 'LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES,FUNCTIONS,BOARD';
-			window.localStorage.defaultToolbox = 1;
-		}
-		else {
-			toolboxIds = 'LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES,FUNCTIONS';
-			window.localStorage.defaultToolbox = 0;
-		}
-	} else {
-		toolboxIds += ',LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES,FUNCTIONS,BOARD';
-			window.localStorage.defaultToolbox = 2;
-	}
-	//save config in local browser storage for rendering in menu categories list
-	window.localStorage.toolboxids = toolboxIds;
-	// needed to delacre an empty var first, instead it keeps contents
-	var jsonToolboxToKeep = {};
-	jsonToolboxToKeep = {
-		"kind": "categoryToolbox",
-		"contents": []
-	};
-	var k = 0;
-	toolboxIds = toolboxIds.split(",");
-	for (let i = 0; i < jsonToolbox.contents.length; i++ ) {
-		if (window.localStorage.defaultToolbox != 0) {
-			for (var j = 0; j < toolboxIds.length; j++) {
-				if (jsonToolbox.contents[i].toolboxitemid == toolboxIds[j]) {
-					jsonToolboxToKeep.contents[k] = jsonToolbox.contents[i];
-					k++;
-				}
-			}
-		}
-		// if launched by default, with no argument in URL, add all entries from XML in categories list
-		else if (jsonToolbox.contents[i].level == "1") {
-				jsonToolboxToKeep.contents[k] = jsonToolbox.contents[i];
-				k++;
-		}
-	}
-	return jsonToolboxToKeep;
+    // set the toolbox from url 
+    var toolboxIds = Code.getStringParamFromUrl('toolboxids', '');
+    var boardSelected = Code.getStringParamFromUrl('board', '');
+    // set the default toolbox if none
+    if (toolboxIds === undefined || toolboxIds === "") {
+        if (boardSelected) {
+            toolboxIds = 'LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES,FUNCTIONS,BOARD';
+            window.localStorage.defaultToolbox = 1;
+        } else {
+            toolboxIds = 'LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES,FUNCTIONS';
+            window.localStorage.defaultToolbox = 0;
+        }
+    } else {
+        toolboxIds += ',LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES,FUNCTIONS,BOARD';
+        window.localStorage.defaultToolbox = 2;
+    }
+    //save config in local browser storage for rendering in menu categories list
+    window.localStorage.toolboxids = toolboxIds;
+    // needed to delacre an empty var first, instead it keeps contents
+    var jsonToolboxToKeep = {};
+    jsonToolboxToKeep = {
+        "kind": "categoryToolbox",
+        "contents": []
+    };
+    var k = 0;
+    toolboxIds = toolboxIds.split(",");
+    for (let i = 0; i < jsonToolbox.contents.length; i++) {
+        if (window.localStorage.defaultToolbox != 0) {
+            for (var j = 0; j < toolboxIds.length; j++) {
+                if (jsonToolbox.contents[i].toolboxitemid == toolboxIds[j]) {
+                    jsonToolboxToKeep.contents[k] = jsonToolbox.contents[i];
+                    k++;
+                }
+            }
+        }
+        // if launched by default, with no argument in URL, add all entries from XML in categories list
+        else if (jsonToolbox.contents[i].level == "1") {
+            jsonToolboxToKeep.contents[k] = jsonToolbox.contents[i];
+            k++;
+        }
+    }
+    return jsonToolboxToKeep;
 }
 
 /** add categories from list in jsonToolbox
@@ -82,28 +82,28 @@ Code.buildToolbox = function() {
  * and boardDescriptionSelector in boards modal
  */
 Code.buildControlPanelForToolbox = function() {
-	// clear modal
+    // clear modal
     $('#categories_content')[0].innerHTML = "<br>";
-	var ligne = "", id_liste = "";
-	for (let i = 0; i < jsonToolbox.contents.length; i++ ) {
-		if (jsonToolbox.contents[i].level == "1") {
-			var rankInDisplayedToolbox = Blockly.getMainWorkspace().getToolbox().getToolboxItems().findIndex(x => x['id_'] == jsonToolbox.contents[i].toolboxitemid);
-			if (rankInDisplayedToolbox >= 0) {
-				ligne = '<input type="checkbox" checked="checked" onchange="toggleCategory(' + rankInDisplayedToolbox + ')" name="checkbox_' + rankInDisplayedToolbox + '" id="checkbox_' + rankInDisplayedToolbox + '"/> '
-						+ '<span id="checkboxSpan_' + rankInDisplayedToolbox + '">' + Blockly.getMainWorkspace().getToolbox().getToolboxItems()[rankInDisplayedToolbox]['name_'] + '</span><br/>';
-				id_liste += jsonToolbox.contents[i].toolboxitemid + ',';
-				$('#categories_content')[0].innerHTML += ligne;
-			}
-			else if (window.localStorage.defaultToolbox == 0) {
-				ligne = '<input type="checkbox" onchange="toggleCategory(' + rankInDisplayedToolbox + ')" name="checkbox_' + rankInDisplayedToolbox + '" id="checkbox_' + rankInDisplayedToolbox + '"/> '
-						+ '<span id="checkboxSpan_' + rankInDisplayedToolbox + '">' + Blockly.getMainWorkspace().getToolbox().getToolboxItems()[rankInDisplayedToolbox]['name_'] + '<br/>';
-				$('#categories_content')[0].innerHTML += ligne;
-			}
-		}
-	}
-	// default is hiding everything else than basis categories
-	if (window.localStorage.defaultToolbox == 0)
-		for (var j = 11; j < i; j++) 
-			if (document.getElementById('checkbox_' + j) != null) document.getElementById('checkbox_' + j).click();
-	window.localStorage.toolboxids = id_liste.slice(0, -1);
+    var ligne = "",
+        id_liste = "";
+    for (let i = 0; i < jsonToolbox.contents.length; i++) {
+        if (jsonToolbox.contents[i].level == "1") {
+            var rankInDisplayedToolbox = Blockly.getMainWorkspace().getToolbox().getToolboxItems().findIndex(x => x['id_'] == jsonToolbox.contents[i].toolboxitemid);
+            if (rankInDisplayedToolbox >= 0) {
+                ligne = '<input type="checkbox" checked="checked" onchange="toggleCategory(' + rankInDisplayedToolbox + ')" name="checkbox_' + rankInDisplayedToolbox + '" id="checkbox_' + rankInDisplayedToolbox + '"/> ' +
+                    '<span id="checkboxSpan_' + rankInDisplayedToolbox + '">' + Blockly.getMainWorkspace().getToolbox().getToolboxItems()[rankInDisplayedToolbox]['name_'] + '</span><br/>';
+                id_liste += jsonToolbox.contents[i].toolboxitemid + ',';
+                $('#categories_content')[0].innerHTML += ligne;
+            } else if (window.localStorage.defaultToolbox == 0) {
+                ligne = '<input type="checkbox" onchange="toggleCategory(' + rankInDisplayedToolbox + ')" name="checkbox_' + rankInDisplayedToolbox + '" id="checkbox_' + rankInDisplayedToolbox + '"/> ' +
+                    '<span id="checkboxSpan_' + rankInDisplayedToolbox + '">' + Blockly.getMainWorkspace().getToolbox().getToolboxItems()[rankInDisplayedToolbox]['name_'] + '<br/>';
+                $('#categories_content')[0].innerHTML += ligne;
+            }
+        }
+    }
+    // default is hiding everything else than basis categories
+    if (window.localStorage.defaultToolbox == 0)
+        for (var j = 11; j < i; j++)
+            if (document.getElementById('checkbox_' + j) != null) document.getElementById('checkbox_' + j).click();
+    window.localStorage.toolboxids = id_liste.slice(0, -1);
 }

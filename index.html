@@ -1,377 +1,379 @@
 <!DOCTYPE HTML>
 <HTML>
-    <head>
-        <meta charset="utf-8">
-        <meta name="google" value="notranslate">
-        <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-        <title>S4E</title>
-        <link rel="icon" type="image/png" href="./S4E/media/logo_only.png" />
-        <link rel="stylesheet" href="./css/font_awesome_all.min.css" />
-        <link rel="stylesheet" href="./css/keyboard_nav.css" />
-        <link rel="stylesheet" href="./css/lateral-panel.css" />
-        <link rel="stylesheet" href="./css/UI.css" />
-        <link rel="stylesheet" href="./S4E/css/S4E.css" />
-        <link rel="stylesheet" href="./S4E/css/override_css.css" />
-    </head>
-    <body>
-        <div class="table_wrapper">
-            <table id="globalTable">
-                <tr id="optionsTop">
-                    <td id="optionsTopTitle">
-                        <img src="./S4E/media/STMicroelectronics.png" style="width: 40px; vertical-align: middle;" />
-                        <span class="TitleText" id="appName"></span>
-                    </td>
-                    <td id="optionsTopButtons" align="center">
-                        <button id="btn_fake_min" type="button" class="iconButtons">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="google" value="notranslate">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>S4E</title>
+    <link rel="icon" type="image/png" href="./S4E/media/logo_only.png" />
+    <link rel="stylesheet" href="./css/font_awesome_all.min.css" />
+    <link rel="stylesheet" href="./css/keyboard_nav.css" />
+    <link rel="stylesheet" href="./css/lateral-panel.css" />
+    <link rel="stylesheet" href="./css/UI.css" />
+    <link rel="stylesheet" href="./S4E/css/S4E.css" />
+    <link rel="stylesheet" href="./S4E/css/override_css.css" />
+</head>
+
+<body>
+    <div class="table_wrapper">
+        <table id="globalTable">
+            <tr id="optionsTop">
+                <td id="optionsTopTitle">
+                    <img src="./S4E/media/STMicroelectronics.png" style="width: 40px; vertical-align: middle;" />
+                    <span class="TitleText" id="appName"></span>
+                </td>
+                <td id="optionsTopButtons" align="center">
+                    <button id="btn_fake_min" type="button" class="iconButtons">
                             <i class="far fa-window-minimize"></i>
                         </button>
-                        <button id="btn_fake_max" type="button" class="iconButtons">
+                    <button id="btn_fake_max" type="button" class="iconButtons">
                             <i class="far fa-window-maximize"></i>
                         </button>
-                        <button id="btn_fake_restore" type="button" class="iconButtons">
+                    <button id="btn_fake_restore" type="button" class="iconButtons">
                             <i class="far fa-window-restore"></i>
                         </button>
-                        <button id="btn_fake_close" type="button" class="iconButtons">
+                    <button id="btn_fake_close" type="button" class="iconButtons">
                             <i class="far fa-window-close"></i>
                         </button>
-                    </td>
-                </tr>
-                <tr id="interSpace">
-                    <td colspan="2"></td>
-                </tr>
-                <tr id="functionsIcons">
-                    <td colspan="2">
-                        <button id="menuButton" class="iconButtons" onclick="document.getElementById('menuPopup').style.display = 'block';document.getElementById('menuButton').classList.toggle('active');">
+                </td>
+            </tr>
+            <tr id="interSpace">
+                <td colspan="2"></td>
+            </tr>
+            <tr id="functionsIcons">
+                <td colspan="2">
+                    <button id="menuButton" class="iconButtons" onclick="document.getElementById('menuPopup').style.display = 'block';document.getElementById('menuButton').classList.toggle('active');">
                             <span id="menuButtonButton_span">
                                 <i class="fas fa-ellipsis-v"></i>
                             </span>
                         </button>
-                        <div id="menuPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('menuPopup').style.display = 'none';document.getElementById('menuButton').classList.toggle('active');">
-                            <div id="buttonsMenuPopup" class="menu_div">
-                                <div id="buttonsMenuPopupInside">
-                                    <button id="newButton" class="iconButtons" onclick="Code.newProject()">
+                    <div id="menuPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('menuPopup').style.display = 'none';document.getElementById('menuButton').classList.toggle('active');">
+                        <div id="buttonsMenuPopup" class="menu_div">
+                            <div id="buttonsMenuPopupInside">
+                                <button id="newButton" class="iconButtons" onclick="Code.newProject()">
                                         <span id="newButton_span"></span>
                                     </button>
-                                    <span id="newButton_span_menu" class="menu_text"></span>
-                                    <br>
-                                    <button id="loadXMLfakeButton" class="iconButtons" onclick="Code.loadXmlBlocklyFile()">
+                                <span id="newButton_span_menu" class="menu_text"></span>
+                                <br>
+                                <button id="loadXMLfakeButton" class="iconButtons" onclick="Code.loadXmlBlocklyFile()">
                                         <span id="loadXMLfakeButton_span"></span>
                                     </button>
-                                    <span id="loadXMLfakeButton_span_menu" class="menu_text"></span>
-                                    <br>
-                                    <button id="saveXMLButton" class="iconButtons" onclick="Code.saveXmlBlocklyFile()">
+                                <span id="loadXMLfakeButton_span_menu" class="menu_text"></span>
+                                <br>
+                                <button id="saveXMLButton" class="iconButtons" onclick="Code.saveXmlBlocklyFile()">
                                         <span id="saveXMLButton_span"></span>
                                     </button>
-                                    <span id="saveXMLButton_span_menu" class="menu_text"></span>
-                                    <br>
-                                    <button id="saveCodeButton" class="iconButtons" onclick="Code.saveCodeFile()">
+                                <span id="saveXMLButton_span_menu" class="menu_text"></span>
+                                <br>
+                                <button id="saveCodeButton" class="iconButtons" onclick="Code.saveCodeFile()">
                                         <span id="saveCodeButton_span"></span>
                                     </button>
-                                    <span id="saveCodeButton_span_menu" class="menu_text"></span>
-                                    <br>
-                                    <hr>
-                                    <button id="parametersButton" class="iconButtons" onclick="document.getElementById('lateral-panel-setup-input').click();">
+                                <span id="saveCodeButton_span_menu" class="menu_text"></span>
+                                <br>
+                                <hr>
+                                <button id="parametersButton" class="iconButtons" onclick="document.getElementById('lateral-panel-setup-input').click();">
                                         <span id="parametersButton_span">
                                             <i class="fas fa-cog"></i>
                                         </span>
                                     </button>
-                                    <span id="parametersButton_span_menu" class="menu_text"></span>
-                                    <br>
-                                    <hr>
-                                    <button id="resetButton" class="iconButtons" onclick="Code.ResetWorkspace()">
+                                <span id="parametersButton_span_menu" class="menu_text"></span>
+                                <br>
+                                <hr>
+                                <button id="resetButton" class="iconButtons" onclick="Code.ResetWorkspace()">
                                         <span id="resetButton_span">
                                             <i class="fas fa-power-off"></i>
                                         </span>
                                     </button>
-                                    <span id="resetButton_span_menu" class="menu_text"></span>
-                                    <!-- <br> -->
-                                    <!-- <hr> -->
-                                    <!-- <button id="helpButton" class="iconButtons" onclick="toggleDisplayHelpModal()"> -->
-                                        <!-- <span id="helpButton_span"> -->
-                                            <!-- <i class="fas fa-question"></i> -->
-                                        <!-- </span> -->
-                                    <!-- </button> -->
-                                    <!-- <span id="helpButton_span_menu" class="menu_text"></span> -->
-                                </div>
+                                <span id="resetButton_span_menu" class="menu_text"></span>
+                                <!-- <br> -->
+                                <!-- <hr> -->
+                                <!-- <button id="helpButton" class="iconButtons" onclick="toggleDisplayHelpModal()"> -->
+                                <!-- <span id="helpButton_span"> -->
+                                <!-- <i class="fas fa-question"></i> -->
+                                <!-- </span> -->
+                                <!-- </button> -->
+                                <!-- <span id="helpButton_span_menu" class="menu_text"></span> -->
                             </div>
                         </div>
-                        <button id="fullScreenButton" class="iconButtons" onclick="fullScreen()">
+                    </div>
+                    <button id="fullScreenButton" class="iconButtons" onclick="fullScreen()">
                             <span id="fullScreenButton_span">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </span>
                         </button>
-                        <button id="undoButton" class="iconButtons" onclick="Code.Undo()">
+                    <button id="undoButton" class="iconButtons" onclick="Code.Undo()">
                             <span id="undoButton_span">
                                 <i class="fas fa-undo-alt"></i>
                             </span>
                         </button>
-                        <button id="redoButton" class="iconButtons" onclick="Code.Redo()">                           
+                    <button id="redoButton" class="iconButtons" onclick="Code.Redo()">                           
                             <span id="redoButton_span">
                                 <i class="fas fa-redo-alt"></i>
                             </span>
                         </button>
-                        <button id="toolsButton" class="iconButtons" onclick="document.getElementById('toolsPopup').style.display = 'block';document.getElementById('toolsButton').classList.toggle('active');">
+                    <button id="toolsButton" class="iconButtons" onclick="document.getElementById('toolsPopup').style.display = 'block';document.getElementById('toolsButton').classList.toggle('active');">
                             <span id="toolsButton_span">
                                 <i class="fas fa-toolbox"></i>
                             </span>
                         </button>
-                        <div id="toolsPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('toolsPopup').style.display = 'none';document.getElementById('toolsButton').classList.toggle('active');">
-                            <div id="buttonsToolsPopup" class="menu_div">
-                                <div id="buttonsToolsPopupInside">
-                                    <button id="wiringButton" class="iconButtons">
+                    <div id="toolsPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('toolsPopup').style.display = 'none';document.getElementById('toolsButton').classList.toggle('active');">
+                        <div id="buttonsToolsPopup" class="menu_div">
+                            <div id="buttonsToolsPopupInside">
+                                <button id="wiringButton" class="iconButtons">
                                         <span id="wiringButton_span">
                                             <i class="fas fa-code-branch"></i>
                                         </span>
                                     </button>
-                                    <span id="wiringButton_span_menu" class="menu_text"></span>
-                                    <br>
-                                    <hr>
-                                    <button id="factoryButton" class="iconButtons">
+                                <span id="wiringButton_span_menu" class="menu_text"></span>
+                                <br>
+                                <hr>
+                                <button id="factoryButton" class="iconButtons">
                                         <span id="factoryButton_span">
                                             <i class="fas fa-industry"></i>
                                         </span>
                                     </button>
-                                    <span id="factoryButton_span_menu" class="menu_text"></span>
-                                    <br>
-                                    <hr>
-                                    <button id="htmlButton" class="iconButtons">
+                                <span id="factoryButton_span_menu" class="menu_text"></span>
+                                <br>
+                                <hr>
+                                <button id="htmlButton" class="iconButtons">
                                         <span id="htmlButton_span">
                                             <i class="fab fa-firefox-browser"></i>
                                         </span>
                                     </button>
-                                    <span id="htmlButton_span_menu" class="menu_text"></span>
-                                    <br>
-                                    <hr>
-                                    <button id="colorConversionButton" class="iconButtons" onclick="">
+                                <span id="htmlButton_span_menu" class="menu_text"></span>
+                                <br>
+                                <hr>
+                                <button id="colorConversionButton" class="iconButtons" onclick="">
                                         <span id="colorConversionButton_span">
                                             <i class="fas fa-swatchbook"></i>
                                         </span>
                                     </button>
-                                    <span id="colorConversionButton_span_menu" class="menu_text"></span>
-                                    <br>
-                                    <hr>
-                                    <button id="dataConversionButton" class="iconButtons" onclick="">
+                                <span id="colorConversionButton_span_menu" class="menu_text"></span>
+                                <br>
+                                <hr>
+                                <button id="dataConversionButton" class="iconButtons" onclick="">
                                         <span id="dataConversionButton_span">
                                             <i class="fas fa-exchange-alt"></i>
                                         </span>
                                     </button>
-                                    <span id="dataConversionButton_span_menu" class="menu_text"></span>
-                                </div>
+                                <span id="dataConversionButton_span_menu" class="menu_text"></span>
                             </div>
                         </div>
-                        <button id="iotConnectButton" class="iconButtons" onclick="document.getElementById('iotPopup').style.display = 'block';document.getElementById('iotConnectButton').classList.toggle('active');">
+                    </div>
+                    <button id="iotConnectButton" class="iconButtons" onclick="document.getElementById('iotPopup').style.display = 'block';document.getElementById('iotConnectButton').classList.toggle('active');">
                             <span id="iotConnectButton_span">
                                 <i class="fas fa-link"></i>
                             </span>
                         </button>
-                        <div id="iotPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('iotPopup').style.display = 'none';document.getElementById('iotConnectButton').classList.toggle('active');">
-                            <div id="buttonsIotPopup" class="menu_div">
-                                <div id="buttonsIotPopupInside">
-                                    <button id="launchRedServer" class="iconButtons CLI">
+                    <div id="iotPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('iotPopup').style.display = 'none';document.getElementById('iotConnectButton').classList.toggle('active');">
+                        <div id="buttonsIotPopup" class="menu_div">
+                            <div id="buttonsIotPopupInside">
+                                <button id="launchRedServer" class="iconButtons CLI">
                                         <span id="launchRedServer_span">
                                             <img src="../nodejs/media/node-red.png" style="width: 30px; height: 30px; vertical-align: middle;"/>
                                         </span>
                                     </button>
-                                    <span id="launchRedServer_span_menu" class="menu_text"></span>
-                                    <br>
-                                    <hr>
-                                    <button id="launchWebServer" class="iconButtons CLI">
+                                <span id="launchRedServer_span_menu" class="menu_text"></span>
+                                <br>
+                                <hr>
+                                <button id="launchWebServer" class="iconButtons CLI">
                                         <span id="launchWebServer_span">
                                             <i class="fas fa-network-wired"></i>
                                         </span>
                                     </button>
-                                    <span id="launchWebServer_span_menu" class="menu_text"></span>
-                                    <br>
-                                    <hr>
-                                    <button id="papyrusConnect" class="iconButtons CLI" onclick="papyrusConnect()">
+                                <span id="launchWebServer_span_menu" class="menu_text"></span>
+                                <br>
+                                <hr>
+                                <button id="papyrusConnect" class="iconButtons CLI" onclick="papyrusConnect()">
                                         <span id="papyrusConnect_span">
                                             <img src="./S4E/media/Eclipse_papyrus_logo.png" style="width: 30px; height: 30px; vertical-align: middle;"/>
                                         </span>
                                     </button>
-                                    <span id="papyrusConnect_span_menu" class="menu_text"></span>
-                                    <br>
-                                    <hr>
-                                    <button id="registerToOrchestrator_auto" class="iconButtons CLI">
+                                <span id="papyrusConnect_span_menu" class="menu_text"></span>
+                                <br>
+                                <hr>
+                                <button id="registerToOrchestrator_auto" class="iconButtons CLI">
                                         <span id="registerToOrchestrator_span">
                                             <img src="./S4E/media/arrowheadtools_invert.png" style="width: 30px; height: 30px; vertical-align: middle;"/>
                                         </span>
                                     </button>
-                                    <span id="registerToOrchestrator_span_menu" class="menu_text"></span>
-                                    <!-- <br> -->
-                                    <!-- <hr> -->
-                                    <!-- <button id="blynkConnect" class="iconButtons CLI"> -->
-                                        <!-- <span id="blynkConnect_span"> -->
-                                            <!-- <img src="./S4E/media/blynk.png" style="width: 30px; height: 30px; vertical-align: middle;"/> -->
-                                        <!-- </span> -->
-                                    <!-- </button> -->
-                                    <br>
-                                    <hr>
-                                    <button id="serialConnectIOT" class="iconButtons CLI">
+                                <span id="registerToOrchestrator_span_menu" class="menu_text"></span>
+                                <!-- <br> -->
+                                <!-- <hr> -->
+                                <!-- <button id="blynkConnect" class="iconButtons CLI"> -->
+                                <!-- <span id="blynkConnect_span"> -->
+                                <!-- <img src="./S4E/media/blynk.png" style="width: 30px; height: 30px; vertical-align: middle;"/> -->
+                                <!-- </span> -->
+                                <!-- </button> -->
+                                <br>
+                                <hr>
+                                <button id="serialConnectIOT" class="iconButtons CLI">
                                         <span id="serialConnectIOT_span">
                                             <i class="fas fa-cloud-upload-alt"></i>
                                         </span>
                                     </button>
-                                    <span id="serialConnectIOT_span_menu" class="menu_text"></span>
-                                </div>
+                                <span id="serialConnectIOT_span_menu" class="menu_text"></span>
                             </div>
                         </div>
-                        <button id="boardButton" class="iconButtons" onclick="Code.boardsListModalShow()">
+                    </div>
+                    <button id="boardButton" class="iconButtons" onclick="Code.boardsListModalShow()">
                             <span id="boardButton_span">
                                 <i class="fas fa-microchip"></i>
                             </span>
                         </button>
-                        <button id="verifyButton" class="iconButtons">
+                    <button id="verifyButton" class="iconButtons">
                             <span id="verifyButton_span">
                                 <i class="fas fa-check"></i>
                             </span>
                         </button>
-                        <button id="serialButton" class="iconButtons" onclick="Code.portsListModalShow()">
+                    <button id="serialButton" class="iconButtons" onclick="Code.portsListModalShow()">
                             <span id="serialButton_span">
                                 <i class="fab fa-usb"></i>
                             </span>
                         </button>
-                        <button id="uploadButton" class="iconButtons">
+                    <button id="uploadButton" class="iconButtons">
                             <span id="uploadButton_span">
                                 <i class="fas fa-sign-out-alt"></i>
                             </span>
                         </button>
-                        <button id="serialConnectButton" class="iconButtons" onclick="document.getElementById('serialPopup').style.display = 'block';document.getElementById('serialConnectButton').classList.toggle('active');">
+                    <button id="serialConnectButton" class="iconButtons" onclick="document.getElementById('serialPopup').style.display = 'block';document.getElementById('serialConnectButton').classList.toggle('active');">
                             <span id="serialConnectButton_span">
                                 <i class="fas fa-glasses"></i>
                             </span>
                         </button>
-                        <div id="serialPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('serialPopup').style.display = 'none';document.getElementById('serialConnectButton').classList.toggle('active');">
-                            <div id="buttonsSerialPopup" class="menu_div">
-                                <div id="buttonsSerialPopupInside">
-                                    <button id="serialMonitorButton" class="iconButtons CLI">
+                    <div id="serialPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('serialPopup').style.display = 'none';document.getElementById('serialConnectButton').classList.toggle('active');">
+                        <div id="buttonsSerialPopup" class="menu_div">
+                            <div id="buttonsSerialPopupInside">
+                                <button id="serialMonitorButton" class="iconButtons CLI">
                                         <span id="serialMonitorButton_span">
                                             <i class="fas fa-search"></i>
                                         </span>
                                     </button>
-                                    <span id="serialMonitorButton_span_menu" class="menu_text"></span>
-                                    <br>
-                                    <hr>
-                                    <button id="nodeRedFlowButton" class="iconButtons CLI" onclick="Code.flowsListModalShow()">
+                                <span id="serialMonitorButton_span_menu" class="menu_text"></span>
+                                <br>
+                                <hr>
+                                <button id="nodeRedFlowButton" class="iconButtons CLI" onclick="Code.flowsListModalShow()">
                                         <span id="nodeRedFlowButton_span">
                                             <i class="fas fa-tachometer-alt"></i>
                                         </span>
                                     </button>
-                                    <span id="nodeRedFlowButton_span_menu" class="menu_text"></span>
-                                    <br>
-                                    <hr>
-                                    <button id="supervisionButton" class="iconButtons CLI">
+                                <span id="nodeRedFlowButton_span_menu" class="menu_text"></span>
+                                <br>
+                                <hr>
+                                <button id="supervisionButton" class="iconButtons CLI">
                                         <span id="supervisionButton_span">
                                             <i class="fas fa-exchange-alt"></i>
                                         </span>
                                     </button>
-                                    <span id="supervisionButton_span_menu" class="menu_text"></span>
-                                </div>
+                                <span id="supervisionButton_span_menu" class="menu_text"></span>
                             </div>
                         </div>
-                        <span class="sketch_name_wrapper" id="sketch_name_wrapper">
+                    </div>
+                    <span class="sketch_name_wrapper" id="sketch_name_wrapper">
                             <i class="sketch_name_icon fas fa-pen"></i>
                             <input id="sketch_name" class="sketch_name" type="text" size="10">
-                        </span>      
-                        <button id="helpButton" class="iconButtons" onclick="toggleDisplayHelpModal()">
+                        </span>
+                    <button id="helpButton" class="iconButtons" onclick="toggleDisplayHelpModal()">
                             <span id="helpButton_span">
                                 <i class="fas fa-question"></i>
                             </span>
                         </button>
-                        <span id="content_hoverButton"></span>
-                    </td>
-                </tr>
-                <tr id="globalWorkspace">
-                    <td colspan="2">
-                        <div class="content_wrapper">
-                            <div id="wrapper_up" class="wrapper_up">
-                                <div id="content_area">
-                                    <div id="content_blocks"></div>
-                                </div>
-                                <div id="separator">
-                                    <label id="editorReadOnlyToggle" class="switch">
+                    <span id="content_hoverButton"></span>
+                </td>
+            </tr>
+            <tr id="globalWorkspace">
+                <td colspan="2">
+                    <div class="content_wrapper">
+                        <div id="wrapper_up" class="wrapper_up">
+                            <div id="content_area">
+                                <div id="content_blocks"></div>
+                            </div>
+                            <div id="separator">
+                                <label id="editorReadOnlyToggle" class="switch">
                                         <input type="checkbox" onclick="toggleEditorReadOnly(this)">
                                         <span class="slider"></span>
                                     </label>
-                                </div>
-                                <button id="copyCodeButton" class="iconButtons" onclick="Code.copyToClipboard()">
+                            </div>
+                            <button id="copyCodeButton" class="iconButtons" onclick="Code.copyToClipboard()">
                                     <span id="copyCodeButton_span">
                                         <i class="far fa-copy"></i>
                                     </span>
                                 </button>
-                                <div id="content_code"></div>
+                            <div id="content_code"></div>
+                        </div>
+                        <div id="barre_h">
+                            <div id="checkDetails">
+                                <input type="checkbox" name="detailedCompilation" id="detailedCompilation" />
+                                <span id="detailedCompilation_span"> </span>
                             </div>
-                            <div id="barre_h">
-                                <div id="checkDetails">
-                                    <input type="checkbox" name="detailedCompilation" id="detailedCompilation"/>
-                                    <span id="detailedCompilation_span"> </span>
-                                </div>
-                                <div id="infoBoardPort">                                
-                                    <span id="boardSelected_span"> </span>
-                                    <span id="portSelected_span"> </span>
-                                    <button id="consoleOutsideButton" class="iconButtons" onclick="">
+                            <div id="infoBoardPort">
+                                <span id="boardSelected_span"> </span>
+                                <span id="portSelected_span"> </span>
+                                <button id="consoleOutsideButton" class="iconButtons" onclick="">
                                         <span name="consoleOutside" id="consoleOutside_span">
                                             <i class="fas fa-external-link-alt"></i>
                                         </span>
                                     </button>
-                                </div>
                             </div>
-                            <div id="content_serial"></div>
                         </div>
-                    </td>
-                </tr>
-            </table>
+                        <div id="content_serial"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="helpModal" class="helpModal">
+        <div id="helpModal_header">
+            <span id="helpModalSpan_title"></span>
         </div>
-        <div id="helpModal" class="helpModal">
-            <div id="helpModal_header">
-                <span id="helpModalSpan_title"></span>
-            </div>
-            <div id="helpModal_text">
-                <span id="helpModalSpan_text"></span>
-            </div>
+        <div id="helpModal_text">
+            <span id="helpModalSpan_text"></span>
         </div>
-        <div id="keyboard_nav">
-            <div id="keyboard_nav_header">
-                <span id="keyMappingModalSpan"></span>
-            </div>
-            <form id="keyboard_mappings"></form>
+    </div>
+    <div id="keyboard_nav">
+        <div id="keyboard_nav_header">
+            <span id="keyMappingModalSpan"></span>
         </div>
-        <div id="lateral-panel-setup">
-            <input id="lateral-panel-setup-input" type="checkbox">
-            <label id="lateral-panel-setup-label" for="lateral-panel-setup-input" class="label_panel">
+        <form id="keyboard_mappings"></form>
+    </div>
+    <div id="lateral-panel-setup">
+        <input id="lateral-panel-setup-input" type="checkbox">
+        <label id="lateral-panel-setup-label" for="lateral-panel-setup-input" class="label_panel">
                 <span id="setup_side_span">
                     <i class="fas fa-cog"></i>
                 </span>
             </label>
-            <div id="lateral-panel-setup-bloc">
-                <button class="accordion">
+        <div id="lateral-panel-setup-bloc">
+            <button class="accordion">
                     <span id="config_UI_title_span" aria-expanded="false" aria-controls="accordion_setup_content"></span>
                 </button></button>
-                <div id="setup_content" class="side_content config_content panel">
-                    <form id="options">
-                        <select id="boardMenu" style='display:none'>
+            <div id="setup_content" class="side_content config_content panel">
+                <form id="options">
+                    <select id="boardMenu" style='display:none'>
                             <option value="none" selected="selected">...</option>
                             <option value="nucleo_L476RG" >Nucleo-64 STM32L476</option>
                             <option value="stm32f103c8_blue_pills" >STM32F103C8 Blue Pill</option>
                             <option value="mp157c_dk2" >STM32MP1 Discovery kits</option>
                         </select>
-                        <br>
-                        <span id="languageSpan" class="UIText">...</span>
-                        <select id="languageMenu"></select>
-                        <br>
-                        <br>
-                        <span id="interfaceColorSpan" class="UIText">...</span>
-                        <select id="interfaceColorMenu">
+                    <br>
+                    <span id="languageSpan" class="UIText">...</span>
+                    <select id="languageMenu"></select>
+                    <br>
+                    <br>
+                    <span id="interfaceColorSpan" class="UIText">...</span>
+                    <select id="interfaceColorMenu">
                             <option value="S4E" selected="selected">S4E</option>
                         </select>
-                        <br>
-                        <span id="codeEditorColorSpan" class="UIText">...</span>
-                        <select id="codeEditorColorMenu">
+                    <br>
+                    <span id="codeEditorColorSpan" class="UIText">...</span>
+                    <select id="codeEditorColorMenu">
                             <option value="S4E" selected="selected">S4E</option>
                         </select>
-                        <br>
-                        <br>
-                        <span id="themeSpan" class="UIText">...</span>
-                        <select name="theme" onchange="changeTheme(this.value)">
+                    <br>
+                    <br>
+                    <span id="themeSpan" class="UIText">...</span>
+                    <select name="theme" onchange="changeTheme(this.value)">
                             <option value="classic" id="themeClassicSpan">classic</option>
                             <option value="modern" id="themeModernSpan">modern</option>
                             <option value="deuteranopia" id="themeDeuteranopiaSpan">deuteranopia</option>
@@ -381,26 +383,26 @@
                             <option value="dark" id="themeDarkSpan">dark</option>
                             <option value="blackWhite" id="themeBwSpan">blackWhite</option>
                         </select>
-                        <br>
-                        <span id="renderSpan" class="UIText">...</span>
-                        <select name="renderer" onchange="document.forms.options.submit('options')">
+                    <br>
+                    <span id="renderSpan" class="UIText">...</span>
+                    <select name="renderer" onchange="document.forms.options.submit('options')">
                             <option value="geras">Geras</option>
                             <option value="thrasos">Thrasos</option>
                             <option value="zelos">Zelos</option>
                             <option value="minimalist">Minimalist</option>
                         </select>
-                    </form>
-                    <br>
-                    <span id="displaySpan" class="UIText">...</span>
-                    <select name="displayChoice" onchange="">
+                </form>
+                <br>
+                <span id="displaySpan" class="UIText">...</span>
+                <select name="displayChoice" onchange="">
                         <option value="button" id="displayChoiceButtons">buttons</option>
                         <option value="buttonText" id="displayChoiceBandT">buttons + text</option>
                         <option value="text" id="displayChoiceText">text</option>
                     </select>
-                    <br>
-                    <br>
-                    <span id="fontSpan" class="UIText">...</span>
-                    <select name="fontChoice" onchange="document.forms.options.submit('options')">
+                <br>
+                <br>
+                <span id="fontSpan" class="UIText">...</span>
+                <select name="fontChoice" onchange="document.forms.options.submit('options')">
                         <option value="arial">Arial</option>
                         <option value="comics">Comic Sans MS</option>
                         <option value="luciole">Luciole</option>
@@ -408,88 +410,88 @@
                         <option value="trebuchet">Trebuchet MS</option>
                         <option value="verdana">Verdana</option>
                     </select>
-                    <br>
-                    <span id="fontSizeSpan" class="UIText"></span>
-                    <select id="rendering-constant-selector">
+                <br>
+                <span id="fontSizeSpan" class="UIText"></span>
+                <select id="rendering-constant-selector">
                         <option value="fontSizeBlocks" id="optionFontSizeBlocks" selected="selected">Blocks & Editor Font Size</option>
                         <option value="fontSizePage" id="optionFontSizePage">Page Font Size</option>
                         <option value="fontSpacingPage" id="optionFontSpacingPage">Page Font Spacing</option>
                     </select>
-                    <br>
-                    <input type="range" min="3" max="50" value="4" oninput="Code.changeRenderingConstant(this.value)" onchange="Code.changeRenderingConstant(this.value)" />
-                    <br>
-                    <br>
-                    <input id="accessibilityModeCheck" type="checkbox" onclick="toggleAccessibilityMode(this.checked)">
-                    <span id="accessibilitySpan" class="UIText"></span>
-                    <br>
-                    <input id="displayKeyMappings" type="checkbox" onclick="toggleDisplayKeyMappings(this.checked)">
-                    <span id="keyMappingSpan" class="UIText"></span>
-                    <br>
-                    <select id="cursorChanger" name="cursor" onchange="changeCursor(this.value)">
+                <br>
+                <input type="range" min="3" max="50" value="4" oninput="Code.changeRenderingConstant(this.value)" onchange="Code.changeRenderingConstant(this.value)" />
+                <br>
+                <br>
+                <input id="accessibilityModeCheck" type="checkbox" onclick="toggleAccessibilityMode(this.checked)">
+                <span id="accessibilitySpan" class="UIText"></span>
+                <br>
+                <input id="displayKeyMappings" type="checkbox" onclick="toggleDisplayKeyMappings(this.checked)">
+                <span id="keyMappingSpan" class="UIText"></span>
+                <br>
+                <select id="cursorChanger" name="cursor" onchange="changeCursor(this.value)">
                         <option value="default" id="defaultCursorSpan">default</option> 
                         <option value="basic" id="basicCursorSpan">basic</option>
                         <option value="line" id="lineCursorSpan">line</option>
                     </select>
-                    <br>
-                </div>
-                <button class="accordion">
+                <br>
+            </div>
+            <button class="accordion">
                     <span id="CLI_title_span" aria-expanded="false" aria-controls="accordion_CLI_content"></span>
                 </button>
-                <div id="CLI_content" class="side_content config_content CLI panel">
-                    <div id="configCLI">
-                        <div id="CLI_title">
-                            <button id="coreUpdateButton" class="iconButtons CLI" onclick="">
+            <div id="CLI_content" class="side_content config_content CLI panel">
+                <div id="configCLI">
+                    <div id="CLI_title">
+                        <button id="coreUpdateButton" class="iconButtons CLI" onclick="">
                                 <span id="coreUpdateButton_span">
                                     <i class="fas fa-sync"></i>
                                 </span>
                             </button>
-                            <button id="cleanCLIcacheButton" class="iconButtons CLI" onclick="">
+                        <button id="cleanCLIcacheButton" class="iconButtons CLI" onclick="">
                                 <span id="cleanCLIcache_span">
                                     <i class="fas fa-eraser"></i>
                                 </span>
                             </button>
-                            <button id="listBoardsButton" class="iconButtons CLI" onclick="">
+                        <button id="listBoardsButton" class="iconButtons CLI" onclick="">
                                 <span id="listBoardsButton_span">
                                     <i class="fas fa-list"></i>
                                 </span>
                             </button>
-                            <a href="https://arduino.github.io/arduino-cli/" id="CLI_githubLinkButton" target="_blank">
-                                <img src="./S4E/media/featured-CLI.png" style="height: 40px" />
-                            </a>
-                        </div>
-                        <br>
-                        <span id="installBoard_title_span" class="UIText CLI">install board</span>
-                        <br>
-                        <input type="text" class="controlPanelInput" id="installBoardsInput" name="installBoardsInput">
-                        <button id="installBoardsButton" class="iconButtons CLI" onclick="">
+                        <a href="https://arduino.github.io/arduino-cli/" id="CLI_githubLinkButton" target="_blank">
+                            <img src="./S4E/media/featured-CLI.png" style="height: 40px" />
+                        </a>
+                    </div>
+                    <br>
+                    <span id="installBoard_title_span" class="UIText CLI">install board</span>
+                    <br>
+                    <input type="text" class="controlPanelInput" id="installBoardsInput" name="installBoardsInput">
+                    <button id="installBoardsButton" class="iconButtons CLI" onclick="">
                             <span id="installBoardsButton_span">
                                 <i class="fas fa-cloud-download-alt"></i>
                             </span>
                         </button>
-                        <br>
-                        <br>
-                        <span id="searchlLib_title_span" class="UIText">search library</span>
-                        <br>
-                        <input type="text" class="controlPanelInput" id="searchlLibInput" name="searchlLibInput">
-                        <button id="searchlLibButton" class="iconButtons CLI" onclick="">
+                    <br>
+                    <br>
+                    <span id="searchlLib_title_span" class="UIText">search library</span>
+                    <br>
+                    <input type="text" class="controlPanelInput" id="searchlLibInput" name="searchlLibInput">
+                    <button id="searchlLibButton" class="iconButtons CLI" onclick="">
                             <span id="searchlLibButton_span">
                                 <i class="fab fa-searchengin"></i>
                             </span>
                         </button>
-                        <br>
-                        <br>
-                        <span id="installLib_title_span" class="UIText">install library</span>
-                        <br>
-                        <input type="text" class="controlPanelInput" id="installLibInput" name="installLibInput">
-                        <button id="installLibButton" class="iconButtons CLI" onclick="">
+                    <br>
+                    <br>
+                    <span id="installLib_title_span" class="UIText">install library</span>
+                    <br>
+                    <input type="text" class="controlPanelInput" id="installLibInput" name="installLibInput">
+                    <button id="installLibButton" class="iconButtons CLI" onclick="">
                             <span id="installLibButton_span">
                                 <i class="fas fa-cloud-download-alt"></i>
                             </span>
                         </button>
-                        <br>
-                    </div>
+                    <br>
                 </div>
-                <button class="accordion">
+            </div>
+            <button class="accordion">
                     <!-- <select name="toolbox" onchange="document.forms.options.submit('options')"> -->
                         <!-- <option value="categories">Categories (untyped variables)</option> -->
                         <!-- <option value="categories-typed-variables">Categories (typed variables)</option> -->
@@ -498,67 +500,67 @@
                     <!-- </select> -->
                     <span id="categories_title_span" aria-expanded="false" aria-controls="accordion_categories_content"></span>
                 </button>
-                <div id="categories_content" class="side_content config_content panel UIText">
-                </div>
-                <button class="accordion">
+            <div id="categories_content" class="side_content config_content panel UIText">
+            </div>
+            <button class="accordion">
                     <span id="iot_title_span" aria-expanded="false" aria-controls="accordion_categories_content"></span>
                 </button>
-                <div id="arrowhead_controls" class="side_content config_content panel UIText">
-                    <input type="text" class="controlPanelInput" id="launchWebServerInput" name="launchWebServerInput">
-                    <button id="launchWebServer" class="iconButtons CLI">
+            <div id="arrowhead_controls" class="side_content config_content panel UIText">
+                <input type="text" class="controlPanelInput" id="launchWebServerInput" name="launchWebServerInput">
+                <button id="launchWebServer" class="iconButtons CLI">
                         <span id="launchWebServer_span">
                             <i class="fas fa-network-wired"></i>
                         </span>
                     </button>
-                    <br>
-                    <br>
-                    <input type="text" class="controlPanelInput" id="papyrusConnectInput" name="papyrusConnectInput">
-                    <button id="papyrusConnect" class="iconButtons CLI" onclick="papyrusConnect()">
+                <br>
+                <br>
+                <input type="text" class="controlPanelInput" id="papyrusConnectInput" name="papyrusConnectInput">
+                <button id="papyrusConnect" class="iconButtons CLI" onclick="papyrusConnect()">
                         <span id="papyrusConnect_span">
                             <img src="./S4E/media/Eclipse_papyrus_logo.png" style="width: 30px; height: 30px; vertical-align: middle;"/>
                         </span>
                     </button>
-                    <br>
-                    <br>
-                    <input type="text" class="controlPanelInput" id="arrowheadConnectInput" name="arrowheadConnectInput">
-                    <button id="registerToOrchestrator" class="iconButtons CLI" onclick="ArrowheadRegister()">
+                <br>
+                <br>
+                <input type="text" class="controlPanelInput" id="arrowheadConnectInput" name="arrowheadConnectInput">
+                <button id="registerToOrchestrator" class="iconButtons CLI" onclick="ArrowheadRegister()">
                         <span id="registerToOrchestrator_span">
                             <img src="./S4E/media/arrowheadtools_invert.png" style="width: 30px; height: 30px; vertical-align: middle;"/>
                         </span>
                     </button>
-                    <!-- <br> -->
-                    <!-- <br> -->
-                    <!-- <input type="text" class="controlPanelInput" id="blynkConnectInput" name="blynkConnectInput"> -->
-                    <!-- <button id="blynkConnect" class="iconButtons CLI" onclick=""> -->
-                        <!-- <span id="blynkConnect_span"> -->
-                            <!-- <img src="./S4E/media/blynk.png" style="width: 30px; height: 30px; vertical-align: middle;"/> -->
-                        <!-- </span> -->
-                    <!-- </button> -->
-                    <br>
-                    <br>
-                    <input type="text" class="controlPanelInput" id="blynkConnectInput" name="serialConnectIOTInput">
-                    <button id="serialConnectIOT_save" class="iconButtons CLI" onclick="">
+                <!-- <br> -->
+                <!-- <br> -->
+                <!-- <input type="text" class="controlPanelInput" id="blynkConnectInput" name="blynkConnectInput"> -->
+                <!-- <button id="blynkConnect" class="iconButtons CLI" onclick=""> -->
+                <!-- <span id="blynkConnect_span"> -->
+                <!-- <img src="./S4E/media/blynk.png" style="width: 30px; height: 30px; vertical-align: middle;"/> -->
+                <!-- </span> -->
+                <!-- </button> -->
+                <br>
+                <br>
+                <input type="text" class="controlPanelInput" id="blynkConnectInput" name="serialConnectIOTInput">
+                <button id="serialConnectIOT_save" class="iconButtons CLI" onclick="">
                         <span id="serialConnectIOT_span">
                             <i class="fas fa-cloud-upload-alt"></i>
                         </span>
                     </button>
-                </div>
             </div>
         </div>
-        <div id="overlayForModals" class="overlay"></div>
-        <div id="boardListModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <i class="fas fa-microchip"></i>
-                    <span id="boardListModalHeader_span"></span>
-                    <span class="closeModal" id="closeModalBoards">&times;</span>
+    </div>
+    <div id="overlayForModals" class="overlay"></div>
+    <div id="boardListModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-microchip"></i>
+                <span id="boardListModalHeader_span"></span>
+                <span class="closeModal" id="closeModalBoards">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="board_mini_picture_div">
+                    <img id="board_mini_picture" />
                 </div>
-                <div class="modal-body">
-                    <div id="board_mini_picture_div">
-                        <img id="board_mini_picture" />
-                    </div>
-                    <div id="hideSelectScrollbar">
-                        <select id="boardDescriptionSelector" size="11" onchange="Code.boardDescription()">
+                <div id="hideSelectScrollbar">
+                    <select id="boardDescriptionSelector" size="11" onchange="Code.boardDescription()">
                             <optgroup label="C / C++">
                                 <option value="none" >...</option>
                                 <option value="nucleo_G431KB" >Nucleo-32 G431KB</option>
@@ -567,180 +569,206 @@
                                 <option value="mp157c_dk2" >STM32MP1 Discovery kits</option>
                             </optgroup>
                         </select>
-                    </div>
                 </div>
-                <button id="boardListModalDialogOkay" onclick="Code.changeBoard()">&#10004;</button>
-                <button type="button" class="collapsibleButton">
+            </div>
+            <button id="boardListModalDialogOkay" onclick="Code.changeBoard()">&#10004;</button>
+            <button type="button" class="collapsibleButton">
                     <span id="boardListModalButton_span">Details</span>
                 </button>
-                <div class="collapsibleContent" id="collapsibleContent">
-                    <span id="boardModal_connect"></span><span id="boardModal_connect_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_voltage"></span><span id="boardModal_voltage_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_voltage_normal"></span><span id="boardModal_voltage_normal_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_voltage_maxi"></span><span id="boardModal_voltage_maxi_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_cpu"></span><span id="boardModal_cpu_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_speed"></span><span id="boardModal_speed_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_inout"></span><span id="boardModal_inout_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_in_analog"></span><span id="boardModal_in_analog_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_out_analog"></span><span id="boardModal_out_analog_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_i_max_out"></span><span id="boardModal_i_max_out_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_i_max3"></span><span id="boardModal_i_max3_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_i_max_5"></span><span id="boardModal_i_max_5_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_flash"></span><span id="boardModal_flash_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_sram"></span><span id="boardModal_sram_span" class="modalBoard_info">...</span><br>
-                    <span id="boardModal_eeprom"></span><span id="boardModal_eeprom_span" class="modalBoard_info">...</span><br>
-                </div> 
+            <div class="collapsibleContent" id="collapsibleContent">
+                <span id="boardModal_connect"></span><span id="boardModal_connect_span" class="modalBoard_info">...</span><br>
+                <span id="boardModal_voltage"></span><span id="boardModal_voltage_span" class="modalBoard_info">...</span><br>
+                <span id="boardModal_voltage_normal"></span><span id="boardModal_voltage_normal_span" class="modalBoard_info">...</span><br>
+                <span id="boardModal_voltage_maxi"></span><span id="boardModal_voltage_maxi_span" class="modalBoard_info">...</span><br>
+                <span id="boardModal_cpu"></span><span id="boardModal_cpu_span" class="modalBoard_info">...</span><br>
+                <span id="boardModal_speed"></span><span id="boardModal_speed_span" class="modalBoard_info">...</span><br>
+                <span id="boardModal_inout"></span><span id="boardModal_inout_span" class="modalBoard_info">...</span><br>
+                <span id="boardModal_in_analog"></span><span id="boardModal_in_analog_span" class="modalBoard_info">...</span><br>
+                <span id="boardModal_out_analog"></span><span id="boardModal_out_analog_span" class="modalBoard_info">...</span><br>
+                <span id="boardModal_i_max_out"></span><span id="boardModal_i_max_out_span" class="modalBoard_info">...</span><br>
+                <span id="boardModal_i_max3"></span><span id="boardModal_i_max3_span" class="modalBoard_info">...</span><br>
+                <span id="boardModal_i_max_5"></span><span id="boardModal_i_max_5_span" class="modalBoard_info">...</span><br>
+                <span id="boardModal_flash"></span><span id="boardModal_flash_span" class="modalBoard_info">...</span><br>
+                <span id="boardModal_sram"></span><span id="boardModal_sram_span" class="modalBoard_info">...</span><br>
+                <span id="boardModal_eeprom"></span><span id="boardModal_eeprom_span" class="modalBoard_info">...</span><br>
             </div>
         </div>
-        <div id="portListModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <i class="fab fa-usb"></i>
-                    <span id="portListModalHeader_span"></span>
-                    <span class="closeModal" id="closeModalPorts">&times;</span>
-                </div>
-                <div class="modal-body" id="portListModalBody">
-                </div>
-                <div class="modal-footer">
-                    <select id="serialMenu">
+    </div>
+    <div id="portListModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fab fa-usb"></i>
+                <span id="portListModalHeader_span"></span>
+                <span class="closeModal" id="closeModalPorts">&times;</span>
+            </div>
+            <div class="modal-body" id="portListModalBody">
+            </div>
+            <div class="modal-footer">
+                <select id="serialMenu">
                         <option value="none">...</option>
                     </select>
-                    <button id="portListModalDialogOkay" onclick="Code.setPort()">&#10004;</button>
-                </div>
+                <button id="portListModalDialogOkay" onclick="Code.setPort()">&#10004;</button>
             </div>
         </div>
-        <div id="flowsListModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <i class="fab fa-usb"></i>
-                    <span id="flowsListModalHeader_span"></span>
-                    <span class="closeModal" id="closeModalFlows">&times;</span>
-                </div>
-                <div class="modal-body" id="filesFlowListModalBody">
-                    <ul id="filesFlowList">
-                    </ul> 
-                </div>
-                <div class="modal-footer">
-                </div>
+    </div>
+    <div id="flowsListModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fab fa-usb"></i>
+                <span id="flowsListModalHeader_span"></span>
+                <span class="closeModal" id="closeModalFlows">&times;</span>
+            </div>
+            <div class="modal-body" id="filesFlowListModalBody">
+                <ul id="filesFlowList">
+                </ul>
+            </div>
+            <div class="modal-footer">
             </div>
         </div>
-    </body>
-    <!-- Blockly libraries -->
-    <script src="./@blockly/blockly_compressed.js"></script>
-    <script src="./@blockly/blocks_compressed.js"></script>
-    <script src="./@blockly/closure/goog/base.js"></script>
-    <script src="./@blockly/plugins/block-plus-minus/dist/index.js"></script>
-    <script src="./@blockly/plugins/disable-top-blocks/dist/index.js"></script>
-    <script src="./@blockly/plugins/field-grid-dropdown/dist/index.js"></script>
-    <script src="./@blockly/plugins/field-slider/dist/index.js"></script>
-    <script src="./@blockly/plugins/keyboard-navigation/dist/index.js"></script>
-    <script src="./@blockly/plugins/plugin-workspace-search/dist/index.js"></script>
-    <script src="./@blockly/plugins/theme-dark/dist/index.js"></script>
-    <script src="./@blockly/plugins/theme-modern/dist/index.js"></script>
-    <script src="./@blockly/plugins/zoom-to-fit/dist/index.js"></script>
-    <!-- Blockly libraries for themes and renderers -->
-    <script src="./@blockly/core/workspace_comment.js" async></script>
-    <script src="./@blockly/core/workspace_comment_svg.js" async></script>
-    <script src="./@blockly/core/workspace_comment_render_svg.js" async></script>
-    <script src="./@blockly/core/renderers/minimalist/info.js" async></script>
-    <script src="./@blockly/core/renderers/minimalist/constants.js" async></script>
-    <script src="./@blockly/core/renderers/minimalist/drawer.js" async></script>
-    <script src="./@blockly/core/renderers/minimalist/renderer.js" async></script>
-    <script src="./@blockly/core/theme/zelos.js" async></script>
-    <!-- Blockly libraries of function, from different demos -->
-    <script src="./@blockly/demos/code/code.js"></script>
-    <script src="./@blockly/tests/playgrounds/screenshot.js" async></script>
-    <!-- S4E external toolbox hacked -->
-    <script src="./S4E/categories/arrowheadframework/arrowheadframework.toolbox"></script>
-    <script src="./S4E/categories/board/board.toolbox"></script>
-    <script src="./S4E/categories/ds18b20/ds18b20.toolbox"></script>
-    <script src="./S4E/categories/relay/relay.toolbox"></script>
-    <script src="./S4E/categories/servo/servo.toolbox"></script>
-    <script src="./S4E/categories/blockly/blockly.toolbox"></script>
-    <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.toolbox"></script>
-    <!-- Blockly libraries of function, hacked from different demos -->
-    <!-- <script src="./js/blockly/keyboard_nav.js"></script> -->
-    <script src="./js/blockly/playground.js"></script>
-    <script src="./js/keyboard_nav.js"></script>
-    <script src="./js/init.js"></script>
-    <script src="./js/typed_variable.js"></script>
-    <script src="./js/buttons_functions.js"></script>
-    <script src="./js/dialog.js"></script>
-    <script src="./js/renderingConstant.js"></script>
-    <script src="./js/toolbox.js"></script>
-    <script src="./@blockly/demos/custom-dialogs/custom-dialog.js"></script>
-    <!-- S4E libraries of external functions -->
-    <script src="./js/ace/ace.js" charset="utf-8"></script>
-    <script src="./js/ace/ext-language_tools.js"></script>
-    <!-- S4E libraries of specific funtions definition -->
-    <script src="./S4E/js/override_toolbox.js"></script>
-    <!-- Blockly themes added -->
-    <script src="./S4E/themes/bw.js" async></script>
-    <script src="./S4E/themes/themes_blocks.js" async></script>
-    <script src="./S4E/themes/themes_categories.js" async></script>
-    <script src="./S4E/themes/themes_components_override.js" async></script>
-    <!-- S4E libraries of boards definition -->
-    <script src="./S4E/js/boards.json"></script>
-    <script src="./S4E/js/boards.js"></script>
-    <!-- S4E specific: block design -->
-    <script src="./S4E/categories/blockly/logic.blocks" async></script>
-    <script src="./S4E/categories/blockly/math.blocks" async></script>
-    <script src="./S4E/categories/blockly/typed_variable.blocks" async></script>
-    <script src="./S4E/categories/board/board_base.blocks" async></script>
-    <script src="./S4E/categories/board/board_iot.blocks" async></script>
-    <script src="./S4E/categories/board/board_serial.blocks" async></script>
-    <script src="./S4E/categories/arrowheadframework/arrowheadframework.blocks" async></script>
-    <script src="./S4E/categories/ds18b20/ds18b20.blocks" async></script>
-    <script src="./S4E/categories/relay/relay.blocks" async></script>
-    <script src="./S4E/categories/servo/servo.blocks" async></script>
-    <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.blocks" async></script>
-    <!-- S4E specific: common generator code -->
-    <script src="./generators/arduino_generator.js"></script>
-    <script src="./S4E/categories/blockly/colour.arduino" async></script>
-    <script src="./S4E/categories/blockly/lists.arduino" async></script>
-    <script src="./S4E/categories/blockly/logic.arduino" async></script>
-    <script src="./S4E/categories/blockly/loops.arduino" async></script>
-    <script src="./S4E/categories/blockly/math.arduino" async></script>
-    <script src="./S4E/categories/blockly/procedures.arduino" async></script>
-    <script src="./S4E/categories/blockly/text.arduino" async></script>
-    <!-- S4E specific: addon generator code -->
-    <script src="./S4E/categories/blockly/typed_variable.arduino" async></script>
-    <script src="./S4E/categories/board/board_base.arduino" async></script>
-    <script src="./S4E/categories/board/board_iot.arduino" async></script>
-    <script src="./S4E/categories/board/board_serial.arduino" async></script>
-    <script src="./S4E/categories/arrowheadframework/arrowheadframework.arduino" async></script>
-    <script src="./S4E/categories/ds18b20/ds18b20.arduino" async></script>
-    <script src="./S4E/categories/relay/relay.arduino" async></script>
-    <script src="./S4E/categories/servo/servo.arduino" async></script>
-    <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.arduino" async></script>
-    <!-- S4E specific -->
-    <script>
-        ace.require("ace/ext/language_tools");
-        var editor = ace.edit("content_code");
-        editor.setTheme("ace/theme/sqlserver");
-        editor.session.setMode("ace/mode/c_cpp");
-        editor.setShowPrintMargin(false);
-        editor.setOptions({
-            autoScrollEditorIntoView: false,
-            readOnly: false,
-            highlightGutterLine: true,
-            animatedScroll: true,
-            enableBasicAutocompletion: true,
-            enableSnippets: true,
-            enableLiveAutocompletion: true
-        });
-        editor.find('needle', {
-            backwards: false,
-            wrap: false,
-            caseSensitive: false,
-            wholeWord: false,
-            regExp: false
-        });
-        editor.findNext();
-        editor.findPrevious();
-        require('../resources/app.asar/renderer.js');
-        require('../resources/app.asar/menu_functions.js');
-        require('../resources/app.asar/menu_CLI_functions.js');
-        require('../resources/app.asar/menu_IDE_functions.js');
-    </script>
+    </div>
+</body>
+<!-- Blockly libraries -->
+<script src="./@blockly/blockly_compressed.js"></script>
+<script src="./@blockly/closure/goog/base.js"></script>
+<!-- needed for automatic variable typing -->
+<script src="js/typing_variables/type.js"></script>
+<script src="js/typing_variables/types.js"></script>
+<script src="js/typing_variables/static_typing.js"></script>
+<script src="js/typing_variables/instances.js"></script>
+<script src="js/typing_variables/field_instance.js"></script>
+<script src="js/typing_variables/block_instance.js"></script>
+<!-- Blockly libraries for themes and renderers -->
+<script src="./@blockly/core/workspace_comment.js"></script>
+<script src="./@blockly/core/workspace_comment_svg.js"></script>
+<script src="./@blockly/core/workspace_comment_render_svg.js"></script>
+<script src="./@blockly/core/renderers/minimalist/info.js" async></script>
+<script src="./@blockly/core/renderers/minimalist/constants.js" async></script>
+<script src="./@blockly/core/renderers/minimalist/drawer.js" async></script>
+<script src="./@blockly/core/renderers/minimalist/renderer.js" async></script>
+<script src="./@blockly/core/theme/zelos.js" async></script>
+<!-- Blockly plugins -->
+<script src="./@blockly/plugins/disable-top-blocks/index.js"></script>
+<script src="./@blockly/plugins/field-grid-dropdown/index.js"></script>
+<script src="./@blockly/plugins/field-slider/index.js"></script>
+<script src="./@blockly/plugins/keyboard-navigation/index.js"></script>
+<script src="./@blockly/plugins/plugin-workspace-search/index.js"></script>
+<script src="./@blockly/plugins/theme-dark/index.js"></script>
+<script src="./@blockly/plugins/theme-modern/index.js"></script>
+<script src="./@blockly/plugins/zoom-to-fit/index.js"></script>
+<!-- Blockly libraries of function, from different demos -->
+<script src="./@blockly/demos/code/code.js"></script>
+<script src="./@blockly/tests/playgrounds/screenshot.js" async></script>
+<!-- S4E external toolbox hacked -->
+<script src="./S4E/categories/arrowheadframework/arrowheadframework.toolbox"></script>
+<script src="./S4E/categories/board/board.toolbox"></script>
+<script src="./S4E/categories/ds18b20/ds18b20.toolbox"></script>
+<script src="./S4E/categories/DHT/DHT.toolbox"></script>
+<script src="./S4E/categories/relay/relay.toolbox"></script>
+<script src="./S4E/categories/servo/servo.toolbox"></script>
+<script src="./S4E/categories/blockly/blockly.toolbox"></script>
+<script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.toolbox"></script>
+<!-- Blockly libraries of function, hacked from different demos -->
+<!-- <script src="./js/blockly/keyboard_nav.js"></script> -->
+<script src="./js/blockly/playground.js"></script>
+<script src="./js/keyboard_nav.js"></script>
+<script src="./js/init.js"></script>
+<script src="./js/typed_variable.js"></script>
+<script src="./js/buttons_functions.js"></script>
+<script src="./js/dialog.js"></script>
+<script src="./js/renderingConstant.js"></script>
+<script src="./js/toolbox.js"></script>
+<script src="./@blockly/demos/custom-dialogs/custom-dialog.js"></script>
+<!-- S4E libraries of external functions -->
+<script src="./js/ace/ace.js" charset="utf-8"></script>
+<script src="./js/ace/ext-language_tools.js"></script>
+<!-- S4E libraries of specific funtions definition -->
+<script src="./S4E/js/override_toolbox.js"></script>
+<!-- Blockly themes added -->
+<script src="./S4E/themes/bw.js" async></script>
+<script src="./S4E/themes/themes_blocks.js" async></script>
+<script src="./S4E/themes/themes_categories.js" async></script>
+<script src="./S4E/themes/themes_components_override.js" async></script>
+<!-- S4E libraries of boards definition -->
+<script src="./S4E/js/boards.json"></script>
+<script src="./S4E/js/boards.js"></script>
+<!-- S4E specific: block design -->
+<script src="./S4E/categories/blockly/variables.blocks"></script>
+<script src="./S4E/categories/blockly/colour.blocks"></script>
+<script src="./S4E/categories/blockly/array.blocks"></script>
+<script src="./S4E/categories/blockly/logic.blocks"></script>
+<script src="./S4E/categories/blockly/loops.blocks"></script>
+<script src="./S4E/categories/blockly/math.blocks"></script>
+<script src="./S4E/categories/blockly/text.blocks"></script>
+<!-- need to overwite mutator with plugin plus-minus -->
+<script src="./@blockly/plugins/block-plus-minus/index.js"></script>
+<!-- need to overwite plugin plus-minus for argument typing -->
+<script src="./S4E/categories/blockly/procedures.blocks"></script>
+<!-- S4E specific: wait for block design loaded before typing blocks-->
+<script src="./S4E/categories/blockly/blockly.types" async></script>
+<script src="./S4E/categories/board/board_base.blocks" async></script>
+<script src="./S4E/categories/board/board_iot.blocks" async></script>
+<script src="./S4E/categories/board/board_serial.blocks" async></script>
+<script src="./S4E/categories/board/board.types" async></script>
+<script src="./S4E/categories/arrowheadframework/arrowheadframework.blocks" async></script>
+<script src="./S4E/categories/arrowheadframework/arrowheadframework.types" async></script>
+<script src="./S4E/categories/ds18b20/ds18b20.blocks" async></script>
+<script src="./S4E/categories/ds18b20/ds18b20.types" async></script>
+<script src="./S4E/categories/DHT/DHT.blocks" async></script>
+<script src="./S4E/categories/DHT/DHT.types" async></script>
+<script src="./S4E/categories/relay/relay.blocks" async></script>
+<script src="./S4E/categories/relay/relay.types" async></script>
+<script src="./S4E/categories/servo/servo.blocks" async></script>
+<script src="./S4E/categories/servo/servo.types" async></script>
+<script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.blocks" async></script>
+<script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.types" async></script>
+<!-- S4E specific: common generator code -->
+<script src="./generators/arduino_generator.js"></script>
+<script src="./S4E/categories/blockly/colour.arduino" async></script>
+<script src="./S4E/categories/blockly/array.arduino" async></script>
+<script src="./S4E/categories/blockly/logic.arduino" async></script>
+<script src="./S4E/categories/blockly/loops.arduino" async></script>
+<script src="./S4E/categories/blockly/math.arduino" async></script>
+<script src="./S4E/categories/blockly/procedures.arduino" async></script>
+<script src="./S4E/categories/blockly/text.arduino" async></script>
+<script src="./S4E/categories/blockly/variables.arduino" async></script>
+<!-- S4E specific: addon generator code -->
+<script src="./S4E/categories/board/board_base.arduino" async></script>
+<script src="./S4E/categories/board/board_iot.arduino" async></script>
+<script src="./S4E/categories/board/board_serial.arduino" async></script>
+<script src="./S4E/categories/arrowheadframework/arrowheadframework.arduino" async></script>
+<script src="./S4E/categories/ds18b20/ds18b20.arduino" async></script>
+<script src="./S4E/categories/DHT/DHT.arduino" async></script>
+<script src="./S4E/categories/relay/relay.arduino" async></script>
+<script src="./S4E/categories/servo/servo.arduino" async></script>
+<script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.arduino" async></script>
+<script>
+    ace.require("ace/ext/language_tools");
+    var editor = ace.edit("content_code");
+    editor.setTheme("ace/theme/sqlserver");
+    editor.session.setMode("ace/mode/c_cpp");
+    editor.setShowPrintMargin(false);
+    editor.setOptions({
+        autoScrollEditorIntoView: false,
+        readOnly: false,
+        highlightGutterLine: true,
+        animatedScroll: true,
+        enableBasicAutocompletion: true,
+        enableSnippets: true,
+        enableLiveAutocompletion: true
+    });
+    editor.find('needle', {
+        backwards: false,
+        wrap: false,
+        caseSensitive: false,
+        wholeWord: false,
+        regExp: false
+    });
+    editor.findNext();
+    editor.findPrevious();
+    require('../resources/app.asar/renderer.js');
+    require('../resources/app.asar/menu_functions.js');
+    require('../resources/app.asar/menu_CLI_functions.js');
+    require('../resources/app.asar/menu_IDE_functions.js');
+</script>
+
 </HTML>

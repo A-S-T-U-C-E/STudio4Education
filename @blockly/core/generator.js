@@ -27,9 +27,9 @@ goog.requireType('Blockly.Workspace');
  * @constructor
  */
 Blockly.Generator = function(name) {
-  this.name_ = name;
-  this.FUNCTION_NAME_PLACEHOLDER_REGEXP_ =
-      new RegExp(this.FUNCTION_NAME_PLACEHOLDER_, 'g');
+    this.name_ = name;
+    this.FUNCTION_NAME_PLACEHOLDER_REGEXP_ =
+        new RegExp(this.FUNCTION_NAME_PLACEHOLDER_, 'g');
 };
 
 /**
@@ -96,43 +96,44 @@ Blockly.Generator.prototype.isInitialized = null;
  * @return {string} Generated code.
  */
 Blockly.Generator.prototype.workspaceToCode = function(workspace) {
-  if (!workspace) {
-    // Backwards compatibility from before there could be multiple workspaces.
-    console.warn('No workspace specified in workspaceToCode call.  Guessing.');
-    workspace = Blockly.getMainWorkspace();
-  }
-  var code = [];
-  this.init(workspace);
-  var blocks = workspace.getTopBlocks(true);
-  for (var i = 0, block; (block = blocks[i]); i++) {
-    var line = this.blockToCode(block);
-    if (Array.isArray(line)) {
-      // Value blocks return tuples of code and operator order.
-      // Top-level blocks don't care about operator order.
-      line = line[0];
+    if (!workspace) {
+        // Backwards compatibility from before there could be multiple workspaces.
+        console.warn('No workspace specified in workspaceToCode call.  Guessing.');
+        workspace = Blockly.getMainWorkspace();
     }
-    if (line) {
-      if (block.outputConnection) {
-        // This block is a naked value.  Ask the language's code generator if
-        // it wants to append a semicolon, or something.
-        line = this.scrubNakedValue(line);
-        if (this.STATEMENT_PREFIX && !block.suppressPrefixSuffix) {
-          line = this.injectId(this.STATEMENT_PREFIX, block) + line;
+    var code = [];
+    this.init(workspace);
+    var blocks = workspace.getTopBlocks(true);
+    for (var i = 0, block;
+        (block = blocks[i]); i++) {
+        var line = this.blockToCode(block);
+        if (Array.isArray(line)) {
+            // Value blocks return tuples of code and operator order.
+            // Top-level blocks don't care about operator order.
+            line = line[0];
         }
-        if (this.STATEMENT_SUFFIX && !block.suppressPrefixSuffix) {
-          line = line + this.injectId(this.STATEMENT_SUFFIX, block);
+        if (line) {
+            if (block.outputConnection) {
+                // This block is a naked value.  Ask the language's code generator if
+                // it wants to append a semicolon, or something.
+                line = this.scrubNakedValue(line);
+                if (this.STATEMENT_PREFIX && !block.suppressPrefixSuffix) {
+                    line = this.injectId(this.STATEMENT_PREFIX, block) + line;
+                }
+                if (this.STATEMENT_SUFFIX && !block.suppressPrefixSuffix) {
+                    line = line + this.injectId(this.STATEMENT_SUFFIX, block);
+                }
+            }
+            code.push(line);
         }
-      }
-      code.push(line);
     }
-  }
-  code = code.join('\n');  // Blank line between each section.
-  code = this.finish(code);
-  // Final scrubbing of whitespace.
-  code = code.replace(/^\s+\n/, '');
-  code = code.replace(/\n\s+$/, '\n');
-  code = code.replace(/[ \t]+\n/g, '\n');
-  return code;
+    code = code.join('\n'); // Blank line between each section.
+    code = this.finish(code);
+    // Final scrubbing of whitespace.
+    code = code.replace(/^\s+\n/, '');
+    code = code.replace(/\n\s+$/, '\n');
+    code = code.replace(/[ \t]+\n/g, '\n');
+    return code;
 };
 
 // The following are some helpful functions which can be used by multiple
@@ -146,7 +147,7 @@ Blockly.Generator.prototype.workspaceToCode = function(workspace) {
  * @return {string} The prefixed lines of code.
  */
 Blockly.Generator.prototype.prefixLines = function(text, prefix) {
-  return prefix + text.replace(/(?!\n$)\n/g, '\n' + prefix);
+    return prefix + text.replace(/(?!\n$)\n/g, '\n' + prefix);
 };
 
 /**
@@ -155,19 +156,19 @@ Blockly.Generator.prototype.prefixLines = function(text, prefix) {
  * @return {string} Concatenated list of comments.
  */
 Blockly.Generator.prototype.allNestedComments = function(block) {
-  var comments = [];
-  var blocks = block.getDescendants(true);
-  for (var i = 0; i < blocks.length; i++) {
-    var comment = blocks[i].getCommentText();
-    if (comment) {
-      comments.push(comment);
+    var comments = [];
+    var blocks = block.getDescendants(true);
+    for (var i = 0; i < blocks.length; i++) {
+        var comment = blocks[i].getCommentText();
+        if (comment) {
+            comments.push(comment);
+        }
     }
-  }
-  // Append an empty string to create a trailing line break when joined.
-  if (comments.length) {
-    comments.push('');
-  }
-  return comments.join('\n');
+    // Append an empty string to create a trailing line break when joined.
+    if (comments.length) {
+        comments.push('');
+    }
+    return comments.join('\n');
 };
 
 /**
@@ -180,52 +181,52 @@ Blockly.Generator.prototype.allNestedComments = function(block) {
  *     operator order value.  Returns '' if block is null.
  */
 Blockly.Generator.prototype.blockToCode = function(block, opt_thisOnly) {
-  if (this.isInitialized === false) {
-    console.warn(
-        'Generator init was not called before blockToCode was called.');
-  }
-  if (!block) {
-    return '';
-  }
-  if (!block.isEnabled()) {
-    // Skip past this block if it is disabled.
-    return opt_thisOnly ? '' : this.blockToCode(block.getNextBlock());
-  }
-  if (block.isInsertionMarker()) {
-    // Skip past insertion markers.
-    return opt_thisOnly ? '' : this.blockToCode(block.getChildren(false)[0]);
-  }
+    if (this.isInitialized === false) {
+        console.warn(
+            'Generator init was not called before blockToCode was called.');
+    }
+    if (!block) {
+        return '';
+    }
+    if (!block.isEnabled()) {
+        // Skip past this block if it is disabled.
+        return opt_thisOnly ? '' : this.blockToCode(block.getNextBlock());
+    }
+    if (block.isInsertionMarker()) {
+        // Skip past insertion markers.
+        return opt_thisOnly ? '' : this.blockToCode(block.getChildren(false)[0]);
+    }
 
-  var func = this[block.type];
-  if (typeof func != 'function') {
-    throw Error('Language "' + this.name_ + '" does not know how to generate ' +
-        ' code for block type "' + block.type + '".');
-  }
-  // First argument to func.call is the value of 'this' in the generator.
-  // Prior to 24 September 2013 'this' was the only way to access the block.
-  // The current preferred method of accessing the block is through the second
-  // argument to func.call, which becomes the first parameter to the generator.
-  var code = func.call(block, block);
-  if (Array.isArray(code)) {
-    // Value blocks return tuples of code and operator order.
-    if (!block.outputConnection) {
-      throw TypeError('Expecting string from statement block: ' + block.type);
+    var func = this[block.type];
+    if (typeof func != 'function') {
+        throw Error('Language "' + this.name_ + '" does not know how to generate ' +
+            ' code for block type "' + block.type + '".');
     }
-    return [this.scrub_(block, code[0], opt_thisOnly), code[1]];
-  } else if (typeof code == 'string') {
-    if (this.STATEMENT_PREFIX && !block.suppressPrefixSuffix) {
-      code = this.injectId(this.STATEMENT_PREFIX, block) + code;
+    // First argument to func.call is the value of 'this' in the generator.
+    // Prior to 24 September 2013 'this' was the only way to access the block.
+    // The current preferred method of accessing the block is through the second
+    // argument to func.call, which becomes the first parameter to the generator.
+    var code = func.call(block, block);
+    if (Array.isArray(code)) {
+        // Value blocks return tuples of code and operator order.
+        if (!block.outputConnection) {
+            throw TypeError('Expecting string from statement block: ' + block.type);
+        }
+        return [this.scrub_(block, code[0], opt_thisOnly), code[1]];
+    } else if (typeof code == 'string') {
+        if (this.STATEMENT_PREFIX && !block.suppressPrefixSuffix) {
+            code = this.injectId(this.STATEMENT_PREFIX, block) + code;
+        }
+        if (this.STATEMENT_SUFFIX && !block.suppressPrefixSuffix) {
+            code = code + this.injectId(this.STATEMENT_SUFFIX, block);
+        }
+        return this.scrub_(block, code, opt_thisOnly);
+    } else if (code === null) {
+        // Block has handled code generation itself.
+        return '';
+    } else {
+        throw SyntaxError('Invalid code generated: ' + code);
     }
-    if (this.STATEMENT_SUFFIX && !block.suppressPrefixSuffix) {
-      code = code + this.injectId(this.STATEMENT_SUFFIX, block);
-    }
-    return this.scrub_(block, code, opt_thisOnly);
-  } else if (code === null) {
-    // Block has handled code generation itself.
-    return '';
-  } else {
-    throw SyntaxError('Invalid code generated: ' + code);
-  }
 };
 
 /**
@@ -238,65 +239,65 @@ Blockly.Generator.prototype.blockToCode = function(block, opt_thisOnly) {
  *     specified input does not exist.
  */
 Blockly.Generator.prototype.valueToCode = function(block, name, outerOrder) {
-  if (isNaN(outerOrder)) {
-    throw TypeError('Expecting valid order from block: ' + block.type);
-  }
-  var targetBlock = block.getInputTargetBlock(name);
-  if (!targetBlock) {
-    return '';
-  }
-  var tuple = this.blockToCode(targetBlock);
-  if (tuple === '') {
-    // Disabled block.
-    return '';
-  }
-  // Value blocks must return code and order of operations info.
-  // Statement blocks must only return code.
-  if (!Array.isArray(tuple)) {
-    throw TypeError('Expecting tuple from value block: ' + targetBlock.type);
-  }
-  var code = tuple[0];
-  var innerOrder = tuple[1];
-  if (isNaN(innerOrder)) {
-    throw TypeError('Expecting valid order from value block: ' +
-        targetBlock.type);
-  }
-  if (!code) {
-    return '';
-  }
-
-  // Add parentheses if needed.
-  var parensNeeded = false;
-  var outerOrderClass = Math.floor(outerOrder);
-  var innerOrderClass = Math.floor(innerOrder);
-  if (outerOrderClass <= innerOrderClass) {
-    if (outerOrderClass == innerOrderClass &&
-        (outerOrderClass == 0 || outerOrderClass == 99)) {
-      // Don't generate parens around NONE-NONE and ATOMIC-ATOMIC pairs.
-      // 0 is the atomic order, 99 is the none order.  No parentheses needed.
-      // In all known languages multiple such code blocks are not order
-      // sensitive.  In fact in Python ('a' 'b') 'c' would fail.
-    } else {
-      // The operators outside this code are stronger than the operators
-      // inside this code.  To prevent the code from being pulled apart,
-      // wrap the code in parentheses.
-      parensNeeded = true;
-      // Check for special exceptions.
-      for (var i = 0; i < this.ORDER_OVERRIDES.length; i++) {
-        if (this.ORDER_OVERRIDES[i][0] == outerOrder &&
-            this.ORDER_OVERRIDES[i][1] == innerOrder) {
-          parensNeeded = false;
-          break;
-        }
-      }
+    if (isNaN(outerOrder)) {
+        throw TypeError('Expecting valid order from block: ' + block.type);
     }
-  }
-  if (parensNeeded) {
-    // Technically, this should be handled on a language-by-language basis.
-    // However all known (sane) languages use parentheses for grouping.
-    code = '(' + code + ')';
-  }
-  return code;
+    var targetBlock = block.getInputTargetBlock(name);
+    if (!targetBlock) {
+        return '';
+    }
+    var tuple = this.blockToCode(targetBlock);
+    if (tuple === '') {
+        // Disabled block.
+        return '';
+    }
+    // Value blocks must return code and order of operations info.
+    // Statement blocks must only return code.
+    if (!Array.isArray(tuple)) {
+        throw TypeError('Expecting tuple from value block: ' + targetBlock.type);
+    }
+    var code = tuple[0];
+    var innerOrder = tuple[1];
+    if (isNaN(innerOrder)) {
+        throw TypeError('Expecting valid order from value block: ' +
+            targetBlock.type);
+    }
+    if (!code) {
+        return '';
+    }
+
+    // Add parentheses if needed.
+    var parensNeeded = false;
+    var outerOrderClass = Math.floor(outerOrder);
+    var innerOrderClass = Math.floor(innerOrder);
+    if (outerOrderClass <= innerOrderClass) {
+        if (outerOrderClass == innerOrderClass &&
+            (outerOrderClass == 0 || outerOrderClass == 99)) {
+            // Don't generate parens around NONE-NONE and ATOMIC-ATOMIC pairs.
+            // 0 is the atomic order, 99 is the none order.  No parentheses needed.
+            // In all known languages multiple such code blocks are not order
+            // sensitive.  In fact in Python ('a' 'b') 'c' would fail.
+        } else {
+            // The operators outside this code are stronger than the operators
+            // inside this code.  To prevent the code from being pulled apart,
+            // wrap the code in parentheses.
+            parensNeeded = true;
+            // Check for special exceptions.
+            for (var i = 0; i < this.ORDER_OVERRIDES.length; i++) {
+                if (this.ORDER_OVERRIDES[i][0] == outerOrder &&
+                    this.ORDER_OVERRIDES[i][1] == innerOrder) {
+                    parensNeeded = false;
+                    break;
+                }
+            }
+        }
+    }
+    if (parensNeeded) {
+        // Technically, this should be handled on a language-by-language basis.
+        // However all known (sane) languages use parentheses for grouping.
+        code = '(' + code + ')';
+    }
+    return code;
 };
 
 /**
@@ -309,18 +310,18 @@ Blockly.Generator.prototype.valueToCode = function(block, name, outerOrder) {
  * @return {string} Generated code or '' if no blocks are connected.
  */
 Blockly.Generator.prototype.statementToCode = function(block, name) {
-  var targetBlock = block.getInputTargetBlock(name);
-  var code = this.blockToCode(targetBlock);
-  // Value blocks must return code and order of operations info.
-  // Statement blocks must only return code.
-  if (typeof code != 'string') {
-    throw TypeError('Expecting code from statement block: ' +
-        (targetBlock && targetBlock.type));
-  }
-  if (code) {
-    code = this.prefixLines(/** @type {string} */ (code), this.INDENT);
-  }
-  return code;
+    var targetBlock = block.getInputTargetBlock(name);
+    var code = this.blockToCode(targetBlock);
+    // Value blocks must return code and order of operations info.
+    // Statement blocks must only return code.
+    if (typeof code != 'string') {
+        throw TypeError('Expecting code from statement block: ' +
+            (targetBlock && targetBlock.type));
+    }
+    if (code) {
+        code = this.prefixLines( /** @type {string} */ (code), this.INDENT);
+    }
+    return code;
 };
 
 /**
@@ -333,19 +334,19 @@ Blockly.Generator.prototype.statementToCode = function(block, name) {
  * @return {string} Loop contents, with infinite loop trap added.
  */
 Blockly.Generator.prototype.addLoopTrap = function(branch, block) {
-  if (this.INFINITE_LOOP_TRAP) {
-    branch = this.prefixLines(this.injectId(this.INFINITE_LOOP_TRAP, block),
-        this.INDENT) + branch;
-  }
-  if (this.STATEMENT_SUFFIX && !block.suppressPrefixSuffix) {
-    branch = this.prefixLines(this.injectId(this.STATEMENT_SUFFIX, block),
-        this.INDENT) + branch;
-  }
-  if (this.STATEMENT_PREFIX && !block.suppressPrefixSuffix) {
-    branch = branch + this.prefixLines(this.injectId(this.STATEMENT_PREFIX,
-        block), this.INDENT);
-  }
-  return branch;
+    if (this.INFINITE_LOOP_TRAP) {
+        branch = this.prefixLines(this.injectId(this.INFINITE_LOOP_TRAP, block),
+            this.INDENT) + branch;
+    }
+    if (this.STATEMENT_SUFFIX && !block.suppressPrefixSuffix) {
+        branch = this.prefixLines(this.injectId(this.STATEMENT_SUFFIX, block),
+            this.INDENT) + branch;
+    }
+    if (this.STATEMENT_PREFIX && !block.suppressPrefixSuffix) {
+        branch = branch + this.prefixLines(this.injectId(this.STATEMENT_PREFIX,
+            block), this.INDENT);
+    }
+    return branch;
 };
 
 /**
@@ -356,8 +357,8 @@ Blockly.Generator.prototype.addLoopTrap = function(branch, block) {
  * @return {string} Code snippet with ID.
  */
 Blockly.Generator.prototype.injectId = function(msg, block) {
-  var id = block.id.replace(/\$/g, '$$$$');  // Issue 251.
-  return msg.replace(/%1/g, '\'' + id + '\'');
+    var id = block.id.replace(/\$/g, '$$$$'); // Issue 251.
+    return msg.replace(/%1/g, '\'' + id + '\'');
 };
 
 /**
@@ -373,7 +374,7 @@ Blockly.Generator.prototype.RESERVED_WORDS_ = '';
  *     No spaces.  Duplicates are ok.
  */
 Blockly.Generator.prototype.addReservedWords = function(words) {
-  this.RESERVED_WORDS_ += words + ',';
+    this.RESERVED_WORDS_ += words + ',';
 };
 
 /**
@@ -426,25 +427,25 @@ Blockly.Generator.prototype.variableDB_;
  * @protected
  */
 Blockly.Generator.prototype.provideFunction_ = function(desiredName, code) {
-  if (!this.definitions_[desiredName]) {
-    var functionName = this.variableDB_.getDistinctName(desiredName,
-        Blockly.PROCEDURE_CATEGORY_NAME);
-    this.functionNames_[desiredName] = functionName;
-    var codeText = code.join('\n').replace(
-        this.FUNCTION_NAME_PLACEHOLDER_REGEXP_, functionName);
-    // Change all '  ' indents into the desired indent.
-    // To avoid an infinite loop of replacements, change all indents to '\0'
-    // character first, then replace them all with the indent.
-    // We are assuming that no provided functions contain a literal null char.
-    var oldCodeText;
-    while (oldCodeText != codeText) {
-      oldCodeText = codeText;
-      codeText = codeText.replace(/^(( {2})*) {2}/gm, '$1\0');
+    if (!this.definitions_[desiredName]) {
+        var functionName = this.variableDB_.getDistinctName(desiredName,
+            Blockly.PROCEDURE_CATEGORY_NAME);
+        this.functionNames_[desiredName] = functionName;
+        var codeText = code.join('\n').replace(
+            this.FUNCTION_NAME_PLACEHOLDER_REGEXP_, functionName);
+        // Change all '  ' indents into the desired indent.
+        // To avoid an infinite loop of replacements, change all indents to '\0'
+        // character first, then replace them all with the indent.
+        // We are assuming that no provided functions contain a literal null char.
+        var oldCodeText;
+        while (oldCodeText != codeText) {
+            oldCodeText = codeText;
+            codeText = codeText.replace(/^(( {2})*) {2}/gm, '$1\0');
+        }
+        codeText = codeText.replace(/\0/g, this.INDENT);
+        this.definitions_[desiredName] = codeText;
     }
-    codeText = codeText.replace(/\0/g, this.INDENT);
-    this.definitions_[desiredName] = codeText;
-  }
-  return this.functionNames_[desiredName];
+    return this.functionNames_[desiredName];
 };
 
 /**
@@ -454,7 +455,7 @@ Blockly.Generator.prototype.provideFunction_ = function(desiredName, code) {
  * @param {!Blockly.Workspace} _workspace Workspace to generate code from.
  */
 Blockly.Generator.prototype.init = function(_workspace) {
-  // Optionally override
+    // Optionally override
 };
 
 /**
@@ -471,8 +472,8 @@ Blockly.Generator.prototype.init = function(_workspace) {
  * @protected
  */
 Blockly.Generator.prototype.scrub_ = function(_block, code, _opt_thisOnly) {
-  // Optionally override
-  return code;
+    // Optionally override
+    return code;
 };
 
 /**
@@ -483,8 +484,8 @@ Blockly.Generator.prototype.scrub_ = function(_block, code, _opt_thisOnly) {
  * @return {string} Completed code.
  */
 Blockly.Generator.prototype.finish = function(code) {
-  // Optionally override
-  return code;
+    // Optionally override
+    return code;
 };
 
 /**
@@ -496,6 +497,6 @@ Blockly.Generator.prototype.finish = function(code) {
  * @return {string} Legal line of code.
  */
 Blockly.Generator.prototype.scrubNakedValue = function(line) {
-  // Optionally override
-  return line;
+    // Optionally override
+    return line;
 };

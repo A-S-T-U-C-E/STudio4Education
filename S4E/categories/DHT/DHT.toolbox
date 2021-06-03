@@ -1,0 +1,15 @@
+var toolbox_DHT = {
+    "kind": "categoryToolbox",
+    "contents": [{
+        "kind": "category",
+        "name": "%{BKY_CAT_DHT}",
+        "toolboxitemid": "DHT",
+        "levels": "1,2,3",
+        "level": "1",
+        "categorystyle": "DHT_category",
+        "contents": [{
+            "kind": "block",
+            "type": "DHT_read"
+        }]
+    }]
+};

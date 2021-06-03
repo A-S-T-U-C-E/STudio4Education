@@ -1,27 +1,38 @@
 var toolbox_X_NUCLEO_IKS01A3 = {
-   "kind": "categoryToolbox",
-    "contents": [
-      {
-         "kind": "category",
-         "name": "%{BKY_CAT_IKS01A3}",
-		"toolboxitemid": "X-NUCLEO-IKS01A3",
-		"level": "1",
-		"levels": "1,2,3",
-         "categorystyle": "X-NUCLEO-IKS01A3_category",
-		"cssConfig": {
-		  "icon": "customIcon fas fas fa-shield-alt"
-		},
-         "contents": [
-            {
-               "kind": "block",
-               "type": "X_NUCLEO_IKS01A3_Temp_Read"
+    "kind": "categoryToolbox",
+    "contents": [{
+        "kind": "category",
+        "name": "%{BKY_CAT_IKS01A3}",
+        "toolboxitemid": "X-NUCLEO-IKS01A3",
+        "level": "1",
+        "levels": "1,2,3",
+        "categorystyle": "X-NUCLEO-IKS01A3_category",
+        "contents": [{
+                "kind": "block",
+                "type": "X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ"
             },
             {
-               "kind": "block",
-               "type": "X_NUCLEO_IKS01A3_Humidity_Read"
+                "kind": "block",
+                "type": "X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ"
+            },
+            {
+                "kind": "block",
+                "type": "X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_READ"
+            },
+            {
+                "kind": "block",
+                "type": "X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER"
+            },
+            {
+                "kind": "block",
+                "type": "X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION"
+            },
+            {
+                "kind": "block",
+                "type": "X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC"
             }
-         ]
-      },{
-  "kind": "sep"
-  }]
+        ]
+    }, {
+        "kind": "sep"
+    }]
 };

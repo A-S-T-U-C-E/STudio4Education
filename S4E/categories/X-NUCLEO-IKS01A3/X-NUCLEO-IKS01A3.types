@@ -1,0 +1,20 @@
+//---------------------------------logic--------------------------------------------
+
+Blockly.Blocks['X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ'].getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
+};
+Blockly.Blocks.X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ.getBlockType = function() {
+    return Blockly.Types.DECIMAL;
+};
+Blockly.Blocks.X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_READ.getBlockType = function() {
+    return Blockly.Types.LARGE_UNS_NUMBER;
+};
+Blockly.Blocks.X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER.getBlockType = function() {
+    return Blockly.Types.LARGE_UNS_NUMBER;
+};
+Blockly.Blocks.X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION.getBlockType = function() {
+    return Blockly.Types.LARGE_UNS_NUMBER;
+};
+Blockly.Blocks.X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC.getBlockType = function() {
+    return Blockly.Types.LARGE_UNS_NUMBER;
+};

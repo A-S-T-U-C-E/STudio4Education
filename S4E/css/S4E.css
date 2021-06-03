@@ -7,106 +7,126 @@
 .blocklyToolboxDiv {
     box-shadow: 5px 5px 5px gray !important;
 }
+
 .UIText {
     vertical-align: middle;
     color: #FFFFFF;
     font-weight: bold;
 }
+
 .UITextSmall {
     vertical-align: middle;
     color: #FFFFFF;
     font-size: large;
     font-weight: bold;
 }
-.iconButtons{
+
+.iconButtons {
     border: 0;
     background: none;
     box-shadow: none;
     border-radius: 0px;
-    padding:2px;
-    line-height:0;
+    padding: 2px;
+    line-height: 0;
     vertical-align: middle;
     background: #03234b;
     color: #FFFFFF;
     font-size: 1.5em;
     width: 35px;
 }
-.iconButtons:hover{
+
+.iconButtons:hover {
     background: #FFFFFF;
     color: #03234b;
-    cursor : pointer;
+    cursor: pointer;
     transition: 0.5s ease;
 }
-.iconButtons:active{
+
+.iconButtons:active {
     background: #FFCC00;
 }
+
 .iconButtons:active::after {
     transition-property: background;
     transition-duration: 10s;
 }
-.iconButtons:disabled{
+
+.iconButtons:disabled {
     background: #F3F1EF;
     color: #03234B;
-    cursor : not-allowed;
+    cursor: not-allowed;
 }
-.iconButtonsClicked{
+
+.iconButtonsClicked {
     border: 0;
     background: none;
     box-shadow: none;
     border-radius: 0px;
-    padding:2px;
-    line-height:0;
+    padding: 2px;
+    line-height: 0;
     vertical-align: middle;
     background: #FFCC00;
     color: #03234B;
     font-size: x-large;
     width: 32px;
 }
+
 .CLI {
     margin: 5px;
 }
+
+
 /* surcharger .iconButton */
-#boardMenu, #serialMenu{
+
+#boardMenu,
+#serialMenu {
     color: #000000;
-    font-size:large;
+    font-size: large;
     border: none;
     -webkit-border-radius: 5px;
     -o-border-radius: 5px;
     border-radius: 5px;
 }
-#barre_h{
-    background-color : #00abdf;
+
+#barre_h {
+    background-color: #00abdf;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-    align-items:center;
+    align-items: center;
 }
 
+
 /* boutons classiques */
+
 #verifyButton,
 #uploadButton,
-#serialMonitorButton
-{
+#serialMonitorButton {
     border-radius: 50%;
 }
-#resetButton{
+
+#resetButton {
     background: #FF0000;
 }
-#resetButton:hover{
+
+#resetButton:hover {
     background: #FFFFFF;
     cursor: no-drop;
 }
-#btn_fake_close{
-}
-#btn_fake_close:hover{
+
+#btn_fake_close {}
+
+#btn_fake_close:hover {
     background: #FF0000;
     color: #FFFFFF;
 }
-#helpButton{
+
+#helpButton {
     border-radius: 5px;
     cursor: help;
 }
-#copyCodeButton{
+
+#copyCodeButton {
     visibility: hidden;
     position: absolute;
     top: 85px;
@@ -114,20 +134,28 @@
     border-radius: 5px;
     z-index: 5;
 }
+
+
 /*****************/
+
+
 /*  Sketch name  */
+
+
 /*****************/
+
 .sketch_name_wrapper {
-  display: inline-block;
-  padding-left: 5px;
+    display: inline-block;
+    padding-left: 5px;
 }
+
 .sketch_name_icon {
     border: 0;
     background: none;
     box-shadow: none;
     border-radius: 0px;
-    padding:2px;
-    line-height:0;
+    padding: 2px;
+    line-height: 0;
     vertical-align: middle;
     background: #03234b;
     color: #FFFFFF;
@@ -136,14 +164,16 @@
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
 }
+
 .sketch_name {
-  width: auto !important;
-  color: #FFFFFF;
-  max-width: 400px;
-  line-height: 64px;
-  height: 2rem !important;
-  font-size: 1.5rem !important;
-  border-bottom: 0px solid #EEE !important;
-  font-style: italic;background: transparent;
-  border: none;
+    width: auto !important;
+    color: #FFFFFF;
+    max-width: 400px;
+    line-height: 64px;
+    height: 2rem !important;
+    font-size: 1.5rem !important;
+    border-bottom: 0px solid #EEE !important;
+    font-style: italic;
+    background: transparent;
+    border: none;
 }

@@ -8,14 +8,13 @@
  * @fileoverview Accessibility functions, forked from https://github.com/google/blockly/commit/21763b7e00fbfe8010595382bf196410cd30844e
  * @author scanet@libreduc.cc (Sébastien CANET)
  */
- 
+
 // Custom requires for the playground.
-// goog.require('Blockly.WorkspaceCommentSvg');
-// goog.require('Blockly.WorkspaceCommentSvg.render');
+goog.require('Blockly.WorkspaceCommentSvg');
+goog.require('Blockly.WorkspaceCommentSvg.render');
 
 'use strict';
 var Code;
-
 
 function setRenderDebugOptionCheckboxState(overrideOptions) {
     Code.blockRendering.Debug.config = overrideOptions || {};
@@ -24,9 +23,9 @@ function setRenderDebugOptionCheckboxState(overrideOptions) {
     }
     var renderDebugOptionsListEl = document.getElementById('renderDebugOptions');
     var renderDebugOptionInputs =
-            renderDebugOptionsListEl.getElementsByTagName('input');
+        renderDebugOptionsListEl.getElementsByTagName('input');
     for (var i = 0, optionInput;
-            (optionInput = renderDebugOptionInputs[i]); i++) {
+        (optionInput = renderDebugOptionInputs[i]); i++) {
         var optionName = optionInput.getAttribute('data-optionName');
         optionInput.checked = !!overrideOptions[optionName];
     }
@@ -45,7 +44,8 @@ function addRenderDebugOptionsCheckboxes() {
     var renderDebugConfig = Code.blockRendering.Debug.config;
     var renderDebugOptionsListEl = document.getElementById('renderDebugOptions');
     var optionNames = Object.keys(renderDebugConfig);
-    for (var i = 0, optionName; (optionName = optionNames[i]); i++) {
+    for (var i = 0, optionName;
+        (optionName = optionNames[i]); i++) {
         var optionCheckId = 'RenderDebug' + optionName + 'Check';
         var optionLabel = document.createElement('label');
         optionLabel.setAttribute('for', optionCheckId);
@@ -80,8 +80,7 @@ function changeTheme(themeChoice) {
     } else {
         Code.workspace.setTheme(Blockly.Themes.Classic);
     }
-}
-;
+};
 
 /**
  * Sort and list elements with class 'access' for size change
@@ -174,8 +173,7 @@ function getToolboxElement() {
     // The three possible values are: "simple", "categories",
     // "categories-typed-variables".
     return document.getElementById('toolbox-' + toolboxSuffix);
-}
-;
+};
 
 function toggleAccessibilityMode(state) {
     if (state) {
@@ -183,14 +181,13 @@ function toggleAccessibilityMode(state) {
     } else {
         Code.navigationController.disable(Code.workspace);
     }
-}
-;
+};
 
 function configureContextualMenu(menuOptions, e) {
     var screenshotOption = {
         text: MSG['screenshot'],
         enabled: Code.workspace.getTopBlocks().length,
-        callback: function () {
+        callback: function() {
             Blockly.downloadScreenshot(Code.workspace);
         }
     };
@@ -198,5 +195,4 @@ function configureContextualMenu(menuOptions, e) {
 
     // Adds a default-sized workspace comment to the workspace.
     menuOptions.push(Blockly.ContextMenu.workspaceCommentOption(Code.workspace, e));
-}
-;
+};

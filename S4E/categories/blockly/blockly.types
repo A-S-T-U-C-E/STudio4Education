@@ -1,0 +1,233 @@
+//---------------------------------logic--------------------------------------------
+
+Blockly.Blocks.controls_if.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.logic_compare.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
+};
+Blockly.Blocks.logic_operation.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
+};
+Blockly.Blocks.logic_negate.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
+};
+Blockly.Blocks.logic_boolean.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
+};
+Blockly.Blocks.logic_null.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.logic_ternary.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
+};
+Blockly.Blocks.controls_switch.getVars = function() {
+    return [this.getFieldValue('SWVAR')];
+};
+Blockly.Blocks.controls_switch.getVarType = function() {
+    return this.inputList[1].connection.targetBlock().getBlockType();
+};
+
+//---------------------------------loops--------------------------------------------
+
+Blockly.Blocks.controls_repeat_ext.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.controls_repeat.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.controls_whileUntil.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.controls_for.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.controls_forEach.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.controls_flow_statements.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+
+//---------------------------------maths--------------------------------------------
+
+Blockly.Blocks.math_number.getBlockType = function() {
+    var numString = this.getFieldValue('NUM');
+    return Blockly.Types.identifyNumber(numString);
+};
+Blockly.Blocks.math_arithmetic.getBlockType = function() {
+    return Blockly.Types.NUMBER;
+};
+Blockly.Blocks.math_single.getBlockType = function() {
+    return Blockly.Types.DECIMAL;
+};
+Blockly.Blocks.math_trig.getBlockType = function() {
+    return Blockly.Types.DECIMAL;
+};
+Blockly.Blocks.math_constant.getBlockType = function() {
+    return Blockly.Types.DECIMAL;
+};
+Blockly.Blocks.math_number_property.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
+};
+Blockly.Blocks.math_round.getBlockType = function() {
+    return Blockly.Types.NUMBER;
+};
+Blockly.Blocks.math_on_list.getBlockType = function() {
+    return Blockly.Types.NUMBER;
+};
+Blockly.Blocks.math_modulo.getBlockType = function() {
+    return Blockly.Types.NUMBER;
+};
+Blockly.Blocks.math_constrain.getVarType = function() {
+    return Blockly.Types.NUMBER;
+};
+Blockly.Blocks.math_random_int.getBlockType = function() {
+    return Blockly.Types.NUMBER;
+};
+Blockly.Blocks.math_random_float.getBlockType = function() {
+    return Blockly.Types.DECIMAL;
+};
+Blockly.Blocks.math_atan2.getBlockType = function() {
+    return Blockly.Types.LARGE_UNS_NUMBER;
+};
+Blockly.Blocks.inout_angle_maths.getBlockType = function() {
+    return Blockly.Types.NUMBER;
+};
+Blockly.Blocks.math_interval.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
+};
+
+//---------------------------------text--------------------------------------------
+
+Blockly.Blocks.text.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.text_char.getBlockType = function() {
+    return Blockly.Types.CHARACTER;
+};
+Blockly.Blocks.text_multiline.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.text_join.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.text_append.getVars = function() {
+    return [this.getFieldValue('VAR')];
+};
+Blockly.Blocks.text_append.getVarType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.text_length.getBlockType = function() {
+    return Blockly.Types.NUMBER;
+};
+Blockly.Blocks.text_isEmpty.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
+};
+Blockly.Blocks.text_indexOf.getBlockType = function() {
+    return Blockly.Types.NUMBER;
+};
+Blockly.Blocks.text_charAt.getBlockType = function() {
+    return Blockly.Types.NUMBER;
+};
+Blockly.Blocks.text_getSubstring.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.text_changeCase.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.text_trim.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+
+//---------------------------------array--------------------------------------------
+
+Blockly.Blocks.Array_create_with.getBlockType = function() {
+    // define an new blocktype for each array
+    var blockType = new Blockly.Type({
+        typeId: 'Array',
+        typeMsgName: 'ARD_TYPE_ARRAY',
+        compatibleTypes: []
+    });
+    // add 2 properties 
+    // the size
+    blockType.arraySize = this.itemCount_;
+    // and type of elements
+    blockType.arrayType = Blockly.Types.UNDEF;
+    var j = 1;
+    while (j <= this.itemCount_) {
+        // the first input with a block determine the type of the elements  
+        if (this.inputList[j].connection && this.inputList[j].connection.targetBlock()) {
+            blockType.arrayType = this.inputList[j].connection.targetBlock().getBlockType();
+            j = this.itemCount_ + 1;
+        } else {
+            j++;
+        }
+    }
+    return blockType;
+};
+
+Blockly.Blocks.Array_getIndex_in_list.getBlockType = function() {
+    if (this.inputList[1].connection && this.inputList[1].connection.targetBlock()) {
+        var blockType = this.inputList[1].connection.targetBlock().getBlockType();
+        if (blockType instanceof Blockly.Type) {
+            return blockType.arrayType;
+        } else {
+            // in case the input is a variable, we need to identify it
+            // otherwise we just get the type of this variable
+            // and not the type of the elements
+            // so we set the type to Blockly.Types.ARRAY
+            return [Blockly.Types.ARRAY, blockType[1]];
+        }
+    } else {
+        return Blockly.Types.UNDEF;
+    }
+};
+
+Blockly.Blocks.Array_modify.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+
+Blockly.Blocks.Array_declare.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+
+Blockly.Blocks.Array_create.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+
+Blockly.Blocks.Array_fix.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+
+Blockly.Blocks.Array_getIndex_in_array.getBlockType = function() {
+    if (this.inputList[1].connection && this.inputList[1].connection.targetBlock()) {
+        var blockType = this.inputList[1].connection.targetBlock().getBlockType();
+        if (blockType instanceof Blockly.Type) {
+            return blockType.arrayType;
+        } else {
+            // in case the input is a variable, we need to identify it
+            // otherwise we just get the type of this variable
+            // and not the type of the elements
+            // so we set the type to Blockly.Types.ARRAY
+            return [Blockly.Types.ARRAY, blockType[1]];
+        }
+    } else {
+        return Blockly.Types.UNDEF;
+    }
+};
+
+//---------------------------------colour--------------------------------------------
+
+Blockly.Blocks.colour_picker.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.colour_random.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.colour_rgb.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.colour_blend.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};

@@ -1,22 +1,18 @@
 var toolbox_relay = {
-   "kind": "categoryToolbox",
-   "contents": [{
-	  "kind": "category",
-	  "name": "%{BKY_CAT_RELAY}",
-		"toolboxitemid": "RELAY",
-		"levels": "1,2,3",
-		"level": "1",
-	  "categorystyle": "relay_category",
-		"cssConfig": {
-		  "icon": "customIcon fas fa-bolt"
-		},
-	  "contents": [{
-		 "kind": "block",
-		 "type": "RELAY_LOGICAL",
-		 }, {
-		"kind": "block",
-		"type": "RELAY_MOSFET"
-		 }
-	  ]
-   }]
+    "kind": "categoryToolbox",
+    "contents": [{
+        "kind": "category",
+        "name": "%{BKY_CAT_RELAY}",
+        "toolboxitemid": "RELAY",
+        "levels": "1,2,3",
+        "level": "1",
+        "categorystyle": "relay_category",
+        "contents": [{
+            "kind": "block",
+            "type": "RELAY_LOGICAL",
+        }, {
+            "kind": "block",
+            "type": "RELAY_MOSFET"
+        }]
+    }]
 };

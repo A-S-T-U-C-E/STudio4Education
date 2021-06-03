@@ -17,9 +17,9 @@ dragElement(document.getElementById("helpModal"));
 
 function dragElement(elmnt) {
     var pos1 = 0,
-    pos2 = 0,
-    pos3 = 0,
-    pos4 = 0;
+        pos2 = 0,
+        pos3 = 0,
+        pos4 = 0;
     if (document.getElementById(elmnt.id + "_header")) {
         // if present, the header is where you move the DIV from:
         document.getElementById(elmnt.id + "_header").onmousedown = dragMouseDown;
@@ -27,6 +27,7 @@ function dragElement(elmnt) {
         // otherwise, move the DIV from anywhere inside the DIV:
         elmnt.onmousedown = dragMouseDown;
     }
+
     function dragMouseDown(e) {
         e = e || window.event;
         e.preventDefault();
@@ -36,6 +37,7 @@ function dragElement(elmnt) {
         document.onmouseup = closeDragElement;
         document.onmousemove = elementDrag;
     }
+
     function elementDrag(e) {
         e = e || window.event;
         e.preventDefault();
@@ -48,6 +50,7 @@ function dragElement(elmnt) {
         elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
         elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
     }
+
     function closeDragElement() {
         // stop moving when mouse button is released:
         document.onmouseup = null;
@@ -57,31 +60,35 @@ function dragElement(elmnt) {
 
 // Simulate jQuery selector « $ »
 // return a matrix if an element has right class
-if (!document.getElementsByClassName ) {
-  document.getElementsByClassName = function(cl, tag) {
-    var els, matches = [],
-      i = 0, len,
-      regex = new RegExp('(?:\\s|^)' + cl + '(?:\\s|$)');
-      els = document.getElementsByTagName(tag || "*");
-      if ( !els[0] ) return false;
-      for ( len = els.length; i < len; i++ ) {
-        if ( els[i].className.match(regex) ) {
-          matches.push( els[i]);
+if (!document.getElementsByClassName) {
+    document.getElementsByClassName = function(cl, tag) {
+        var els, matches = [],
+            i = 0,
+            len,
+            regex = new RegExp('(?:\\s|^)' + cl + '(?:\\s|$)');
+        els = document.getElementsByTagName(tag || "*");
+        if (!els[0]) return false;
+        for (len = els.length; i < len; i++) {
+            if (els[i].className.match(regex)) {
+                matches.push(els[i]);
+            }
         }
-      }      
-      return matches;
-  };
+        return matches;
+    };
 }
- 
+
 // Validate id, class, or tag.
 var $ = function(el, tag) {
-  var firstChar = el.charAt(0);
-  if ( document.querySelectorAll ) return document.querySelectorAll(el);
-  switch ( firstChar ) {
-    case "#": return document.getElementById(el.slice(1) );
-    case ".": return document.getElementsByClassName(el.slice(1), tag );
-    default : return document.getElementsByTagName(el);
-  }
+    var firstChar = el.charAt(0);
+    if (document.querySelectorAll) return document.querySelectorAll(el);
+    switch (firstChar) {
+        case "#":
+            return document.getElementById(el.slice(1));
+        case ".":
+            return document.getElementsByClassName(el.slice(1), tag);
+        default:
+            return document.getElementsByTagName(el);
+    }
 };
 
 // Usage
@@ -99,7 +106,7 @@ var $ = function(el, tag) {
 function collapsibleContentInit() {
     var coll = document.getElementsByClassName("collapsibleButton");
     for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function () {
+        coll[i].addEventListener("click", function() {
             this.classList.toggle("active");
             var content = this.nextElementSibling;
             if (content.style.maxHeight) {
@@ -137,7 +144,7 @@ var acc = document.getElementsByClassName("accordion");
 // var i;
 
 for (var i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function () {
+    acc[i].addEventListener("click", function() {
         /* Toggle between adding and removing the "active" class,
         to highlight the button that controls the panel */
         this.classList.toggle("active");
@@ -154,285 +161,285 @@ for (var i = 0; i < acc.length; i++) {
 /*
  * Icons button mouser over
  */
-document.getElementById('btn_fake_min').onmouseover = function () {
+document.getElementById('btn_fake_min').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['btnMinimize'];
 };
-document.getElementById('btn_fake_min').onmouseout = function () {
+document.getElementById('btn_fake_min').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('btn_fake_max').onmouseover = function () {
+document.getElementById('btn_fake_max').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['btnMaximize'];
 };
-document.getElementById('btn_fake_max').onmouseout = function () {
+document.getElementById('btn_fake_max').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('btn_fake_close').onmouseover = function () {
+document.getElementById('btn_fake_close').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['btnClose'];
 };
-document.getElementById('btn_fake_close').onmouseout = function () {
+document.getElementById('btn_fake_close').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('fullScreenButton').onmouseover = function () {
+document.getElementById('fullScreenButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['fullScreenButton_span'];
 };
-document.getElementById('fullScreenButton').onmouseout = function () {
+document.getElementById('fullScreenButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('undoButton').onmouseover = function () {
+document.getElementById('undoButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['undoButton_span'];
 };
-document.getElementById('undoButton').onmouseout = function () {
+document.getElementById('undoButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('redoButton').onmouseover = function () {
+document.getElementById('redoButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['redoButton_span'];
 };
-document.getElementById('redoButton').onmouseout = function () {
+document.getElementById('redoButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('verifyButton').onmouseover = function () {
+document.getElementById('verifyButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['verifyButton_span'];
 };
-document.getElementById('verifyButton').onmouseout = function () {
+document.getElementById('verifyButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('serialButton').onmouseover = function () {
+document.getElementById('serialButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['serialButtonSpan'];
 };
-document.getElementById('serialButton').onmouseout = function () {
+document.getElementById('serialButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('uploadButton').onmouseover = function () {
+document.getElementById('uploadButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['uploadButton_span'];
 };
-document.getElementById('uploadButton').onmouseout = function () {
+document.getElementById('uploadButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('serialConnectButton').onmouseover = function () {
+document.getElementById('serialConnectButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['serialConnectButton_span'];
 };
-document.getElementById('serialConnectButton').onmouseout = function () {
+document.getElementById('serialConnectButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('serialMonitorButton').onmouseover = function () {
+document.getElementById('serialMonitorButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['serialMonitorButton_span'];
 };
-document.getElementById('serialMonitorButton').onmouseout = function () {
+document.getElementById('serialMonitorButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('nodeRedFlowButton').onmouseover = function () {
+document.getElementById('nodeRedFlowButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['nodeRedFlowButton_span'];
 };
-document.getElementById('nodeRedFlowButton').onmouseout = function () {
+document.getElementById('nodeRedFlowButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('supervisionButton').onmouseover = function () {
+document.getElementById('supervisionButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['supervisionButton_span'];
 };
-document.getElementById('supervisionButton').onmouseout = function () {
+document.getElementById('supervisionButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('saveCodeButton').onmouseover = function () {
+document.getElementById('saveCodeButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['saveCodeButton_span'];
 };
-document.getElementById('saveCodeButton').onmouseout = function () {
+document.getElementById('saveCodeButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('newButton').onmouseover = function () {
+document.getElementById('newButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['newButton_span'];
 };
-document.getElementById('newButton').onmouseout = function () {
+document.getElementById('newButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('saveXMLButton').onmouseover = function () {
+document.getElementById('saveXMLButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['saveXMLButton_span'];
 };
-document.getElementById('saveXMLButton').onmouseout = function () {
+document.getElementById('saveXMLButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('loadXMLfakeButton').onmouseover = function () {
+document.getElementById('loadXMLfakeButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['loadXMLfakeButton_span'];
 };
-document.getElementById('loadXMLfakeButton').onmouseout = function () {
+document.getElementById('loadXMLfakeButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('resetButton').onmouseover = function () {
+document.getElementById('resetButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['resetButton_span'];
 };
-document.getElementById('resetButton').onmouseout = function () {
+document.getElementById('resetButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('parametersButton').onmouseover = function () {
+document.getElementById('parametersButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['setup_sideButton_span'];
 };
-document.getElementById('parametersButton').onmouseout = function () {
+document.getElementById('parametersButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('sketch_name_wrapper').onmouseover = function () {
+document.getElementById('sketch_name_wrapper').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['sketch_name_wrapper'];
 };
-document.getElementById('sketch_name_wrapper').onmouseout = function () {
+document.getElementById('sketch_name_wrapper').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('helpButton').onmouseover = function () {
+document.getElementById('helpButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['helpButton_span'];
 };
-document.getElementById('helpButton').onmouseout = function () {
+document.getElementById('helpButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('toolsButton').onmouseover = function () {
+document.getElementById('toolsButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['toolsButton_span'];
 };
-document.getElementById('toolsButton').onmouseout = function () {
+document.getElementById('toolsButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('wiringButton').onmouseover = function () {
+document.getElementById('wiringButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['wiringButton_span'];
 };
-document.getElementById('wiringButton').onmouseout = function () {
+document.getElementById('wiringButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('factoryButton').onmouseover = function () {
+document.getElementById('factoryButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['factoryButton_span'];
 };
-document.getElementById('factoryButton').onmouseout = function () {
+document.getElementById('factoryButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('htmlButton').onmouseover = function () {
+document.getElementById('htmlButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['htmlButton_span'];
 };
-document.getElementById('htmlButton').onmouseout = function () {
+document.getElementById('htmlButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('colorConversionButton').onmouseover = function () {
+document.getElementById('colorConversionButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['colorConversionButton_span'];
 };
-document.getElementById('colorConversionButton').onmouseout = function () {
+document.getElementById('colorConversionButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('dataConversionButton').onmouseover = function () {
+document.getElementById('dataConversionButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['dataConversionButton_span'];
 };
-document.getElementById('dataConversionButton').onmouseout = function () {
+document.getElementById('dataConversionButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('iotConnectButton').onmouseover = function () {
+document.getElementById('iotConnectButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['iotConnectButton_span'];
 };
-document.getElementById('iotConnectButton').onmouseout = function () {
+document.getElementById('iotConnectButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('launchRedServer').onmouseover = function () {
+document.getElementById('launchRedServer').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['launchRedServer_span'];
 };
-document.getElementById('launchRedServer').onmouseout = function () {
+document.getElementById('launchRedServer').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('launchWebServer').onmouseover = function () {
+document.getElementById('launchWebServer').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['launchWebServer_span'];
 };
-document.getElementById('launchWebServer').onmouseout = function () {
+document.getElementById('launchWebServer').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('papyrusConnect').onmouseover = function () {
+document.getElementById('papyrusConnect').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['papyrusConnect_span'];
 };
-document.getElementById('papyrusConnect').onmouseout = function () {
+document.getElementById('papyrusConnect').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('registerToOrchestrator_auto').onmouseover = function () {
+document.getElementById('registerToOrchestrator_auto').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['registerToOrchestrator_span'];
 };
-document.getElementById('registerToOrchestrator_auto').onmouseout = function () {
+document.getElementById('registerToOrchestrator_auto').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
 // document.getElementById('blynkConnect').onmouseover = function () {
-    // document.getElementById("content_hoverButton").textContent = MSG['blynkConnect_span'];
+// document.getElementById("content_hoverButton").textContent = MSG['blynkConnect_span'];
 // };
 // document.getElementById('blynkConnect').onmouseout = function () {
-    // document.getElementById("content_hoverButton").textContent = "";
+// document.getElementById("content_hoverButton").textContent = "";
 // };
-document.getElementById('serialConnectIOT').onmouseover = function () {
+document.getElementById('serialConnectIOT').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['serialConnectIOT_span'];
 };
-document.getElementById('serialConnectIOT').onmouseout = function () {
+document.getElementById('serialConnectIOT').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('lateral-panel-setup-label').onmouseover = function () {
+document.getElementById('lateral-panel-setup-label').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['setup_sideButton_span'];
 };
-document.getElementById('lateral-panel-setup-label').onmouseout = function () {
+document.getElementById('lateral-panel-setup-label').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('copyCodeButton').onmouseover = function () {
+document.getElementById('copyCodeButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['copyCodeButton_span'];
 };
-document.getElementById('copyCodeButton').onmouseout = function () {
+document.getElementById('copyCodeButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('coreUpdateButton').onmouseover = function () {
+document.getElementById('coreUpdateButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['coreUpdateButton_span'];
 };
-document.getElementById('coreUpdateButton').onmouseout = function () {
+document.getElementById('coreUpdateButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('cleanCLIcacheButton').onmouseover = function () {
+document.getElementById('cleanCLIcacheButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['cleanCLIcacheButton_span'];
 };
-document.getElementById('cleanCLIcacheButton').onmouseout = function () {
+document.getElementById('cleanCLIcacheButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('listBoardsButton').onmouseover = function () {
+document.getElementById('listBoardsButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['listBoardsButton_span'];
 };
-document.getElementById('listBoardsButton').onmouseout = function () {
+document.getElementById('listBoardsButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('installBoardsInput').onmouseover = function () {
+document.getElementById('installBoardsInput').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['installBoardsInput_span'];
 };
-document.getElementById('installBoardsInput').onmouseout = function () {
+document.getElementById('installBoardsInput').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('installBoardsButton').onmouseover = function () {
+document.getElementById('installBoardsButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['installBoardsButton_span'];
 };
-document.getElementById('installBoardsButton').onmouseout = function () {
+document.getElementById('installBoardsButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('searchlLibInput').onmouseover = function () {
+document.getElementById('searchlLibInput').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['searchlLibInput_span'];
 };
-document.getElementById('searchlLibInput').onmouseout = function () {
+document.getElementById('searchlLibInput').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('searchlLibButton').onmouseover = function () {
+document.getElementById('searchlLibButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['searchlLibButton_span'];
 };
-document.getElementById('searchlLibButton').onmouseout = function () {
+document.getElementById('searchlLibButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('installLibInput').onmouseover = function () {
+document.getElementById('installLibInput').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['installLibInput_span'];
 };
-document.getElementById('installLibInput').onmouseout = function () {
+document.getElementById('installLibInput').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('installLibButton').onmouseover = function () {
+document.getElementById('installLibButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['installLibButton_span'];
 };
-document.getElementById('installLibButton').onmouseout = function () {
+document.getElementById('installLibButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('CLI_githubLinkButton').onmouseover = function () {
+document.getElementById('CLI_githubLinkButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['CLI_githubLinkButton_span'];
 };
-document.getElementById('CLI_githubLinkButton').onmouseout = function () {
+document.getElementById('CLI_githubLinkButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('editorReadOnlyToggle').onmouseover = function () {
+document.getElementById('editorReadOnlyToggle').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['editorReadOnlyToggle_span'];
 };
-document.getElementById('editorReadOnlyToggle').onmouseout = function () {
+document.getElementById('editorReadOnlyToggle').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };

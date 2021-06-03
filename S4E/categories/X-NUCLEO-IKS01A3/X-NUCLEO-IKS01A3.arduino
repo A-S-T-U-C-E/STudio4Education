@@ -15,34 +15,204 @@ goog.provide('Blockly.Arduino.X-NUCLEO-IKS01A3');
 
 goog.require('Blockly.Arduino');
 
-Blockly.Arduino['X_NUCLEO_IKS01A3_Temp_Read'] = function (block) {
-    Blockly.Arduino.includes_['includes_IKS01A3'] = '#include <HTS221Sensor.h>';
+Blockly.Arduino['X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ'] = function(block) {
+    var dropdown_hs221_sensor = block.getFieldValue('HS221');
+    Blockly.Arduino.includes_['includes_IKS01A3_HTS221'] = '#include <HTS221Sensor.h>';
     Blockly.Arduino.definitions_['definitions_IKS01A3'] = '#define DEV_I2C Wire\n'
-        + 'HTS221Sensor *HumTemp;\n';
-    Blockly.Arduino.setups_['setup_IKS01A3'] = 'DEV_I2C.begin();\n'
-        + '  HumTemp = new HTS221Sensor(&DEV_I2C);\n'
-        + '  HumTemp->Enable();';
-    Blockly.Arduino.codeFunctions_['function_IKS01A3_temperature'] = 'float tempFromBoard() {\n'
-        + '  float temperature = 0;\n'
-        + '  HumTemp->GetTemperature(&temperature);\n'
-        + '  return temperature;\n'
-        +'}'
-    var code = 'tempFromBoard()';
+    Blockly.Arduino.definitions_['definitions_IKS01A3_HTS221'] = 'HTS221Sensor HumTemp(&DEV_I2C);';
+    Blockly.Arduino.setups_['setup_IKS01A3'] = 'DEV_I2C.begin();'
+    Blockly.Arduino.setups_['setup_IKS01A3_HTS221'] = 'HumTemp.begin();\n' +
+        '  HumTemp.Enable();\n';
+    if (dropdown_hs221_sensor == 'TEMP') {
+        Blockly.Arduino.codeFunctions_['function_IKS01A3_HTS221_temperature'] = 'float tempFromHS221() {\n' +
+            '  float temperature = 0;\n' +
+            '  HumTemp.GetTemperature(&temperature);\n' +
+            '  return temperature;\n' +
+            '}'
+        var code = 'tempFromBoard()';
+    } else {
+        Blockly.Arduino.codeFunctions_['function_IKS01A3_HTS221_humidity'] = 'float humFromHS221() {\n' +
+            '  float humidity = 0;\n' +
+            '  HumTemp.GetHumidity(&humidity);\n' +
+            '  return humidity;\n' +
+            '}'
+        var code = 'humFromBoard()';
+    }
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino['X_NUCLEO_IKS01A3_Humidity_Read'] = function (block) {
-    Blockly.Arduino.includes_['includes_IKS01A3'] = '#include <HTS221Sensor.h>';
+Blockly.Arduino['X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ'] = function(block) {
+    Blockly.Arduino.includes_['includes_IKS01A3_STTS751'] = '#include <STTS751Sensor.h>';
     Blockly.Arduino.definitions_['definitions_IKS01A3'] = '#define DEV_I2C Wire\n'
-        + 'HTS221Sensor *HumTemp;\n';
-    Blockly.Arduino.setups_['setup_IKS01A3'] = 'DEV_I2C.begin();\n'
-        + '  HumTemp = new HTS221Sensor(&DEV_I2C);\n'
-        + '  HumTemp->Enable();';
-    Blockly.Arduino.codeFunctions_['function_IKS01A3_humidity'] = 'float humFromBoard() {\n'
-        + '  float humidity = 0;\n'
-        + '  HumTemp->GetHumidity(&humidity);\n'
-        + '  return humidity;\n'
-        +'}'
-    var code = 'humFromBoard()';
+    Blockly.Arduino.definitions_['definitions_IKS01A3_STTS751'] = 'STTS751Sensor TempSensor(&DEV_I2C);';
+    Blockly.Arduino.setups_['setup_IKS01A3'] = 'DEV_I2C.begin();'
+    Blockly.Arduino.setups_['setup_IKS01A3_STTS751'] = 'TempSensor.begin();\n' +
+        '  TempSensor.Enable();';
+    Blockly.Arduino.codeFunctions_['function_IKS01A3_STTS751_temperature'] = 'float tempFromSTTS751() {\n' +
+        '  float temperature = 0;\n' +
+        '  TempSensor.GetTemperature(&temperature);\n' +
+        '  return temperature;\n' +
+        '}'
+    var code = 'tempFromSTTS751()';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_READ'] = function(block) {
+    var dropdown_LPS22HH_sensor = block.getFieldValue('LPS22HH');
+    Blockly.Arduino.includes_['includes_IKS01A3_LPS22HH'] = '#include <LPS22HHSensor.h>';
+    Blockly.Arduino.definitions_['definitions_IKS01A3'] = '#define DEV_I2C Wire\n'
+    Blockly.Arduino.definitions_['definitions_IKS01A3_LPS22HH'] = 'LPS22HHSensor PressTemp(&DEV_I2C);';
+    Blockly.Arduino.setups_['setup_IKS01A3'] = 'DEV_I2C.begin();'
+    Blockly.Arduino.setups_['setup_IKS01A3_LPS22HH'] = 'PressTemp.begin();\n' +
+        '  PressTemp.Enable();';
+    if (dropdown_LPS22HH_sensor == 'TEMP') {
+        Blockly.Arduino.codeFunctions_['function_IKS01A3_LPS22HH_temperature'] = 'float tempFromLPS22HH() {\n' +
+            '  float temperature = 0;\n' +
+            '  PressTemp.GetTemperature(&temperature);\n' +
+            '  return temperature;\n' +
+            '}'
+        var code = 'tempFromBoard()';
+    } else {
+        Blockly.Arduino.codeFunctions_['function_IKS01A3_LPS22HH_humidity'] = 'float pressionFromLPS22HH() {\n' +
+            '  float pressure = 0;\n' +
+            '  PressTemp.GetPressure(&pressure);\n' +
+            '  return pressure;\n' +
+            '}'
+        var code = 'pressionFromBoard()';
+    }
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER'] = function(block) {
+    var dropdown_LIS2DW12_sensor = block.getFieldValue('LIS2DW12');
+    Blockly.Arduino.includes_['includes_IKS01A3_LIS2DW12'] = '#include <LIS2DW12Sensor.h>';
+    Blockly.Arduino.definitions_['definitions_IKS01A3'] = '#define DEV_I2C Wire\n'
+    Blockly.Arduino.definitions_['definitions_IKS01A3_LIS2DW12'] = 'LIS2DW12Sensor Accelero(&DEV_I2C);'
+    Blockly.Arduino.setups_['setup_IKS01A3'] = 'DEV_I2C.begin();'
+    Blockly.Arduino.setups_['setup_IKS01A3_LIS2DW12'] = 'Accelero.begin();\n' +
+        '  Accelero.Enable_X();';
+    if (dropdown_LIS2DW12_sensor == 'X_AXIS') {
+        Blockly.Arduino.codeFunctions_['function_LIS2DW12_ACCEL_X'] = 'float accelerometerLIS2DW12_X() {\n' +
+            '  unsigned long accelerometer[3];\n' +
+            '  Accelero.Get_X_Axes(accelerometer);\n' +
+            '  return accelerometer[0];\n' +
+            '}';
+        var code = 'accelerometerLIS2DW12_X()';
+    }
+    if (dropdown_LIS2DW12_sensor == 'Y_AXIS') {
+        Blockly.Arduino.codeFunctions_['function_LIS2DW12_ACCEL_Y'] = 'float accelerometerLIS2DW12_Y() {\n' +
+            '  unsigned long accelerometer[3];\n' +
+            '  Accelero.Get_X_Axes(accelerometer);\n' +
+            '  return accelerometer[1];\n' +
+            '}';
+        var code = 'accelerometerLIS2DW12_Y()';
+    }
+    if (dropdown_LIS2DW12_sensor == 'Z_AXIS') {
+        Blockly.Arduino.codeFunctions_['function_LIS2DW12_ACCEL_Z'] = 'float accelerometerLIS2DW12_Z() {\n' +
+            '  unsigned long accelerometer[3];\n' +
+            '  Accelero.Get_X_Axes(accelerometer);\n' +
+            '  return accelerometer[2];\n' +
+            '}';
+        var code = 'accelerometerLIS2DW12_Z()';
+    }
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION'] = function(block) {
+    var dropdown_LSM6DSO_sensor = block.getFieldValue('LSM6DSO_SENSOR');
+    var dropdown_LSM6DSO_axis = block.getFieldValue('LSM6DSO_AXIS');
+    Blockly.Arduino.includes_['includes_IKS01A3'] = '#include <LSM6DSOSensor.h>';
+    Blockly.Arduino.definitions_['definitions_IKS01A3'] = '#define DEV_I2C Wire\n'
+    Blockly.Arduino.definitions_['definitions_IKS01A3_LSM6DSO'] = 'LSM6DSOSensor AccGyr(&DEV_I2C);\n';
+    Blockly.Arduino.setups_['setup_IKS01A3'] = 'DEV_I2C.begin();'
+    Blockly.Arduino.setups_['setup_IKS01A3_LIS2DW12'] = 'AccGyr.begin();\n';
+    if (dropdown_LSM6DSO_sensor == 'ACC') {
+        Blockly.Arduino.setups_['setup_IKS01A3_LIS2DW12'] += '  AccGyr.Enable_X();';
+        if (dropdown_LSM6DSO_axis == 'X_AXIS') {
+            Blockly.Arduino.codeFunctions_['function_LSM6DSO_ACCEL_X'] = 'float accelerometerLSM6DSO_X() {\n' +
+                '  unsigned long accelerometer[3];\n' +
+                '  AccGyr.Get_X_Axes(accelerometer);\n' +
+                '  return accelerometer[0];\n' +
+                '}';
+            var code = 'accelerometerLSM6DSO_X()';
+        }
+        if (dropdown_LSM6DSO_axis == 'Y_AXIS') {
+            Blockly.Arduino.codeFunctions_['function_LSM6DSO_ACCEL_Y'] = 'float accelerometerLSM6DSO_Y() {\n' +
+                '  unsigned long accelerometer[3];\n' +
+                '  AccGyr.Get_X_Axes(accelerometer);\n' +
+                '  return accelerometer[1];\n' +
+                '}';
+            var code = 'accelerometerLSM6DSO_Y()';
+        }
+        if (dropdown_LSM6DSO_axis == 'Z_AXIS') {
+            Blockly.Arduino.codeFunctions_['function_LSM6DSO_ACCEL_Z'] = 'float accelerometerLSM6DSO_Z() {\n' +
+                '  unsigned long accelerometer[3];\n' +
+                '  AccGyr.Get_X_Axes(accelerometer);\n' +
+                '  return accelerometer[2];\n' +
+                '}';
+            var code = 'accelerometerLSM6DSO_Z()';
+        }
+    } else {
+        Blockly.Arduino.setups_['setup_IKS01A3_LIS2DW12'] += '  AccGyr.Enable_G();';
+        if (dropdown_LSM6DSO_axis == 'X_AXIS') {
+            Blockly.Arduino.codeFunctions_['function_LSM6DSO_ACCEL_X'] = 'float gyroscopeLSM6DSO_X() {\n' +
+                '  unsigned long gyroscope[3];\n' +
+                '  AccGyr.Get_G_Axes(gyroscope);\n' +
+                '  return gyroscope[0];\n' +
+                '}';
+            var code = 'gyroscopeLSM6DSO_X()';
+        }
+        if (dropdown_LSM6DSO_axis == 'Y_AXIS') {
+            Blockly.Arduino.codeFunctions_['function_LSM6DSO_ACCEL_Y'] = 'float gyroscopeLSM6DSO_Y() {\n' +
+                '  unsigned long gyroscope[3];\n' +
+                '  AccGyr.Get_G_Axes(gyroscope);\n' +
+                '  return gyroscope[1];\n' +
+                '}';
+            var code = 'gyroscopeLSM6DSO_Y()';
+        }
+        if (dropdown_LSM6DSO_axis == 'Z_AXIS') {
+            Blockly.Arduino.codeFunctions_['function_LSM6DSO_ACCEL_Z'] = 'float gyroscopeLSM6DSO_Z() {\n' +
+                '  unsigned long gyroscope[3];\n' +
+                '  AccGyr.Get_G_Axes(gyroscope);\n' +
+                '  return gyroscope[2];\n' +
+                '}';
+            var code = 'gyroscopeLSM6DSO_Z()';
+        }
+    }
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC'] = function(block) {
+    var dropdown_LIS2MDL_sensor = block.getFieldValue('LIS2MDL_AXIS');
+    Blockly.Arduino.includes_['includes_IKS01A3_LIS2MDL'] = '#include <LIS2MDLSensor.h>';
+    Blockly.Arduino.definitions_['definitions_IKS01A3'] = '#define DEV_I2C Wire\n'
+    Blockly.Arduino.definitions_['definitions_IKS01A3_LIS2MDL'] = 'LIS2MDLSensor Magnet(&DEV_I2C);';
+    Blockly.Arduino.setups_['setup_IKS01A3'] = 'DEV_I2C.begin();'
+    Blockly.Arduino.setups_['setup_IKS01A3_LIS2MDL'] = 'Magnet.begin();\n' +
+        '  Magnet.Enable();';
+    if (dropdown_LIS2MDL_sensor == 'X_AXIS') {
+        Blockly.Arduino.codeFunctions_['function_LIS2MDL_ACCEL_X'] = 'float magnetometerLIS2MDL_X() {\n' +
+            '  unsigned long magnetometer[3];\n' +
+            '  Magnet.GetAxes(magnetometer);\n' +
+            '  return magnetometer[0];\n' +
+            '}';
+        var code = 'magnetometerLIS2MDL_X()';
+    }
+    if (dropdown_LIS2MDL_sensor == 'Y_AXIS') {
+        Blockly.Arduino.codeFunctions_['function_LIS2MDL_ACCEL_Y'] = 'float magnetometerLIS2MDL_Y() {\n' +
+            '  unsigned long magnetometer[3];\n' +
+            '  Magnet.GetAxes(magnetometer);\n' +
+            '  return magnetometer[1];\n' +
+            '}';
+        var code = 'magnetometerLIS2MDL_Y()';
+    }
+    if (dropdown_LIS2MDL_sensor == 'Z_AXIS') {
+        Blockly.Arduino.codeFunctions_['function_LIS2MDL_ACCEL_Z'] = 'float magnetometerLIS2MDL_Z() {\n' +
+            '  unsigned long magnetometer[3];\n' +
+            '  Magnet.GetAxes(magnetometer);\n' +
+            '  return magnetometer[2];\n' +
+            '}';
+        var code = 'magnetometerLIS2MDL_Z()';
+    }
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

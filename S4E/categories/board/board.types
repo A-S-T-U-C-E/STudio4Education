@@ -1,0 +1,95 @@
+//---------------------------------board_base--------------------------------------------
+
+Blockly.Blocks.board_base_setup.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.board_base_loop.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.board_base_inout_buildin_led.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.board_base_inout_digital_write.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.board_base_inout_digital_read.getBlockType = function() {
+    return Blockly.Types.NUMBER;
+};
+Blockly.Blocks.board_base_inout_highlow.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.board_base_inout_analog_write.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.board_base_inout_analog_write_slider.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.board_base_inout_analog_read.getBlockType = function() {
+    return Blockly.Types.NUMBER;
+};
+Blockly.Blocks.board_base_delay.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.board_base_angle.getBlockType = function() {
+    return Blockly.Types.NUMBER;
+};
+Blockly.Blocks.board_base_map.getBlockType = function() {
+    return Blockly.Types.NUMBER;
+};
+Blockly.Blocks.board_base_inout_tone.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.board_base_inout_notone.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+
+//---------------------------------board_iot--------------------------------------------
+
+Blockly.Blocks.board_iot_autoFormatWebsocket.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.board_iot_autoFormatWebsocket_container.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.board_iot_autoFormatWebsocket_item.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+
+//---------------------------------board_serial--------------------------------------------
+
+Blockly.Blocks.board_serial_init.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.board_serial_printfor.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.board_serial_print.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.board_serial_available.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
+};
+Blockly.Blocks.board_serial_read.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.board_serial_readStringUntil.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.board_serial_text_prompt_ext.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.board_serial_flush.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.board_serial_formatCSV.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.board_serial_autoFormatCSV.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.board_serial_autoFormatCSV_container.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.board_serial_autoFormatCSV_item.getBlockType = function() {
+    return Blockly.Types.NULL;
+};

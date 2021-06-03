@@ -4,99 +4,134 @@
 * SPDX-License-Identifier: BSD-3-Clause
 */
 
+
 /* CSS specific added for the theme */
 
 body {
     background-color: #03234B;
 }
+
 #separator {
     background-color: #03234B;
 }
+
 #helpModal_header {
     background-color: #03234B;
 }
+
 #keyboard_nav_header {
     background-color: #2196F3;
 }
+
 #buttonsMenuPopupInside,
 #buttonsToolsPopupInside,
 #buttonsIotPopupInside,
-#buttonsSerialPopupInside
-{
+#buttonsSerialPopupInside {
     background-color: #03234b;
     padding: 5px;
 }
+
 .config_content {
     background-color: #03234B;
 }
-.modal-header, .modal-footer {
+
+.modal-header,
+.modal-footer {
     background-color: #03234B;
 }
+
 .accordion {
-  background-color: #03234B;
+    background-color: #03234B;
 }
+
 .accordion:hover {
-  color: #03234B;
+    color: #03234B;
 }
+
 .active {
     color: #03234B;
-  background-color: #FFCC00;
+    background-color: #FFCC00;
 }
+
 .collapsibleButton {
     background-color: #03234B;
 }
+
 .active:after {
     color: #03234B;
 }
+
 #lateral-panel-setup-label {
     color: #03234B;
 }
+
 .closeModal:hover,
 .closeModal:focus {
     color: #FFCC00;
 }
+
+
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .collapsibleButton:hover {
+
+.active,
+.collapsibleButton:hover {
     background-color: #FFCC00;
 }
 
+
 /* enhance sliders behavior */
-input:checked + .slider {
-  background-color: #00abdf;
+
+input:checked+.slider {
+    background-color: #00abdf;
 }
-input:focus + .slider {
-  box-shadow: 0 0 1px #00abdf;
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #00abdf;
 }
-input:checked + .slider:before {
-  -webkit-transform: translateY(27px);
-  -ms-transform: translateY(27px);
-  transform: translateY(27px);
+
+input:checked+.slider:before {
+    -webkit-transform: translateY(27px);
+    -ms-transform: translateY(27px);
+    transform: translateY(27px);
 }
+
 
 /**
  * @fileoverview Toolbox modification, override css style
  * @source https://blocklycodelabs.dev/codelabs/custom-toolbox
  */
+
+
 /* Makes label white */
+
 .blocklyTreeLabel {
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
 }
+
+
 /* Adds padding around the group of categories and separators */
+
 .blocklyToolboxContents {
-  padding: .2em;
+    padding: .2em;
 }
+
+
 /* Adds space between the categories, rounds the corners and adds space around the label */
+
 .blocklyTreeRow {
-  padding: 2px;
-  border-radius: 4px;
-  height: initial;
+    padding: 2px;
+    border-radius: 4px;
+    height: initial;
 }
+
+
 /* Changes color of the icon to white */
+
 .customIcon {
-  color: white;
-  margin-left: 5px;
-  vertical-align: middle;
-  width: 25px;
+    color: white;
+    margin-left: 5px;
+    vertical-align: middle;
+    width: 25px;
 }

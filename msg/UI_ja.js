@@ -54,8 +54,7 @@ var MSG = {
     resetQuestion_span: "Reset S4E and",
     helpButton_span: "About",
     helpModalSpan_title: "Help - About",
-    helpModalSpan_text:
-        '<table>' +
+    helpModalSpan_text: '<table>' +
         '<tbody>' +
         '<tr>' +
         '<td style="width: 142px;"><img src="./media/logo_only.png" alt="" width="129" height="144" /></td>' +

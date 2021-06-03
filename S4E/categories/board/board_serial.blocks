@@ -15,17 +15,18 @@
 
 goog.provide('Blockly.Constants.board_serial');
 
-goog.require('Blockly.Blocks');
 goog.require('Blockly');
+goog.require('Blockly.Blocks');
+goog.require('Blockly.Types');
 
 var mediaFolder = "./S4E/media/";
 
 Blockly.Blocks['board_serial_init'] = {
-    init: function () {
+    init: function() {
         this.setInputsInline(true);
         this.appendDummyInput("")
-        .appendField(Blockly.Msg.SERIAL_INIT)
-        .appendField(new Blockly.FieldDropdown(profile.default.serial), "SPEED");
+            .appendField(Blockly.Msg.SERIAL_INIT)
+            .appendField(new Blockly.FieldDropdown(profile.default.serial), "SPEED");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg.SERIAL_PRINT_TOOLTIP);
@@ -35,12 +36,17 @@ Blockly.Blocks['board_serial_init'] = {
 };
 
 Blockly.Blocks['board_serial_printfor'] = {
-    init: function () {
+    init: function() {
         this.setInputsInline(true);
         this.appendValueInput("CONTENT")
-        .setCheck('Number')
-        .appendField(Blockly.Msg.SERIAL_PRINT_FORMAT)
-        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.SERIAL_PRINT_FORDECIMAL, "DEC"], [Blockly.Msg.SERIAL_PRINT_FORHEXA, "HEX"], [Blockly.Msg.SERIAL_PRINT_FORBIN, "BIN"], [Blockly.Msg.SERIAL_PRINT_FOROCT, "OCT"]]), "TYPE");
+            .setCheck('Number')
+            .appendField(Blockly.Msg.SERIAL_PRINT_FORMAT)
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg.SERIAL_PRINT_FORDECIMAL, "DEC"],
+                [Blockly.Msg.SERIAL_PRINT_FORHEXA, "HEX"],
+                [Blockly.Msg.SERIAL_PRINT_FORBIN, "BIN"],
+                [Blockly.Msg.SERIAL_PRINT_FOROCT, "OCT"]
+            ]), "TYPE");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg.SERIAL_PRINT_TOOLTIP);
@@ -50,9 +56,9 @@ Blockly.Blocks['board_serial_printfor'] = {
 };
 
 Blockly.Blocks['board_serial_print'] = {
-    init: function () {
+    init: function() {
         this.appendValueInput("CONTENT")
-        .appendField(Blockly.Msg.SERIAL_PRINT_CONTENT);
+            .appendField(Blockly.Msg.SERIAL_PRINT_CONTENT);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg.SERIAL_PRINT_TOOLTIP);
@@ -62,9 +68,9 @@ Blockly.Blocks['board_serial_print'] = {
 };
 
 Blockly.Blocks['board_serial_available'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput("")
-        .appendField(Blockly.Msg.SERIAL_AVAILABLE);
+            .appendField(Blockly.Msg.SERIAL_AVAILABLE);
         this.setInputsInline(true);
         this.setOutput(true, "Number");
         this.setTooltip(Blockly.Msg.SERIAL_PRINT_TOOLTIP);
@@ -74,9 +80,9 @@ Blockly.Blocks['board_serial_available'] = {
 };
 
 Blockly.Blocks['board_serial_read'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput("")
-        .appendField(Blockly.Msg.SERIAL_READ);
+            .appendField(Blockly.Msg.SERIAL_READ);
         this.setInputsInline(true);
         this.setOutput(true, "Number");
         this.setTooltip(Blockly.Msg.SERIAL_PRINT_TOOLTIP);
@@ -86,10 +92,10 @@ Blockly.Blocks['board_serial_read'] = {
 };
 
 Blockly.Blocks['board_serial_readStringUntil'] = {
-    init: function () {
+    init: function() {
         this.appendValueInput("CONTENT")
-        .setCheck('String')
-        .appendField(Blockly.Msg.SERIAL_READSTRINGUNTIL_CONTENT);
+            .setCheck('String')
+            .appendField(Blockly.Msg.SERIAL_READSTRINGUNTIL_CONTENT);
         this.setInputsInline(true);
         this.setOutput(true, "String");
         this.setTooltip(Blockly.Msg.SERIAL_READSTRINGUNTIL_TOOLTIP);
@@ -98,8 +104,63 @@ Blockly.Blocks['board_serial_readStringUntil'] = {
     }
 };
 
+Blockly.Blocks['board_serial_text_prompt_ext'] = {
+    /**
+     * Block for prompt function (external message).
+     * @this {Blockly.Block}
+     */
+    init: function() {
+        var TYPES = [
+            [Blockly.Msg['TEXT_PROMPT_TYPE_TEXT'], 'TEXT'],
+            [Blockly.Msg['TEXT_PROMPT_TYPE_NUMBER'], 'NUMBER']
+        ];
+        this.setHelpUrl(Blockly.Msg['TEXT_PROMPT_HELPURL']);
+        this.setStyle('board_blocks');
+        // Assign 'this' to a variable for use in the closures below.
+        var thisBlock = this;
+        var dropdown = new Blockly.FieldDropdown(TYPES, function(newOp) {
+            thisBlock.updateType_(newOp);
+        });
+        this.appendValueInput('TEXT')
+            .appendField(dropdown, 'TYPE');
+        this.setOutput(true, 'String');
+        this.setTooltip(function() {
+            return (thisBlock.getFieldValue('TYPE') == 'TEXT') ?
+                Blockly.Msg['TEXT_PROMPT_TOOLTIP_TEXT'] :
+                Blockly.Msg['TEXT_PROMPT_TOOLTIP_NUMBER'];
+        });
+    },
+    /**
+     * Modify this block to have the correct output type.
+     * @param {string} newOp Either 'TEXT' or 'NUMBER'.
+     * @private
+     * @this {Blockly.Block}
+     */
+    updateType_: function(newOp) {
+        this.outputConnection.setCheck(newOp == 'NUMBER' ? 'Number' : 'String');
+    },
+    /**
+     * Create XML to represent the output type.
+     * @return {!Element} XML storage element.
+     * @this {Blockly.Block}
+     */
+    mutationToDom: function() {
+        var container = Blockly.utils.xml.createElement('mutation');
+        container.setAttribute('type', this.getFieldValue('TYPE'));
+        return container;
+    },
+    /**
+     * Parse XML to restore the output type.
+     * @param {!Element} xmlElement XML storage element.
+     * @this {Blockly.Block}
+     */
+    domToMutation: function(xmlElement) {
+        this.updateType_(xmlElement.getAttribute('type'));
+    }
+};
+
 Blockly.Blocks['board_serial_flush'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput("")
             .appendField(Blockly.Msg.SERIAL_FLUSH);
         this.setPreviousStatement(true, null);
@@ -111,55 +172,51 @@ Blockly.Blocks['board_serial_flush'] = {
 };
 Blockly.defineBlocksWithJsonArray(
     [{
-            "type": "board_serial_formatCSV",
-            "message0": "serialize CSV %1",
-            "args0": [{
-                    "type": "input_dummy"
-                }
-            ],
-            "message1": "data %1",
-            "args1": [{
-                    "type": "input_value",
-                    "name": "DATA0",
-                    "check": ['int', 'float', 'Number', 'Array']
-                }
-            ],
-            "message2": "separator %1",
-            "args2": [{
-                    "type": "input_value",
-                    "name": "SEP0",
-                    "check": "String"
-                }
-            ],
-            "previousStatement": null,
-            "nextStatement": null,
-            "style": "board_blocks",
-            "helpUrl": "lien vers le wiki",
-            "mutator": "serial_formatCSV_mutator",
-            "tooltip": "serial_formatCSV_tooltip"
-        }, {
-            "type": "mutator_stack",
-            "message0": "stack",
-            "nextStatement": null,
-            "enableContextMenu": null,
-            "style": "board_blocks",
-            "tooltip": "%{BKY_mutator_this.stack_TOOLTIP}"
-        }, {
-            "type": "mutator_data",
-            "message0": "data to send",
-            "previousStatement": null,
-            "nextStatement": null,
-            "style": "board_blocks",
-            "tooltip": "%{BKY_mutator_data_TOOLTIP}"
-        }, {
-            "type": "mutator_sep",
-            "message0": "separator",
-            "previousStatement": null,
-            "nextStatement": null,
-            "style": "board_blocks",
-            "tooltip": "%{BKY_mutator_sep_TOOLTIP}"
-        }
-    ]);
+        "type": "board_serial_formatCSV",
+        "message0": "serialize CSV %1",
+        "args0": [{
+            "type": "input_dummy"
+        }],
+        "message1": "data %1",
+        "args1": [{
+            "type": "input_value",
+            "name": "DATA0",
+            "check": ['int', 'float', 'Number', 'Array']
+        }],
+        "message2": "separator %1",
+        "args2": [{
+            "type": "input_value",
+            "name": "SEP0",
+            "check": "String"
+        }],
+        "previousStatement": null,
+        "nextStatement": null,
+        "style": "board_blocks",
+        "helpUrl": "lien vers le wiki",
+        "mutator": "serial_formatCSV_mutator",
+        "tooltip": "serial_formatCSV_tooltip"
+    }, {
+        "type": "mutator_stack",
+        "message0": "stack",
+        "nextStatement": null,
+        "enableContextMenu": null,
+        "style": "board_blocks",
+        "tooltip": "%{BKY_mutator_this.stack_TOOLTIP}"
+    }, {
+        "type": "mutator_data",
+        "message0": "data to send",
+        "previousStatement": null,
+        "nextStatement": null,
+        "style": "board_blocks",
+        "tooltip": "%{BKY_mutator_data_TOOLTIP}"
+    }, {
+        "type": "mutator_sep",
+        "message0": "separator",
+        "previousStatement": null,
+        "nextStatement": null,
+        "style": "board_blocks",
+        "tooltip": "%{BKY_mutator_sep_TOOLTIP}"
+    }]);
 
 /**
  * Mutator methods added to controls_if blocks.
@@ -185,7 +242,7 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
      * @return {Element} XML storage element.
      * @this {Blockly.Block}
      */
-    mutationToDom: function () {
+    mutationToDom: function() {
         if (!this.dataCount_ && !this.sepCount_) {
             return null;
         }
@@ -204,7 +261,7 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
      * @param {!Element} xmlElement XML storage element.
      * @this {Blockly.Block}
      */
-    domToMutation: function (xmlElement) {
+    domToMutation: function(xmlElement) {
         this.dataCount_ = parseInt(xmlElement.getAttribute('attribData'), 10) || 0;
         this.sepCount_ = parseInt(xmlElement.getAttribute('attribSep'), 10) || 0;
         this.totalCount_ = this.dataCount_ + this.sepCount_;
@@ -220,24 +277,24 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
      * @return {!Blockly.Block} Root block in mutator.
      * @this {Blockly.Block}
      */
-    decompose: function (workspace) {
+    decompose: function(workspace) {
         var containerBlock = workspace.newBlock('mutator_stack');
         containerBlock.initSvg();
         var connection = containerBlock.nextConnection;
         for (var i = 0; i < this.totalCount_; i++) {
             switch (this.stack_[i]) {
-            case 'd':
-                var dataBlock = workspace.newBlock('mutator_data');
-                dataBlock.initSvg();
-                connection.connect(dataBlock.previousConnection);
-                connection = dataBlock.nextConnection;
-                break;
-            case 's':
-                var sepBlock = workspace.newBlock('mutator_sep');
-                sepBlock.initSvg();
-                connection.connect(sepBlock.previousConnection);
-                connection = sepBlock.nextConnection;
-                break;
+                case 'd':
+                    var dataBlock = workspace.newBlock('mutator_data');
+                    dataBlock.initSvg();
+                    connection.connect(dataBlock.previousConnection);
+                    connection = dataBlock.nextConnection;
+                    break;
+                case 's':
+                    var sepBlock = workspace.newBlock('mutator_sep');
+                    sepBlock.initSvg();
+                    connection.connect(sepBlock.previousConnection);
+                    connection = sepBlock.nextConnection;
+                    break;
             }
         }
         console.log('stack ' + this.stack_);
@@ -249,7 +306,7 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
      * @param {!Blockly.Block} containerBlock Root block in mutator.
      * @this {Blockly.Block}
      */
-    compose: function (containerBlock) {
+    compose: function(containerBlock) {
         var clauseBlock = containerBlock.nextConnection.targetBlock();
         // Count number of inputs.
         this.dataCount_ = 0;
@@ -285,23 +342,23 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
      * @param {!Blockly.Block} containerBlock Root block in mutator.
      * @this {Blockly.Block}
      */
-    saveConnections: function (containerBlock) {
+    saveConnections: function(containerBlock) {
         var clauseBlock = containerBlock.nextConnection.targetBlock();
         var j = 0;
         var k = 0;
         while (clauseBlock) {
             console.log(clauseBlock.type);
             switch (clauseBlock.type) {
-            case 'mutator_data':
-                var input = this.getInput('DATA' + j);
-                clauseBlock.valueConnection_ = input && input.connection.targetConnection;
-                j++;
-                break;
-            case 'mutator_sep':
-                var input = this.getInput('SEP' + k);
-                clauseBlock.valueConnection_ = input && input.connection.targetConnection;
-                k++;
-                break;
+                case 'mutator_data':
+                    var input = this.getInput('DATA' + j);
+                    clauseBlock.valueConnection_ = input && input.connection.targetConnection;
+                    j++;
+                    break;
+                case 'mutator_sep':
+                    var input = this.getInput('SEP' + k);
+                    clauseBlock.valueConnection_ = input && input.connection.targetConnection;
+                    k++;
+                    break;
             }
             console.log(input);
             clauseBlock = clauseBlock.nextConnection && clauseBlock.nextConnection.targetBlock();
@@ -314,15 +371,15 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
      * Reconstructs the block with all child blocks attached.
      * @this {Blockly.Block}
      */
-    rebuildShape_: function () {
+    rebuildShape_: function() {
         var valueConnection_ = [null];
-        var i = 0;   
+        var i = 0;
         var j = 0;
         var k = 0;
         console.log(this.totalCount_);
         while (i < this.totalCount_) {
-                console.log(i,j,k);
-                console.log(this.stack_);
+            console.log(i, j, k);
+            console.log(this.stack_);
             switch (this.stack_[i]) {
                 case 'd':
                     var inputData = this.getInput('DATA' + j);
@@ -351,7 +408,7 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
      * @this {Blockly.Block}
      * @private
      */
-    updateShape_: function () {
+    updateShape_: function() {
         // Delete everything.
         var i = 0;
         while (this.getInput('DATA' + i)) {
@@ -368,18 +425,18 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
         var k = 0;
         for (i = 0; i < this.totalCount_; i++) {
             switch (this.stack_[i]) {
-            case 'd':
-                this.appendValueInput('DATA' + j)
-                    .setCheck(['int', 'float', 'Number', 'Array'])
-                    .appendField("new data");
-                j++;
-                break;
-            case 's':
-                this.appendValueInput('SEP' + k)
-                    .setCheck('String')
-                    .appendField("data separator");
-                k++;
-                break;
+                case 'd':
+                    this.appendValueInput('DATA' + j)
+                        .setCheck(['int', 'float', 'Number', 'Array'])
+                        .appendField("new data");
+                    j++;
+                    break;
+                case 's':
+                    this.appendValueInput('SEP' + k)
+                        .setCheck('String')
+                        .appendField("data separator");
+                    k++;
+                    break;
             }
         }
         console.log('updateShape_');
@@ -392,19 +449,19 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
      * statement connections for 'sep' input.
      * @this {Blockly.Block}
      */
-    reconnectChildBlocks_: function (valueConnections) {
+    reconnectChildBlocks_: function(valueConnections) {
         var j = 0;
         var k = 0;
         for (var i = 0; i < this.totalCount_; i++) {
             switch (this.stack_[i]) {
-            case 'd':
-                Blockly.Mutator.reconnect(valueConnections[i], this, 'DATA' + j);
-                j++;
-                break;
-            case 's':
-                Blockly.Mutator.reconnect(valueConnections[i], this, 'SEP' + k);
-                k++
-                break;
+                case 'd':
+                    Blockly.Mutator.reconnect(valueConnections[i], this, 'DATA' + j);
+                    j++;
+                    break;
+                case 's':
+                    Blockly.Mutator.reconnect(valueConnections[i], this, 'SEP' + k);
+                    k++
+                    break;
             }
         }
         console.log('reconnectChildBlocks_');
@@ -416,158 +473,158 @@ Blockly.Extensions.registerMutator('serial_formatCSV_mutator',
 
 
 Blockly.Blocks['board_serial_autoFormatCSV'] = {
-  /**
-   * Block for creating a list with any number of elements of any type.
-   * @this {Blockly.Block}
-   */
-  init: function() {
-    this.setStyle('board_blocks');
-    this.itemCount_ = 2;
-    this.updateShape_();
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setMutator(new Blockly.Mutator(['board_serial_autoFormatCSV_item']));
-    this.setTooltip(Blockly.Msg['LISTS_CREATE_WITH_TOOLTIP']);
-    this.setHelpUrl(Blockly.Msg['LISTS_CREATE_WITH_HELPURL']);
-  },
-  /**
-   * Create XML to represent list inputs.
-   * @return {!Element} XML storage element.
-   * @this {Blockly.Block}
-   */
-  mutationToDom: function() {
-    var container = Blockly.utils.xml.createElement('mutation');
-    container.setAttribute('items', this.itemCount_);
-    return container;
-  },
-  /**
-   * Parse XML to restore the list inputs.
-   * @param {!Element} xmlElement XML storage element.
-   * @this {Blockly.Block}
-   */
-  domToMutation: function(xmlElement) {
-    this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
-    this.updateShape_();
-  },
-  /**
-   * Populate the mutator's dialog with this block's components.
-   * @param {!Blockly.Workspace} workspace Mutator's workspace.
-   * @return {!Blockly.Block} Root block in mutator.
-   * @this {Blockly.Block}
-   */
-  decompose: function(workspace) {
-    var containerBlock = workspace.newBlock('board_serial_autoFormatCSV_container');
-    containerBlock.initSvg();
-    var connection = containerBlock.getInput('STACK').connection;
-    for (var i = 0; i < this.itemCount_; i++) {
-      var itemBlock = workspace.newBlock('board_serial_autoFormatCSV_item');
-      itemBlock.initSvg();
-      connection.connect(itemBlock.previousConnection);
-      connection = itemBlock.nextConnection;
-    }
-    return containerBlock;
-  },
-  /**
-   * Reconfigure this block based on the mutator dialog's components.
-   * @param {!Blockly.Block} containerBlock Root block in mutator.
-   * @this {Blockly.Block}
-   */
-  compose: function(containerBlock) {
-    var itemBlock = containerBlock.getInputTargetBlock('STACK');
-    // Count number of inputs.
-    var connections = [];
-    while (itemBlock && !itemBlock.isInsertionMarker()) {
-      connections.push(itemBlock.valueConnection_);
-      itemBlock = itemBlock.nextConnection &&
-          itemBlock.nextConnection.targetBlock();
-    }
-    // Disconnect any children that don't belong.
-    for (var i = 0; i < this.itemCount_; i++) {
-      var connection = this.getInput('ADD' + i).connection.targetConnection;
-      if (connection && connections.indexOf(connection) == -1) {
-        connection.disconnect();
-      }
-    }
-    this.itemCount_ = connections.length;
-    this.updateShape_();
-    // Reconnect any child blocks.
-    for (var i = 0; i < this.itemCount_; i++) {
-      Blockly.Mutator.reconnect(connections[i], this, 'ADD' + i);
-    }
-  },
-  /**
-   * Store pointers to any connected child blocks.
-   * @param {!Blockly.Block} containerBlock Root block in mutator.
-   * @this {Blockly.Block}
-   */
-  saveConnections: function(containerBlock) {
-    var itemBlock = containerBlock.getInputTargetBlock('STACK');
-    var i = 0;
-    while (itemBlock) {
-      var input = this.getInput('ADD' + i);
-      itemBlock.valueConnection_ = input && input.connection.targetConnection;
-      i++;
-      itemBlock = itemBlock.nextConnection &&
-          itemBlock.nextConnection.targetBlock();
-    }
-  },
-  /**
-   * Modify this block to have the correct number of inputs.
-   * @private
-   * @this {Blockly.Block}
-   */
-  updateShape_: function() {
-    if (this.itemCount_ && this.getInput('EMPTY')) {
-      this.removeInput('EMPTY');
-    } else if (!this.itemCount_ && !this.getInput('EMPTY')) {
-      this.appendDummyInput('EMPTY')
-          .appendField(Blockly.Msg['LISTS_CREATE_EMPTY_TITLE']);
-    }
-    // Add new inputs.
-    for (var i = 0; i < this.itemCount_; i++) {
-      if (!this.getInput('ADD' + i)) {
-        var input = this.appendValueInput('ADD' + i)
-                        .setAlign(Blockly.ALIGN_RIGHT);
-        if (i == 0) {
-          input.appendField(Blockly.Msg['LISTS_CREATE_WITH_INPUT_WITH']);
+    /**
+     * Block for creating a list with any number of elements of any type.
+     * @this {Blockly.Block}
+     */
+    init: function() {
+        this.setStyle('board_blocks');
+        this.itemCount_ = 2;
+        this.updateShape_();
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setMutator(new Blockly.Mutator(['board_serial_autoFormatCSV_item']));
+        this.setTooltip(Blockly.Msg['LISTS_CREATE_WITH_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['LISTS_CREATE_WITH_HELPURL']);
+    },
+    /**
+     * Create XML to represent list inputs.
+     * @return {!Element} XML storage element.
+     * @this {Blockly.Block}
+     */
+    mutationToDom: function() {
+        var container = Blockly.utils.xml.createElement('mutation');
+        container.setAttribute('items', this.itemCount_);
+        return container;
+    },
+    /**
+     * Parse XML to restore the list inputs.
+     * @param {!Element} xmlElement XML storage element.
+     * @this {Blockly.Block}
+     */
+    domToMutation: function(xmlElement) {
+        this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
+        this.updateShape_();
+    },
+    /**
+     * Populate the mutator's dialog with this block's components.
+     * @param {!Blockly.Workspace} workspace Mutator's workspace.
+     * @return {!Blockly.Block} Root block in mutator.
+     * @this {Blockly.Block}
+     */
+    decompose: function(workspace) {
+        var containerBlock = workspace.newBlock('board_serial_autoFormatCSV_container');
+        containerBlock.initSvg();
+        var connection = containerBlock.getInput('STACK').connection;
+        for (var i = 0; i < this.itemCount_; i++) {
+            var itemBlock = workspace.newBlock('board_serial_autoFormatCSV_item');
+            itemBlock.initSvg();
+            connection.connect(itemBlock.previousConnection);
+            connection = itemBlock.nextConnection;
         }
-      }
+        return containerBlock;
+    },
+    /**
+     * Reconfigure this block based on the mutator dialog's components.
+     * @param {!Blockly.Block} containerBlock Root block in mutator.
+     * @this {Blockly.Block}
+     */
+    compose: function(containerBlock) {
+        var itemBlock = containerBlock.getInputTargetBlock('STACK');
+        // Count number of inputs.
+        var connections = [];
+        while (itemBlock && !itemBlock.isInsertionMarker()) {
+            connections.push(itemBlock.valueConnection_);
+            itemBlock = itemBlock.nextConnection &&
+                itemBlock.nextConnection.targetBlock();
+        }
+        // Disconnect any children that don't belong.
+        for (var i = 0; i < this.itemCount_; i++) {
+            var connection = this.getInput('ADD' + i).connection.targetConnection;
+            if (connection && connections.indexOf(connection) == -1) {
+                connection.disconnect();
+            }
+        }
+        this.itemCount_ = connections.length;
+        this.updateShape_();
+        // Reconnect any child blocks.
+        for (var i = 0; i < this.itemCount_; i++) {
+            Blockly.Mutator.reconnect(connections[i], this, 'ADD' + i);
+        }
+    },
+    /**
+     * Store pointers to any connected child blocks.
+     * @param {!Blockly.Block} containerBlock Root block in mutator.
+     * @this {Blockly.Block}
+     */
+    saveConnections: function(containerBlock) {
+        var itemBlock = containerBlock.getInputTargetBlock('STACK');
+        var i = 0;
+        while (itemBlock) {
+            var input = this.getInput('ADD' + i);
+            itemBlock.valueConnection_ = input && input.connection.targetConnection;
+            i++;
+            itemBlock = itemBlock.nextConnection &&
+                itemBlock.nextConnection.targetBlock();
+        }
+    },
+    /**
+     * Modify this block to have the correct number of inputs.
+     * @private
+     * @this {Blockly.Block}
+     */
+    updateShape_: function() {
+        if (this.itemCount_ && this.getInput('EMPTY')) {
+            this.removeInput('EMPTY');
+        } else if (!this.itemCount_ && !this.getInput('EMPTY')) {
+            this.appendDummyInput('EMPTY')
+                .appendField(Blockly.Msg['LISTS_CREATE_EMPTY_TITLE']);
+        }
+        // Add new inputs.
+        for (var i = 0; i < this.itemCount_; i++) {
+            if (!this.getInput('ADD' + i)) {
+                var input = this.appendValueInput('ADD' + i)
+                    .setAlign(Blockly.ALIGN_RIGHT);
+                if (i == 0) {
+                    input.appendField(Blockly.Msg['LISTS_CREATE_WITH_INPUT_WITH']);
+                }
+            }
+        }
+        // Remove deleted inputs.
+        while (this.getInput('ADD' + i)) {
+            this.removeInput('ADD' + i);
+            i++;
+        }
     }
-    // Remove deleted inputs.
-    while (this.getInput('ADD' + i)) {
-      this.removeInput('ADD' + i);
-      i++;
-    }
-  }
 };
 
 Blockly.Blocks['board_serial_autoFormatCSV_container'] = {
-  /**
-   * Mutator block for list container.
-   * @this {Blockly.Block}
-   */
-  init: function() {
-    this.setStyle('board_blocks');
-    this.appendDummyInput()
-        .appendField(Blockly.Msg['LISTS_CREATE_WITH_CONTAINER_TITLE_ADD']);
-    this.appendStatementInput('STACK');
-    this.setTooltip(Blockly.Msg['LISTS_CREATE_WITH_CONTAINER_TOOLTIP']);
-    this.contextMenu = false;
-  }
+    /**
+     * Mutator block for list container.
+     * @this {Blockly.Block}
+     */
+    init: function() {
+        this.setStyle('board_blocks');
+        this.appendDummyInput()
+            .appendField(Blockly.Msg['LISTS_CREATE_WITH_CONTAINER_TITLE_ADD']);
+        this.appendStatementInput('STACK');
+        this.setTooltip(Blockly.Msg['LISTS_CREATE_WITH_CONTAINER_TOOLTIP']);
+        this.contextMenu = false;
+    }
 };
 
 Blockly.Blocks['board_serial_autoFormatCSV_item'] = {
-  /**
-   * Mutator block for adding items.
-   * @this {Blockly.Block}
-   */
-  init: function() {
-    this.setStyle('board_blocks');
-    this.appendDummyInput()
-        .appendField(Blockly.Msg['LISTS_CREATE_WITH_ITEM_TITLE']);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setTooltip(Blockly.Msg['LISTS_CREATE_WITH_ITEM_TOOLTIP']);
-    this.contextMenu = false;
-  }
+    /**
+     * Mutator block for adding items.
+     * @this {Blockly.Block}
+     */
+    init: function() {
+        this.setStyle('board_blocks');
+        this.appendDummyInput()
+            .appendField(Blockly.Msg['LISTS_CREATE_WITH_ITEM_TITLE']);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.Msg['LISTS_CREATE_WITH_ITEM_TOOLTIP']);
+        this.contextMenu = false;
+    }
 };

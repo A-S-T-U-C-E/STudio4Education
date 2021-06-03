@@ -11,9 +11,18 @@ goog.provide('Blockly.Msg.categories_fr');
 goog.require('Blockly.Msg');
 
 // toolbox categories name
-Blockly.Msg.CAT_VAR_NUM = "numériques";
-Blockly.Msg.CAT_VAR_TEXT = "textes";
-Blockly.Msg.CAT_VAR_BOOLEAN = "logique";
+Blockly.Msg.CAT_LOOPS = "boucles";
+Blockly.Msg.CAT_LOGIC = "logique";
+Blockly.Msg.CAT_IF = "si...";
+Blockly.Msg.CAT_BOOL = "booléen";
+Blockly.Msg.CAT_MATH = "maths";
+Blockly.Msg.CAT_TEXT = "texte";
+Blockly.Msg.CAT_LIST = "listes";
+Blockly.Msg.CAT_ARRAY = "listes - tableaux";
+Blockly.Msg.CAT_COLOUR = "couleurs";
+Blockly.Msg.CAT_VARIABLES = "variables";
+Blockly.Msg.CAT_FUNCTIONS = "procédures & fonctions";
+//categories for boards
 Blockly.Msg.CAT_BOARD = "carte";
 Blockly.Msg.CAT_BOARD_IO = "entrées / sorties";
 Blockly.Msg.CAT_BOARD_IOT = "communication réseau";
@@ -29,3 +38,4 @@ Blockly.Msg.CAT_GROVE_MOTOR = "- moteurs";
 Blockly.Msg.CAT_DS18B20 = "thermistance DS18B20";
 Blockly.Msg.CAT_RELAY = "relais";
 Blockly.Msg.CAT_ARROWHEADFRAMEWORK = "Arrowhead";
+Blockly.Msg.CAT_DHT = "DHT sensor";

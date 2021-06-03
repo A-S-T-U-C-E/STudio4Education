@@ -1,7 +1,7 @@
 /**
  * @license
  * Copyright 2020 Sébastien CANET
- * SPDX-License-Identifier: BSD-3-Clause
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -22,12 +22,12 @@ Blockly.Themes.Classic.setComponentStyle('flyoutBackgroundColour', '#FFFFFF');
 Blockly.Themes.Classic.setComponentStyle('scrollbarColour', '#000000');
 Blockly.Themes.Classic.setComponentStyle('scrollbarOpacity', '0.5');
 //Modern theme
-// Blockly.Themes.Modern.setComponentStyle('flyoutOpacity', 0);
-// Blockly.Themes.Modern.setComponentStyle('toolboxBackgroundColour', '#FFFFFF');
-// Blockly.Themes.Modern.setComponentStyle('flyoutForegroundColour', '#FFFFFF');
-// Blockly.Themes.Modern.setComponentStyle('flyoutBackgroundColour', '#FFFFFF');
-// Blockly.Themes.Modern.setComponentStyle('scrollbarColour', '#000000');
-// Blockly.Themes.Modern.setComponentStyle('scrollbarOpacity', '0.5');
+Blockly.Themes.Modern.setComponentStyle('flyoutOpacity', 0);
+Blockly.Themes.Modern.setComponentStyle('toolboxBackgroundColour', '#FFFFFF');
+Blockly.Themes.Modern.setComponentStyle('flyoutForegroundColour', '#FFFFFF');
+Blockly.Themes.Modern.setComponentStyle('flyoutBackgroundColour', '#FFFFFF');
+Blockly.Themes.Modern.setComponentStyle('scrollbarColour', '#000000');
+Blockly.Themes.Modern.setComponentStyle('scrollbarOpacity', '0.5');
 //Deuteranopia theme
 Blockly.Themes.Deuteranopia.setComponentStyle('flyoutOpacity', 0);
 Blockly.Themes.Deuteranopia.setComponentStyle('toolboxBackgroundColour', '#FFFFFF');

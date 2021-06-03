@@ -11,11 +11,64 @@ goog.provide('Blockly.Msg["blocks_ca');
 goog.require('Blockly.Msg');
 
 //text in blocks
-Blockly.Msg["FIELDDROPDOWN"] = [["1 (activat)", "HIGH"], ["0 (desactivat)", "LOW"]];
-Blockly.Msg["FIELDDROPDOWN_ONOFF"] = [["turn on", "ON"], ["turn off", "OFF"]];
-Blockly.Msg["FIELDDROPDOWN_ONOFF2"] = [["switch on", "HIGH"], ["switch off", "LOW"]];
-Blockly.Msg["FIELDDROPDOWN_ONOFF3"] = [["close", "HIGH"], ["open", "LOW"]];
+Blockly.Msg["FIELDDROPDOWN"] = [
+    ["1 (activat)", "HIGH"],
+    ["0 (desactivat)", "LOW"]
+];
+Blockly.Msg["FIELDDROPDOWN_ONOFF"] = [
+    ["turn on", "ON"],
+    ["turn off", "OFF"]
+];
+Blockly.Msg["FIELDDROPDOWN_ONOFF2"] = [
+    ["switch on", "HIGH"],
+    ["switch off", "LOW"]
+];
+Blockly.Msg["FIELDDROPDOWN_ONOFF3"] = [
+    ["close", "HIGH"],
+    ["open", "LOW"]
+];
 
+//blockly array
+Blockly.Msg["ARRAY_CREATE_EMPTY_TITLE"] = 'buit!';
+Blockly.Msg["tab_create"] = "crea un bloc per la lista %1'";
+Blockly.Msg["tab_create_fix"] = "crea el bloc 'estableix un element a la matriu %1'";
+Blockly.Msg["ARRAY_CREATE_WITH"] = "establert amb";
+Blockly.Msg["ARRAY_taille"] = "mida";
+Blockly.Msg["ARRAY_contenu"] = "conté";
+Blockly.Msg["ARRAY_dim"] = "mida de ";
+Blockly.Msg["ARRAY_index"] = "índex";
+Blockly.Msg["_AT"] = "a";
+Blockly.Msg["ARRAY_CREATE_WITH"] = "creat amb";
+Blockly.Msg["ARRAY_CREATE_WITH_CONTAINER_TITLE_ADD"] = "matriu";
+Blockly.Msg["ARRAY_CREATE_WITH_CONTAINER_TOOLTIP"] = "Afegeix, treu, o reorrena seccions per reconfigurar aquest bloc matriu.";
+Blockly.Msg["ARRAY_CREATE_WITH_HELPURL"] = "";
+Blockly.Msg["ARRAY_CREATE_WITH_INPUT_WITH"] = "una matriu";
+Blockly.Msg["ARRAY_CREATE_WITH_ITEM_TITLE"] = "element";
+Blockly.Msg["ARRAY_CREATE_WITH_ITEM_TOOLTIP"] = "Afegeix un element a la matriu.";
+Blockly.Msg["ARRAY_CREATE_WITH_TOOLTIP"] = "Crea una matriu amb qualsevol nombre d'elements.";
+Blockly.Msg["ARRAY_GETINDEX_AT"] = "obté l'índex";
+Blockly.Msg["ARRAY_GETINDEX_AT1"] = "obté l'índex";
+Blockly.Msg["ARRAY_GETINDEX_AT2"] = "índex";
+Blockly.Msg["ARRAY_GETINDEX_HELPURL"] = "";
+Blockly.Msg["ARRAY_GETINDEX_ITEM"] = "a la matriu";
+Blockly.Msg["ARRAY_GETINDEX_TOOLTIP"] = "";
+Blockly.Msg["ARRAY_GETINDEX_TOOLTIP1"] = "retorna el valor desat a la matriu";
+Blockly.Msg["ARRAY_GETINDEX_TOOLTIP2"] = "crea una matriu del tipus seleccionat";
+Blockly.Msg["ARRAY_GETINDEX_TOOLTIP3"] = "fixa un o més elements de la matriu als valors indicats";
+Blockly.Msg["ARRAY_CREATE"] = "defineix ";
+Blockly.Msg["ARRAY_TAILLE"] = "mida";
+Blockly.Msg["ARRAY_CONTIENT"] = "amb";
+Blockly.Msg["ARRAY_LIST"] = "matriu";
+Blockly.Msg["ARRAY_ARRAY"] = "matriu";
+Blockly.Msg["ARRAY_fixe"] = "canvia l'element de la posició";
+Blockly.Msg["ARRAY_DECLARE_NAME"] = "crea matriu";
+Blockly.Msg["ARRAY_DECLARE_TYPE"] = "tipus";
+Blockly.Msg["ARRAY_DECLARE_SIZE"] = "nombre d'elements";
+Blockly.Msg["ARRAY_DECLARE_TOOLTIP"] = "crea una matriu del tipus i de les dimensions indicades";
+Blockly.Msg["ARRAY_MODIFY_INDICE"] = "estableix l'element nombre";
+Blockly.Msg["ARRAY_MODIFY_NAME"] = "a la matriu";
+Blockly.Msg["ARRAY_MODIFY_VALUE"] = "valor";
+Blockly.Msg["ARRAY_MODIFY_TOOLTIP"] = "estableix un valor a un element de la matriu";
 //blockly logic
 Blockly.Msg["CONTROLS_SWITCH_CASEBREAK_TOOLTIP"] = "Afegeix una condició al bloc de «casos».";
 Blockly.Msg["CONTROLS_SWITCH_DEFAULT_TOOLTIP"] = "Afegeix una condició final per defecte.";
@@ -34,11 +87,30 @@ Blockly.Msg["CONTROLS_SWITCH_TOOLTIP_4"] = "Si el valor és cert executa el prim
 Blockly.Msg["CONTROLS_SWITCH_VAR_TOOLTIP"] = "Desplaça el bloc des de l'esquerra per afegir-lo.";
 Blockly.Msg["CONTROLS_SWITCH_CASEBREAK_TOOLTIP"] = "Afegeix un bloc d'ordres cas trenca";
 Blockly.Msg["CONTROLS_SWITCH_DEFAULT_TOOLTIP"] = "Afegeix un bloc d'accions per defecte";
+//blockly variables
+Blockly.Msg["VARIABLES_AS"] = "tipus";
+Blockly.Msg["VARIABLES_SET_CONST"] = "constant";
+Blockly.Msg["VARIABLES_SET_CONST_AT"] = "fixada a";
+Blockly.Msg["VARIABLES_SET_CONST_TOOLTIP"] = "set a variable to non modifiable value";
+Blockly.Msg["VARIABLES_SET_CONST_HELPURL"] = "https://www.arduino.cc/reference/en/language/variables/variable-scope-qualifiers/const/";
+//blockly types
+Blockly.Msg["ARD_TYPE_ARRAY"] = "matriu";
+Blockly.Msg["ARD_TYPE_BOOL"] = "booleà";
+Blockly.Msg["ARD_TYPE_CHAR"] = "caràcter";
+Blockly.Msg["ARD_TYPE_ARRAY_CHAR"] = "caràcter matriu";
+Blockly.Msg["ARD_TYPE_CHILDBLOCKMISSING"] = "bloc fill perdut";
+Blockly.Msg["ARD_TYPE_DECIMAL"] = "decimal (float)";
+Blockly.Msg["ARD_TYPE_LONG"] = "nombre enter llarg (long)";
+Blockly.Msg["ARD_TYPE_NULL"] = "nul";
+Blockly.Msg["ARD_TYPE_NUMBER"] = "nombre enter (int)";
+Blockly.Msg["ARD_TYPE_SHORT"] = "byte";
+Blockly.Msg["ARD_TYPE_TEXT"] = "text";
+Blockly.Msg["ARD_TYPE_UNDEF"] = "non definit";
+Blockly.Msg["ARD_TYPE_UNS_NUMBER"] = "nombre enter positiu (unsigned int)";
+Blockly.Msg["ARD_TYPE_UNS_LONG"] = "nombre enter llarg positiu (unsigned long)";
+Blockly.Msg["ARD_TYPE_VOLATILE"] = "nombre enter volàtil (volatile integer)";
+
 //Arduino base cateory blocks
-Blockly.Msg["VAR_CREATE_INT"] = "integer";
-Blockly.Msg["VAR_CREATE_FLOAT"] = "float";
-Blockly.Msg["VAR_CREATE_STRING"] = "string";
-Blockly.Msg["VAR_CREATE_BOOLEAN"] = "boolean";
 Blockly.Msg["ARDUINO_INOUT_BUILDIN_LED_HELPURL"] = "http://arduino.cc/en/Reference/DigitalWrite";
 Blockly.Msg["ARDUINO_INOUT_BUILDIN_LED_INPUT"] = "posa el LED a l'estat lògic";
 Blockly.Msg["ARDUINO_INOUT_BUILDIN_LED_TOOLTIP"] = "atura o engega el LED a la placa Arduino";
@@ -103,12 +175,39 @@ Blockly.Msg["SERVO_READ_DEGREES_TOOLTIP"] = "retorna el nombre de graus de la da
 Blockly.Msg["SERVO_READ_DEGREES_HELPURL"] = "http://www.arduino.cc/playground/ComponentLib/servo";
 
 //X-NUCLEO-IKS01A3 shield blocks: the X-NUCLEO-IKS01A3 is a motion MEMS and environmental sensor evaluation board system, for ST Nucleo boards.
-Blockly.Msg["X_NUCLEO_IKS01A3_Temp_Read_INPUT"] = "onboard temperature sensor value";
-Blockly.Msg["X_NUCLEO_IKS01A3_Temp_Read_TOOLTIP"] = "HTS221: capacitive digital temperature in °Celsius";
-Blockly.Msg["X_NUCLEO_IKS01A3_Temp_Read_HELPURL"] = "onboard temperature sensor value";
-Blockly.Msg["X_NUCLEO_IKS01A3_Humidity_Read_INPUT"] = "onboard humidity sensor value";
-Blockly.Msg["X_NUCLEO_IKS01A3_Humidity_Read_TOOLTIP"] = "HTS221: capacitive digital relative humidity in percent";
-Blockly.Msg["X_NUCLEO_IKS01A3_Humidity_Read_HELPURL"] = "https://www.st.com/en/ecosystems/x-nucleo-iks01a3.html";
+Blockly.Msg["X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ_INPUT"] = "onboard HTS221 sensor value";
+Blockly.Msg["X_NUCLEO_IKS01A3_HTS221_TEMP_INPUT"] = "temperature";
+Blockly.Msg["X_NUCLEO_IKS01A3_HTS221_HUMID_INPUT"] = "humidity";
+Blockly.Msg["X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ_TOOLTIP"] = "HTS221: capacitive digital temperature in °Celsius\nor relative humidity in percent";
+Blockly.Msg["X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ_HELPURL"] = "https://github.com/stm32duino/X-NUCLEO-IKS01A3";
+Blockly.Msg["X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ_INPUT"] = "onboard temperature sensor value";
+Blockly.Msg["X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ_TOOLTIP"] = "STTS751: absolute temperature in °Celsius (–40 °C to +125 °C)";
+Blockly.Msg["X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ_HELPURL"] = "https://github.com/stm32duino/X-NUCLEO-IKS01A3";
+Blockly.Msg["X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_READ_INPUT"] = "onboard LPS22HH sensor value";
+Blockly.Msg["X_NUCLEO_IKS01A3_LPS22HH_TEMP_INPUT"] = "temperature";
+Blockly.Msg["X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_INPUT"] = "pressure";
+Blockly.Msg["X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_READ_TOOLTIP"] = "LPS22HH: MEMS pressure sensor, 260-1260 hPa absolute digital output barometer";
+Blockly.Msg["X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_READ_HELPURL"] = "https://github.com/stm32duino/X-NUCLEO-IKS01A3";
+Blockly.Msg["X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_INPUT"] = "onboard 3D accelerometer sensor value";
+Blockly.Msg["X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_X"] = "axis X";
+Blockly.Msg["X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_Y"] = "axis Y";
+Blockly.Msg["X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_Z"] = "axis Z";
+Blockly.Msg["X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_TOOLTIP"] = "LIS2DW12: MEMS 3D accelerometer (±2/±4/±8/±16 g)";
+Blockly.Msg["X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_HELPURL"] = "https://github.com/stm32duino/X-NUCLEO-IKS01A3";
+Blockly.Msg["X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_INPUT"] = "onboard gyroscope sensor value";
+Blockly.Msg["X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_ACC"] = "accelerometer";
+Blockly.Msg["X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_GYRO"] = "gyroscope";
+Blockly.Msg["X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_X"] = "axis X";
+Blockly.Msg["X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_Y"] = "axis Y";
+Blockly.Msg["X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_Z"] = "axis Z";
+Blockly.Msg["X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_TOOLTIP"] = "LSM6DSO: MEMS 3D accelerometer (±2/±4/±8/±16 g) + 3D gyroscope (±125/±250/±500/±1000/±2000 dps) ";
+Blockly.Msg["X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_HELPURL"] = "https://github.com/stm32duino/X-NUCLEO-IKS01A3";
+Blockly.Msg["X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_INPUT"] = "onboard 3D magnetometer sensor value";
+Blockly.Msg["X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_X"] = "axis X";
+Blockly.Msg["X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_Y"] = "axis Y";
+Blockly.Msg["X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_Z"] = "axis Z";
+Blockly.Msg["X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_TOOLTIP"] = "LIS2MDL: MEMS 3D magnetometer (±50 gauss)";
+Blockly.Msg["X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_HELPURL"] = "https://github.com/stm32duino/X-NUCLEO-IKS01A3";
 
 //DS18B20 sensors
 Blockly.Msg["DS18B20_TEXT1"] = "a DS18B20 sensor";
@@ -128,3 +227,8 @@ Blockly.Msg["RELAY_MOSFET_TEXT"] = "MOSFET transistor";
 Blockly.Msg["RELAY_MOSFET_INPUT"] = "on pin#";
 Blockly.Msg["RELAY_MOSFET_TOOLTIP"] = "the MOSFET transistor is a remote switch, a switch in a power circuit that is switched by a digital signal";
 Blockly.Msg["RELAY_MOSFET_HELPURL"] = "http://sin.lyceeleyguescouffignal.fr/irf520-mosfet-driver-module";
+
+//DHT sensors
+Blockly.Msg.DHT_TEXT1 = "value of";
+Blockly.Msg.DHT_TEXT2 = "on sensor";
+Blockly.Msg.DHT_TEXT3 = "wired on pin#";

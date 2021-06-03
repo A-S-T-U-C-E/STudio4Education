@@ -13,12 +13,12 @@
  * Initialises the sketch name input text JavaScript to dynamically adjust its
  * width to the width of its contents.
  */
-Code.sketchNameSizeEffect = function () {
-    var resizeInput = function () {
+Code.sketchNameSizeEffect = function() {
+    var resizeInput = function() {
         document.getElementById('sketch_name').setAttribute("size", document.getElementById('sketch_name').value.length);
     };
 
-    var correctInput = function () {
+    var correctInput = function() {
         // If nothing in the input, add default name
         if (document.getElementById('sketch_name').value == '') {
             document.getElementById('sketch_name').value = MSG['sketch_name_default'];
@@ -36,17 +36,17 @@ Code.sketchNameSizeEffect = function () {
         resizeInput();
         correctInput();
     });
-	//detect click inside input
+    //detect click inside input
     document.getElementById('sketch_name').addEventListener("click", event => {
-		correctInput();
+        correctInput();
         resizeInput();
     });
-	//detect click outside input
-	document.getElementById('sketch_name').addEventListener("blur", function() {
-		if (document.getElementById("sketch_name").value == '')
-			document.getElementById("sketch_name").value = MSG['sketch_name_default'];
+    //detect click outside input
+    document.getElementById('sketch_name').addEventListener("blur", function() {
+        if (document.getElementById("sketch_name").value == '')
+            document.getElementById("sketch_name").value = MSG['sketch_name_default'];
         resizeInput();
-	});
+    });
     sketchNameInput.focus(correctInput());
 };
 
@@ -55,7 +55,7 @@ Code.sketchNameSizeEffect = function () {
  * Code.sketchNameSizeEffect().
  * @param {string?} newName Optional string to place in the sketch_name input.
  */
-Code.sketchNameSet = function (newName) {
+Code.sketchNameSet = function(newName) {
     var sketchNewName = newName || '';
     var sketchNameInput = document.getElementById('sketch_name');
     sketchNameInput.value = sketchNewName;
@@ -67,7 +67,7 @@ Code.sketchNameSet = function (newName) {
 /**
  * Create select listing for various dropdown menus
  */
-Code.renderingConstantsInit = function () {
+Code.renderingConstantsInit = function() {
     /* add boards from list in boards.json
      * in both boardMenu, hidden, but used for compilation,
      * and boardDescriptionSelector in boards modal */

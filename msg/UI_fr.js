@@ -54,8 +54,7 @@ var MSG = {
     resetQuestion_span: "Réinitialiser S4E et ",
     helpButton_span: "aide",
     helpModalSpan_title: "Aide",
-    helpModalSpan_text:
-        '<table>' +
+    helpModalSpan_text: '<table>' +
         '<tbody>' +
         '<tr>' +
         '<td style="width: 142px;"><img src="./S4E/media/logo_only.png" alt="" width="129" height="144" /></td>' +

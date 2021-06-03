@@ -20,8 +20,7 @@ function auto_save_and_restore_blocks() {
         var text = Blockly.Xml.domToText(xml);
         window.sessionStorage.loadOnceBlocks = text;
     }
-}
-;
+};
 
 var fullScreen_ = false;
 
@@ -64,8 +63,7 @@ function fullScreen(_element) {
             document.removeEventListener('MSFullscreenChange', exitFullScreen, false);
         }
     }
-}
-;
+};
 
 function exitFullScreen() {
     if (fullScreen_ === false) {
@@ -75,13 +73,12 @@ function exitFullScreen() {
         fullScreenButton.className = 'iconButtons';
         fullScreen_ = false;
     }
-}
-;
+};
 
 /**
  * Copy code from div code_peek in clipboard system
  */
-Code.copyToClipboard = function () {
+Code.copyToClipboard = function() {
     if (document.selection) { // IE
         var range = document.body.createTextRange();
         range.moveToElementText(document.getElementsByClassName("ace_content")[0]);
@@ -92,18 +89,18 @@ Code.copyToClipboard = function () {
         // range.selectNode(document.getElementsByClassName("ace_content")[0]);
         // window.getSelection().removeAllRanges();
         // window.getSelection().addRange(range);
-    // }
-    // document.execCommand("copy");
+        // }
+        // document.execCommand("copy");
         navigator.clipboard.writeText(document.getElementsByClassName("ace_content")[0].innerText)
-                .then(() => {console.log('Code copied!') })
-                .catch((error) => { console.log('Copy failed! ${error}') });
+            .then(() => { console.log('Code copied!') })
+            .catch((error) => { console.log('Copy failed! ${error}') });
     }
 };
 
 /**
  * modal controllers
  */
-Code.boardsListModalShow = function () {
+Code.boardsListModalShow = function() {
     document.getElementById('overlayForModals').style.display = "block";
     document.getElementById('boardListModal').classList.add('show');
     for (var i = 0; i < document.getElementById("boardDescriptionSelector").length; i++)
@@ -117,7 +114,7 @@ Code.boardsListModalShow = function () {
     window.addEventListener('click', Code.boardsListModalHide, 'once');
     Code.boardDescription();
 };
-Code.portsListModalShow = function () {
+Code.portsListModalShow = function() {
     document.getElementById('overlayForModals').style.display = "block";
     document.getElementById('portListModal').classList.add('show');
     var portValue = document.getElementById("serialMenu").value;
@@ -127,37 +124,37 @@ Code.portsListModalShow = function () {
     }
     window.addEventListener('click', Code.portsListModalHide, 'once');
 };
-Code.flowsListModalShow = function () {
+Code.flowsListModalShow = function() {
     document.getElementById('overlayForModals').style.display = "block";
     document.getElementById('flowsListModal').classList.add('show');
     window.addEventListener('click', Code.flowsListModalHide, 'once');
 };
-document.getElementById("closeModalBoards").onclick = function () {
+document.getElementById("closeModalBoards").onclick = function() {
     document.getElementById('overlayForModals').style.display = "none";
     document.getElementById('boardListModal').classList.remove('show');
 };
-document.getElementById("closeModalPorts").onclick = function () {
+document.getElementById("closeModalPorts").onclick = function() {
     document.getElementById('overlayForModals').style.display = "none";
     document.getElementById('portListModal').classList.remove('show');
 };
-document.getElementById("closeModalFlows").onclick = function () {
+document.getElementById("closeModalFlows").onclick = function() {
     document.getElementById('overlayForModals').style.display = "none";
     document.getElementById('flowsListModal').classList.remove('show');
 };
 // When the user clicks anywhere outside of the modal, close it
-Code.boardsListModalHide = function (event) {
+Code.boardsListModalHide = function(event) {
     if (!document.getElementById('boardListModal').contains(event.target)) {
         document.getElementById('overlayForModals').style.display = "none";
         document.getElementById('boardListModal').classList.remove('show');
     }
 };
-Code.portsListModalHide = function (event) {
+Code.portsListModalHide = function(event) {
     if (!document.getElementById('portListModal').contains(event.target)) {
         document.getElementById('overlayForModals').style.display = "none";
         document.getElementById('portListModal').classList.remove('show');
     }
 };
-Code.flowsListModalHide = function (event) {
+Code.flowsListModalHide = function(event) {
     if (!document.getElementById('flowsListModal').contains(event.target)) {
         document.getElementById('overlayForModals').style.display = "none";
         document.getElementById('flowsListModal').classList.remove('show');
@@ -167,7 +164,7 @@ Code.flowsListModalHide = function (event) {
 /**
  * change information in the boards modal
  **/
-Code.boardDescription = function () {
+Code.boardDescription = function() {
     var boardValue = document.getElementById("boardDescriptionSelector").value;
     if (boardValue === '')
         boardValue = 'none';
@@ -181,17 +178,17 @@ Code.boardDescription = function () {
 /**
  * Undo/redo functions
  */
-Code.Undo = function () {
+Code.Undo = function() {
     Blockly.getMainWorkspace().undo(0);
 };
-Code.Redo = function () {
+Code.Redo = function() {
     Blockly.getMainWorkspace().undo(1);
 };
 
 /**
  * Launch blockFatcory with language argument
  */
-Code.BlockFactory = function () {
+Code.BlockFactory = function() {
     var lang = Code.getStringParamFromUrl('lang', '');
     if (!lang) {
         lang = "en";
@@ -203,13 +200,13 @@ Code.BlockFactory = function () {
  * Creates an INO file containing the Arduino code from the Blockly workspace and
  * prompts the users to save it into their local file system.
  */
-Code.newProject = function () {
+Code.newProject = function() {
     var count = Code.workspace.getAllBlocks().length;
     if (count > 0) {
-        Blockly.confirm(Blockly.Msg['DELETE_ALL_BLOCKS'].replace('%1', count), function (confirm) {
+        Blockly.confirm(Blockly.Msg['DELETE_ALL_BLOCKS'].replace('%1', count), function(confirm) {
             if (confirm)
                 Code.workspace.clear();
-                return true;
+            return true;
         });
     }
 };
@@ -218,13 +215,13 @@ Code.newProject = function () {
  * Creates an INO file containing the Arduino code from the Blockly workspace and
  * prompts the users to save it into their local file system.
  */
-Code.saveCodeFile = function () {
+Code.saveCodeFile = function() {
     var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '_');
     var dataToSave = Blockly.Arduino.workspaceToCode(Code.workspace);
     var blob = new Blob([dataToSave], {
         type: 'text/plain;charset=utf-8'
     });
-    Blockly.prompt(MSG['save_span'], document.getElementById('sketch_name').value, function (fileNameSave) {
+    Blockly.prompt(MSG['save_span'], document.getElementById('sketch_name').value, function(fileNameSave) {
         if (fileNameSave) {
             var fakeDownloadLink = document.createElement("a");
             fakeDownloadLink.download = fileNameSave + ".ino";
@@ -243,13 +240,13 @@ Code.saveCodeFile = function () {
  * Creates an XML file containing the blocks from the Blockly workspace and
  * prompts the users to save it into their local file system.
  */
-Code.saveXmlBlocklyFile = function () {
+Code.saveXmlBlocklyFile = function() {
     var xmlData = Blockly.Xml.workspaceToDom(Code.workspace);
     var dataToSave = Blockly.Xml.domToPrettyText(xmlData);
     var blob = new Blob([dataToSave], {
         type: 'text/xml;charset=utf-8'
     });
-    Blockly.prompt(MSG['save_span'], document.getElementById('sketch_name').value, function (fileNameSave) {
+    Blockly.prompt(MSG['save_span'], document.getElementById('sketch_name').value, function(fileNameSave) {
         if (fileNameSave) {
             var fakeDownloadLink = document.createElement("a");
             fakeDownloadLink.download = fileNameSave + ".S4E";
@@ -267,17 +264,23 @@ Code.saveXmlBlocklyFile = function () {
 /**
  * Load blocks from local file.
  */
-Code.loadXmlBlocklyFile = function () {
+Code.loadXmlBlocklyFile = function() {
     // Create event listener function
-    var parseInputXMLfile = function (e) {
+    var parseInputXMLfile = function(e) {
         var files = e.target.files;
         var reader = new FileReader();
-        reader.onloadend = function () {
-            var success = Code.loadBlocksfromXml(reader.result);
+        reader.onloadend = function() {
+            // var success = Code.loadBlocksfromXml(reader.result);
+            // Destroyihng the element after being clicked
+            var success = false;
+            if (reader.result != null) {
+                Code.loadBlocksfromXml(reader.result);
+                success = true;
+            }
             if (success) {
                 Code.workspace.render();
             } else {
-                Blockly.alert(MSG[badXml], callback);
+                Blockly.alert(MSG['badXml'], callback);
             }
         };
         reader.readAsText(files[0]);
@@ -294,6 +297,9 @@ Code.loadXmlBlocklyFile = function () {
         selectFile = document.getElementById('select_file');
         selectFile.addEventListener('change', parseInputXMLfile, false);
     }
+    selectFile.onclick = function destroyClickedElement(event) {
+        document.body.removeChild(event.target);
+    };
     selectFile.click();
 };
 
@@ -303,15 +309,15 @@ Code.loadXmlBlocklyFile = function () {
  * @param {!string} defaultXml String of XML code for the blocks.
  * @return {!boolean} Indicates if the XML into blocks parse was successful.
  */
-Code.loadBlocksfromXml = function (defaultXml) {
+Code.loadBlocksfromXml = function(defaultXml) {
     var count = Code.workspace.getAllBlocks().length;
     var xml = Blockly.Xml.textToDom(defaultXml);
     if (count > 0) {
-        Blockly.confirm(MSG['loadXML_span'], function (confirm) {
+        Blockly.confirm(MSG['loadXML_span'], function(confirm) {
             if (confirm)
                 Code.workspace.clear();
-                Blockly.Xml.domToWorkspace(xml, Code.workspace);
-                return true;
+            Blockly.Xml.domToWorkspace(xml, Code.workspace);
+            return true;
         });
     } else {
         Blockly.Xml.domToWorkspace(xml, Code.workspace);
@@ -326,7 +332,7 @@ Code.loadBlocksfromXml = function (defaultXml) {
  * @param {string} value Value to set
  * @return {string} The url completed with parameter and value
  */
-Code.addReplaceParamToUrl = function (url, param, value) {
+Code.addReplaceParamToUrl = function(url, param, value) {
     var re = new RegExp("([?&])" + param + "=.*?(&|$)", "i");
     var separator = url.indexOf('?') !== -1 ? "&" : "?";
     if (url.match(re)) {
@@ -339,9 +345,9 @@ Code.addReplaceParamToUrl = function (url, param, value) {
 /**
  * Reset workspace and parameters
  */
-Code.ResetWorkspace = function () {
+Code.ResetWorkspace = function() {
     var count = Blockly.mainWorkspace.getAllBlocks(false).length;
-    Blockly.confirm(MSG['resetQuestion_span'] + ' ' + Blockly.Msg['DELETE_ALL_BLOCKS'].replace('%1', count), function (answer) {
+    Blockly.confirm(MSG['resetQuestion_span'] + ' ' + Blockly.Msg['DELETE_ALL_BLOCKS'].replace('%1', count), function(answer) {
         if (answer) {
             Blockly.Events.disable();
             Blockly.getMainWorkspace().clear();
@@ -363,7 +369,7 @@ Code.ResetWorkspace = function () {
 /**
  * Change font size in blocks in all workspace
  */
-Code.changeRenderingConstant = function (value) {
+Code.changeRenderingConstant = function(value) {
     var type = document.getElementById('rendering-constant-selector').value;
     switch (type) {
         case 'fontSizeBlocks':
@@ -375,9 +381,9 @@ Code.changeRenderingConstant = function (value) {
                 fontSize: value + "pt"
             });
         case 'fontSizePage':
-        // fontSizePageModify('access', value);
+            // fontSizePageModify('access', value);
         case 'fontSpacingPage':
-        // document.body.style.fontSize = value + 'px';
+            // document.body.style.fontSize = value + 'px';
     }
     // Refresh theme.
     Blockly.getMainWorkspace().setTheme(Blockly.getMainWorkspace().getTheme());
@@ -394,13 +400,13 @@ var HelpModalDisplay_ = false;
 function toggleDisplayHelpModal() {
     if (!HelpModalDisplay_) {
         document.getElementById('helpModal').style.display = 'block';
-    	document.getElementById('helpModal').classList.add('show');
+        document.getElementById('helpModal').classList.add('show');
         document.getElementById('helpModal').style.left = (top.innerWidth - document.getElementById('helpModal').offsetWidth) / 2 + "px";
         document.getElementById('helpModal').style.top = (top.innerHeight - document.getElementById('helpModal').offsetHeight) / 2 + "px";
         helpButton.className = 'iconButtonsClicked';
     } else {
         document.getElementById('helpModal').style.display = 'none';
-    	document.getElementById('helpModal').classList.remove('show');
+        document.getElementById('helpModal').classList.remove('show');
         helpButton.className = 'iconButtons';
     }
     HelpModalDisplay_ = !HelpModalDisplay_;
