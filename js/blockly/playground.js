@@ -179,9 +179,9 @@ function getToolboxElement() {
 
 function toggleAccessibilityMode(state) {
     if (state) {
-        Blockly.navigation.enableKeyboardAccessibility();
+        Code.navigationController.enable(Code.workspace);
     } else {
-        Blockly.navigation.disableKeyboardAccessibility();
+        Code.navigationController.disable(Code.workspace);
     }
 }
 ;

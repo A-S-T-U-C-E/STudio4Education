@@ -629,6 +629,15 @@
     <script src="./@blockly/blockly_compressed.js"></script>
     <script src="./@blockly/blocks_compressed.js"></script>
     <script src="./@blockly/closure/goog/base.js"></script>
+    <script src="./@blockly/plugins/block-plus-minus/dist/index.js"></script>
+    <script src="./@blockly/plugins/disable-top-blocks/dist/index.js"></script>
+    <script src="./@blockly/plugins/field-grid-dropdown/dist/index.js"></script>
+    <script src="./@blockly/plugins/field-slider/dist/index.js"></script>
+    <script src="./@blockly/plugins/keyboard-navigation/dist/index.js"></script>
+    <script src="./@blockly/plugins/plugin-workspace-search/dist/index.js"></script>
+    <script src="./@blockly/plugins/theme-dark/dist/index.js"></script>
+    <script src="./@blockly/plugins/theme-modern/dist/index.js"></script>
+    <script src="./@blockly/plugins/zoom-to-fit/dist/index.js"></script>
     <!-- Blockly libraries for themes and renderers -->
     <script src="./@blockly/core/workspace_comment.js" async></script>
     <script src="./@blockly/core/workspace_comment_svg.js" async></script>
@@ -637,13 +646,12 @@
     <script src="./@blockly/core/renderers/minimalist/constants.js" async></script>
     <script src="./@blockly/core/renderers/minimalist/drawer.js" async></script>
     <script src="./@blockly/core/renderers/minimalist/renderer.js" async></script>
-    <script src="./@blockly/core/theme/modern.js" async></script>
     <script src="./@blockly/core/theme/zelos.js" async></script>
     <!-- Blockly libraries of function, from different demos -->
     <script src="./@blockly/demos/code/code.js"></script>
-    <script src="./@blockly/demos/keyboard_nav/line_cursor.js" async></script>
     <script src="./@blockly/tests/playgrounds/screenshot.js" async></script>
     <!-- S4E external toolbox hacked -->
+    <script src="./S4E/categories/arrowheadframework/arrowheadframework.toolbox"></script>
     <script src="./S4E/categories/board/board.toolbox"></script>
     <script src="./S4E/categories/ds18b20/ds18b20.toolbox"></script>
     <script src="./S4E/categories/relay/relay.toolbox"></script>
@@ -651,8 +659,9 @@
     <script src="./S4E/categories/blockly/blockly.toolbox"></script>
     <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.toolbox"></script>
     <!-- Blockly libraries of function, hacked from different demos -->
-    <script src="./js/blockly/keyboard_nav.js"></script>
+    <!-- <script src="./js/blockly/keyboard_nav.js"></script> -->
     <script src="./js/blockly/playground.js"></script>
+    <script src="./js/keyboard_nav.js"></script>
     <script src="./js/init.js"></script>
     <script src="./js/typed_variable.js"></script>
     <script src="./js/buttons_functions.js"></script>
@@ -664,8 +673,12 @@
     <script src="./js/ace/ace.js" charset="utf-8"></script>
     <script src="./js/ace/ext-language_tools.js"></script>
     <!-- S4E libraries of specific funtions definition -->
-    <script src="./S4E/js/arrowhead.js"></script>
     <script src="./S4E/js/override_toolbox.js"></script>
+    <!-- Blockly themes added -->
+    <script src="./S4E/themes/bw.js" async></script>
+    <script src="./S4E/themes/themes_blocks.js" async></script>
+    <script src="./S4E/themes/themes_categories.js" async></script>
+    <script src="./S4E/themes/themes_components_override.js" async></script>
     <!-- S4E libraries of boards definition -->
     <script src="./S4E/js/boards.json"></script>
     <script src="./S4E/js/boards.js"></script>
@@ -676,6 +689,7 @@
     <script src="./S4E/categories/board/board_base.blocks" async></script>
     <script src="./S4E/categories/board/board_iot.blocks" async></script>
     <script src="./S4E/categories/board/board_serial.blocks" async></script>
+    <script src="./S4E/categories/arrowheadframework/arrowheadframework.blocks" async></script>
     <script src="./S4E/categories/ds18b20/ds18b20.blocks" async></script>
     <script src="./S4E/categories/relay/relay.blocks" async></script>
     <script src="./S4E/categories/servo/servo.blocks" async></script>
@@ -694,16 +708,12 @@
     <script src="./S4E/categories/board/board_base.arduino" async></script>
     <script src="./S4E/categories/board/board_iot.arduino" async></script>
     <script src="./S4E/categories/board/board_serial.arduino" async></script>
+    <script src="./S4E/categories/arrowheadframework/arrowheadframework.arduino" async></script>
     <script src="./S4E/categories/ds18b20/ds18b20.arduino" async></script>
     <script src="./S4E/categories/relay/relay.arduino" async></script>
     <script src="./S4E/categories/servo/servo.arduino" async></script>
     <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.arduino" async></script>
     <!-- S4E specific -->
-    <!-- Blockly themes added -->
-    <script src="./S4E/themes/bw.js" async></script>
-    <script src="./S4E/themes/themes_blocks.js" async></script>
-    <script src="./S4E/themes/themes_categories.js" async></script>
-    <script src="./S4E/themes/themes_components_override.js" async></script>
     <script>
         ace.require("ace/ext/language_tools");
         var editor = ace.edit("content_code");

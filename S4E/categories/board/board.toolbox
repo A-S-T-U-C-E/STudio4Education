@@ -3,18 +3,27 @@ var toolbox_ST = {
     "contents": [{
          "kind": "category",
          "name": "%{BKY_CAT_BOARD}",
-		"toolboxitemid": "BOARD",
-		"level": "1",
-		"levels": "1,2,3",
+         "toolboxitemid": "BOARD",
+         "level": "1",
+         "levels": "1,2,3",
          "categorystyle": "board_category",
-		"cssConfig": {
-		  "icon": "customIcon fas fa-microchip"
-		},
-         "contents": [{
+         "cssConfig": {
+            "icon": "customIcon fas fa-microchip"
+         },
+         "contents": [               
+                  {
+                     "kind": "block",
+                     "type": "board_base_setup"
+                  },
+                  {
+                     "kind": "block",
+                     "type": "board_base_loop"
+                  },
+               {
                "kind": "category",
                "name": "%{BKY_CAT_BOARD_IO}",
-				"level": "2",
-				"levels": "1,2,3",
+               "level": "2",
+               "levels": "1,2,3",
                "categorystyle": "board_category",
                "contents": [
                   {

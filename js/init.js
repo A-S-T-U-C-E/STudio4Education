@@ -104,6 +104,21 @@ Code.init = function () {
             scaleSpeed: 1.1
         }
     });
+    //add plugin workspace search
+    Code.workspaceSearch = new WorkspaceSearch(Code.workspace);
+    Code.workspaceSearch.init();
+    //add plugin keyboard navigation
+    Code.navigationController = new NavigationController();
+    Code.navigationController.init();
+    Code.navigationController.addWorkspace(Code.workspace);
+    //add plugin zoom-to-fit
+    const zoomToFit = new ZoomToFitControl(Code.workspace);
+    zoomToFit.init();
+    // add plugin disable-top-blocks
+    Code.workspace.addChangeListener(Blockly.Events.disableOrphans);
+    const disableTopBlocksPlugin = new DisableTopBlocks();
+    disableTopBlocksPlugin.init();
+    
     const metrics = Code.workspace.getMetrics();
     var onresize = function (e) {
         var element = container;
@@ -186,21 +201,21 @@ Code.init = function () {
 
     //keyboard nav attribution
     var actions = [
-        Blockly.navigation.ACTION_PREVIOUS,
-        Blockly.navigation.ACTION_OUT,
-        Blockly.navigation.ACTION_NEXT,
-        Blockly.navigation.ACTION_IN,
-        Blockly.navigation.ACTION_INSERT,
-        Blockly.navigation.ACTION_MARK,
-        Blockly.navigation.ACTION_DISCONNECT,
-        Blockly.navigation.ACTION_TOOLBOX,
-        Blockly.navigation.ACTION_EXIT,
-        Blockly.navigation.ACTION_MOVE_WS_CURSOR_UP,
-        Blockly.navigation.ACTION_MOVE_WS_CURSOR_LEFT,
-        Blockly.navigation.ACTION_MOVE_WS_CURSOR_DOWN,
-        Blockly.navigation.ACTION_MOVE_WS_CURSOR_RIGHT
+        Code.navigationController.ACTION_PREVIOUS,
+        Code.navigationController.ACTION_OUT,
+        Code.navigationController.ACTION_NEXT,
+        Code.navigationController.ACTION_IN,
+        Code.navigationController.ACTION_INSERT,
+        Code.navigationController.ACTION_MARK,
+        Code.navigationController.ACTION_DISCONNECT,
+        Code.navigationController.ACTION_TOOLBOX,
+        Code.navigationController.ACTION_EXIT,
+        Code.navigationController.ACTION_MOVE_WS_CURSOR_UP,
+        Code.navigationController.ACTION_MOVE_WS_CURSOR_LEFT,
+        Code.navigationController.ACTION_MOVE_WS_CURSOR_DOWN,
+        Code.navigationController.ACTION_MOVE_WS_CURSOR_RIGHT
     ];
-    createKeyMappingList(actions);
+    // createKeyMappingList(actions);
 
     // function used for dragging and moving splitted windows
     // needs onresize function defined ahead
@@ -426,19 +441,19 @@ Code.initLanguage = function () {
     document.getElementById('boardModal_eeprom').textContent = MSG['boardModal_eeprom'];
     document.getElementById('portListModalHeader_span').textContent = MSG['portListModalHeader_span'];
     //keyboard nav
-    Blockly.navigation.ACTION_PREVIOUS.name = MSG['actionName0'];
-    Blockly.navigation.ACTION_OUT.name = MSG['actionName1'];
-    Blockly.navigation.ACTION_NEXT.name = MSG['actionName2'];
-    Blockly.navigation.ACTION_IN.name = MSG['actionName3'];
-    Blockly.navigation.ACTION_INSERT.name = MSG['actionName4'];
-    Blockly.navigation.ACTION_MARK.name = MSG['actionName5'];
-    Blockly.navigation.ACTION_DISCONNECT.name = MSG['actionName6'];
-    Blockly.navigation.ACTION_TOOLBOX.name = MSG['actionName7'];
-    Blockly.navigation.ACTION_EXIT.name = MSG['actionName8'];
-    Blockly.navigation.ACTION_MOVE_WS_CURSOR_UP.name = MSG['actionName9'];
-    Blockly.navigation.ACTION_MOVE_WS_CURSOR_LEFT.name = MSG['actionName10'];
-    Blockly.navigation.ACTION_MOVE_WS_CURSOR_DOWN.name = MSG['actionName11'];
-    Blockly.navigation.ACTION_MOVE_WS_CURSOR_RIGHT.name = MSG['actionName12'];
+    // Blockly.navigation.ACTION_PREVIOUS.name = MSG['actionName0'];
+    // Blockly.navigation.ACTION_OUT.name = MSG['actionName1'];
+    // Blockly.navigation.ACTION_NEXT.name = MSG['actionName2'];
+    // Blockly.navigation.ACTION_IN.name = MSG['actionName3'];
+    // Blockly.navigation.ACTION_INSERT.name = MSG['actionName4'];
+    // Blockly.navigation.ACTION_MARK.name = MSG['actionName5'];
+    // Blockly.navigation.ACTION_DISCONNECT.name = MSG['actionName6'];
+    // Blockly.navigation.ACTION_TOOLBOX.name = MSG['actionName7'];
+    // Blockly.navigation.ACTION_EXIT.name = MSG['actionName8'];
+    // Blockly.navigation.ACTION_MOVE_WS_CURSOR_UP.name = MSG['actionName9'];
+    // Blockly.navigation.ACTION_MOVE_WS_CURSOR_LEFT.name = MSG['actionName10'];
+    // Blockly.navigation.ACTION_MOVE_WS_CURSOR_DOWN.name = MSG['actionName11'];
+    // Blockly.navigation.ACTION_MOVE_WS_CURSOR_RIGHT.name = MSG['actionName12'];
 
 };
 

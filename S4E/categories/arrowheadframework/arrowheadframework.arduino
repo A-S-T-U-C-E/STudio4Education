@@ -1,0 +1,38 @@
+/**
+ * @license
+ * Copyright 2020 Sébastien Canet
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/**
+ * @fileoverview DS18B20 sensor temperature blocks for Blockly.
+ * @author scanet@libreduc.cc (Sébastien Canet)
+ */
+ 
+'use strict';
+
+goog.provide('Blockly.Arduino.arrowheadframework');
+
+goog.require('Blockly.Arduino');
+
+Blockly.Arduino['ahf_custom_parameters'] = function(block) {
+  //IMPORTANT: delete unneeded lines
+  var value_client_system_name = Blockly.Arduino.valueToCode(block, 'CLIENT_SYSTEM_NAME', Blockly.Arduino.ORDER_ATOMIC);
+  var value_server_address = Blockly.Arduino.valueToCode(block, 'SERVER_ADDRESS', Blockly.Arduino.ORDER_ATOMIC);
+  var value_server_port = Blockly.Arduino.valueToCode(block, 'SERVER_PORT', Blockly.Arduino.ORDER_ATOMIC);
+  var value_sr_address = Blockly.Arduino.valueToCode(block, 'SR_ADDRESS', Blockly.Arduino.ORDER_ATOMIC);
+  var value_sr_port = Blockly.Arduino.valueToCode(block, 'SR_PORT', Blockly.Arduino.ORDER_ATOMIC);
+  var checkbox_server_ssl_enabled = block.getFieldValue('SERVER_SSL_ENABLED') == 'TRUE';
+  var checkbox_token_security_filter_enabled = block.getFieldValue('TOKEN_SECURITY_FILTER_ENABLED') == 'TRUE';
+  var value_server_ssl_key_store_type = Blockly.Arduino.valueToCode(block, 'SERVER_SSL_KEY_STORE_TYPE', Blockly.Arduino.ORDER_ATOMIC);
+  var value_server_ssl_key_store_password = Blockly.Arduino.valueToCode(block, 'SERVER_SSL_KEY_STORE_PASSWORD', Blockly.Arduino.ORDER_ATOMIC);
+  var value_server_ssl_key_alias = Blockly.Arduino.valueToCode(block, 'SERVER_SSL_KEY_ALIAS', Blockly.Arduino.ORDER_ATOMIC);
+  var value_server_ssl_key_password = Blockly.Arduino.valueToCode(block, 'SERVER_SSL_KEY_PASSWORD', Blockly.Arduino.ORDER_ATOMIC);
+  var value_server_ssl_client_auth = Blockly.Arduino.valueToCode(block, 'SERVER_SSL_CLIENT_AUTH', Blockly.Arduino.ORDER_ATOMIC);
+  var value_server_ssl_trust_store_type = Blockly.Arduino.valueToCode(block, 'SERVER_SSL_TRUST_STORE_TYPE', Blockly.Arduino.ORDER_ATOMIC);
+  var value_server_ssl_trust_store = Blockly.Arduino.valueToCode(block, 'SERVER_SSL_TRUST_STORE', Blockly.Arduino.ORDER_ATOMIC);
+  var value_server_ssl_trust_store_password = Blockly.Arduino.valueToCode(block, 'SERVER_SSL_TRUST_STORE_PASSWORD', Blockly.Arduino.ORDER_ATOMIC);
+  var code = ''
+  return code;
+};
+

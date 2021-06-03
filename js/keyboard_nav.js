@@ -6,24 +6,10 @@
 
 /**
  * @fileoverview Set of function for keybaord navigation
- * forked from https://github.com/google/blockly/commit/5a92aff63e93dce884bbe2e715ba832244628501
  * @author scanet@libreduc.cc (Sébastien CANET)
  */
 
 var timeout;
-
-/**
- * Turn on/off accessibility mode depending on the state.
- * @param {boolean} state True to turn on accessibility mode, false otherwise.
- * @package
- */
-function toggleAccessibilityMode(state) {
-    if (state) {
-        Blockly.navigation.enableKeyboardAccessibility();
-    } else {
-        Blockly.navigation.disableKeyboardAccessibility();
-    }
-}
 
 /**
  * Change the type of the cursor and set to the location of the old cursor.
@@ -277,7 +263,7 @@ function createDropdowns(action, actionKey, actionDiv) {
  */
 function createKeyMappingList(actions) {
     // Update the key map to reflect the key map saved in session storage.
-    restoreKeyMap();
+    // restoreKeyMap();
     var keyMapDiv = document.getElementById('keyboard_mappings');
     for (var i = 0, action; action = actions[i]; i++) {
         var actionDiv = document.createElement('div');

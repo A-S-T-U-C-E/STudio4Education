@@ -1,0 +1,47 @@
+[
+ {
+   "Id": "relay",
+   "Commentaire": "220V relay ",
+   "Function": "High voltage control"
+ },
+ {
+   "Id": "servo",
+   "Commentaire": "servomotor",
+   "Function": "Continuous rotation servomotor"
+ },
+ {
+   "Id": "servo",
+   "Commentaire": "servomotor",
+   "Function": "Angular servomotor"
+ },
+ {
+   "Id": "X-NUCLEO-IKS01A3",
+   "Commentaire": "ST shield: humidity, temperature, magnetometer, accelerometer, gyroscope",
+   "Function": "humidity sensor"
+ },
+ {
+   "Id": "X-NUCLEO-IKS01A3",
+   "Commentaire": "ST shield: humidity, temperature, magnetometer, accelerometer, gyroscope",
+   "Function": "temperature sensor"
+ },
+ {
+   "Id": "X-NUCLEO-IKS01A3",
+   "Commentaire": "ST shield: humidity, temperature, magnetometer, accelerometer, gyroscope",
+   "Function": "magnetometer sensor"
+ },
+ {
+   "Id": "X-NUCLEO-IKS01A3",
+   "Commentaire": "ST shield: humidity, temperature, magnetometer, accelerometer, gyroscope",
+   "Function": "accelerometer sensor"
+ },
+ {
+   "Id": "X-NUCLEO-IKS01A3",
+   "Commentaire": "ST shield: humidity, temperature, magnetometer, accelerometer, gyroscope",
+   "Function": "angular/gyroscope sensor"
+ },
+ {
+   "Id": "ds18b20",
+   "Commentaire": "temperature sensor",
+   "Function": "temperature sensor"
+ }
+]

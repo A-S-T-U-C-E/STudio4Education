@@ -28,3 +28,4 @@ Blockly.Msg.CAT_GROVE_LCD = "- LCD";
 Blockly.Msg.CAT_GROVE_MOTOR = "- Motor";
 Blockly.Msg.CAT_DS18B20 = "DS18B20";
 Blockly.Msg.CAT_RELAY = "Relay";
+Blockly.Msg.CAT_ARROWHEADFRAMEWORK = "Arrowhead";

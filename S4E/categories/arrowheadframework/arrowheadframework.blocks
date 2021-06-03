@@ -1,0 +1,94 @@
+/**
+ * @license
+ * Copyright 2020 Sébastien Canet
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/**
+ * @fileoverview DS18B20 sensor temperature blocks for Blockly.
+ * @author scanet@libreduc.cc (Sébastien Canet)
+ */
+ 
+'use strict';
+
+goog.provide('Blockly.Constants.arrowheadframework');
+
+goog.require('Blockly.Blocks');
+goog.require('Blockly');
+
+var arrowheadframeworkMediaFolder = "./S4E/categories/arrowheadframework/";
+
+
+
+Blockly.Blocks['ahf_custom_parameters'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("ArrowHead provider setup");
+    this.appendValueInput("CLIENT_SYSTEM_NAME")
+        .setCheck("String")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("System Name");
+    this.appendValueInput("SERVER_ADDRESS")
+        .setCheck("String")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Server Address");
+    this.appendValueInput("SERVER_PORT")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Server Port");
+    this.appendValueInput("SR_ADDRESS")
+        .setCheck("String")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Service Registry Address");
+    this.appendValueInput("SR_PORT")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Service Registry Port");
+    this.appendDummyInput()
+        .appendField("configure secure mode");
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Server SSL security enabled?")
+        .appendField(new Blockly.FieldCheckbox("TRUE"), "SERVER_SSL_ENABLED");
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Token Security filter enabled?")
+        .appendField(new Blockly.FieldCheckbox("TRUE"), "TOKEN_SECURITY_FILTER_ENABLED");
+    this.appendValueInput("SERVER_SSL_KEY_STORE_TYPE")
+        .setCheck("String")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Server SSL key store name");
+    this.appendValueInput("SERVER_SSL_KEY_STORE_PASSWORD")
+        .setCheck("String")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Server SSL key store password");
+    this.appendValueInput("SERVER_SSL_KEY_ALIAS")
+        .setCheck("String")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Server SSL key alias");
+    this.appendValueInput("SERVER_SSL_KEY_PASSWORD")
+        .setCheck("String")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Server SSL key password");
+    this.appendValueInput("SERVER_SSL_CLIENT_AUTH")
+        .setCheck("String")
+        .appendField("Server SSL client authorization");
+    this.appendValueInput("SERVER_SSL_TRUST_STORE_TYPE")
+        .setCheck("String")
+        .appendField("Server SSL trust store type");
+    this.appendValueInput("SERVER_SSL_TRUST_STORE")
+        .setCheck("String")
+        .appendField("Server SSL trust store name");
+    this.appendValueInput("SERVER_SSL_TRUST_STORE_PASSWORD")
+        .setCheck("String")
+        .appendField("Server SSL trust store password");
+    this.setInputsInline(false);
+	this.setStyle('arrowheadframework_blocks');
+    this.setTooltip('this blocks helps to...');
+    this.setHelpUrl('https://www.arduino.cc/reference/en/');
+  }
+};
+
+
+
+

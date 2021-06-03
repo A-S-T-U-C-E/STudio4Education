@@ -15,6 +15,28 @@ goog.provide('Blockly.Arduino.board_base');
 
 goog.require('Blockly.Arduino');
 
+Blockly.Arduino['board_base_setup'] = function (block) {
+    var code = Blockly.Arduino.statementToCode(block, 'SETUP');
+    if (Blockly.Arduino.INFINITE_LOOP_TRAP) {
+        code = Blockly.Arduino.INFINITE_LOOP_TRAP.replace(/%1/g,
+                '\'' + block.id + '\'') + code;
+    }
+    code = Blockly.Arduino.scrub_(block, code);
+    var setup_key = Blockly.Arduino.variableDB_.getDistinctName('base_setup', Blockly.Variables.NAME_TYPE);
+    Blockly.Arduino.setups_['base_setup'] = code;
+    return "";
+};
+
+Blockly.Arduino['board_base_loop'] = function (block) {
+    var code = Blockly.Arduino.statementToCode(block, 'LOOP');
+    if (Blockly.Arduino.INFINITE_LOOP_TRAP) {
+        code = Blockly.Arduino.INFINITE_LOOP_TRAP.replace(/%1/g,
+                '\'' + block.id + '\'') + code;
+    }
+    code = Blockly.Arduino.scrub_(block, code);
+    return code;
+};
+
 Blockly.Arduino['board_base_inout_buildin_led'] = function (block) {
     var dropdown_stat = block.getFieldValue('STAT');
     Blockly.Arduino.setups_['setup_output_13'] = 'pinMode(LED_BUILTIN, OUTPUT);';

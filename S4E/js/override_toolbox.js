@@ -40,7 +40,7 @@ class TweakCategories extends Blockly.ToolboxCategory {
         // This is used for accessibility purposes.
         Blockly.utils.aria.setState(/** @type {!Element} */(this.htmlDiv_), Blockly.utils.aria.State.SELECTED, isSelected);
     }
-    // createIconDom_() {
+    // createIconDom_(name) {
       // const img = document.createElement('img');
       // img.src = this.toolboxItemDef_['imageName'];
       // img.alt = 'Lamp';
