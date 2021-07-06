@@ -5,9 +5,40 @@
  */
 
 /**
- * @fileoverview Servomotor blocks for Blockly.
+ * @fileoverview Dialog element draggable on UI
  * @author scanet@libreduc.cc (Sébastien CANET)
  */
+
+/*
+ * False modal with data conversion functions
+ */
+function showConvertModalDialog() {
+    var id = 'convertModalDialog';
+    var dialog = new DialogBox(id, callbackDialog);
+    dialog.showDialog();
+
+    function callbackDialog(btnName) {
+        // if (btnName == "close")
+    }
+}
+
+/*
+ * False modal with colors conversion functions
+ */
+function showColorsModalDialog() {
+    document.getElementById("colorsModalDialogContent").innerHTML = '<object type="text/html" data="./tools/RGB/RGB_en.html" ></object>';
+    document.getElementById("colorsModalDialogContent").style.width = '100%';
+    document.getElementById("colorsModalDialogContent").style.height = '535px';
+    document.getElementById("colorsModalDialogContent").children[0].style.width = '100%';
+    document.getElementById("colorsModalDialogContent").children[0].style.height = '535px';
+    var id = 'colorsModalDialog';
+    var dialog = new DialogBox(id, callbackDialog);
+    dialog.showDialog();
+
+    function callbackDialog(btnName) {
+        // if (btnName == "close")
+    }
+}
 
 /*
  * Make the DIV element draggable

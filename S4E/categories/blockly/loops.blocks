@@ -31,7 +31,7 @@ Blockly.defineBlocksWithJsonArray([ // BEGIN JSON EXTRACT
         "args0": [{
             "type": "input_value",
             "name": "TIMES",
-            "check": "Unsigned number"
+            "check": "Number"
         }],
         "message1": "%{BKY_CONTROLS_REPEAT_INPUT_DO} %1",
         "args1": [{

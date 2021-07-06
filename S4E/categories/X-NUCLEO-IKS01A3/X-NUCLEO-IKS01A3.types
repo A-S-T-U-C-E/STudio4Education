@@ -1,6 +1,6 @@
 //---------------------------------logic--------------------------------------------
 
-Blockly.Blocks['X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ'].getBlockType = function() {
+Blockly.Blocks.X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ.getBlockType = function() {
     return Blockly.Types.BOOLEAN;
 };
 Blockly.Blocks.X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ.getBlockType = function() {

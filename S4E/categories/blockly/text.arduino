@@ -33,8 +33,12 @@ Blockly.Arduino['text_char'] = function(block) {
 };
 
 Blockly.Arduino['text_multiline'] = function(block) {
-    // Text value.
     var code = Blockly.Arduino.multiline_quote_(block.getFieldValue('TEXT'));
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['text_date'] = function(block) {
+    var code = Blockly.Arduino.quote_(block.getFieldValue('DATE'));
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 /**

@@ -31,6 +31,8 @@ Blockly.Blocks.controls_switch.getVarType = function() {
 //---------------------------------loops--------------------------------------------
 
 Blockly.Blocks.controls_repeat_ext.getBlockType = function() {
+    // var numString = this.getFieldValue('NUM');
+    // return Blockly.Types.identifyNumber(numString);
     return Blockly.Types.NULL;
 };
 Blockly.Blocks.controls_repeat.getBlockType = function() {
@@ -107,6 +109,9 @@ Blockly.Blocks.text_char.getBlockType = function() {
     return Blockly.Types.CHARACTER;
 };
 Blockly.Blocks.text_multiline.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.text_date.getBlockType = function() {
     return Blockly.Types.TEXT;
 };
 Blockly.Blocks.text_join.getBlockType = function() {
@@ -229,5 +234,8 @@ Blockly.Blocks.colour_rgb.getBlockType = function() {
     return Blockly.Types.TEXT;
 };
 Blockly.Blocks.colour_blend.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.color_picker_custom.getBlockType = function() {
     return Blockly.Types.TEXT;
 };

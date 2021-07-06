@@ -19,9 +19,154 @@ goog.require('Blockly.Types');
 
 var arrowheadframeworkMediaFolder = "./S4E/categories/arrowheadframework/";
 
+Blockly.Blocks['ahf_esp_define'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"));
+        this.appendValueInput("KEY")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("public key")
+            .setCheck("String");
+        this.appendValueInput("CONFIG_NETWORK")
+            .setCheck(null)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("network config from file system")
+            .setCheck("String");
+        this.appendValueInput("CONFIG_SSL")
+            .setCheck(null)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("ssl config from file system")
+            .setCheck("String");
+        this.appendValueInput("CONFIG_PROVIDER")
+            .setCheck(null)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("provider config from file system")
+            .setCheck("String");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setStyle('arrowheadframework_blocks');
+        this.setTooltip('name of the system, must match the common name of the certificate');
+        this.setHelpUrl('https://github.com/arrowhead-f/ArrowheadESP');
+    }
+};
+
+Blockly.Blocks['ahf_esp_service_registry_def'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
+            .appendField("Service Registry definition:")
+            .appendField("interface type")
+            .appendField(new Blockly.FieldDropdown([["HTTP-SECURE-SenML", "HTTP-SECURE-SenML"], ["HTTPS", "HTTPS"], ["HTTP", "HTTP"]]), "INTERFACE");
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("Service Registry instance");
+        this.appendValueInput("endOfValidity")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("certificate end of validity");
+        this.appendValueInput("VERSION")
+            .setCheck("Number")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("version");
+        this.appendValueInput("PATH")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("path");
+        this.appendValueInput("NAME")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("name of the system")
+            .setCheck("String");
+        this.appendValueInput("SERVICE_DEFINITION")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("name of the service")
+            .setCheck("String");
+        this.appendValueInput("PORT")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("service provided port")
+            .setCheck("Number");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setStyle('arrowheadframework_blocks');
+        this.setTooltip("Used to stablish where Arrowhead Core Systems can be found");
+        this.setHelpUrl("https://github.com/arrowhead-f/ArrowheadESP");
+    }
+};
+
+Blockly.Blocks['ahf_esp_connection_registry_test'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"))
+            .appendField("result of connection");
+        this.setOutput(true);
+        this.setStyle('arrowheadframework_blocks');
+        this.setTooltip('name of the system, must match the common name of the certificate');
+        this.setHelpUrl('https://github.com/arrowhead-f/ArrowheadESP');
+    }
+};
+
+Blockly.Blocks['ahf_esp_SR_register_test'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"))
+            .appendField("registering service status code");
+        this.setOutput(true);
+        this.setStyle('arrowheadframework_blocks');
+        this.setTooltip('register to Service Registry and send back status code');
+        this.setHelpUrl('https://github.com/arrowhead-f/ArrowheadESP');
+    }
+};
+
+Blockly.Blocks['ahf_esp_SR_unregister_test'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"))
+            .appendField("UNregistering service status code");
+        this.setOutput(true);
+        this.setStyle('arrowheadframework_blocks');
+        this.setTooltip('unregister from Service Registry and send back status code');
+        this.setHelpUrl('https://github.com/arrowhead-f/ArrowheadESP');
+    }
+};
+
+Blockly.Blocks['ahf_esp_format_data_SenML'] = {
+    init: function () {
+        this.appendValueInput("DATA")
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"))
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("format to SenML this");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setStyle('arrowheadframework_blocks');
+        this.setTooltip('format sensors data as SenML');
+        this.setHelpUrl('https://github.com/arrowhead-f/ArrowheadESP');
+    }
+};
+
+Blockly.Blocks['ahf_esp_keep_connection'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"))
+            .appendField("send data");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setStyle('arrowheadframework_blocks');
+        this.setTooltip('name of the system, must match the common name of the certificate');
+        this.setHelpUrl('https://github.com/arrowhead-f/ArrowheadESP');
+    }
+};
 
 Blockly.Blocks['ahf_custom_parameters'] = {
-    init: function() {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"));
         this.appendDummyInput()
             .appendField("ArrowHead provider setup");
         this.appendValueInput("CLIENT_SYSTEM_NAME")

@@ -63,6 +63,7 @@ input {
     margin-left: 5px;
     margin-right: 5px;
     margin-top: 5px;
+    font-size: 1.1em;
 }
 
 .farSide>select {

@@ -38,4 +38,7 @@ Blockly.Msg.CAT_GROVE_MOTOR = "- Motor";
 Blockly.Msg.CAT_DS18B20 = "DS18B20";
 Blockly.Msg.CAT_RELAY = "Relay";
 Blockly.Msg.CAT_ARROWHEADFRAMEWORK = "Arrowhead";
+Blockly.Msg.CAT_ARROWHEADFRAMEWORK_ESP = "ESP library use";
+Blockly.Msg.CAT_ARROWHEADFRAMEWORK_WIFI = "WiFi connection";
+Blockly.Msg.CAT_ARROWHEADFRAMEWORK_RJ = "Ethernet connection";
 Blockly.Msg.CAT_DHT = "DHT sensor";

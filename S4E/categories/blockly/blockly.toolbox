@@ -132,6 +132,9 @@ var toolbox_standard = {
             "type": "text_multiline"
         }, {
             "kind": "block",
+            "type": "text_date"
+        }, {
+            "kind": "block",
             "type": "text_join"
         }, {
             "kind": "block",
@@ -197,6 +200,9 @@ var toolbox_standard = {
         "contents": [{
             "kind": "block",
             "type": "colour_picker"
+        }, {
+            "kind": "block",
+            "type": "color_picker_custom"
         }, {
             "kind": "block",
             "type": "colour_random"

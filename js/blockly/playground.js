@@ -157,17 +157,26 @@ function setOnOffLine() {
         document.getElementById('loadXMLfakeButton_span').innerHTML = '<i class="fas fa-file-upload"></i>';
         document.getElementById('saveXMLButton_span').innerHTML = '<i class="fas fa-file-download"></i>';
         document.getElementById('saveCodeButton_span').innerHTML = '<i class="fas fa-file-export"></i>';
-        // hide everything relative to arduino-cli if online
+        // hide everything relative to arduino-cli or nodejs if online
         var elmts = getElementsByClass("CLI", null, null);
         for (var i = 0; i < elmts.length; i++)
             elmts[i].disabled = true;
     }
     document.getElementsByClassName("ace_content").position = "";
+    // disable elements not yet finished - server menu
+    document.getElementById('papyrusConnect').disabled = true;
+    document.getElementById('registerToOrchestrator_auto').disabled = true;
+    document.getElementById('serialConnectIOT').disabled = true;
+    // disable elements not yet finished - lateral panel menu
+    document.getElementById('launchWebServerTo').disabled = true;
+    document.getElementById('papyrusConnectTo').disabled = true;
+    document.getElementById('registerToOrchestrator').disabled = true;
+    document.getElementById('serialConnectIOT_save').disabled = true;
 }
 
 function getToolboxElement() {
     var match = location.search.match(/toolbox=([^&]+)/);
-    // Default to the basic toolbox with categories and untyped variables,
+    // Default to the basic toolbox with categories,
     // but override that if the toolbox type is set in the URL.
     var toolboxSuffix = (match ? match[1] : 'categories');
     // The three possible values are: "simple", "categories",
@@ -192,7 +201,6 @@ function configureContextualMenu(menuOptions, e) {
         }
     };
     menuOptions.push(screenshotOption);
-
     // Adds a default-sized workspace comment to the workspace.
     menuOptions.push(Blockly.ContextMenu.workspaceCommentOption(Code.workspace, e));
 };

@@ -38,4 +38,7 @@ Blockly.Msg.CAT_GROVE_MOTOR = "- moteurs";
 Blockly.Msg.CAT_DS18B20 = "thermistance DS18B20";
 Blockly.Msg.CAT_RELAY = "relais";
 Blockly.Msg.CAT_ARROWHEADFRAMEWORK = "Arrowhead";
+Blockly.Msg.CAT_ARROWHEADFRAMEWORK_ESP = "ESP8266";
+Blockly.Msg.CAT_ARROWHEADFRAMEWORK_WIFI = "WiFi standard";
+Blockly.Msg.CAT_ARROWHEADFRAMEWORK_RJ = "Ethernet";
 Blockly.Msg.CAT_DHT = "DHT sensor";

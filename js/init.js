@@ -133,19 +133,20 @@ Code.init = function() {
         blocklyDiv.style.width = container.offsetWidth + 'px';
         blocklyDiv.style.height = container.offsetHeight + 'px';
         Blockly.svgResize(Code.workspace);
-        //        if (Code.workspace.RTL) {
-        //          blocklyDiv.style.left = metrics.absoluteLeft + 'px';
-        //          blocklyDiv.style.right = 'auto';
-        //        } else {
-        //          blocklyDiv.style.left = 'auto';
-        //          if (metrics.toolboxPosition === Blockly.TOOLBOX_AT_RIGHT) {
-        //            blocklyDiv.style.right = metrics.toolboxWidth + 'px';
-        //          } else {
-        //            blocklyDiv.style.right = '0';
-        //          }
-        //        }
-        //        blocklyDiv.style.top = metrics.absoluteTop + 'px';
-    };
+        // TODO yet to finish...
+           if (Code.workspace.RTL) {
+            blocklyDiv.style.left = metrics.absoluteLeft + 'px';
+            blocklyDiv.style.right = 'auto';
+           } else {
+            blocklyDiv.style.left = 'auto';
+            if (metrics.toolboxPosition === Blockly.TOOLBOX_AT_RIGHT) {
+                blocklyDiv.style.right = metrics.toolboxWidth + 'px';
+            } else {
+                blocklyDiv.style.right = '0';
+            }
+           }
+       blocklyDiv.style.top = metrics.absoluteTop + 'px';
+       };
     window.addEventListener('resize', onresize, false);
 
     Code.workspace.configureContextMenu = configureContextualMenu.bind(Code.workspace);
@@ -211,7 +212,6 @@ Code.init = function() {
     function dragElement(element, direction, first, second) {
         var mouse_down_info;
         element.onmousedown = onMouseDown;
-
         function onMouseDown(e) {
             mouse_down_info = {
                 e,

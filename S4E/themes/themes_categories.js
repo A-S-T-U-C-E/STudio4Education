@@ -35,7 +35,7 @@ Blockly.Themes.Classic.categoryStyles['arrowheadframework_category'] = {
     "colour": "#004676"
 };
 Blockly.Themes.Classic.categoryStyles['DHT_category'] = {
-    "colour": "#68CCF0"
+    "colour": "#47A3D2"
 };
 //Modern theme
 Blockly.Themes.Modern.categoryStyles['board_category'] = {
@@ -63,7 +63,7 @@ Blockly.Themes.Modern.categoryStyles['arrowheadframework_category'] = {
     "colour": "#004676"
 };
 Blockly.Themes.Classic.categoryStyles['DHT_category'] = {
-    "colour": "#68CCF0"
+    "colour": "#47A3D2"
 };
 //Deuteranopia theme
 Blockly.Themes.Deuteranopia.categoryStyles['board_category'] = {
@@ -91,7 +91,7 @@ Blockly.Themes.Deuteranopia.categoryStyles['arrowheadframework_category'] = {
     "colour": "#004676"
 };
 Blockly.Themes.Deuteranopia.categoryStyles['DHT_category'] = {
-    "colour": "#68CCF0"
+    "colour": "#47A3D2"
 };
 //Tritanopia theme
 Blockly.Themes.Tritanopia.categoryStyles['board_category'] = {
@@ -119,7 +119,7 @@ Blockly.Themes.Tritanopia.categoryStyles['arrowheadframework_category'] = {
     "colour": "#004676"
 };
 Blockly.Themes.Tritanopia.categoryStyles['DHT_category'] = {
-    "colour": "#68CCF0"
+    "colour": "#47A3D2"
 };
 //Zelos theme
 Blockly.Themes.Zelos.categoryStyles['board_category'] = {
@@ -147,7 +147,7 @@ Blockly.Themes.Zelos.categoryStyles['arrowheadframework_category'] = {
     "colour": "#004676"
 };
 Blockly.Themes.Zelos.categoryStyles['DHT_category'] = {
-    "colour": "#68CCF0"
+    "colour": "#47A3D2"
 };
 //High Contrast theme
 Blockly.Themes.HighContrast.categoryStyles['board_category'] = {
@@ -175,7 +175,7 @@ Blockly.Themes.HighContrast.categoryStyles['arrowheadframework_category'] = {
     "colour": "#004676"
 };
 Blockly.Themes.HighContrast.categoryStyles['DHT_category'] = {
-    "colour": "#68CCF0"
+    "colour": "#47A3D2"
 };
 //Dark Theme
 Blockly.Themes.Dark.categoryStyles['board_category'] = {
@@ -203,5 +203,5 @@ Blockly.Themes.Dark.categoryStyles['arrowheadframework_category'] = {
     "colour": "#004676"
 };
 Blockly.Themes.Classic.categoryStyles['DHT_category'] = {
-    "colour": "#68CCF0"
+    "colour": "#47A3D2"
 };

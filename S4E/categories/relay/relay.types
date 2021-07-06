@@ -1,7 +1,7 @@
 Blockly.Blocks.RELAY_LOGICAL.getBlockType = function() {
-    return Blockly.Types.NUMBER;
+    return Blockly.Types.NULL;
 };
 
 Blockly.Blocks.RELAY_MOSFET.getBlockType = function() {
-    return Blockly.Types.NUMBER;
+    return Blockly.Types.NULL;
 };
