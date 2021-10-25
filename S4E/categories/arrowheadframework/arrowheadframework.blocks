@@ -20,7 +20,7 @@ goog.require('Blockly.Types');
 var arrowheadframeworkMediaFolder = "./S4E/categories/arrowheadframework/";
 
 Blockly.Blocks['ahf_esp_define'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"));
@@ -53,12 +53,23 @@ Blockly.Blocks['ahf_esp_define'] = {
 };
 
 Blockly.Blocks['ahf_esp_service_registry_def'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
-            .appendField("Service Registry definition:")
-            .appendField("interface type")
-            .appendField(new Blockly.FieldDropdown([["HTTP-SECURE-SenML", "HTTP-SECURE-SenML"], ["HTTPS", "HTTPS"], ["HTTP", "HTTP"]]), "INTERFACE");
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"))
+            .appendField("Service Registry definition:");
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("secure mode")
+            .appendField(new Blockly.FieldDropdown([
+                ["CERTIFICATE", "CERTIFICATE"],
+                ["TOKEN", "TOKEN"],
+                ["NOT_SECURE", "NOT_SECURE"]
+            ]), "SECURE");
+        this.appendValueInput("INTERFACE")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("interface type");
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField("Service Registry instance");
@@ -82,9 +93,13 @@ Blockly.Blocks['ahf_esp_service_registry_def'] = {
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField("name of the service")
             .setCheck("String");
+        this.appendValueInput("IP")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("service provider address")
+            .setCheck("String");
         this.appendValueInput("PORT")
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField("service provided port")
+            .appendField("service provider port")
             .setCheck("Number");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -95,7 +110,7 @@ Blockly.Blocks['ahf_esp_service_registry_def'] = {
 };
 
 Blockly.Blocks['ahf_esp_connection_registry_test'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"))
@@ -108,7 +123,7 @@ Blockly.Blocks['ahf_esp_connection_registry_test'] = {
 };
 
 Blockly.Blocks['ahf_esp_SR_register_test'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"))
@@ -121,7 +136,7 @@ Blockly.Blocks['ahf_esp_SR_register_test'] = {
 };
 
 Blockly.Blocks['ahf_esp_SR_unregister_test'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"))
@@ -134,7 +149,7 @@ Blockly.Blocks['ahf_esp_SR_unregister_test'] = {
 };
 
 Blockly.Blocks['ahf_esp_format_data_SenML'] = {
-    init: function () {
+    init: function() {
         this.appendValueInput("DATA")
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"))
@@ -150,11 +165,11 @@ Blockly.Blocks['ahf_esp_format_data_SenML'] = {
 };
 
 Blockly.Blocks['ahf_esp_keep_connection'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"))
-            .appendField("send data");
+            .appendField("keep data alive");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setStyle('arrowheadframework_blocks');
@@ -164,7 +179,7 @@ Blockly.Blocks['ahf_esp_keep_connection'] = {
 };
 
 Blockly.Blocks['ahf_custom_parameters'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"));
         this.appendDummyInput()

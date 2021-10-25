@@ -85,7 +85,7 @@ Blockly.Arduino['text_join'] = function(block) {
  */
 Blockly.Arduino['text_append'] = function(block) {
     // Append to a variable in place.
-    var varName = Blockly.Arduino.variableDB_.getName(
+    var varName = Blockly.Arduino.nameDB_.getName(
         block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
     var argument0 = Blockly.Arduino.valueToCode(block, 'TEXT',
         Blockly.Arduino.ORDER_UNARY_POSTFIX);

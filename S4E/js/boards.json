@@ -109,7 +109,7 @@
          "speed": "921600",
          "upload_arg": "esp8266:esp8266:generic"
      }],
-     "ST_nucleo_G431KB": [{
+     "ST_nucleo_F042K6": [{
          "I2C": [
              ["A4 (SDA)", "A4"],
              ["A5 (SCL)", "A5"]
@@ -121,10 +121,10 @@
              ["12 (MISO)", "12"],
              ["13 (CLK)", "13"]
          ],
-         "_id": "ST_nucleo_G431KB",
+         "_id": "ST_nucleo_F042K6",
          "analog": ["A0", "A1", "A2", "A3", "A4", "A5", "A6", "A7"],
-         "cpu": "atmega2560",
-         "description": "Nucleo-G431KB STM32F042K6",
+         "cpu": "Arm Cortex M0",
+         "description": "Nucleo32 STM32F042K6",
          "digital": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"],
          "dropdownAnalog": [
              ["A0", "A0"],
@@ -179,7 +179,7 @@
              ["0 (Rx) ; 1 (Tx)", "0"]
          ],
          "speed": "57600",
-         "upload_arg": "STM32:stm32:Nucleo_32:pnum=NUCLEO_G431KB"
+         "upload_arg": "STMicroelectronics:stm32:Nucleo_32:pnum=NUCLEO_F042K6"
      }],
      "ST_nucleo_L476RG": [{
          "I2C": [
@@ -276,7 +276,7 @@
              ["A1 (Rx4) ; A0 (Tx4)", "3"]
          ],
          "speed": "57600",
-         "upload_arg": "STM32:stm32:Nucleo_64:pnum=NUCLEO_L476RG"
+         "upload_arg": "STMicroelectronics:stm32:Nucleo_64:pnum=NUCLEO_L476RG"
      }],
      "ST_nucleo_H753ZI": [{
          "I2C": ["20", "21"],
@@ -400,7 +400,7 @@
              ["15 (Rx3) ; 14 (Tx3)", "15"]
          ],
          "speed": "57600",
-         "upload_arg": "STM32:stm32:Nucleo_64:pnum=NUCLEO_L476RG"
+         "upload_arg": "STMicroelectronics:stm32:Nucleo_64:pnum=NUCLEO_L476RG"
      }],
      "ST_mp157c_dk2": [{
          "I2C": ["20", "21"],

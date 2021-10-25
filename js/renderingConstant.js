@@ -95,7 +95,7 @@ Code.renderingConstantsInit = function() {
  * Change categories visibility in toolbox
  */
 function toggleCategory(categoryChecked) {
-    var toolbox = Blockly.getMainWorkspace().getToolbox();
+    var toolbox = Code.mainWorkspace.getToolbox();
     var category = toolbox.getToolboxItems()[categoryChecked];
     if (document.getElementById('checkbox_' + categoryChecked).checked == false) {
         category.hide();

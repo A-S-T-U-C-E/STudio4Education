@@ -39,7 +39,7 @@ Code.LANGUAGE_RTL = ['ar', 'fa', 'he', 'lki'];
  * Blockly's main workspace.
  * @type {Blockly.WorkspaceSvg}
  */
-Code.workspace = null;
+Code.mainWorkspace = null;
 
 /**
  * Extracts a parameter from the URL.
@@ -93,11 +93,11 @@ Code.loadBlocks = function(defaultXml) {
         // Language switching stores the blocks during the reload.
         delete window.sessionStorage.loadOnceBlocks;
         var xml = Blockly.Xml.textToDom(loadOnce);
-        Blockly.Xml.domToWorkspace(xml, Code.workspace);
+        Blockly.Xml.domToWorkspace(xml, Code.mainWorkspace);
     } else if (defaultXml) {
         // Load the editor with default starting blocks.
         var xml = Blockly.Xml.textToDom(defaultXml);
-        Blockly.Xml.domToWorkspace(xml, Code.workspace);
+        Blockly.Xml.domToWorkspace(xml, Code.mainWorkspace);
     } else if ('BlocklyStorage' in window) {
         // Restore saved blocks in a separate thread so that subsequent
         // initialization is not affected from a failed load.
@@ -112,7 +112,7 @@ Code.changeLanguage = function() {
     // Store the blocks for the duration of the reload.
     // MSIE 11 does not support sessionStorage on file:// URLs.
     if (window.sessionStorage) {
-        var xml = Blockly.Xml.workspaceToDom(Code.workspace);
+        var xml = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
         var text = Blockly.Xml.domToText(xml);
         window.sessionStorage.loadOnceBlocks = text;
     }
@@ -134,6 +134,15 @@ Code.changeLanguage = function() {
 };
 
 /**
+ * Changes the output language by clicking the tab matching
+ * the selected language in the codeMenu.
+ */
+Code.changeCodingLanguage = function() {
+    var codeMenu = document.getElementById('code_menu');
+    Code.tabClick(codeMenu.options[codeMenu.selectedIndex].value);
+}
+
+/**
  * Bind a function to a button's click event.
  * On touch enabled browsers, ontouchend is treated as equivalent to onclick.
  * @param {!Element|string} el Button element or ID thereof.
@@ -145,6 +154,15 @@ Code.bindClick = function(el, func) {
     }
     el.addEventListener('click', func, true);
     el.addEventListener('touchend', func, true);
+};
+
+/**
+ * Load the Prettify CSS and JavaScript.
+ */
+Code.importPrettify = function() {
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js');
+    document.head.appendChild(script);
 };
 
 /**

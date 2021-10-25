@@ -15,6 +15,23 @@ goog.provide('Blockly.Arduino.board_base');
 
 goog.require('Blockly.Arduino');
 
+Blockly.Arduino['base_define_bloc'] = function() {
+    var branch = Blockly.Arduino.statementToCode(this, 'DO');
+    if (Blockly.Arduino.INFINITE_LOOP_TRAP) {
+        branch = Blockly.Arduino.INFINITE_LOOP_TRAP.replace(/%1/g, '\'' + this.id + '\'') + branch;
+    }
+    var setup_key = Blockly.Arduino.variableDB_.getDistinctName('base_setup', Blockly.Variables.NAME_TYPE);
+    Blockly.Arduino.variables_[setup_key] = branch;
+    return "";
+};
+
+Blockly.Arduino['base_define'] = function() {
+    var value_text1 = Blockly.Arduino.valueToCode(this, 'TEXT1', Blockly.Arduino.ORDER_ATOMIC);
+    var value_text2 = this.getFieldValue('TEXT2');
+    Blockly.Arduino.includes_[value_text1] = '#define ' + value_text1 + ' ' + value_text2;
+    return "";
+};
+
 Blockly.Arduino['board_base_setup'] = function(block) {
     var code = Blockly.Arduino.statementToCode(block, 'SETUP');
     if (Blockly.Arduino.INFINITE_LOOP_TRAP) {
@@ -22,7 +39,6 @@ Blockly.Arduino['board_base_setup'] = function(block) {
             '\'' + block.id + '\'') + code;
     }
     code = Blockly.Arduino.scrub_(block, code);
-    var setup_key = Blockly.Arduino.variableDB_.getDistinctName('base_setup', Blockly.Variables.NAME_TYPE);
     Blockly.Arduino.setups_['base_setup'] = code;
     return "";
 };

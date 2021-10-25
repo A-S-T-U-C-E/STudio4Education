@@ -335,27 +335,68 @@ td {
 
 /* modal buttons */
 
-#boardListModalDialogOkay {
-    border: none;
-    font-size: x-large;
-    background-color: #4CAF50;
-    border-radius: 12px;
-    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-    margin: 5px;
-    position: relative;
-    left: 88px;
-}
-
-#portListModalDialogOkay {
+.modalDialogOkay,
+.modalDialogOkay_nodejs {
     border: none;
     font-size: large;
     background-color: #4CAF50;
     border-radius: 12px;
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    margin: 5px;
+    vertical-align: middle;
+}
+
+.modalDialogOkay,
+.modalDialogOkay_nodejs:active {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    top: 3px;
+}
+
+.modalDialogCancel {
+    border: none;
+    font-size: large;
+    background-color: #ff0000;
+    border-radius: 12px;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    margin: 5px;
+    vertical-align: middle;
+}
+
+.modalDialogCancel:active {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    top: 3px;
+}
+
+#boardListModalDialogOkay {
+    font-size: x-large;
+    position: relative;
+    left: 88px;
 }
 
 
 /* Content blocks */
+
+#minimapDiv {
+    /* display: none; */
+    position: absolute;
+    height: 140px;
+    width: 200px;
+    bottom: 33px;
+    right: 90px;
+    z-index: 10;
+}
+
+.minimap {
+    position: absolute;
+}
+
+.mapDragger {
+    cursor: move;
+    fill: rgb(0, 0, 255);
+    stroke-width: .5;
+    stroke: rgb(0, 0, 0);
+    fill-opacity: .1;
+}
 
 .content_wrapper {
     height: 100%;
@@ -438,8 +479,7 @@ td {
     background: #000000;
     color: rgba(29, 147, 47, 1);
     width: 100%;
-    height: 10px;
-    min-height: 10px;
+    min-height: 0.5px;
     white-space: pre-wrap;
     overflow-y: scroll;
 }
@@ -532,7 +572,7 @@ td {
 .modal-header {
     padding: 10px;
     color: white;
-    -webkit-border-radius: 15px !important;
+    border-radius: 15px !important;
     border-top-left-radius: 15px !important;
     border-top-right-radius: 15px !important;
 }
@@ -550,7 +590,7 @@ td {
 .modal-footer {
     padding: 10px;
     color: white;
-    -webkit-border-radius: 15px !important;
+    border-radius: 15px !important;
     border-top-left-radius: 15px !important;
     border-top-right-radius: 15px !important;
 }
@@ -616,18 +656,6 @@ td {
     color: #000000;
 }
 
-
-/* Style the collapsible content. Note: hidden by default */
-
-.collapsibleContent {
-    visibility: hidden;
-    padding: 0 18px;
-    background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.1s ease-out;
-}
-
 .collapsibleButton:after {
     content: '\02795';
     /* Unicode character for "plus" sign (+) */
@@ -639,4 +667,16 @@ td {
 .active:after {
     transform: rotateZ(45deg);
     transition: 0.1s ease-out;
+}
+
+
+/* Style the collapsible content. Note: hidden by default */
+
+.collapsibleContent {
+    visibility: hidden;
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.1s ease-out;
 }

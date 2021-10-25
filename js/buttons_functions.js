@@ -14,12 +14,9 @@
  */
 function auto_save_and_restore_blocks() {
     // Store the blocks for the duration of the reload.
-    // MSIE 11 does not support sessionStorage on file:// URLs.
-    if (window.sessionStorage) {
-        var xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace());
-        var text = Blockly.Xml.domToText(xml);
-        window.sessionStorage.loadOnceBlocks = text;
-    }
+    var xml = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
+    var text = Blockly.Xml.domToText(xml);
+    window.sessionStorage.loadOnceBlocks = text;
 };
 
 var fullScreen_ = false;
@@ -41,28 +38,28 @@ function fullScreen(_element) {
             document.removeEventListener('fullscreenchange', exitFullScreen, false);
         }
     } else
-        // Chrome, Safari and Opera
-        if (document.webkitFullscreenEnabled) {
-            if (!document.webkitFullscreenElement) {
-                elementClicked.webkitRequestFullscreen();
-                document.addEventListener('webkitfullscreenchange', exitFullScreen, false);
-            } else {
-                exitFullScreen();
-                document.webkitExitFullscreen();
-                document.removeEventListener('webkitfullscreenchange', exitFullScreen, false);
-            }
-        } else
-            // IE/Edge
-            if (document.msFullscreenEnabled) {
-                if (!document.msFullscreenElement) {
-                    elementClicked.msRequestFullscreen();
-                    document.addEventListener('MSFullscreenChange', exitFullScreen, false);
-                } else {
-                    exitFullScreen();
-                    document.msExitFullscreen();
-                    document.removeEventListener('MSFullscreenChange', exitFullScreen, false);
-                }
-            }
+    // Chrome, Safari and Opera
+    if (document.webkitFullscreenEnabled) {
+        if (!document.webkitFullscreenElement) {
+            elementClicked.webkitRequestFullscreen();
+            document.addEventListener('webkitfullscreenchange', exitFullScreen, false);
+        } else {
+            exitFullScreen();
+            document.webkitExitFullscreen();
+            document.removeEventListener('webkitfullscreenchange', exitFullScreen, false);
+        }
+    } else
+    // IE/Edge
+    if (document.msFullscreenEnabled) {
+        if (!document.msFullscreenElement) {
+            elementClicked.msRequestFullscreen();
+            document.addEventListener('MSFullscreenChange', exitFullScreen, false);
+        } else {
+            exitFullScreen();
+            document.msExitFullscreen();
+            document.removeEventListener('MSFullscreenChange', exitFullScreen, false);
+        }
+    }
 };
 
 function exitFullScreen() {
@@ -78,20 +75,14 @@ function exitFullScreen() {
 /**
  * Copy code from div code_peek in clipboard system
  */
-Code.copyToClipboard = function () {
+Code.copyToClipboard = function() {
     if (document.selection) { // IE
         var range = document.body.createTextRange();
-        range.moveToElementText(document.getElementsByClassName("ace_content")[0]);
+        range.moveToElementText(editor.getValue());
         range.select();
         document.execCommand("copy");
     } else if (window.getSelection) {
-        // var range = document.createRange();
-        // range.selectNode(document.getElementsByClassName("ace_content")[0]);
-        // window.getSelection().removeAllRanges();
-        // window.getSelection().addRange(range);
-        // }
-        // document.execCommand("copy");
-        navigator.clipboard.writeText(document.getElementsByClassName("ace_content")[0].innerText)
+        navigator.clipboard.writeText(editor.getValue())
             .then(() => { console.log('Code copied!') })
             .catch((error) => { console.log('Copy failed! ${error}') });
     }
@@ -100,7 +91,7 @@ Code.copyToClipboard = function () {
 /**
  * modal controllers
  */
-Code.boardsListModalShow = function () {
+Code.boardsListModalShow = function() {
     document.getElementById('overlayForModals').style.display = "block";
     document.getElementById('boardListModal').classList.add('show');
     for (var i = 0; i < document.getElementById("boardDescriptionSelector").length; i++)
@@ -114,7 +105,7 @@ Code.boardsListModalShow = function () {
     window.addEventListener('click', Code.boardsListModalHide, 'once');
     Code.boardDescription();
 };
-Code.portsListModalShow = function () {
+Code.portsListModalShow = function() {
     document.getElementById('overlayForModals').style.display = "block";
     document.getElementById('portListModal').classList.add('show');
     var portValue = document.getElementById("serialMenu").value;
@@ -124,38 +115,38 @@ Code.portsListModalShow = function () {
     }
     window.addEventListener('click', Code.portsListModalHide, 'once');
 };
-Code.flowsListModalShow = function () {
+Code.flowsListModalShow = function() {
     document.getElementById('overlayForModals').style.display = "block";
     document.getElementById('flowsListModal').classList.add('show');
     window.addEventListener('click', Code.flowsListModalHide, 'once');
 };
-document.getElementById("closeModalBoards").onclick = function () {
+document.getElementById("closeModalBoards").onclick = function() {
     document.getElementById('overlayForModals').style.display = "none";
     document.getElementById('boardListModal').classList.remove('show');
 };
-document.getElementById("closeModalPorts").onclick = function () {
+document.getElementById("closeModalPorts").onclick = function() {
     document.getElementById('overlayForModals').style.display = "none";
     document.getElementById('portListModal').classList.remove('show');
 };
-document.getElementById("closeModalFlows").onclick = function () {
+document.getElementById("closeModalFlows").onclick = function() {
     document.getElementById('overlayForModals').style.display = "none";
     document.getElementById('flowsListModal').classList.remove('show');
 };
 // When the user clicks anywhere outside of the modal, close it
-Code.boardsListModalHide = function (event) {
-    if (!document.getElementById('boardListModal').contains(event.target)) {
+Code.boardsListModalHide = function(event) {
+    if (document.getElementById('boardListModal_content').contains(event.target)) {} else {
         document.getElementById('overlayForModals').style.display = "none";
         document.getElementById('boardListModal').classList.remove('show');
     }
 };
-Code.portsListModalHide = function (event) {
-    if (!document.getElementById('portListModal').contains(event.target)) {
+Code.portsListModalHide = function(event) {
+    if (document.getElementById('portListModal_content').contains(event.target)) {} else {
         document.getElementById('overlayForModals').style.display = "none";
         document.getElementById('portListModal').classList.remove('show');
     }
 };
-Code.flowsListModalHide = function (event) {
-    if (!document.getElementById('flowsListModal').contains(event.target)) {
+Code.flowsListModalHide = function(event) {
+    if (document.getElementById('flowsListModal_content').contains(event.target)) {} else {
         document.getElementById('overlayForModals').style.display = "none";
         document.getElementById('flowsListModal').classList.remove('show');
     }
@@ -164,31 +155,31 @@ Code.flowsListModalHide = function (event) {
 /**
  * change information in the boards modal
  **/
-Code.boardDescription = function () {
+Code.boardDescription = function() {
     var boardValue = document.getElementById("boardDescriptionSelector").value;
     if (boardValue === '')
         boardValue = 'none';
     document.getElementById("board_mini_picture").setAttribute("src", profile[boardValue][0]['picture']);
-    document.getElementById("board_connect").textContent = profile[boardValue][0]['usb'];
-    document.getElementById("board_cpu").textContent = profile[boardValue][0]['cpu'];
-    document.getElementById("board_voltage").textContent = profile[boardValue][0]['voltage'];
-    document.getElementById("board_inout").textContent = profile[boardValue][0]['inout'];
+    // document.getElementById("board_connect").textContent = profile[boardValue][0]['usb'];
+    // document.getElementById("board_cpu").textContent = profile[boardValue][0]['cpu'];
+    // document.getElementById("board_voltage").textContent = profile[boardValue][0]['voltage'];
+    // document.getElementById("board_inout").textContent = profile[boardValue][0]['inout'];
 };
 
 /**
  * Undo/redo functions
  */
-Code.Undo = function () {
-    Blockly.getMainWorkspace().undo(0);
+Code.Undo = function() {
+    Code.mainWorkspace.undo(0);
 };
-Code.Redo = function () {
-    Blockly.getMainWorkspace().undo(1);
+Code.Redo = function() {
+    Code.mainWorkspace.undo(1);
 };
 
 /**
  * Launch blockFatcory with language argument
  */
-Code.BlockFactory = function () {
+Code.BlockFactory = function() {
     var lang = Code.getStringParamFromUrl('lang', '');
     if (!lang) {
         lang = "en";
@@ -200,12 +191,12 @@ Code.BlockFactory = function () {
  * Creates an INO file containing the Arduino code from the Blockly workspace and
  * prompts the users to save it into their local file system.
  */
-Code.newProject = function () {
-    var count = Code.workspace.getAllBlocks().length;
+Code.newProject = function() {
+    var count = Code.mainWorkspace.getAllBlocks().length;
     if (count > 0) {
-        Blockly.confirm(Blockly.Msg['DELETE_ALL_BLOCKS'].replace('%1', count), function (confirm) {
+        Blockly.confirm(Blockly.Msg['DELETE_ALL_BLOCKS'].replace('%1', count), function(confirm) {
             if (confirm)
-                Code.workspace.clear();
+                Code.mainWorkspace.clear();
             return true;
         });
     }
@@ -215,13 +206,13 @@ Code.newProject = function () {
  * Creates an INO file containing the Arduino code from the Blockly workspace and
  * prompts the users to save it into their local file system.
  */
-Code.saveCodeFile = function () {
+Code.saveCodeFile = function() {
     var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '_');
-    var dataToSave = Blockly.Arduino.workspaceToCode(Code.workspace);
+    var dataToSave = Blockly.Arduino.workspaceToCode(Code.mainWorkspace);
     var blob = new Blob([dataToSave], {
         type: 'text/plain;charset=utf-8'
     });
-    Blockly.prompt(MSG['save_span'], document.getElementById('sketch_name').value, function (fileNameSave) {
+    Blockly.prompt(MSG['save_span'], document.getElementById('sketch_name').value, function(fileNameSave) {
         if (fileNameSave) {
             var fakeDownloadLink = document.createElement("a");
             fakeDownloadLink.download = fileNameSave + ".ino";
@@ -240,13 +231,13 @@ Code.saveCodeFile = function () {
  * Creates an XML file containing the blocks from the Blockly workspace and
  * prompts the users to save it into their local file system.
  */
-Code.saveXmlBlocklyFile = function () {
-    var xmlData = Blockly.Xml.workspaceToDom(Code.workspace);
+Code.saveXmlBlocklyFile = function() {
+    var xmlData = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
     var dataToSave = Blockly.Xml.domToPrettyText(xmlData);
     var blob = new Blob([dataToSave], {
         type: 'text/xml;charset=utf-8'
     });
-    Blockly.prompt(MSG['save_span'], document.getElementById('sketch_name').value, function (fileNameSave) {
+    Blockly.prompt(MSG['save_span'], document.getElementById('sketch_name').value, function(fileNameSave) {
         if (fileNameSave) {
             var fakeDownloadLink = document.createElement("a");
             fakeDownloadLink.download = fileNameSave + ".S4E";
@@ -264,21 +255,21 @@ Code.saveXmlBlocklyFile = function () {
 /**
  * Load blocks from local file.
  */
-Code.loadXmlBlocklyFile = function () {
+Code.loadXmlBlocklyFile = function() {
     // Create event listener function
-    var parseInputXMLfile = function (e) {
+    var parseInputXMLfile = function(e) {
         var files = e.target.files;
         var reader = new FileReader();
-        reader.onloadend = function () {
+        reader.onloadend = function() {
             // var success = Code.loadBlocksfromXml(reader.result);
-            // Destroyihng the element after being clicked
+            // Destroying the element after being clicked
             var success = false;
             if (reader.result != null) {
                 Code.loadBlocksfromXml(reader.result);
                 success = true;
             }
             if (success) {
-                Code.workspace.render();
+                Code.mainWorkspace.render();
             } else {
                 Blockly.alert(MSG['badXml'], callback);
             }
@@ -309,18 +300,18 @@ Code.loadXmlBlocklyFile = function () {
  * @param {!string} defaultXml String of XML code for the blocks.
  * @return {!boolean} Indicates if the XML into blocks parse was successful.
  */
-Code.loadBlocksfromXml = function (defaultXml) {
-    var count = Code.workspace.getAllBlocks().length;
+Code.loadBlocksfromXml = function(defaultXml) {
+    var count = Code.mainWorkspace.getAllBlocks().length;
     var xml = Blockly.Xml.textToDom(defaultXml);
     if (count > 0) {
-        Blockly.confirm(MSG['loadXML_span'], function (confirm) {
+        Blockly.confirm(MSG['loadXML_span'], function(confirm) {
             if (confirm)
-                Code.workspace.clear();
-            Blockly.Xml.domToWorkspace(xml, Code.workspace);
+                Code.mainWorkspace.clear();
+            Blockly.Xml.domToWorkspace(xml, Code.mainWorkspace);
             return true;
         });
     } else {
-        Blockly.Xml.domToWorkspace(xml, Code.workspace);
+        Blockly.Xml.domToWorkspace(xml, Code.mainWorkspace);
         return true;
     }
 };
@@ -332,7 +323,7 @@ Code.loadBlocksfromXml = function (defaultXml) {
  * @param {string} value Value to set
  * @return {string} The url completed with parameter and value
  */
-Code.addReplaceParamToUrl = function (url, param, value) {
+Code.addReplaceParamToUrl = function(url, param, value) {
     var re = new RegExp("([?&])" + param + "=.*?(&|$)", "i");
     var separator = url.indexOf('?') !== -1 ? "&" : "?";
     if (url.match(re)) {
@@ -345,14 +336,14 @@ Code.addReplaceParamToUrl = function (url, param, value) {
 /**
  * Reset workspace and parameters
  */
-Code.ResetWorkspace = function () {
+Code.ResetWorkspace = function() {
     var count = Blockly.mainWorkspace.getAllBlocks(false).length;
-    Blockly.confirm(MSG['resetQuestion_span'] + ' ' + Blockly.Msg['DELETE_ALL_BLOCKS'].replace('%1', count), function (answer) {
+    Blockly.confirm(MSG['resetQuestion_span'] + ' ' + Blockly.Msg['DELETE_ALL_BLOCKS'].replace('%1', count), function(answer) {
         if (answer) {
             Blockly.Events.disable();
-            Blockly.getMainWorkspace().clear();
-            Blockly.getMainWorkspace().trashcan.contents_ = [];
-            Blockly.getMainWorkspace().trashcan.setLidOpen('false');
+            Code.mainWorkspace.clear();
+            Code.mainWorkspace.trashcan.contents_ = [];
+            Code.mainWorkspace.trashcan.setLidOpen('false');
             window.removeEventListener('unload', auto_save_and_restore_blocks, false);
             localStorage.clear();
             sessionStorage.clear();
@@ -369,24 +360,24 @@ Code.ResetWorkspace = function () {
 /**
  * Change font size in blocks in all workspace
  */
-Code.changeRenderingConstant = function (value) {
+Code.changeRenderingConstant = function(value) {
     var type = document.getElementById('rendering-constant-selector').value;
     switch (type) {
         case 'fontSizeBlocks':
             var fontStyle = {
                 'size': value
             };
-            Blockly.getMainWorkspace().getTheme().setFontStyle(fontStyle);
+            Code.mainWorkspace.getTheme().setFontStyle(fontStyle);
             editor.setOptions({
                 fontSize: value + "pt"
             });
         case 'fontSizePage':
-        // fontSizePageModify('access', value);
+            // fontSizePageModify('access', value);
         case 'fontSpacingPage':
-        // document.body.style.fontSize = value + 'px';
+            // document.body.style.fontSize = value + 'px';
     }
     // Refresh theme.
-    Blockly.getMainWorkspace().setTheme(Blockly.getMainWorkspace().getTheme());
+    Code.mainWorkspace.setTheme(Code.mainWorkspace.getTheme());
 };
 
 
@@ -484,8 +475,7 @@ function convert2Dec(numR, numG, numB, doneString) {
     decBval = hex2dec(numB);
     if ((decRval == "BAD") || (decGval == "BAD") || (decBval == "BAD")) {
         return false;
-    }
-    else {
+    } else {
         document.converter.decR.value = decRval;
         document.converter.decG.value = decGval;
         document.converter.decB.value = decBval;
@@ -535,8 +525,7 @@ function dec2hex(theDec) {
     if (theDec > 255) {
         alert("Pas plus que 255.");
         return "BAD";
-    }
-    else {
+    } else {
         leftNum = Math.floor(theDec / 16);
         leftNumS = fixHex(leftNum);
         rightNum = theDec % 16;
@@ -556,8 +545,7 @@ function convert2Hex(numR, numG, numB, doneString) {
     hexBval = dec2hex(numB);
     if ((hexRval == "BAD") || (hexGval == "BAD") || (hexBval == "BAD")) {
         return false;
-    }
-    else {
+    } else {
         document.converter.hexR.value = dec2hex(numR);
         document.converter.hexG.value = dec2hex(numG);
         document.converter.hexB.value = dec2hex(numB);

@@ -230,7 +230,7 @@ function updateGenerator() {
           break;
         case 'field_variable':
           var name = block.getFieldValue('FIELDNAME');
-          code.push(makeVar('variable', name) + " = Blockly.Arduino.variableDB_.getName(block.getFieldValue('" + name + "'), Blockly.Variables.NAME_TYPE);");
+          code.push(makeVar('variable', name) + " = Blockly.Arduino.nameDB_.getName(block.getFieldValue('" + name + "'), Blockly.Variables.NAME_TYPE);");
           break;
         case 'input_value':
           var name = block.getFieldValue('INPUTNAME');

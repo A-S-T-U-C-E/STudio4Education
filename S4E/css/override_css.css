@@ -4,9 +4,21 @@
 * SPDX-License-Identifier: BSD-3-Clause
 */
 
+
 /* CSS specific added for the theme */
+
 body {
     background-color: #03234B;
+    border: solid 0.05em;
+    border-color: #03234B;
+}
+
+#logo {
+    margin-right: -8px;
+}
+
+#optionsTop {
+    background-color: #FFFFFF;
 }
 
 #separator {
@@ -27,6 +39,10 @@ body {
 #buttonsSerialPopupInside {
     background-color: #03234b;
     padding: 5px;
+}
+
+.TitleText {
+    color: #03234B;
 }
 
 .config_content {
@@ -68,13 +84,17 @@ body {
     color: #FFCC00;
 }
 
+
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+
 .active,
 .collapsibleButton:hover {
     background-color: #FFCC00;
 }
 
+
 /* enhance sliders behavior */
+
 input:checked+.slider {
     background-color: #00abdf;
 }
@@ -89,6 +109,7 @@ input:checked+.slider:before {
     transform: translateY(27px);
 }
 
+
 /**
  * @fileoverview Toolbox modification, override css style
  * @source https://blocklycodelabs.dev/codelabs/custom-toolbox
@@ -96,35 +117,42 @@ input:checked+.slider:before {
 
 
 /* Makes label white */
+
 .blocklyTreeLabel {
     color: white;
     font-weight: bold;
     font-size: 20px;
 }
 
+
 /* Adds padding around the group of categories and separators */
+
 .blocklyToolboxContents {
     padding: .2em;
 }
 
+
 /* Adds space between the categories, rounds the corners and adds space around the label */
+
 .blocklyTreeRow {
     padding: 2px;
     border-radius: 4px;
     height: initial;
 }
 
+
 /* Changes color of the icon to white */
+
 .customIcon {
-  margin-left: 5px;
-  vertical-align: middle;
-  width: 25px;
-  height: 25px;
-  /* default white color of svg file in toolbox */
-  filter: invert(1);
+    margin-left: 5px;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    /* default white color of svg file in toolbox */
+    filter: invert(1);
 }
 
 .blocklyColourTable {
-	padding: 0px !important;
-	width: 100%;
+    padding: 0px !important;
+    width: 100%;
 }

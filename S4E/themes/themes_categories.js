@@ -38,33 +38,33 @@ Blockly.Themes.Classic.categoryStyles['DHT_category'] = {
     "colour": "#47A3D2"
 };
 //Modern theme
-Blockly.Themes.Modern.categoryStyles['board_category'] = {
-    "colour": "#03234b"
-};
-Blockly.Themes.Modern.categoryStyles['seeed_category'] = {
-    "colour": "#91C11E"
-};
-Blockly.Themes.Modern.categoryStyles['grove_category'] = {
-    "colour": "#91C11E"
-};
-Blockly.Themes.Modern.categoryStyles['ds18b20_category'] = {
-    "colour": "#343434"
-};
-Blockly.Themes.Modern.categoryStyles['servo_category'] = {
-    "colour": "#343434"
-};
-Blockly.Themes.Modern.categoryStyles['X-NUCLEO-IKS01A3_category'] = {
-    "colour": "#0144c6"
-};
-Blockly.Themes.Modern.categoryStyles['relay_category'] = {
-    "colour": "#65ACE2"
-};
-Blockly.Themes.Modern.categoryStyles['arrowheadframework_category'] = {
-    "colour": "#004676"
-};
-Blockly.Themes.Classic.categoryStyles['DHT_category'] = {
-    "colour": "#47A3D2"
-};
+// Blockly.Themes.Modern.categoryStyles['board_category'] = {
+//     "colour": "#03234b"
+// };
+// Blockly.Themes.Modern.categoryStyles['seeed_category'] = {
+//     "colour": "#91C11E"
+// };
+// Blockly.Themes.Modern.categoryStyles['grove_category'] = {
+//     "colour": "#91C11E"
+// };
+// Blockly.Themes.Modern.categoryStyles['ds18b20_category'] = {
+//     "colour": "#343434"
+// };
+// Blockly.Themes.Modern.categoryStyles['servo_category'] = {
+//     "colour": "#343434"
+// };
+// Blockly.Themes.Modern.categoryStyles['X-NUCLEO-IKS01A3_category'] = {
+//     "colour": "#0144c6"
+// };
+// Blockly.Themes.Modern.categoryStyles['relay_category'] = {
+//     "colour": "#65ACE2"
+// };
+// Blockly.Themes.Modern.categoryStyles['arrowheadframework_category'] = {
+//     "colour": "#004676"
+// };
+// Blockly.Themes.Modern.categoryStyles['DHT_category'] = {
+//     "colour": "#47A3D2"
+// };
 //Deuteranopia theme
 Blockly.Themes.Deuteranopia.categoryStyles['board_category'] = {
     "colour": "#03234b"

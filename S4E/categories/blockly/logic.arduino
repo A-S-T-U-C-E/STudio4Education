@@ -107,7 +107,7 @@ Blockly.Arduino.logic_ternary = function(block) {
 Blockly.Arduino.controls_switch = function(block) {
     // switch/var/case/do/default function
     var n = 0;
-    var switchvar = Blockly.Arduino.variableDB_.getName(block.getFieldValue('SWVAR'),
+    var switchvar = Blockly.Arduino.nameDB_.getName(block.getFieldValue('SWVAR'),
         Blockly.Variables.NAME_TYPE);
     var argument = Blockly.Arduino.valueToCode(block, 'CASE' + n,
         Blockly.Arduino.ORDER_NONE) || 'false';

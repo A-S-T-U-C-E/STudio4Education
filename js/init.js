@@ -25,11 +25,11 @@ Code.loadBlocks = function(defaultXml) {
         // Language switching stores the blocks during the reload.
         delete window.sessionStorage.loadOnceBlocks;
         var xml = Blockly.Xml.textToDom(loadOnce);
-        Blockly.Xml.domToWorkspace(xml, Code.workspace);
+        Blockly.Xml.domToWorkspace(xml, Code.mainWorkspace);
     } else if (defaultXml) {
         // Load the editor with default starting blocks.
         var xml = Blockly.Xml.textToDom(defaultXml);
-        Blockly.Xml.domToWorkspace(xml, Code.workspace);
+        Blockly.Xml.domToWorkspace(xml, Code.mainWorkspace);
     }
 };
 
@@ -37,8 +37,8 @@ Code.loadBlocks = function(defaultXml) {
  * Populate the currently selected pane with content generated from the blocks.
  */
 Code.renderContent = function() {
-    var codePeakPre = document.getElementById('content_code');
-    var generatedCode = Blockly.Arduino.workspaceToCode(Code.workspace);
+    //var codePeakPre = document.getElementById('content_code');
+    var generatedCode = Blockly.Arduino.workspaceToCode(Code.mainWorkspace);
     editor.setValue(generatedCode, 1);
 };
 
@@ -65,60 +65,36 @@ Code.init = function() {
     var match = location.search.match(/renderer=([^&]+)/);
     var renderer = match ? match[1] : 'geras';
     document.forms.options.elements.renderer.value = renderer;
-    Code.workspace = Blockly.inject('content_blocks', {
-        comments: true,
-        collapse: true,
-        disable: true,
-        grid: {
-            spacing: 25,
-            length: 0,
-            colour: '#ccc',
-            snap: true
-        },
-        horizontalLayout: false,
-        maxBlocks: Infinity,
-        maxInstances: {
-            'test_basic_limit_instances': 3
-        },
-        maxTrashcanContents: 256,
-        media: './@blockly/media/',
-        sounds: true,
-        oneBasedIndex: true,
-        readOnly: false,
-        rtl: false,
-        move: {
-            scrollbars: true,
-            drag: true,
-            wheel: false
-        },
-        toolbox: Code.buildToolbox(),
-        toolboxPosition: 'start',
-        renderer: renderer,
-        zoom: {
-            controls: true,
-            wheel: true,
-            startScale: 1.0,
-            maxScale: 4,
-            minScale: 0.25,
-            scaleSpeed: 1.1
-        }
-    });
+    genWorkspace(rtl, Code.buildToolbox(), renderer);
     //add plugin workspace search
-    Code.workspaceSearch = new WorkspaceSearch(Code.workspace);
-    Code.workspaceSearch.init();
+    const workspaceSearch = new WorkspaceSearch(Code.mainWorkspace);
+    workspaceSearch.init();
     //add plugin keyboard navigation
     Code.navigationController = new NavigationController();
     Code.navigationController.init();
-    Code.navigationController.addWorkspace(Code.workspace);
+    Code.navigationController.addWorkspace(Code.mainWorkspace);
     //add plugin zoom-to-fit
-    const zoomToFit = new ZoomToFitControl(Code.workspace);
+    const zoomToFit = new ZoomToFitControl(Code.mainWorkspace);
     zoomToFit.init();
+    //add workspace backpack plugin
+    const backpackOptions = {
+        contextMenu: {
+            emptyBackpack: true,
+            removeFromBackpack: true,
+            copyToBackpack: true,
+            copyAllToBackpack: true,
+            pasteAllToBackpack: true,
+            disablePreconditionChecks: true,
+        },
+    };
+    const backpack = new Backpack(Code.mainWorkspace, backpackOptions);
+    backpack.init();
     // add plugin disable-top-blocks
-    Code.workspace.addChangeListener(Blockly.Events.disableOrphans);
-    const disableTopBlocksPlugin = new DisableTopBlocks();
-    disableTopBlocksPlugin.init();
+    // Code.mainWorkspace.addChangeListener(Blockly.Events.disableOrphans);
+    // const disableTopBlocksPlugin = new DisableTopBlocks();
+    // disableTopBlocksPlugin.init();
 
-    const metrics = Code.workspace.getMetrics();
+    const metrics = Code.mainWorkspace.getMetrics();
     var onresize = function(e) {
         var element = container;
         var x = 0;
@@ -132,24 +108,24 @@ Code.init = function() {
         blocklyDiv.style.top = y + 'px';
         blocklyDiv.style.width = container.offsetWidth + 'px';
         blocklyDiv.style.height = container.offsetHeight + 'px';
-        Blockly.svgResize(Code.workspace);
+        Blockly.svgResize(Code.mainWorkspace);
         // TODO yet to finish...
-           if (Code.workspace.RTL) {
+        if (Code.mainWorkspace.RTL) {
             blocklyDiv.style.left = metrics.absoluteLeft + 'px';
             blocklyDiv.style.right = 'auto';
-           } else {
+        } else {
             blocklyDiv.style.left = 'auto';
             if (metrics.toolboxPosition === Blockly.TOOLBOX_AT_RIGHT) {
                 blocklyDiv.style.right = metrics.toolboxWidth + 'px';
             } else {
                 blocklyDiv.style.right = '0';
             }
-           }
-       blocklyDiv.style.top = metrics.absoluteTop + 'px';
-       };
+        }
+        blocklyDiv.style.top = metrics.absoluteTop + 'px';
+    };
     window.addEventListener('resize', onresize, false);
 
-    Code.workspace.configureContextMenu = configureContextualMenu.bind(Code.workspace);
+    Code.mainWorkspace.configureContextMenu = configureContextualMenu.bind(Code.mainWorkspace);
     Code.buildControlPanelForToolbox();
     // load blocks stored in session or passed by url
     var urlFile = Code.getStringParamFromUrl('url', '');
@@ -178,10 +154,10 @@ Code.init = function() {
     // Hook a save function onto unload.
     window.addEventListener('unload', auto_save_and_restore_blocks, false);
     if ('BlocklyStorage' in window) {
-        BlocklyStorage.backupOnUnload(Code.workspace);
+        BlocklyStorage.backupOnUnload(Code.mainWorkspace);
     }
     onresize();
-    Blockly.svgResize(Code.workspace);
+    Blockly.svgResize(Code.mainWorkspace);
 
     //change theme color
     match = location.search.match(/theme=([^&]+)/);
@@ -212,6 +188,7 @@ Code.init = function() {
     function dragElement(element, direction, first, second) {
         var mouse_down_info;
         element.onmousedown = onMouseDown;
+
         function onMouseDown(e) {
             mouse_down_info = {
                 e,
@@ -256,7 +233,7 @@ Code.init = function() {
                 second.style.height = (mouse_down_info.secondHeight - delta.y) + "px";
             }
             onresize();
-            Blockly.svgResize(Code.workspace);
+            Blockly.svgResize(Code.mainWorkspace);
         }
     }
     dragElement(document.getElementById("barre_h"), "V", document.getElementById("wrapper_up"), document.getElementById("content_serial"));
@@ -265,7 +242,8 @@ Code.init = function() {
     Code.renderContent();
     Code.sketchNameSizeEffect();
     Code.sketchNameSet();
-    Code.workspace.addChangeListener(Code.renderContent);
+    Code.mainWorkspace.addChangeListener(Code.renderContent);
+    sessionStorage.setItem('toolboxSize', Code.mainWorkspace.getToolbox().getWidth());
 };
 
 /**
@@ -363,13 +341,12 @@ Code.initLanguage = function() {
     document.getElementById('iotConnectButton').title = MSG['iotConnectButton_span'];
     document.getElementById('launchWebServer').title = MSG['launchWebServer_span'];
     document.getElementById('papyrusConnect').title = MSG['papyrusConnect_span'];
-    document.getElementById('registerToOrchestrator').title = MSG['registerToOrchestrator_span'];
     // document.getElementById('blynkConnect').title = MSG['blynkConnect_span'];
     document.getElementById('serialConnectIOT').title = MSG['serialConnectIOT_span'];
     document.getElementById('launchRedServer_span_menu').textContent = MSG['launchRedServer_span'];
     document.getElementById('launchWebServer_span_menu').textContent = MSG['launchWebServer_span'];
     document.getElementById('papyrusConnect_span_menu').textContent = MSG['papyrusConnect_span'];
-    document.getElementById('registerToOrchestrator_span_menu').textContent = MSG['registerToOrchestrator_span'];
+    document.getElementById('ArrowheadConfiguration_span_menu').textContent = MSG['ArrowheadConfiguration_span'];
     // document.getElementById('blynkConnect_span_menu').textContent = MSG['blynkConnect_span'];
     document.getElementById('serialConnectIOT_span_menu').textContent = MSG['serialConnectIOT_span'];
     // CLI panel
@@ -386,6 +363,8 @@ Code.initLanguage = function() {
     document.getElementById('installLib_title_span').textContent = MSG['installLib_title_span'];
     //setup panel
     document.getElementById('config_UI_title_span').textContent = MSG['config_UI_title_span'];
+    document.getElementById('highlightSpan').textContent = MSG['highlightSpan'];
+    document.getElementById('minimapSpan').textContent = MSG['minimapSpan'];
     document.getElementById('accessibilitySpan').textContent = MSG['accessibilitySpan'];
     document.getElementById('defaultCursorSpan').textContent = MSG['defaultCursorSpan'];
     document.getElementById('basicCursorSpan').textContent = MSG['basicCursorSpan'];
@@ -412,6 +391,8 @@ Code.initLanguage = function() {
     document.getElementById('categories_title_span').textContent = MSG['categories_title_span'];
     //IoT panel
     document.getElementById('iot_title_span').textContent = MSG['iot_title_span'];
+    document.getElementById('papyrusConnect_helper_span').textContent = MSG['papyrusConnect_helper_span'];
+    document.getElementById('ArrowheadConfiguration_helper_span').textContent = MSG['ArrowheadConfiguration_helper_span'];
     //board list modal
     document.getElementById('boardListModalHeader_span').textContent = MSG['boardListModalHeader_span'];
     document.getElementById('boardListModalButton_span').textContent = MSG['boardListModalButton_span'];
@@ -452,9 +433,9 @@ Code.initLanguage = function() {
  * Discard all blocks from the workspace.
  */
 Code.discard = function() {
-    var count = Code.workspace.getAllBlocks(false).length;
+    var count = Code.mainWorkspace.getAllBlocks(false).length;
     if (count < 2) {
-        Code.workspace.clear();
+        Code.mainWorkspace.clear();
         if (window.location.hash) {
             window.location.hash = '';
         }
@@ -462,7 +443,7 @@ Code.discard = function() {
     } else if (count > 0) {
         Blockly.confirm(Blockly.Msg['DELETE_ALL_BLOCKS'].replace('%1', count), function(confirm) {
             if (confirm || count < 2)
-                Code.workspace.clear();
+                Code.mainWorkspace.clear();
             if (window.location.hash) {
                 window.location.hash = '';
             }

@@ -21,7 +21,7 @@ function changeCursor(cursorType) {
     Blockly.navigation.enableKeyboardAccessibility();
     document.getElementById('accessibilityModeCheck').checked = true;
     document.getElementById('cursorChanger').value = cursorType;
-    var markerManager = Blockly.getMainWorkspace().getMarkerManager();
+    var markerManager = Code.mainWorkspace.getMarkerManager();
     var oldCurNode = markerManager.getCursor().getCurNode();
     if (cursorType === "basic") {
         Blockly.ASTNode.NAVIGATE_ALL_FIELDS = false;

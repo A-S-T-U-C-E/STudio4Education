@@ -10,13 +10,12 @@
  * it verbatim.
  *
  * @namespace
- * @author modification Sébastien CANET (scanet@libreduc.cc)
  */
 CustomDialog = {};
 
 /** Override Blockly.alert() with custom implementation. */
 Blockly.alert = function(message, callback) {
-    // console.log('Alert: ' + message);
+    console.log('Alert: ' + message);
     CustomDialog.show('Alert', message, {
         onCancel: callback
     });
@@ -24,7 +23,7 @@ Blockly.alert = function(message, callback) {
 
 /** Override Blockly.confirm() with custom implementation. */
 Blockly.confirm = function(message, callback) {
-    // console.log('Confirm: ' + message);
+    console.log('Confirm: ' + message);
     CustomDialog.show('Confirm', message, {
         showOkay: true,
         onOkay: function() {
@@ -39,7 +38,7 @@ Blockly.confirm = function(message, callback) {
 
 /** Override Blockly.prompt() with custom implementation. */
 Blockly.prompt = function(message, defaultValue, callback) {
-    // console.log('Prompt: ' + message);
+    console.log('Prompt: ' + message);
     CustomDialog.show('Prompt', message, {
         showInput: true,
         showOkay: true,
@@ -89,13 +88,9 @@ CustomDialog.show = function(title, message, options) {
         dialogDiv.id = 'customDialog';
         dialogDiv.style.cssText =
             'background-color: #fff;' +
-            // 'width: 400px;' +
-            'width: 250px;' +
-            // 'margin: 20px auto 0;' +
-            'margin: 50px auto 0;' +
-            // 'padding: 10px;';
-            'padding: 5px;' +
-            'border-radius: 10px;';
+            'width: 400px;' +
+            'margin: 20px auto 0;' +
+            'padding: 10px;';
         backdropDiv.appendChild(dialogDiv);
 
         dialogDiv.onclick = function(event) {
@@ -109,17 +104,17 @@ CustomDialog.show = function(title, message, options) {
     dialogDiv.style.display = 'block';
 
     dialogDiv.innerHTML =
-        '<header class="customDialogTitle" style="text-align: center;"></header>' +
-        // '<p class="customDialogMessage"></p>' +
-        (options.showInput ? '<div style="text-align: center;"><input id="customDialogInput" size="20" style="font-size: large; margin-left: 0px !important;text-align: center;"></div>' : '') +
-        '<br />' +
-        '<div class="customDialogButtons" style="text-align: center;">' +
-        (options.showOkay ? '<button id="customDialogOkay" style="border: none; font-size: larger; background-color: #4CAF50; border-radius: 12px; box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); margin-right: 20px;">&#10004;</button>' : '') +
-        (options.showCancel ? '<button id="customDialogCancel" style="border: none; font-size: larger; background-color: #000000; border-radius: 12px; box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);">&#10060;</button>' : '') +
+        '<header class="customDialogTitle"></header>' +
+        '<p class="customDialogMessage"></p>' +
+        (options.showInput ? '<div><input id="customDialogInput"></div>' : '') +
+        '<div class="customDialogButtons">' +
+        (options.showCancel ? '<button id="customDialogCancel" class="modalDialogCancel">Cancel</button>' : '') +
+        (options.showOkay ? '<button id="customDialogOkay" class="modalDialogOkay">OK</button>' : '') +
         '</div>';
-    dialogDiv.getElementsByClassName('customDialogTitle')[0].appendChild(document.createTextNode(message));
-    // dialogDiv.getElementsByClassName('customDialogTitle')[0].appendChild(document.createTextNode(title));
-    // dialogDiv.getElementsByClassName('customDialogMessage')[0].appendChild(document.createTextNode(message));
+    dialogDiv.getElementsByClassName('customDialogTitle')[0]
+        .appendChild(document.createTextNode(title));
+    dialogDiv.getElementsByClassName('customDialogMessage')[0]
+        .appendChild(document.createTextNode(message));
 
     var onOkay = function(event) {
         CustomDialog.hide();
@@ -139,9 +134,11 @@ CustomDialog.show = function(title, message, options) {
 
         dialogInput.onkeyup = function(event) {
             if (event.keyCode == 13) {
+                // Process as OK when user hits enter.
                 onOkay();
                 return false;
             } else if (event.keyCode == 27) {
+                // Process as cancel when user hits esc.
                 onCancel();
                 return false;
             }

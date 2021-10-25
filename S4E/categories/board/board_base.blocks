@@ -22,6 +22,34 @@ goog.require('Blockly.Types');
 
 var mediaFolder = "./S4E/media/";
 
+Blockly.Blocks['base_define_bloc'] = {
+    init: function() {
+        this.appendDummyInput("")
+            .appendField("define");
+        this.appendStatementInput('DO')
+            .appendField(Blockly.LANG_CONTROLS_REPEAT_INPUT_DO);
+        this.setStyle('board_blocks');
+        this.setTooltip(Blockly.Msg.ARDUINO_BASE_DEFINE_TOOLTIP);
+        this.setHelpUrl(Blockly.Msg.ARDUINO_BASE_DEFINE_HELPURL);
+    }
+};
+
+Blockly.Blocks['base_define'] = {
+    init: function() {
+        this.appendValueInput("TEXT1")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("define variable");
+        this.appendDummyInput()
+            .appendField("as")
+            .appendField(new Blockly.FieldTextInput(''), 'TEXT2');
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setStyle('board_blocks');
+        this.setTooltip(Blockly.Msg.ARDUINO_BASE_DEFINE_CONST_TOOLTIP);
+        this.setHelpUrl(Blockly.Msg.ARDUINO_BASE_DEFINE_CONST_HELPURL);
+    }
+};
+
 Blockly.Blocks['board_base_setup'] = {
     init: function() {
         this.appendDummyInput()
@@ -108,7 +136,7 @@ Blockly.Blocks['board_base_inout_analog_write'] = {
             .appendField(new Blockly.FieldDropdown(profile.default.dropdownPWM), "PIN");
         this.appendValueInput("PWM", 'Number')
             .appendField(Blockly.Msg.ARDUINO_INOUT_ANALOG_WRITE_INPUT2)
-            .setCheck(Blockly.Types.NUMBER);
+            .setCheck("Number");
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -153,7 +181,7 @@ Blockly.Blocks['board_base_delay'] = {
     init: function() {
         this.appendValueInput("DELAY_TIME", 'Number')
             .appendField(Blockly.Msg.ARDUINO_BASE_DELAY_DELAY_TIME)
-            .setCheck(Blockly.Types.NUMBER);
+            .setCheck("Number");
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -179,10 +207,10 @@ Blockly.Blocks['board_base_map'] = {
     init: function() {
         this.appendValueInput("NUM")
             .appendField(Blockly.Msg.ARDUINO_BASE_MAP1)
-            .setCheck(Blockly.Types.NUMBER);
+            .setCheck("Number");
         this.appendValueInput("DMAX")
             .appendField(Blockly.Msg.ARDUINO_BASE_MAP2)
-            .setCheck(Blockly.Types.NUMBER);
+            .setCheck("Number");
         this.appendDummyInput()
             .appendField("]");
         this.setInputsInline(true);
@@ -201,7 +229,7 @@ Blockly.Blocks['board_base_inout_tone'] = {
         this.appendValueInput("NUM")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARDUINO_TONE_INPUT2)
-            .setCheck(Blockly.Types.NUMBER);
+            .setCheck("Number");
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);

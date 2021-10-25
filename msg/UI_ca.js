@@ -31,6 +31,7 @@ var MSG = {
     themeSpan: "tria tema",
     renderSpan: "tria renderitzador",
     fullScreenButton_span: "full screen",
+    fullToolboxButton_span: "shrink/expand toolbox",
     undoButton_span: "Desfés",
     redoButton_span: "Refés",
     boardButtonSpan: "list boards",
@@ -42,6 +43,7 @@ var MSG = {
     nodeRedFlowButton_span: "node-Red flows",
     supervisionButton_span: "supervision",
     saveCodeButton_span: "Exporta codi Arduino",
+    menuButton_span: "File menu",
     newButton_span: "Projecte nou",
     save_span: "Save file name?",
     sketch_name_default: "sketch_name",
@@ -83,13 +85,17 @@ var MSG = {
     launchRedServer_span: "Node-RED server",
     launchWebServer_span: "local server",
     papyrusConnect_span: "Papyrus connect",
+    papyrusConnect_helper_span: "Papyrus configuration",
     registerToOrchestrator_span: "Arrowhead connect",
+    registerToOrchestrator_helper_span: "Arrowhead configuration",
     blynkConnect_span: "Blynk connect",
     serialConnectIOT_span: "connect serial to IoT",
     //ace editor
     editorReadOnlyToggle_span: "code editor writable or read-only",
     copyCodeButton_span: "Copia codi a  porta-retalls",
     //lateral panel
+    highlightSpan: "highlights the content on the workspace",
+    minimapSpan: "(de)activate minimap",
     accessibilitySpan: "habilita mode accessibilitat",
     defaultCursorSpan: "Cursor per defecte",
     basicCursorSpan: "Cursor bàsic",
@@ -156,7 +162,7 @@ var MSG = {
     installLibButton_span: "instal·la aquesta biblioteca",
     //categories panel
     categories_title_span: "categories choice",
-    //arrowhead panel
+    //IoT panel
     iot_title_span: "IoT control",
     //modals
     boardListModalHeader_span: "Boards list",

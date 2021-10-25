@@ -11,56 +11,53 @@ var toolbox_arrowheadframework = {
             "icon": "customIcon url(arrowheadframework.svg)"
         },
         "contents": [{
-            "kind": "block",
-            "type": "ahf_esp_service_registry_def"
-        },
-        {
-            "kind": "category",
-            "name": "%{BKY_CAT_ARROWHEADFRAMEWORK_ESP}",
-            "levels": "1,2,3",
-            "level": "3",
-            "categorystyle": "arrowheadframework_category",
-            "contents": [{
-                "kind": "block",
-                "type": "ahf_esp_define"
-            }, {
-                "kind": "block",
-                "type": "ahf_esp_connection_registry_test"
-            }, {
-                "kind": "block",
-                "type": "ahf_esp_SR_register_test"
-            }, {
-                "kind": "block",
-                "type": "ahf_esp_SR_unregister_test"
-            }, {
-                "kind": "block",
-                "type": "ahf_esp_format_data_SenML"
-            }, {
-                "kind": "block",
-                "type": "ahf_esp_keep_connection"
-            }]
-        },
-        {
-            "kind": "category",
-            "name": "%{BKY_CAT_ARROWHEADFRAMEWORK_WIFI}",
-            "levels": "1,2,3",
-            "level": "3",
-            "categorystyle": "arrowheadframework_category",
-            "contents": [{
-                "kind": "block",
-                "type": "ahf_esp_define"
-            }]
-        },
-        {
-            "kind": "category",
-            "name": "%{BKY_CAT_ARROWHEADFRAMEWORK_RJ}",
-            "levels": "1,2,3",
-            "level": "3",
-            "categorystyle": "arrowheadframework_category",
-            "contents": [{
-                "kind": "block",
-                "type": "ahf_esp_define"                
-            }]
-        }]
+                "kind": "category",
+                "name": "%{BKY_CAT_ARROWHEADFRAMEWORK_ESP}",
+                "levels": "1,2,3",
+                "level": "3",
+                "categorystyle": "arrowheadframework_category",
+                "contents": [{
+                    "kind": "block",
+                    "type": "ahf_esp_define"
+                }, {
+                    "kind": "block",
+                    "type": "ahf_esp_service_registry_def"
+                }, {
+                    "kind": "block",
+                    "type": "ahf_esp_SR_register_test"
+                }, {
+                    "kind": "block",
+                    "type": "ahf_esp_SR_unregister_test"
+                }, {
+                    "kind": "block",
+                    "type": "ahf_esp_format_data_SenML"
+                }, {
+                    "kind": "block",
+                    "type": "ahf_esp_keep_connection"
+                }]
+            },
+            {
+                "kind": "category",
+                "name": "%{BKY_CAT_ARROWHEADFRAMEWORK_WIFI}",
+                "levels": "1,2,3",
+                "level": "3",
+                "categorystyle": "arrowheadframework_category",
+                "contents": [{
+                    "kind": "block",
+                    "type": "ahf_esp_define"
+                }]
+            },
+            {
+                "kind": "category",
+                "name": "%{BKY_CAT_ARROWHEADFRAMEWORK_RJ}",
+                "levels": "1,2,3",
+                "level": "3",
+                "categorystyle": "arrowheadframework_category",
+                "contents": [{
+                    "kind": "block",
+                    "type": "ahf_esp_define"
+                }]
+            }
+        ]
     }]
 };

@@ -14,10 +14,14 @@ goog.provide('Blockly.WorkspaceCommentSvg');
 
 goog.require('Blockly.Css');
 goog.require('Blockly.Events');
+/** @suppress {extraRequire} */
 goog.require('Blockly.Events.CommentCreate');
+/** @suppress {extraRequire} */
 goog.require('Blockly.Events.CommentDelete');
+/** @suppress {extraRequire} */
 goog.require('Blockly.Events.CommentMove');
-goog.require('Blockly.Events.Ui');
+/** @suppress {extraRequire} */
+goog.require('Blockly.Events.Selected');
 goog.require('Blockly.utils');
 goog.require('Blockly.utils.Coordinate');
 goog.require('Blockly.utils.dom');
@@ -29,6 +33,7 @@ goog.require('Blockly.WorkspaceComment');
 goog.requireType('Blockly.IBoundedElement');
 goog.requireType('Blockly.IBubble');
 goog.requireType('Blockly.ICopyable');
+
 
 /**
  * Class for a workspace comment's SVG representation.
@@ -46,59 +51,59 @@ goog.requireType('Blockly.ICopyable');
  */
 Blockly.WorkspaceCommentSvg = function(
     workspace, content, height, width, opt_id) {
-    /**
-     * Mouse up event data.
-     * @type {?Blockly.EventData}
-     * @private
-     */
-    this.onMouseUpWrapper_ = null;
+  /**
+   * Mouse up event data.
+   * @type {?Blockly.browserEvents.Data}
+   * @private
+   */
+  this.onMouseUpWrapper_ = null;
 
-    /**
-     * Mouse move event data.
-     * @type {?Blockly.EventData}
-     * @private
-     */
-    this.onMouseMoveWrapper_ = null;
+  /**
+   * Mouse move event data.
+   * @type {?Blockly.browserEvents.Data}
+   * @private
+   */
+  this.onMouseMoveWrapper_ = null;
 
-    // Create core elements for the block.
-    /**
-     * @type {!SVGElement}
-     * @private
-     */
-    this.svgGroup_ = Blockly.utils.dom.createSvgElement(
-        Blockly.utils.Svg.G, { 'class': 'blocklyComment' }, null);
-    this.svgGroup_.translate_ = '';
+  // Create core elements for the block.
+  /**
+   * @type {!SVGElement}
+   * @private
+   */
+  this.svgGroup_ = Blockly.utils.dom.createSvgElement(
+      Blockly.utils.Svg.G, {'class': 'blocklyComment'}, null);
+  this.svgGroup_.translate_ = '';
 
-    this.svgRect_ = Blockly.utils.dom.createSvgElement(
-        Blockly.utils.Svg.RECT, {
-            'class': 'blocklyCommentRect',
-            'x': 0,
-            'y': 0,
-            'rx': Blockly.WorkspaceCommentSvg.BORDER_RADIUS,
-            'ry': Blockly.WorkspaceCommentSvg.BORDER_RADIUS
-        });
-    this.svgGroup_.appendChild(this.svgRect_);
+  this.svgRect_ = Blockly.utils.dom.createSvgElement(
+      Blockly.utils.Svg.RECT, {
+        'class': 'blocklyCommentRect',
+        'x': 0,
+        'y': 0,
+        'rx': Blockly.WorkspaceCommentSvg.BORDER_RADIUS,
+        'ry': Blockly.WorkspaceCommentSvg.BORDER_RADIUS
+      });
+  this.svgGroup_.appendChild(this.svgRect_);
 
-    /**
-     * Whether the comment is rendered onscreen and is a part of the DOM.
-     * @type {boolean}
-     * @private
-     */
-    this.rendered_ = false;
+  /**
+   * Whether the comment is rendered onscreen and is a part of the DOM.
+   * @type {boolean}
+   * @private
+   */
+  this.rendered_ = false;
 
-    /**
-     * Whether to move the comment to the drag surface when it is dragged.
-     * True if it should move, false if it should be translated directly.
-     * @type {boolean}
-     * @private
-     */
-    this.useDragSurface_ =
-        Blockly.utils.is3dSupported() && !!workspace.blockDragSurface_;
+  /**
+   * Whether to move the comment to the drag surface when it is dragged.
+   * True if it should move, false if it should be translated directly.
+   * @type {boolean}
+   * @private
+   */
+  this.useDragSurface_ =
+      Blockly.utils.is3dSupported() && !!workspace.blockDragSurface_;
 
-    Blockly.WorkspaceCommentSvg.superClass_.constructor.call(
-        this, workspace, content, height, width, opt_id);
+  Blockly.WorkspaceCommentSvg.superClass_.constructor.call(
+      this, workspace, content, height, width, opt_id);
 
-    this.render();
+  this.render();
 };
 Blockly.utils.object.inherits(
     Blockly.WorkspaceCommentSvg, Blockly.WorkspaceComment);
@@ -116,53 +121,61 @@ Blockly.WorkspaceCommentSvg.DEFAULT_SIZE = 100;
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.dispose = function() {
-    if (!this.workspace) {
-        // The comment has already been deleted.
-        return;
-    }
-    // If this comment is being dragged, unlink the mouse events.
-    if (Blockly.selected == this) {
-        this.unselect();
-        this.workspace.cancelCurrentGesture();
-    }
+  if (!this.workspace) {
+    // The comment has already been deleted.
+    return;
+  }
+  // If this comment is being dragged, unlink the mouse events.
+  if (Blockly.selected == this) {
+    this.unselect();
+    this.workspace.cancelCurrentGesture();
+  }
 
-    if (Blockly.Events.isEnabled()) {
-        Blockly.Events.fire(new Blockly.Events.CommentDelete(this));
-    }
+  if (Blockly.Events.isEnabled()) {
+    Blockly.Events.fire(
+        new (Blockly.Events.get(Blockly.Events.COMMENT_DELETE))(this));
+  }
 
-    Blockly.utils.dom.removeNode(this.svgGroup_);
-    // Sever JavaScript to DOM connections.
-    this.svgGroup_ = null;
-    this.svgRect_ = null;
-    // Dispose of any rendered components
-    this.disposeInternal_();
+  Blockly.utils.dom.removeNode(this.svgGroup_);
+  // Sever JavaScript to DOM connections.
+  this.svgGroup_ = null;
+  this.svgRect_ = null;
+  // Dispose of any rendered components
+  this.disposeInternal_();
 
-    Blockly.Events.disable();
-    Blockly.WorkspaceCommentSvg.superClass_.dispose.call(this);
-    Blockly.Events.enable();
+  Blockly.Events.disable();
+  Blockly.WorkspaceCommentSvg.superClass_.dispose.call(this);
+  Blockly.Events.enable();
 };
 
 /**
  * Create and initialize the SVG representation of a workspace comment.
  * May be called more than once.
+ *
+ * @param {boolean=} opt_noSelect Text inside text area will be selected if false
+ *
  * @package
  */
-Blockly.WorkspaceCommentSvg.prototype.initSvg = function() {
-    if (!this.workspace.rendered) {
-        throw TypeError('Workspace is headless.');
-    }
-    if (!this.workspace.options.readOnly && !this.eventsInit_) {
-        Blockly.bindEventWithChecks_(
-            this.svgRectTarget_, 'mousedown', this, this.pathMouseDown_);
-        Blockly.bindEventWithChecks_(
-            this.svgHandleTarget_, 'mousedown', this, this.pathMouseDown_);
-    }
-    this.eventsInit_ = true;
+Blockly.WorkspaceCommentSvg.prototype.initSvg = function(opt_noSelect) {
+  if (!this.workspace.rendered) {
+    throw TypeError('Workspace is headless.');
+  }
+  if (!this.workspace.options.readOnly && !this.eventsInit_) {
+    Blockly.browserEvents.conditionalBind(
+        this.svgRectTarget_, 'mousedown', this, this.pathMouseDown_);
+    Blockly.browserEvents.conditionalBind(
+        this.svgHandleTarget_, 'mousedown', this, this.pathMouseDown_);
+  }
+  this.eventsInit_ = true;
 
-    this.updateMovable();
-    if (!this.getSvgRoot().parentNode) {
-        this.workspace.getBubbleCanvas().appendChild(this.getSvgRoot());
-    }
+  this.updateMovable();
+  if (!this.getSvgRoot().parentNode) {
+    this.workspace.getBubbleCanvas().appendChild(this.getSvgRoot());
+  }
+
+  if (!opt_noSelect && this.textarea_) {
+    this.textarea_.select();
+  }
 };
 
 /**
@@ -171,10 +184,10 @@ Blockly.WorkspaceCommentSvg.prototype.initSvg = function() {
  * @private
  */
 Blockly.WorkspaceCommentSvg.prototype.pathMouseDown_ = function(e) {
-    var gesture = this.workspace.getGesture(e);
-    if (gesture) {
-        gesture.handleBubbleStart(e, this);
-    }
+  var gesture = this.workspace.getGesture(e);
+  if (gesture) {
+    gesture.handleBubbleStart(e, this);
+  }
 };
 
 /**
@@ -183,19 +196,19 @@ Blockly.WorkspaceCommentSvg.prototype.pathMouseDown_ = function(e) {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.showContextMenu = function(e) {
-    if (this.workspace.options.readOnly) {
-        return;
-    }
-    // Save the current workspace comment in a variable for use in closures.
-    var comment = this;
-    var menuOptions = [];
+  if (this.workspace.options.readOnly) {
+    return;
+  }
+  // Save the current workspace comment in a variable for use in closures.
+  var comment = this;
+  var menuOptions = [];
 
-    if (this.isDeletable() && this.isMovable()) {
-        menuOptions.push(Blockly.ContextMenu.commentDuplicateOption(comment));
-        menuOptions.push(Blockly.ContextMenu.commentDeleteOption(comment));
-    }
+  if (this.isDeletable() && this.isMovable()) {
+    menuOptions.push(Blockly.ContextMenu.commentDuplicateOption(comment));
+    menuOptions.push(Blockly.ContextMenu.commentDeleteOption(comment));
+  }
 
-    Blockly.ContextMenu.show(e, menuOptions, this.RTL);
+  Blockly.ContextMenu.show(e, menuOptions, this.RTL);
 };
 
 /**
@@ -203,25 +216,25 @@ Blockly.WorkspaceCommentSvg.prototype.showContextMenu = function(e) {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.select = function() {
-    if (Blockly.selected == this) {
-        return;
+  if (Blockly.selected == this) {
+    return;
+  }
+  var oldId = null;
+  if (Blockly.selected) {
+    oldId = Blockly.selected.id;
+    // Unselect any previously selected block.
+    Blockly.Events.disable();
+    try {
+      Blockly.selected.unselect();
+    } finally {
+      Blockly.Events.enable();
     }
-    var oldId = null;
-    if (Blockly.selected) {
-        oldId = Blockly.selected.id;
-        // Unselect any previously selected block.
-        Blockly.Events.disable();
-        try {
-            Blockly.selected.unselect();
-        } finally {
-            Blockly.Events.enable();
-        }
-    }
-    var event = new Blockly.Events.Ui(null, 'selected', oldId, this.id);
-    event.workspaceId = this.workspace.id;
-    Blockly.Events.fire(event);
-    Blockly.selected = this;
-    this.addSelect();
+  }
+  var event = new (Blockly.Events.get(Blockly.Events.SELECTED))(oldId, this.id,
+      this.workspace.id);
+  Blockly.Events.fire(event);
+  Blockly.selected = this;
+  this.addSelect();
 };
 
 /**
@@ -229,15 +242,15 @@ Blockly.WorkspaceCommentSvg.prototype.select = function() {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.unselect = function() {
-    if (Blockly.selected != this) {
-        return;
-    }
-    var event = new Blockly.Events.Ui(null, 'selected', this.id, null);
-    event.workspaceId = this.workspace.id;
-    Blockly.Events.fire(event);
-    Blockly.selected = null;
-    this.removeSelect();
-    this.blurFocus();
+  if (Blockly.selected != this) {
+    return;
+  }
+  var event = new (Blockly.Events.get(Blockly.Events.SELECTED))(this.id, null,
+      this.workspace.id);
+  Blockly.Events.fire(event);
+  Blockly.selected = null;
+  this.removeSelect();
+  this.blurFocus();
 };
 
 /**
@@ -245,10 +258,9 @@ Blockly.WorkspaceCommentSvg.prototype.unselect = function() {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.addSelect = function() {
-    Blockly.utils.dom.addClass(
-        /** @type {!Element} */
-        (this.svgGroup_), 'blocklySelected');
-    this.setFocus();
+  Blockly.utils.dom.addClass(
+      /** @type {!Element} */ (this.svgGroup_), 'blocklySelected');
+  this.setFocus();
 };
 
 /**
@@ -256,10 +268,9 @@ Blockly.WorkspaceCommentSvg.prototype.addSelect = function() {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.removeSelect = function() {
-    Blockly.utils.dom.removeClass(
-        /** @type {!Element} */
-        (this.svgGroup_), 'blocklySelected');
-    this.blurFocus();
+  Blockly.utils.dom.removeClass(
+      /** @type {!Element} */ (this.svgGroup_), 'blocklySelected');
+  this.blurFocus();
 };
 
 /**
@@ -267,9 +278,8 @@ Blockly.WorkspaceCommentSvg.prototype.removeSelect = function() {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.addFocus = function() {
-    Blockly.utils.dom.addClass(
-        /** @type {!Element} */
-        (this.svgGroup_), 'blocklyFocused');
+  Blockly.utils.dom.addClass(
+      /** @type {!Element} */ (this.svgGroup_), 'blocklyFocused');
 };
 
 /**
@@ -277,9 +287,8 @@ Blockly.WorkspaceCommentSvg.prototype.addFocus = function() {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.removeFocus = function() {
-    Blockly.utils.dom.removeClass(
-        /** @type {!Element} */
-        (this.svgGroup_), 'blocklyFocused');
+  Blockly.utils.dom.removeClass(
+      /** @type {!Element} */ (this.svgGroup_), 'blocklyFocused');
 };
 
 /**
@@ -293,34 +302,34 @@ Blockly.WorkspaceCommentSvg.prototype.removeFocus = function() {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.getRelativeToSurfaceXY = function() {
-    var x = 0;
-    var y = 0;
+  var x = 0;
+  var y = 0;
 
-    var dragSurfaceGroup =
-        this.useDragSurface_ ? this.workspace.blockDragSurface_.getGroup() : null;
+  var dragSurfaceGroup =
+      this.useDragSurface_ ? this.workspace.blockDragSurface_.getGroup() : null;
 
-    var element = this.getSvgRoot();
-    if (element) {
-        do {
-            // Loop through this comment and every parent.
-            var xy = Blockly.utils.getRelativeXY(element);
-            x += xy.x;
-            y += xy.y;
-            // If this element is the current element on the drag surface, include
-            // the translation of the drag surface itself.
-            if (this.useDragSurface_ &&
-                this.workspace.blockDragSurface_.getCurrentBlock() == element) {
-                var surfaceTranslation =
-                    this.workspace.blockDragSurface_.getSurfaceTranslation();
-                x += surfaceTranslation.x;
-                y += surfaceTranslation.y;
-            }
-            element = element.parentNode;
-        } while (element && element != this.workspace.getBubbleCanvas() &&
-            element != dragSurfaceGroup);
-    }
-    this.xy_ = new Blockly.utils.Coordinate(x, y);
-    return this.xy_;
+  var element = this.getSvgRoot();
+  if (element) {
+    do {
+      // Loop through this comment and every parent.
+      var xy = Blockly.utils.getRelativeXY(element);
+      x += xy.x;
+      y += xy.y;
+      // If this element is the current element on the drag surface, include
+      // the translation of the drag surface itself.
+      if (this.useDragSurface_ &&
+          this.workspace.blockDragSurface_.getCurrentBlock() == element) {
+        var surfaceTranslation =
+            this.workspace.blockDragSurface_.getSurfaceTranslation();
+        x += surfaceTranslation.x;
+        y += surfaceTranslation.y;
+      }
+      element = element.parentNode;
+    } while (element && element != this.workspace.getBubbleCanvas() &&
+             element != dragSurfaceGroup);
+  }
+  this.xy_ = new Blockly.utils.Coordinate(x, y);
+  return this.xy_;
 };
 
 /**
@@ -330,14 +339,14 @@ Blockly.WorkspaceCommentSvg.prototype.getRelativeToSurfaceXY = function() {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.moveBy = function(dx, dy) {
-    var event = new Blockly.Events.CommentMove(this);
-    // TODO: Do I need to look up the relative to surface XY position here?
-    var xy = this.getRelativeToSurfaceXY();
-    this.translate(xy.x + dx, xy.y + dy);
-    this.xy_ = new Blockly.utils.Coordinate(xy.x + dx, xy.y + dy);
-    event.recordNew();
-    Blockly.Events.fire(event);
-    this.workspace.resizeContents();
+  var event = new (Blockly.Events.get(Blockly.Events.COMMENT_MOVE))(this);
+  // TODO: Do I need to look up the relative to surface XY position here?
+  var xy = this.getRelativeToSurfaceXY();
+  this.translate(xy.x + dx, xy.y + dy);
+  this.xy_ = new Blockly.utils.Coordinate(xy.x + dx, xy.y + dy);
+  event.recordNew();
+  Blockly.Events.fire(event);
+  this.workspace.resizeContents();
 };
 
 /**
@@ -348,8 +357,8 @@ Blockly.WorkspaceCommentSvg.prototype.moveBy = function(dx, dy) {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.translate = function(x, y) {
-    this.xy_ = new Blockly.utils.Coordinate(x, y);
-    this.getSvgRoot().setAttribute('transform', 'translate(' + x + ',' + y + ')');
+  this.xy_ = new Blockly.utils.Coordinate(x, y);
+  this.getSvgRoot().setAttribute('transform', 'translate(' + x + ',' + y + ')');
 };
 
 /**
@@ -359,18 +368,18 @@ Blockly.WorkspaceCommentSvg.prototype.translate = function(x, y) {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.moveToDragSurface = function() {
-    if (!this.useDragSurface_) {
-        return;
-    }
-    // The translation for drag surface blocks,
-    // is equal to the current relative-to-surface position,
-    // to keep the position in sync as it move on/off the surface.
-    // This is in workspace coordinates.
-    var xy = this.getRelativeToSurfaceXY();
-    this.clearTransformAttributes_();
-    this.workspace.blockDragSurface_.translateSurface(xy.x, xy.y);
-    // Execute the move on the top-level SVG component
-    this.workspace.blockDragSurface_.setBlocksAndShow(this.getSvgRoot());
+  if (!this.useDragSurface_) {
+    return;
+  }
+  // The translation for drag surface blocks,
+  // is equal to the current relative-to-surface position,
+  // to keep the position in sync as it move on/off the surface.
+  // This is in workspace coordinates.
+  var xy = this.getRelativeToSurfaceXY();
+  this.clearTransformAttributes_();
+  this.workspace.blockDragSurface_.translateSurface(xy.x, xy.y);
+  // Execute the move on the top-level SVG component
+  this.workspace.blockDragSurface_.setBlocksAndShow(this.getSvgRoot());
 };
 
 /**
@@ -382,12 +391,12 @@ Blockly.WorkspaceCommentSvg.prototype.moveToDragSurface = function() {
  * @private
  */
 Blockly.WorkspaceCommentSvg.prototype.moveOffDragSurface = function(newXY) {
-    if (!this.useDragSurface_) {
-        return;
-    }
-    // Translate to current position, turning off 3d.
-    this.translate(newXY.x, newXY.y);
-    this.workspace.blockDragSurface_.clearAndHide(this.workspace.getCanvas());
+  if (!this.useDragSurface_) {
+    return;
+  }
+  // Translate to current position, turning off 3d.
+  this.translate(newXY.x, newXY.y);
+  this.workspace.blockDragSurface_.clearAndHide(this.workspace.getCanvas());
 };
 
 /**
@@ -401,13 +410,13 @@ Blockly.WorkspaceCommentSvg.prototype.moveOffDragSurface = function(newXY) {
  */
 Blockly.WorkspaceCommentSvg.prototype.moveDuringDrag = function(
     dragSurface, newLoc) {
-    if (dragSurface) {
-        dragSurface.translateSurface(newLoc.x, newLoc.y);
-    } else {
-        this.svgGroup_.translate_ = 'translate(' + newLoc.x + ',' + newLoc.y + ')';
-        this.svgGroup_.setAttribute(
-            'transform', this.svgGroup_.translate_ + this.svgGroup_.skew_);
-    }
+  if (dragSurface) {
+    dragSurface.translateSurface(newLoc.x, newLoc.y);
+  } else {
+    this.svgGroup_.translate_ = 'translate(' + newLoc.x + ',' + newLoc.y + ')';
+    this.svgGroup_.setAttribute(
+        'transform', this.svgGroup_.translate_ + this.svgGroup_.skew_);
+  }
 };
 
 /**
@@ -417,7 +426,7 @@ Blockly.WorkspaceCommentSvg.prototype.moveDuringDrag = function(
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.moveTo = function(x, y) {
-    this.translate(x, y);
+  this.translate(x, y);
 };
 
 /**
@@ -426,7 +435,7 @@ Blockly.WorkspaceCommentSvg.prototype.moveTo = function(x, y) {
  * @private
  */
 Blockly.WorkspaceCommentSvg.prototype.clearTransformAttributes_ = function() {
-    this.getSvgRoot().removeAttribute('transform');
+  this.getSvgRoot().removeAttribute('transform');
 };
 
 /**
@@ -437,23 +446,23 @@ Blockly.WorkspaceCommentSvg.prototype.clearTransformAttributes_ = function() {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.getBoundingRectangle = function() {
-    var blockXY = this.getRelativeToSurfaceXY();
-    var commentBounds = this.getHeightWidth();
-    var top = blockXY.y;
-    var bottom = blockXY.y + commentBounds.height;
-    var left, right;
-    if (this.RTL) {
-        left = blockXY.x - commentBounds.width;
-        // Add the width of the tab/puzzle piece knob to the x coordinate
-        // since X is the corner of the rectangle, not the whole puzzle piece.
-        right = blockXY.x;
-    } else {
-        // Subtract the width of the tab/puzzle piece knob to the x coordinate
-        // since X is the corner of the rectangle, not the whole puzzle piece.
-        left = blockXY.x;
-        right = blockXY.x + commentBounds.width;
-    }
-    return new Blockly.utils.Rect(top, bottom, left, right);
+  var blockXY = this.getRelativeToSurfaceXY();
+  var commentBounds = this.getHeightWidth();
+  var top = blockXY.y;
+  var bottom = blockXY.y + commentBounds.height;
+  var left, right;
+  if (this.RTL) {
+    left = blockXY.x - commentBounds.width;
+    // Add the width of the tab/puzzle piece knob to the x coordinate
+    // since X is the corner of the rectangle, not the whole puzzle piece.
+    right = blockXY.x;
+  } else {
+    // Subtract the width of the tab/puzzle piece knob to the x coordinate
+    // since X is the corner of the rectangle, not the whole puzzle piece.
+    left = blockXY.x;
+    right = blockXY.x + commentBounds.width;
+  }
+  return new Blockly.utils.Rect(top, bottom, left, right);
 };
 
 /**
@@ -461,15 +470,13 @@ Blockly.WorkspaceCommentSvg.prototype.getBoundingRectangle = function() {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.updateMovable = function() {
-    if (this.isMovable()) {
-        Blockly.utils.dom.addClass(
-            /** @type {!Element} */
-            (this.svgGroup_), 'blocklyDraggable');
-    } else {
-        Blockly.utils.dom.removeClass(
-            /** @type {!Element} */
-            (this.svgGroup_), 'blocklyDraggable');
-    }
+  if (this.isMovable()) {
+    Blockly.utils.dom.addClass(
+        /** @type {!Element} */ (this.svgGroup_), 'blocklyDraggable');
+  } else {
+    Blockly.utils.dom.removeClass(
+        /** @type {!Element} */ (this.svgGroup_), 'blocklyDraggable');
+  }
 };
 
 /**
@@ -478,8 +485,8 @@ Blockly.WorkspaceCommentSvg.prototype.updateMovable = function() {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.setMovable = function(movable) {
-    Blockly.WorkspaceCommentSvg.superClass_.setMovable.call(this, movable);
-    this.updateMovable();
+  Blockly.WorkspaceCommentSvg.superClass_.setMovable.call(this, movable);
+  this.updateMovable();
 };
 
 /**
@@ -487,10 +494,10 @@ Blockly.WorkspaceCommentSvg.prototype.setMovable = function(movable) {
  * @param {boolean} editable True if editable.
  */
 Blockly.WorkspaceCommentSvg.prototype.setEditable = function(editable) {
-    Blockly.WorkspaceCommentSvg.superClass_.setEditable.call(this, editable);
-    if (this.textarea_) {
-        this.textarea_.readOnly = !editable;
-    }
+  Blockly.WorkspaceCommentSvg.superClass_.setEditable.call(this, editable);
+  if (this.textarea_) {
+    this.textarea_.readOnly = !editable;
+  }
 };
 
 /**
@@ -499,18 +506,16 @@ Blockly.WorkspaceCommentSvg.prototype.setEditable = function(editable) {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.setDragging = function(adding) {
-    if (adding) {
-        var group = this.getSvgRoot();
-        group.translate_ = '';
-        group.skew_ = '';
-        Blockly.utils.dom.addClass(
-            /** @type {!Element} */
-            (this.svgGroup_), 'blocklyDragging');
-    } else {
-        Blockly.utils.dom.removeClass(
-            /** @type {!Element} */
-            (this.svgGroup_), 'blocklyDragging');
-    }
+  if (adding) {
+    var group = this.getSvgRoot();
+    group.translate_ = '';
+    group.skew_ = '';
+    Blockly.utils.dom.addClass(
+        /** @type {!Element} */ (this.svgGroup_), 'blocklyDragging');
+  } else {
+    Blockly.utils.dom.removeClass(
+        /** @type {!Element} */ (this.svgGroup_), 'blocklyDragging');
+  }
 };
 
 /**
@@ -519,7 +524,7 @@ Blockly.WorkspaceCommentSvg.prototype.setDragging = function(adding) {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.getSvgRoot = function() {
-    return this.svgGroup_;
+  return this.svgGroup_;
 };
 
 /**
@@ -528,7 +533,7 @@ Blockly.WorkspaceCommentSvg.prototype.getSvgRoot = function() {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.getContent = function() {
-    return this.textarea_ ? this.textarea_.value : this.content_;
+  return this.textarea_ ? this.textarea_.value : this.content_;
 };
 
 /**
@@ -537,10 +542,10 @@ Blockly.WorkspaceCommentSvg.prototype.getContent = function() {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.setContent = function(content) {
-    Blockly.WorkspaceCommentSvg.superClass_.setContent.call(this, content);
-    if (this.textarea_) {
-        this.textarea_.value = content;
-    }
+  Blockly.WorkspaceCommentSvg.superClass_.setContent.call(this, content);
+  if (this.textarea_) {
+    this.textarea_.value = content;
+  }
 };
 
 /**
@@ -550,15 +555,13 @@ Blockly.WorkspaceCommentSvg.prototype.setContent = function(content) {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.setDeleteStyle = function(enable) {
-    if (enable) {
-        Blockly.utils.dom.addClass(
-            /** @type {!Element} */
-            (this.svgGroup_), 'blocklyDraggingDelete');
-    } else {
-        Blockly.utils.dom.removeClass(
-            /** @type {!Element} */
-            (this.svgGroup_), 'blocklyDraggingDelete');
-    }
+  if (enable) {
+    Blockly.utils.dom.addClass(
+        /** @type {!Element} */ (this.svgGroup_), 'blocklyDraggingDelete');
+  } else {
+    Blockly.utils.dom.removeClass(
+        /** @type {!Element} */ (this.svgGroup_), 'blocklyDraggingDelete');
+  }
 };
 
 /**
@@ -570,7 +573,7 @@ Blockly.WorkspaceCommentSvg.prototype.setDeleteStyle = function(enable) {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.setAutoLayout = function(_enable) {
-    // NOP for compatibility with the bubble dragger.
+  // NOP for compatibility with the bubble dragger.
 };
 
 /**
@@ -584,32 +587,32 @@ Blockly.WorkspaceCommentSvg.prototype.setAutoLayout = function(_enable) {
  */
 Blockly.WorkspaceCommentSvg.fromXml = function(
     xmlComment, workspace, opt_wsWidth) {
-    Blockly.Events.disable();
-    try {
-        var info = Blockly.WorkspaceComment.parseAttributes(xmlComment);
+  Blockly.Events.disable();
+  try {
+    var info = Blockly.WorkspaceComment.parseAttributes(xmlComment);
 
-        var comment = new Blockly.WorkspaceCommentSvg(
-            workspace, info.content, info.h, info.w, info.id);
-        if (workspace.rendered) {
-            comment.initSvg();
-            comment.render(false);
-        }
-        // Position the comment correctly, taking into account the width of a
-        // rendered RTL workspace.
-        if (!isNaN(info.x) && !isNaN(info.y)) {
-            if (workspace.RTL) {
-                var wsWidth = opt_wsWidth || workspace.getWidth();
-                comment.moveBy(wsWidth - info.x, info.y);
-            } else {
-                comment.moveBy(info.x, info.y);
-            }
-        }
-    } finally {
-        Blockly.Events.enable();
+    var comment = new Blockly.WorkspaceCommentSvg(
+        workspace, info.content, info.h, info.w, info.id);
+    if (workspace.rendered) {
+      comment.initSvg(true);
+      comment.render(false);
     }
-    Blockly.WorkspaceComment.fireCreateEvent(comment);
+    // Position the comment correctly, taking into account the width of a
+    // rendered RTL workspace.
+    if (!isNaN(info.x) && !isNaN(info.y)) {
+      if (workspace.RTL) {
+        var wsWidth = opt_wsWidth || workspace.getWidth();
+        comment.moveBy(wsWidth - info.x, info.y);
+      } else {
+        comment.moveBy(info.x, info.y);
+      }
+    }
+  } finally {
+    Blockly.Events.enable();
+  }
+  Blockly.WorkspaceComment.fireCreateEvent(comment);
 
-    return comment;
+  return comment;
 };
 
 /**
@@ -619,19 +622,19 @@ Blockly.WorkspaceCommentSvg.fromXml = function(
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.toXmlWithXY = function(opt_noId) {
-    var width; // Not used in LTR.
-    if (this.workspace.RTL) {
-        // Here be performance dragons: This calls getMetrics().
-        width = this.workspace.getWidth();
-    }
-    var element = this.toXml(opt_noId);
-    var xy = this.getRelativeToSurfaceXY();
-    element.setAttribute(
-        'x', Math.round(this.workspace.RTL ? width - xy.x : xy.x));
-    element.setAttribute('y', Math.round(xy.y));
-    element.setAttribute('h', this.getHeight());
-    element.setAttribute('w', this.getWidth());
-    return element;
+  var width;  // Not used in LTR.
+  if (this.workspace.RTL) {
+    // Here be performance dragons: This calls getMetrics().
+    width = this.workspace.getWidth();
+  }
+  var element = this.toXml(opt_noId);
+  var xy = this.getRelativeToSurfaceXY();
+  element.setAttribute(
+      'x', Math.round(this.workspace.RTL ? width - xy.x : xy.x));
+  element.setAttribute('y', Math.round(xy.y));
+  element.setAttribute('h', this.getHeight());
+  element.setAttribute('w', this.getWidth());
+  return element;
 };
 
 /**
@@ -640,72 +643,72 @@ Blockly.WorkspaceCommentSvg.prototype.toXmlWithXY = function(opt_noId) {
  * @package
  */
 Blockly.WorkspaceCommentSvg.prototype.toCopyData = function() {
-    return { xml: this.toXmlWithXY(), source: this.workspace, typeCounts: null };
+  return {xml: this.toXmlWithXY(), source: this.workspace, typeCounts: null};
 };
 
 /**
  * CSS for workspace comment.  See css.js for use.
  */
 Blockly.Css.register([
-    // clang-format off
-    /* eslint-disable indent */
-    '.blocklyCommentForeignObject {',
+  // clang-format off
+  /* eslint-disable indent */
+  '.blocklyCommentForeignObject {',
     'position: relative;',
     'z-index: 0;',
-    '}',
+  '}',
 
-    '.blocklyCommentRect {',
+  '.blocklyCommentRect {',
     'fill: #E7DE8E;',
     'stroke: #bcA903;',
     'stroke-width: 1px;',
-    '}',
+  '}',
 
-    '.blocklyCommentTarget {',
+  '.blocklyCommentTarget {',
     'fill: transparent;',
     'stroke: #bcA903;',
-    '}',
+  '}',
 
-    '.blocklyCommentTargetFocused {',
+  '.blocklyCommentTargetFocused {',
     'fill: none;',
-    '}',
+  '}',
 
-    '.blocklyCommentHandleTarget {',
+  '.blocklyCommentHandleTarget {',
     'fill: none;',
-    '}',
+  '}',
 
-    '.blocklyCommentHandleTargetFocused {',
+  '.blocklyCommentHandleTargetFocused {',
     'fill: transparent;',
-    '}',
+  '}',
 
-    '.blocklyFocused>.blocklyCommentRect {',
+  '.blocklyFocused>.blocklyCommentRect {',
     'fill: #B9B272;',
     'stroke: #B9B272;',
-    '}',
+  '}',
 
-    '.blocklySelected>.blocklyCommentTarget {',
+  '.blocklySelected>.blocklyCommentTarget {',
     'stroke: #fc3;',
     'stroke-width: 3px;',
-    '}',
+  '}',
 
-    '.blocklyCommentDeleteIcon {',
+  '.blocklyCommentDeleteIcon {',
     'cursor: pointer;',
     'fill: #000;',
     'display: none;',
-    '}',
+  '}',
 
-    '.blocklySelected > .blocklyCommentDeleteIcon {',
+  '.blocklySelected > .blocklyCommentDeleteIcon {',
     'display: block;',
-    '}',
+  '}',
 
-    '.blocklyDeleteIconShape {',
+  '.blocklyDeleteIconShape {',
     'fill: #000;',
     'stroke: #000;',
     'stroke-width: 1px;',
-    '}',
+  '}',
 
-    '.blocklyDeleteIconShape.blocklyDeleteIconHighlighted {',
+  '.blocklyDeleteIconShape.blocklyDeleteIconHighlighted {',
     'stroke: #fc3;',
-    '}'
-    /* eslint-enable indent */
-    // clang-format on
+  '}'
+  /* eslint-enable indent */
+  // clang-format on
 ]);

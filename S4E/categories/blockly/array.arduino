@@ -47,7 +47,7 @@ Blockly.Arduino['Array_modify'] = function(block) {
 
 Blockly.Arduino['Array_declare'] = function(block) {
     var argument0 = Blockly.Arduino.valueToCode(block, 'contenu', Blockly.Arduino.ORDER_ASSIGNMENT);
-    var varName = Blockly.Arduino.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    var varName = Blockly.Arduino.nameDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
     var typeBlock = Blockly.Arduino.getArduinoType_(Blockly.Types[block.getFieldValue('type')]);
     var choice = block.getFieldValue("choix");
     var dimension = block.getFieldValue("dim");
@@ -86,7 +86,7 @@ return '';
  */
 
 Blockly.Arduino['Array_create'] = function(block) {
-    var varName = Blockly.Arduino.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    var varName = Blockly.Arduino.nameDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
     var typeBlock = Blockly.Arduino.getArduinoType_(Blockly.Types[block.getFieldValue('type')]);
     var menu = block.getFieldValue("choix");
     var dimension = block.getFieldValue("dim");
@@ -123,7 +123,7 @@ Blockly.Arduino['Array_create'] = function(block) {
 };
 Blockly.Arduino['Array_fix'] = function(block) {
     var value_value = Blockly.Arduino.valueToCode(block, 'value', Blockly.Arduino.ORDER_ATOMIC);
-    var code = Blockly.Arduino.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    var code = Blockly.Arduino.nameDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
     var dimension = block.getFieldValue("dim");
     for (var i = 0; i < dimension; i++) {
         var j = Blockly.Arduino.valueToCode(block, "D" + i, Blockly.Arduino.ORDER_ASSIGNMENT);
@@ -134,7 +134,7 @@ Blockly.Arduino['Array_fix'] = function(block) {
 };
 
 Blockly.Arduino["Array_getIndex_in_array"] = function(block) {
-    var code = Blockly.Arduino.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    var code = Blockly.Arduino.nameDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
     var dimension = block.getFieldValue("dim");
     for (var i = 0; i < dimension; i++) {
         var j = Blockly.Arduino.valueToCode(block, "D" + i, Blockly.Arduino.ORDER_ASSIGNMENT);

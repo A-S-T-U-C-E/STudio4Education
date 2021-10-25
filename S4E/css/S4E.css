@@ -6,6 +6,7 @@
 
 .blocklyToolboxDiv {
     box-shadow: 5px 5px 5px gray !important;
+    overflow-x: hidden;
 }
 
 .UIText {
@@ -19,6 +20,21 @@
     color: #FFFFFF;
     font-size: large;
     font-weight: bold;
+}
+
+.iconWorkspaceButtons {
+    position: absolute;
+    z-index: 10;
+    right: 33px;
+    background: none;
+    box-shadow: none;
+    border: 2px solid;
+    border-radius: 50%;
+    padding: 2px;
+    line-height: 0;
+    color: #898989;
+    font-size: 1.5em;
+    width: 35px;
 }
 
 .iconButtons {
@@ -57,6 +73,42 @@
     cursor: not-allowed;
 }
 
+.iconButtonsTop {
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+    padding: 2px;
+    line-height: 0;
+    vertical-align: middle;
+    background: #FFFFFF;
+    color: #03234b;
+    font-size: 1.5em;
+    width: 35px;
+}
+
+.iconButtonsTop:hover {
+    background: #03234b;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.iconButtonsTop:active {
+    background: #FFCC00;
+}
+
+.iconButtonsTop:active::after {
+    transition-property: background;
+    transition-duration: 10s;
+}
+
+.iconButtonsTop:disabled {
+    background: #03234B;
+    color: #F3F1EF;
+    cursor: not-allowed;
+}
+
 .iconButtonsClicked {
     border: 0;
     background: none;
@@ -86,6 +138,7 @@
     -webkit-border-radius: 5px;
     -o-border-radius: 5px;
     border-radius: 5px;
+    vertical-align: middle;
 }
 
 #barre_h {
@@ -113,8 +166,6 @@
     background: #FFFFFF;
     cursor: no-drop;
 }
-
-#btn_fake_close {}
 
 #btn_fake_close:hover {
     background: #FF0000;
@@ -176,4 +227,22 @@
     font-style: italic;
     background: transparent;
     border: none;
+}
+
+
+/*****************/
+
+
+/* Arrowhead specific  */
+
+
+/*****************/
+
+#ArrowheadConfigurationModalBody_buttons {
+    font-size: 150%;
+    text-align: center;
+}
+
+#ArrowheadConfigurationModalFooter_buttons {
+    text-align: center;
 }

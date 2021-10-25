@@ -8,10 +8,10 @@ Blockly.Blocks.ahf_esp_connection_registry_test.getBlockType = function() {
     return Blockly.Types.TEXT;
 };
 Blockly.Blocks.ahf_esp_SR_register_test.getBlockType = function() {
-    return Blockly.Types.NUMBER;
+    return Blockly.Types.TEXT;
 };
 Blockly.Blocks.ahf_esp_SR_unregister_test.getBlockType = function() {
-    return Blockly.Types.NUMBER;
+    return Blockly.Types.TEXT;
 };
 Blockly.Blocks.ahf_esp_format_data_SenML.getBlockType = function() {
     return Blockly.Types.NULL;

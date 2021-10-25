@@ -73,8 +73,8 @@ Code.changeBoard = function() {
     document.getElementById('boardListModal').classList.remove('show');
     Code.setBoard();
     Code.buildToolbox();
-    var xml = Blockly.Xml.workspaceToDom(Code.workspace);
-    Blockly.Xml.domToWorkspace(xml, Code.workspace);
+    var xml = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
+    Blockly.Xml.domToWorkspace(xml, Code.mainWorkspace);
 };
 
 /**

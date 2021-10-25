@@ -14,6 +14,13 @@ var toolbox_ST = {
             {
                 "kind": "block",
                 "type": "board_base_loop"
+            }, {
+                "kind": "block",
+                "type": "base_define_bloc"
+            },
+            {
+                "kind": "block",
+                "type": "base_define"
             },
             {
                 "kind": "category",

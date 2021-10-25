@@ -18,10 +18,25 @@ function showConvertModalDialog() {
     dialog.showDialog();
 
     function callbackDialog(btnName) {
-        // if (btnName == "close")
+        if (btnName == "close") {
+            document.getElementById("ti2").value = "";
+            document.getElementById("ti4").value = "";
+            document.getElementById(id).style.display = 'none';
+        }
     }
 }
 
+function text2binCopy() {
+    navigator.clipboard.writeText(document.getElementById("ti2").value)
+        .then(() => { console.log('Binary data copied!') })
+        .catch((error) => { console.log('Copy failed! ${error}') });
+}
+
+function bin2textCopy() {
+    navigator.clipboard.writeText(document.getElementById("ti4").value)
+        .then(() => { console.log('Text data copied!') })
+        .catch((error) => { console.log('Copy failed! ${error}') });
+}
 /*
  * False modal with colors conversion functions
  */
@@ -36,7 +51,9 @@ function showColorsModalDialog() {
     dialog.showDialog();
 
     function callbackDialog(btnName) {
-        // if (btnName == "close")
+        if (btnName == "close") {
+            document.getElementById(id).style.display = 'none';
+        }
     }
 }
 
@@ -142,14 +159,18 @@ function collapsibleContentInit() {
             var content = this.nextElementSibling;
             if (content.style.maxHeight) {
                 content.style.maxHeight = null;
-                document.getElementById("board_mini_picture_div").style.transform = "scale(1)";
-                document.getElementById("board_mini_picture_div").style.top = "";
-                document.getElementById("collapsibleContent").style.visibility = "hidden";
+                content.style.visibility = "hidden";
+                if (content.id == "boardCollapsibleContent") {
+                    document.getElementById("board_mini_picture_div").style.transform = "scale(1)";
+                    document.getElementById("board_mini_picture_div").style.top = "";
+                }
             } else {
                 content.style.maxHeight = content.scrollHeight + "px";
-                document.getElementById("board_mini_picture_div").style.transform = "scale(1.7)";
-                document.getElementById("board_mini_picture_div").style.top = "150px";
-                document.getElementById("collapsibleContent").style.visibility = "visible";
+                content.style.visibility = "visible";
+                if (content.id == "boardCollapsibleContent") {
+                    document.getElementById("board_mini_picture_div").style.transform = "scale(1.7)";
+                    document.getElementById("board_mini_picture_div").style.top = "150px";
+                }
             }
         });
     }
@@ -171,16 +192,23 @@ function toggleEditorReadOnly(item) {
  * Accordion effect in lateral panel
  * https://www.w3schools.com/howto/howto_js_accordion.asp
  */
-var acc = document.getElementsByClassName("accordion");
-// var i;
-
-for (var i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-        /* Toggle between adding and removing the "active" class,
-        to highlight the button that controls the panel */
+var accordion = document.getElementsByClassName("accordion");
+for (var i = 0; i < accordion.length; i++) {
+    accordion[i].addEventListener("click", function() {
         this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+        } else {
+            panel.style.maxHeight = panel.scrollHeight + 15 + "px";
+        }
+    });
+}
 
-        /* Toggle between hiding and showing the active panel */
+var accordion2 = document.getElementsByClassName("accordion2nde");
+for (var i = 0; i < accordion2.length; i++) {
+    accordion2[i].addEventListener("click", function() {
+        this.classList.toggle("active");
         var panel = this.nextElementSibling;
         if (panel.style.maxHeight) {
             panel.style.maxHeight = null;
@@ -214,6 +242,12 @@ document.getElementById('fullScreenButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['fullScreenButton_span'];
 };
 document.getElementById('fullScreenButton').onmouseout = function() {
+    document.getElementById("content_hoverButton").textContent = "";
+};
+document.getElementById('fullToolboxButton').onmouseover = function() {
+    document.getElementById("content_hoverButton").textContent = MSG['fullToolboxButton_span'];
+};
+document.getElementById('fullToolboxButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
 document.getElementById('undoButton').onmouseover = function() {
@@ -274,6 +308,12 @@ document.getElementById('saveCodeButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['saveCodeButton_span'];
 };
 document.getElementById('saveCodeButton').onmouseout = function() {
+    document.getElementById("content_hoverButton").textContent = "";
+};
+document.getElementById('menuButton').onmouseover = function() {
+    document.getElementById("content_hoverButton").textContent = MSG['menuButton_span'];
+};
+document.getElementById('menuButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
 document.getElementById('newButton').onmouseover = function() {
@@ -378,10 +418,10 @@ document.getElementById('papyrusConnect').onmouseover = function() {
 document.getElementById('papyrusConnect').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('registerToOrchestrator_auto').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['registerToOrchestrator_span'];
+document.getElementById('ArrowheadConfiguration_auto').onmouseover = function() {
+    document.getElementById("content_hoverButton").textContent = MSG['ArrowheadConfiguration_span'];
 };
-document.getElementById('registerToOrchestrator_auto').onmouseout = function() {
+document.getElementById('ArrowheadConfiguration_auto').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
 // document.getElementById('blynkConnect').onmouseover = function () {

@@ -1,6 +1,12 @@
 v0.9.0
 - change structure: simplify by adding all definition files in same folder
 - automatic typing for variables
+- add backpack plugin
+- add higlight content plugin
+- [WIP] add minimap
+- move console from bottom to right panel
+- move undo/redo buttons on workspace
+- shrink toolbox
 - add Arrowhead framework control for network boards
 - use SVG file from /media/ for toolbox categories
 - add conversion tool text <-> binary

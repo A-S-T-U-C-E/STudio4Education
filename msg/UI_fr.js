@@ -31,6 +31,7 @@ var MSG = {
     themeSpan: "thème des blocs",
     renderSpan: "forme des blocs",
     fullScreenButton_span: "plein écran",
+    fullToolboxButton_span: "réduit les catégories",
     undoButton_span: "annuler",
     redoButton_span: "refaire",
     boardButtonSpan: "liste des cartes",
@@ -42,6 +43,7 @@ var MSG = {
     nodeRedFlowButton_span: "node-Red flows",
     supervisionButton_span: "supervision",
     saveCodeButton_span: "exporte le code",
+    menuButton_span: "menu fichiers",
     newButton_span: "nouveau projet",
     save_span: "nom du fichier de sauvegarde ?",
     sketch_name_default: "nom_du_projet",
@@ -83,13 +85,17 @@ var MSG = {
     launchRedServer_span: "lancer le serveur Node-RED",
     launchWebServer_span: "lancer le serveur local",
     papyrusConnect_span: "connexion à Papyrus",
+    papyrusConnect_helper_span: "Papyrus configuration",
     registerToOrchestrator_span: "connexion à Arrowhead",
+    registerToOrchestrator_helper_span: "Arrowhead configuration",
     blynkConnect_span: "connexion à Blynk",
     serialConnectIOT_span: "envoi de données IdO",
     //ace editor
     editorReadOnlyToggle_span: "éditeur de code en lecture seule ou non",
     copyCodeButton_span: "copier le code dans le presse papiers",
     //lateral panel
+    highlightSpan: "surbrillance des blocs déposés",
+    minimapSpan: "(dés)active la mini carte",
     accessibilitySpan: "activer le contrôle clavier",
     defaultCursorSpan: "curseur par défaut",
     basicCursorSpan: "curseur classique",
@@ -156,7 +162,7 @@ var MSG = {
     installLibButton_span: "installer cette bibliothèque",
     //categories panel
     categories_title_span: "catégories de blocs",
-    //arrowhead panel
+    //IoT panel
     iot_title_span: "Internet des Objets",
     //modals
     boardListModalHeader_span: "Liste des cartes",
