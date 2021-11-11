@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./css/UI.css" />
     <link rel="stylesheet" href="./S4E/css/S4E.css" />
     <link rel="stylesheet" href="./S4E/css/override_css.css" />
+    <link rel="stylesheet" data-name="./vs/editor/editor.main" href="./vs/editor/editor.main.css">
 </head>
 
 <body>
@@ -21,8 +22,7 @@
         <table id="globalTable">
             <tr id="optionsTop">
                 <td id="optionsTopTitle">
-                    <img id="logo" src="./S4E/media/st-logo.svg" style="width: 50px; vertical-align: middle;" />
-                    <span class="TitleText" id="appName"></span>
+                    <img id="logo" src="./S4E/media/STudio4Education_logo.png" style="height: 25px; vertical-align: middle;" />
                 </td>
                 <td id="optionsTopButtons" align="center">
                     <button id="btn_fake_min" type="button" class="iconButtonsTop">
@@ -44,13 +44,13 @@
             </tr>
             <tr id="functionsIcons">
                 <td colspan="2">
-                    <button id="menuButton" class="iconButtons" onclick="document.getElementById('menuPopup').style.display = 'block';document.getElementById('menuButton').classList.toggle('active');">
+                    <!-- <button id="menuButton" class="iconButtons" onclick="document.getElementById('menuPopup').style.display = 'block';document.getElementById('menuButton').classList.toggle('active');">
                         <span id="menuButtonButton_span">
                             <i class="fas fa-ellipsis-v"></i>
                         </span>
-                    </button>
-                    <div id="menuPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('menuPopup').style.display = 'none';document.getElementById('menuButton').classList.toggle('active');">
-                        <div id="buttonsMenuPopup" class="menu_div">
+                    </button> -->
+                    <!-- <div id="menuPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('menuPopup').style.display = 'none';document.getElementById('menuButton').classList.toggle('active');"> -->
+                    <!-- <div id="buttonsMenuPopup" class="menu_div">
                             <div id="buttonsMenuPopupInside">
                                 <button id="newButton" class="iconButtons" onclick="Code.newProject()">
                                     <span id="newButton_span">
@@ -94,24 +94,48 @@
                                         <i class="fas fa-power-off"></i>
                                     </span>
                                 </button>
-                                <span id="resetButton_span_menu" class="menu_text"></span>
-                                <!-- <br> -->
-                                <!-- <hr> -->
-                                <!-- <button id="helpButton" class="iconButtons" onclick="toggleDisplayHelpModal()"> -->
-                                <!-- <span id="helpButton_span"> -->
-                                <!-- <i class="fas fa-question"></i> -->
-                                <!-- </span> -->
-                                <!-- </button> -->
-                                <!-- <span id="helpButton_span_menu" class="menu_text"></span> -->
-                            </div>
-                        </div>
-                    </div>
+                                <span id="resetButton_span_menu" class="menu_text"></span> -->
+                    <!-- <br> -->
+                    <!-- <hr> -->
+                    <!-- <button id="helpButton" class="iconButtons" onclick="toggleDisplayHelpModal()"> -->
+                    <!-- <span id="helpButton_span"> -->
+                    <!-- <i class="fas fa-question"></i> -->
+                    <!-- </span> -->
+                    <!-- </button> -->
+                    <!-- <span id="helpButton_span_menu" class="menu_text"></span> -->
+                    <!-- </div>
+                        </div> -->
+                    <!-- </div> -->
+                    <button id="resetButton" class="iconButtons" onclick="Code.ResetWorkspace()">
+                        <span id="resetButton_span">
+                            <i class="fas fa-power-off"></i>
+                        </span>
+                    </button>
+                    <button id="newButton" class="iconButtons" onclick="Code.newProject()">
+                        <span id="newButton_span">
+                            <i class="far fa-file"></i>
+                        </span>
+                    </button>
+                    <button id="loadXMLfakeButton" class="iconButtons" onclick="Code.loadXmlBlocklyFile()">
+                        <span id="loadXMLfakeButton_span">
+                            <i class="fas fa-file-upload"></i>
+                        </span>
+                    </button>
+                    <button id="saveXMLButton" class="iconButtons" onclick="Code.saveXmlBlocklyFile()">
+                        <span id="saveXMLButton_span">
+                            <i class="fas fa-file-download"></i>
+                        </span>
+                    </button>
+                    <button id="saveCodeButton" class="iconButtons" onclick="Code.saveCodeFile()">
+                        <span id="saveCodeButton_span">
+                            <i class="far fa-file-code"></i>
+                        </span>
+                    </button>
                     <button id="fullScreenButton" class="iconButtons" onclick="fullScreen()">
                         <span id="fullScreenButton_span">
                             <i class="fas fa-expand-arrows-alt"></i>
                         </span>
                     </button>
-                    <!-- <button id="fullToolboxButton" class="iconButtons" onclick="Code.fullToolbox()"> -->
                     <button id="fullToolboxButton" class="iconButtons" onclick="Code.fullToolbox()">
                         <span id="fullToolboxButton_span">
                             <i class="fas fa-toolbox"></i>
@@ -319,9 +343,9 @@
                                     </button>
                                 </div>
                             </div>
-                            <div id="separator">
+                            <div id="resizer_h" class="resize" data-direction="horizontal">
                                 <label id="editorReadOnlyToggle" class="switch">
-                                    <input type="checkbox" onclick="toggleEditorReadOnly(this)">
+                                    <input type="checkbox" onclick="toggleEditorReadOnly(this)" />
                                     <span class="slider"></span>
                                 </label>
                             </div>
@@ -332,7 +356,7 @@
                             </button>
                             <div id="content_code"></div>
                         </div>
-                        <div id="barre_h">
+                        <div id="resizer_v" class="resize" data-direction="vertical">
                             <div id="checkDetails">
                                 <input type="checkbox" name="detailedCompilation" id="detailedCompilation" />
                                 <span id="detailedCompilation_span"> </span>
@@ -340,11 +364,11 @@
                             <div id="infoBoardPort">
                                 <span id="boardSelected_span"> </span>
                                 <span id="portSelected_span"> </span>
-                                <button id="consoleOutsideButton" class="iconButtons" onclick="">
+                                <!-- <button id="consoleOutsideButton" class="iconButtons" onclick="">
                                     <span name="consoleOutside" id="consoleOutside_span">
                                         <i class="fas fa-external-link-alt"></i>
                                     </span>
-                                </button>
+                                </button> -->
                             </div>
                         </div>
                         <div id="content_serial"></div>
@@ -573,50 +597,47 @@
                 <br>
                 <br>
                 <button class="accordion2nde">
+                    <img src="./S4E/media/arrowheadtools_invert.png" style="width: 30px; height: 30px; vertical-align: middle;" />
                     <span id="ArrowheadConfiguration_helper_span" aria-expanded="false" aria-controls="accordion_categories_content"></span>
                 </button>
                 <div id="IoT_controls_Arrowhead" class="side_content config_content panel UIText">
                     <button id="ArrowheadServRegConfiguration" class="iconButtons CLI" onclick="ArrowheadServRegConfigurationShow()">
                         <span id="ArrowheadServRegConfiguration_span">
-                            <img src="./S4E/media/arrowheadtools_invert.png"
-                                style="width: 30px; height: 30px; vertical-align: middle;" />
+                            <i class="fab fa-wpforms"></i>
                         </span>
                     </button>
                     <span id="ArrowheadConfiguration_ServReg_span">Configure service registry</span>
                     <br>
                     <button id="ArrowheadProviderConfiguration" class="iconButtons CLI" onclick="ArrowheadProviderConfigurationShow()">
                         <span id="ArrowheadProviderConfiguration_span">
-                            <img src="./S4E/media/arrowheadtools_invert.png"
-                                style="width: 30px; height: 30px; vertical-align: middle;" />
+                            <i class="fab fa-wpforms"></i>
                         </span>
                     </button>
                     <span id="ArrowheadConfiguration_provider_span">Configure provider</span>
                     <br>
                     <button id="ArrowheadConsumerConfiguration" class="iconButtons CLI" onclick="ArrowheadConsumerConfigurationShow()">
                         <span id="ArrowheadConsumerConfiguration_span">
-                            <img src="./S4E/media/arrowheadtools_invert.png"
-                                style="width: 30px; height: 30px; vertical-align: middle;" />
+                            <i class="fab fa-wpforms"></i>
                         </span>
                     </button>
                     <span id="ArrowheadConfiguration_consumer_span">Configure consumer</span>
                     <br>
                     <button id="ArrowheadAuthConfiguration" class="iconButtons CLI" onclick="ArrowheadAuthConfigurationShow()">
                         <span id="ArrowheadAuthConfiguration_span">
-                            <img src="./S4E/media/arrowheadtools_invert.png"
-                                style="width: 30px; height: 30px; vertical-align: middle;" />
+                            <i class="fab fa-wpforms"></i>
                         </span>
                     </button>
                     <span id="ArrowheadConfiguration_auth_span">Define authorization server</span>
                     <br>
                     <button id="ArrowheadOrchConfiguration" class="iconButtons CLI" onclick="ArrowheadOrchConfigurationShow()">
                         <span id="ArrowheadOrchConfiguration_span">
-                            <img src="./S4E/media/arrowheadtools_invert.png"
-                                style="width: 30px; height: 30px; vertical-align: middle;" />
+                            <i class="fab fa-wpforms"></i>
                         </span>
                     </button>
                     <span id="ArrowheadConfiguration_orch_span">Define orchestrator server</span>
                 </div>
                 <button class="accordion2nde">
+                    <img src="./S4E/media/Eclipse_papyrus_logo.png" style="width: 30px; height: 30px; vertical-align: middle;" />
                     <span id="papyrusConnect_helper_span" aria-expanded="false" aria-controls="accordion_categories_content"></span>
                 </button>
                 <div id="IoT_controls_Papyrus" class="side_content config_content panel UIText">
@@ -625,26 +646,41 @@
                     <input type="text" class="controlPanelInput" id="papyrusConnectInputId" name="papyrusConnectInputId" value="170">
                     <span id="PapyrusConfiguration_name_span">Name of configuration file to download</span>
                     <input type="text" class="controlPanelInput" id="papyrusConnectInputFile" name="papyrusConnectInputFile" value="HomeAutomationSystemST4Econfig.json">
-                    <span id="PapyrusConfiguration_save_span">Save information</span>
                     <button id="PapyrusConfiguration_save" class="iconButtons CLI">
                         <span id="papyrusConnect_validate_span">
-                            <img src="./S4E/media/Eclipse_papyrus_logo.png"
-                                style="width: 30px; height: 30px; vertical-align: middle;" />
+                            <i class="fas fa-archive"></i>
                         </span>
                     </button>
+                    <span id="PapyrusConfiguration_save_span">Store information</span>
                 </div>
-            </div>
-            <button class="accordion">
-                <span id="console_title_span" aria-expanded="false"
-                    aria-controls="accordion_categories_content">Console</span>
-            </button>
-            <div id="console_controls" class="side_content config_content panel UIText">
-                <button id="copyConsoleButton" class="iconButtons" onclick="Code.copyConsoleToClipboard()" title="copy console to clipboard" style="visibility: visible;">
-                    <span id="copyConsoleButton_span">
-                        <i class="far fa-copy"></i>
+                <button id="launchRedServer" class="iconButtons CLI">
+                    <span id="launchRedServer_span">
+                        <img src="./S4E/media/node-red.png"
+                            style="width: 30px; height: 30px; vertical-align: middle;" />
                     </span>
                 </button>
-                <div id="content_serial_lateral"></div>
+                <button id="launchWebServer" class="iconButtons CLI">
+                    <span id="launchWebServer_span">
+                        <i class="fas fa-network-wired"></i>
+                    </span>
+                </button>
+                <button id="papyrusConnect" class="iconButtons CLI">
+                    <span id="papyrusConnect_span">
+                        <img src="./S4E/media/Eclipse_papyrus_logo.png"
+                            style="width: 30px; height: 30px; vertical-align: middle;" />
+                    </span>
+                </button>
+                <button id="ArrowheadConfiguration_auto" class="iconButtons CLI">
+                    <span id="ArrowheadConfiguration_span">
+                        <img src="./S4E/media/arrowheadtools_invert.png"
+                            style="width: 30px; height: 30px; vertical-align: middle;" />
+                    </span>
+                </button>
+                <button id="serialConnectIOT" class="iconButtons CLI">
+                    <span id="serialConnectIOT_span">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </span>
+                </button>
             </div>
         </div>
     </div>
@@ -743,11 +779,11 @@
             <div class="modal-body" id="ArrowheadServRegConfigurationModalBody">
                 <form id="ArrowheadServRegConfigurationModalForm">
                     <span id="arrowhead_input_ServReg_host_span">Host</span>
-                    <input type="text" class="controlPanelInput" id="arrowhead_input_ServReg_host" name="arrowhead_input_ServReg_host" value="137.204.57.93"><br>
+                    <input type="text" class="controlPanelInput" id="arrowhead_input_ServReg_host" name="arrowhead_input_ServReg_host"><br>
                     <span id="arrowhead_input_ServReg_port_span">Port</span>
-                    <input type="text" class="controlPanelInput" id="arrowhead_input_ServReg_port" name="arrowhead_input_ServReg_port" value="8443"><br>
+                    <input type="text" class="controlPanelInput" id="arrowhead_input_ServReg_port" name="arrowhead_input_ServReg_port"><br>
                     <span id="arrowhead_input_ServReg_path_span">Path</span>
-                    <input type="text" class="controlPanelInput" id="arrowhead_input_ServReg_path" name="arrowhead_input_ServReg_path" value="/serviceregistry"><br>
+                    <input type="text" class="controlPanelInput" id="arrowhead_input_ServReg_path" name="arrowhead_input_ServReg_path"><br>
                     <br>
                     <input type="checkbox" class="" id="arrowhead_input_servreg_tls_useKey" name="arrowhead_input_servreg_tls_useKey">
                     <span id="arrowhead_input_servreg_tls_useKey_span">Use key and certificates from local files</span><br>
@@ -769,24 +805,24 @@
                         <span id="arrowhead_input_servreg_tls_server_protocol_span">ALPN Protocol</span>
                         <input type="text" class="controlPanelInput" id="arrowhead_input_servreg_tls_server_protocol" name="arrowhead_input_servreg_tls_server_protocol"><br>
                     </div>
+                    <div id="ArrowheadServRegConfigurationModalBody_buttons">
+                        <button type="submit" id="ArrowheadServRegConfigurationModal_okay" class="modalDialogOkay">
+                            <i class="far fa-check-circle" style="font-size: 150%;"></i>
+                        </button>
+                        <button id="ArrowheadServRegConfigurationModal_okay_nodejs" class="modalDialogOkay_nodejs">
+                            <i class="far fa-check-circle" style="font-size: 150%;"></i>
+                        </button>
+                        <button id="ArrowheadServRegConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadServRegConfigurationModalForm').reset()">
+                            <i class="far fa-times-circle" style="font-size: 150%;"></i>
+                        </button>
+                        <button id="ArrowheadServRegConfigurationModal_export" class="iconButtons" onclick="exportArrowheadServRegConfigFile()">
+                            <i class="fas fa-file-download"></i>
+                        </button>
+                        <button id="ArrowheadServRegConfigurationModal_import" class="iconButtons" onclick="importArrowheadServRegConfigFile()">
+                            <i class="fas fa-file-upload"></i>
+                        </button>
+                    </div>
                 </form>
-            </div>
-            <div id="ArrowheadServRegConfigurationModalBody_buttons">
-                <button type="submit" id="ArrowheadServRegConfigurationModal_okay" class="modalDialogOkay">
-                    <i class="far fa-check-circle" style="font-size: 150%;"></i>
-                </button>
-                <button id="ArrowheadServRegConfigurationModal_okay_nodejs" class="modalDialogOkay_nodejs">
-                    <i class="far fa-check-circle" style="font-size: 150%;"></i>
-                </button>
-                <button id="ArrowheadServRegConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadServRegConfigurationModalForm').reset()">
-                    <i class="far fa-times-circle" style="font-size: 150%;"></i>
-                </button>
-                <button id="ArrowheadServRegConfigurationModal_export" class="iconButtons" onclick="exportArrowheadServRegConfigFile()">
-                    <i class="fas fa-file-download"></i>
-                </button>
-                <button id="ArrowheadServRegConfigurationModal_import" class="iconButtons" onclick="importArrowheadServRegConfigFile()">
-                    <i class="fas fa-file-upload"></i>
-                </button>
             </div>
         </div>
     </div>
@@ -817,24 +853,24 @@
                     <input type="text" class="controlPanelInput" id="arrowhead_input_Provider_validity" name="arrowhead_input_Provider_validity"><br>
                     <span id="arrowhead_input_Provider_interfaces_span">Interfaces</span>
                     <input type="text" class="controlPanelInput" id="arrowhead_input_Provider_interfaces" name="arrowhead_input_Provider_interfaces"><br>
+                    <div id="ArrowheadProviderConfigurationModalBody_buttons">
+                        <button type="submit" id="ArrowheadProviderConfigurationModal_okay" class="modalDialogOkay">
+                            <i class="far fa-check-circle" style="font-size: 150%;"></i>
+                        </button>
+                        <button id="ArrowheadProviderConfigurationModal_okay_nodejs" class="modalDialogOkay_nodejs">
+                            <i class="far fa-check-circle" style="font-size: 150%;"></i>
+                        </button>
+                        <button id="ArrowheadProviderConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadProviderConfigurationModalForm').reset()">
+                            <i class="far fa-times-circle" style="font-size: 150%;"></i>
+                        </button>
+                        <button id="ArrowheadProviderConfigurationModal_export" class="iconButtons" onclick="exportArrowheadProviderConfigFile()">
+                            <i class="fas fa-file-download"></i>
+                        </button>
+                        <button id="ArrowheadProviderConfigurationModal_import" class="iconButtons" onclick="importArrowheadProviderConfigFile()">
+                            <i class="fas fa-file-upload"></i>
+                        </button>
+                    </div>
                 </form>
-            </div>
-            <div id="ArrowheadProviderConfigurationModalBody_buttons">
-                <button type="submit" id="ArrowheadProviderConfigurationModal_okay" class="modalDialogOkay">
-                    <i class="far fa-check-circle" style="font-size: 150%;"></i>
-                </button>
-                <button id="ArrowheadProviderConfigurationModal_okay_nodejs" class="modalDialogOkay_nodejs">
-                    <i class="far fa-check-circle" style="font-size: 150%;"></i>
-                </button>
-                <button id="ArrowheadProviderConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadProviderConfigurationModalForm').reset()">
-                    <i class="far fa-times-circle" style="font-size: 150%;"></i>
-                </button>
-                <button id="ArrowheadProviderConfigurationModal_export" class="iconButtons" onclick="exportArrowheadProviderConfigFile()">
-                    <i class="fas fa-file-download"></i>
-                </button>
-                <button id="ArrowheadProviderConfigurationModal_import" class="iconButtons" onclick="importArrowheadProviderConfigFile()">
-                    <i class="fas fa-file-upload"></i>
-                </button>
             </div>
         </div>
     </div>
@@ -848,31 +884,31 @@
             <div class="modal-body" id="ArrowheadConsumerConfigurationModalBody">
                 <form id="ArrowheadConsumerConfigurationModalForm">
                     <span id="arrowhead_input_Consumer_host_span">Host</span>
-                    <input type="text" class="controlPanelInput" id="arrowhead_input_Consumer_host" name="arrowhead_input_Consumer_host" value="91.161.102.110"><br>
+                    <input type="text" class="controlPanelInput" id="arrowhead_input_Consumer_host" name="arrowhead_input_Consumer_host"><br>
                     <span id="arrowhead_input_Consumer_port_span">Port</span>
-                    <input type="text" class="controlPanelInput" id="arrowhead_input_Consumer_port" name="arrowhead_input_Consumer_port" value="8999"><br>
+                    <input type="text" class="controlPanelInput" id="arrowhead_input_Consumer_port" name="arrowhead_input_Consumer_port"><br>
                     <span id="arrowhead_input_Consumer_name_span">Name</span>
-                    <input type="text" class="controlPanelInput" id="arrowhead_input_Consumer_path" name="arrowhead_input_Consumer_path" value="papyrus_file_consumer"><br>
+                    <input type="text" class="controlPanelInput" id="arrowhead_input_Consumer_path" name="arrowhead_input_Consumer_path"><br>
                     <span id="arrowhead_input_Consumer_service_span">Service definition</span>
-                    <input type="text" class="controlPanelInput" id="arrowhead_input_Consumer_service" name="arrowhead_input_Consumer_service" value="file-downloader"><br>
+                    <input type="text" class="controlPanelInput" id="arrowhead_input_Consumer_service" name="arrowhead_input_Consumer_service"><br>
+                    <div id="ArrowheadConsumerConfigurationModalBody_buttons">
+                        <button type="submit" id="ArrowheadConsumerConfigurationModal_okay" class="modalDialogOkay">
+                            <i class="far fa-check-circle" style="font-size: 150%;"></i>
+                        </button>
+                        <button id="ArrowheadConsumerConfigurationModal_okay_nodejs" class="modalDialogOkay_nodejs">
+                            <i class="far fa-check-circle" style="font-size: 150%;"></i>
+                        </button>
+                        <button id="ArrowheadConsumerConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadConsumerConfigurationModalForm').reset()">
+                            <i class="far fa-times-circle" style="font-size: 150%;"></i>
+                        </button>
+                        <button id="ArrowheadConsumerConfigurationModal_export" class="iconButtons" onclick="exportArrowheadConsumerConfigFile()">
+                            <i class="fas fa-file-download"></i>
+                        </button>
+                        <button id="ArrowheadConsumerConfigurationModal_import" class="iconButtons" onclick="importArrowheadConsumerConfigFile()">
+                            <i class="fas fa-file-upload"></i>
+                        </button>
+                    </div>
                 </form>
-            </div>
-            <div id="ArrowheadConsumerConfigurationModalBody_buttons">
-                <button type="submit" id="ArrowheadConsumerConfigurationModal_okay" class="modalDialogOkay">
-                    <i class="far fa-check-circle" style="font-size: 150%;"></i>
-                </button>
-                <button id="ArrowheadConsumerConfigurationModal_okay_nodejs" class="modalDialogOkay_nodejs">
-                    <i class="far fa-check-circle" style="font-size: 150%;"></i>
-                </button>
-                <button id="ArrowheadConsumerConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadConsumerConfigurationModalForm').reset()">
-                    <i class="far fa-times-circle" style="font-size: 150%;"></i>
-                </button>
-                <button id="ArrowheadConsumerConfigurationModal_export" class="iconButtons" onclick="exportArrowheadConsumerConfigFile()">
-                    <i class="fas fa-file-download"></i>
-                </button>
-                <button id="ArrowheadConsumerConfigurationModal_import" class="iconButtons" onclick="importArrowheadConsumerConfigFile()">
-                    <i class="fas fa-file-upload"></i>
-                </button>
             </div>
         </div>
     </div>
@@ -886,301 +922,284 @@
             <div class="modal-body" id="ArrowheadAuthConfigurationModalBody">
                 <form id="ArrowheadAuthConfigurationModalForm">
                     <span id="arrowhead_input_Auth_host_span">Host</span>
-                    <input type="text" class="controlPanelInput" id="arrowhead_input_Auth_host" name="arrowhead_input_Auth_host" value="137.204.57.93"><br>
+                    <input type="text" class="controlPanelInput" id="arrowhead_input_Auth_host" name="arrowhead_input_Auth_host"><br>
                     <span id="arrowhead_input_Auth_port_span">Port</span>
-                    <input type="text" class="controlPanelInput" id="arrowhead_input_Auth_port" name="arrowhead_input_Auth_port" value="8445"><br>
+                    <input type="text" class="controlPanelInput" id="arrowhead_input_Auth_port" name="arrowhead_input_Auth_port"><br>
                     <span id="arrowhead_input_Auth_name_span">Name</span>
-                    <input type="text" class="controlPanelInput" id="arrowhead_input_Auth_path" name="arrowhead_input_Auth_path" value="/authorization"><br>
+                    <input type="text" class="controlPanelInput" id="arrowhead_input_Auth_path" name="arrowhead_input_Auth_path" "><br>
                     <br>
-                    <input type="checkbox" class="" id="arrowhead_input_auth_tls_useKey" name="arrowhead_input_auth_tls_useKey">
-                    <span id="arrowhead_input_auth_tls_useKey_span">Use key and certificates from local files</span><br>
-                    <div class="arrowhead_input_auth_tls_local_div">
-                        <span id="arrowhead_input_auth_tls_local_path_span">Certificate path</span>
-                        <input type="text" class="controlPanelInput" id="arrowhead_input_auth_tls_local_path" name="arrowhead_input_auth_tls_local_path"><br>
-                        <span id="arrowhead_input_auth_tls_local_key_span">Private Key path</span>
-                        <input type="text" class="controlPanelInput" id="arrowhead_input_auth_tls_local_key" name="arrowhead_input_auth_tls_local_key"><br>
-                        <span id="arrowhead_input_auth_tls_local_pass_span">Passphrase</span>
-                        <input type="text" class="controlPanelInput" id="arrowhead_input_auth_tls_local_pass" name="arrowhead_input_auth_tls_local_pass"><br>
-                        <span id="arrowhead_input_auth_tls_local_certificate_span">CA Certificate</span>
-                        <input type="text" class="controlPanelInput" id="arrowhead_input_auth_tls_local_certificate" name="arrowhead_input_auth_tls_local_certificate"><br>
+                    <input type="checkbox " class=" " id="arrowhead_input_auth_tls_useKey " name="arrowhead_input_auth_tls_useKey ">
+                    <span id="arrowhead_input_auth_tls_useKey_span ">Use key and certificates from local files</span><br>
+                    <div class="arrowhead_input_auth_tls_local_div ">
+                        <span id="arrowhead_input_auth_tls_local_path_span ">Certificate path</span>
+                        <input type="text " class="controlPanelInput " id="arrowhead_input_auth_tls_local_path " name="arrowhead_input_auth_tls_local_path "><br>
+                        <span id="arrowhead_input_auth_tls_local_key_span ">Private Key path</span>
+                        <input type="text " class="controlPanelInput " id="arrowhead_input_auth_tls_local_key " name="arrowhead_input_auth_tls_local_key "><br>
+                        <span id="arrowhead_input_auth_tls_local_pass_span ">Passphrase</span>
+                        <input type="text " class="controlPanelInput " id="arrowhead_input_auth_tls_local_pass " name="arrowhead_input_auth_tls_local_pass "><br>
+                        <span id="arrowhead_input_auth_tls_local_certificate_span ">CA Certificate</span>
+                        <input type="text " class="controlPanelInput " id="arrowhead_input_auth_tls_local_certificate " name="arrowhead_input_auth_tls_local_certificate "><br>
                     </div>
-                    <input type="checkbox" class="" id="arrowhead_input_auth_tls_server" name="arrowhead_input_auth_tls_server">
-                    <span id="arrowhead_input_auth_tls_server_span">Verify server certificate</span><br>
-                    <div class="arrowhead_input_auth_tls_server_div">
-                        <span id="arrowhead_input_auth_tls_server_name_span">Server name</span>
-                        <input type="text" class="controlPanelInput" id="arrowhead_input_auth_tls_server_name" name="arrowhead_input_auth_tls_server_name"><br>
-                        <span id="arrowhead_input_auth_tls_server_protocol_span">ALPN Protocol</span>
-                        <input type="text" class="controlPanelInput" id="arrowhead_input_auth_tls_server_protocol" name="arrowhead_input_auth_tls_server_protocol"><br>
+                    <input type="checkbox " class=" " id="arrowhead_input_auth_tls_server " name="arrowhead_input_auth_tls_server ">
+                    <span id="arrowhead_input_auth_tls_server_span ">Verify server certificate</span><br>
+                    <div class="arrowhead_input_auth_tls_server_div ">
+                        <span id="arrowhead_input_auth_tls_server_name_span ">Server name</span>
+                        <input type="text " class="controlPanelInput " id="arrowhead_input_auth_tls_server_name " name="arrowhead_input_auth_tls_server_name "><br>
+                        <span id="arrowhead_input_auth_tls_server_protocol_span ">ALPN Protocol</span>
+                        <input type="text " class="controlPanelInput " id="arrowhead_input_auth_tls_server_protocol " name="arrowhead_input_auth_tls_server_protocol "><br>
+                    </div>
+                    <div id="ArrowheadAuthConfigurationModalBody_buttons ">
+                        <button type="submit " id="ArrowheadAuthConfigurationModal_okay " class="modalDialogOkay ">
+                            <i class="far fa-check-circle " style="font-size: 150%; "></i>
+                        </button>
+                        <button id="ArrowheadAuthConfigurationModal_okay_nodejs " class="modalDialogOkay_nodejs ">
+                            <i class="far fa-check-circle " style="font-size: 150%; "></i>
+                        </button>
+                        <button id="ArrowheadAuthConfigurationModal_cancel " class="modalDialogCancel " onclick="document.getElementById( 'ArrowheadAuthConfigurationModalForm').reset() ">
+                            <i class="far fa-times-circle " style="font-size: 150%; "></i>
+                        </button>
+                        <button id="ArrowheadAuthConfigurationModal_export " class="iconButtons " onclick="exportArrowheadAuthConfigFile() ">
+                            <i class="fas fa-file-download "></i>
+                        </button>
+                        <button id="ArrowheadAuthConfigurationModal_import " class="iconButtons " onclick="importArrowheadAuthConfigFile() ">
+                            <i class="fas fa-file-upload "></i>
+                        </button>
                     </div>
                 </form>
             </div>
-            <div id="ArrowheadAuthConfigurationModalBody_buttons">
-                <button type="submit" id="ArrowheadAuthConfigurationModal_okay" class="modalDialogOkay">
-                    <i class="far fa-check-circle" style="font-size: 150%;"></i>
-                </button>
-                <button id="ArrowheadAuthConfigurationModal_okay_nodejs" class="modalDialogOkay_nodejs">
-                    <i class="far fa-check-circle" style="font-size: 150%;"></i>
-                </button>
-                <button id="ArrowheadAuthConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadAuthConfigurationModalForm').reset()">
-                    <i class="far fa-times-circle" style="font-size: 150%;"></i>
-                </button>
-                <button id="ArrowheadAuthConfigurationModal_export" class="iconButtons" onclick="exportArrowheadAuthConfigFile()">
-                    <i class="fas fa-file-download"></i>
-                </button>
-                <button id="ArrowheadAuthConfigurationModal_import" class="iconButtons" onclick="importArrowheadAuthConfigFile()">
-                    <i class="fas fa-file-upload"></i>
-                </button>
-            </div>
         </div>
     </div>
-    <div id="ArrowheadOrchConfigurationModal" class="modal">
-        <div class="modal-content" id="ArrowheadOrchConfigurationModal_content">
-            <div class="modal-header">
-                <img src="./S4E/media/arrowheadtools_invert.png" style="width: 30px; height: 30px; vertical-align: middle;">
-                <span id="ArrowheadOrchConfigurationModalHeader_span">Orchestration server configuration</span>
-                <span class="closeModal" id="closeModalArrowheadOrchConfiguration">&times;</span>
+    <div id="ArrowheadOrchConfigurationModal " class="modal ">
+        <div class="modal-content " id="ArrowheadOrchConfigurationModal_content ">
+            <div class="modal-header ">
+                <img src="./S4E/media/arrowheadtools_invert.png " style="width: 30px; height: 30px; vertical-align: middle; ">
+                <span id="ArrowheadOrchConfigurationModalHeader_span ">Orchestration server configuration</span>
+                <span class="closeModal " id="closeModalArrowheadOrchConfiguration ">&times;</span>
             </div>
-            <div class="modal-body" id="ArrowheadOrchConfigurationModalBody">
-                <form id="ArrowheadOrchConfigurationModalForm">
-                    <span id="arrowhead_input_orchestrator_span">Arrowhead Orchestrator Info</span><br>
-                    <div class="arrowhead_input_orchestrator_div">
-                        <span id="arrowhead_input_orchestrator_host_span">Host</span>
-                        <input type="text" class="controlPanelInput" id="arrowhead_input_orchestrator_host" name="arrowhead_input_orchestrator_host" value="137.204.57.93"><br>
-                        <span id="arrowhead_input_orchestrator_port_span">Port</span>
-                        <input type="text" class="controlPanelInput" id="arrowhead_input_orchestrator_port" name="arrowhead_input_orchestrator_port" value="8441"><br>
-                        <span id="arrowhead_input_orchestrator_path_span">Path</span>
-                        <input type="text" class="controlPanelInput" id="arrowhead_input_orchestrator_path" name="arrowhead_input_orchestrator_path" value="/orchestrator"><br>
+            <div class="modal-body " id="ArrowheadOrchConfigurationModalBody ">
+                <form id="ArrowheadOrchConfigurationModalForm ">
+                    <span id="arrowhead_input_orchestrator_span ">Arrowhead Orchestrator Info</span><br>
+                    <div class="arrowhead_input_orchestrator_div ">
+                        <span id="arrowhead_input_orchestrator_host_span ">Host</span>
+                        <input type="text " class="controlPanelInput " id="arrowhead_input_orchestrator_host " name="arrowhead_input_orchestrator_host "><br>
+                        <span id="arrowhead_input_orchestrator_port_span ">Port</span>
+                        <input type="text " class="controlPanelInput " id="arrowhead_input_orchestrator_port " name="arrowhead_input_orchestrator_port "><br>
+                        <span id="arrowhead_input_orchestrator_path_span ">Path</span>
+                        <input type="text " class="controlPanelInput " id="arrowhead_input_orchestrator_path " name="arrowhead_input_orchestrator_path "><br>
                         <br>
-                        <input type="checkbox" class="" id="arrowhead_input_orchestrator_tls_useKey" name="arrowhead_input_orchestrator_tls_useKey">
-                        <span id="arrowhead_input_orchestrator_tls_useKey_span">Use key and certificates from local files</span><br>
-                        <div class="arrowhead_input_orchestrator_tls_local_div">
-                            <span id="arrowhead_input_orchestrator_tls_local_path_span">Certificate path</span>
-                            <input type="text" class="controlPanelInput" id="arrowhead_input_orchestrator_tls_local_path" name="arrowhead_input_orchestrator_tls_local_path"><br>
-                            <span id="arrowhead_input_orchestrator_tls_local_key_span">Private Key path</span>
-                            <input type="text" class="controlPanelInput" id="arrowhead_input_orchestrator_tls_local_key" name="arrowhead_input_orchestrator_tls_local_key"><br>
-                            <span id="arrowhead_input_orchestrator_tls_local_pass_span">Passphrase</span>
-                            <input type="text" class="controlPanelInput" id="arrowhead_input_orchestrator_tls_local_pass" name="arrowhead_input_orchestrator_tls_local_pass"><br>
-                            <span id="arrowhead_input_orchestrator_tls_local_certificate_span">CA Certificate</span>
-                            <input type="text" class="controlPanelInput" id="arrowhead_input_orchestrator_tls_local_certificate" name="arrowhead_input_orchestrator_tls_local_certificate"><br>
+                        <input type="checkbox " class=" " id="arrowhead_input_orchestrator_tls_useKey " name="arrowhead_input_orchestrator_tls_useKey ">
+                        <span id="arrowhead_input_orchestrator_tls_useKey_span ">Use key and certificates from local files</span><br>
+                        <div class="arrowhead_input_orchestrator_tls_local_div ">
+                            <span id="arrowhead_input_orchestrator_tls_local_path_span ">Certificate path</span>
+                            <input type="text " class="controlPanelInput " id="arrowhead_input_orchestrator_tls_local_path " name="arrowhead_input_orchestrator_tls_local_path "><br>
+                            <span id="arrowhead_input_orchestrator_tls_local_key_span ">Private Key path</span>
+                            <input type="text " class="controlPanelInput " id="arrowhead_input_orchestrator_tls_local_key " name="arrowhead_input_orchestrator_tls_local_key "><br>
+                            <span id="arrowhead_input_orchestrator_tls_local_pass_span ">Passphrase</span>
+                            <input type="text " class="controlPanelInput " id="arrowhead_input_orchestrator_tls_local_pass " name="arrowhead_input_orchestrator_tls_local_pass "><br>
+                            <span id="arrowhead_input_orchestrator_tls_local_certificate_span ">CA Certificate</span>
+                            <input type="text " class="controlPanelInput " id="arrowhead_input_orchestrator_tls_local_certificate " name="arrowhead_input_orchestrator_tls_local_certificate "><br>
                         </div>
-                        <input type="checkbox" class="" id="arrowhead_input_orchestrator_tls_server" name="arrowhead_input_orchestrator_tls_server">
-                        <span id="arrowhead_input_orchestrator_tls_server_span">Verify server certificate</span><br>
-                        <div class="arrowhead_input_orchestrator_tls_server_div">
-                            <span id="arrowhead_input_orchestrator_tls_server_name_span">Server name</span>
-                            <input type="text" class="controlPanelInput" id="arrowhead_input_orchestrator_tls_server_name" name="arrowhead_input_orchestrator_tls_server_name"><br>
-                            <span id="arrowhead_input_orchestrator_tls_server_protocol_span">ALPN Protocol</span>
-                            <input type="text" class="controlPanelInput" id="arrowhead_input_orchestrator_tls_server_protocol" name="arrowhead_input_orchestrator_tls_server_protocol"><br>
+                        <input type="checkbox " class=" " id="arrowhead_input_orchestrator_tls_server " name="arrowhead_input_orchestrator_tls_server ">
+                        <span id="arrowhead_input_orchestrator_tls_server_span ">Verify server certificate</span><br>
+                        <div class="arrowhead_input_orchestrator_tls_server_div ">
+                            <span id="arrowhead_input_orchestrator_tls_server_name_span ">Server name</span>
+                            <input type="text " class="controlPanelInput " id="arrowhead_input_orchestrator_tls_server_name " name="arrowhead_input_orchestrator_tls_server_name "><br>
+                            <span id="arrowhead_input_orchestrator_tls_server_protocol_span ">ALPN Protocol</span>
+                            <input type="text " class="controlPanelInput " id="arrowhead_input_orchestrator_tls_server_protocol " name="arrowhead_input_orchestrator_tls_server_protocol "><br>
                         </div>
+                    </div>
+                    <div id="ArrowheadOrchConfigurationModalBody_buttons ">
+                        <button type="submit " id="ArrowheadOrchConfigurationModal_okay " class="modalDialogOkay ">
+                            <i class="far fa-check-circle " style="font-size: 150%; "></i>
+                        </button>
+                        <button id="ArrowheadOrchConfigurationModal_okay_nodejs " class="modalDialogOkay_nodejs ">
+                            <i class="far fa-check-circle " style="font-size: 150%; "></i>
+                        </button>
+                        <button id="ArrowheadOrchConfigurationModal_cancel " class="modalDialogCancel " onclick="document.getElementById( 'ArrowheadOrchConfigurationModalForm').reset() ">
+                            <i class="far fa-times-circle " style="font-size: 150%; "></i>
+                        </button>
+                        <button id="ArrowheadOrchConfigurationModal_export " class="iconButtons " onclick="exportArrowheadOrchConfigFile() ">
+                            <i class="fas fa-file-download "></i>
+                        </button>
+                        <button id="ArrowheadOrchConfigurationModal_import " class="iconButtons " onclick="importArrowheadOrchConfigFile() ">
+                            <i class="fas fa-file-upload "></i>
+                        </button>
                     </div>
                 </form>
             </div>
-            <br>
-            <div id="ArrowheadOrchConfigurationModalBody_buttons">
-                <button type="submit" id="ArrowheadOrchConfigurationModal_okay" class="modalDialogOkay">
-                    <i class="far fa-check-circle" style="font-size: 150%;"></i>
-                </button>
-                <button id="ArrowheadOrchConfigurationModal_okay_nodejs" class="modalDialogOkay_nodejs">
-                    <i class="far fa-check-circle" style="font-size: 150%;"></i>
-                </button>
-                <button id="ArrowheadOrchConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadOrchConfigurationModalForm').reset()">
-                    <i class="far fa-times-circle" style="font-size: 150%;"></i>
-                </button>
-                <button id="ArrowheadOrchConfigurationModal_export" class="iconButtons" onclick="exportArrowheadOrchConfigFile()">
-                    <i class="fas fa-file-download"></i>
-                </button>
-                <button id="ArrowheadOrchConfigurationModal_import" class="iconButtons" onclick="importArrowheadOrchConfigFile()">
-                    <i class="fas fa-file-upload"></i>
-                </button>
-            </div>
         </div>
     </div>
-    <!-- convert bin <-> text "modal" -->
-    <div id="convertModalDialog" class="dialog" style="min-width: 645px; min-height: 165px;">
-        <div class="titlebar UIText">Conversion</div>
-        <button name="close"></button>
-        <div class="content">
-            <input id="ti1" value="TEST" />
-            <button name="text2bin" onclick="text2bin();" class="iconButtons">
-                <span id="span_txt2bin"><i class="fas fa-exchange-alt"></i> </span>
+    <!-- convert bin <-> text "modal " -->
+    <div id="convertModalDialog " class="dialog " style="min-width: 645px; min-height: 165px; ">
+        <div class="titlebar UIText ">Conversion</div>
+        <button name="close "></button>
+        <div class="content ">
+            <input id="ti1 " value="TEST " />
+            <button name="text2bin " onclick="text2bin(); " class="iconButtons ">
+                <span id="span_txt2bin "><i class="fas fa-exchange-alt "></i> </span>
             </button>
-            <input id="ti2" />
-            <button name="text2binCopy" onclick="text2binCopy();" class="iconButtons">
-                <span id="span_txt2binCopy"><i class="far fa-copy"></i> </span>
+            <input id="ti2 " />
+            <button name="text2binCopy " onclick="text2binCopy(); " class="iconButtons ">
+                <span id="span_txt2binCopy "><i class="far fa-copy "></i> </span>
             </button>
             <br />
-            <input id="ti3" value="01010101" />
-            <button name="bin2text" onclick="bin2text();" class="iconButtons">
-                <span id="span_bin2txt"><i class="fas fa-exchange-alt"></i> </span>
+            <input id="ti3 " value="01010101 " />
+            <button name="bin2text " onclick="bin2text(); " class="iconButtons ">
+                <span id="span_bin2txt "><i class="fas fa-exchange-alt "></i> </span>
             </button>
-            <input id="ti4" />
-            <button name="bin2textCopy" onclick="bin2textCopy();" class="iconButtons">
-                <span id="span_txt2binCopy"><i class="far fa-copy"></i> </span>
+            <input id="ti4 " />
+            <button name="bin2textCopy " onclick="bin2textCopy(); " class="iconButtons ">
+                <span id="span_txt2binCopy "><i class="far fa-copy "></i> </span>
             </button>
         </div>
-        <div class="buttonpane"></div>
+        <div class="buttonpane "></div>
     </div>
-    <!-- convert colors <-> values "modal" -->
-    <div id="colorsModalDialog" class="dialog" style="min-width: 505px; min-height: 605px;">
-        <div class="titlebar UIText">Conversion</div>
-        <button name="close"></button>
-        <div class="content" id="colorsModalDialogContent"></div>
+    <!-- convert colors <-> values "modal " -->
+    <div id="colorsModalDialog " class="dialog " style="min-width: 505px; min-height: 605px; ">
+        <div class="titlebar UIText ">Conversion</div>
+        <button name="close "></button>
+        <div class="content " id="colorsModalDialogContent "></div>
     </div>
-</body>
 <!-- Blockly libraries -->
-<script src="./@blockly/blockly_compressed.js"></script>
-<script src="./@blockly/closure/goog/base.js"></script>
+<script src="./@blockly/blockly_compressed.js "></script>
+<script src="./@blockly/closure/goog/base.js "></script>
 <!-- needed for automatic variable typing -->
-<script src="js/typing_variables/type.js"></script>
-<script src="js/typing_variables/types.js"></script>
-<script src="js/typing_variables/static_typing.js"></script>
-<script src="js/typing_variables/instances.js"></script>
-<script src="js/typing_variables/field_instance.js"></script>
-<script src="js/typing_variables/block_instance.js"></script>
+<script src="js/typing_variables/type.js "></script>
+<script src="js/typing_variables/types.js "></script>
+<script src="js/typing_variables/static_typing.js "></script>
+<script src="js/typing_variables/instances.js "></script>
+<script src="js/typing_variables/field_instance.js "></script>
+<script src="js/typing_variables/block_instance.js "></script>
 <!-- Blockly libraries for themes and renderers -->
-<script src="./@blockly/core/workspace_comment.js"></script>
-<script src="./@blockly/core/workspace_comment_svg.js"></script>
-<script src="./@blockly/core/workspace_comment_render_svg.js"></script>
-<script src="./@blockly/core/renderers/minimalist/info.js" async></script>
-<script src="./@blockly/core/renderers/minimalist/constants.js" async></script>
-<script src="./@blockly/core/renderers/minimalist/drawer.js" async></script>
-<script src="./@blockly/core/renderers/minimalist/renderer.js" async></script>
-<script src="./@blockly/core/theme/zelos.js" async></script>
+<script src="./@blockly/core/workspace_comment.js "></script>
+<script src="./@blockly/core/workspace_comment_svg.js "></script>
+<script src="./@blockly/core/workspace_comment_render_svg.js "></script>
+<script src="./@blockly/core/renderers/minimalist/info.js " async></script>
+<script src="./@blockly/core/renderers/minimalist/constants.js " async></script>
+<script src="./@blockly/core/renderers/minimalist/drawer.js " async></script>
+<script src="./@blockly/core/renderers/minimalist/renderer.js " async></script>
+<script src="./@blockly/core/theme/zelos.js " async></script>
 <!-- Blockly plugins -->
-<script src="./@blockly/plugins/disable-top-blocks/index.js"></script>
-<script src="./@blockly/plugins/field-date/date_compressed.js"></script>
-<script src="./@blockly/plugins/field-grid-dropdown/index.js"></script>
-<script src="./@blockly/plugins/field-slider/index.js"></script>
-<script src="./@blockly/plugins/keyboard-navigation/index.js"></script>
-<script src="./@blockly/plugins/theme-dark/index.js"></script>
-<script src="./@blockly/plugins/theme-modern/index.js"></script>
-<script src="./@blockly/plugins/workspace-backpack/index.js"></script>
-<script src="./@blockly/plugins/workspace-content-highlight/index.js"></script>
-<script src="./@blockly/plugins/workspace-search/index.js"></script>
-<script src="./@blockly/plugins/zoom-to-fit/index.js"></script>
+<script src="./@blockly/plugins/disable-top-blocks/index.js "></script>
+<script src="./@blockly/plugins/field-date/date_compressed.js "></script>
+<script src="./@blockly/plugins/field-grid-dropdown/index.js "></script>
+<script src="./@blockly/plugins/field-slider/index.js "></script>
+<script src="./@blockly/plugins/keyboard-navigation/index.js "></script>
+<script src="./@blockly/plugins/theme-dark/index.js "></script>
+<script src="./@blockly/plugins/theme-modern/index.js "></script>
+<script src="./@blockly/plugins/workspace-backpack/index.js "></script>
+<script src="./@blockly/plugins/workspace-content-highlight/index.js "></script>
+<script src="./@blockly/plugins/workspace-search/index.js "></script>
+<script src="./@blockly/plugins/zoom-to-fit/index.js "></script>
 <!-- Blockly libraries of function, from different demos -->
-<script src="./@blockly/demos/code/code.js"></script>
-<script src="./@blockly/tests/playgrounds/screenshot.js" async></script>
+<script src="./@blockly/demos/code/code.js "></script>
+<script src="./@blockly/tests/playgrounds/screenshot.js " async></script>
 <!-- S4E external toolbox hacked -->
-<script src="./S4E/categories/arrowheadframework/arrowheadframework.toolbox"></script>
-<script src="./S4E/categories/board/board.toolbox"></script>
-<script src="./S4E/categories/ds18b20/ds18b20.toolbox"></script>
-<script src="./S4E/categories/DHT/DHT.toolbox"></script>
-<script src="./S4E/categories/relay/relay.toolbox"></script>
-<script src="./S4E/categories/servo/servo.toolbox"></script>
-<script src="./S4E/categories/blockly/blockly.toolbox"></script>
-<script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.toolbox"></script>
+<script src="./S4E/categories/arrowheadframework/arrowheadframework.toolbox "></script>
+<script src="./S4E/categories/board/board.toolbox "></script>
+<script src="./S4E/categories/ds18b20/ds18b20.toolbox "></script>
+<script src="./S4E/categories/DHT/DHT.toolbox "></script>
+<script src="./S4E/categories/relay/relay.toolbox "></script>
+<script src="./S4E/categories/servo/servo.toolbox "></script>
+<script src="./S4E/categories/blockly/blockly.toolbox "></script>
+<script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.toolbox "></script>
 <!-- Blockly libraries of function, hacked from different demos -->
-<!-- <script src="./js/blockly/keyboard_nav.js"></script> -->
-<script src="./js/minimap.js"></script>
-<script src="./js/blockly/playground.js"></script>
-<script src="./js/keyboard_nav.js"></script>
-<script src="./js/init.js"></script>
-<!-- <script src="./js/typed_variable.js"></script> -->
-<script src="./js/buttons_functions.js"></script>
-<script src="./js/dialog.js"></script>
-<script src="./js/renderingConstant.js"></script>
-<script src="./js/toolbox.js"></script>
-<script src="./js/lib/draggable-resizable-dialog.js"></script>
-<script src="./@blockly/demos/custom-dialogs/custom-dialog.js"></script>
+<!-- <script src="./js/blockly/keyboard_nav.js "></script> -->
+<script src="./js/minimap.js "></script>
+<script src="./js/blockly_playground.js "></script>
+<script src="./js/keyboard_nav.js "></script>
+<script src="./js/init.js "></script>
+<!-- <script src="./js/typed_variable.js "></script> -->
+<script src="./js/buttons_functions.js "></script>
+<script src="./js/dialog.js "></script>
+<script src="./js/renderingConstant.js "></script>
+<script src="./js/toolbox.js "></script>
+<script src="./js/lib/draggable-resizable-dialog.js "></script>
+<script src="./@blockly/demos/custom-dialogs/custom-dialog.js "></script>
 <!-- S4E libraries of external functions -->
-<script src="./js/ace/ace.js" charset="utf-8"></script>
-<script src="./js/ace/ext-language_tools.js"></script>
-<script src="./js/lib/iro.min.js"></script>
-<script src="./js/custom-color-field.js"></script>
+<script src="./js/lib/iro.min.js "></script>
+<script src="./js/custom-color-field.js "></script>
 <!-- S4E libraries of specific funtions definition -->
-<script src="./S4E/js/arrowhead.js"></script>
-<script src="./S4E/js/override_toolbox.js"></script>
+<script src="./S4E/js/arrowhead.js "></script>
+<script src="./S4E/js/override_toolbox.js "></script>
 <!-- Blockly themes added -->
-<script src="./S4E/themes/bw.js" async></script>
-<script src="./S4E/themes/themes_blocks.js" async></script>
-<script src="./S4E/themes/themes_categories.js" async></script>
-<script src="./S4E/themes/themes_components_override.js" async></script>
+<script src="./S4E/themes/bw.js " async></script>
+<script src="./S4E/themes/themes_blocks.js " async></script>
+<script src="./S4E/themes/themes_categories.js " async></script>
+<script src="./S4E/themes/themes_components_override.js " async></script>
 <!-- S4E libraries of boards definition -->
-<script src="./S4E/js/boards.json"></script>
-<script src="./S4E/js/boards.js"></script>
+<script src="./S4E/js/boards.json "></script>
+<script src="./S4E/js/boards.js "></script>
 <!-- S4E specific: block design -->
-<script src="./S4E/categories/blockly/variables.blocks"></script>
-<script src="./S4E/categories/blockly/colour.blocks"></script>
-<script src="./S4E/categories/blockly/array.blocks"></script>
-<script src="./S4E/categories/blockly/logic.blocks"></script>
-<script src="./S4E/categories/blockly/loops.blocks"></script>
-<script src="./S4E/categories/blockly/math.blocks"></script>
-<script src="./S4E/categories/blockly/text.blocks"></script>
+<script src="./S4E/categories/blockly/variables.blocks "></script>
+<script src="./S4E/categories/blockly/colour.blocks "></script>
+<script src="./S4E/categories/blockly/array.blocks "></script>
+<script src="./S4E/categories/blockly/logic.blocks "></script>
+<script src="./S4E/categories/blockly/loops.blocks "></script>
+<script src="./S4E/categories/blockly/math.blocks "></script>
+<script src="./S4E/categories/blockly/text.blocks "></script>
 <!-- need to overwite mutator with plugin plus-minus -->
-<script src="./@blockly/plugins/block-plus-minus/index.js"></script>
+<script src="./@blockly/plugins/block-plus-minus/index.js "></script>
 <!-- need to overwite plugin plus-minus for argument typing -->
-<script src="./S4E/categories/blockly/procedures.blocks"></script>
+<script src="./S4E/categories/blockly/procedures.blocks "></script>
 <!-- S4E specific: wait for block design loaded before typing blocks-->
-<script src="./S4E/categories/blockly/blockly.types" async></script>
-<script src="./S4E/categories/board/board_base.blocks" async></script>
-<script src="./S4E/categories/board/board_iot.blocks" async></script>
-<script src="./S4E/categories/board/board_serial.blocks" async></script>
-<script src="./S4E/categories/board/board.types" async></script>
-<script src="./S4E/categories/arrowheadframework/arrowheadframework.blocks"></script>
-<script src="./S4E/categories/arrowheadframework/arrowheadframework.types"></script>
-<script src="./S4E/categories/ds18b20/ds18b20.blocks" async></script>
-<script src="./S4E/categories/ds18b20/ds18b20.types" async></script>
-<script src="./S4E/categories/DHT/DHT.blocks" async></script>
-<script src="./S4E/categories/DHT/DHT.types" async></script>
-<script src="./S4E/categories/relay/relay.blocks" async></script>
-<script src="./S4E/categories/relay/relay.types" async></script>
-<script src="./S4E/categories/servo/servo.blocks" async></script>
-<script src="./S4E/categories/servo/servo.types" async></script>
-<script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.blocks"></script>
-<script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.types"></script>
+<script src="./S4E/categories/blockly/blockly.types " async></script>
+<script src="./S4E/categories/board/board_base.blocks " async></script>
+<script src="./S4E/categories/board/board_iot.blocks " async></script>
+<script src="./S4E/categories/board/board_serial.blocks " async></script>
+<script src="./S4E/categories/board/board.types " async></script>
+<script src="./S4E/categories/arrowheadframework/arrowheadframework.blocks "></script>
+<script src="./S4E/categories/arrowheadframework/arrowheadframework.types "></script>
+<script src="./S4E/categories/ds18b20/ds18b20.blocks " async></script>
+<script src="./S4E/categories/ds18b20/ds18b20.types " async></script>
+<script src="./S4E/categories/DHT/DHT.blocks " async></script>
+<script src="./S4E/categories/DHT/DHT.types " async></script>
+<script src="./S4E/categories/relay/relay.blocks " async></script>
+<script src="./S4E/categories/relay/relay.types " async></script>
+<script src="./S4E/categories/servo/servo.blocks " async></script>
+<script src="./S4E/categories/servo/servo.types " async></script>
+<script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.blocks "></script>
+<script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.types "></script>
 <!-- S4E specific: common generator code -->
-<script src="./generators/arduino_generator.js"></script>
-<script src="./S4E/categories/blockly/colour.arduino" async></script>
-<script src="./S4E/categories/blockly/array.arduino" async></script>
-<script src="./S4E/categories/blockly/logic.arduino" async></script>
-<script src="./S4E/categories/blockly/loops.arduino" async></script>
-<script src="./S4E/categories/blockly/math.arduino" async></script>
-<script src="./S4E/categories/blockly/procedures.arduino" async></script>
-<script src="./S4E/categories/blockly/text.arduino" async></script>
-<script src="./S4E/categories/blockly/variables.arduino" async></script>
+<script src="./generators/arduino_generator.js "></script>
+<script src="./S4E/categories/blockly/colour.arduino " async></script>
+<script src="./S4E/categories/blockly/array.arduino " async></script>
+<script src="./S4E/categories/blockly/logic.arduino " async></script>
+<script src="./S4E/categories/blockly/loops.arduino " async></script>
+<script src="./S4E/categories/blockly/math.arduino " async></script>
+<script src="./S4E/categories/blockly/procedures.arduino " async></script>
+<script src="./S4E/categories/blockly/text.arduino " async></script>
+<script src="./S4E/categories/blockly/variables.arduino " async></script>
 <!-- S4E specific: addon generator code -->
-<script src="./S4E/categories/board/board_base.arduino" async></script>
-<script src="./S4E/categories/board/board_iot.arduino" async></script>
-<script src="./S4E/categories/board/board_serial.arduino" async></script>
-<script src="./S4E/categories/arrowheadframework/arrowheadframework.arduino" async></script>
-<script src="./S4E/categories/ds18b20/ds18b20.arduino" async></script>
-<script src="./S4E/categories/DHT/DHT.arduino" async></script>
-<script src="./S4E/categories/relay/relay.arduino" async></script>
-<script src="./S4E/categories/servo/servo.arduino" async></script>
-<script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.arduino" async></script>
+<script src="./S4E/categories/board/board_base.arduino " async></script>
+<script src="./S4E/categories/board/board_iot.arduino " async></script>
+<script src="./S4E/categories/board/board_serial.arduino " async></script>
+<script src="./S4E/categories/arrowheadframework/arrowheadframework.arduino " async></script>
+<script src="./S4E/categories/ds18b20/ds18b20.arduino " async></script>
+<script src="./S4E/categories/DHT/DHT.arduino " async></script>
+<script src="./S4E/categories/relay/relay.arduino " async></script>
+<script src="./S4E/categories/servo/servo.arduino " async></script>
+<script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.arduino " async></script>
 <script>
-    ace.require("ace/ext/language_tools");
-    var editor = ace.edit("content_code");
-    editor.setTheme("ace/theme/sqlserver");
-    editor.session.setMode("ace/mode/c_cpp");
-    editor.setShowPrintMargin(false);
-    editor.setOptions({
-        autoScrollEditorIntoView: false,
-        readOnly: false,
-        highlightGutterLine: true,
-        animatedScroll: true,
-        enableBasicAutocompletion: true,
-        enableSnippets: true,
-        enableLiveAutocompletion: true
-    });
-    editor.find('needle', {
-        backwards: false,
-        wrap: false,
-        caseSensitive: false,
-        wholeWord: false,
-        regExp: false
-    });
-    editor.findNext();
-    editor.findPrevious();
-    require('../resources/app.asar/renderer.js');
-    require('../resources/app.asar/menu_functions.js');
-    require('../resources/app.asar/menu_CLI_functions.js');
-    require('../resources/app.asar/menu_IDE_functions.js');
-    // require('../renderer.js');
-    // require('../Arrowhead.js');
+    var require = {
+        paths: {
+            'vs': './vs'
+        }
+    };
+</script>
+<script src="./vs/loader.js "></script>
+<script src="./vs/editor/editor.main.nls.js "></script>
+<script src="./vs/editor/editor.main.js "></script>
+<script>
+    // require('../resources/app.asar/Arrowhead.js');
+    // require('../resources/app.asar/renderer.js');
+    // require('../resources/app.asar/menu_functions.js');
+    // require('../resources/app.asar/menu_CLI_functions.js');
+    // require('../resources/app.asar/menu_IDE_functions.js');
     // require('../menu_functions.js');
     // require('../menu_CLI_functions.js');
     // require('../menu_IDE_functions.js');
 </script>
 
+</body>
 </HTML>

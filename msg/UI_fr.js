@@ -6,7 +6,6 @@
 
 var MSG = {
     title: "S4E",
-    appName: "udio4Education",
     btnMinimize: "réduire",
     btnMaximize: "agrandir",
     btnClose: "fermer le logiciel",
@@ -90,7 +89,7 @@ var MSG = {
     registerToOrchestrator_helper_span: "Arrowhead configuration",
     blynkConnect_span: "connexion à Blynk",
     serialConnectIOT_span: "envoi de données IdO",
-    //ace editor
+    //monaco code editor
     editorReadOnlyToggle_span: "éditeur de code en lecture seule ou non",
     copyCodeButton_span: "copier le code dans le presse papiers",
     //lateral panel

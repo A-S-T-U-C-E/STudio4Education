@@ -178,11 +178,11 @@ function collapsibleContentInit() {
 
 function toggleEditorReadOnly(item) {
     if (item.checked) {
-        editor.setOptions({
+        Code.editor.updateOptions({
             readOnly: false
         })
     } else {
-        editor.setOptions({
+        Code.editor.updateOptions({
             readOnly: true
         })
     }
@@ -310,12 +310,12 @@ document.getElementById('saveCodeButton').onmouseover = function() {
 document.getElementById('saveCodeButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('menuButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['menuButton_span'];
-};
-document.getElementById('menuButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
+// document.getElementById('menuButton').onmouseover = function() {
+//     document.getElementById("content_hoverButton").textContent = MSG['menuButton_span'];
+// };
+// document.getElementById('menuButton').onmouseout = function() {
+//     document.getElementById("content_hoverButton").textContent = "";
+// };
 document.getElementById('newButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['newButton_span'];
 };
@@ -340,12 +340,12 @@ document.getElementById('resetButton').onmouseover = function() {
 document.getElementById('resetButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('parametersButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['setup_sideButton_span'];
-};
-document.getElementById('parametersButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
+// document.getElementById('parametersButton').onmouseover = function() {
+//     document.getElementById("content_hoverButton").textContent = MSG['setup_sideButton_span'];
+// };
+// document.getElementById('parametersButton').onmouseout = function() {
+//     document.getElementById("content_hoverButton").textContent = "";
+// };
 document.getElementById('sketch_name_wrapper').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['sketch_name_wrapper'];
 };

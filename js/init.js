@@ -8,6 +8,32 @@
  * @fileoverview JS function for intialisation, forked from https://github.com/google/blockly/commit/4e2f8e6e02b0473a86330eb7414794e6bfea430e.
  * @author scanet@libreduc.cc (Sébastien CANET)
  */
+document.addEventListener('DOMContentLoaded', function(event) {
+    if (!Code.editor) {
+        Code.editor = monaco.editor.create(document.getElementById('content_code'), {
+            scrollBeyondLastLine: false,
+            language: 'cpp',
+            automaticLayout: true,
+            readOnly: true
+        });
+    }
+    monaco.editor.defineTheme('defaultTheme', {
+        base: 'vs-dark',
+        inherit: true,
+        rules: [{ background: '000000' }],
+        colors: {
+            'editor.foreground': '#AAAA00',
+            'editor.background': '#000000',
+            'editorCursor.foreground': '#8B0000',
+            'editor.lineHighlightBackground': '#0000FF20',
+            'editorLineNumber.foreground': '#eeee88',
+            'editor.selectionBackground': '#88000030',
+            'editor.inactiveSelectionBackground': '#88000015'
+        }
+    });
+    // monaco.editor.setTheme('defaultTheme');
+})
+
 
 /**
  * Load blocks saved in session/local storage.
@@ -39,7 +65,7 @@ Code.loadBlocks = function(defaultXml) {
 Code.renderContent = function() {
     //var codePeakPre = document.getElementById('content_code');
     var generatedCode = Blockly.Arduino.workspaceToCode(Code.mainWorkspace);
-    editor.setValue(generatedCode, 1);
+    Code.editor.setValue(generatedCode, 1);
 };
 
 /**
@@ -52,9 +78,6 @@ Code.init = function() {
     setOnOffLine();
     collapsibleContentInit();
     var rtl = Code.isRtl();
-    //define resizable workspace
-    var container = document.getElementById('content_area');
-    var blocklyDiv = document.getElementById('content_blocks');
 
     for (var messageKey in MSG) {
         if (messageKey.indexOf('cat') === 0) {
@@ -94,9 +117,12 @@ Code.init = function() {
     // const disableTopBlocksPlugin = new DisableTopBlocks();
     // disableTopBlocksPlugin.init();
 
+    //define resizable workspace
+    var blocklyArea = document.getElementById('content_area');
+    var blocklyDiv = document.getElementById('content_blocks');
     const metrics = Code.mainWorkspace.getMetrics();
     var onresize = function(e) {
-        var element = container;
+        var element = blocklyArea;
         var x = 0;
         var y = 0;
         do {
@@ -106,8 +132,8 @@ Code.init = function() {
         } while (element);
         blocklyDiv.style.left = x + 'px';
         blocklyDiv.style.top = y + 'px';
-        blocklyDiv.style.width = container.offsetWidth + 'px';
-        blocklyDiv.style.height = container.offsetHeight + 'px';
+        blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+        blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
         Blockly.svgResize(Code.mainWorkspace);
         // TODO yet to finish...
         if (Code.mainWorkspace.RTL) {
@@ -124,6 +150,8 @@ Code.init = function() {
         blocklyDiv.style.top = metrics.absoluteTop + 'px';
     };
     window.addEventListener('resize', onresize, false);
+    onresize();
+    Blockly.svgResize(Code.mainWorkspace);
 
     Code.mainWorkspace.configureContextMenu = configureContextualMenu.bind(Code.mainWorkspace);
     Code.buildControlPanelForToolbox();
@@ -156,8 +184,6 @@ Code.init = function() {
     if ('BlocklyStorage' in window) {
         BlocklyStorage.backupOnUnload(Code.mainWorkspace);
     }
-    onresize();
-    Blockly.svgResize(Code.mainWorkspace);
 
     //change theme color
     match = location.search.match(/theme=([^&]+)/);
@@ -236,9 +262,94 @@ Code.init = function() {
             Blockly.svgResize(Code.mainWorkspace);
         }
     }
-    dragElement(document.getElementById("barre_h"), "V", document.getElementById("wrapper_up"), document.getElementById("content_serial"));
-    dragElement(document.getElementById("separator"), "H", document.getElementById("content_area"), document.getElementById("content_code"));
+    dragElement(document.getElementById("resizer_v"), "V", document.getElementById("wrapper_up"), document.getElementById("content_serial"));
+    dragElement(document.getElementById("resizer_h"), "H", document.getElementById("content_area"), document.getElementById("content_code"));
 
+
+    const resizable = function(resizer) {
+        const direction = resizer.getAttribute('data-direction') || 'horizontal';
+        const prevSibling = resizer.previousElementSibling;
+        const nextSibling = resizer.nextElementSibling;
+
+        // The current position of mouse
+        let x = 0;
+        let y = 0;
+        let prevSiblingHeight = 0;
+        let prevSiblingWidth = 0;
+
+        // Handle the mousedown event
+        // that's triggered when user drags the resizer
+        const mouseDownHandler = function(e) {
+            // Get the current mouse position
+            x = e.clientX;
+            y = e.clientY;
+            const rect = prevSibling.getBoundingClientRect();
+            prevSiblingHeight = rect.height;
+            prevSiblingWidth = rect.width;
+
+            // Attach the listeners to `document`
+            document.addEventListener('mousemove', mouseMoveHandler);
+            document.addEventListener('mouseup', mouseUpHandler);
+        };
+
+        const mouseMoveHandler = function(e) {
+            // How far the mouse has been moved
+            const dx = e.clientX - x;
+            const dy = e.clientY - y;
+
+            switch (direction) {
+                case 'vertical':
+                    const h =
+                        ((prevSiblingHeight + dy) * 100) /
+                        resizer.parentNode.getBoundingClientRect().height;
+                    prevSibling.style.height = `${h}%`;
+                    break;
+                case 'horizontal':
+                default:
+                    const w =
+                        ((prevSiblingWidth + dx) * 100) / resizer.parentNode.getBoundingClientRect().width;
+                    prevSibling.style.width = `${w}%`;
+                    // editor.layout({});
+                    break;
+            }
+            onresize();
+            // editor.layout({});
+            const cursor = direction === 'horizontal' ? 'col-resize' : 'row-resize';
+            resizer.style.cursor = cursor;
+            document.body.style.cursor = cursor;
+
+            prevSibling.style.userSelect = 'none';
+            prevSibling.style.pointerEvents = 'none';
+
+            nextSibling.style.userSelect = 'none';
+            nextSibling.style.pointerEvents = 'none';
+        };
+
+        const mouseUpHandler = function() {
+            resizer.style.removeProperty('cursor');
+            document.body.style.removeProperty('cursor');
+
+            prevSibling.style.removeProperty('user-select');
+            prevSibling.style.removeProperty('pointer-events');
+
+            nextSibling.style.removeProperty('user-select');
+            nextSibling.style.removeProperty('pointer-events');
+
+            // Remove the handlers of `mousemove` and `mouseup`
+            document.removeEventListener('mousemove', mouseMoveHandler);
+            document.removeEventListener('mouseup', mouseUpHandler);
+
+            Code.editor.layout({});
+        };
+
+        // Attach the handler
+        resizer.addEventListener('mousedown', mouseDownHandler);
+    };
+
+    // Query all resizers
+    document.querySelectorAll('.resizer').forEach(function(ele) {
+        resizable(ele);
+    });
     Code.renderContent();
     Code.sketchNameSizeEffect();
     Code.sketchNameSet();
@@ -285,7 +396,6 @@ Code.initLanguage = function() {
 
     // Inject language strings.
     document.title = MSG['title'];
-    document.getElementById('appName').textContent = MSG['appName'];
     document.getElementById('btn_fake_min').title = MSG['btnMinimize'];
     document.getElementById('btn_fake_max').title = MSG['btnMaximize'];
     document.getElementById('btn_fake_close').title = MSG['btnClose'];
@@ -306,12 +416,12 @@ Code.initLanguage = function() {
     document.getElementById('saveXMLButton').title = MSG['saveXMLButton_span'];
     document.getElementById('loadXMLfakeButton').title = MSG['loadXMLfakeButton_span'];
     document.getElementById('resetButton').title = MSG['resetButton_span'];
-    document.getElementById('newButton_span_menu').textContent = MSG['newButton_span'];
-    document.getElementById('loadXMLfakeButton_span_menu').textContent = MSG['loadXMLfakeButton_span'];
-    document.getElementById('saveXMLButton_span_menu').textContent = MSG['saveXMLButton_span'];
-    document.getElementById('saveCodeButton_span_menu').textContent = MSG['saveCodeButton_span'];
-    document.getElementById('parametersButton_span_menu').textContent = MSG['setup_sideButton_span'];
-    document.getElementById('resetButton_span_menu').textContent = MSG['resetButton_span'];
+    // document.getElementById('newButton_span_menu').textContent = MSG['newButton_span'];
+    // document.getElementById('loadXMLfakeButton_span_menu').textContent = MSG['loadXMLfakeButton_span'];
+    // document.getElementById('saveXMLButton_span_menu').textContent = MSG['saveXMLButton_span'];
+    // document.getElementById('saveCodeButton_span_menu').textContent = MSG['saveCodeButton_span'];
+    // document.getElementById('parametersButton_span_menu').textContent = MSG['setup_sideButton_span'];
+    // document.getElementById('resetButton_span_menu').textContent = MSG['resetButton_span'];
     // document.getElementById('helpButton_span_menu').textContent = MSG['helpButton_span'];
     document.getElementById('lateral-panel-setup-label').title = MSG['setup_sideButton_span'];
     document.getElementById('sketch_name_wrapper').title = MSG['sketch_name_wrapper'];

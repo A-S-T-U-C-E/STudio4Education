@@ -141,7 +141,7 @@
     vertical-align: middle;
 }
 
-#barre_h {
+#resizer_v {
     background-color: #00abdf;
     display: flex;
     flex-wrap: nowrap;

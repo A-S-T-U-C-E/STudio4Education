@@ -78,11 +78,11 @@ function exitFullScreen() {
 Code.copyToClipboard = function() {
     if (document.selection) { // IE
         var range = document.body.createTextRange();
-        range.moveToElementText(editor.getValue());
+        range.moveToElementText(Code.editor.getValue());
         range.select();
         document.execCommand("copy");
     } else if (window.getSelection) {
-        navigator.clipboard.writeText(editor.getValue())
+        navigator.clipboard.writeText(Code.editor.getValue())
             .then(() => { console.log('Code copied!') })
             .catch((error) => { console.log('Copy failed! ${error}') });
     }

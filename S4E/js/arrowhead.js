@@ -74,10 +74,10 @@ function ArrowheadOrchConfigurationShow() {
     document.getElementById('ArrowheadOrchConfigurationModal').classList.add('show');
     window.addEventListener('click', ArrowheadOrchConfigurationShowHide, 'once');
 };
-document.getElementById("closeModalArrowheadOrchConfiguration").onclick = function() {
-    document.getElementById('overlayForModals').style.display = "none";
-    document.getElementById('ArrowheadOrchConfigurationModal').classList.remove('show');
-};
+// document.getElementById("closeModalArrowheadOrchConfiguration").onclick = function() {
+//     document.getElementById('overlayForModals').style.display = "none";
+//     document.getElementById('ArrowheadOrchConfigurationModal').classList.remove('show');
+// };
 
 function ArrowheadOrchConfigurationShowHide(event) {
     if (document.getElementById('ArrowheadOrchConfigurationModal_content').contains(event.target)) {} else {
@@ -194,26 +194,21 @@ const formToJSON = elements => [].reduce.call(elements, (data, element) => {
  * @param  {Event} event  the submit event triggered by the user
  * @return {void}
  */
-const handleFormSubmit = (form, item) => {
-    const data = formToJSON(form.elements);
+const handleFormSubmit = event => {
+    event.preventDefault();
+    const data = formToJSON(document.getElementById(event.target.id).elements);
     const dataContainer = JSON.stringify(data, null, "  ");
-    sessionStorage.setItem(item, dataContainer);
+    sessionStorage.setItem(event.target.id, dataContainer);
 };
 
 /*
- * We find the form element using its class name, then attach the `handleFormSubmit()`
- * function to the `submit` event.
+ * Attach the `handleFormSubmit()` function to the `submit` event.
  */
-const formServReg = document.getElementById('ArrowheadServRegConfigurationModalForm');
-formServReg.addEventListener('submit', handleFormSubmit(formServReg, "ArrowheadServRegConfigurationForm"));
-const formProvider = document.getElementById('ArrowheadProviderConfigurationModalForm');
-formProvider.addEventListener('submit', handleFormSubmit(formProvider, "ArrowheadProviderConfigurationForm"));
-const formConsumer = document.getElementById('ArrowheadConsumerConfigurationModalForm');
-formConsumer.addEventListener('submit', handleFormSubmit(formConsumer, "ArrowheadConsumerConfigurationForm"));
-const formAuth = document.getElementById('ArrowheadAuthConfigurationModalForm');
-formAuth.addEventListener('submit', handleFormSubmit(formAuth, "ArrowheadAuthConfigurationForm"));
-const formOrch = document.getElementById('ArrowheadOrchConfigurationModalForm');
-formOrch.addEventListener('submit', handleFormSubmit(formOrch, "ArrowheadOrchConfigurationForm"));
+document.getElementById('ArrowheadServRegConfigurationModalForm').addEventListener('submit', handleFormSubmit);
+document.getElementById('ArrowheadProviderConfigurationModalForm').addEventListener('submit', handleFormSubmit);
+document.getElementById('ArrowheadConsumerConfigurationModalForm').addEventListener('submit', handleFormSubmit);
+document.getElementById('ArrowheadAuthConfigurationModalForm').addEventListener('submit', handleFormSubmit);
+// document.getElementById('ArrowheadOrchConfigurationModalForm').addEventListener('submit', handleFormSubmit);
 
 /*
  * WIP
