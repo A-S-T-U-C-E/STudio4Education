@@ -68,6 +68,8 @@ Code.renderContent = function() {
     Code.editor.setValue(generatedCode, 1);
 };
 
+
+
 /**
  * Initialize Blockly.  Called on page load.
  */
@@ -121,7 +123,7 @@ Code.init = function() {
     var blocklyArea = document.getElementById('content_area');
     var blocklyDiv = document.getElementById('content_blocks');
     const metrics = Code.mainWorkspace.getMetrics();
-    var onresize = function(e) {
+    var BlocklyWorkspaceOnresize = function(e) {
         var element = blocklyArea;
         var x = 0;
         var y = 0;
@@ -149,9 +151,16 @@ Code.init = function() {
         }
         blocklyDiv.style.top = metrics.absoluteTop + 'px';
     };
-    window.addEventListener('resize', onresize, false);
-    onresize();
+    BlocklyWorkspaceOnresize();
     Blockly.svgResize(Code.mainWorkspace);
+    window.addEventListener('resize', (event) => {
+        document.querySelectorAll('.resizer').forEach(function(ele) {
+            resizable(ele);
+        });
+        BlocklyWorkspaceOnresize();
+        console.log('toto');
+    });
+    // window.addEventListener('onresize', onresize, false);
 
     Code.mainWorkspace.configureContextMenu = configureContextualMenu.bind(Code.mainWorkspace);
     Code.buildControlPanelForToolbox();
@@ -210,7 +219,7 @@ Code.init = function() {
     // createKeyMappingList(actions);
 
     // function used for dragging and moving splitted windows
-    // needs onresize function defined ahead
+    // needs BlocklyWorkspaceOnresize function defined ahead
     function dragElement(element, direction, first, second) {
         var mouse_down_info;
         element.onmousedown = onMouseDown;
@@ -227,7 +236,6 @@ Code.init = function() {
             };
             document.onmousemove = onMouseMove;
             document.onmouseup = () => {
-                //console.log("mouse up");
                 document.onmousemove = document.onmouseup = null;
             };
         }
@@ -258,19 +266,18 @@ Code.init = function() {
                 first.style.height = (mouse_down_info.firstHeight + delta.y) + "px";
                 second.style.height = (mouse_down_info.secondHeight - delta.y) + "px";
             }
-            onresize();
-            Blockly.svgResize(Code.mainWorkspace);
+            BlocklyWorkspaceOnresize();
         }
     }
     dragElement(document.getElementById("resizer_v"), "V", document.getElementById("wrapper_up"), document.getElementById("content_serial"));
     dragElement(document.getElementById("resizer_h"), "H", document.getElementById("content_area"), document.getElementById("content_code"));
-
 
     const resizable = function(resizer) {
         const direction = resizer.getAttribute('data-direction') || 'horizontal';
         const prevSibling = resizer.previousElementSibling;
         const nextSibling = resizer.nextElementSibling;
 
+        resizer.preventDefault();
         // The current position of mouse
         let x = 0;
         let y = 0;
@@ -309,11 +316,8 @@ Code.init = function() {
                     const w =
                         ((prevSiblingWidth + dx) * 100) / resizer.parentNode.getBoundingClientRect().width;
                     prevSibling.style.width = `${w}%`;
-                    // editor.layout({});
                     break;
             }
-            onresize();
-            // editor.layout({});
             const cursor = direction === 'horizontal' ? 'col-resize' : 'row-resize';
             resizer.style.cursor = cursor;
             document.body.style.cursor = cursor;
