@@ -158,7 +158,6 @@ Code.init = function() {
             resizable(ele);
         });
         BlocklyWorkspaceOnresize();
-        console.log('toto');
     });
     // window.addEventListener('onresize', onresize, false);
 

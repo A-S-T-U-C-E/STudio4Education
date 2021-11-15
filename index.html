@@ -19,38 +19,33 @@
 
 <body>
     <div class="table_wrapper">
-        <table id="globalTable">
-            <tr id="optionsTop">
-                <td id="optionsTopTitle">
-                    <img id="logo" src="./S4E/media/STudio4Education_logo.png" style="height: 25px; vertical-align: middle;" />
-                </td>
-                <td id="optionsTopButtons" align="center">
-                    <button id="btn_fake_min" type="button" class="iconButtonsTop">
-                        <i class="far fa-window-minimize"></i>
-                    </button>
-                    <button id="btn_fake_max" type="button" class="iconButtonsTop">
-                        <i class="far fa-window-maximize"></i>
-                    </button>
-                    <button id="btn_fake_restore" type="button" class="iconButtonsTop">
-                        <i class="far fa-window-restore"></i>
-                    </button>
-                    <button id="btn_fake_close" type="button" class="iconButtonsTop">
-                        <i class="far fa-window-close"></i>
-                    </button>
-                </td>
-            </tr>
-            <tr id="interSpace">
-                <td colspan="2"></td>
-            </tr>
-            <tr id="functionsIcons">
-                <td colspan="2">
-                    <!-- <button id="menuButton" class="iconButtons" onclick="document.getElementById('menuPopup').style.display = 'block';document.getElementById('menuButton').classList.toggle('active');">
+        <div id="optionsTop">
+            <div id="optionsTopTitle">
+                <img id="logo" src="./S4E/media/STudio4Education_logo.png" style="height: 25px; vertical-align: middle;" />
+            </div>
+            <div id="optionsTopButtons" align="center">
+                <button id="btn_fake_min" type="button" class="iconButtonsTop">
+                    <i class="far fa-window-minimize"></i>
+                </button>
+                <button id="btn_fake_max" type="button" class="iconButtonsTop">
+                    <i class="far fa-window-maximize"></i>
+                </button>
+                <button id="btn_fake_restore" type="button" class="iconButtonsTop">
+                    <i class="far fa-window-restore"></i>
+                </button>
+                <button id="btn_fake_close" type="button" class="iconButtonsTop">
+                    <i class="far fa-window-close"></i>
+                </button>
+            </div>
+        </div>
+        <div id="functionsIcons">
+            <!-- <button id="menuButton" class="iconButtons" onclick="document.getElementById('menuPopup').style.display = 'block';document.getElementById('menuButton').classList.toggle('active');">
                         <span id="menuButtonButton_span">
                             <i class="fas fa-ellipsis-v"></i>
                         </span>
                     </button> -->
-                    <!-- <div id="menuPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('menuPopup').style.display = 'none';document.getElementById('menuButton').classList.toggle('active');"> -->
-                    <!-- <div id="buttonsMenuPopup" class="menu_div">
+            <!-- <div id="menuPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('menuPopup').style.display = 'none';document.getElementById('menuButton').classList.toggle('active');"> -->
+            <!-- <div id="buttonsMenuPopup" class="menu_div">
                             <div id="buttonsMenuPopupInside">
                                 <button id="newButton" class="iconButtons" onclick="Code.newProject()">
                                     <span id="newButton_span">
@@ -95,53 +90,53 @@
                                     </span>
                                 </button>
                                 <span id="resetButton_span_menu" class="menu_text"></span> -->
-                    <!-- <br> -->
-                    <!-- <hr> -->
-                    <!-- <button id="helpButton" class="iconButtons" onclick="toggleDisplayHelpModal()"> -->
-                    <!-- <span id="helpButton_span"> -->
-                    <!-- <i class="fas fa-question"></i> -->
-                    <!-- </span> -->
-                    <!-- </button> -->
-                    <!-- <span id="helpButton_span_menu" class="menu_text"></span> -->
-                    <!-- </div>
+            <!-- <br> -->
+            <!-- <hr> -->
+            <!-- <button id="helpButton" class="iconButtons" onclick="toggleDisplayHelpModal()"> -->
+            <!-- <span id="helpButton_span"> -->
+            <!-- <i class="fas fa-question"></i> -->
+            <!-- </span> -->
+            <!-- </button> -->
+            <!-- <span id="helpButton_span_menu" class="menu_text"></span> -->
+            <!-- </div>
                         </div> -->
-                    <!-- </div> -->
-                    <button id="resetButton" class="iconButtons" onclick="Code.ResetWorkspace()">
-                        <span id="resetButton_span">
-                            <i class="fas fa-power-off"></i>
-                        </span>
-                    </button>
-                    <button id="newButton" class="iconButtons" onclick="Code.newProject()">
-                        <span id="newButton_span">
-                            <i class="far fa-file"></i>
-                        </span>
-                    </button>
-                    <button id="loadXMLfakeButton" class="iconButtons" onclick="Code.loadXmlBlocklyFile()">
-                        <span id="loadXMLfakeButton_span">
-                            <i class="fas fa-file-upload"></i>
-                        </span>
-                    </button>
-                    <button id="saveXMLButton" class="iconButtons" onclick="Code.saveXmlBlocklyFile()">
-                        <span id="saveXMLButton_span">
-                            <i class="fas fa-file-download"></i>
-                        </span>
-                    </button>
-                    <button id="saveCodeButton" class="iconButtons" onclick="Code.saveCodeFile()">
-                        <span id="saveCodeButton_span">
-                            <i class="far fa-file-code"></i>
-                        </span>
-                    </button>
-                    <button id="fullScreenButton" class="iconButtons" onclick="fullScreen()">
-                        <span id="fullScreenButton_span">
-                            <i class="fas fa-expand-arrows-alt"></i>
-                        </span>
-                    </button>
-                    <button id="fullToolboxButton" class="iconButtons" onclick="Code.fullToolbox()">
-                        <span id="fullToolboxButton_span">
-                            <i class="fas fa-toolbox"></i>
-                        </span>
-                    </button>
-                    <!-- <button id="undoButton" class="iconButtons" onclick="Code.Undo()">
+            <!-- </div> -->
+            <button id="resetButton" class="iconButtons" onclick="Code.ResetWorkspace()">
+                <span id="resetButton_span">
+                    <i class="fas fa-power-off"></i>
+                </span>
+            </button>
+            <button id="newButton" class="iconButtons" onclick="Code.newProject()">
+                <span id="newButton_span">
+                    <i class="far fa-file"></i>
+                </span>
+            </button>
+            <button id="loadXMLfakeButton" class="iconButtons" onclick="Code.loadXmlBlocklyFile()">
+                <span id="loadXMLfakeButton_span">
+                    <i class="fas fa-file-upload"></i>
+                </span>
+            </button>
+            <button id="saveXMLButton" class="iconButtons" onclick="Code.saveXmlBlocklyFile()">
+                <span id="saveXMLButton_span">
+                    <i class="fas fa-file-download"></i>
+                </span>
+            </button>
+            <button id="saveCodeButton" class="iconButtons" onclick="Code.saveCodeFile()">
+                <span id="saveCodeButton_span">
+                    <i class="far fa-file-code"></i>
+                </span>
+            </button>
+            <button id="fullScreenButton" class="iconButtons" onclick="fullScreen()">
+                <span id="fullScreenButton_span">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </span>
+            </button>
+            <button id="fullToolboxButton" class="iconButtons" onclick="Code.fullToolbox()">
+                <span id="fullToolboxButton_span">
+                    <i class="fas fa-toolbox"></i>
+                </span>
+            </button>
+            <!-- <button id="undoButton" class="iconButtons" onclick="Code.Undo()">
                         <span id="undoButton_span">
                             <i class="fas fa-undo-alt"></i>
                         </span>
@@ -151,231 +146,220 @@
                             <i class="fas fa-redo-alt"></i>
                         </span>
                     </button> -->
-                    <button id="toolsButton" class="iconButtons" onclick="document.getElementById('toolsPopup').style.display = 'block';document.getElementById('toolsButton').classList.toggle('active');">
-                        <span id="toolsButton_span">
-                            <i class="fas fa-tools"></i>
-                        </span>
-                    </button>
-                    <div id="toolsPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('toolsPopup').style.display = 'none';document.getElementById('toolsButton').classList.toggle('active');">
-                        <div id="buttonsToolsPopup" class="menu_div">
-                            <div id="buttonsToolsPopupInside">
-                                <button id="wiringButton" class="iconButtons">
-                                    <span id="wiringButton_span">
-                                        <i class="fas fa-code-branch"></i>
-                                    </span>
-                                </button>
-                                <span id="wiringButton_span_menu" class="menu_text"></span>
-                                <br>
-                                <hr>
-                                <button id="factoryButton" class="iconButtons">
-                                    <span id="factoryButton_span">
-                                        <i class="fas fa-industry"></i>
-                                    </span>
-                                </button>
-                                <span id="factoryButton_span_menu" class="menu_text"></span>
-                                <br>
-                                <hr>
-                                <button id="htmlButton" class="iconButtons">
-                                    <span id="htmlButton_span">
-                                        <i class="fab fa-firefox-browser"></i>
-                                    </span>
-                                </button>
-                                <span id="htmlButton_span_menu" class="menu_text"></span>
-                                <br>
-                                <hr>
-                                <button id="colorConversionButton" class="iconButtons" onclick="showColorsModalDialog();">
-                                    <span id="colorConversionButton_span">
-                                        <i class="fas fa-swatchbook"></i>
-                                    </span>
-                                </button>
-                                <span id="colorConversionButton_span_menu" class="menu_text"></span>
-                                <br>
-                                <hr>
-                                <button id="dataConversionButton" class="iconButtons" onclick="showConvertModalDialog();">
-                                    <span id="dataConversionButton_span">
-                                        <i class="fas fa-exchange-alt"></i>
-                                    </span>
-                                </button>
-                                <span id="dataConversionButton_span_menu" class="menu_text"></span>
-                            </div>
-                        </div>
+            <button id="toolsButton" class="iconButtons" onclick="document.getElementById('toolsPopup').style.display = 'block';document.getElementById('toolsButton').classList.toggle('active');">
+                <span id="toolsButton_span">
+                    <i class="fas fa-tools"></i>
+                </span>
+            </button>
+            <div id="toolsPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('toolsPopup').style.display = 'none';document.getElementById('toolsButton').classList.toggle('active');">
+                <div id="buttonsToolsPopup" class="menu_div">
+                    <div id="buttonsToolsPopupInside">
+                        <button id="wiringButton" class="iconButtons">
+                            <span id="wiringButton_span">
+                                <i class="fas fa-code-branch"></i>
+                            </span>
+                        </button>
+                        <span id="wiringButton_span_menu" class="menu_text"></span>
+                        <br>
+                        <hr>
+                        <button id="factoryButton" class="iconButtons">
+                            <span id="factoryButton_span">
+                                <i class="fas fa-industry"></i>
+                            </span>
+                        </button>
+                        <span id="factoryButton_span_menu" class="menu_text"></span>
+                        <br>
+                        <hr>
+                        <button id="htmlButton" class="iconButtons">
+                            <span id="htmlButton_span">
+                                <i class="fab fa-firefox-browser"></i>
+                            </span>
+                        </button>
+                        <span id="htmlButton_span_menu" class="menu_text"></span>
+                        <br>
+                        <hr>
+                        <button id="colorConversionButton" class="iconButtons" onclick="showColorsModalDialog();">
+                            <span id="colorConversionButton_span">
+                                <i class="fas fa-swatchbook"></i>
+                            </span>
+                        </button>
+                        <span id="colorConversionButton_span_menu" class="menu_text"></span>
+                        <br>
+                        <hr>
+                        <button id="dataConversionButton" class="iconButtons" onclick="showConvertModalDialog();">
+                            <span id="dataConversionButton_span">
+                                <i class="fas fa-exchange-alt"></i>
+                            </span>
+                        </button>
+                        <span id="dataConversionButton_span_menu" class="menu_text"></span>
                     </div>
-                    <button id="iotConnectButton" class="iconButtons" onclick="document.getElementById('iotPopup').style.display = 'block';document.getElementById('iotConnectButton').classList.toggle('active');">
-                        <span id="iotConnectButton_span">
-                            <i class="fas fa-link"></i>
-                        </span>
-                    </button>
-                    <div id="iotPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('iotPopup').style.display = 'none';document.getElementById('iotConnectButton').classList.toggle('active');">
-                        <div id="buttonsIotPopup" class="menu_div">
-                            <div id="buttonsIotPopupInside">
-                                <button id="launchRedServer" class="iconButtons CLI">
-                                    <span id="launchRedServer_span">
-                                        <img src="./S4E/media/node-red.png"
-                                            style="width: 30px; height: 30px; vertical-align: middle;" />
-                                    </span>
-                                </button>
-                                <span id="launchRedServer_span_menu" class="menu_text"></span>
-                                <br>
-                                <hr>
-                                <button id="launchWebServer" class="iconButtons CLI">
-                                    <span id="launchWebServer_span">
-                                        <i class="fas fa-network-wired"></i>
-                                    </span>
-                                </button>
-                                <span id="launchWebServer_span_menu" class="menu_text"></span>
-                                <br>
-                                <hr>
-                                <button id="papyrusConnect" class="iconButtons CLI">
-                                    <span id="papyrusConnect_span">
-                                        <img src="./S4E/media/Eclipse_papyrus_logo.png"
-                                            style="width: 30px; height: 30px; vertical-align: middle;" />
-                                    </span>
-                                </button>
-                                <span id="papyrusConnect_span_menu" class="menu_text"></span>
-                                <br>
-                                <hr>
-                                <button id="ArrowheadConfiguration_auto" class="iconButtons CLI">
-                                    <span id="ArrowheadConfiguration_span">
-                                        <img src="./S4E/media/arrowheadtools_invert.png"
-                                            style="width: 30px; height: 30px; vertical-align: middle;" />
-                                    </span>
-                                </button>
-                                <span id="ArrowheadConfiguration_span_menu" class="menu_text"></span>
-                                <!-- <br> -->
-                                <!-- <hr> -->
-                                <!-- <button id="blynkConnect" class="iconButtons CLI"> -->
-                                <!-- <span id="blynkConnect_span"> -->
-                                <!-- <img src="./S4E/media/blynk.png" style="width: 30px; height: 30px; vertical-align: middle;"/> -->
-                                <!-- </span> -->
-                                <!-- </button> -->
-                                <br>
-                                <hr>
-                                <button id="serialConnectIOT" class="iconButtons CLI">
-                                    <span id="serialConnectIOT_span">
-                                        <i class="fas fa-cloud-upload-alt"></i>
-                                    </span>
-                                </button>
-                                <span id="serialConnectIOT_span_menu" class="menu_text"></span>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <button id="iotConnectButton" class="iconButtons" onclick="document.getElementById('iotPopup').style.display = 'block';document.getElementById('iotConnectButton').classList.toggle('active');">
+                <span id="iotConnectButton_span">
+                    <i class="fas fa-link"></i>
+                </span>
+            </button>
+            <div id="iotPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('iotPopup').style.display = 'none';document.getElementById('iotConnectButton').classList.toggle('active');">
+                <div id="buttonsIotPopup" class="menu_div">
+                    <div id="buttonsIotPopupInside">
+                        <button id="launchRedServer" class="iconButtons CLI">
+                            <span id="launchRedServer_span">
+                                <img src="./S4E/media/node-red.png"
+                                    style="width: 30px; height: 30px; vertical-align: middle;" />
+                            </span>
+                        </button>
+                        <span id="launchRedServer_span_menu" class="menu_text"></span>
+                        <br>
+                        <hr>
+                        <button id="launchWebServer" class="iconButtons CLI">
+                            <span id="launchWebServer_span">
+                                <i class="fas fa-network-wired"></i>
+                            </span>
+                        </button>
+                        <span id="launchWebServer_span_menu" class="menu_text"></span>
+                        <br>
+                        <hr>
+                        <button id="papyrusConnect" class="iconButtons CLI">
+                            <span id="papyrusConnect_span">
+                                <img src="./S4E/media/Eclipse_papyrus_logo.png"
+                                    style="width: 30px; height: 30px; vertical-align: middle;" />
+                            </span>
+                        </button>
+                        <span id="papyrusConnect_span_menu" class="menu_text"></span>
+                        <br>
+                        <hr>
+                        <button id="ArrowheadConfiguration_auto" class="iconButtons CLI">
+                            <span id="ArrowheadConfiguration_span">
+                                <img src="./S4E/media/arrowheadtools_invert.png"
+                                    style="width: 30px; height: 30px; vertical-align: middle;" />
+                            </span>
+                        </button>
+                        <span id="ArrowheadConfiguration_span_menu" class="menu_text"></span>
+                        <!-- <br> -->
+                        <!-- <hr> -->
+                        <!-- <button id="blynkConnect" class="iconButtons CLI"> -->
+                        <!-- <span id="blynkConnect_span"> -->
+                        <!-- <img src="./S4E/media/blynk.png" style="width: 30px; height: 30px; vertical-align: middle;"/> -->
+                        <!-- </span> -->
+                        <!-- </button> -->
+                        <br>
+                        <hr>
+                        <button id="serialConnectIOT" class="iconButtons CLI">
+                            <span id="serialConnectIOT_span">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </span>
+                        </button>
+                        <span id="serialConnectIOT_span_menu" class="menu_text"></span>
                     </div>
-                    <button id="boardButton" class="iconButtons" onclick="Code.boardsListModalShow()">
-                        <span id="boardButton_span">
-                            <i class="fas fa-microchip"></i>
-                        </span>
-                    </button>
-                    <button id="verifyButton" class="iconButtons">
-                        <span id="verifyButton_span">
-                            <i class="fas fa-tasks"></i>
-                        </span>
-                    </button>
-                    <button id="serialButton" class="iconButtons" onclick="Code.portsListModalShow()">
-                        <span id="serialButton_span">
-                            <i class="fab fa-usb"></i>
-                        </span>
-                    </button>
-                    <button id="uploadButton" class="iconButtons">
-                        <span id="uploadButton_span">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </span>
-                    </button>
-                    <button id="serialConnectButton" class="iconButtons" onclick="document.getElementById('serialPopup').style.display = 'block';document.getElementById('serialConnectButton').classList.toggle('active');">
-                        <span id="serialConnectButton_span">
-                            <i class="fas fa-glasses"></i>
-                        </span>
-                    </button>
-                    <div id="serialPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('serialPopup').style.display = 'none';document.getElementById('serialConnectButton').classList.toggle('active');">
-                        <div id="buttonsSerialPopup" class="menu_div">
-                            <div id="buttonsSerialPopupInside">
-                                <button id="serialMonitorButton" class="iconButtons CLI">
-                                    <span id="serialMonitorButton_span">
-                                        <i class="fas fa-search"></i>
-                                    </span>
-                                </button>
-                                <span id="serialMonitorButton_span_menu" class="menu_text"></span>
-                                <br>
-                                <hr>
-                                <button id="nodeRedFlowButton" class="iconButtons CLI" onclick="Code.flowsListModalShow()" disabled>
-                                    <span id="nodeRedFlowButton_span">
-                                        <i class="fas fa-tachometer-alt"></i>
-                                    </span>
-                                </button>
-                                <span id="nodeRedFlowButton_span_menu" class="menu_text"></span>
-                                <br>
-                                <hr>
-                                <button id="supervisionButton" class="iconButtons CLI" disabled>
-                                    <span id="supervisionButton_span">
-                                        <i class="fas fa-exchange-alt"></i>
-                                    </span>
-                                </button>
-                                <span id="supervisionButton_span_menu" class="menu_text"></span>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <button id="boardButton" class="iconButtons" onclick="Code.boardsListModalShow()">
+                <span id="boardButton_span">
+                    <i class="fas fa-microchip"></i>
+                </span>
+            </button>
+            <button id="verifyButton" class="iconButtons">
+                <span id="verifyButton_span">
+                    <i class="fas fa-tasks"></i>
+                </span>
+            </button>
+            <button id="serialButton" class="iconButtons" onclick="Code.portsListModalShow()">
+                <span id="serialButton_span">
+                    <i class="fab fa-usb"></i>
+                </span>
+            </button>
+            <button id="uploadButton" class="iconButtons">
+                <span id="uploadButton_span">
+                    <i class="fas fa-sign-out-alt"></i>
+                </span>
+            </button>
+            <button id="serialConnectButton" class="iconButtons" onclick="document.getElementById('serialPopup').style.display = 'block';document.getElementById('serialConnectButton').classList.toggle('active');">
+                <span id="serialConnectButton_span">
+                    <i class="fas fa-glasses"></i>
+                </span>
+            </button>
+            <div id="serialPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('serialPopup').style.display = 'none';document.getElementById('serialConnectButton').classList.toggle('active');">
+                <div id="buttonsSerialPopup" class="menu_div">
+                    <div id="buttonsSerialPopupInside">
+                        <button id="serialMonitorButton" class="iconButtons CLI">
+                            <span id="serialMonitorButton_span">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </button>
+                        <span id="serialMonitorButton_span_menu" class="menu_text"></span>
+                        <br>
+                        <hr>
+                        <button id="nodeRedFlowButton" class="iconButtons CLI" onclick="Code.flowsListModalShow()" disabled>
+                            <span id="nodeRedFlowButton_span">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </span>
+                        </button>
+                        <span id="nodeRedFlowButton_span_menu" class="menu_text"></span>
+                        <br>
+                        <hr>
+                        <button id="supervisionButton" class="iconButtons CLI" disabled>
+                            <span id="supervisionButton_span">
+                                <i class="fas fa-exchange-alt"></i>
+                            </span>
+                        </button>
+                        <span id="supervisionButton_span_menu" class="menu_text"></span>
                     </div>
-                    <span class="sketch_name_wrapper" id="sketch_name_wrapper">
-                        <i class="sketch_name_icon fas fa-pen"></i>
-                        <input id="sketch_name" class="sketch_name" type="text" size="10">
-                    </span>
-                    <button id="helpButton" class="iconButtons" onclick="toggleDisplayHelpModal()">
-                        <span id="helpButton_span">
-                            <i class="fas fa-question"></i>
-                        </span>
-                    </button>
-                    <span id="content_hoverButton"></span>
-                </td>
-            </tr>
-            <tr id="globalWorkspace">
-                <td colspan="2">
-                    <div class="content_wrapper">
-                        <div id="wrapper_up" class="wrapper_up">
-                            <div id="content_area">
-                                <div id="content_blocks" style="position: relative;">
-                                    <div id="minimapDiv"></div>
-                                    <button id="undoButton" class="iconWorkspaceButtons" onclick="Code.Undo()" style="bottom: 327px">
-                                        <span id="undoButton_span">
-                                            <i class="fas fa-undo-alt"></i>
-                                        </span>
-                                    </button>
-                                    <button id="redoButton" class="iconWorkspaceButtons" onclick="Code.Redo()" style="bottom: 290px">
-                                        <span id="redoButton_span">
-                                            <i class="fas fa-redo-alt"></i>
-                                        </span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div id="resizer_h" class="resize" data-direction="horizontal">
-                                <label id="editorReadOnlyToggle" class="switch">
-                                    <input type="checkbox" onclick="toggleEditorReadOnly(this)" />
-                                    <span class="slider"></span>
-                                </label>
-                            </div>
-                            <button id="copyCodeButton" class="iconButtons" onclick="Code.copyToClipboard()">
-                                <span id="copyCodeButton_span">
-                                    <i class="far fa-copy"></i>
-                                </span>
-                            </button>
-                            <div id="content_code"></div>
-                        </div>
-                        <div id="resizer_v" class="resize" data-direction="vertical">
-                            <div id="checkDetails">
-                                <input type="checkbox" name="detailedCompilation" id="detailedCompilation" />
-                                <span id="detailedCompilation_span"> </span>
-                            </div>
-                            <div id="infoBoardPort">
-                                <span id="boardSelected_span"> </span>
-                                <span id="portSelected_span"> </span>
-                                <!-- <button id="consoleOutsideButton" class="iconButtons" onclick="">
-                                    <span name="consoleOutside" id="consoleOutside_span">
-                                        <i class="fas fa-external-link-alt"></i>
+                </div>
+            </div>
+            <span class="sketch_name_wrapper" id="sketch_name_wrapper">
+                <i class="sketch_name_icon fas fa-pen"></i>
+                <input id="sketch_name" class="sketch_name" type="text" size="10">
+            </span>
+            <button id="helpButton" class="iconButtons" onclick="toggleDisplayHelpModal()">
+                <span id="helpButton_span">
+                    <i class="fas fa-question"></i>
+                </span>
+            </button>
+            <span id="content_hoverButton"></span>
+        </div>
+        <div class="content_wrapper">
+            <div id="wrapper_up" class="wrapper_up">
+                <div id="content_area">
+                    <div id="content_blocks" style="position: relative;">
+                        <div id="minimapDiv"></div>
+                        <button id="undoButton" class="iconWorkspaceButtons" onclick="Code.Undo()" style="bottom: 327px">
+                                    <span id="undoButton_span">
+                                        <i class="fas fa-undo-alt"></i>
                                     </span>
-                                </button> -->
-                            </div>
-                        </div>
-                        <div id="content_serial"></div>
+                                </button>
+                        <button id="redoButton" class="iconWorkspaceButtons" onclick="Code.Redo()" style="bottom: 290px">
+                                    <span id="redoButton_span">
+                                        <i class="fas fa-redo-alt"></i>
+                                    </span>
+                                </button>
                     </div>
-                </td>
-            </tr>
-        </table>
+                </div>
+                <div id="resizer_h" class="resize" data-direction="horizontal">
+                    <label id="editorReadOnlyToggle" class="switch">
+                                <input type="checkbox" onclick="toggleEditorReadOnly(this)" />
+                                <span class="slider"></span>
+                            </label>
+                </div>
+                <button id="copyCodeButton" class="iconButtons" onclick="Code.copyToClipboard()">
+                            <span id="copyCodeButton_span">
+                                <i class="far fa-copy"></i>
+                            </span>
+                        </button>
+                <div id="content_code"></div>
+            </div>
+            <div id="resizer_v" class="resize" data-direction="vertical">
+                <div id="checkDetails">
+                    <input type="checkbox" name="detailedCompilation" id="detailedCompilation" />
+                    <span id="detailedCompilation_span"> </span>
+                </div>
+                <div id="infoBoardPort">
+                    <span id="boardSelected_span"> </span>
+                    <span id="portSelected_span"> </span>
+                </div>
+            </div>
+            <div id="content_serial"></div>
+        </div>
     </div>
     <div id="helpModal" class="helpModal">
         <div id="helpModal_header">
