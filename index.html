@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <div class="table_wrapper">
+    <flex class="content_wrapper">
         <div id="optionsTop">
             <div id="optionsTopTitle">
                 <img id="logo" src="./S4E/media/STudio4Education_logo.png" style="height: 25px; vertical-align: middle;" />
@@ -318,49 +318,54 @@
             </button>
             <span id="content_hoverButton"></span>
         </div>
-        <div class="content_wrapper">
-            <div id="wrapper_up" class="wrapper_up">
-                <div id="content_area">
-                    <div id="content_blocks" style="position: relative;">
-                        <div id="minimapDiv"></div>
-                        <button id="undoButton" class="iconWorkspaceButtons" onclick="Code.Undo()" style="bottom: 327px">
-                                    <span id="undoButton_span">
-                                        <i class="fas fa-undo-alt"></i>
-                                    </span>
-                                </button>
-                        <button id="redoButton" class="iconWorkspaceButtons" onclick="Code.Redo()" style="bottom: 290px">
-                                    <span id="redoButton_span">
-                                        <i class="fas fa-redo-alt"></i>
-                                    </span>
-                                </button>
-                    </div>
+        <flex class="wrapper_cell" style="flex: 1;">
+            <flex-item style="flex: 1;">
+                <div id="content_area" style="height: 100%; width: 100%;"></div>
+                <div id="content_blocks" style="position: absolute;">
+                    <div id="minimapDiv"></div>
+                    <button id="undoButton" class="iconWorkspaceButtons" onclick="Code.Undo()" style="bottom: 327px">
+                        <span id="undoButton_span">
+                            <i class="fas fa-undo-alt"></i>
+                        </span>
+                    </button>
+                    <button id="redoButton" class="iconWorkspaceButtons" onclick="Code.Redo()" style="bottom: 290px">
+                        <span id="redoButton_span">
+                            <i class="fas fa-redo-alt"></i>
+                        </span>
+                    </button>
                 </div>
-                <div id="resizer_h" class="resize" data-direction="horizontal">
-                    <label id="editorReadOnlyToggle" class="switch">
-                                <input type="checkbox" onclick="toggleEditorReadOnly(this)" />
-                                <span class="slider"></span>
-                            </label>
-                </div>
+            </flex-item>
+            <flex-resizer id="resizer_h">
+                <label id="editorReadOnlyToggle" class="switch">
+                    <input type="checkbox" onclick="toggleEditorReadOnly(this)" />
+                    <span class="slider"></span>
+                </label>
+            </flex-resizer>
+            <flex-item id="content_code" style="flex: 0 1">
                 <button id="copyCodeButton" class="iconButtons" onclick="Code.copyToClipboard()">
-                            <span id="copyCodeButton_span">
-                                <i class="far fa-copy"></i>
-                            </span>
-                        </button>
-                <div id="content_code"></div>
+                    <span id="copyCodeButton_span">
+                        <i class="far fa-copy"></i>
+                    </span>
+                </button>
+                <button id="openCodeButton" class="iconButtons" onclick="openMonacoEditor()">
+                    <span id="openCodeButton_span">
+                        <i class="fas fa-code"></i>
+                    </span>
+                </button>
+            </flex-item>
+        </flex>
+        <flex-resizer id="resizer_v">
+            <div id="checkDetails">
+                <input type="checkbox" name="detailedCompilation" id="detailedCompilation" />
+                <span id="detailedCompilation_span"> </span>
             </div>
-            <div id="resizer_v" class="resize" data-direction="vertical">
-                <div id="checkDetails">
-                    <input type="checkbox" name="detailedCompilation" id="detailedCompilation" />
-                    <span id="detailedCompilation_span"> </span>
-                </div>
-                <div id="infoBoardPort">
-                    <span id="boardSelected_span"> </span>
-                    <span id="portSelected_span"> </span>
-                </div>
+            <div id="infoBoardPort">
+                <span id="boardSelected_span"> </span>
+                <span id="portSelected_span"> </span>
             </div>
-            <div id="content_serial"></div>
-        </div>
-    </div>
+        </flex-resizer>
+        <flex-item id="content_serial"></flex-item>
+    </flex>
     <div id="helpModal" class="helpModal">
         <div id="helpModal_header">
             <span id="helpModalSpan_title"></span>

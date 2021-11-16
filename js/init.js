@@ -138,28 +138,22 @@ Code.init = function() {
         blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
         Blockly.svgResize(Code.mainWorkspace);
         // TODO yet to finish...
-        if (Code.mainWorkspace.RTL) {
-            blocklyDiv.style.left = metrics.absoluteLeft + 'px';
-            blocklyDiv.style.right = 'auto';
-        } else {
-            blocklyDiv.style.left = 'auto';
-            if (metrics.toolboxPosition === Blockly.TOOLBOX_AT_RIGHT) {
-                blocklyDiv.style.right = metrics.toolboxWidth + 'px';
-            } else {
-                blocklyDiv.style.right = '0';
-            }
-        }
-        blocklyDiv.style.top = metrics.absoluteTop + 'px';
+        // if (Code.mainWorkspace.RTL) {
+        //     blocklyDiv.style.left = metrics.absoluteLeft + 'px';
+        //     blocklyDiv.style.right = 'auto';
+        // } else {
+        //     blocklyDiv.style.left = 'auto';
+        //     if (metrics.toolboxPosition === Blockly.TOOLBOX_AT_RIGHT) {
+        //         blocklyDiv.style.right = metrics.toolboxWidth + 'px';
+        //     } else {
+        //         blocklyDiv.style.right = '0';
+        //     }
+        // }
+        // blocklyDiv.style.top = metrics.absoluteTop + 'px';
     };
     BlocklyWorkspaceOnresize();
     Blockly.svgResize(Code.mainWorkspace);
-    window.addEventListener('resize', (event) => {
-        document.querySelectorAll('.resizer').forEach(function(ele) {
-            resizable(ele);
-        });
-        BlocklyWorkspaceOnresize();
-    });
-    // window.addEventListener('onresize', onresize, false);
+    window.addEventListener('resize', BlocklyWorkspaceOnresize, false);
 
     Code.mainWorkspace.configureContextMenu = configureContextualMenu.bind(Code.mainWorkspace);
     Code.buildControlPanelForToolbox();
@@ -219,140 +213,93 @@ Code.init = function() {
 
     // function used for dragging and moving splitted windows
     // needs BlocklyWorkspaceOnresize function defined ahead
-    function dragElement(element, direction, first, second) {
-        var mouse_down_info;
-        element.onmousedown = onMouseDown;
-
-        function onMouseDown(e) {
-            mouse_down_info = {
-                e,
-                offsetLeft: element.offsetLeft,
-                offsetTop: element.offsetTop,
-                firstWidth: first.offsetWidth,
-                secondWidth: second.offsetWidth,
-                firstHeight: first.offsetHeight,
-                secondHeight: second.offsetHeight
-            };
-            document.onmousemove = onMouseMove;
-            document.onmouseup = () => {
-                document.onmousemove = document.onmouseup = null;
-            };
+    function manageResize(md, sizeProp, posProp) {
+        var prev = md.target.previousElementSibling;
+        var next = md.target.nextElementSibling;
+        if (!prev || !next) {
+            return;
         }
+        md.preventDefault();
+        var prevSize = prev[sizeProp];
+        var nextSize = next[sizeProp];
+        var sumSize = prevSize + nextSize;
+        var prevGrow = Number(prev.style.flexGrow);
+        var nextGrow = Number(next.style.flexGrow);
+        var sumGrow = prevGrow + nextGrow;
+        var lastPos = md[posProp];
 
-        function onMouseMove(e) {
-            var delta = {
-                x: e.clientX - mouse_down_info.e.x,
-                y: e.clientY - mouse_down_info.e.y
-            };
-            if (direction === "H") // Horizontal
-            {
-                // prevent negative-sized elements
-                delta.x = Math.min(Math.max(delta.x, -mouse_down_info.firstWidth), mouse_down_info.secondWidth);
-                element.style.left = mouse_down_info.offsetLeft + delta.x + "px";
-                first.style.width = (mouse_down_info.firstWidth + delta.x) + "px";
-                second.style.width = (mouse_down_info.secondWidth - delta.x) + "px";
-                //hide button if div si too thin
-                if (document.getElementById("content_code").offsetWidth < 50)
-                    document.getElementById("copyCodeButton").style.visibility = 'hidden';
-                else
-                    document.getElementById("copyCodeButton").style.visibility = 'visible';
+        function onMouseMove(mm) {
+            var pos = mm[posProp];
+            var d = pos - lastPos;
+            prevSize += d;
+            nextSize -= d;
+            if (prevSize < 0) {
+                nextSize += prevSize;
+                pos -= prevSize;
+                prevSize = 0;
             }
-            if (direction === "V") // Vertical
-            {
-                // prevent negative-sized elements
-                delta.y = Math.min(Math.max(delta.y, -mouse_down_info.firstHeight), mouse_down_info.secondHeight);
-                element.style.top = mouse_down_info.offsetTop + delta.y + "px";
-                first.style.height = (mouse_down_info.firstHeight + delta.y) + "px";
-                second.style.height = (mouse_down_info.secondHeight - delta.y) + "px";
+            if (nextSize < 0) {
+                prevSize += nextSize;
+                pos += nextSize;
+                nextSize = 0;
             }
+            var prevGrowNew = sumGrow * (prevSize / sumSize);
+            var nextGrowNew = sumGrow * (nextSize / sumSize);
+            prev.style.flexGrow = prevGrowNew;
+            next.style.flexGrow = nextGrowNew;
+            lastPos = pos;
             BlocklyWorkspaceOnresize();
-        }
-    }
-    dragElement(document.getElementById("resizer_v"), "V", document.getElementById("wrapper_up"), document.getElementById("content_serial"));
-    dragElement(document.getElementById("resizer_h"), "H", document.getElementById("content_area"), document.getElementById("content_code"));
-
-    const resizable = function(resizer) {
-        const direction = resizer.getAttribute('data-direction') || 'horizontal';
-        const prevSibling = resizer.previousElementSibling;
-        const nextSibling = resizer.nextElementSibling;
-
-        resizer.preventDefault();
-        // The current position of mouse
-        let x = 0;
-        let y = 0;
-        let prevSiblingHeight = 0;
-        let prevSiblingWidth = 0;
-
-        // Handle the mousedown event
-        // that's triggered when user drags the resizer
-        const mouseDownHandler = function(e) {
-            // Get the current mouse position
-            x = e.clientX;
-            y = e.clientY;
-            const rect = prevSibling.getBoundingClientRect();
-            prevSiblingHeight = rect.height;
-            prevSiblingWidth = rect.width;
-
-            // Attach the listeners to `document`
-            document.addEventListener('mousemove', mouseMoveHandler);
-            document.addEventListener('mouseup', mouseUpHandler);
-        };
-
-        const mouseMoveHandler = function(e) {
-            // How far the mouse has been moved
-            const dx = e.clientX - x;
-            const dy = e.clientY - y;
-
-            switch (direction) {
-                case 'vertical':
-                    const h =
-                        ((prevSiblingHeight + dy) * 100) /
-                        resizer.parentNode.getBoundingClientRect().height;
-                    prevSibling.style.height = `${h}%`;
-                    break;
-                case 'horizontal':
-                default:
-                    const w =
-                        ((prevSiblingWidth + dx) * 100) / resizer.parentNode.getBoundingClientRect().width;
-                    prevSibling.style.width = `${w}%`;
-                    break;
+            Code.editor.layout();
+            //hide button if div si too thin
+            if (document.getElementById("content_code").offsetWidth < 50) {
+                document.getElementById("copyCodeButton").style.visibility = 'hidden';
+                document.getElementById("openCodeButton").style.visibility = 'hidden';
+            } else {
+                document.getElementById("copyCodeButton").style.visibility = 'visible';
+                document.getElementById("openCodeButton").style.visibility = 'visible';
             }
-            const cursor = direction === 'horizontal' ? 'col-resize' : 'row-resize';
-            resizer.style.cursor = cursor;
-            document.body.style.cursor = cursor;
+        }
 
-            prevSibling.style.userSelect = 'none';
-            prevSibling.style.pointerEvents = 'none';
+        function onMouseUp(mu) {
+            const html = document.querySelector('html');
+            html.style.cursor = 'default';
+            if (posProp === 'pageX') {
+                md.target.style.cursor = 'ew-resize';
+            } else {
+                md.target.style.cursor = 'ns-resize';
+            }
+            window.removeEventListener("mousemove", onMouseMove);
+            window.removeEventListener("mouseup", onMouseUp);
+        }
+        window.addEventListener("mousemove", onMouseMove);
+        window.addEventListener("mouseup", onMouseUp);
+    }
 
-            nextSibling.style.userSelect = 'none';
-            nextSibling.style.pointerEvents = 'none';
-        };
+    function setupResizerEvents() {
+        document.body.addEventListener("mousedown", function(md) {
+            const html = document.querySelector('html');
+            var target = md.target;
+            if (target.nodeType !== 1 || target.tagName !== "FLEX-RESIZER") {
+                return;
+            }
+            var parent = target.parentNode;
+            var h = parent.classList.contains("wrapper_cell");
+            var v = parent.classList.contains("content_wrapper");
+            if (h && v) {
+                return;
+            } else if (h) {
+                target.style.cursor = 'col-resize';
+                html.style.cursor = 'col-resize'; // avoid cursor's flickering
+                manageResize(md, "offsetWidth", "pageX");
+            } else if (v) {
+                target.style.cursor = 'row-resize';
+                html.style.cursor = 'row-resize'; // avoid cursor's flickering
+                manageResize(md, "offsetHeight", "pageY");
+            }
+        });
+    }
+    setupResizerEvents();
 
-        const mouseUpHandler = function() {
-            resizer.style.removeProperty('cursor');
-            document.body.style.removeProperty('cursor');
-
-            prevSibling.style.removeProperty('user-select');
-            prevSibling.style.removeProperty('pointer-events');
-
-            nextSibling.style.removeProperty('user-select');
-            nextSibling.style.removeProperty('pointer-events');
-
-            // Remove the handlers of `mousemove` and `mouseup`
-            document.removeEventListener('mousemove', mouseMoveHandler);
-            document.removeEventListener('mouseup', mouseUpHandler);
-
-            Code.editor.layout({});
-        };
-
-        // Attach the handler
-        resizer.addEventListener('mousedown', mouseDownHandler);
-    };
-
-    // Query all resizers
-    document.querySelectorAll('.resizer').forEach(function(ele) {
-        resizable(ele);
-    });
     Code.renderContent();
     Code.sketchNameSizeEffect();
     Code.sketchNameSet();

@@ -177,6 +177,15 @@
     cursor: help;
 }
 
+#openCodeButton {
+    visibility: hidden;
+    position: absolute;
+    top: 125px;
+    right: 5px;
+    border-radius: 5px;
+    z-index: 5;
+}
+
 #copyCodeButton {
     visibility: hidden;
     position: absolute;
