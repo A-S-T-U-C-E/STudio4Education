@@ -91,6 +91,79 @@ Code.copyToClipboard = function() {
 /**
  * modal controllers
  */
+var dialog;
+let diffOrNot = false;
+document.getElementById("content_code_Monaco").style.display = 'block';
+document.getElementById("content_diffCode_Monaco").style.display = 'none';
+Code.editorMonacoModalShow = function() {
+    if (!dialog) {
+        dialog = new DialogBox('editorMonacoModal', callbackButtons);
+        if (!Code.editor)
+            Code.editor = monaco.editor.create(document.getElementById('content_code_Monaco'), {
+                scrollBeyondLastLine: false,
+                language: 'cpp',
+                automaticLayout: true
+            });
+        if (!Code.diffEditor) {
+            Code.diffEditor = monaco.editor.createDiffEditor(document.getElementById('content_diffCode_Monaco'), {
+                followsCaret: true,
+                ignoreCharChanges: true,
+                automaticLayout: true
+            });
+            Code.diffEditor.setModel({
+                original: monaco.editor.createModel(Blockly.Arduino.workspaceToCode(Code.mainWorkspace), 'cpp'),
+                modified: monaco.editor.createModel(Blockly.Arduino.workspaceToCode(Code.mainWorkspace), 'cpp'),
+            });
+        }
+    }
+    document.getElementById("content_code_Monaco").style.width = '100%';
+    document.getElementById("content_code_Monaco").style.height = '100%';
+    Code.editor.setValue(Blockly.Arduino.workspaceToCode(Code.mainWorkspace));
+    dialog.showDialog();
+    document.getElementById("openCodeButton").classList.remove("iconButtons");
+    document.getElementById("openCodeButton").classList.add("iconButtonsClicked");
+
+    function callbackButtons(btnName) {
+        switch (btnName) {
+            case 'editorMonacoModal_close':
+                document.getElementById("openCodeButton").classList.remove("iconButtonsClicked");
+                document.getElementById("openCodeButton").classList.add("iconButtons");
+                document.getElementById("editorMonacoModal").style.display = "none";
+                break;
+            case 'editorMonacoModal_ok':
+                if (diffOrNot === true) {
+                    var codeModified = Code.diffEditor.getModifiedEditor().getValue();
+                } else var codeModified = Code.editor.getValue();
+                document.getElementById('content_pre_code').innerHTML = prettyPrintOne(codeModified, 'cpp', false);
+                break;
+            case 'editorMonacoModal_cancel':
+                Code.diffEditor.getOriginalEditor().setValue(Blockly.Arduino.workspaceToCode(Code.mainWorkspace));
+                Code.diffEditor.getModifiedEditor().setValue(Blockly.Arduino.workspaceToCode(Code.mainWorkspace));
+                Code.editor.setValue(Blockly.Arduino.workspaceToCode(Code.mainWorkspace));
+                break;
+            case 'editorMonacoModal_diff':
+                if (diffOrNot === false) {
+                    Code.diffEditor.getOriginalEditor().setValue(Blockly.Arduino.workspaceToCode(Code.mainWorkspace));
+                    Code.diffEditor.getModifiedEditor().setValue(Code.editor.getValue());
+                    document.getElementById("content_code_Monaco").style.display = 'none';
+                    document.getElementById("content_diffCode_Monaco").style.display = 'block';
+                    document.getElementById("content_diffCode_Monaco").style.width = '100%';
+                    document.getElementById("content_diffCode_Monaco").style.height = '100%';
+                } else {
+                    Code.editor.setValue(Code.diffEditor.getModifiedEditor().getValue());
+                    document.getElementById("content_code_Monaco").style.display = 'block';
+                    document.getElementById("content_diffCode_Monaco").style.display = 'none';
+                    document.getElementById("content_code_Monaco").style.width = '100%';
+                    document.getElementById("content_code_Monaco").style.height = '100%';
+                }
+                diffOrNot = !diffOrNot;
+                break;
+            default:
+                break;
+        }
+    }
+};
+
 Code.boardsListModalShow = function() {
     document.getElementById('overlayForModals').style.display = "block";
     document.getElementById('boardListModal').classList.add('show');

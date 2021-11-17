@@ -342,12 +342,13 @@
                 </label>
             </flex-resizer>
             <flex-item id="content_code" style="flex: 0 1">
+                <pre id="content_pre_code" class="content_pre_code_large"></pre>
                 <button id="copyCodeButton" class="iconButtons" onclick="Code.copyToClipboard()">
                     <span id="copyCodeButton_span">
                         <i class="far fa-copy"></i>
                     </span>
                 </button>
-                <button id="openCodeButton" class="iconButtons" onclick="openMonacoEditor()">
+                <button id="openCodeButton" class="iconButtons" onclick="Code.editorMonacoModalShow()">
                     <span id="openCodeButton_span">
                         <i class="fas fa-code"></i>
                     </span>
@@ -374,7 +375,7 @@
             <span id="helpModalSpan_text"></span>
         </div>
     </div>
-    <div id="keyboard_nav">
+    <div id="keyboard_nav" class="modal">
         <div id="keyboard_nav_header">
             <span id="keyMappingModalSpan"></span>
         </div>
@@ -674,6 +675,29 @@
         </div>
     </div>
     <div id="overlayForModals" class="overlay"></div>
+    <div id="editorMonacoModal" class="dialog" style="z-index:80;">
+        <div class="titlebar">
+            <span class="modal-header">Code editor</span>
+        </div>
+        <button name="editorMonacoModal_close"></button>
+        <div id="content_Monaco_editors" class="content" style="overflow: hidden;">
+            <div id="content_diffCode_Monaco" style="overflow: hidden;"></div>
+            <div id="content_code_Monaco" style="overflow: hidden;"></div>
+        </div>
+        <div class="buttonpane">
+            <div class="buttonset">
+                <button name="editorMonacoModal_diff" class="iconButtons">Check
+                    <!-- <i class="fas fa-check-double"></i> -->
+                </button>
+                <button name="editorMonacoModal_ok" class="iconButtons">OK
+                    <!-- <i class="fas fa-spell-check"></i> -->
+                </button>
+                <button name="editorMonacoModal_cancel" class="iconButtons">Cancel
+                    <!-- <i class="fas fa-sync-alt"></i> -->
+                </button>
+            </div>
+        </div>
+    </div>
     <div id="boardListModal" class="modal">
         <div class="modal-content" id="boardListModal_content">
             <div class="modal-header">
@@ -1103,10 +1127,13 @@
 <script src="./js/dialog.js "></script>
 <script src="./js/renderingConstant.js "></script>
 <script src="./js/toolbox.js "></script>
-<script src="./js/lib/draggable-resizable-dialog.js "></script>
 <script src="./@blockly/demos/custom-dialogs/custom-dialog.js "></script>
 <!-- S4E libraries of external functions -->
+<script src="./js/lib/diff.js "></script>
+<script src="./js/lib/draggable-resizable-dialog.js "></script>
 <script src="./js/lib/iro.min.js "></script>
+<script src="./js/prettify/prettify.js "></script>
+<link rel="stylesheet " href="./js/prettify/prettify.css ">
 <script src="./js/custom-color-field.js "></script>
 <!-- S4E libraries of specific funtions definition -->
 <script src="./S4E/js/arrowhead.js "></script>

@@ -294,6 +294,11 @@ html[dir=rtl] {
     top: 3px;
 }
 
+#editorMonacoModal {
+    min-width: 400px;
+    min-height: 280px;
+}
+
 #boardListModalDialogOkay {
     font-size: x-large;
     position: relative;
@@ -349,6 +354,24 @@ flex.content_wrapper {
 
 #content_code {
     min-width: 0.5px;
+    background-color: #ffffff;
+}
+
+#content_pre_code_large {
+    height: 100%;
+    width: 100%;
+}
+
+
+/* Colours for the new and deleted code highlighting */
+
+.code_highlight_new {
+    background-color: rgba(255, 204, 51, 0.5);
+    /* Arduino yellow 50% */
+}
+
+.code_highlight_deleted {
+    background-color: #FDBEBE;
 }
 
 #content_serial {

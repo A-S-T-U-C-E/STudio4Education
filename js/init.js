@@ -8,31 +8,31 @@
  * @fileoverview JS function for intialisation, forked from https://github.com/google/blockly/commit/4e2f8e6e02b0473a86330eb7414794e6bfea430e.
  * @author scanet@libreduc.cc (Sébastien CANET)
  */
-document.addEventListener('DOMContentLoaded', function(event) {
-    if (!Code.editor) {
-        Code.editor = monaco.editor.create(document.getElementById('content_code'), {
-            scrollBeyondLastLine: false,
-            language: 'cpp',
-            automaticLayout: true,
-            readOnly: true
-        });
-    }
-    monaco.editor.defineTheme('defaultTheme', {
-        base: 'vs-dark',
-        inherit: true,
-        rules: [{ background: '000000' }],
-        colors: {
-            'editor.foreground': '#AAAA00',
-            'editor.background': '#000000',
-            'editorCursor.foreground': '#8B0000',
-            'editor.lineHighlightBackground': '#0000FF20',
-            'editorLineNumber.foreground': '#eeee88',
-            'editor.selectionBackground': '#88000030',
-            'editor.inactiveSelectionBackground': '#88000015'
-        }
-    });
-    // monaco.editor.setTheme('defaultTheme');
-})
+// document.addEventListener('DOMContentLoaded', function(event) {
+//     if (!Code.editor) {
+//         Code.editor = monaco.editor.create(document.getElementById('content_code'), {
+//             scrollBeyondLastLine: false,
+//             language: 'cpp',
+//             automaticLayout: true,
+//             readOnly: true
+//         });
+//     }
+//     monaco.editor.defineTheme('defaultTheme', {
+//         base: 'vs-dark',
+//         inherit: true,
+//         rules: [{ background: '000000' }],
+//         colors: {
+//             'editor.foreground': '#AAAA00',
+//             'editor.background': '#000000',
+//             'editorCursor.foreground': '#8B0000',
+//             'editor.lineHighlightBackground': '#0000FF20',
+//             'editorLineNumber.foreground': '#eeee88',
+//             'editor.selectionBackground': '#88000030',
+//             'editor.inactiveSelectionBackground': '#88000015'
+//         }
+//     });
+//     monaco.editor.setTheme('defaultTheme');
+// })
 
 
 /**
@@ -61,12 +61,33 @@ Code.loadBlocks = function(defaultXml) {
 
 /**
  * Populate the currently selected pane with content generated from the blocks.
+ * freely inspired from Carlosperate's Ardublockly work
  */
+var PREVIOUS_CODE_ = '';
 Code.renderContent = function() {
-    //var codePeakPre = document.getElementById('content_code');
     var generatedCode = Blockly.Arduino.workspaceToCode(Code.mainWorkspace);
-    Code.editor.setValue(generatedCode, 1);
-};
+    // if (Code.editor) Code.editor.setValue(generatedCode, 1);
+
+    // Render Arduino Code with latest change highlight and syntax highlighting
+    if (generatedCode !== PREVIOUS_CODE_) {
+        var diff = JsDiff.diffWords(PREVIOUS_CODE_, generatedCode);
+        var resultStringArray = [];
+        for (var i = 0; i < diff.length; i++) {
+            if (!diff[i].removed) {
+                var escapedCode = diff[i].value.replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;');
+                if (diff[i].added) {
+                    resultStringArray.push(
+                        '<span class="code_highlight_new">' + escapedCode + '</span>');
+                } else {
+                    resultStringArray.push(escapedCode);
+                }
+            }
+        }
+        document.getElementById('content_pre_code').innerHTML = prettyPrintOne(resultStringArray.join(''), 'cpp', false);
+        PREVIOUS_CODE_ = generatedCode;
+    }
+}
 
 
 
@@ -249,7 +270,7 @@ Code.init = function() {
             next.style.flexGrow = nextGrowNew;
             lastPos = pos;
             BlocklyWorkspaceOnresize();
-            Code.editor.layout();
+            if (Code.editor) Code.editor.layout();
             //hide button if div si too thin
             if (document.getElementById("content_code").offsetWidth < 50) {
                 document.getElementById("copyCodeButton").style.visibility = 'hidden';
