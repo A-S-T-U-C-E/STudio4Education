@@ -164,7 +164,7 @@
 
 #resetButton:hover {
     background: #FFFFFF;
-    cursor: no-drop;
+    cursor: url('../../media/danger_icon.png'), pointer;
 }
 
 #btn_fake_close:hover {
@@ -177,21 +177,19 @@
     cursor: help;
 }
 
-#openCodeButton {
-    visibility: hidden;
-    position: absolute;
-    top: 125px;
-    right: 5px;
+#openCodeButton,
+#copyCodeButton,
+#saveCodeButton {
     border-radius: 5px;
-    z-index: 5;
+    margin: 5px;
 }
 
-#copyCodeButton {
+#content_code_buttons {
     visibility: hidden;
     position: absolute;
-    top: 85px;
+    top: 80px;
     right: 5px;
-    border-radius: 5px;
+    width: 40px;
     z-index: 5;
 }
 

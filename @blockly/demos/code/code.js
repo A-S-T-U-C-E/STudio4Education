@@ -134,6 +134,239 @@ Code.changeLanguage = function() {
 };
 
 /**
+ * Modify interface for different skill levels
+ */
+Code.changeLevel = function() {
+    var levelMenuSelection = document.getElementById('levelMenu').options[levelMenu.selectedIndex].value;
+    switch (levelMenuSelection) {
+        case 'skill1':
+            document.getElementById("menuButton").style.display = 'none';
+            document.getElementById("functionsIcons").prepend(document.getElementById("redoButton"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("undoButton"));
+            document.getElementById("undoButton").classList.remove("iconWorkspaceButtons");
+            document.getElementById("undoButton").classList.add("iconButtons");
+            document.getElementById("redoButton").classList.remove("iconWorkspaceButtons");
+            document.getElementById("redoButton").classList.add("iconButtons");
+            document.getElementById("functionsIcons").prepend(document.getElementById("fullToolboxButton"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("fullScreenButton"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("saveXMLButton"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("loadXMLfakeButton"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("newButton"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("resetButton"));
+            document.getElementById("toolsButton").style.display = 'none';
+            document.getElementById("iotConnectButton").style.display = 'none';
+            document.getElementById("serialConnectButton").style.display = 'none';
+            // document.getElementById("horizontal_IoT_buttons").style.display = 'none';
+            document.getElementById("IoT_controls_accordion").style.visibility = 'hidden';
+            document.getElementById("IoT_controls").style.visibility = 'hidden';
+            document.getElementById("editorDiffToggle").style.visibility = 'hidden';
+            document.getElementById('content_pre_code').style.display = 'inline';
+            document.getElementById('content_code_Monaco').style.display = 'none';
+            document.getElementById('content_diffCode_Monaco').style.display = 'none';
+            document.getElementById('saveCodeButtonMenu').style.display = 'none';
+            document.getElementById("content_code_buttons").appendChild(document.getElementById("copyCodeButton"));
+            document.getElementById("content_code_buttons").appendChild(document.getElementById("saveCodeButton"));
+            document.getElementById("openCodeButton").style.display = 'none';
+            document.getElementById("content_code").style.minWidth = '0.5px';
+            document.getElementById("resizer_h").style.width = '15px';
+            if (Code.editor) Code.editor.dispose();
+            if (Code.diffEditor) Code.diffEditor.dispose();
+            if (document.getElementById("content_code_buttons_skill3_undo"))
+                document.getElementById("content_code_buttons_skill3").removeChild(document.getElementById("content_code_buttons_skill3_undo"));
+            if (document.getElementById("content_code_buttons_skill3_redo"))
+                document.getElementById("content_code_buttons_skill3").removeChild(document.getElementById("content_code_buttons_skill3_redo"));
+            if (document.getElementById("content_code_buttons_skill3_reset"))
+                document.getElementById("content_code_buttons_skill3").removeChild(document.getElementById("content_code_buttons_skill3_reset"));
+            Code.BlocklyWorkspaceOnresize();
+            Blockly.svgResize(Code.mainWorkspace);
+            break;
+        case 'skill2':
+            document.getElementById("menuButton").style.display = 'inline';
+            document.getElementById("functionsIcons").prepend(document.getElementById("menuButton"));
+            document.getElementById("content_blocks").appendChild(document.getElementById("redoButton"));
+            document.getElementById("content_blocks").appendChild(document.getElementById("undoButton"));
+            document.getElementById("undoButton").classList.add("iconWorkspaceButtons");
+            document.getElementById("undoButton").classList.remove("iconButtons");
+            document.getElementById("redoButton").classList.add("iconWorkspaceButtons");
+            document.getElementById("redoButton").classList.remove("iconButtons");
+            document.getElementById("functionsIcons").prepend(document.getElementById("saveXMLButton"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("saveXMLButton_span_menu"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("loadXMLfakeButton"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("loadXMLfakeButton_span_menu"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("newButton"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("newButton_span_menu"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("resetButton"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("resetButton_span_menu"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("saveCodeButtonMenu"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("saveCodeButton_span_menu"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("helpButton"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("helpButton_span_menu"));
+            document.getElementById("buttonsMenuPopupInside").innerHTML = '';
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("newButton"));
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("newButton_span_menu"));
+            document.getElementById("buttonsMenuPopupInside").innerHTML += '<br>';
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("loadXMLfakeButton"));
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("loadXMLfakeButton_span_menu"));
+            document.getElementById("buttonsMenuPopupInside").innerHTML += '<br>';
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("saveXMLButton"));
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("saveXMLButton_span_menu"));
+            document.getElementById("buttonsMenuPopupInside").innerHTML += '<br>';
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("saveCodeButtonMenu"));
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("saveCodeButton_span_menu"));
+            document.getElementById("buttonsMenuPopupInside").innerHTML += '<br>';
+            document.getElementById("buttonsMenuPopupInside").innerHTML += '<hr>';
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("resetButton"));
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("resetButton_span_menu"));
+            document.getElementById("buttonsMenuPopupInside").innerHTML += '<br>';
+            document.getElementById("buttonsMenuPopupInside").innerHTML += '<hr>';
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("helpButton"));
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("helpButton_span_menu"));
+            document.getElementById("toolsButton").style.display = 'inline';
+            document.getElementById("iotConnectButton").style.display = 'none';
+            document.getElementById("serialConnectButton").style.display = 'inline';
+            // document.getElementById("horizontal_IoT_buttons").style.display = 'inline';
+            document.getElementById("IoT_controls_accordion").style.visibility = 'hidden';
+            document.getElementById("IoT_controls").style.visibility = 'hidden';
+            document.getElementById("editorDiffToggle").style.visibility = 'hidden';
+            document.getElementById('content_pre_code').style.display = 'inline';
+            document.getElementById('content_code_Monaco').style.display = 'none';
+            document.getElementById('content_diffCode_Monaco').style.display = 'none';
+            document.getElementById('saveCodeButtonMenu').style.display = 'inline';
+            document.getElementById("content_code_buttons").appendChild(document.getElementById("copyCodeButton"));
+            document.getElementById("content_code_buttons").appendChild(document.getElementById("saveCodeButton"));
+            document.getElementById("openCodeButton").style.display = 'inline';
+            document.getElementById("content_code").style.minWidth = '0.5px';
+            document.getElementById("resizer_h").style.width = '15px';
+            if (document.getElementById("content_code_buttons_skill3_undo"))
+                document.getElementById("content_code_buttons_skill3").removeChild(document.getElementById("content_code_buttons_skill3_undo"));
+            if (document.getElementById("content_code_buttons_skill3_redo"))
+                document.getElementById("content_code_buttons_skill3").removeChild(document.getElementById("content_code_buttons_skill3_redo"));
+            if (document.getElementById("content_code_buttons_skill3_reset"))
+                document.getElementById("content_code_buttons_skill3").removeChild(document.getElementById("content_code_buttons_skill3_reset"));
+            Code.BlocklyWorkspaceOnresize();
+            Blockly.svgResize(Code.mainWorkspace);
+            break;
+        case 'skill3':
+            document.getElementById("menuButton").style.display = 'inline';
+            document.getElementById("functionsIcons").prepend(document.getElementById("menuButton"));
+            document.getElementById("content_blocks").appendChild(document.getElementById("redoButton"));
+            document.getElementById("content_blocks").appendChild(document.getElementById("undoButton"));
+            document.getElementById("undoButton").classList.add("iconWorkspaceButtons");
+            document.getElementById("undoButton").classList.remove("iconButtons");
+            document.getElementById("redoButton").classList.add("iconWorkspaceButtons");
+            document.getElementById("redoButton").classList.remove("iconButtons");
+            document.getElementById("functionsIcons").prepend(document.getElementById("saveXMLButton"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("saveXMLButton_span_menu"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("loadXMLfakeButton"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("loadXMLfakeButton_span_menu"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("newButton"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("newButton_span_menu"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("resetButton"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("resetButton_span_menu"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("saveCodeButtonMenu"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("saveCodeButton_span_menu"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("helpButton"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("helpButton_span_menu"));
+            document.getElementById("buttonsMenuPopupInside").innerHTML = '';
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("newButton"));
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("newButton_span_menu"));
+            document.getElementById("buttonsMenuPopupInside").innerHTML += '<br>';
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("loadXMLfakeButton"));
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("loadXMLfakeButton_span_menu"));
+            document.getElementById("buttonsMenuPopupInside").innerHTML += '<br>';
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("saveXMLButton"));
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("saveXMLButton_span_menu"));
+            document.getElementById("buttonsMenuPopupInside").innerHTML += '<br>';
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("saveCodeButtonMenu"));
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("saveCodeButton_span_menu"));
+            document.getElementById("buttonsMenuPopupInside").innerHTML += '<br>';
+            document.getElementById("buttonsMenuPopupInside").innerHTML += '<hr>';
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("resetButton"));
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("resetButton_span_menu"));
+            document.getElementById("buttonsMenuPopupInside").innerHTML += '<br>';
+            document.getElementById("buttonsMenuPopupInside").innerHTML += '<hr>';
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("helpButton"));
+            document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("helpButton_span_menu"));
+            document.getElementById("iotConnectButton").style.display = 'inline';
+            // document.getElementById("horizontal_IoT_buttons").style.display = 'none';
+            document.getElementById("IoT_controls_accordion").style.visibility = 'inherit';
+            document.getElementById("IoT_controls").style.visibility = 'inherit';
+            document.getElementById("editorDiffToggle").style.visibility = 'visible';
+            document.getElementById('content_pre_code').style.display = 'none';
+            document.getElementById('content_code_Monaco').style.display = 'inline';
+            document.getElementById('content_diffCode_Monaco').style.display = 'inline';
+            document.getElementById('saveCodeButtonMenu').style.display = 'inline';
+            document.getElementById("content_code_buttons_skill3").appendChild(document.getElementById("copyCodeButton"));
+            document.getElementById("content_code_buttons_skill3").appendChild(document.getElementById("saveCodeButton"));
+            document.getElementById("openCodeButton").style.display = 'none';
+            document.getElementById("content_code").style.minWidth = '200px';
+            document.getElementById("resizer_h").style.width = '45px';
+            if (!Code.editor)
+                Code.editor = monaco.editor.create(document.getElementById('content_code_Monaco'), {
+                    scrollBeyondLastLine: false,
+                    language: 'cpp',
+                    automaticLayout: true
+                });
+            if (!Code.diffEditor) {
+                Code.diffEditor = monaco.editor.createDiffEditor(document.getElementById('content_diffCode_Monaco'), {
+                    followsCaret: true,
+                    ignoreCharChanges: true,
+                    automaticLayout: true
+                });
+                Code.diffEditor.setModel({
+                    original: monaco.editor.createModel(Blockly.Arduino.workspaceToCode(Code.mainWorkspace), 'cpp'),
+                    modified: monaco.editor.createModel(Blockly.Arduino.workspaceToCode(Code.mainWorkspace), 'cpp'),
+                });
+            }
+            document.getElementById("content_code").appendChild(document.getElementById("content_code_Monaco"));
+            document.getElementById("content_code").appendChild(document.getElementById("content_diffCode_Monaco"));
+            document.getElementById("content_code_Monaco").style.display = 'block';
+            document.getElementById("content_diffCode_Monaco").style.display = 'none';
+            document.getElementById("content_code_Monaco").style.width = '100%';
+            document.getElementById("content_code_Monaco").style.height = '100%';
+            Code.editor.setValue(Blockly.Arduino.workspaceToCode(Code.mainWorkspace));
+            let btnUndo = document.createElement("button");
+            btnUndo.innerHTML = '<i class="fas fa-level-up-alt"></i>';
+            btnUndo.name = "btnUndo";
+            btnUndo.id = "content_code_buttons_skill3_undo";
+            btnUndo.className = "iconButtons";
+            btnUndo.onclick = function() {
+                Code.editor.trigger('aaaa', 'undo', 'aaaa');
+                Code.editor.focus();
+                Code.diffEditor.getModifiedEditor().trigger('aaaa', 'undo', 'aaaa');
+                Code.diffEditor.getModifiedEditor().focus();
+            };
+            document.getElementById("content_code_buttons_skill3").appendChild(btnUndo);
+            let btnRedo = document.createElement("button");
+            btnRedo.innerHTML = '<i class="fas fa-level-down-alt"></i>';
+            btnRedo.name = "btnRedo";
+            btnRedo.id = "content_code_buttons_skill3_redo";
+            btnRedo.className = "iconButtons";
+            btnRedo.onclick = function() {
+                Code.editor.trigger('aaaa', 'redo', 'aaaa');
+                Code.editor.focus();
+                Code.diffEditor.getModifiedEditor().trigger('aaaa', 'redo', 'aaaa');
+                Code.diffEditor.getModifiedEditor().focus();
+            };
+            document.getElementById("content_code_buttons_skill3").appendChild(btnRedo);
+            let btnReset = document.createElement("button");
+            btnReset.innerHTML = '<i class="fas fa-angle-double-right"></i>';
+            btnReset.name = "btnReset";
+            btnReset.id = "content_code_buttons_skill3_reset";
+            btnReset.className = "iconButtons";
+            btnReset.onclick = function() {
+                Code.diffEditor.getOriginalEditor().setValue(Blockly.Arduino.workspaceToCode(Code.mainWorkspace));
+                Code.diffEditor.getModifiedEditor().setValue(Blockly.Arduino.workspaceToCode(Code.mainWorkspace));
+                Code.editor.setValue(Blockly.Arduino.workspaceToCode(Code.mainWorkspace));
+                document.getElementById('content_pre_code').innerHTML = Blockly.Arduino.workspaceToCode(Code.mainWorkspace);
+            };
+            document.getElementById("content_code_buttons_skill3").appendChild(btnReset);
+            Code.BlocklyWorkspaceOnresize();
+            Blockly.svgResize(Code.mainWorkspace);
+    }
+};
+
+/**
  * Changes the output language by clicking the tab matching
  * the selected language in the codeMenu.
  */

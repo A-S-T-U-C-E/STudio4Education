@@ -71,7 +71,7 @@ var MSG = {
         '<p style="text-align: left;">Blockly official documentation: <a href="https://developers.google.com/blockly/guides/configure/web/keyboard-nav" rel="nofollow">Blockly developers</a>.</p>' +
         '<p style="text-align: left;">Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">on Github</a>.</p>' +
         '<p style="text-align: left;">A bug? Post it here: <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">on Github</a>.</p>' +
-        '<p style="text-align: center;">v0.8.0 - BSD3 license - Sébastien CANET',
+        '<p style="text-align: center;">v0.9.0 - BSD3 license - Sébastien CANET',
     //menu tools
     toolsButton_span: "tools",
     wiringButton_span: "wiring",
@@ -90,7 +90,7 @@ var MSG = {
     blynkConnect_span: "Blynk connect",
     serialConnectIOT_span: "connect serial to IoT",
     //monaco code editor
-    editorReadOnlyToggle_span: "code editor writable or read-only",
+    editorDiffToggle_span: "code editor writable or read-only",
     copyCodeButton_span: "Copia código a  portapapeles",
     //lateral panel
     highlightSpan: "highlights the content on the workspace",

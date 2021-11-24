@@ -8,6 +8,9 @@ html,
 body {
     height: 100%;
     width: 100%;
+    background-image: url('../S4E/media/STudio4Education_logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 body {
@@ -169,8 +172,8 @@ html[dir=rtl] {
 .switch {
     position: relative;
     display: inline-block;
-    width: 15px;
-    height: 50px;
+    width: 40px;
+    height: 16px;
 }
 
 .switch input {
@@ -194,10 +197,10 @@ html[dir=rtl] {
 .slider:before {
     position: absolute;
     content: "";
-    height: 11px;
-    width: 11px;
-    top: 5px;
-    left: 2px;
+    height: 12px;
+    width: 12px;
+    left: 4px;
+    bottom: 2px;
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
@@ -295,8 +298,27 @@ html[dir=rtl] {
 }
 
 #editorMonacoModal {
-    min-width: 400px;
+    min-width: 450px;
     min-height: 280px;
+}
+
+#button_window {
+    position: absolute;
+    right: 32px;
+    top: 0px;
+}
+
+#content_Monaco_editors {
+    overflow: hidden;
+    height: calc(100% - 110px);
+}
+
+#content_diffCode_Monaco {
+    overflow: hidden;
+}
+
+#content_code_Monaco {
+    overflow: hidden;
 }
 
 #boardListModalDialogOkay {
@@ -386,6 +408,7 @@ flex.content_wrapper {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='30'><path d='M2 0 v30 M5 0 v30 M8 0 v30' fill='white' stroke='white'/></svg>");
     background-repeat: no-repeat;
     background-position: center;
+    text-align: center;
     height: 100%;
     /* prevent browser's built-in drag from interfering */
     -moz-user-select: none;

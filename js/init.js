@@ -66,10 +66,10 @@ Code.loadBlocks = function(defaultXml) {
 var PREVIOUS_CODE_ = '';
 Code.renderContent = function() {
     var generatedCode = Blockly.Arduino.workspaceToCode(Code.mainWorkspace);
-    // if (Code.editor) Code.editor.setValue(generatedCode, 1);
-
-    // Render Arduino Code with latest change highlight and syntax highlighting
-    if (generatedCode !== PREVIOUS_CODE_) {
+    var previousCode = document.getElementById('content_pre_code').innerHTML;
+    if (generatedCode != PREVIOUS_CODE_) {
+        if (Code.diffEditor) Code.diffEditor.getOriginalEditor().setValue(generatedCode);
+        if (Code.editor) Code.editor.setValue(generatedCode);
         var diff = JsDiff.diffWords(PREVIOUS_CODE_, generatedCode);
         var resultStringArray = [];
         for (var i = 0; i < diff.length; i++) {
@@ -86,10 +86,43 @@ Code.renderContent = function() {
         }
         document.getElementById('content_pre_code').innerHTML = prettyPrintOne(resultStringArray.join(''), 'cpp', false);
         PREVIOUS_CODE_ = generatedCode;
-    }
+    } else document.getElementById('content_pre_code').innerHTML = previousCode;
 }
 
 
+
+//define resizable workspace
+Code.BlocklyWorkspaceOnresize = function(e) {
+    var blocklyArea = document.getElementById('content_area');
+    var blocklyDiv = document.getElementById('content_blocks');
+    const metrics = Code.mainWorkspace.getMetrics();
+    var element = blocklyArea;
+    var x = 0;
+    var y = 0;
+    do {
+        x += element.offsetLeft;
+        y += element.offsetTop;
+        element = element.offsetParent;
+    } while (element);
+    blocklyDiv.style.left = x + 'px';
+    blocklyDiv.style.top = y + 'px';
+    blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+    blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
+    Blockly.svgResize(Code.mainWorkspace);
+    // TODO yet to finish...
+    // if (Code.mainWorkspace.RTL) {
+    //     blocklyDiv.style.left = metrics.absoluteLeft + 'px';
+    //     blocklyDiv.style.right = 'auto';
+    // } else {
+    //     blocklyDiv.style.left = 'auto';
+    //     if (metrics.toolboxPosition === Blockly.TOOLBOX_AT_RIGHT) {
+    //         blocklyDiv.style.right = metrics.toolboxWidth + 'px';
+    //     } else {
+    //         blocklyDiv.style.right = '0';
+    //     }
+    // }
+    // blocklyDiv.style.top = metrics.absoluteTop + 'px';
+};
 
 /**
  * Initialize Blockly.  Called on page load.
@@ -109,9 +142,12 @@ Code.init = function() {
     }
 
     var match = location.search.match(/renderer=([^&]+)/);
-    var renderer = match ? match[1] : 'geras';
+    var renderer = match ? match[1] : 'thrasos';
     document.forms.options.elements.renderer.value = renderer;
     genWorkspace(rtl, Code.buildToolbox(), renderer);
+    // Skill level menu
+    Code.changeLevel();
+    levelMenu.addEventListener('change', Code.changeLevel, true);
     //add plugin workspace search
     const workspaceSearch = new WorkspaceSearch(Code.mainWorkspace);
     workspaceSearch.init();
@@ -139,7 +175,9 @@ Code.init = function() {
     // Code.mainWorkspace.addChangeListener(Blockly.Events.disableOrphans);
     // const disableTopBlocksPlugin = new DisableTopBlocks();
     // disableTopBlocksPlugin.init();
-
+    Code.BlocklyWorkspaceOnresize();
+    Blockly.svgResize(Code.mainWorkspace);
+    window.addEventListener('resize', Code.BlocklyWorkspaceOnresize, false);
     //define resizable workspace
     var blocklyArea = document.getElementById('content_area');
     var blocklyDiv = document.getElementById('content_blocks');
@@ -175,7 +213,6 @@ Code.init = function() {
     BlocklyWorkspaceOnresize();
     Blockly.svgResize(Code.mainWorkspace);
     window.addEventListener('resize', BlocklyWorkspaceOnresize, false);
-
     Code.mainWorkspace.configureContextMenu = configureContextualMenu.bind(Code.mainWorkspace);
     Code.buildControlPanelForToolbox();
     // load blocks stored in session or passed by url
@@ -269,15 +306,14 @@ Code.init = function() {
             prev.style.flexGrow = prevGrowNew;
             next.style.flexGrow = nextGrowNew;
             lastPos = pos;
-            BlocklyWorkspaceOnresize();
-            if (Code.editor) Code.editor.layout();
+            Code.BlocklyWorkspaceOnresize();
+            if (Code.editor)
+                Code.editor.layout();
             //hide button if div si too thin
             if (document.getElementById("content_code").offsetWidth < 50) {
-                document.getElementById("copyCodeButton").style.visibility = 'hidden';
-                document.getElementById("openCodeButton").style.visibility = 'hidden';
+                document.getElementById("content_code_buttons").style.visibility = 'hidden';
             } else {
-                document.getElementById("copyCodeButton").style.visibility = 'visible';
-                document.getElementById("openCodeButton").style.visibility = 'visible';
+                document.getElementById("content_code_buttons").style.visibility = 'visible';
             }
         }
 
@@ -387,13 +423,13 @@ Code.initLanguage = function() {
     document.getElementById('saveXMLButton').title = MSG['saveXMLButton_span'];
     document.getElementById('loadXMLfakeButton').title = MSG['loadXMLfakeButton_span'];
     document.getElementById('resetButton').title = MSG['resetButton_span'];
-    // document.getElementById('newButton_span_menu').textContent = MSG['newButton_span'];
-    // document.getElementById('loadXMLfakeButton_span_menu').textContent = MSG['loadXMLfakeButton_span'];
-    // document.getElementById('saveXMLButton_span_menu').textContent = MSG['saveXMLButton_span'];
-    // document.getElementById('saveCodeButton_span_menu').textContent = MSG['saveCodeButton_span'];
+    document.getElementById('newButton_span_menu').textContent = MSG['newButton_span'];
+    document.getElementById('loadXMLfakeButton_span_menu').textContent = MSG['loadXMLfakeButton_span'];
+    document.getElementById('saveXMLButton_span_menu').textContent = MSG['saveXMLButton_span'];
+    document.getElementById('saveCodeButton_span_menu').textContent = MSG['saveCodeButton_span'];
+    document.getElementById('resetButton_span_menu').textContent = MSG['resetButton_span'];
+    document.getElementById('helpButton_span_menu').textContent = MSG['helpButton_span'];
     // document.getElementById('parametersButton_span_menu').textContent = MSG['setup_sideButton_span'];
-    // document.getElementById('resetButton_span_menu').textContent = MSG['resetButton_span'];
-    // document.getElementById('helpButton_span_menu').textContent = MSG['helpButton_span'];
     document.getElementById('lateral-panel-setup-label').title = MSG['setup_sideButton_span'];
     document.getElementById('sketch_name_wrapper').title = MSG['sketch_name_wrapper'];
     document.getElementById('helpButton').title = MSG['helpButton_span'];

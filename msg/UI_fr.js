@@ -71,7 +71,7 @@ var MSG = {
         '<p style="text-align: left;">Documentation officielle de Blockly : <a href="https://developers.google.com/blockly/guides/configure/web/keyboard-nav" rel="nofollow">développeurs Blockly</a>.</p>' +
         '<p style="text-align: left;">Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">on Github</a>.</p>' +
         '<p style="text-align: left;">Un bug ? Merci d\'écrire ici : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">sur Github</a>.</p>' +
-        '<p style="text-align: center;">v0.8.0 - BSD3 license - Sébastien CANET',
+        '<p style="text-align: center;">v0.9.0 - BSD3 license - Sébastien CANET',
     //menu tools
     toolsButton_span: "outils",
     wiringButton_span: "câblage de circuits",
@@ -90,7 +90,7 @@ var MSG = {
     blynkConnect_span: "connexion à Blynk",
     serialConnectIOT_span: "envoi de données IdO",
     //monaco code editor
-    editorReadOnlyToggle_span: "éditeur de code en lecture seule ou non",
+    editorDiffToggle_span: "éditeur de code en lecture seule ou non",
     copyCodeButton_span: "copier le code dans le presse papiers",
     //lateral panel
     highlightSpan: "surbrillance des blocs déposés",

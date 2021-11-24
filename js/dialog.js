@@ -106,6 +106,48 @@ function dragElement(elmnt) {
     }
 };
 
+
+/*
+ * Modify position of code editor modal
+ */
+var _maximini = "mini";
+const _editorModal = document.getElementById("editorMonacoModal");
+let editorMonacoModal_old_X = 0;
+let editorMonacoModal_old_Y = 0;
+let editorMonacoModal_old_width = 0;
+let editorMonacoModal_old_height = 0;
+
+function editorMonacoModal_maxi_mini() {
+    const icon = document.getElementById("editorMonacoModal_maximini").querySelector('i');
+    if (_maximini == 'mini') {
+        editorMonacoModal_old_X = _editorModal.getBoundingClientRect().left;
+        editorMonacoModal_old_Y = _editorModal.getBoundingClientRect().top;
+        editorMonacoModal_old_width = _editorModal.getBoundingClientRect().right - _editorModal.getBoundingClientRect().left;
+        editorMonacoModal_old_height = _editorModal.getBoundingClientRect().bottom - _editorModal.getBoundingClientRect().top;
+        icon.classList.remove('fa-window-maximize');
+        icon.classList.add('fa-window-minimize');
+        _editorModal.style.left = "0px";
+        _editorModal.style.top = "0px";
+        _editorModal.style.width = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) + "px";
+        _editorModal.style.height = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) + "px";
+        document.getElementById("content_Monaco_editors").style.width = "100%";
+        document.getElementById("editorMonacoModal_titlebar").style.width = "100%";
+        Code.editor.layout();
+        _maximini = 'maxi';
+    } else {
+        icon.classList.remove('fa-window-minimize');
+        icon.classList.add('fa-window-maximize');
+        _editorModal.style.left = editorMonacoModal_old_X + "px";
+        _editorModal.style.top = editorMonacoModal_old_Y + "px";
+        _editorModal.style.width = editorMonacoModal_old_width + "px";
+        _editorModal.style.height = editorMonacoModal_old_height + "px";
+        document.getElementById("content_Monaco_editors").style.width = "calc(100% - 32px)";
+        document.getElementById("editorMonacoModal_titlebar").style.width = "calc(100% - 32px)";
+        Code.editor.layout();
+        _maximini = 'mini';
+    }
+}
+
 // Simulate jQuery selector « $ »
 // return a matrix if an element has right class
 if (!document.getElementsByClassName) {
@@ -176,15 +218,20 @@ function collapsibleContentInit() {
     }
 }
 
-function toggleEditorReadOnly(item) {
+function toggleEditorDiff(item) {
     if (item.checked) {
-        Code.editor.updateOptions({
-            readOnly: false
-        })
+        Code.diffEditor.getOriginalEditor().setValue(Blockly.Arduino.workspaceToCode(Code.mainWorkspace));
+        Code.diffEditor.getModifiedEditor().setValue(Code.editor.getValue());
+        document.getElementById("content_code_Monaco").style.display = 'none';
+        document.getElementById("content_diffCode_Monaco").style.display = 'block';
+        document.getElementById("content_diffCode_Monaco").style.width = '100%';
+        document.getElementById("content_diffCode_Monaco").style.height = '100%';
     } else {
-        Code.editor.updateOptions({
-            readOnly: true
-        })
+        Code.editor.setValue(Code.diffEditor.getModifiedEditor().getValue());
+        document.getElementById("content_code_Monaco").style.display = 'block';
+        document.getElementById("content_diffCode_Monaco").style.display = 'none';
+        document.getElementById("content_code_Monaco").style.width = '100%';
+        document.getElementById("content_code_Monaco").style.height = '100%';
     }
 }
 
@@ -310,12 +357,12 @@ document.getElementById('saveCodeButton').onmouseover = function() {
 document.getElementById('saveCodeButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-// document.getElementById('menuButton').onmouseover = function() {
-//     document.getElementById("content_hoverButton").textContent = MSG['menuButton_span'];
-// };
-// document.getElementById('menuButton').onmouseout = function() {
-//     document.getElementById("content_hoverButton").textContent = "";
-// };
+document.getElementById('menuButton').onmouseover = function() {
+    document.getElementById("content_hoverButton").textContent = MSG['menuButton_span'];
+};
+document.getElementById('menuButton').onmouseout = function() {
+    document.getElementById("content_hoverButton").textContent = "";
+};
 document.getElementById('newButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['newButton_span'];
 };
@@ -508,9 +555,9 @@ document.getElementById('CLI_githubLinkButton').onmouseover = function() {
 document.getElementById('CLI_githubLinkButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
-document.getElementById('editorReadOnlyToggle').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['editorReadOnlyToggle_span'];
+document.getElementById('editorDiffToggle').onmouseover = function() {
+    document.getElementById("content_hoverButton").textContent = MSG['editorDiffToggle_span'];
 };
-document.getElementById('editorReadOnlyToggle').onmouseout = function() {
+document.getElementById('editorDiffToggle').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };

@@ -23,7 +23,7 @@
             <div id="optionsTopTitle">
                 <img id="logo" src="./S4E/media/STudio4Education_logo.png" style="height: 25px; vertical-align: middle;" />
             </div>
-            <div id="optionsTopButtons" align="center">
+            <div id="optionsTopButtons" text-align="center">
                 <button id="btn_fake_min" type="button" class="iconButtonsTop">
                     <i class="far fa-window-minimize"></i>
                 </button>
@@ -39,68 +39,23 @@
             </div>
         </div>
         <div id="functionsIcons">
-            <!-- <button id="menuButton" class="iconButtons" onclick="document.getElementById('menuPopup').style.display = 'block';document.getElementById('menuButton').classList.toggle('active');">
-                        <span id="menuButtonButton_span">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </span>
-                    </button> -->
-            <!-- <div id="menuPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('menuPopup').style.display = 'none';document.getElementById('menuButton').classList.toggle('active');"> -->
-            <!-- <div id="buttonsMenuPopup" class="menu_div">
-                            <div id="buttonsMenuPopupInside">
-                                <button id="newButton" class="iconButtons" onclick="Code.newProject()">
-                                    <span id="newButton_span">
-                                        <i class="far fa-file"></i>
-                                    </span>
-                                </button>
-                                <span id="newButton_span_menu" class="menu_text"></span>
-                                <br>
-                                <button id="loadXMLfakeButton" class="iconButtons" onclick="Code.loadXmlBlocklyFile()">
-                                    <span id="loadXMLfakeButton_span">
-                                        <i class="fas fa-file-upload"></i>
-                                    </span>
-                                </button>
-                                <span id="loadXMLfakeButton_span_menu" class="menu_text"></span>
-                                <br>
-                                <button id="saveXMLButton" class="iconButtons" onclick="Code.saveXmlBlocklyFile()">
-                                    <span id="saveXMLButton_span">
-                                        <i class="fas fa-file-download"></i>
-                                    </span>
-                                </button>
-                                <span id="saveXMLButton_span_menu" class="menu_text"></span>
-                                <br>
-                                <button id="saveCodeButton" class="iconButtons" onclick="Code.saveCodeFile()">
-                                    <span id="saveCodeButton_span">
-                                        <i class="far fa-file-code"></i>
-                                    </span>
-                                </button>
-                                <span id="saveCodeButton_span_menu" class="menu_text"></span>
-                                <br>
-                                <hr>
-                                <button id="parametersButton" class="iconButtons" onclick="document.getElementById('lateral-panel-setup-input').click();">
-                                    <span id="parametersButton_span">
-                                        <i class="fas fa-cog"></i>
-                                    </span>
-                                </button>
-                                <span id="parametersButton_span_menu" class="menu_text"></span>
-                                <br>
-                                <hr>
-                                <button id="resetButton" class="iconButtons" onclick="Code.ResetWorkspace()">
-                                    <span id="resetButton_span">
-                                        <i class="fas fa-power-off"></i>
-                                    </span>
-                                </button>
-                                <span id="resetButton_span_menu" class="menu_text"></span> -->
-            <!-- <br> -->
-            <!-- <hr> -->
-            <!-- <button id="helpButton" class="iconButtons" onclick="toggleDisplayHelpModal()"> -->
-            <!-- <span id="helpButton_span"> -->
-            <!-- <i class="fas fa-question"></i> -->
-            <!-- </span> -->
-            <!-- </button> -->
-            <!-- <span id="helpButton_span_menu" class="menu_text"></span> -->
-            <!-- </div>
-                        </div> -->
-            <!-- </div> -->
+            <button id="menuButton" class="iconButtons" onclick="document.getElementById('menuPopup').style.display = 'block';document.getElementById('menuButton').classList.toggle('active');">
+                <span id="menuButtonButton_span">
+                    <i class="fas fa-ellipsis-v"></i>
+                </span>
+            </button>
+            <div id="menuPopup" class="popup_bckgrd" onclick="document.getElementById('menuPopup').style.display = 'none';document.getElementById('menuButton').classList.toggle('active');">
+                <div id="buttonsMenuPopup" class="menu_div">
+                    <div id="buttonsMenuPopupInside">
+                        <span id="newButton_span_menu" class="menu_text"></span>
+                        <span id="loadXMLfakeButton_span_menu" class="menu_text"></span>
+                        <span id="saveXMLButton_span_menu" class="menu_text"></span>
+                        <span id="saveCodeButton_span_menu" class="menu_text"></span>
+                        <span id="resetButton_span_menu" class="menu_text"></span>
+                        <span id="helpButton_span_menu" class="menu_text"></span>
+                    </div>
+                </div>
+            </div>
             <button id="resetButton" class="iconButtons" onclick="Code.ResetWorkspace()">
                 <span id="resetButton_span">
                     <i class="fas fa-power-off"></i>
@@ -126,6 +81,11 @@
                     <i class="far fa-file-code"></i>
                 </span>
             </button>
+            <button id="saveCodeButtonMenu" class="iconButtons" onclick="Code.saveCodeFile()">
+                <span id="saveCodeButton_span">
+                    <i class="far fa-file-code"></i>
+                </span>
+            </button>
             <button id="fullScreenButton" class="iconButtons" onclick="fullScreen()">
                 <span id="fullScreenButton_span">
                     <i class="fas fa-expand-arrows-alt"></i>
@@ -136,16 +96,6 @@
                     <i class="fas fa-toolbox"></i>
                 </span>
             </button>
-            <!-- <button id="undoButton" class="iconButtons" onclick="Code.Undo()">
-                        <span id="undoButton_span">
-                            <i class="fas fa-undo-alt"></i>
-                        </span>
-                    </button>
-                    <button id="redoButton" class="iconButtons" onclick="Code.Redo()">
-                        <span id="redoButton_span">
-                            <i class="fas fa-redo-alt"></i>
-                        </span>
-                    </button> -->
             <button id="toolsButton" class="iconButtons" onclick="document.getElementById('toolsPopup').style.display = 'block';document.getElementById('toolsButton').classList.toggle('active');">
                 <span id="toolsButton_span">
                     <i class="fas fa-tools"></i>
@@ -325,34 +275,40 @@
                     <div id="minimapDiv"></div>
                     <button id="undoButton" class="iconWorkspaceButtons" onclick="Code.Undo()" style="bottom: 327px">
                         <span id="undoButton_span">
-                            <i class="fas fa-undo-alt"></i>
+                            <i class="fa-solid fa-arrow-rotate-left"></i>
                         </span>
                     </button>
                     <button id="redoButton" class="iconWorkspaceButtons" onclick="Code.Redo()" style="bottom: 290px">
                         <span id="redoButton_span">
-                            <i class="fas fa-redo-alt"></i>
+                            <i class="fa-solid fa-arrow-rotate-right"></i>
                         </span>
                     </button>
                 </div>
             </flex-item>
             <flex-resizer id="resizer_h">
-                <label id="editorReadOnlyToggle" class="switch">
-                    <input type="checkbox" onclick="toggleEditorReadOnly(this)" />
+                <label id="editorDiffToggle" class="switch">
+                    <input id="editorDiffToggle_check" type="checkbox" onclick="toggleEditorDiff(this)" />
                     <span class="slider"></span>
                 </label>
+                <div id="content_code_buttons_skill3">
+                </div>
             </flex-resizer>
             <flex-item id="content_code" style="flex: 0 1">
                 <pre id="content_pre_code" class="content_pre_code_large"></pre>
-                <button id="copyCodeButton" class="iconButtons" onclick="Code.copyToClipboard()">
-                    <span id="copyCodeButton_span">
-                        <i class="far fa-copy"></i>
-                    </span>
-                </button>
-                <button id="openCodeButton" class="iconButtons" onclick="Code.editorMonacoModalShow()">
-                    <span id="openCodeButton_span">
-                        <i class="fas fa-code"></i>
-                    </span>
-                </button>
+                <pre id="content_editor_code" class="content_pre_code_large"></pre>
+                <pre id="content_diffEditor_code" class="content_pre_code_large"></pre>
+                <div id="content_code_buttons">
+                    <button id="copyCodeButton" class="iconButtons" onclick="Code.copyToClipboard()">
+                        <span id="copyCodeButton_span">
+                            <i class="far fa-copy"></i>
+                        </span>
+                    </button>
+                    <button id="openCodeButton" class="iconButtons" onclick="Code.editorMonacoModalShow()">
+                        <span id="openCodeButton_span">
+                            <i class="fas fa-code"></i>
+                        </span>
+                    </button>
+                </div>
             </flex-item>
         </flex>
         <flex-resizer id="resizer_v">
@@ -406,6 +362,13 @@
                     <br>
                     <span id="languageSpan" class="UIText">...</span>
                     <select id="languageMenu"></select>
+                    <br>
+                    <span id="levelSpan" class="UIText">skill level</span>
+                    <select id="levelMenu">
+                        <option value="skill1" selected="selected">novice (padawan)</option>
+                        <option value="skill2">skilled (knight)</option>
+                        <option value="skill3">expert (master)</option>
+                    </select>
                     <br>
                     <br>
                     <span id="interfaceColorSpan" class="UIText">...</span>
@@ -559,7 +522,7 @@
             </button>
             <div id="categories_content" class="side_content config_content panel UIText">
             </div>
-            <button class="accordion">
+            <button class="accordion" id="IoT_controls_accordion">
                 <span id="iot_title_span" aria-expanded="false" aria-controls="accordion_categories_content"></span>
             </button>
             <div id="IoT_controls" class="side_content config_content panel UIText">
@@ -643,49 +606,62 @@
                     </button>
                     <span id="PapyrusConfiguration_save_span">Store information</span>
                 </div>
-                <button id="launchRedServer" class="iconButtons CLI">
-                    <span id="launchRedServer_span">
-                        <img src="./S4E/media/node-red.png"
-                            style="width: 30px; height: 30px; vertical-align: middle;" />
-                    </span>
-                </button>
-                <button id="launchWebServer" class="iconButtons CLI">
-                    <span id="launchWebServer_span">
-                        <i class="fas fa-network-wired"></i>
-                    </span>
-                </button>
-                <button id="papyrusConnect" class="iconButtons CLI">
-                    <span id="papyrusConnect_span">
-                        <img src="./S4E/media/Eclipse_papyrus_logo.png"
-                            style="width: 30px; height: 30px; vertical-align: middle;" />
-                    </span>
-                </button>
-                <button id="ArrowheadConfiguration_auto" class="iconButtons CLI">
-                    <span id="ArrowheadConfiguration_span">
-                        <img src="./S4E/media/arrowheadtools_invert.png"
-                            style="width: 30px; height: 30px; vertical-align: middle;" />
-                    </span>
-                </button>
-                <button id="serialConnectIOT" class="iconButtons CLI">
-                    <span id="serialConnectIOT_span">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                    </span>
-                </button>
+                <!-- <div id="horizontal_IoT_buttons">
+                    <button id="launchRedServer" class="iconButtons CLI">
+                        <span id="launchRedServer_span">
+                            <img src="./S4E/media/node-red.png"
+                                style="width: 30px; height: 30px; vertical-align: middle;" />
+                        </span>
+                    </button>
+                    <button id="launchWebServer" class="iconButtons CLI">
+                        <span id="launchWebServer_span">
+                            <i class="fas fa-network-wired"></i>
+                        </span>
+                    </button>
+                    <button id="papyrusConnect" class="iconButtons CLI">
+                        <span id="papyrusConnect_span">
+                            <img src="./S4E/media/Eclipse_papyrus_logo.png"
+                                style="width: 30px; height: 30px; vertical-align: middle;" />
+                        </span>
+                    </button>
+                    <button id="ArrowheadConfiguration_auto" class="iconButtons CLI">
+                        <span id="ArrowheadConfiguration_span">
+                            <img src="./S4E/media/arrowheadtools_invert.png"
+                                style="width: 30px; height: 30px; vertical-align: middle;" />
+                        </span>
+                    </button>
+                    <button id="serialConnectIOT" class="iconButtons CLI">
+                        <span id="serialConnectIOT_span">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </span>
+                    </button>
+                </div> -->
             </div>
         </div>
     </div>
     <div id="overlayForModals" class="overlay"></div>
-    <div id="editorMonacoModal" class="dialog" style="z-index:80;">
-        <div class="titlebar">
+    <div id="editorMonacoModal" class="dialog" style="z-index: 80;">
+        <div class="titlebar" id="editorMonacoModal_titlebar">
             <span class="modal-header">Code editor</span>
         </div>
         <button name="editorMonacoModal_close"></button>
-        <div id="content_Monaco_editors" class="content" style="overflow: hidden;">
-            <div id="content_diffCode_Monaco" style="overflow: hidden;"></div>
-            <div id="content_code_Monaco" style="overflow: hidden;"></div>
+        <div id="button_window">
+            <button id="editorMonacoModal_maximini" class="iconButtons" onclick="editorMonacoModal_maxi_mini()">
+                <i class="fa-regular fa-window-maximize"></i>
+            </button>
+        </div>
+        <div id="content_Monaco_editors" class="content">
+            <div id="content_diffCode_Monaco"></div>
+            <div id="content_code_Monaco"></div>
         </div>
         <div class="buttonpane">
             <div class="buttonset">
+                <button name="editorMonacoModal_undo" class="iconButtons">Undo
+                    <!-- <i class="fas fa-level-up-alt"></i> -->
+                </button>
+                <button name="editorMonacoModal_redo" class="iconButtons">Redo
+                    <!-- <i class="fas fa-level-down-alt"></i> -->
+                </button>
                 <button name="editorMonacoModal_diff" class="iconButtons">Check
                     <!-- <i class="fas fa-check-double"></i> -->
                 </button>

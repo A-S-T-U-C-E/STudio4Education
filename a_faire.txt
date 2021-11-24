@@ -1,4 +1,3 @@
 bouton pour ouvrir/replier icones sur le workspace
 utiliser catégorie backpack avec icone de chez Blockly
 rajouter fonctions du backpack : enregistrer, ouvrir/replier
-déplacer shrink toolbox avec ione workspace
