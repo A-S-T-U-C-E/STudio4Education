@@ -14,10 +14,42 @@
     <link rel="stylesheet" href="./css/UI.css" />
     <link rel="stylesheet" href="./S4E/css/S4E.css" />
     <link rel="stylesheet" href="./S4E/css/override_css.css" />
-    <link rel="stylesheet" data-name="./vs/editor/editor.main" href="./vs/editor/editor.main.css">
+    <link rel="stylesheet" data-name="./tools/vs/editor/editor.main" href="./tools/vs/editor/editor.main.css">
 </head>
 
 <body>
+    <script type="text/javascript">
+        var canvas = document.createElement('canvas');
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        canvas.style.position = 'absolute';
+        canvas.style.left = 0;
+        canvas.style.top = 0;
+        canvas.style.zIndex = 100000;
+        canvas.style.pointerEvents = 'none';
+        document.body.appendChild(canvas);
+        var context = canvas.getContext('2d');
+        context.rect(0, 0, window.innerWidth, window.innerHeight);
+        context.fillStyle = 'white';
+        context.fill();
+        let img1 = new Image();
+        img1.src = "./S4E/media/sphere.png";
+        img1.height = window.innerHeight;
+        img1.onload = function() {
+            let x = (window.innerWidth - img1.width) / 2;
+            let y = (window.innerHeight - img1.height) / 2;
+            context.drawImage(img1, x, y);
+        };
+        let img2 = new Image();
+        img2.src = "./S4E/media/STudio4Education_logo.png";
+        img2.onload = function() {
+            let x = (window.innerWidth - img2.width) / 2;
+            let y = (window.innerHeight - img2.height) / 2;
+            context.drawImage(img2, x, y);
+        };
+    </script>
     <flex class="content_wrapper">
         <div id="optionsTop">
             <div id="optionsTopTitle">
@@ -1175,13 +1207,13 @@
 <script>
     var require = {
         paths: {
-            'vs': './vs'
+            'vs': './tools/vs'
         }
     };
 </script>
-<script src="./vs/loader.js "></script>
-<script src="./vs/editor/editor.main.nls.js "></script>
-<script src="./vs/editor/editor.main.js "></script>
+<script src="./tools/vs/loader.js "></script>
+<script src="./tools/vs/editor/editor.main.nls.js "></script>
+<script src="./tools/vs/editor/editor.main.js "></script>
 <script>
     // require('../resources/app.asar/Arrowhead.js');
     // require('../resources/app.asar/renderer.js');
@@ -1191,6 +1223,11 @@
     // require('../menu_functions.js');
     // require('../menu_CLI_functions.js');
     // require('../menu_IDE_functions.js');
+</script>
+<script type="text/javascript ">
+    window.onload = function() {        
+        document.body.removeChild(canvas);
+    }
 </script>
 
 </body>

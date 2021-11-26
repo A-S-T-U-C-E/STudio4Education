@@ -11,6 +11,18 @@ body {
     background-image: url('../S4E/media/STudio4Education_logo.png');
     background-repeat: no-repeat;
     background-position: center;
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 body {
@@ -18,6 +30,7 @@ body {
     font-size: large;
     font-weight: bold;
     margin: 0;
+    padding: 0;
     overflow: hidden;
 }
 
