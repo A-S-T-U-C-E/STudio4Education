@@ -287,6 +287,7 @@ Code.changeLevel = function() {
             document.getElementById("buttonsMenuPopupInside").innerHTML += '<hr>';
             document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("helpButton"));
             document.getElementById("buttonsMenuPopupInside").appendChild(document.getElementById("helpButton_span_menu"));
+            document.getElementById("toolsButton").style.display = 'inline';
             document.getElementById("iotConnectButton").style.display = 'inline';
             // document.getElementById("horizontal_IoT_buttons").style.display = 'none';
             document.getElementById("IoT_controls_accordion").style.visibility = 'inherit';

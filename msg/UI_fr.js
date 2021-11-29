@@ -75,6 +75,7 @@ var MSG = {
     //menu tools
     toolsButton_span: "outils",
     wiringButton_span: "câblage de circuits",
+    circuitjsButton_span: "simulateur de circuit",
     factoryButton_span: "la fabrique à blocs",
     htmlButton_span: "constructeur HTML",
     colorConversionButton_span: "encodage de couleurs",

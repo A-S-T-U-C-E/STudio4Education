@@ -75,6 +75,7 @@ var MSG = {
     //menu tools
     toolsButton_span: "tools",
     wiringButton_span: "wiring",
+    circuitjsButton_span: "circuitJS simulator",
     factoryButton_span: "block factory",
     htmlButton_span: "HTML factory",
     colorConversionButton_span: "colors encoding",

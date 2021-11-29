@@ -1,0 +1,45 @@
+<meta name="viewport" content="width=640">
+<title>Integrator (inverting)</title>
+<link rel="SHORTCUT ICON" href="favicon.ico">
+<body>
+<hr>
+<table><tr><td>
+<iframe width=640 height=500 src="circuitjs.html?startCircuit=amp-integ.txt"></iframe>
+</td><td width="20">&nbsp;</td><td valign="top">
+    </td>
+    </tr></table>
+<p>
+This circuit calculates the integral of the input, meaning that the
+output voltage changes at a rate proportional to the
+input voltage (but in the opposite direction).
+The <a
+href="http://en.wikipedia.org/wiki/Operational_amplifier">op-amp</a>
+attempts to keep its &ndash; input at the same voltage as the + input
+(which is at ground).  This requires it to drain an amount of current
+proportional to the input voltage (V / 1000 ohms).  This current goes
+through the capacitor, whose voltage is proportional to the integral
+of the current flow through it.
+
+<p>
+Next: <a href="e-amp-dfdx.html">Differentiator (inverting)</a><p>
+Previous: <a href="e-peak-detect.html">Peak Detector</a><p>
+<a href="e-index.html#amp-integ">Index</a><p>
+<a href="index.html">Simulator Home</a>
+<hr>
+<script type="text/javascript"><!--
+google_ad_client = "pub-1974179407250396";
+/* 728x90, created 7/9/08 */
+google_ad_slot = "3265434789";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<hr>
+<a href="http://www.falstad.com/mathphysics.html"><img src="/mathphysics_small.gif"></a>
+<a href="http://www.falstad.com/index.html"><img src="/me_small.gif"></a>
+<br><i>java@</i><i>falstad.com</i>
+<br>Generated Wed Dec  7 2016
+</body>

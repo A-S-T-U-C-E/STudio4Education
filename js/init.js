@@ -445,11 +445,14 @@ Code.initLanguage = function() {
     // menu tools
     document.getElementById('toolsButton').title = MSG['toolsButton_span'];
     document.getElementById('wiringButton').title = MSG['wiringButton_span'];
+    document.getElementById('circuitjsButton').title = MSG['circuitjsButton_span'];
+    document.getElementById('factoryButton').title = MSG['factoryButton_span'];
     document.getElementById('factoryButton').title = MSG['factoryButton_span'];
     document.getElementById('htmlButton').title = MSG['htmlButton_span'];
     document.getElementById('colorConversionButton').title = MSG['colorConversionButton_span'];
     document.getElementById('dataConversionButton').title = MSG['dataConversionButton_span'];
     document.getElementById('wiringButton_span_menu').textContent = MSG['wiringButton_span'];
+    document.getElementById('circuitjsButton_span_menu').textContent = MSG['circuitjsButton_span'];
     document.getElementById('factoryButton_span_menu').textContent = MSG['factoryButton_span'];
     document.getElementById('htmlButton_span_menu').textContent = MSG['htmlButton_span'];
     document.getElementById('colorConversionButton_span_menu').textContent = MSG['colorConversionButton_span'];

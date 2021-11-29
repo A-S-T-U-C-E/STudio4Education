@@ -1,0 +1,163 @@
+<meta name="viewport" content="width=820">
+<title>Pong: Drawing the Score</title>
+<link rel="SHORTCUT ICON" href="favicon.ico">
+<link rel="stylesheet" href="pong.css" type="text/css">
+<body>
+<hr>
+<div class="split">
+<div id="split-0">
+<iframe id="circuitFrame" src="http://192.168.1.6:8888/circuitjs.html?startCircuit=playfull2.txt&mouseMode=DragAll"></iframe>
+</div>
+<div id="split-1">
+<div id="info"></div>
+<canvas id="canvas" width=252 height=300 style="background-color:black;"></canvas>
+&nbsp;<br>
+Paddle 1: <input type="range" class="paddle" id="pad1" min="1" max="220" value="120"><br>
+Paddle 2: <input type="range" class="paddle" id="pad2" min="1" max="220" value="120"><br>
+<p>
+Here the circuitry to display the score has been added.  It uses a 7-segment LED decoder to
+convert the digits into segments that can be displayed on the screen with some logic.
+Some additional logic makes sure that the decoder's blank input is low if we're not in the
+correct place on the screen.
+<p>
+Four multiplexers (2 dual multiplexer chips in the original circuit) provide the input
+to the decoder depending on the horizontal position.  This circuit relies on the fact that
+the decoder chip (a 7447 in this case) turns off all the segments if the inputs are all high.
+<p>
+You can change the score by clicking on the inputs at the lower left.
+<p>
+Next: <a href="ball.html">The Ball</a>.
+<p>
+<a href="index.html">Index</a>
+</div>
+
+<script type="module">
+
+import Split from './split.js';
+
+Split(['#split-0', '#split-1'], { sizes: [70, 30] });
+
+// get iframe the simulator is running in.  Must have same origin as this file!
+var iframe = document.getElementById("circuitFrame");
+
+var sim;
+var freq, ampl;
+var clk, video, ctx;
+const maxY = 251;
+
+function round(x) {
+  return Math.round(x*1000)/1000;
+}
+
+var nettext = '';
+var highlightY = -1;
+var savedLine;
+var lastTime;
+
+function didAnalyze(sim) {
+  // get nodes we need
+  clk = sim.getNode("CLK");
+  video = sim.getNode("PLAYFIELD");
+  if (!clk) alert("can't find CLK");
+  if (!video) alert("can't find PLAYFIELD");
+}
+
+// called when simulator updates its display
+function didUpdate(sim) {
+  var info = document.getElementById("info");
+
+  // erase highlight
+  if (savedLine) {
+    ctx.putImageData(savedLine, maxY-highlightY, 0);
+    savedLine = null;
+  }
+  ctx.fillStyle = "red";
+  if (sim.getTime()-lastTime > 1/(60*200)) {
+    // draw highlight on part of line where we updated
+    highlightY = y-1;
+    savedLine = ctx.getImageData(maxY-highlightY, 0, 1, 455);
+    ctx.fillRect(0, highlightY, 455, 1);
+  } else {
+    // draw highlight just above line we are updating
+    highlightY = y;
+    if (x > 0) {
+      savedLine = ctx.getImageData(maxY-y, 0, 1, x);
+      ctx.fillRect(0, y, x, 1);
+    }
+  }
+  lastTime = sim.getTime();
+  ctx.fillStyle = "white";
+}
+
+var lastclk = -1;
+var x = -55, y = 0;
+var clearedY = -1;
+var moveBall = 0, moveBallX, moveBallY;
+var lastHS;
+
+// called every timestep, which is 6 nanoseconds of game time.
+// we do as little work in here as possible.
+function didStep(sim) {
+  var c = clk.getVoltage();
+  if (c == lastclk)
+    return;
+  if (c > 2.5) {
+    // positive clock transition, increase x
+    x++;
+/*
+    if (x == 241) {
+      x = 0;
+      y++;
+      if (sim.getNodeVoltage("V SYNC'") > 2.5) {
+        // if we're in vertical blank, set y to 0
+        y = 0;
+        clearedY = -1;
+      }
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, y, 455, 1);
+      ctx.fillStyle = "white";
+    } else if (y == 0 && sim.getNodeVoltage("H SYNC") > 2.5)
+      x = 0;
+*/
+    var HS = sim.getNodeVoltage("H SYNC") > 2.5;
+    if (!HS && lastHS != HS) {
+       x = 0; y++;
+      if (sim.getNodeVoltage("V SYNC'") > 2.5 && y > 30) { y = 0; clearedY = -1; }
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, y, 455, 1);
+      ctx.fillStyle = "white";
+    }
+    lastHS = HS;
+
+    // draw video
+    if (video.getVoltage() > 2.5) {
+      ctx.fillStyle = "#fff";
+      ctx.fillRect(x, y, 1, 1);
+    }
+  }
+  lastclk = c;
+}
+
+// callback called when simulation is done initializing
+function simLoaded() {
+  // get simulator object
+  sim = iframe.contentWindow.CircuitJS1;
+
+  // set up callbacks on update and timestep
+  sim.onupdate = didUpdate;
+  sim.ontimestep = didStep;
+  sim.onanalyze = didAnalyze;
+
+  ctx = canvas.getContext("2d");
+  ctx.rotate(Math.PI/2);
+  ctx.translate(0, -maxY-1);
+  //ctx.fillRect(0, 0, 455, 262);
+  ctx.strokeStyle = "white";
+  ctx.fillStyle = "white";
+}
+
+// set up callback
+iframe.contentWindow.oncircuitjsloaded = simLoaded;
+
+</script>
+

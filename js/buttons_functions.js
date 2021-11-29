@@ -91,13 +91,13 @@ Code.copyToClipboard = function() {
 /**
  * modal controllers
  */
-var dialog;
+var dialogMonacoEditor;
 let diffOrNot = false;
 document.getElementById("content_code_Monaco").style.display = 'block';
 document.getElementById("content_diffCode_Monaco").style.display = 'none';
 Code.editorMonacoModalShow = function() {
-    if (!dialog)
-        dialog = new DialogBox('editorMonacoModal', callbackButtons);
+    if (!dialogMonacoEditor)
+        dialogMonacoEditor = new DialogBox('editorMonacoModal', callbackButtons);
     if (!Code.editor)
         Code.editor = monaco.editor.create(document.getElementById('content_code_Monaco'), {
             scrollBeyondLastLine: false,
@@ -122,7 +122,7 @@ Code.editorMonacoModalShow = function() {
     document.getElementById("content_code_Monaco").style.width = '100%';
     document.getElementById("content_code_Monaco").style.height = '100%';
     Code.editor.setValue(Blockly.Arduino.workspaceToCode(Code.mainWorkspace));
-    dialog.showDialog();
+    dialogMonacoEditor.showDialog();
     document.getElementById("openCodeButton").classList.remove("iconButtons");
     document.getElementById("openCodeButton").classList.add("iconButtonsClicked");
 
@@ -264,6 +264,80 @@ Code.Undo = function() {
 Code.Redo = function() {
     Code.mainWorkspace.undo(1);
 };
+
+/**
+ * Launch CircuitJS simulator
+ */
+var dialogCircuitJS;
+Code.CircuitJS = function() {
+    if (!dialogCircuitJS)
+        dialogCircuitJS = new DialogBox('circuitJSmodal', callbackButtons);
+    var ifrm = document.createElement("iframe");
+    ifrm.setAttribute("src", "./tools/circuitjs/circuitjs.html?startCircuit=avr8js-strobe.txt&running=false");
+    ifrm.style.width = "100%";
+    ifrm.style.height = "100%";
+    ifrm.id = "circuitFrame";
+    document.getElementById("content_CircuitJS").appendChild(ifrm);
+    var tag = document.createElement('script');
+    tag.async = false;
+    tag.src = './tools/circuitjs/avr8js/src.avr8js.js';
+    document.body.appendChild(tag);
+
+    dialogCircuitJS.showDialog();
+
+    function callbackButtons(btnName) {
+        switch (btnName) {
+            case 'circuitJSmodal_close':
+                document.getElementById("circuitJSmodal").style.display = "none";
+                break;
+            case 'circuitJSmodal_run':
+                break;
+            case 'circuitJSmodal_stop':
+                break;
+            default:
+                break;
+        }
+    }
+};
+
+/*
+ * Modify position of CircuitJS modal
+ */
+var _maximini = "mini";
+const _circuitJSmodal = document.getElementById("circuitJSmodal");
+let circuitJSmodal_old_X = 0;
+let circuitJSmodal_old_Y = 0;
+let circuitJSmodal_old_width = 0;
+let circuitJSmodal_old_height = 0;
+
+function circuitJSmodal_maxi_mini() {
+    const icon = document.getElementById("circuitJSmodal_maximini").querySelector('i');
+    if (_maximini == 'mini') {
+        circuitJSmodal_old_X = _circuitJSmodal.getBoundingClientRect().left;
+        circuitJSmodal_old_Y = _circuitJSmodal.getBoundingClientRect().top;
+        circuitJSmodal_old_width = _circuitJSmodal.getBoundingClientRect().right - _circuitJSmodal.getBoundingClientRect().left;
+        circuitJSmodal_old_height = _circuitJSmodal.getBoundingClientRect().bottom - _circuitJSmodal.getBoundingClientRect().top;
+        icon.classList.remove('fa-window-maximize');
+        icon.classList.add('fa-window-minimize');
+        _circuitJSmodal.style.left = "0px";
+        _circuitJSmodal.style.top = "0px";
+        _circuitJSmodal.style.width = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) + "px";
+        _circuitJSmodal.style.height = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) + "px";
+        document.getElementById("content_CircuitJS").style.width = "100%";
+        document.getElementById("circuitJSmodal_titlebar").style.width = "100%";
+        _maximini = 'maxi';
+    } else {
+        icon.classList.remove('fa-window-minimize');
+        icon.classList.add('fa-window-maximize');
+        _circuitJSmodal.style.left = circuitJSmodal_old_X + "px";
+        _circuitJSmodal.style.top = circuitJSmodal_old_Y + "px";
+        _circuitJSmodal.style.width = circuitJSmodal_old_width + "px";
+        _circuitJSmodal.style.height = circuitJSmodal_old_height + "px";
+        document.getElementById("content_CircuitJS").style.width = "calc(100% - 32px)";
+        document.getElementById("circuitJSmodal_titlebar").style.width = "calc(100% - 32px)";
+        _maximini = 'mini';
+    }
+}
 
 /**
  * Launch blockFatcory with language argument

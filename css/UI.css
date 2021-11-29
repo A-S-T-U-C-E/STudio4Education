@@ -310,6 +310,16 @@ html[dir=rtl] {
     top: 3px;
 }
 
+#circuitJSmodal {
+    min-width: 450px;
+    min-height: 280px;
+}
+
+#content_CircuitJS {
+    overflow: hidden;
+    height: calc(100% - 110px);
+}
+
 #editorMonacoModal {
     min-width: 450px;
     min-height: 280px;

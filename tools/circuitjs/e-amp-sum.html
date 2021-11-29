@@ -1,0 +1,47 @@
+<meta name="viewport" content="width=640">
+<title>Summing Amplifier</title>
+<link rel="SHORTCUT ICON" href="favicon.ico">
+<body>
+<hr>
+<table><tr><td>
+<iframe width=640 height=500 src="circuitjs.html?startCircuit=amp-sum.txt"></iframe>
+</td><td width="20">&nbsp;</td><td valign="top">
+    </td>
+    </tr></table>
+<p>
+This circuit outputs the (inverted) sum of the voltages of two input
+signals.  In this case, the first input is a 200 Hz sine wave, and the
+second input is a 20 Hz <a href="http://en.wikipedia.org/wiki/Square_wave">square wave</a>.
+<p>
+The <a
+href="http://en.wikipedia.org/wiki/Operational_amplifier">op-amp</a>
+attempts to keep its &ndash; input at the same voltage as the + input
+(which is at ground).  So, both input signals are driving 1k
+resistors whose other end is at ground.  The current across the third resistor
+is the sum of the two currents,
+so the voltage drop must be equal to the sum of the two voltage drops,
+which is the (negative) sum of the input voltages.
+
+<p>
+Next: <a href="e-logconvert.html">Log Amplifier</a><p>
+Previous: <a href="e-amp-diff.html">Differential Amplifier</a><p>
+<a href="e-index.html#amp-sum">Index</a><p>
+<a href="index.html">Simulator Home</a>
+<hr>
+<script type="text/javascript"><!--
+google_ad_client = "pub-1974179407250396";
+/* 728x90, created 7/9/08 */
+google_ad_slot = "3265434789";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<hr>
+<a href="http://www.falstad.com/mathphysics.html"><img src="/mathphysics_small.gif"></a>
+<a href="http://www.falstad.com/index.html"><img src="/me_small.gif"></a>
+<br><i>java@</i><i>falstad.com</i>
+<br>Generated Wed Dec  7 2016
+</body>

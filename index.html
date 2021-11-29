@@ -128,7 +128,7 @@
                     <i class="fas fa-toolbox"></i>
                 </span>
             </button>
-            <button id="toolsButton" class="iconButtons" onclick="document.getElementById('toolsPopup').style.display = 'block';document.getElementById('toolsButton').classList.toggle('active');">
+            <button id="toolsButton" class="iconButtons" onclick="openMenuTools()">
                 <span id="toolsButton_span">
                     <i class="fas fa-tools"></i>
                 </span>
@@ -142,6 +142,14 @@
                             </span>
                         </button>
                         <span id="wiringButton_span_menu" class="menu_text"></span>
+                        <br>
+                        <hr>
+                        <button id="circuitjsButton" class="iconButtons">
+                            <span id="circuitjsButton_span">
+                                <img src="./tools/circuitjs/resistor.svg" width="31px"></i>
+                            </span>
+                        </button>
+                        <span id="circuitjsButton_span_menu" class="menu_text"></span>
                         <br>
                         <hr>
                         <button id="factoryButton" class="iconButtons">
@@ -177,7 +185,7 @@
                     </div>
                 </div>
             </div>
-            <button id="iotConnectButton" class="iconButtons" onclick="document.getElementById('iotPopup').style.display = 'block';document.getElementById('iotConnectButton').classList.toggle('active');">
+            <button id="iotConnectButton" class="iconButtons" onclick="openMenuIoT()">
                 <span id="iotConnectButton_span">
                     <i class="fas fa-link"></i>
                 </span>
@@ -386,7 +394,7 @@
                         <option value="none" selected="selected">...</option>
                         <option value="ESP_esp8266">ESP8266</option>
                         <option value="ESP_esp32">ESP32</option>
-                        <option value="ST_nucleo_F042K6">Nucleo-32 F042K6</option>
+                        <option value="ST_nucleo_L432KC">Nucleo-32 L432KC</option>
                         <option value="ST_nucleo_L476RG">Nucleo-64 L476RG</option>
                         <option value="ST_nucleo_H753ZI">Nucleo-144 H753ZI</option>
                         <option value="ST_mp157c_dk2">STM32MP1 Discovery kits</option>
@@ -672,6 +680,34 @@
         </div>
     </div>
     <div id="overlayForModals" class="overlay"></div>
+    <div id="circuitJSmodal" class="dialog" style="z-index: 80;">
+        <div class="titlebar" id="circuitJSmodal_titlebar">
+            <span class="modal-header">Code editor</span>
+        </div>
+        <button name="circuitJSmodal_close"></button>
+        <div id="button_window">
+            <button id="circuitJSmodal_maximini" class="iconButtons" onclick="circuitJSmodal_maxi_mini()">
+                <i class="fa-regular fa-window-maximize"></i>
+            </button>
+        </div>
+        <div id="content_CircuitJS" class="content">
+            <div class="compiler-output">
+                <pre id="compiler-output-text"></pre>
+                <pre id="serial-output-text"></pre>
+            </div>
+        </div>
+        <div class="buttonpane">
+            <div id="status-label"></div>
+            <div class="buttonset">
+                <button id="circuitJSmodal_run" name="circuitJSmodal_run" class="iconButtons">Run
+                    <!-- <i class="fas fa-play"></i> -->
+                </button>
+                <button id="circuitJSmodal_stop" name="circuitJSmodal_stop" class="iconButtons">Stop
+                    <!-- <i class="fas fa-stop"></i> -->
+                </button>
+            </div>
+        </div>
+    </div>
     <div id="editorMonacoModal" class="dialog" style="z-index: 80;">
         <div class="titlebar" id="editorMonacoModal_titlebar">
             <span class="modal-header">Code editor</span>
@@ -722,7 +758,7 @@
                         <optgroup label="C / C++">
                             <option value="none">...</option>
                         <optgroup label="STMicroelectronics">
-                            <option value="ST_nucleo_F042K6">Nucleo-32 F042K6</option>
+                            <option value="ST_nucleo_L432KC">Nucleo-32 L432KC</option>
                             <option value="ST_nucleo_L476RG">Nucleo-64 L476RG</option>
                             <option value="ST_nucleo_H753ZI">Nucleo-144 H753ZI</option>
                             <option value="ST_mp157c_dk2">STM32MP1 Discovery kits</option>
@@ -1225,8 +1261,26 @@
     // require('../menu_IDE_functions.js');
 </script>
 <script type="text/javascript ">
-    window.onload = function() {        
-        document.body.removeChild(canvas);
+    window.onload = function() {
+        if (document.readyState === 'complete') {
+            let x1 = (window.innerWidth - img1.width) / 2;
+            let y1 = (window.innerHeight - img1.height) / 2;
+            let x2 = (window.innerWidth - img2.width) / 2;
+            let y2 = (window.innerHeight - img2.height) / 2;
+            var alpha = 1.0;
+            function fadeOut() {        
+                if (alpha <= 0) {
+                    return;
+                }         
+                requestAnimationFrame(fadeOut);
+                context.clearRect(0,0, canvas.width, canvas.height);
+                context.globalAlpha = alpha;  2
+                context.drawImage(img1, x1, y1); 
+                context.drawImage(img2, x2, y2); 
+                alpha += -0.01;
+            }
+            fadeOut();
+        }
     }
 </script>
 

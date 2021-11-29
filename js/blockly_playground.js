@@ -192,7 +192,7 @@ function fontSpacingPageModify(classToModify, spacingToModify) {
 
 function setOnOffLine() {
     // Set different config online vs local copy.
-    if (location.protocol === 'file:') {
+    if (window.location.protocol === 'file:') {
         document.getElementById('optionsTopButtons').style.display = "inline";
         document.getElementById('verifyButton').disabled = false;
         document.getElementById('serialButton').disabled = false;
@@ -200,9 +200,10 @@ function setOnOffLine() {
         document.getElementById('serialConnectButton').disabled = false;
         document.getElementById('serialMenu').disabled = false;
         // not same button if in Electron or browser, if local nodejs watches events
-        document.getElementById('wiringButton').onclick = "";
-        document.getElementById('factoryButton').onclick = "";
-        document.getElementById('htmlButton').onclick = "";
+        document.getElementById('wiringButton').setAttribute('onclick', '');
+        document.getElementById('circuitjsButton').setAttribute('onclick', 'Code.CircuitJS()');
+        document.getElementById('factoryButton').setAttribute('onclick', '');
+        document.getElementById('htmlButton').setAttribute('onclick', '');
         // document.getElementById('ArrowheadServRegConfigurationModal_okay').style.display = "none";
         // document.getElementById('ArrowheadServRegConfigurationModal_okay_nodejs').style.display = "inline";
         // document.getElementById('ArrowheadProviderConfigurationModal_okay').style.display = "none";
@@ -221,9 +222,10 @@ function setOnOffLine() {
         document.getElementById('serialConnectButton').disabled = true;
         document.getElementById('serialMenu').disabled = true;
         // not same button if in Electron or browser, if web just webpages launched in browser
-        document.getElementById('wiringButton').onclick = "window.open('./tools/hackcable/index.html')";
-        document.getElementById('factoryButton').onclick = "Code.BlockFactory()";
-        document.getElementById('htmlButton').onclick = "window.open('./tools/html/html_factory.html')";
+        document.getElementById('wiringButton').setAttribute('onclick', './tools/hackcable/index.html');
+        document.getElementById('circuitjsButton').setAttribute('onclick', './tools/circuitjs/circuitjs.html');
+        document.getElementById('factoryButton').setAttribute('onclick', "Code.BlockFactory()");
+        document.getElementById('htmlButton').setAttribute('onclick', './tools/html/html_factory.html');
         // document.getElementById('ArrowheadServRegConfigurationModal_okay').style.display = "inline";
         // document.getElementById('ArrowheadServRegConfigurationModal_okay_nodejs').style.display = "none";
         // document.getElementById('ArrowheadProviderConfigurationModal_okay').style.display = "inline";
@@ -239,7 +241,6 @@ function setOnOffLine() {
         for (var i = 0; i < elmts.length; i++)
             elmts[i].disabled = true;
     }
-    document.getElementsByClassName("ace_content").position = "";
     // disable elements not yet finished - server menu
     // document.getElementById('papyrusConnect').disabled = true;
     // document.getElementById('ArrowheadConfiguration_auto').disabled = true;

@@ -10,6 +10,25 @@
  */
 
 /*
+ * Open tools popup menu
+ */
+function openMenuTools() {
+    document.getElementById('buttonsToolsPopup').style.left = document.getElementById('toolsButton').getBoundingClientRect().left + 5 + 'px';
+    document.getElementById('toolsPopup').style.display = 'block';
+    document.getElementById('toolsButton').classList.toggle('active');
+}
+/*
+ * Open tools popup menu
+ */
+function openMenuIoT() {
+    document.getElementById('buttonsIotPopup').style.left = document.getElementById('iotConnectButton').getBoundingClientRect().left + 5 + 'px';
+    document.getElementById('iotPopup').style.display = 'block';
+    document.getElementById('iotConnectButton').classList.toggle('active');
+}
+
+
+
+/*
  * False modal with data conversion functions
  */
 function showConvertModalDialog() {
@@ -189,6 +208,14 @@ var $ = function(el, tag) {
 // $('.maClasse', 'div');
 // Retourne tous les éléments P
 // $('p');
+
+
+function addScript(url) {
+    var scriptToAdd = document.createElement("script");
+    scriptToAdd.type = "text/javascript";
+    scriptToAdd.src = url;
+    document.getElementById("body").append(scriptToAdd);
+}
 
 /*
  * Javascript function for collapsible content in modal
@@ -415,6 +442,12 @@ document.getElementById('wiringButton').onmouseover = function() {
     document.getElementById("content_hoverButton").textContent = MSG['wiringButton_span'];
 };
 document.getElementById('wiringButton').onmouseout = function() {
+    document.getElementById("content_hoverButton").textContent = "";
+};
+document.getElementById('circuitjsButton').onmouseover = function() {
+    document.getElementById("content_hoverButton").textContent = MSG['circuitjsButton_span'];
+};
+document.getElementById('circuitjsButton').onmouseout = function() {
     document.getElementById("content_hoverButton").textContent = "";
 };
 document.getElementById('factoryButton').onmouseover = function() {
