@@ -146,7 +146,10 @@ Code.init = function() {
     document.forms.options.elements.rendererMenu.value = renderer;
     genWorkspace(rtl, Code.buildToolbox(), renderer);
     // Skill level menu
-    Code.changeLevel();
+    match = location.search.match(/level=([^&]+)/);
+    var level = match ? match[1] : 'skill1';
+    document.forms.options.elements.levelMenu.value = level;
+    Code.changeLevel(level);
     levelMenu.addEventListener('change', Code.changeLevel, true);
     Code.addPluginToWorkspace();
     // add plugin disable-top-blocks

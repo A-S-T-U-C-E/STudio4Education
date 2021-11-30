@@ -109,19 +109,8 @@ Code.loadBlocks = function(defaultXml) {
  * Save the blocks and reload with a different language.
  */
 Code.changeLanguage = function() {
-    let nameChanged = true;
-    if (document.getElementById('sketch_name').value == MSG['sketch_name_default'])
-        nameChanged = false;
     var languageMenu = document.getElementById('languageMenu');
     var newLang = encodeURIComponent(languageMenu.options[languageMenu.selectedIndex].value);
-    // var searchParams = new URLSearchParams(window.location.search);
-    // var oldLang = searchParams.get("lang");
-    // if (oldLang) {
-    //     removeScript("@Blockly/msg/js/" + oldLang + ".js")
-    //     removeScript("msg/UI_" + oldLang + ".js")
-    //     removeScript("S4E/msg/blocks_" + oldLang + ".js");
-    //     removeScript("S4E/msg/categories_" + oldLang + ".js");
-    // }
     var search = window.location.search;
     if (search.length <= 1) {
         search = '?lang=' + newLang;
@@ -131,40 +120,38 @@ Code.changeLanguage = function() {
         search = search.replace(/\?/, '?lang=' + newLang + '&');
     }
     history.replaceState({}, 'search', search);
-    // if (!Boolean(document.querySelector('script[src="./@Blockly/msg/js/' + newLang + '.js"]')))
     addScript("./@Blockly/msg/js/" + newLang + ".js");
-    // if (!Boolean(document.querySelector('script[src="msg/UI_' + newLang + '.js"]')))
     addScript("msg/UI_" + newLang + ".js");
-    // if (!Boolean(document.querySelector('script[src="S4E/msg/blocks_' + newLang + '.js"]')))
     addScript("S4E/msg/blocks_" + newLang + ".js");
-    // if (!Boolean(document.querySelector('script[src="S4E/msg/categories_' + newLang + '.js"]')))
     addScript("S4E/msg/categories_" + newLang + ".js");
     document.forms.options.elements.languageMenu.value = newLang;
-    // Serialize current workspace state.
     const state = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
-    // Dispose of the current workspace
     Code.mainWorkspace.dispose();
     // need to wait before redrawing block, due to translation
     setTimeout(function() {
         genWorkspace(Code.isRtl(), Code.buildToolbox(), document.forms.options.elements.rendererMenu.value);
         Code.buildControlPanelForToolbox();
-        // iconsButtonMouserOver();
         Code.injectLanguageStrings();
+        document.getElementById('sketch_name').value = MSG['sketch_name_default'];
+        Blockly.Xml.clearWorkspaceAndLoadFromXml(state, Code.mainWorkspace);
     }, 50);
     // Code.addPluginToWorkspace();
-    if (nameChanged == false)
-        document.getElementById('sketch_name').value = MSG['sketch_name_default'];
-    // Deserialize state into workspace.
-    Blockly.Xml.clearWorkspaceAndLoadFromXml(state, Code.mainWorkspace);
-    // for (let i = 0; i < jsonToolbox.contents.length; i++) {
-    //     document.getElementById("checkboxSpan_" + i).textContent = Code.mainWorkspace.getToolbox().getToolboxItems()[i]['name_'];
-    // }
 };
 /**
  * Modify interface for different skill levels
  */
-Code.changeLevel = function() {
+Code.changeLevel = function(levelMenuSelection) {
     var levelMenuSelection = document.getElementById('levelMenu').options[levelMenu.selectedIndex].value;
+    var search = window.location.search;
+    if (search.length <= 1) {
+        search = '?level=' + levelMenuSelection;
+    } else if (search.match(/[?&]level=[^&]*/)) {
+        search = search.replace(/([?&]level=)[^&]*/, '$1' + levelMenuSelection);
+    } else {
+        search = search.replace(/\?/, '?level=' + levelMenuSelection + '&');
+    }
+    console.log(levelMenuSelection)
+    history.replaceState({}, 'search', search);
     switch (levelMenuSelection) {
         case 'skill1':
             document.getElementById("menuButton").style.display = 'none';
@@ -197,8 +184,13 @@ Code.changeLevel = function() {
             document.getElementById("openCodeButton").style.display = 'none';
             document.getElementById("content_code").style.minWidth = '0.5px';
             document.getElementById("resizer_h").style.width = '15px';
-            if (Code.editor) Code.editor.dispose();
-            if (Code.diffEditor) Code.diffEditor.dispose();
+            if (Code.editor) {
+                Code.editor.dispose();
+                Code.diffEditor.dispose();
+                document.getElementById("openCodeButton").classList.remove("iconButtonsClicked");
+                document.getElementById("openCodeButton").classList.add("iconButtons");
+                document.getElementById("editorMonacoModal").style.display = "none";
+            }
             if (document.getElementById("content_code_buttons_skill3_undo"))
                 document.getElementById("content_code_buttons_skill3").removeChild(document.getElementById("content_code_buttons_skill3_undo"));
             if (document.getElementById("content_code_buttons_skill3_redo"))
@@ -268,6 +260,23 @@ Code.changeLevel = function() {
             document.getElementById("openCodeButton").style.display = 'inline';
             document.getElementById("content_code").style.minWidth = '0.5px';
             document.getElementById("resizer_h").style.width = '15px';
+            if (!Code.editor)
+                Code.editor = monaco.editor.create(document.getElementById('content_code_Monaco'), {
+                    scrollBeyondLastLine: false,
+                    language: 'cpp',
+                    automaticLayout: true
+                });
+            if (!Code.diffEditor) {
+                Code.diffEditor = monaco.editor.createDiffEditor(document.getElementById('content_diffCode_Monaco'), {
+                    followsCaret: true,
+                    ignoreCharChanges: true,
+                    automaticLayout: true
+                });
+                Code.diffEditor.setModel({
+                    original: monaco.editor.createModel(Blockly.Arduino.workspaceToCode(Code.mainWorkspace), 'cpp'),
+                    modified: monaco.editor.createModel(Blockly.Arduino.workspaceToCode(Code.mainWorkspace), 'cpp'),
+                });
+            }
             if (document.getElementById("content_code_buttons_skill3_undo"))
                 document.getElementById("content_code_buttons_skill3").removeChild(document.getElementById("content_code_buttons_skill3_undo"));
             if (document.getElementById("content_code_buttons_skill3_redo"))
@@ -352,6 +361,10 @@ Code.changeLevel = function() {
                     original: monaco.editor.createModel(Blockly.Arduino.workspaceToCode(Code.mainWorkspace), 'cpp'),
                     modified: monaco.editor.createModel(Blockly.Arduino.workspaceToCode(Code.mainWorkspace), 'cpp'),
                 });
+            } else {
+                document.getElementById("openCodeButton").classList.remove("iconButtonsClicked");
+                document.getElementById("openCodeButton").classList.add("iconButtons");
+                document.getElementById("editorMonacoModal").style.display = "none";
             }
             document.getElementById("content_code").appendChild(document.getElementById("content_code_Monaco"));
             document.getElementById("content_code").appendChild(document.getElementById("content_diffCode_Monaco"));
