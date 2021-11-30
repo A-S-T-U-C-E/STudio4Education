@@ -67,9 +67,14 @@ var PREVIOUS_CODE_ = '';
 Code.renderContent = function() {
     var generatedCode = Blockly.Arduino.workspaceToCode(Code.mainWorkspace);
     var previousCode = document.getElementById('content_pre_code').innerHTML;
+    var level = document.getElementById('levelMenu').options[levelMenu.selectedIndex].value;
     if (generatedCode != PREVIOUS_CODE_) {
-        if (Code.diffEditor) Code.diffEditor.getOriginalEditor().setValue(generatedCode);
-        if (Code.editor) Code.editor.setValue(generatedCode);
+        if (Code.editor) {
+            if (document.getElementById('content_diffCode_Monaco').style.display == 'block')
+                Code.diffEditor.getOriginalEditor().setValue(generatedCode);
+            else
+                Code.editor.setValue(generatedCode);
+        }
         var diff = JsDiff.diffWords(PREVIOUS_CODE_, generatedCode);
         var resultStringArray = [];
         for (var i = 0; i < diff.length; i++) {
