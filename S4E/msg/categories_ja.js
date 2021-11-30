@@ -6,9 +6,9 @@
 
 'use strict';
 
-goog.provide('Blockly.Msg.categories_ja');
+// goog.provide('Blockly.Msg.categories_ja');
 
-goog.require('Blockly.Msg');
+// goog.require('Blockly.Msg');
 
 // toolbox categories name
 Blockly.Msg.CAT_LOOPS = "繰り返し";

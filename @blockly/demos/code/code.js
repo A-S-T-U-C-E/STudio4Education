@@ -109,17 +109,19 @@ Code.loadBlocks = function(defaultXml) {
  * Save the blocks and reload with a different language.
  */
 Code.changeLanguage = function() {
-    // Store the blocks for the duration of the reload.
-    // MSIE 11 does not support sessionStorage on file:// URLs.
-    if (window.sessionStorage) {
-        var xml = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
-        var text = Blockly.Xml.domToText(xml);
-        window.sessionStorage.loadOnceBlocks = text;
-    }
-
+    let nameChanged = true;
+    if (document.getElementById('sketch_name').value == MSG['sketch_name_default'])
+        nameChanged = false;
     var languageMenu = document.getElementById('languageMenu');
-    var newLang = encodeURIComponent(
-        languageMenu.options[languageMenu.selectedIndex].value);
+    var newLang = encodeURIComponent(languageMenu.options[languageMenu.selectedIndex].value);
+    // var searchParams = new URLSearchParams(window.location.search);
+    // var oldLang = searchParams.get("lang");
+    // if (oldLang) {
+    //     removeScript("@Blockly/msg/js/" + oldLang + ".js")
+    //     removeScript("msg/UI_" + oldLang + ".js")
+    //     removeScript("S4E/msg/blocks_" + oldLang + ".js");
+    //     removeScript("S4E/msg/categories_" + oldLang + ".js");
+    // }
     var search = window.location.search;
     if (search.length <= 1) {
         search = '?lang=' + newLang;
@@ -128,11 +130,36 @@ Code.changeLanguage = function() {
     } else {
         search = search.replace(/\?/, '?lang=' + newLang + '&');
     }
-
-    window.location = window.location.protocol + '//' +
-        window.location.host + window.location.pathname + search;
+    history.replaceState({}, 'search', search);
+    // if (!Boolean(document.querySelector('script[src="./@Blockly/msg/js/' + newLang + '.js"]')))
+    addScript("./@Blockly/msg/js/" + newLang + ".js");
+    // if (!Boolean(document.querySelector('script[src="msg/UI_' + newLang + '.js"]')))
+    addScript("msg/UI_" + newLang + ".js");
+    // if (!Boolean(document.querySelector('script[src="S4E/msg/blocks_' + newLang + '.js"]')))
+    addScript("S4E/msg/blocks_" + newLang + ".js");
+    // if (!Boolean(document.querySelector('script[src="S4E/msg/categories_' + newLang + '.js"]')))
+    addScript("S4E/msg/categories_" + newLang + ".js");
+    document.forms.options.elements.languageMenu.value = newLang;
+    // Serialize current workspace state.
+    const state = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
+    // Dispose of the current workspace
+    Code.mainWorkspace.dispose();
+    // need to wait before redrawing block, due to translation
+    setTimeout(function() {
+        genWorkspace(Code.isRtl(), Code.buildToolbox(), document.forms.options.elements.rendererMenu.value);
+        Code.buildControlPanelForToolbox();
+        // iconsButtonMouserOver();
+        Code.injectLanguageStrings();
+    }, 50);
+    // Code.addPluginToWorkspace();
+    if (nameChanged == false)
+        document.getElementById('sketch_name').value = MSG['sketch_name_default'];
+    // Deserialize state into workspace.
+    Blockly.Xml.clearWorkspaceAndLoadFromXml(state, Code.mainWorkspace);
+    // for (let i = 0; i < jsonToolbox.contents.length; i++) {
+    //     document.getElementById("checkboxSpan_" + i).textContent = Code.mainWorkspace.getToolbox().getToolboxItems()[i]['name_'];
+    // }
 };
-
 /**
  * Modify interface for different skill levels
  */
@@ -152,6 +179,7 @@ Code.changeLevel = function() {
             document.getElementById("functionsIcons").prepend(document.getElementById("saveXMLButton"));
             document.getElementById("functionsIcons").prepend(document.getElementById("loadXMLfakeButton"));
             document.getElementById("functionsIcons").prepend(document.getElementById("newButton"));
+            document.getElementById("functionsIcons").prepend(document.getElementById("helpButton"));
             document.getElementById("functionsIcons").prepend(document.getElementById("resetButton"));
             document.getElementById("toolsButton").style.display = 'none';
             document.getElementById("iotConnectButton").style.display = 'none';
@@ -177,8 +205,11 @@ Code.changeLevel = function() {
                 document.getElementById("content_code_buttons_skill3").removeChild(document.getElementById("content_code_buttons_skill3_redo"));
             if (document.getElementById("content_code_buttons_skill3_reset"))
                 document.getElementById("content_code_buttons_skill3").removeChild(document.getElementById("content_code_buttons_skill3_reset"));
-            Code.BlocklyWorkspaceOnresize();
-            Blockly.svgResize(Code.mainWorkspace);
+            if (document.getElementById("circuitjsButton")) {
+                document.getElementById("buttonsToolsPopupInside").removeChild(document.getElementById("circuitjsButton"));
+                document.getElementById("buttonsToolsPopupInside").removeChild(document.getElementById("circuitjsButton_span_menu"));
+                document.getElementById("buttonsToolsPopupInside").removeChild(document.getElementById("circuitjsButton_br_hr"));
+            }
             break;
         case 'skill2':
             document.getElementById("menuButton").style.display = 'inline';
@@ -243,8 +274,11 @@ Code.changeLevel = function() {
                 document.getElementById("content_code_buttons_skill3").removeChild(document.getElementById("content_code_buttons_skill3_redo"));
             if (document.getElementById("content_code_buttons_skill3_reset"))
                 document.getElementById("content_code_buttons_skill3").removeChild(document.getElementById("content_code_buttons_skill3_reset"));
-            Code.BlocklyWorkspaceOnresize();
-            Blockly.svgResize(Code.mainWorkspace);
+            if (document.getElementById("circuitjsButton")) {
+                document.getElementById("buttonsToolsPopupInside").removeChild(document.getElementById("circuitjsButton"));
+                document.getElementById("buttonsToolsPopupInside").removeChild(document.getElementById("circuitjsButton_span_menu"));
+                document.getElementById("buttonsToolsPopupInside").removeChild(document.getElementById("circuitjsButton_br_hr"));
+            }
             break;
         case 'skill3':
             document.getElementById("menuButton").style.display = 'inline';
@@ -362,9 +396,59 @@ Code.changeLevel = function() {
                 document.getElementById('content_pre_code').innerHTML = Blockly.Arduino.workspaceToCode(Code.mainWorkspace);
             };
             document.getElementById("content_code_buttons_skill3").appendChild(btnReset);
-            Code.BlocklyWorkspaceOnresize();
-            Blockly.svgResize(Code.mainWorkspace);
+            let btnCircuitJS = document.createElement("button");
+            btnCircuitJS.innerHTML = '<img src="./tools/circuitjs/resistor.svg" width="31px"></img>';
+            btnCircuitJS.id = "circuitjsButton";
+            btnCircuitJS.className = "iconButtons";
+            if (window.location.protocol === 'file:')
+                btnCircuitJS.setAttribute('onclick', 'Code.CircuitJS()');
+            else
+                btnCircuitJS.setAttribute('onclick', './tools/circuitjs/circuitjs.html');
+            document.getElementById("buttonsToolsPopupInside").appendChild(btnCircuitJS);
+            var btnCircuitSpan = document.createElement('span');
+            btnCircuitSpan.id = "circuitjsButton_span_menu";
+            btnCircuitSpan.setAttribute('class', 'menu_text');
+            document.getElementById("buttonsToolsPopupInside").appendChild(btnCircuitSpan);
+            var btnCircuitHrBr = document.createElement('span');
+            btnCircuitHrBr.id = "circuitjsButton_br_hr";
+            btnCircuitHrBr.innerHTML = "<br><hr>";
+            btnCircuitHrBr.setAttribute('class', 'menu_text');
+            document.getElementById("buttonsToolsPopupInside").appendChild(btnCircuitHrBr);
+            document.getElementById("buttonsToolsPopupInside").prepend(btnCircuitHrBr);
+            document.getElementById("buttonsToolsPopupInside").prepend(btnCircuitSpan);
+            document.getElementById("buttonsToolsPopupInside").prepend(btnCircuitJS);
+            document.getElementById('circuitjsButton').onmouseover = function() {
+                document.getElementById("content_hoverButton").textContent = MSG['circuitjsButton_span'];
+            };
+            document.getElementById('circuitjsButton').onmouseout = function() {
+                document.getElementById("content_hoverButton").textContent = "";
+            };
+            document.getElementById('circuitjsButton').title = MSG['circuitjsButton_span'];
+            document.getElementById('circuitjsButton_span_menu').textContent = MSG['circuitjsButton_span'];
+            document.getElementById('content_code_buttons_skill3_undo').onmouseover = function() {
+                document.getElementById("content_hoverButton").textContent = MSG['editorMonacoModal_undo_span'];
+            };
+            document.getElementById('content_code_buttons_skill3_undo').onmouseout = function() {
+                document.getElementById("content_hoverButton").textContent = "";
+            };
+            document.getElementById('content_code_buttons_skill3_redo').onmouseover = function() {
+                document.getElementById("content_hoverButton").textContent = MSG['editorMonacoModal_redo_span'];
+            };
+            document.getElementById('content_code_buttons_skill3_redo').onmouseout = function() {
+                document.getElementById("content_hoverButton").textContent = "";
+            };
+            document.getElementById('content_code_buttons_skill3_reset').onmouseover = function() {
+                document.getElementById("content_hoverButton").textContent = MSG['editorMonacoModal_cancel_span'];
+            };
+            document.getElementById('content_code_buttons_skill3_reset').onmouseout = function() {
+                document.getElementById("content_hoverButton").textContent = "";
+            };
+            break;
     }
+    Code.BlocklyWorkspaceOnresize();
+    Blockly.svgResize(Code.mainWorkspace);
+    iconsButtonMouserOver();
+    Code.injectLanguageStrings();
 };
 
 /**

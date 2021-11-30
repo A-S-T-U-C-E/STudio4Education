@@ -6,9 +6,9 @@
 
 'use strict';
 
-goog.provide('Blockly.Msg.categories_de');
+// goog.provide('Blockly.Msg.categories_de');
 
-goog.require('Blockly.Msg');
+// goog.require('Blockly.Msg');
 
 // toolbox categories name
 Blockly.Msg.CAT_LOOPS = "Wiederholungen";

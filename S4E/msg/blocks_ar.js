@@ -6,9 +6,9 @@
 
 'use strict';
 
-goog.provide('Blockly.Msg["blocks_en');
+// goog.provide('Blockly.Msg["blocks_en');
 
-goog.require('Blockly.Msg');
+// goog.require('Blockly.Msg');
 
 //text in blocks
 Blockly.Msg["FIELDDROPDOWN"] = [
@@ -29,44 +29,45 @@ Blockly.Msg["FIELDDROPDOWN_ONOFF3"] = [
 ];
 
 //blockly array
-Blockly.Msg["ARRAY_CREATE_EMPTY_TITLE"] =  "فارغ";
-Blockly.Msg["tab_create"] =  "'إنشاء الكتلة 'عنصر للصفيف %1'";
-Blockly.Msg["tab_create_fix"] =  "إنشاء الكتلة 'تعيين عنصر الصفيف %1 على'";
-Blockly.Msg["ARRAY_CREATE_WITH"] =  "مكونة من";
-Blockly.Msg["ARRAY_taille"] "] = سعة";
+Blockly.Msg["ARRAY_CREATE_EMPTY_TITLE"] = "فارغ";
+Blockly.Msg["tab_create"] = "'إنشاء الكتلة 'عنصر للصفيف %1'";
+Blockly.Msg["tab_create_fix"] = "إنشاء الكتلة 'تعيين عنصر الصفيف %1 على'";
+Blockly.Msg["ARRAY_CREATE_WITH"] = "مكونة من";
+Blockly.Msg["ARRAY_taille"]
+"] = سعة";
 Blockly.Msg["ARRAY_contenu"] = "الذي يحتوي على";
-Blockly.Msg["ARRAY_dim"] =  "حجم";
-Blockly.Msg["ARRAY_index"] =  "مؤشر";
-Blockly.Msg["_AT"] =  "إلى";
-Blockly.Msg["ARRAY_CREATE_WITH_CONTAINER_TITLE_ADD"] =  "قائمة أو جدول";
-Blockly.Msg["ARRAY_CREATE_WITH_CONTAINER_TOOLTIP"] =  "إضافة أو إزالة أو إعادة ترتيب العناصر في كتلة الصفيف.";
-Blockly.Msg["ARRAY_CREATE_WITH_HELPURL"] =  "";
+Blockly.Msg["ARRAY_dim"] = "حجم";
+Blockly.Msg["ARRAY_index"] = "مؤشر";
+Blockly.Msg["_AT"] = "إلى";
+Blockly.Msg["ARRAY_CREATE_WITH_CONTAINER_TITLE_ADD"] = "قائمة أو جدول";
+Blockly.Msg["ARRAY_CREATE_WITH_CONTAINER_TOOLTIP"] = "إضافة أو إزالة أو إعادة ترتيب العناصر في كتلة الصفيف.";
+Blockly.Msg["ARRAY_CREATE_WITH_HELPURL"] = "";
 Blockly.Msg["ARRAY_CREATE_WITH_INPUT_WITH"] = "قائمة";
-Blockly.Msg["ARRAY_CREATE_WITH_ITEM_TITLE"] =  "عنصر";
-Blockly.Msg["ARRAY_CREATE_WITH_ITEM_TOOLTIP"] =  "إضافة عنصر إلى القائمة.";
-Blockly.Msg["ARRAY_CREATE_WITH_TOOLTIP"] =  "إنشاء قائمة أو صفيف , مع عدد من العناصر لتحديدها.";
-Blockly.Msg["ARRAY_GETINDEX_AT"] =  "العنصر في الرتبة" ;
-Blockly.Msg["ARRAY_GETINDEX_AT1"] =  "العنصر في الرتبة" ;
+Blockly.Msg["ARRAY_CREATE_WITH_ITEM_TITLE"] = "عنصر";
+Blockly.Msg["ARRAY_CREATE_WITH_ITEM_TOOLTIP"] = "إضافة عنصر إلى القائمة.";
+Blockly.Msg["ARRAY_CREATE_WITH_TOOLTIP"] = "إنشاء قائمة أو صفيف , مع عدد من العناصر لتحديدها.";
+Blockly.Msg["ARRAY_GETINDEX_AT"] = "العنصر في الرتبة";
+Blockly.Msg["ARRAY_GETINDEX_AT1"] = "العنصر في الرتبة";
 Blockly.Msg["ARRAY_GETINDEX_AT2"] = "رتبة";
-Blockly.Msg["ARRAY_GETINDEX_HELPURL"] =  "" ;
+Blockly.Msg["ARRAY_GETINDEX_HELPURL"] = "";
 Blockly.Msg["ARRAY_GETINDEX_ITEM"] = "في القائمة";
-Blockly.Msg["ARRAY_GETINDEX_TOOLTIP"] =  "" ;
-Blockly.Msg["ARRAY_GETINDEX_TOOLTIP1"] =  "إرجاع القيمة المخزنة في القائمة أو الصفيف";
+Blockly.Msg["ARRAY_GETINDEX_TOOLTIP"] = "";
+Blockly.Msg["ARRAY_GETINDEX_TOOLTIP1"] = "إرجاع القيمة المخزنة في القائمة أو الصفيف";
 Blockly.Msg["ARRAY_GETINDEX_TOOLTIP2"] = "إنشاء قائمة أو صفيف من النوع المحدد";
-Blockly.Msg["ARRAY_GETINDEX_TOOLTIP3"] =  "تعيين عنصر (عناصر) من القائمة أو الصفيف إلى القيمة (القيم) المشار إليها" ;
-Blockly.Msg["ARRAY_CREATE"] =  "تعريف ";
+Blockly.Msg["ARRAY_GETINDEX_TOOLTIP3"] = "تعيين عنصر (عناصر) من القائمة أو الصفيف إلى القيمة (القيم) المشار إليها";
+Blockly.Msg["ARRAY_CREATE"] = "تعريف ";
 Blockly.Msg["ARRAY_TAILLE"] = "بحجم";
-Blockly.Msg["ARRAY_CONTIENT"] =  "الذي يحتوي";
+Blockly.Msg["ARRAY_CONTIENT"] = "الذي يحتوي";
 Blockly.Msg["ARRAY_LIST"] = "القائمة";
 Blockly.Msg["ARRAY_ARRAY"] = "الصفيف";
-Blockly.Msg["ARRAY_fixe"] =  "عين العنصر في الرتبة";
-Blockly.Msg["ARRAY_DECLARE_NAME"] =  "إنشاء جدول (صفيف) مسمى" ;
+Blockly.Msg["ARRAY_fixe"] = "عين العنصر في الرتبة";
+Blockly.Msg["ARRAY_DECLARE_NAME"] = "إنشاء جدول (صفيف) مسمى";
 Blockly.Msg["ARRAY_DECLARE_TYPE"] = "من نوع";
 Blockly.Msg["ARRAY_DECLARE_SIZE"] = "من عدد من العناصر";
-Blockly.Msg["ARRAY_DECLARE_TOOLTIP"] =  "إنشاء صفيف من البعد والنوع المشار إليه" ;
-Blockly.Msg["ARRAY_MODIFY_INDICE"] =  "تعيين العنصر ذو الرتبة ";
-Blockly.Msg["ARRAY_MODIFY_NAME"] =  "في الصفيف" ;
-Blockly.Msg["ARRAY_MODIFY_VALUE"] =  "القيمة" ;
+Blockly.Msg["ARRAY_DECLARE_TOOLTIP"] = "إنشاء صفيف من البعد والنوع المشار إليه";
+Blockly.Msg["ARRAY_MODIFY_INDICE"] = "تعيين العنصر ذو الرتبة ";
+Blockly.Msg["ARRAY_MODIFY_NAME"] = "في الصفيف";
+Blockly.Msg["ARRAY_MODIFY_VALUE"] = "القيمة";
 Blockly.Msg["ARRAY_MODIFY_TOOLTIP"] = "تعيين قيمة إلى عنصر من عناصر الجدول (الصفيف)";
 //blockly logic
 Blockly.Msg["CONTROLS_SWITCH_CASEBREAK_TOOLTIP"] = "Add a condition to the case block.";
@@ -93,21 +94,21 @@ Blockly.Msg["VARIABLES_SET_CONST_AT"] = "الثابت %1 مثبت على %2";
 Blockly.Msg["VARIABLES_SET_CONST_TOOLTIP"] = "set a variable to non modifiable value";
 Blockly.Msg["VARIABLES_SET_CONST_HELPURL"] = "https://www.arduino.cc/reference/en/language/variables/variable-scope-qualifiers/const/";
 //blockly types
-Blockly.Msg["ARD_TYPE_ARRAY"] =  "الجدول (الصفيف)";
-Blockly.Msg["ARD_TYPE_BOOL"] =  "ثنائي (ToR)";
-Blockly.Msg["ARD_TYPE_CHAR"] =  "حرف";
-Blockly.Msg["ARD_TYPE_ARRAY_CHAR"] =  "حرفالجدول ";
-Blockly.Msg["ARD_TYPE_CHILDBLOCKMISSING"] =  "الكتابة مفقودة على كتلة";
-Blockly.Msg["ARD_TYPE_DECIMAL"] =  "رقم النقطة العائمة (عشري)";
-Blockly.Msg["ARD_TYPE_LONG"] =  "عدد صحيح طويل";
+Blockly.Msg["ARD_TYPE_ARRAY"] = "الجدول (الصفيف)";
+Blockly.Msg["ARD_TYPE_BOOL"] = "ثنائي (ToR)";
+Blockly.Msg["ARD_TYPE_CHAR"] = "حرف";
+Blockly.Msg["ARD_TYPE_ARRAY_CHAR"] = "حرفالجدول ";
+Blockly.Msg["ARD_TYPE_CHILDBLOCKMISSING"] = "الكتابة مفقودة على كتلة";
+Blockly.Msg["ARD_TYPE_DECIMAL"] = "رقم النقطة العائمة (عشري)";
+Blockly.Msg["ARD_TYPE_LONG"] = "عدد صحيح طويل";
 Blockly.Msg["ARD_TYPE_NULL"] = "فارغ";
-Blockly.Msg["ARD_TYPE_NUMBER"] =  "عدد صحيح (int)";
-Blockly.Msg["ARD_TYPE_SHORT"] =  "بايت";
-Blockly.Msg["ARD_TYPE_TEXT"] =  "نص";
-Blockly.Msg["ARD_TYPE_UNDEF"] =  "غير محدد";
-Blockly.Msg["ARD_TYPE_UNS_NUMBER"] =  "عدد صحيح موجب (عدد بدون إشارة)" ;
+Blockly.Msg["ARD_TYPE_NUMBER"] = "عدد صحيح (int)";
+Blockly.Msg["ARD_TYPE_SHORT"] = "بايت";
+Blockly.Msg["ARD_TYPE_TEXT"] = "نص";
+Blockly.Msg["ARD_TYPE_UNDEF"] = "غير محدد";
+Blockly.Msg["ARD_TYPE_UNS_NUMBER"] = "عدد صحيح موجب (عدد بدون إشارة)";
 Blockly.Msg["ARD_TYPE_UNS_LONG"] = "عدد صحيح موجب طويل (طويل غير موقعة)";
-Blockly.Msg["ARD_TYPE_VOLATILE"] =  "عدد صحيح متقلب (للمقاطعة)" ;
+Blockly.Msg["ARD_TYPE_VOLATILE"] = "عدد صحيح متقلب (للمقاطعة)";
 
 //Arduino base category blocks
 Blockly.Msg["ARDUINO_INOUT_BUILDIN_LED_HELPURL"] = "http://arduino.cc/en/Reference/DigitalWrite";

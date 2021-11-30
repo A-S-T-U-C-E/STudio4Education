@@ -531,13 +531,17 @@ Code.changeRenderingConstant = function(value) {
                 'size': value
             };
             Code.mainWorkspace.getTheme().setFontStyle(fontStyle);
-            editor.setOptions({
-                fontSize: value + "pt"
-            });
+            break;
+        case 'fontSizeEditor':
+            let options = { "fontSize": value }
+            Code.editor.updateOptions(options);
+            break;
         case 'fontSizePage':
             // fontSizePageModify('access', value);
+            // break;
         case 'fontSpacingPage':
             // document.body.style.fontSize = value + 'px';
+            // break;
     }
     // Refresh theme.
     Code.mainWorkspace.setTheme(Code.mainWorkspace.getTheme());

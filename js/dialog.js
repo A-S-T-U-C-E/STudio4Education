@@ -25,6 +25,14 @@ function openMenuIoT() {
     document.getElementById('iotPopup').style.display = 'block';
     document.getElementById('iotConnectButton').classList.toggle('active');
 }
+/*
+ * Open serial popup menu
+ */
+function openMenuSerial() {
+    document.getElementById('buttonsSerialPopup').style.left = document.getElementById('serialConnectButton').getBoundingClientRect().left + 5 + 'px';
+    document.getElementById('serialPopup').style.display = 'block';
+    document.getElementById('serialConnectButton').classList.toggle('active');
+}
 
 
 
@@ -214,7 +222,14 @@ function addScript(url) {
     var scriptToAdd = document.createElement("script");
     scriptToAdd.type = "text/javascript";
     scriptToAdd.src = url;
-    document.getElementById("body").append(scriptToAdd);
+    document.body.appendChild(scriptToAdd);
+}
+
+function removeScript(url) {
+    var scriptToAdd = document.createElement("script");
+    scriptToAdd.type = "text/javascript";
+    scriptToAdd.src = url;
+    document.body.removeChild(scriptToAdd);
 }
 
 /*
@@ -294,303 +309,347 @@ for (var i = 0; i < accordion2.length; i++) {
 /*
  * Icons button mouser over
  */
-document.getElementById('btn_fake_min').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['btnMinimize'];
-};
-document.getElementById('btn_fake_min').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('btn_fake_max').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['btnMaximize'];
-};
-document.getElementById('btn_fake_max').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('btn_fake_close').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['btnClose'];
-};
-document.getElementById('btn_fake_close').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('fullScreenButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['fullScreenButton_span'];
-};
-document.getElementById('fullScreenButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('fullToolboxButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['fullToolboxButton_span'];
-};
-document.getElementById('fullToolboxButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('undoButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['undoButton_span'];
-};
-document.getElementById('undoButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('redoButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['redoButton_span'];
-};
-document.getElementById('redoButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('verifyButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['verifyButton_span'];
-};
-document.getElementById('verifyButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('serialButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['serialButtonSpan'];
-};
-document.getElementById('serialButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('uploadButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['uploadButton_span'];
-};
-document.getElementById('uploadButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('serialConnectButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['serialConnectButton_span'];
-};
-document.getElementById('serialConnectButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('serialMonitorButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['serialMonitorButton_span'];
-};
-document.getElementById('serialMonitorButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('nodeRedFlowButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['nodeRedFlowButton_span'];
-};
-document.getElementById('nodeRedFlowButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('supervisionButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['supervisionButton_span'];
-};
-document.getElementById('supervisionButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('saveCodeButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['saveCodeButton_span'];
-};
-document.getElementById('saveCodeButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('menuButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['menuButton_span'];
-};
-document.getElementById('menuButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('newButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['newButton_span'];
-};
-document.getElementById('newButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('saveXMLButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['saveXMLButton_span'];
-};
-document.getElementById('saveXMLButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('loadXMLfakeButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['loadXMLfakeButton_span'];
-};
-document.getElementById('loadXMLfakeButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('resetButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['resetButton_span'];
-};
-document.getElementById('resetButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-// document.getElementById('parametersButton').onmouseover = function() {
-//     document.getElementById("content_hoverButton").textContent = MSG['setup_sideButton_span'];
-// };
-// document.getElementById('parametersButton').onmouseout = function() {
-//     document.getElementById("content_hoverButton").textContent = "";
-// };
-document.getElementById('sketch_name_wrapper').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['sketch_name_wrapper'];
-};
-document.getElementById('sketch_name_wrapper').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('helpButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['helpButton_span'];
-};
-document.getElementById('helpButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('toolsButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['toolsButton_span'];
-};
-document.getElementById('toolsButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('wiringButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['wiringButton_span'];
-};
-document.getElementById('wiringButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('circuitjsButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['circuitjsButton_span'];
-};
-document.getElementById('circuitjsButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('factoryButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['factoryButton_span'];
-};
-document.getElementById('factoryButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('htmlButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['htmlButton_span'];
-};
-document.getElementById('htmlButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('colorConversionButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['colorConversionButton_span'];
-};
-document.getElementById('colorConversionButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('dataConversionButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['dataConversionButton_span'];
-};
-document.getElementById('dataConversionButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('iotConnectButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['iotConnectButton_span'];
-};
-document.getElementById('iotConnectButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('launchRedServer').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['launchRedServer_span'];
-};
-document.getElementById('launchRedServer').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('launchWebServer').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['launchWebServer_span'];
-};
-document.getElementById('launchWebServer').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('papyrusConnect').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['papyrusConnect_span'];
-};
-document.getElementById('papyrusConnect').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('ArrowheadConfiguration_auto').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['ArrowheadConfiguration_span'];
-};
-document.getElementById('ArrowheadConfiguration_auto').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-// document.getElementById('blynkConnect').onmouseover = function () {
-// document.getElementById("content_hoverButton").textContent = MSG['blynkConnect_span'];
-// };
-// document.getElementById('blynkConnect').onmouseout = function () {
-// document.getElementById("content_hoverButton").textContent = "";
-// };
-document.getElementById('serialConnectIOT').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['serialConnectIOT_span'];
-};
-document.getElementById('serialConnectIOT').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('lateral-panel-setup-label').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['setup_sideButton_span'];
-};
-document.getElementById('lateral-panel-setup-label').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('copyCodeButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['copyCodeButton_span'];
-};
-document.getElementById('copyCodeButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('coreUpdateButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['coreUpdateButton_span'];
-};
-document.getElementById('coreUpdateButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('cleanCLIcacheButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['cleanCLIcacheButton_span'];
-};
-document.getElementById('cleanCLIcacheButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('listBoardsButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['listBoardsButton_span'];
-};
-document.getElementById('listBoardsButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('installBoardsInput').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['installBoardsInput_span'];
-};
-document.getElementById('installBoardsInput').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('installBoardsButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['installBoardsButton_span'];
-};
-document.getElementById('installBoardsButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('searchlLibInput').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['searchlLibInput_span'];
-};
-document.getElementById('searchlLibInput').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('searchlLibButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['searchlLibButton_span'];
-};
-document.getElementById('searchlLibButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('installLibInput').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['installLibInput_span'];
-};
-document.getElementById('installLibInput').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('installLibButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['installLibButton_span'];
-};
-document.getElementById('installLibButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('CLI_githubLinkButton').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['CLI_githubLinkButton_span'];
-};
-document.getElementById('CLI_githubLinkButton').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
-document.getElementById('editorDiffToggle').onmouseover = function() {
-    document.getElementById("content_hoverButton").textContent = MSG['editorDiffToggle_span'];
-};
-document.getElementById('editorDiffToggle').onmouseout = function() {
-    document.getElementById("content_hoverButton").textContent = "";
-};
+function iconsButtonMouserOver() {
+    document.getElementById('btn_fake_min').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['btnMinimize'];
+    };
+    document.getElementById('btn_fake_min').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('btn_fake_max').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['btnMaximize'];
+    };
+    document.getElementById('btn_fake_max').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('btn_fake_close').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['btnClose'];
+    };
+    document.getElementById('btn_fake_close').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('fullScreenButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['fullScreenButton_span'];
+    };
+    document.getElementById('fullScreenButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('fullToolboxButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['fullToolboxButton_span'];
+    };
+    document.getElementById('fullToolboxButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('undoButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['undoButton_span'];
+    };
+    document.getElementById('undoButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('redoButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['redoButton_span'];
+    };
+    document.getElementById('redoButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('verifyButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['verifyButton_span'];
+    };
+    document.getElementById('verifyButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('serialButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['serialButtonSpan'];
+    };
+    document.getElementById('serialButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('uploadButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['uploadButton_span'];
+    };
+    document.getElementById('uploadButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('serialConnectButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['serialConnectButton_span'];
+    };
+    document.getElementById('serialConnectButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('serialMonitorButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['serialMonitorButton_span'];
+    };
+    document.getElementById('serialMonitorButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('nodeRedFlowButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['nodeRedFlowButton_span'];
+    };
+    document.getElementById('nodeRedFlowButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('supervisionButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['supervisionButton_span'];
+    };
+    document.getElementById('supervisionButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('saveCodeButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['saveCodeButton_span'];
+    };
+    document.getElementById('saveCodeButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('menuButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['menuButton_span'];
+    };
+    document.getElementById('menuButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('newButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['newButton_span'];
+    };
+    document.getElementById('newButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('saveXMLButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['saveXMLButton_span'];
+    };
+    document.getElementById('saveXMLButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('loadXMLfakeButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['loadXMLfakeButton_span'];
+    };
+    document.getElementById('loadXMLfakeButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('resetButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['resetButton_span'];
+    };
+    document.getElementById('resetButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    // document.getElementById('parametersButton').onmouseover = function() {
+    //     document.getElementById("content_hoverButton").textContent = MSG['setup_sideButton_span'];
+    // };
+    // document.getElementById('parametersButton').onmouseout = function() {
+    //     document.getElementById("content_hoverButton").textContent = "";
+    // };
+    document.getElementById('sketch_name_wrapper').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['sketch_name_wrapper'];
+    };
+    document.getElementById('sketch_name_wrapper').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('helpButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['helpButton_span'];
+    };
+    document.getElementById('helpButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('toolsButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['toolsButton_span'];
+    };
+    document.getElementById('toolsButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('wiringButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['wiringButton_span'];
+    };
+    document.getElementById('wiringButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('factoryButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['factoryButton_span'];
+    };
+    document.getElementById('factoryButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('htmlButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['htmlButton_span'];
+    };
+    document.getElementById('htmlButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('colorConversionButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['colorConversionButton_span'];
+    };
+    document.getElementById('colorConversionButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('dataConversionButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['dataConversionButton_span'];
+    };
+    document.getElementById('dataConversionButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('iotConnectButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['iotConnectButton_span'];
+    };
+    document.getElementById('iotConnectButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('launchRedServer').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['launchRedServer_span'];
+    };
+    document.getElementById('launchRedServer').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('launchWebServer').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['launchWebServer_span'];
+    };
+    document.getElementById('launchWebServer').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('papyrusConnect').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['papyrusConnect_span'];
+    };
+    document.getElementById('papyrusConnect').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('ArrowheadConfiguration_auto').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['ArrowheadConfiguration_span'];
+    };
+    document.getElementById('ArrowheadConfiguration_auto').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    // document.getElementById('blynkConnect').onmouseover = function () {
+    // document.getElementById("content_hoverButton").textContent = MSG['blynkConnect_span'];
+    // };
+    // document.getElementById('blynkConnect').onmouseout = function () {
+    // document.getElementById("content_hoverButton").textContent = "";
+    // };
+    document.getElementById('serialConnectIOT').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['serialConnectIOT_span'];
+    };
+    document.getElementById('serialConnectIOT').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('lateral-panel-setup-label').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['setup_sideButton_span'];
+    };
+    document.getElementById('lateral-panel-setup-label').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('openCodeButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['openCodeButton_span'];
+    };
+    document.getElementById('openCodeButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('copyCodeButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['copyCodeButton_span'];
+    };
+    document.getElementById('copyCodeButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('coreUpdateButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['coreUpdateButton_span'];
+    };
+    document.getElementById('coreUpdateButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('cleanCLIcacheButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['cleanCLIcacheButton_span'];
+    };
+    document.getElementById('cleanCLIcacheButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('listBoardsButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['listBoardsButton_span'];
+    };
+    document.getElementById('listBoardsButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('installBoardsInput').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['installBoardsInput_span'];
+    };
+    document.getElementById('installBoardsInput').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('installBoardsButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['installBoardsButton_span'];
+    };
+    document.getElementById('installBoardsButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('searchlLibInput').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['searchlLibInput_span'];
+    };
+    document.getElementById('searchlLibInput').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('searchlLibButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['searchlLibButton_span'];
+    };
+    document.getElementById('searchlLibButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('installLibInput').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['installLibInput_span'];
+    };
+    document.getElementById('installLibInput').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('installLibButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['installLibButton_span'];
+    };
+    document.getElementById('installLibButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('CLI_githubLinkButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['CLI_githubLinkButton_span'];
+    };
+    document.getElementById('CLI_githubLinkButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('editorDiffToggle').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['editorDiffToggle_span'];
+    };
+    document.getElementById('editorDiffToggle').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('editorMonacoModal_undo').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['editorMonacoModal_undo_span'];
+    };
+    document.getElementById('editorMonacoModal_undo').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('editorMonacoModal_redo').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['editorMonacoModal_redo_span'];
+    };
+    document.getElementById('editorMonacoModal_redo').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('editorMonacoModal_diff').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['editorMonacoModal_diff_span'];
+    };
+    document.getElementById('editorMonacoModal_diff').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('editorMonacoModal_ok').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['editorMonacoModal_ok_span'];
+    };
+    document.getElementById('editorMonacoModal_ok').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('editorMonacoModal_cancel').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['editorMonacoModal_cancel_span'];
+    };
+    document.getElementById('editorMonacoModal_cancel').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('circuitJSmodal_run').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['circuitJSmodal_run'];
+    };
+    document.getElementById('circuitJSmodal_run').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('circuitJSmodal_stop').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['circuitJSmodal_stop'];
+    };
+    document.getElementById('circuitJSmodal_stop').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+}

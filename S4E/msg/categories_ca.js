@@ -6,9 +6,9 @@
 
 'use strict';
 
-goog.provide('Blockly.Msg.categories_ca');
+// goog.provide('Blockly.Msg.categories_ca');
 
-goog.require('Blockly.Msg');
+// goog.require('Blockly.Msg');
 
 // toolbox categories name
 Blockly.Msg.CAT_LOOPS = "Bucles";

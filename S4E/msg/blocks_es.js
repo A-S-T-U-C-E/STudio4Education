@@ -6,9 +6,9 @@
 
 'use strict';
 
-goog.provide('Blockly.Msg["blocks_es');
+// goog.provide('Blockly.Msg["blocks_es');
 
-goog.require('Blockly.Msg');
+// goog.require('Blockly.Msg');
 
 //text in blocks
 Blockly.Msg["FIELDDROPDOWN"] = [
@@ -37,7 +37,7 @@ Blockly.Msg["ARRAY_taille"] = "tamaño";
 Blockly.Msg["ARRAY_contenu"] = "contiene";
 Blockly.Msg["ARRAY_dim"] = "tamaño de ";
 Blockly.Msg["ARRAY_index"] = "índice";
-Blockly.Msg["_AT"] =  "en";
+Blockly.Msg["_AT"] = "en";
 Blockly.Msg["ARRAY_CREATE_WITH"] = "creado con";
 Blockly.Msg["ARRAY_CREATE_WITH_CONTAINER_TITLE_ADD"] = "matriz";
 Blockly.Msg["ARRAY_CREATE_WITH_CONTAINER_TOOLTIP"] = "Añade, quita, o reordena secciones para reconfigurar este bloque matriz.";

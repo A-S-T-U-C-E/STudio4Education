@@ -74,10 +74,10 @@ function ArrowheadOrchConfigurationShow() {
     document.getElementById('ArrowheadOrchConfigurationModal').classList.add('show');
     window.addEventListener('click', ArrowheadOrchConfigurationShowHide, 'once');
 };
-// document.getElementById("closeModalArrowheadOrchConfiguration").onclick = function() {
-//     document.getElementById('overlayForModals').style.display = "none";
-//     document.getElementById('ArrowheadOrchConfigurationModal').classList.remove('show');
-// };
+document.getElementById("closeModalArrowheadOrchConfiguration").onclick = function() {
+    document.getElementById('overlayForModals').style.display = "none";
+    document.getElementById('ArrowheadOrchConfigurationModal').classList.remove('show');
+};
 
 function ArrowheadOrchConfigurationShowHide(event) {
     if (document.getElementById('ArrowheadOrchConfigurationModal_content').contains(event.target)) {} else {

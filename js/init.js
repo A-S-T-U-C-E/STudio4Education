@@ -143,40 +143,17 @@ Code.init = function() {
 
     var match = location.search.match(/renderer=([^&]+)/);
     var renderer = match ? match[1] : 'thrasos';
-    document.forms.options.elements.renderer.value = renderer;
+    document.forms.options.elements.rendererMenu.value = renderer;
     genWorkspace(rtl, Code.buildToolbox(), renderer);
     // Skill level menu
     Code.changeLevel();
     levelMenu.addEventListener('change', Code.changeLevel, true);
-    //add plugin workspace search
-    const workspaceSearch = new WorkspaceSearch(Code.mainWorkspace);
-    workspaceSearch.init();
-    //add plugin keyboard navigation
-    Code.navigationController = new NavigationController();
-    Code.navigationController.init();
-    Code.navigationController.addWorkspace(Code.mainWorkspace);
-    //add plugin zoom-to-fit
-    const zoomToFit = new ZoomToFitControl(Code.mainWorkspace);
-    zoomToFit.init();
-    //add workspace backpack plugin
-    const backpackOptions = {
-        contextMenu: {
-            emptyBackpack: true,
-            removeFromBackpack: true,
-            copyToBackpack: true,
-            copyAllToBackpack: true,
-            pasteAllToBackpack: true,
-            disablePreconditionChecks: true,
-        },
-    };
-    const backpack = new Backpack(Code.mainWorkspace, backpackOptions);
-    backpack.init();
+    Code.addPluginToWorkspace();
     // add plugin disable-top-blocks
     // Code.mainWorkspace.addChangeListener(Blockly.Events.disableOrphans);
     // const disableTopBlocksPlugin = new DisableTopBlocks();
     // disableTopBlocksPlugin.init();
     Code.BlocklyWorkspaceOnresize();
-    Blockly.svgResize(Code.mainWorkspace);
     window.addEventListener('resize', Code.BlocklyWorkspaceOnresize, false);
     //define resizable workspace
     var blocklyArea = document.getElementById('content_area');
@@ -213,7 +190,6 @@ Code.init = function() {
     BlocklyWorkspaceOnresize();
     Blockly.svgResize(Code.mainWorkspace);
     window.addEventListener('resize', BlocklyWorkspaceOnresize, false);
-    Code.mainWorkspace.configureContextMenu = configureContextualMenu.bind(Code.mainWorkspace);
     Code.buildControlPanelForToolbox();
     // load blocks stored in session or passed by url
     var urlFile = Code.getStringParamFromUrl('url', '');
@@ -248,7 +224,7 @@ Code.init = function() {
     //change theme color
     match = location.search.match(/theme=([^&]+)/);
     var theme = match ? match[1] : 'classic';
-    document.forms.options.elements.theme.value = theme;
+    document.forms.options.elements.themeMenu.value = theme;
     changeTheme(theme);
 
     //keyboard nav attribution
@@ -364,6 +340,33 @@ Code.init = function() {
     sessionStorage.setItem('toolboxSize', Code.mainWorkspace.getToolbox().getWidth());
 };
 
+Code.addPluginToWorkspace = function() {
+    Code.mainWorkspace.configureContextMenu = configureContextualMenu.bind(Code.mainWorkspace);
+    //add plugin keyboard navigation
+    Code.navigationController = new NavigationController();
+    Code.navigationController.init();
+    Code.navigationController.addWorkspace(Code.mainWorkspace);
+    //add plugin workspace search
+    const workspaceSearch = new WorkspaceSearch(Code.mainWorkspace);
+    workspaceSearch.init();
+    //add plugin zoom-to-fit
+    const zoomToFit = new ZoomToFitControl(Code.mainWorkspace);
+    zoomToFit.init();
+    //add workspace backpack plugin
+    const backpackOptions = {
+        contextMenu: {
+            emptyBackpack: true,
+            removeFromBackpack: true,
+            copyToBackpack: true,
+            copyAllToBackpack: true,
+            pasteAllToBackpack: true,
+            disablePreconditionChecks: true,
+        },
+    };
+    const backpack = new Backpack(Code.mainWorkspace, backpackOptions);
+    backpack.init();
+}
+
 /**
  * Initialize the page language.
  */
@@ -399,15 +402,22 @@ Code.initLanguage = function() {
         }
         languageMenu.options.add(option);
     }
+    Code.injectLanguageStrings();
     languageMenu.addEventListener('change', Code.changeLanguage, true);
+}
 
-    // Inject language strings.
+Code.injectLanguageStrings = function() {
+    iconsButtonMouserOver();
     document.title = MSG['title'];
     document.getElementById('btn_fake_min').title = MSG['btnMinimize'];
     document.getElementById('btn_fake_max').title = MSG['btnMaximize'];
     document.getElementById('btn_fake_close').title = MSG['btnClose'];
     //change Blockly title buttons by this one
     document.getElementById('languageSpan').textContent = MSG['languageSpan'];
+    document.getElementById('levelSpan').textContent = MSG['levelSpan'];
+    document.getElementById('skill1_menu').textContent = MSG['skill1_menu_span'];
+    document.getElementById('skill2_menu').textContent = MSG['skill2_menu_span'];
+    document.getElementById('skill3_menu').textContent = MSG['skill3_menu_span'];
     document.getElementById('interfaceColorSpan').textContent = MSG['interfaceColorSpan'];
     document.getElementById('codeEditorColorSpan').textContent = MSG['codeEditorColorSpan'];
     document.getElementById('themeSpan').textContent = MSG['themeSpan'];
@@ -432,6 +442,7 @@ Code.initLanguage = function() {
     // document.getElementById('parametersButton_span_menu').textContent = MSG['setup_sideButton_span'];
     document.getElementById('lateral-panel-setup-label').title = MSG['setup_sideButton_span'];
     document.getElementById('sketch_name_wrapper').title = MSG['sketch_name_wrapper'];
+    document.getElementById('sketch_name').title = MSG['sketch_name'];
     document.getElementById('helpButton').title = MSG['helpButton_span'];
     document.getElementById('helpModalSpan_title').innerHTML = MSG['helpModalSpan_title'];
     document.getElementById('helpModalSpan_text').innerHTML = MSG['helpModalSpan_text'];
@@ -445,14 +456,12 @@ Code.initLanguage = function() {
     // menu tools
     document.getElementById('toolsButton').title = MSG['toolsButton_span'];
     document.getElementById('wiringButton').title = MSG['wiringButton_span'];
-    document.getElementById('circuitjsButton').title = MSG['circuitjsButton_span'];
     document.getElementById('factoryButton').title = MSG['factoryButton_span'];
     document.getElementById('factoryButton').title = MSG['factoryButton_span'];
     document.getElementById('htmlButton').title = MSG['htmlButton_span'];
     document.getElementById('colorConversionButton').title = MSG['colorConversionButton_span'];
     document.getElementById('dataConversionButton').title = MSG['dataConversionButton_span'];
     document.getElementById('wiringButton_span_menu').textContent = MSG['wiringButton_span'];
-    document.getElementById('circuitjsButton_span_menu').textContent = MSG['circuitjsButton_span'];
     document.getElementById('factoryButton_span_menu').textContent = MSG['factoryButton_span'];
     document.getElementById('htmlButton_span_menu').textContent = MSG['htmlButton_span'];
     document.getElementById('colorConversionButton_span_menu').textContent = MSG['colorConversionButton_span'];
@@ -466,7 +475,7 @@ Code.initLanguage = function() {
     document.getElementById('launchRedServer_span_menu').textContent = MSG['launchRedServer_span'];
     document.getElementById('launchWebServer_span_menu').textContent = MSG['launchWebServer_span'];
     document.getElementById('papyrusConnect_span_menu').textContent = MSG['papyrusConnect_span'];
-    document.getElementById('ArrowheadConfiguration_span_menu').textContent = MSG['ArrowheadConfiguration_span'];
+    document.getElementById('ArrowheadConfiguration_span_menu').textContent = MSG['ArrowheadConfiguration_span_menu'];
     // document.getElementById('blynkConnect_span_menu').textContent = MSG['blynkConnect_span'];
     document.getElementById('serialConnectIOT_span_menu').textContent = MSG['serialConnectIOT_span'];
     // CLI panel
@@ -505,6 +514,7 @@ Code.initLanguage = function() {
     document.getElementById('fontSpan').textContent = MSG['fontSpan'];
     document.getElementById('fontSizeSpan').textContent = MSG['fontSizeSpan'];
     document.getElementById('optionFontSizeBlocks').textContent = MSG['optionFontSizeBlocks'];
+    document.getElementById('optionFontSizeEditor').textContent = MSG['optionFontSizeEditor'];
     document.getElementById('optionFontSizePage').textContent = MSG['optionFontSizePage'];
     document.getElementById('optionFontSpacingPage').textContent = MSG['optionFontSpacingPage'];
     //categories panel
@@ -512,7 +522,15 @@ Code.initLanguage = function() {
     //IoT panel
     document.getElementById('iot_title_span').textContent = MSG['iot_title_span'];
     document.getElementById('papyrusConnect_helper_span').textContent = MSG['papyrusConnect_helper_span'];
+    document.getElementById('papyrusConfiguration_id_span').textContent = MSG['papyrusConfiguration_id_span'];
+    document.getElementById('papyrusConfiguration_name_span').textContent = MSG['papyrusConfiguration_name_span'];
+    document.getElementById('papyrusConfiguration_save_span').textContent = MSG['papyrusConfiguration_save_span'];
     document.getElementById('ArrowheadConfiguration_helper_span').textContent = MSG['ArrowheadConfiguration_helper_span'];
+    document.getElementById('ArrowheadConfiguration_ServReg_span').textContent = MSG['ArrowheadConfiguration_ServReg_span'];
+    document.getElementById('ArrowheadConfiguration_provider_span').textContent = MSG['ArrowheadConfiguration_provider_span'];
+    document.getElementById('ArrowheadConfiguration_consumer_span').textContent = MSG['ArrowheadConfiguration_consumer_span'];
+    document.getElementById('ArrowheadConfiguration_auth_span').textContent = MSG['ArrowheadConfiguration_auth_span'];
+    document.getElementById('ArrowheadConfiguration_orch_span').textContent = MSG['ArrowheadConfiguration_orch_span'];
     //board list modal
     document.getElementById('boardListModalHeader_span').textContent = MSG['boardListModalHeader_span'];
     document.getElementById('boardListModalButton_span').textContent = MSG['boardListModalButton_span'];
@@ -531,7 +549,19 @@ Code.initLanguage = function() {
     document.getElementById('boardModal_flash').textContent = MSG['boardModal_flash'];
     document.getElementById('boardModal_sram').textContent = MSG['boardModal_sram'];
     document.getElementById('boardModal_eeprom').textContent = MSG['boardModal_eeprom'];
+    // serial list modal
     document.getElementById('portListModalHeader_span').textContent = MSG['portListModalHeader_span'];
+    // code editor modal
+    document.getElementById('editorMonacoModal_titlebar').textContent = MSG['editorMonacoModal_titlebar'];
+    document.getElementById('editorMonacoModal_undo').textContent = MSG['editorMonacoModal_undo'];
+    document.getElementById('editorMonacoModal_redo').textContent = MSG['editorMonacoModal_redo'];
+    document.getElementById('editorMonacoModal_diff').textContent = MSG['editorMonacoModal_diff'];
+    document.getElementById('editorMonacoModal_ok').textContent = MSG['editorMonacoModal_ok'];
+    document.getElementById('editorMonacoModal_cancel').textContent = MSG['editorMonacoModal_cancel'];
+    // circuitJS modal
+    document.getElementById('circuitJSmodalTitle').textContent = MSG['circuitJSmodalTitle_titlebar'];
+    document.getElementById('circuitJSmodal_run').textContent = MSG['circuitJSmodal_run_span'];
+    document.getElementById('circuitJSmodal_stop').textContent = MSG['circuitJSmodal_stop_span'];
     //keyboard nav
     // Blockly.navigation.ACTION_PREVIOUS.name = MSG['actionName0'];
     // Blockly.navigation.ACTION_OUT.name = MSG['actionName1'];

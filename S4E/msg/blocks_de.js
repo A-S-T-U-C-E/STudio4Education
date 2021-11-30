@@ -6,9 +6,9 @@
 
 'use strict';
 
-goog.provide('Blockly.Msg["blocks_de');
+// goog.provide('Blockly.Msg["blocks_de');
 
-goog.require('Blockly.Msg');
+// goog.require('Blockly.Msg');
 
 //text in blocks
 Blockly.Msg["FIELDDROPDOWN"] = [

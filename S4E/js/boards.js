@@ -74,6 +74,7 @@ Code.changeBoard = function() {
     Code.setBoard();
     Code.buildToolbox();
     var xml = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
+    Code.mainWorkspace.clear()
     Blockly.Xml.domToWorkspace(xml, Code.mainWorkspace);
 };
 

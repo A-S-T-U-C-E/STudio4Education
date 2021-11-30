@@ -140,13 +140,13 @@ function changeRenderer(rendererChoice) {
     // Dispose of the current workspace
     Code.mainWorkspace.dispose();
     // Create a new workspace with options.
-    workspace = genWorkspace(false, Code.buildToolbox(), rendererChoice);
+    genWorkspace(Code.isRtl(), Code.buildToolbox(), rendererChoice);
     // Deserialize state into workspace.
     Blockly.Xml.domToWorkspace(state, Code.mainWorkspace);
     // Resize the gui.
-    if (resizeEnabled) {
-        onResize();
-    }
+    // if (resizeEnabled) {
+    Code.BlocklyWorkspaceOnresize();
+    // }
 };
 
 /**
@@ -201,7 +201,7 @@ function setOnOffLine() {
         document.getElementById('serialMenu').disabled = false;
         // not same button if in Electron or browser, if local nodejs watches events
         document.getElementById('wiringButton').setAttribute('onclick', '');
-        document.getElementById('circuitjsButton').setAttribute('onclick', 'Code.CircuitJS()');
+        // document.getElementById('circuitjsButton').setAttribute('onclick', 'Code.CircuitJS()');
         document.getElementById('factoryButton').setAttribute('onclick', '');
         document.getElementById('htmlButton').setAttribute('onclick', '');
         // document.getElementById('ArrowheadServRegConfigurationModal_okay').style.display = "none";
@@ -223,7 +223,7 @@ function setOnOffLine() {
         document.getElementById('serialMenu').disabled = true;
         // not same button if in Electron or browser, if web just webpages launched in browser
         document.getElementById('wiringButton').setAttribute('onclick', './tools/hackcable/index.html');
-        document.getElementById('circuitjsButton').setAttribute('onclick', './tools/circuitjs/circuitjs.html');
+        // document.getElementById('circuitjsButton').setAttribute('onclick', './tools/circuitjs/circuitjs.html');
         document.getElementById('factoryButton').setAttribute('onclick', "Code.BlockFactory()");
         document.getElementById('htmlButton').setAttribute('onclick', './tools/html/html_factory.html');
         // document.getElementById('ArrowheadServRegConfigurationModal_okay').style.display = "inline";

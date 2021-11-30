@@ -6,9 +6,9 @@
 
 'use strict';
 
-goog.provide('Blockly.Msg["blocks_ja');
+// goog.provide('Blockly.Msg["blocks_ja');
 
-goog.require('Blockly.Msg');
+// goog.require('Blockly.Msg');
 
 //text in blocks
 Blockly.Msg["FIELDDROPDOWN"] = [
@@ -37,7 +37,7 @@ Blockly.Msg["ARRAY_CREATE_WITH_HELPURL"] = "";
 Blockly.Msg["ARRAY_CREATE_WITH_INPUT_WITH"] = "配列";
 Blockly.Msg["ARRAY_CREATE_WITH_ITEM_TITLE"] = "要素";
 Blockly.Msg["ARRAY_CREATE_WITH_ITEM_TOOLTIP"] = "配列に要素を追加";
-Blockly.Msg["ARRAY_CREATE_WITH_TOOLTIP"] = "要素で配列を作成";//"Create a array with any number of items."
+Blockly.Msg["ARRAY_CREATE_WITH_TOOLTIP"] = "要素で配列を作成"; //"Create a array with any number of items."
 Blockly.Msg["ARRAY_GETINDEX_AT"] = "要素を取得";
 Blockly.Msg["ARRAY_GETINDEX_AT1"] = "要素を取得";
 Blockly.Msg["ARRAY_GETINDEX_AT2"] = "番地";
@@ -90,17 +90,17 @@ Blockly.Msg["ARD_TYPE_ARRAY"] = "配列";
 Blockly.Msg["ARD_TYPE_BOOL"] = "Boolean(真偽値)";
 Blockly.Msg["ARD_TYPE_CHAR"] = "Char(文字)";
 Blockly.Msg["ARD_TYPE_ARRAY_CHAR"] = "Char array(配列 文字)";
-Blockly.Msg["ARD_TYPE_CHILDBLOCKMISSING"] = "子ブロックがありません";//"ChildBlockMissing"
-Blockly.Msg["ARD_TYPE_DECIMAL"] = "Decimal(小数)";//"Decimal"
-Blockly.Msg["ARD_TYPE_LONG"] = "Large Number(整数32bit長)";//"Large Number"
-Blockly.Msg["ARD_TYPE_NULL"] = "Null";//"Null"
-Blockly.Msg["ARD_TYPE_NUMBER"] = "Number(整数16bit長)";//"Number"
-Blockly.Msg["ARD_TYPE_SHORT"] = "Short Number(整数8bit長)";//"Short Number (byte)"
-Blockly.Msg["ARD_TYPE_TEXT"] = "Text(文字列)";//"Text"
-Blockly.Msg["ARD_TYPE_UNDEF"] = "未定義";//"Undefined"
-Blockly.Msg["ARD_TYPE_UNS_NUMBER"] = "Unsigned number(符号なし整数16bit長)";//"Unsigned number"
-Blockly.Msg["ARD_TYPE_UNS_LONG"] = "Unsigned Long Number(符号なし整数32bit長)";//"Unsigned Long Number"
-Blockly.Msg["ARD_TYPE_VOLATILE"] = "Volatile integer(volatile整数)";//"Volatile integer"
+Blockly.Msg["ARD_TYPE_CHILDBLOCKMISSING"] = "子ブロックがありません"; //"ChildBlockMissing"
+Blockly.Msg["ARD_TYPE_DECIMAL"] = "Decimal(小数)"; //"Decimal"
+Blockly.Msg["ARD_TYPE_LONG"] = "Large Number(整数32bit長)"; //"Large Number"
+Blockly.Msg["ARD_TYPE_NULL"] = "Null"; //"Null"
+Blockly.Msg["ARD_TYPE_NUMBER"] = "Number(整数16bit長)"; //"Number"
+Blockly.Msg["ARD_TYPE_SHORT"] = "Short Number(整数8bit長)"; //"Short Number (byte)"
+Blockly.Msg["ARD_TYPE_TEXT"] = "Text(文字列)"; //"Text"
+Blockly.Msg["ARD_TYPE_UNDEF"] = "未定義"; //"Undefined"
+Blockly.Msg["ARD_TYPE_UNS_NUMBER"] = "Unsigned number(符号なし整数16bit長)"; //"Unsigned number"
+Blockly.Msg["ARD_TYPE_UNS_LONG"] = "Unsigned Long Number(符号なし整数32bit長)"; //"Unsigned Long Number"
+Blockly.Msg["ARD_TYPE_VOLATILE"] = "Volatile integer(volatile整数)"; //"Volatile integer"
 
 //Arduino base cateory blocks
 Blockly.Msg["ARDUINO_INOUT_BUILDIN_LED_HELPURL"] = "http://arduino.cc/en/Reference/DigitalWrite";
