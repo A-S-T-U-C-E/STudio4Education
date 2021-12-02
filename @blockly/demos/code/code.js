@@ -54,6 +54,23 @@ Code.getStringParamFromUrl = function(name, defaultValue) {
 };
 
 /**
+ * Add or replace a parameter to the URL.
+ * 
+ * @param {string} name The name of the parameter.
+ * @param {string} value Value to set
+ * @return {string} The url completed with parameter and value
+ */
+Code.addReplaceParamToUrl = function(url, param, value) {
+    var re = new RegExp("([?&])" + param + "=.*?(&|$)", "i");
+    var separator = url.indexOf('?') !== -1 ? "&" : "?";
+    if (url.match(re)) {
+        return url.replace(re, '$1' + param + "=" + value + '$2');
+    } else {
+        return url + separator + param + "=" + value;
+    }
+};
+
+/**
  * Get the language of this user from the URL.
  * @return {string} User's language.
  */
