@@ -120,7 +120,7 @@ Code.changeLanguage = function() {
         search = search.replace(/\?/, '?lang=' + newLang + '&');
     }
     history.replaceState({}, 'search', search);
-    addScript("./@Blockly/msg/js/" + newLang + ".js");
+    addScript("./@blockly/msg/js/" + newLang + ".js");
     addScript("msg/UI_" + newLang + ".js");
     addScript("S4E/msg/blocks_" + newLang + ".js");
     addScript("S4E/msg/categories_" + newLang + ".js");
