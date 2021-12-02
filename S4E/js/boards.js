@@ -68,7 +68,7 @@ Code.changeBoard = function() {
     document.getElementById("boardSelected_span").textContent = profile["default"].description;
     document.getElementById("portSelected_span").textContent = ' : ' + document.getElementById('serialMenu').options[document.getElementById('serialMenu').selectedIndex].value;
     // window.history.pushState({}, "S4E", window.location.host + window.location.pathname + search);
-    window.history.pushState({}, "S4E", window.location.host + search);
+    window.history.pushState({}, "S4E", search);
     // "reboot" elements
     document.getElementById('overlayForModals').style.display = "none";
     document.getElementById('boardListModal').classList.remove('show');
