@@ -1,5 +1,3 @@
-//toolbox part for Arrowhead framework
-
 var toolbox_arrowheadframework = {
     "kind": "categoryToolbox",
     "contents": [{
