@@ -519,6 +519,19 @@ Code.ResetWorkspace = function() {
         }
     });
 };
+/**
+ * Change font family in webpage
+ */
+
+Code.changeFontFamily = function(fontType) {
+    document.body.style.fontFamily = fontType;
+    var labelsToolbox = document.getElementsByClassName("blocklyTreeLabel")
+    for (var x = 0; x < labelsToolbox.length; x++)
+        labelsToolbox[x].style.fontFamily = fontType;
+    var labelsToolbox = document.getElementsByClassName("blocklyText")
+    for (var x = 0; x < labelsToolbox.length; x++)
+        labelsToolbox[x].style.fontFamily = fontType;
+}
 
 /**
  * Change font size in blocks in all workspace
@@ -531,14 +544,33 @@ Code.changeRenderingConstant = function(value) {
                 'size': value
             };
             Code.mainWorkspace.getTheme().setFontStyle(fontStyle);
+            var labelsToolbox = document.getElementsByClassName("blocklyTreeLabel")
+            for (var x = 0; x < labelsToolbox.length; x++)
+                labelsToolbox[x].style.fontSize = value + "px";
+            var labelsIconsToolbox = document.getElementsByClassName("customIcon")
+            for (var x = 0; x < labelsIconsToolbox.length; x++)
+                labelsIconsToolbox[x].style.width = value + "px";
+            break;
+        case 'iconSize':
+            var labelsIconsMenu = document.getElementsByClassName("iconButtons")
+                //transform slider value in percent
+            for (var x = 0; x < labelsIconsMenu.length; x++) {
+                labelsIconsMenu[x].style.fontSize = value + "px";
+            }
             break;
         case 'fontSizeEditor':
             let options = { "fontSize": value }
             Code.editor.updateOptions(options);
             break;
         case 'fontSizePage':
-            // fontSizePageModify('access', value);
-            // break;
+            var labelsPanel = document.getElementsByClassName("UIText");
+            for (var x = 0; x < labelsPanel.length; x++)
+                labelsPanel[x].style.fontSize = value + "px";
+            var labelsMenu = document.getElementsByClassName("menu_text");
+            for (var x = 0; x < labelsMenu.length; x++)
+                labelsMenu[x].style.fontSize = value + "px";
+            document.getElementById("content_hoverButton").style.fontSize = value + "px";
+            break;
         case 'fontSpacingPage':
             // document.body.style.fontSize = value + 'px';
             // break;

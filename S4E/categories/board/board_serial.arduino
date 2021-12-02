@@ -23,7 +23,7 @@ Blockly.Arduino['board_serial_init'] = function(block) {
 
 Blockly.Arduino['board_serial_printfor'] = function(block) {
     var content = Blockly.Arduino.valueToCode(block, 'CONTENT', Blockly.Arduino.ORDER_NONE);
-    var type = block.getTitleValue('TYPE');
+    var type = block.getFieldValue('TYPE');
     var code = 'Serial.println(' + content + ',' + type + ');\n';
     return code;
 };

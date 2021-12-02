@@ -65,9 +65,8 @@ Code.loadBlocks = function(defaultXml) {
  */
 var PREVIOUS_CODE_ = '';
 Code.renderContent = function() {
-    var generatedCode = Blockly.Arduino.workspaceToCode(Code.mainWorkspace);
+    var generatedCode = Blockly.Arduino.workspaceToCode(Blockly.getMainWorkspace());
     var previousCode = document.getElementById('content_pre_code').innerHTML;
-    var level = document.getElementById('levelMenu').options[levelMenu.selectedIndex].value;
     if (generatedCode != PREVIOUS_CODE_) {
         if (Code.editor) {
             if (document.getElementById('content_diffCode_Monaco').style.display == 'block')

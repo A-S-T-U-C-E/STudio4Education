@@ -130,6 +130,7 @@ Code.changeLanguage = function() {
     // need to wait before redrawing block, due to translation
     setTimeout(function() {
         genWorkspace(Code.isRtl(), Code.buildToolbox(), document.forms.options.elements.rendererMenu.value);
+        Code.mainWorkspace.addChangeListener(Code.renderContent);
         Code.buildControlPanelForToolbox();
         Code.injectLanguageStrings();
         document.getElementById('sketch_name').value = MSG['sketch_name_default'];
@@ -150,7 +151,6 @@ Code.changeLevel = function(levelMenuSelection) {
     } else {
         search = search.replace(/\?/, '?level=' + levelMenuSelection + '&');
     }
-    console.log(levelMenuSelection)
     history.replaceState({}, 'search', search);
     switch (levelMenuSelection) {
         case 'skill1':

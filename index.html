@@ -300,7 +300,7 @@
                 </div>
             </div>
             <span class="sketch_name_wrapper" id="sketch_name_wrapper">
-                <i class="sketch_name_icon fas fa-pen"></i>
+                <i class="sketch_name_icon iconButtons fas fa-pen"></i>
                 <input id="sketch_name" class="sketch_name" type="text" size="10">
             </span>
             <button id="helpButton" class="iconButtons" onclick="toggleDisplayHelpModal()">
@@ -454,18 +454,21 @@
                 <br>
                 <br>
                 <span id="fontSpan" class="UIText">...</span>
-                <select id="fontChoiceMenu" onchange="">
-                    <option value="arial">Arial</option>
-                    <option value="comics">Comic Sans MS</option>
-                    <option value="luciole">Luciole</option>
-                    <option value="opendyslexic">Open Dyslexic</option>
-                    <option value="trebuchet">Trebuchet MS</option>
-                    <option value="verdana">Verdana</option>
+                <select id="fontChoiceMenu" onchange="Code.changeFontFamily(this.value)">
+                    <option value="Arial">Arial</option>
+                    <option value="AccessibleDfA">Accessible-DfA</option>
+                    <option value="Bitter">Bitter</option>
+                    <option value="Comic Sans MS">Comic Sans MS</option>
+                    <option value="Luciole">Luciole</option>
+                    <option value="OpenDyslexic">Open Dyslexic</option>
+                    <option value="Trebuchet MS">Trebuchet MS</option>
+                    <option value="Verdana">Verdana</option>
                 </select>
                 <br>
                 <span id="fontSizeSpan" class="UIText"></span>
                 <select id="rendering-constant-selector">
                     <option value="fontSizeBlocks" id="optionFontSizeBlocks" selected="selected">Blocks Font Size</option>
+                    <option value="iconSize" id="optionIconSize">Icons Size</option>
                     <option value="fontSizeEditor" id="optionFontSizeEditor">Code Editor Font Size</option>
                     <option value="fontSizePage" id="optionFontSizePage">Page Font Size</option>
                     <option value="fontSpacingPage" id="optionFontSpacingPage">Page Font Spacing</option>
@@ -1255,6 +1258,11 @@
     <script src="./tools/vs/loader.js "></script>
     <script src="./tools/vs/editor/editor.main.nls.js "></script>
     <script src="./tools/vs/editor/editor.main.js "></script>
+    <link href=' ./webfonts/AccessibleDfA.woff' rel='stylesheet' type='text/css'>
+    <link href=' ./webfonts/Bitter-Regular.otf' rel='stylesheet' type='text/css'>
+    <link href=' ./webfonts/Luciole-Regular.ttf' rel='stylesheet' type='text/css'>
+    <link href=' ./webfonts/OpenDyslexic-Regular.woff' rel='stylesheet' type='text/css'>
+
     <script>
         // require('../resources/app.asar/Arrowhead.js');
         // require('../resources/app.asar/renderer.js');

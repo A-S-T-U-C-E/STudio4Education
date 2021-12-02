@@ -253,7 +253,6 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
         if (this.sepCount_) {
             container.setAttribute('attribSep', this.sepCount_);
         }
-        console.log('mutationToDom');
         return container;
     },
     /**
