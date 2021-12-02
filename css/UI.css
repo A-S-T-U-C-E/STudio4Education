@@ -4,6 +4,26 @@
 * SPDX-License-Identifier: BSD-3-Clause
 */
 
+@font-face {
+    font-family: "AccessibleDfA";
+    src: url("../webfonts/AccessibleDfA.woff");
+}
+
+@font-face {
+    font-family: "Bitter";
+    src: url("../webfonts/Bitter-Regular.otf");
+}
+
+@font-face {
+    font-family: "Luciole";
+    src: url("../webfonts/Luciole-Regular.ttf");
+}
+
+@font-face {
+    font-family: "OpenDyslexic";
+    src: url("../webfonts/OpenDyslexic-Regular.woff");
+}
+
 html,
 body {
     height: 100%;
