@@ -149,6 +149,7 @@ Code.init = function() {
     var renderer = match ? match[1] : 'thrasos';
     document.forms.options.elements.rendererMenu.value = renderer;
     genWorkspace(rtl, Code.buildToolbox(), renderer);
+    Code.buildControlPanelForToolbox();
     // Skill level menu
     match = location.search.match(/level=([^&]+)/);
     var level = match ? match[1] : 'skill1';
@@ -197,7 +198,6 @@ Code.init = function() {
     BlocklyWorkspaceOnresize();
     Blockly.svgResize(Code.mainWorkspace);
     window.addEventListener('resize', BlocklyWorkspaceOnresize, false);
-    Code.buildControlPanelForToolbox();
     // load blocks stored in session or passed by url
     var urlFile = Code.getStringParamFromUrl('url', '');
     var loadOnce = null;
@@ -230,7 +230,7 @@ Code.init = function() {
 
     //change theme color
     match = location.search.match(/theme=([^&]+)/);
-    var theme = match ? match[1] : 'classic';
+    var theme = match ? match[1] : 'zelos';
     document.forms.options.elements.themeMenu.value = theme;
     changeTheme(theme);
 

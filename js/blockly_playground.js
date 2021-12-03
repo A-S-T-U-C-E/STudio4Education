@@ -141,6 +141,7 @@ function changeRenderer(rendererChoice) {
     Code.mainWorkspace.dispose();
     // Create a new workspace with options.
     genWorkspace(Code.isRtl(), Code.buildToolbox(), rendererChoice);
+    Code.buildControlPanelForToolbox();
     // Deserialize state into workspace.
     Blockly.Xml.domToWorkspace(state, Code.mainWorkspace);
     // Resize the gui.

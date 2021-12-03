@@ -1094,160 +1094,160 @@
             </div>
         </div>
     </div>
-    <!-- convert bin <-> text "modal " -->
-    <div id="convertModalDialog " class="dialog " style="min-width: 645px; min-height: 165px; ">
-        <div class="titlebar UIText ">Conversion</div>
-        <button name="close "></button>
-        <div class="content ">
-            <input id="ti1 " value="TEST " />
-            <button name="text2bin " onclick="text2bin(); " class="iconButtons ">
-                <span id="span_txt2bin "><i class="fas fa-exchange-alt "></i> </span>
+    <!-- convert bin <-> text"modal" -->
+    <div id="convertModalDialog" class="dialog" style="min-width: 645px; min-height: 165px;">
+        <div class="titlebar UIText">Conversion</div>
+        <button name="close"></button>
+        <div class="content">
+            <input id="ti1" value="TEST" />
+            <button name="text2bin" onclick="text2bin();" class="iconButtons">
+                <span id="span_txt2bin"><i class="fas fa-exchange-alt"></i> </span>
             </button>
-            <input id="ti2 " />
-            <button name="text2binCopy " onclick="text2binCopy(); " class="iconButtons ">
-                <span id="span_txt2binCopy "><i class="far fa-copy "></i> </span>
+            <input id="ti2" />
+            <button name="text2binCopy" onclick="text2binCopy();" class="iconButtons">
+                <span id="span_txt2binCopy"><i class="far fa-copy"></i> </span>
             </button>
             <br />
-            <input id="ti3 " value="01010101 " />
-            <button name="bin2text " onclick="bin2text(); " class="iconButtons ">
-                <span id="span_bin2txt "><i class="fas fa-exchange-alt "></i> </span>
+            <input id="ti3" value="01010101" />
+            <button name="bin2text" onclick="bin2text();" class="iconButtons">
+                <span id="span_bin2txt"><i class="fas fa-exchange-alt"></i> </span>
             </button>
-            <input id="ti4 " />
-            <button name="bin2textCopy " onclick="bin2textCopy(); " class="iconButtons ">
-                <span id="span_txt2binCopy "><i class="far fa-copy "></i> </span>
+            <input id="ti4" />
+            <button name="bin2textCopy" onclick="bin2textCopy();" class="iconButtons">
+                <span id="span_txt2binCopy"><i class="far fa-copy"></i> </span>
             </button>
         </div>
-        <div class="buttonpane "></div>
+        <div class="buttonpane"></div>
     </div>
-    <!-- convert colors <-> values "modal " -->
-    <div id="colorsModalDialog " class="dialog " style="min-width: 505px; min-height: 605px; ">
-        <div class="titlebar UIText ">Conversion</div>
-        <button name="close "></button>
-        <div class="content " id="colorsModalDialogContent "></div>
+    <!-- convert colors <-> values"modal" -->
+    <div id="colorsModalDialog" class="dialog" style="min-width: 505px; min-height: 605px;">
+        <div class="titlebar UIText">Conversion</div>
+        <button name="close"></button>
+        <div class="content" id="colorsModalDialogContent"></div>
     </div>
     <!-- Blockly libraries -->
-    <script src="./@blockly/blockly_compressed.js "></script>
-    <script src="./@blockly/closure/goog/base.js "></script>
+    <script src="./@blockly/blockly_compressed.js"></script>
+    <script src="./@blockly/closure/goog/base.js"></script>
     <!-- needed for automatic variable typing -->
-    <script src="js/typing_variables/type.js "></script>
-    <script src="js/typing_variables/types.js "></script>
-    <script src="js/typing_variables/static_typing.js "></script>
-    <script src="js/typing_variables/instances.js "></script>
-    <script src="js/typing_variables/field_instance.js "></script>
-    <script src="js/typing_variables/block_instance.js "></script>
+    <script src="js/typing_variables/type.js"></script>
+    <script src="js/typing_variables/types.js"></script>
+    <script src="js/typing_variables/static_typing.js"></script>
+    <script src="js/typing_variables/instances.js"></script>
+    <script src="js/typing_variables/field_instance.js"></script>
+    <script src="js/typing_variables/block_instance.js"></script>
     <!-- Blockly libraries for themes and renderers -->
-    <script src="./@blockly/core/workspace_comment.js "></script>
-    <script src="./@blockly/core/workspace_comment_svg.js "></script>
-    <script src="./@blockly/core/workspace_comment_render_svg.js "></script>
-    <script src="./@blockly/core/renderers/minimalist/info.js " async></script>
-    <script src="./@blockly/core/renderers/minimalist/constants.js " async></script>
-    <script src="./@blockly/core/renderers/minimalist/drawer.js " async></script>
-    <script src="./@blockly/core/renderers/minimalist/renderer.js " async></script>
-    <script src="./@blockly/core/theme/zelos.js " async></script>
+    <script src="./@blockly/core/workspace_comment.js"></script>
+    <script src="./@blockly/core/workspace_comment_svg.js"></script>
+    <script src="./@blockly/core/workspace_comment_render_svg.js"></script>
+    <script src="./@blockly/core/renderers/minimalist/info.js" async></script>
+    <script src="./@blockly/core/renderers/minimalist/constants.js" async></script>
+    <script src="./@blockly/core/renderers/minimalist/drawer.js" async></script>
+    <script src="./@blockly/core/renderers/minimalist/renderer.js" async></script>
+    <script src="./@blockly/core/theme/zelos.js" async></script>
     <!-- Blockly plugins -->
-    <script src="./@blockly/plugins/disable-top-blocks/index.js "></script>
-    <script src="./@blockly/plugins/field-date/date_compressed.js "></script>
-    <script src="./@blockly/plugins/field-grid-dropdown/index.js "></script>
-    <script src="./@blockly/plugins/field-slider/index.js "></script>
-    <script src="./@blockly/plugins/keyboard-navigation/index.js "></script>
-    <script src="./@blockly/plugins/theme-dark/index.js "></script>
-    <script src="./@blockly/plugins/theme-modern/index.js "></script>
-    <script src="./@blockly/plugins/workspace-backpack/index.js "></script>
-    <script src="./@blockly/plugins/workspace-content-highlight/index.js "></script>
-    <script src="./@blockly/plugins/workspace-search/index.js "></script>
-    <script src="./@blockly/plugins/zoom-to-fit/index.js "></script>
+    <script src="./@blockly/plugins/disable-top-blocks/index.js"></script>
+    <script src="./@blockly/plugins/field-date/date_compressed.js"></script>
+    <script src="./@blockly/plugins/field-grid-dropdown/index.js"></script>
+    <script src="./@blockly/plugins/field-slider/index.js"></script>
+    <script src="./@blockly/plugins/keyboard-navigation/index.js"></script>
+    <script src="./@blockly/plugins/theme-dark/index.js"></script>
+    <script src="./@blockly/plugins/theme-modern/index.js"></script>
+    <script src="./@blockly/plugins/workspace-backpack/index.js"></script>
+    <script src="./@blockly/plugins/workspace-content-highlight/index.js"></script>
+    <script src="./@blockly/plugins/workspace-search/index.js"></script>
+    <script src="./@blockly/plugins/zoom-to-fit/index.js"></script>
     <!-- Blockly libraries of function, from different demos -->
-    <script src="./@blockly/demos/code/code.js "></script>
-    <script src="./@blockly/tests/playgrounds/screenshot.js " async></script>
+    <script src="./@blockly/demos/code/code.js"></script>
+    <script src="./@blockly/tests/playgrounds/screenshot.js" async></script>
     <!-- S4E external toolbox hacked -->
-    <script src="./S4E/categories/arrowheadframework/arrowheadframework.toolbox "></script>
-    <script src="./S4E/categories/board/board.toolbox "></script>
-    <script src="./S4E/categories/ds18b20/ds18b20.toolbox "></script>
-    <script src="./S4E/categories/DHT/DHT.toolbox "></script>
-    <script src="./S4E/categories/relay/relay.toolbox "></script>
-    <script src="./S4E/categories/servo/servo.toolbox "></script>
-    <script src="./S4E/categories/blockly/blockly.toolbox "></script>
-    <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.toolbox "></script>
+    <script src="./S4E/categories/arrowheadframework/arrowheadframework.toolbox"></script>
+    <script src="./S4E/categories/board/board.toolbox"></script>
+    <script src="./S4E/categories/ds18b20/ds18b20.toolbox"></script>
+    <script src="./S4E/categories/DHT/DHT.toolbox"></script>
+    <script src="./S4E/categories/relay/relay.toolbox"></script>
+    <script src="./S4E/categories/servo/servo.toolbox"></script>
+    <script src="./S4E/categories/blockly/blockly.toolbox"></script>
+    <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.toolbox"></script>
     <!-- Blockly libraries of function, hacked from different demos -->
-    <!-- <script src="./js/blockly/keyboard_nav.js "></script> -->
-    <script src="./js/minimap.js "></script>
-    <script src="./js/blockly_playground.js "></script>
-    <script src="./js/keyboard_nav.js "></script>
-    <script src="./js/init.js "></script>
-    <!-- <script src="./js/typed_variable.js "></script> -->
-    <script src="./js/buttons_functions.js "></script>
-    <script src="./js/dialog.js "></script>
-    <script src="./js/renderingConstant.js "></script>
-    <script src="./js/toolbox.js "></script>
-    <script src="./@blockly/demos/custom-dialogs/custom-dialog.js "></script>
+    <!-- <script src="./js/blockly/keyboard_nav.js"></script> -->
+    <script src="./js/minimap.js"></script>
+    <script src="./js/blockly_playground.js"></script>
+    <script src="./js/keyboard_nav.js"></script>
+    <script src="./js/init.js"></script>
+    <!-- <script src="./js/typed_variable.js"></script> -->
+    <script src="./js/buttons_functions.js"></script>
+    <script src="./js/dialog.js"></script>
+    <script src="./js/renderingConstant.js"></script>
+    <script src="./js/toolbox.js"></script>
+    <script src="./@blockly/demos/custom-dialogs/custom-dialog.js"></script>
     <!-- S4E libraries of external functions -->
-    <script src="./js/lib/diff.js "></script>
-    <script src="./js/lib/draggable-resizable-dialog.js "></script>
-    <script src="./js/lib/iro.min.js "></script>
-    <script src="./js/prettify/prettify.js "></script>
-    <link rel="stylesheet " href="./js/prettify/prettify.css ">
-    <script src="./js/custom-color-field.js "></script>
+    <script src="./js/lib/diff.js"></script>
+    <script src="./js/lib/draggable-resizable-dialog.js"></script>
+    <script src="./js/lib/iro.min.js"></script>
+    <script src="./js/prettify/prettify.js"></script>
+    <link rel="stylesheet" href="./js/prettify/prettify.css">
+    <script src="./js/custom-color-field.js"></script>
     <!-- S4E libraries of specific funtions definition -->
-    <script src="./S4E/js/arrowhead.js "></script>
-    <script src="./S4E/js/override_toolbox.js "></script>
+    <script src="./S4E/js/arrowhead.js"></script>
+    <script src="./S4E/js/override_toolbox.js"></script>
     <!-- Blockly themes added -->
-    <script src="./S4E/themes/bw.js " async></script>
-    <script src="./S4E/themes/themes_blocks.js " async></script>
-    <script src="./S4E/themes/themes_categories.js " async></script>
-    <script src="./S4E/themes/themes_components_override.js " async></script>
+    <script src="./S4E/themes/bw.js" async></script>
+    <script src="./S4E/themes/themes_blocks.js" async></script>
+    <script src="./S4E/themes/themes_categories.js" async></script>
+    <script src="./S4E/themes/themes_components_override.js" async></script>
     <!-- S4E libraries of boards definition -->
-    <script src="./S4E/js/boards.json "></script>
-    <script src="./S4E/js/boards.js "></script>
+    <script src="./S4E/js/boards.json"></script>
+    <script src="./S4E/js/boards.js"></script>
     <!-- S4E specific: block design -->
-    <script src="./S4E/categories/blockly/variables.blocks "></script>
-    <script src="./S4E/categories/blockly/colour.blocks "></script>
-    <script src="./S4E/categories/blockly/array.blocks "></script>
-    <script src="./S4E/categories/blockly/logic.blocks "></script>
-    <script src="./S4E/categories/blockly/loops.blocks "></script>
-    <script src="./S4E/categories/blockly/math.blocks "></script>
-    <script src="./S4E/categories/blockly/text.blocks "></script>
+    <script src="./S4E/categories/blockly/variables.blocks"></script>
+    <script src="./S4E/categories/blockly/colour.blocks"></script>
+    <script src="./S4E/categories/blockly/array.blocks"></script>
+    <script src="./S4E/categories/blockly/logic.blocks"></script>
+    <script src="./S4E/categories/blockly/loops.blocks"></script>
+    <script src="./S4E/categories/blockly/math.blocks"></script>
+    <script src="./S4E/categories/blockly/text.blocks"></script>
     <!-- need to overwite mutator with plugin plus-minus -->
-    <script src="./@blockly/plugins/block-plus-minus/index.js "></script>
+    <script src="./@blockly/plugins/block-plus-minus/index.js"></script>
     <!-- need to overwite plugin plus-minus for argument typing -->
-    <script src="./S4E/categories/blockly/procedures.blocks "></script>
+    <script src="./S4E/categories/blockly/procedures.blocks"></script>
     <!-- S4E specific: wait for block design loaded before typing blocks-->
-    <script src="./S4E/categories/blockly/blockly.types " async></script>
-    <script src="./S4E/categories/board/board_base.blocks " async></script>
-    <script src="./S4E/categories/board/board_iot.blocks " async></script>
-    <script src="./S4E/categories/board/board_serial.blocks " async></script>
-    <script src="./S4E/categories/board/board.types " async></script>
-    <script src="./S4E/categories/arrowheadframework/arrowheadframework.blocks "></script>
-    <script src="./S4E/categories/arrowheadframework/arrowheadframework.types "></script>
-    <script src="./S4E/categories/ds18b20/ds18b20.blocks " async></script>
-    <script src="./S4E/categories/ds18b20/ds18b20.types " async></script>
-    <script src="./S4E/categories/DHT/DHT.blocks " async></script>
-    <script src="./S4E/categories/DHT/DHT.types " async></script>
-    <script src="./S4E/categories/relay/relay.blocks " async></script>
-    <script src="./S4E/categories/relay/relay.types " async></script>
-    <script src="./S4E/categories/servo/servo.blocks " async></script>
-    <script src="./S4E/categories/servo/servo.types " async></script>
-    <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.blocks "></script>
-    <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.types "></script>
+    <script src="./S4E/categories/blockly/blockly.types"></script>
+    <script src="./S4E/categories/board/board_base.blocks"></script>
+    <script src="./S4E/categories/board/board_iot.blocks"></script>
+    <script src="./S4E/categories/board/board_serial.blocks"></script>
+    <script src="./S4E/categories/board/board.types"></script>
+    <script src="./S4E/categories/arrowheadframework/arrowheadframework.blocks"></script>
+    <script src="./S4E/categories/arrowheadframework/arrowheadframework.types"></script>
+    <script src="./S4E/categories/ds18b20/ds18b20.blocks"></script>
+    <script src="./S4E/categories/ds18b20/ds18b20.types"></script>
+    <script src="./S4E/categories/DHT/DHT.blocks"></script>
+    <script src="./S4E/categories/DHT/DHT.types"></script>
+    <script src="./S4E/categories/relay/relay.blocks"></script>
+    <script src="./S4E/categories/relay/relay.types"></script>
+    <script src="./S4E/categories/servo/servo.blocks"></script>
+    <script src="./S4E/categories/servo/servo.types"></script>
+    <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.blocks"></script>
+    <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.types"></script>
     <!-- S4E specific: common generator code -->
-    <script src="./generators/arduino_generator.js "></script>
-    <script src="./S4E/categories/blockly/colour.arduino " async></script>
-    <script src="./S4E/categories/blockly/array.arduino " async></script>
-    <script src="./S4E/categories/blockly/logic.arduino " async></script>
-    <script src="./S4E/categories/blockly/loops.arduino " async></script>
-    <script src="./S4E/categories/blockly/math.arduino " async></script>
-    <script src="./S4E/categories/blockly/procedures.arduino " async></script>
-    <script src="./S4E/categories/blockly/text.arduino " async></script>
-    <script src="./S4E/categories/blockly/variables.arduino " async></script>
+    <script src="./generators/arduino_generator.js"></script>
+    <script src="./S4E/categories/blockly/colour.arduino"></script>
+    <script src="./S4E/categories/blockly/array.arduino"></script>
+    <script src="./S4E/categories/blockly/logic.arduino"></script>
+    <script src="./S4E/categories/blockly/loops.arduino"></script>
+    <script src="./S4E/categories/blockly/math.arduino"></script>
+    <script src="./S4E/categories/blockly/procedures.arduino"></script>
+    <script src="./S4E/categories/blockly/text.arduino"></script>
+    <script src="./S4E/categories/blockly/variables.arduino"></script>
     <!-- S4E specific: addon generator code -->
-    <script src="./S4E/categories/board/board_base.arduino " async></script>
-    <script src="./S4E/categories/board/board_iot.arduino " async></script>
-    <script src="./S4E/categories/board/board_serial.arduino " async></script>
-    <script src="./S4E/categories/arrowheadframework/arrowheadframework.arduino " async></script>
-    <script src="./S4E/categories/ds18b20/ds18b20.arduino " async></script>
-    <script src="./S4E/categories/DHT/DHT.arduino " async></script>
-    <script src="./S4E/categories/relay/relay.arduino " async></script>
-    <script src="./S4E/categories/servo/servo.arduino " async></script>
-    <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.arduino " async></script>
+    <script src="./S4E/categories/board/board_base.arduino"></script>
+    <script src="./S4E/categories/board/board_iot.arduino"></script>
+    <script src="./S4E/categories/board/board_serial.arduino"></script>
+    <script src="./S4E/categories/arrowheadframework/arrowheadframework.arduino"></script>
+    <script src="./S4E/categories/ds18b20/ds18b20.arduino"></script>
+    <script src="./S4E/categories/DHT/DHT.arduino"></script>
+    <script src="./S4E/categories/relay/relay.arduino"></script>
+    <script src="./S4E/categories/servo/servo.arduino"></script>
+    <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.arduino"></script>
     <script>
         var require = {
             paths: {
@@ -1255,9 +1255,9 @@
             }
         };
     </script>
-    <script src="./tools/vs/loader.js "></script>
-    <script src="./tools/vs/editor/editor.main.nls.js "></script>
-    <script src="./tools/vs/editor/editor.main.js "></script>
+    <script src="./tools/vs/loader.js"></script>
+    <script src="./tools/vs/editor/editor.main.nls.js"></script>
+    <script src="./tools/vs/editor/editor.main.js"></script>
     <!-- <link href=' ./webfonts/AccessibleDfA.otf' rel='stylesheet' type='text/css'>
     <link href=' ./webfonts/Bitter-Regular.otf' rel='stylesheet' type='text/css'>
     <link href=' ./webfonts/Luciole-Regular.ttf' rel='stylesheet' type='text/css'>
@@ -1273,7 +1273,7 @@
         // require('../menu_CLI_functions.js');
         // require('../menu_IDE_functions.js');
     </script>
-    <script type="text/javascript ">
+    <script type="text/javascript">
         window.onload = function() {
             if (document.readyState === 'complete') {
                 let x1 = (window.innerWidth - img1.width) / 2;

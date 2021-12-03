@@ -72,7 +72,8 @@ Code.changeBoard = function() {
     document.getElementById('overlayForModals').style.display = "none";
     document.getElementById('boardListModal').classList.remove('show');
     Code.setBoard();
-    Code.buildToolbox();
+    if (!document.getElementById("checkbox_8").checked)
+        document.getElementById("checkbox_8").click();
     var xml = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
     Code.mainWorkspace.clear()
     Blockly.Xml.domToWorkspace(xml, Code.mainWorkspace);
