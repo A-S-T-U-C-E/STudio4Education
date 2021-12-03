@@ -92,16 +92,23 @@ Blockly.Blocks['board_base_inout_buildin_led'] = {
 Blockly.Blocks['board_base_inout_digital_write'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldImage(mediaFolder + "digital.jpg", 64, 64))
+            .appendField(new Blockly.FieldImage(mediaFolder + "digital.jpg", 32, 32), 'iconToChange')
             .appendField(Blockly.Msg.ARDUINO_INOUT_DIGITAL_WRITE_INPUT1)
             .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN")
             .appendField(Blockly.Msg.ARDUINO_INOUT_DIGITAL_WRITE_INPUT2)
-            .appendField(new Blockly.FieldDropdown(Blockly.Msg.FIELDDROPDOWN), 'STAT');
+            .appendField(new Blockly.FieldDropdown(Blockly.Msg.FIELDDROPDOWN, this.changeIcon), 'STAT');
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg.ARDUINO_INOUT_DIGITAL_WRITE_TOOLTIP);
         this.setHelpUrl(Blockly.Msg.ARDUINO_INOUT_DIGITAL_WRITE_HELPURL);
         this.setStyle('board_blocks');
+    },
+    changeIcon: function(newValue) {
+        var iconToChange = this.getSourceBlock().getField('iconToChange');
+        if (newValue == 'HIGH')
+            iconToChange.setValue(mediaFolder + "7Segment1.svg");
+        else
+            iconToChange.setValue(mediaFolder + "7Segment0.svg");
     }
 };
 
