@@ -72,17 +72,31 @@ Check changelog [here](https://github.com/A-S-T-U-C-E/STudio4Education/blob/mast
 
 ## Tools used
 
+### addons
 [CircuitJS](https://github.com/sharpie7/circuitjs1)
-[Code-prettify](https://github.com/googlearchive/code-prettify)
-[Draggable + Resizable Dialog](https://github.com/ZulNs/Draggable-Resizable-Dialog)
-[iro.js](https://github.com/jaames/iro.js)
-[jsdiff](https://github.com/kpdecker/jsdiff)
+
 [Monaco editor](https://microsoft.github.io/monaco-editor/)
 
+### libraries
+
+[Code-prettify](https://github.com/googlearchive/code-prettify)
+
+[Draggable + Resizable Dialog](https://github.com/ZulNs/Draggable-Resizable-Dialog)
+
+[iro.js](https://github.com/jaames/iro.js)
+
+[jsdiff](https://github.com/kpdecker/jsdiff)
+
+### fonts
+
 [Font Accessible Dfa](https://github.com/Orange-OpenSource/font-accessible-dfa)
+
 [Font Awesome](https://fontawesome.com/)
+
 [Font Bitter](https://fr.allfont.net/download/bitter/)
+
 [Font Luciole](https://luciole-vision.com/)
+
 [Font OpenDyslexic](https://opendyslexic.org/)
 
 
