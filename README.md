@@ -72,18 +72,25 @@ Check changelog [here](https://github.com/A-S-T-U-C-E/STudio4Education/blob/mast
 
 ## Tools used
 
-[Ace editor](https://ace.c9.io)
+[CircuitJS](https://github.com/sharpie7/circuitjs1)
+[Code-prettify](https://github.com/googlearchive/code-prettify)
+[Draggable + Resizable Dialog](https://github.com/ZulNs/Draggable-Resizable-Dialog)
+[iro.js](https://github.com/jaames/iro.js)
+[jsdiff](https://github.com/kpdecker/jsdiff)
+[Monaco editor](https://microsoft.github.io/monaco-editor/)
 
+[Font Accessible Dfa](https://github.com/Orange-OpenSource/font-accessible-dfa)
 [Font Awesome](https://fontawesome.com/)
 [Font Bitter](https://fr.allfont.net/download/bitter/)
 [Font Luciole](https://luciole-vision.com/)
+[Font OpenDyslexic](https://opendyslexic.org/)
 
 
 ## Authors and Contributors
 
 Sébastien Canet ([scanet@libreduc.cc](scanet@libreduc.cc)).
 
-The STudio4Education project is also inspired by [Blockly@rduino](https://github.com/technologiescollege/Blockly-at-rduino), [ardublockly](https://github.com/carlosperate/ardublockly) and [Blocklino](https://github.com/fontainejp/blocklino).
+The STudio4Education project is also inspired by [Blockly@rduino](https://github.com/technologiescollege/Blockly-at-rduino), [ardublockly](https://github.com/carlosperate/ardublockly) (**great thanks to Carlos Pereira Atencio @carlosperate for this great automatic typing variable script**) and [Blocklino](https://github.com/fontainejp/blocklino).
 
 
 ## License
