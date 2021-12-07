@@ -22,8 +22,8 @@ var arrowheadframeworkMediaFolder = "./S4E/categories/arrowheadframework/";
 Blockly.Blocks['ahf_esp_define'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
-            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"));
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", Code.imageSize, Code.imageSize, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", Code.imageSize, Code.imageSize, "*"));
         this.appendValueInput("KEY")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField("public key")
@@ -55,8 +55,8 @@ Blockly.Blocks['ahf_esp_define'] = {
 Blockly.Blocks['ahf_esp_service_registry_def'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
-            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", Code.imageSize, Code.imageSize, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", Code.imageSize, Code.imageSize, "*"))
             .appendField("Service Registry definition:");
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -112,8 +112,8 @@ Blockly.Blocks['ahf_esp_service_registry_def'] = {
 Blockly.Blocks['ahf_esp_connection_registry_test'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
-            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", Code.imageSize, Code.imageSize, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", Code.imageSize, Code.imageSize, "*"))
             .appendField("result of connection");
         this.setOutput(true);
         this.setStyle('arrowheadframework_blocks');
@@ -125,8 +125,8 @@ Blockly.Blocks['ahf_esp_connection_registry_test'] = {
 Blockly.Blocks['ahf_esp_SR_register_test'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
-            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", Code.imageSize, Code.imageSize, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", Code.imageSize, Code.imageSize, "*"))
             .appendField("registering service status code");
         this.setOutput(true);
         this.setStyle('arrowheadframework_blocks');
@@ -138,8 +138,8 @@ Blockly.Blocks['ahf_esp_SR_register_test'] = {
 Blockly.Blocks['ahf_esp_SR_unregister_test'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
-            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", Code.imageSize, Code.imageSize, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", Code.imageSize, Code.imageSize, "*"))
             .appendField("UNregistering service status code");
         this.setOutput(true);
         this.setStyle('arrowheadframework_blocks');
@@ -151,8 +151,8 @@ Blockly.Blocks['ahf_esp_SR_unregister_test'] = {
 Blockly.Blocks['ahf_esp_format_data_SenML'] = {
     init: function() {
         this.appendValueInput("DATA")
-            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
-            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", Code.imageSize, Code.imageSize, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", Code.imageSize, Code.imageSize, "*"))
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField("format to SenML this");
         this.setInputsInline(false);
@@ -167,8 +167,8 @@ Blockly.Blocks['ahf_esp_format_data_SenML'] = {
 Blockly.Blocks['ahf_esp_keep_connection'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"))
-            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", 64, 64, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", Code.imageSize, Code.imageSize, "*"))
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", Code.imageSize, Code.imageSize, "*"))
             .appendField("keep data alive");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -181,7 +181,7 @@ Blockly.Blocks['ahf_esp_keep_connection'] = {
 Blockly.Blocks['ahf_custom_parameters'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", 64, 64, "*"));
+            .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", Code.imageSize, Code.imageSize, "*"));
         this.appendDummyInput()
             .appendField("ArrowHead provider setup");
         this.appendValueInput("CLIENT_SYSTEM_NAME")

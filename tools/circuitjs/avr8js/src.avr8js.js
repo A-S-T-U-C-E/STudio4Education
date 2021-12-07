@@ -11312,40 +11312,7 @@ const editor_history_util_1 = require("./utils/editor-history.util");
 
 let editor; // eslint-disable-line @typescript-eslint/no-explicit-any
 
-const BLINK_CODE = `
-// Green LED connected to LED_BUILTIN,
-// Red LED connected to pin 12. Enjoy!
-
-void setup() {
-  Serial.begin(115200);
-  pinMode(LED_BUILTIN, OUTPUT);
-}
-
-void loop() {
-  Serial.println("Blink");
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(500);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(500);
-}`.trim();
-
-window.require.config({
-  paths: {
-    vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs'
-  }
-});
-
-window.require(['vs/editor/editor.main'], () => {
-  editor = monaco.editor.create(document.querySelector('.code-editor'), {
-    value:
-    /*EditorHistoryUtil.getValue() || */
-    window.defaultCode || BLINK_CODE,
-    language: 'cpp',
-    minimap: {
-      enabled: false
-    }
-  });
-}); // Set up LEDs
+const BLINK_CODE = ``.trim();
 
 
 var sim; // Set up toolbar
@@ -11353,13 +11320,13 @@ var sim; // Set up toolbar
 let runner;
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
-const runButton = document.querySelector('#run-button');
+const runButton = document.querySelector('#circuitJSmodal_run');
 runButton.addEventListener('click', compileAndRun);
-const stopButton = document.querySelector('#stop-button');
+const stopButton = document.querySelector('#circuitJSmodal_stop');
 stopButton.addEventListener('click', stopCode);
-const revertButton = document.querySelector('#revert-button');
+const revertButton = document.querySelector('#circuitJSmodal_revert');
 revertButton.addEventListener('click', setBlinkSnippet);
-const statusLabel = document.querySelector('#status-label');
+const statusLabel = document.querySelector('#circuitJSmodal_statusLabel');
 const compilerOutputText = document.querySelector('#compiler-output-text');
 const serialOutputText = document.querySelector('#serial-output-text');
 
@@ -11391,7 +11358,7 @@ async function compileAndRun() {
 
   try {
     statusLabel.textContent = 'Compiling...';
-    const result = await compile_1.buildHex(editor.getModel().getValue());
+    const result = await compile_1.buildHex(Code.editor.getModel().getValue());
     compilerOutputText.textContent = result.stderr || result.stdout;
 
     if (result.hex) {
@@ -11412,7 +11379,7 @@ async function compileAndRun() {
 
 function storeUserSnippet() {
   editor_history_util_1.EditorHistoryUtil.clearSnippet();
-  editor_history_util_1.EditorHistoryUtil.storeSnippet(editor.getValue());
+  editor_history_util_1.EditorHistoryUtil.storeSnippet(Code.editor.getValue());
 }
 
 function stopCode() {
@@ -11429,8 +11396,8 @@ function stopCode() {
 }
 
 function setBlinkSnippet() {
-  editor.setValue(window.defaultCode || BLINK_CODE);
-  editor_history_util_1.EditorHistoryUtil.storeSnippet(editor.getValue());
+  // Code.editor.setValue(window.defaultCode || BLINK_CODE);
+  editor_history_util_1.EditorHistoryUtil.storeSnippet(Code.editor.getValue());
 }
 },{"@wokwi/elements":"../../node_modules/@wokwi/elements/dist/esm/index.js","./compile":"compile.ts","./cpu-performance":"cpu-performance.ts","./execute":"execute.ts","./format-time":"format-time.ts","./index.css":"index.css","./utils/editor-history.util":"utils/editor-history.util.ts"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

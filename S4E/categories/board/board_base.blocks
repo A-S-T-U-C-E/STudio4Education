@@ -138,7 +138,7 @@ Blockly.Blocks['board_base_inout_highlow'] = {
 Blockly.Blocks['board_base_inout_analog_write'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldImage(mediaFolder + "pwm.png", 64, 64))
+            .appendField(new Blockly.FieldImage(mediaFolder + "pwm.png", Code.imageSize, Code.imageSize))
             .appendField(Blockly.Msg.ARDUINO_INOUT_ANALOG_WRITE_INPUT1)
             .appendField(new Blockly.FieldDropdown(profile.default.dropdownPWM), "PIN");
         this.appendValueInput("PWM", 'Number')
@@ -156,7 +156,7 @@ Blockly.Blocks['board_base_inout_analog_write'] = {
 Blockly.Blocks['board_base_inout_analog_write_slider'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldImage(mediaFolder + "pwm.png", 64, 64))
+            .appendField(new Blockly.FieldImage(mediaFolder + "pwm.png", Code.imageSize, Code.imageSize))
             .appendField(Blockly.Msg.ARDUINO_INOUT_ANALOG_WRITE_INPUT1)
             .appendField(new Blockly.FieldDropdown(profile.default.dropdownPWM), "PIN");
         this.appendDummyInput()

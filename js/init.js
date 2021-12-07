@@ -34,6 +34,7 @@
 //     monaco.editor.setTheme('defaultTheme');
 // })
 
+Code.imageSize = 32;
 
 /**
  * Load blocks saved in session/local storage.
@@ -166,7 +167,7 @@ Code.init = function() {
     //define resizable workspace
     var blocklyArea = document.getElementById('content_area');
     var blocklyDiv = document.getElementById('content_blocks');
-    const metrics = Code.mainWorkspace.getMetrics();
+    // const metrics = Code.mainWorkspace.getMetrics();
     var BlocklyWorkspaceOnresize = function(e) {
         var element = blocklyArea;
         var x = 0;
@@ -560,15 +561,8 @@ Code.injectLanguageStrings = function() {
     document.getElementById('portListModalHeader_span').textContent = MSG['portListModalHeader_span'];
     // code editor modal
     document.getElementById('editorMonacoModal_titlebar').textContent = MSG['editorMonacoModal_titlebar'];
-    document.getElementById('editorMonacoModal_undo').textContent = MSG['editorMonacoModal_undo'];
-    document.getElementById('editorMonacoModal_redo').textContent = MSG['editorMonacoModal_redo'];
-    document.getElementById('editorMonacoModal_diff').textContent = MSG['editorMonacoModal_diff'];
-    document.getElementById('editorMonacoModal_ok').textContent = MSG['editorMonacoModal_ok'];
-    document.getElementById('editorMonacoModal_cancel').textContent = MSG['editorMonacoModal_cancel'];
     // circuitJS modal
     document.getElementById('circuitJSmodalTitle').textContent = MSG['circuitJSmodalTitle_titlebar'];
-    document.getElementById('circuitJSmodal_run').textContent = MSG['circuitJSmodal_run_span'];
-    document.getElementById('circuitJSmodal_stop').textContent = MSG['circuitJSmodal_stop_span'];
     //keyboard nav
     // Blockly.navigation.ACTION_PREVIOUS.name = MSG['actionName0'];
     // Blockly.navigation.ACTION_OUT.name = MSG['actionName1'];

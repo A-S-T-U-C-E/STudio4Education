@@ -73,6 +73,32 @@ function exitFullScreen() {
 };
 
 /**
+ * Show or hide all block picture
+ */
+Code.imageBlocksBool = false;
+Code.imageSize = 48;
+Code.imageSizeOld = 48;
+
+Code.blockPicture = function() {
+    var xmlBlocks = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
+    Code.imageBlocksBool = !Code.imageBlocksBool;
+    if (Code.imageBlocksBool) {
+        document.getElementById("blocksPictureButton_span").classList.add('fa-eye-slash');
+        document.getElementById("blocksPictureButton_span").classList.add('active');
+        document.getElementById("blocksPictureButton_span").classList.remove('fa-eye');
+        Code.imageSizeOld = Code.imageSize;
+        Code.imageSize = 1;
+    } else {
+        document.getElementById("blocksPictureButton_span").classList.add('fa-eye');
+        document.getElementById("blocksPictureButton_span").classList.remove('fa-eye-slash');
+        document.getElementById('blocksPictureButton_span').classList.remove('active');
+        Code.imageSize = Code.imageSizeOld;
+    }
+    Code.mainWorkspace.clear();
+    Code.loadBlocks(Blockly.Xml.domToPrettyText(xmlBlocks));
+};
+
+/**
  * Copy code from div code_peek in clipboard system
  */
 Code.copyToClipboard = function() {
@@ -273,7 +299,7 @@ Code.CircuitJS = function() {
     if (!dialogCircuitJS)
         dialogCircuitJS = new DialogBox('circuitJSmodal', callbackButtons);
     var ifrm = document.createElement("iframe");
-    ifrm.setAttribute("src", "./tools/circuitjs/circuitjs.html?startCircuit=avr8js-strobe.txt&running=false");
+    ifrm.setAttribute("src", "./tools/circuitjs/circuitjs.html?startCircuit=blank.txt&running=false");
     ifrm.style.width = "100%";
     ifrm.style.height = "100%";
     ifrm.id = "circuitFrame";
@@ -284,15 +310,17 @@ Code.CircuitJS = function() {
     document.body.appendChild(tag);
 
     dialogCircuitJS.showDialog();
+    document.getElementById("compiler-output-text").style.display = "inline";
+    document.getElementById("serial-output-text").style.display = "inline";
+    document.getElementById("compiler-output-text").innerHTML = "";
+    document.getElementById("serial-output-text").innerHTML = "";
 
     function callbackButtons(btnName) {
         switch (btnName) {
             case 'circuitJSmodal_close':
                 document.getElementById("circuitJSmodal").style.display = "none";
-                break;
-            case 'circuitJSmodal_run':
-                break;
-            case 'circuitJSmodal_stop':
+                document.getElementById("compiler-output-text").style.display = "none";
+                document.getElementById("serial-output-text").style.display = "none";
                 break;
             default:
                 break;
@@ -304,6 +332,7 @@ Code.CircuitJS = function() {
  * Modify position of CircuitJS modal
  */
 var _maximini = "mini";
+var _leftright = "right";
 const _circuitJSmodal = document.getElementById("circuitJSmodal");
 let circuitJSmodal_old_X = 0;
 let circuitJSmodal_old_Y = 0;
@@ -338,6 +367,36 @@ function circuitJSmodal_maxi_mini() {
         _maximini = 'mini';
     }
 }
+
+function circuitJSmodal_replace_Blockly() {
+    const icon = document.getElementById("circuitJSmodal_replaceBlockly").querySelector('i');
+    if (_leftright == 'right') {
+        circuitJSmodal_old_X = _circuitJSmodal.getBoundingClientRect().left;
+        circuitJSmodal_old_Y = _circuitJSmodal.getBoundingClientRect().top;
+        circuitJSmodal_old_width = _circuitJSmodal.getBoundingClientRect().right - _circuitJSmodal.getBoundingClientRect().left;
+        circuitJSmodal_old_height = _circuitJSmodal.getBoundingClientRect().bottom - _circuitJSmodal.getBoundingClientRect().top;
+        icon.classList.remove('fa-angle-left');
+        icon.classList.add('fa-angle-right');
+        document.getElementById("content_blocks").appendChild(_circuitJSmodal);
+        _circuitJSmodal.style.left = "0px";
+        _circuitJSmodal.style.top = "0px";
+        _circuitJSmodal.style.width = "100%";
+        _circuitJSmodal.style.height = "100%";
+        _leftright = 'left';
+    } else {
+        icon.classList.remove('fa-angle-right');
+        icon.classList.add('fa-angle-left');
+        _circuitJSmodal.style.left = circuitJSmodal_old_X + "px";
+        _circuitJSmodal.style.top = circuitJSmodal_old_Y + "px";
+        _circuitJSmodal.style.width = circuitJSmodal_old_width + "px";
+        _circuitJSmodal.style.height = circuitJSmodal_old_height + "px";
+        document.getElementById("content_CircuitJS").style.width = "calc(100% - 32px)";
+        document.getElementById("circuitJSmodal_titlebar").style.width = "calc(100% - 32px)";
+        _leftright = 'right';
+    }
+}
+
+
 
 /**
  * Launch blockFatcory with language argument

@@ -23,7 +23,7 @@ Blockly.Blocks['X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg.X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ_INPUT)
-            .appendField(new Blockly.FieldImage(X_NUCLEO_IKS01A3_MediaFolder + "X-NUCLEO-IKS01A3.jpg", 64, 64))
+            .appendField(new Blockly.FieldImage(X_NUCLEO_IKS01A3_MediaFolder + "X-NUCLEO-IKS01A3.jpg", Code.imageSize, Code.imageSize))
             .appendField(new Blockly.FieldDropdown([
                 [Blockly.Msg.X_NUCLEO_IKS01A3_HTS221_TEMP_INPUT, "TEMP"],
                 [Blockly.Msg.X_NUCLEO_IKS01A3_HTS221_HUMID_INPUT, "HUMID"]
@@ -39,7 +39,7 @@ Blockly.Blocks['X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg.X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ_INPUT)
-            .appendField(new Blockly.FieldImage(X_NUCLEO_IKS01A3_MediaFolder + "X-NUCLEO-IKS01A3.jpg", 64, 64));
+            .appendField(new Blockly.FieldImage(X_NUCLEO_IKS01A3_MediaFolder + "X-NUCLEO-IKS01A3.jpg", Code.imageSize, Code.imageSize));
         this.setOutput(true);
         this.setTooltip(Blockly.Msg.X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ_TOOLTIP);
         this.setHelpUrl(Blockly.Msg.X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ_HELPURL);
@@ -51,7 +51,7 @@ Blockly.Blocks['X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_READ'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg.X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_READ_INPUT)
-            .appendField(new Blockly.FieldImage(X_NUCLEO_IKS01A3_MediaFolder + "X-NUCLEO-IKS01A3.jpg", 64, 64))
+            .appendField(new Blockly.FieldImage(X_NUCLEO_IKS01A3_MediaFolder + "X-NUCLEO-IKS01A3.jpg", Code.imageSize, Code.imageSize))
             .appendField(new Blockly.FieldDropdown([
                 [Blockly.Msg.X_NUCLEO_IKS01A3_LPS22HH_TEMP_INPUT, "TEMP"],
                 [Blockly.Msg.X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_INPUT, "PRESSION"]
@@ -67,7 +67,7 @@ Blockly.Blocks['X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg.X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_INPUT)
-            .appendField(new Blockly.FieldImage(X_NUCLEO_IKS01A3_MediaFolder + "X-NUCLEO-IKS01A3.jpg", 64, 64))
+            .appendField(new Blockly.FieldImage(X_NUCLEO_IKS01A3_MediaFolder + "X-NUCLEO-IKS01A3.jpg", Code.imageSize, Code.imageSize))
             .appendField(new Blockly.FieldDropdown([
                 [Blockly.Msg.X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_X, "X_AXIS"],
                 [Blockly.Msg.X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_Y, "Y_AXIS"],
@@ -88,7 +88,7 @@ Blockly.Blocks['X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION'] = {
                 [Blockly.Msg.X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_ACC, "ACC"],
                 [Blockly.Msg.X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_GYRO, "GYRO"]
             ]), "LSM6DSO_SENSOR")
-            .appendField(new Blockly.FieldImage(X_NUCLEO_IKS01A3_MediaFolder + "X-NUCLEO-IKS01A3.jpg", 64, 64))
+            .appendField(new Blockly.FieldImage(X_NUCLEO_IKS01A3_MediaFolder + "X-NUCLEO-IKS01A3.jpg", Code.imageSize, Code.imageSize))
             .appendField(new Blockly.FieldDropdown([
                 [Blockly.Msg.X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_X, "X_AXIS"],
                 [Blockly.Msg.X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_Y, "Y_AXIS"],
@@ -105,7 +105,7 @@ Blockly.Blocks['X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg.X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_INPUT)
-            .appendField(new Blockly.FieldImage(X_NUCLEO_IKS01A3_MediaFolder + "X-NUCLEO-IKS01A3.jpg", 64, 64))
+            .appendField(new Blockly.FieldImage(X_NUCLEO_IKS01A3_MediaFolder + "X-NUCLEO-IKS01A3.jpg", Code.imageSize, Code.imageSize))
             .appendField(new Blockly.FieldDropdown([
                 [Blockly.Msg.X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_X, "X_AXIS"],
                 [Blockly.Msg.X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_Y, "Y_AXIS"],

@@ -178,6 +178,7 @@ Code.changeLevel = function(levelMenuSelection) {
             document.getElementById("undoButton").classList.add("iconButtons");
             document.getElementById("redoButton").classList.remove("iconWorkspaceButtons");
             document.getElementById("redoButton").classList.add("iconButtons");
+            document.getElementById("functionsIcons").prepend(document.getElementById("blocksPictureButton"));
             document.getElementById("functionsIcons").prepend(document.getElementById("fullToolboxButton"));
             document.getElementById("functionsIcons").prepend(document.getElementById("fullScreenButton"));
             document.getElementById("functionsIcons").prepend(document.getElementById("saveXMLButton"));
@@ -188,7 +189,6 @@ Code.changeLevel = function(levelMenuSelection) {
             document.getElementById("toolsButton").style.display = 'none';
             document.getElementById("iotConnectButton").style.display = 'none';
             document.getElementById("serialConnectButton").style.display = 'none';
-            // document.getElementById("horizontal_IoT_buttons").style.display = 'none';
             document.getElementById("IoT_controls_accordion").style.visibility = 'hidden';
             document.getElementById("IoT_controls").style.visibility = 'hidden';
             document.getElementById("editorDiffToggle").style.visibility = 'hidden';

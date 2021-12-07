@@ -25,7 +25,7 @@ Blockly.Blocks['RELAY_LOGICAL'] = {
             .setAlign(Blockly.ALIGN_LEFT)
             .appendField(new Blockly.FieldDropdown(Blockly.Msg.FIELDDROPDOWN_ONOFF3), "STAT")
             .appendField(Blockly.Msg.RELAY_LOGICAL_TEXT)
-            .appendField(new Blockly.FieldImage(relayMediaFolder + 'relay_logic.jpg', 64, 64))
+            .appendField(new Blockly.FieldImage(relayMediaFolder + 'relay_logic.jpg', Code.imageSize, Code.imageSize))
         this.appendDummyInput()
             .appendField(Blockly.Msg.RELAY_LOGICAL_INPUT)
             .appendField(new Blockly.FieldTextInput(''), 'PIN');
@@ -43,7 +43,7 @@ Blockly.Blocks['RELAY_MOSFET'] = {
             .setAlign(Blockly.ALIGN_LEFT)
             .appendField(new Blockly.FieldDropdown(Blockly.Msg.FIELDDROPDOWN_ONOFF3), "STAT")
             .appendField(Blockly.Msg.RELAY_MOSFET_TEXT)
-            .appendField(new Blockly.FieldImage(relayMediaFolder + 'relay_mosfet.jpg', 64, 64))
+            .appendField(new Blockly.FieldImage(relayMediaFolder + 'relay_mosfet.jpg', Code.imageSize, Code.imageSize))
         this.appendDummyInput()
             .appendField(Blockly.Msg.RELAY_MOSFET_INPUT)
             .appendField(new Blockly.FieldTextInput(''), 'PIN');

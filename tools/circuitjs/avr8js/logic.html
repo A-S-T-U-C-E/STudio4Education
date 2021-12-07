@@ -1,35 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>AVR8js CircuitJS1 Demo</title><link href="//fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"><link rel="stylesheet" href="src.avr8js.css"></head><body> <h2>AVR8js CircuitJS1 Demo</h2> <div style="width:50%;position:fixed;left:0;">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>AVR8js CircuitJS1 Demo</title>
-    <link href="//fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="src.avr8js.css">
-</head>
+<iframe id="circuitFrame" width="95%" height="800" src="../circuitjs.html?startCircuit=avr8js-logic.txt&running=false"></iframe>
+<p> <a href="index.html">LED strobe</a>, <a href="logic.html">Logic</a>, <a href="analog.html">Analog Read</a></p>
 
-<body>
-    <h2>AVR8js CircuitJS1 Demo</h2>
-    <div style="width:50%;position:fixed;left:0;">
+</div> <div style="width:50%;position:fixed;right:0;"> 
+<p>Click Run below to start the simulation.</p>
+<div class="toolbar"> <button id="circuitJSmodal_run">Run</button> <button id="circuitJSmodal_stop" disabled="">Stop</button> <button id="circuitJSmodal_revert">Back to initial example</button> <div class="spacer"></div> <div id="circuitJSmodal_statusLabel"></div> </div> <div class="code-editor"></div> <div class="compiler-output"> <pre id="compiler-output-text"></pre> <pre id="serial-output-text"></pre> </div> </div> <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.1/min/vs/loader.min.js"></script> <script>
 
-        <iframe id="circuitFrame" width="95%" height="800" src="../circuitjs.html?startCircuit=avr8js-logic.txt&running=false"></iframe>
-        <p> <a href="index.html">LED strobe</a>, <a href="logic.html">Logic</a>, <a href="analog.html">Analog Read</a></p>
-
-    </div>
-    <div style="width:50%;position:fixed;right:0;">
-        <p>Click Run below to start the simulation.</p>
-        <div class="toolbar"> <button id="run-button">Run</button> <button id="stop-button" disabled="">Stop</button> <button id="revert-button">Back to initial example</button>
-            <div class="spacer"></div>
-            <div id="status-label"></div>
-        </div>
-        <div class="code-editor"></div>
-        <div class="compiler-output"> <pre id="compiler-output-text"></pre> <pre id="serial-output-text"></pre> </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.1/min/vs/loader.min.js"></script>
-    <script>
-        window.defaultCode = `
+window.defaultCode=`
 void setup() {
   Serial.begin(115200);
 
@@ -51,8 +29,5 @@ void loop() {
   digitalWrite(12, a ^ b);
 }
 `;
-    </script>
-    <script src="src.avr8js.js"></script>
-</body>
 
-</html>
+</script> <script src="src.avr8js.js"></script> </body></html>

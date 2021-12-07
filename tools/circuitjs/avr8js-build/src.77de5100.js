@@ -2969,7 +2969,7 @@ window.require.config({
 });
 
 window.require(['vs/editor/editor.main'], () => {
-  editor = monaco.editor.create(document.querySelector('.code-editor'), {
+  Code.editor = monaco.editor.create(document.querySelector('#content_code_Monaco'), {
     value: editor_history_util_1.EditorHistoryUtil.getValue() || BLINK_CODE,
     language: 'cpp',
     minimap: {
@@ -2978,13 +2978,13 @@ window.require(['vs/editor/editor.main'], () => {
   });
 });
 
-const runButton = document.querySelector('#run-button');
+const runButton = document.querySelector('#circuitJSmodal_run');
 runButton.addEventListener('click', compileAndRun);
-const stopButton = document.querySelector('#stop-button');
+const stopButton = document.querySelector('#circuitJSmodal_stop');
 stopButton.addEventListener('click', stopCode);
-const revertButton = document.querySelector('#revert-button');
+const revertButton = document.querySelector('#circuitJSmodal_revert');
 revertButton.addEventListener('click', setBlinkSnippet);
-const statusLabel = document.querySelector('#status-label');
+const statusLabel = document.querySelector('#circuitJSmodal_statusLabel');
 const compilerOutputText = document.querySelector('#compiler-output-text');
 const serialOutputText = document.querySelector('#serial-output-text');
 
@@ -3033,7 +3033,7 @@ async function compileAndRun() {
 
 function storeUserSnippet() {
   editor_history_util_1.EditorHistoryUtil.clearSnippet();
-  editor_history_util_1.EditorHistoryUtil.storeSnippet(editor.getValue());
+  editor_history_util_1.EditorHistoryUtil.storeSnippet(Code.editor.getValue());
 }
 
 function stopCode() {
@@ -3047,8 +3047,8 @@ function stopCode() {
 }
 
 function setBlinkSnippet() {
-  editor.setValue(BLINK_CODE);
-  editor_history_util_1.EditorHistoryUtil.storeSnippet(editor.getValue());
+  Code.editor.setValue(BLINK_CODE);
+  editor_history_util_1.EditorHistoryUtil.storeSnippet(Code.editor.getValue());
 }
 },{"./compile":"compile.ts","./cpu-performance":"cpu-performance.ts","./execute":"execute.ts","./format-time":"format-time.ts","./index.css":"index.css","./utils/editor-history.util":"utils/editor-history.util.ts"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

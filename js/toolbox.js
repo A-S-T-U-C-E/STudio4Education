@@ -127,16 +127,15 @@ Code.fullToolbox = function() {
         document.getElementById("fullToolboxButton").classList.add("iconButtons");
         document.getElementsByClassName("blocklyToolboxDiv")[0].style.width = initialToolboxSize + 'px';
         Code.mainWorkspace.getToolbox().width_ = initialToolboxSize;
-        Blockly.getMainWorkspace().resize();
     } else {
         document.getElementById("fullToolboxButton").classList.add("iconButtonsClicked");
         document.getElementById("fullToolboxButton").classList.remove("iconButtons");
+        initialToolboxSize = Code.mainWorkspace.getToolbox().getWidth();
         document.getElementsByClassName("blocklyToolboxDiv")[0].style.width = '37px';
-        toolboxSize = Code.mainWorkspace.getToolbox().getWidth();
         Code.mainWorkspace.getToolbox().width_ = 37;
-        Blockly.getMainWorkspace().resize();
         firstShrink_ = true;
     }
+    Blockly.getMainWorkspace().resize();
     document.getElementsByClassName("blocklyToolboxDiv")[0].addEventListener('overflow', OnOverflowChanged, true);
     document.getElementsByClassName("blocklyToolboxDiv")[0].addEventListener('underflow', OnUnderflowChanged, true);
     document.getElementsByClassName("blocklyToolboxDiv")[0].addEventListener('overflowchanged', OnOverUnderFlowChanged, true);

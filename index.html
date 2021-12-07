@@ -89,98 +89,77 @@
                 </div>
             </div>
             <button id="resetButton" class="iconButtons" onclick="Code.ResetWorkspace()">
-                <span id="resetButton_span">
-                    <i class="fas fa-power-off"></i>
+                <span id="resetButton_span" class="fas fa-power-off">
                 </span>
             </button>
             <button id="newButton" class="iconButtons" onclick="Code.newProject()">
-                <span id="newButton_span">
-                    <i class="far fa-file"></i>
+                <span id="newButton_span" class="far fa-file">
                 </span>
             </button>
             <button id="loadXMLfakeButton" class="iconButtons" onclick="Code.loadXmlBlocklyFile()">
-                <span id="loadXMLfakeButton_span">
-                    <i class="fas fa-file-upload"></i>
+                <span id="loadXMLfakeButton_span" class="fas fa-file-upload">
                 </span>
             </button>
             <button id="saveXMLButton" class="iconButtons" onclick="Code.saveXmlBlocklyFile()">
-                <span id="saveXMLButton_span">
-                    <i class="fas fa-file-download"></i>
+                <span id="saveXMLButton_span" class="fas fa-file-download">
                 </span>
             </button>
             <button id="saveCodeButton" class="iconButtons" onclick="Code.saveCodeFile()">
-                <span id="saveCodeButton_span">
-                    <i class="far fa-file-code"></i>
+                <span id="saveCodeButton_span" class="far fa-file-code">
                 </span>
             </button>
             <button id="saveCodeButtonMenu" class="iconButtons" onclick="Code.saveCodeFile()">
-                <span id="saveCodeButton_span">
-                    <i class="far fa-file-code"></i>
+                <span id="saveCodeButton_span" class="far fa-file-code">
                 </span>
             </button>
             <button id="fullScreenButton" class="iconButtons" onclick="fullScreen()">
-                <span id="fullScreenButton_span">
-                    <i class="fas fa-expand-arrows-alt"></i>
+                <span id="fullScreenButton_span" class="fas fa-expand-arrows-alt">
                 </span>
             </button>
             <button id="fullToolboxButton" class="iconButtons" onclick="Code.fullToolbox()">
-                <span id="fullToolboxButton_span">
-                    <i class="fas fa-toolbox"></i>
+                <span id="fullToolboxButton_span" class="fas fa-toolbox">
                 </span>
             </button>
+            <button id="blocksPictureButton" class="iconButtons" onclick="Code.blockPicture()">
+                <span id="blocksPictureButton_span" class="far fa-eye"></span>
+            </button>
             <button id="toolsButton" class="iconButtons" onclick="openMenuTools()">
-                <span id="toolsButton_span">
-                    <i class="fas fa-tools"></i>
+                <span id="toolsButton_span" class="fas fa-tools">
                 </span>
             </button>
             <div id="toolsPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('toolsPopup').style.display = 'none';document.getElementById('toolsButton').classList.toggle('active');">
                 <div id="buttonsToolsPopup" class="menu_div">
                     <div id="buttonsToolsPopupInside">
-                        <!-- <button id="circuitjsButton" class="iconButtons">
-                            <span id="circuitjsButton_span">
-                                <img src="./tools/circuitjs/resistor.svg" width="31px"></img>
-                            </span>
-                        </button> -->
-                        <!-- <span id="circuitjsButton_span_menu" class="menu_text"></span> -->
-                        <!-- <span id="circuitjsButton_br_hr" class="menu_text">
-                            <br>
-                            <hr>
-                        </span> -->
                         <button id="wiringButton" class="iconButtons">
-                            <span id="wiringButton_span">
-                                <i class="fas fa-code-branch"></i>
+                            <span id="wiringButton_span" class="fas fa-code-branch">
                             </span>
                         </button>
                         <span id="wiringButton_span_menu" class="menu_text"></span>
                         <br>
                         <hr>
                         <button id="factoryButton" class="iconButtons">
-                            <span id="factoryButton_span">
-                                <i class="fas fa-industry"></i>
+                            <span id="factoryButton_span" class="fas fa-industry">
                             </span>
                         </button>
                         <span id="factoryButton_span_menu" class="menu_text"></span>
                         <br>
                         <hr>
                         <button id="htmlButton" class="iconButtons">
-                            <span id="htmlButton_span">
-                                <i class="fab fa-firefox-browser"></i>
+                            <span id="htmlButton_span" class="fab fa-firefox-browser">
                             </span>
                         </button>
                         <span id="htmlButton_span_menu" class="menu_text"></span>
                         <br>
                         <hr>
                         <button id="colorConversionButton" class="iconButtons" onclick="showColorsModalDialog();">
-                            <span id="colorConversionButton_span">
-                                <i class="fas fa-swatchbook"></i>
+                            <span id="colorConversionButton_span" class="fas fa-swatchbook">
                             </span>
                         </button>
                         <span id="colorConversionButton_span_menu" class="menu_text"></span>
                         <br>
                         <hr>
                         <button id="dataConversionButton" class="iconButtons" onclick="showConvertModalDialog();">
-                            <span id="dataConversionButton_span">
-                                <i class="fas fa-exchange-alt"></i>
+                            <span id="dataConversionButton_span" class="fas fa-exchange-alt">
                             </span>
                         </button>
                         <span id="dataConversionButton_span_menu" class="menu_text"></span>
@@ -188,8 +167,7 @@
                 </div>
             </div>
             <button id="iotConnectButton" class="iconButtons" onclick="openMenuIoT()">
-                <span id="iotConnectButton_span">
-                    <i class="fas fa-link"></i>
+                <span id="iotConnectButton_span" class="fas fa-link">
                 </span>
             </button>
             <div id="iotPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('iotPopup').style.display = 'none';document.getElementById('iotConnectButton').classList.toggle('active');">
@@ -197,16 +175,14 @@
                     <div id="buttonsIotPopupInside">
                         <button id="launchRedServer" class="iconButtons CLI">
                             <span id="launchRedServer_span">
-                                <img src="./S4E/media/node-red.png"
-                                    style="width: 30px; height: 30px; vertical-align: middle;" />
+                                <img src="./S4E/media/node-red.png" style="width: 30px; height: 30px; vertical-align: middle;" />
                             </span>
                         </button>
                         <span id="launchRedServer_span_menu" class="menu_text"></span>
                         <br>
                         <hr>
                         <button id="launchWebServer" class="iconButtons CLI">
-                            <span id="launchWebServer_span">
-                                <i class="fas fa-network-wired"></i>
+                            <span id="launchWebServer_span" class="fas fa-network-wired">
                             </span>
                         </button>
                         <span id="launchWebServer_span_menu" class="menu_text"></span>
@@ -214,8 +190,7 @@
                         <hr>
                         <button id="papyrusConnect" class="iconButtons CLI">
                             <span id="papyrusConnect_span">
-                                <img src="./S4E/media/Eclipse_papyrus_logo.png"
-                                    style="width: 30px; height: 30px; vertical-align: middle;" />
+                                <img src="./S4E/media/Eclipse_papyrus_logo.png"  style="width: 30px; height: 30px; vertical-align: middle;" />
                             </span>
                         </button>
                         <span id="papyrusConnect_span_menu" class="menu_text"></span>
@@ -223,8 +198,7 @@
                         <hr>
                         <button id="ArrowheadConfiguration_auto" class="iconButtons CLI">
                             <span id="ArrowheadConfiguration_span">
-                                <img src="./S4E/media/arrowheadtools_invert.png"
-                                    style="width: 30px; height: 30px; vertical-align: middle;" />
+                                <img src="./S4E/media/arrowheadtools_invert.png" style="width: 30px; height: 30px; vertical-align: middle;" />
                             </span>
                         </button>
                         <span id="ArrowheadConfiguration_span_menu" class="menu_text"></span>
@@ -238,8 +212,7 @@
                         <br>
                         <hr>
                         <button id="serialConnectIOT" class="iconButtons CLI">
-                            <span id="serialConnectIOT_span">
-                                <i class="fas fa-cloud-upload-alt"></i>
+                            <span id="serialConnectIOT_span" class="fas fa-cloud-upload-alt">
                             </span>
                         </button>
                         <span id="serialConnectIOT_span_menu" class="menu_text"></span>
@@ -247,52 +220,44 @@
                 </div>
             </div>
             <button id="boardButton" class="iconButtons" onclick="Code.boardsListModalShow()">
-                <span id="boardButton_span">
-                    <i class="fas fa-microchip"></i>
+                <span id="boardButton_span" class="fas fa-microchip">
                 </span>
             </button>
             <button id="verifyButton" class="iconButtons">
-                <span id="verifyButton_span">
-                    <i class="fas fa-tasks"></i>
+                <span id="verifyButton_span" class="fas fa-tasks">
                 </span>
             </button>
             <button id="serialButton" class="iconButtons" onclick="Code.portsListModalShow()">
-                <span id="serialButton_span">
-                    <i class="fab fa-usb"></i>
+                <span id="serialButton_span" class="fab fa-usb">
                 </span>
             </button>
             <button id="uploadButton" class="iconButtons">
-                <span id="uploadButton_span">
-                    <i class="fas fa-sign-out-alt"></i>
+                <span id="uploadButton_span" class="fas fa-sign-out-alt">
                 </span>
             </button>
             <button id="serialConnectButton" class="iconButtons" onclick="openMenuSerial()">
-                <span id="serialConnectButton_span">
-                    <i class="fas fa-glasses"></i>
+                <span id="serialConnectButton_span" class="fas fa-glasses">
                 </span>
             </button>
             <div id="serialPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('serialPopup').style.display = 'none';document.getElementById('serialConnectButton').classList.toggle('active');">
                 <div id="buttonsSerialPopup" class="menu_div">
                     <div id="buttonsSerialPopupInside">
                         <button id="serialMonitorButton" class="iconButtons CLI">
-                            <span id="serialMonitorButton_span">
-                                <i class="fas fa-search"></i>
+                            <span id="serialMonitorButton_span" class="fas fa-search">
                             </span>
                         </button>
                         <span id="serialMonitorButton_span_menu" class="menu_text"></span>
                         <br>
                         <hr>
                         <button id="nodeRedFlowButton" class="iconButtons CLI" onclick="Code.flowsListModalShow()" disabled>
-                            <span id="nodeRedFlowButton_span">
-                                <i class="fa-solid fa-chart-line"></i>
+                            <span id="nodeRedFlowButton_span" class="fa-solid fa-chart-line">
                             </span>
                         </button>
                         <span id="nodeRedFlowButton_span_menu" class="menu_text"></span>
                         <br>
                         <hr>
                         <button id="supervisionButton" class="iconButtons CLI" disabled>
-                            <span id="supervisionButton_span">
-                                <i class="fas fa-exchange-alt"></i>
+                            <span id="supervisionButton_span" class="fas fa-exchange-alt">
                             </span>
                         </button>
                         <span id="supervisionButton_span_menu" class="menu_text"></span>
@@ -300,12 +265,11 @@
                 </div>
             </div>
             <span class="sketch_name_wrapper" id="sketch_name_wrapper">
-                <i class="sketch_name_icon iconButtons fas fa-pen"></i>
+                <em class="sketch_name_icon iconButtons fas fa-pen"></em>
                 <input id="sketch_name" class="sketch_name" type="text" size="10">
             </span>
             <button id="helpButton" class="iconButtons" onclick="toggleDisplayHelpModal()">
-                <span id="helpButton_span">
-                    <i class="fas fa-question"></i>
+                <span id="helpButton_span" class="fas fa-question">
                 </span>
             </button>
             <span id="content_hoverButton"></span>
@@ -316,13 +280,11 @@
                 <div id="content_blocks" style="position: absolute;">
                     <div id="minimapDiv"></div>
                     <button id="undoButton" class="iconWorkspaceButtons" onclick="Code.Undo()" style="bottom: 327px">
-                        <span id="undoButton_span">
-                            <i class="fa-solid fa-arrow-rotate-left"></i>
+                        <span id="undoButton_span" class="fa-solid fa-arrow-rotate-left">
                         </span>
                     </button>
                     <button id="redoButton" class="iconWorkspaceButtons" onclick="Code.Redo()" style="bottom: 290px">
-                        <span id="redoButton_span">
-                            <i class="fa-solid fa-arrow-rotate-right"></i>
+                        <span id="redoButton_span" class="fa-solid fa-arrow-rotate-right">
                         </span>
                     </button>
                 </div>
@@ -341,13 +303,11 @@
                 <pre id="content_diffEditor_code" class="content_pre_code_large"></pre>
                 <div id="content_code_buttons">
                     <button id="copyCodeButton" class="iconButtons" onclick="Code.copyToClipboard()">
-                        <span id="copyCodeButton_span">
-                            <i class="far fa-copy"></i>
+                        <span id="copyCodeButton_span" class="far fa-copy">
                         </span>
                     </button>
                     <button id="openCodeButton" class="iconButtons" onclick="Code.editorMonacoModalShow()">
-                        <span id="openCodeButton_span">
-                            <i class="fas fa-code"></i>
+                        <span id="openCodeButton_span" class="fas fa-code">
                         </span>
                     </button>
                 </div>
@@ -363,7 +323,10 @@
                 <span id="portSelected_span"> </span>
             </div>
         </flex-resizer>
-        <flex-item id="content_serial"></flex-item>
+        <flex-item id="content_serial">
+            <pre id="compiler-output-text" style="display: none;"></pre>
+            <pre id="serial-output-text" style="display: none;"></pre>
+        </flex-item>
     </flex>
     <div id="helpModal" class="helpModal">
         <div id="helpModal_header">
@@ -382,8 +345,7 @@
     <div id="lateral-panel-setup">
         <input id="lateral-panel-setup-input" type="checkbox">
         <label id="lateral-panel-setup-label" for="lateral-panel-setup-input" class="label_panel">
-            <span id="setup_side_span">
-                <i class="fas fa-cog"></i>
+            <span id="setup_side_span" class="fas fa-cog">
             </span>
         </label>
         <div id="lateral-panel-setup-bloc">
@@ -505,18 +467,15 @@
                 <div id="configCLI">
                     <div id="CLI_title">
                         <button id="coreUpdateButton" class="iconButtons CLI" onclick="">
-                            <span id="coreUpdateButton_span">
-                                <i class="fas fa-sync"></i>
+                            <span id="coreUpdateButton_span" class="fas fa-sync">
                             </span>
                         </button>
                         <button id="cleanCLIcacheButton" class="iconButtons CLI" onclick="">
-                            <span id="cleanCLIcache_span">
-                                <i class="fas fa-eraser"></i>
+                            <span id="cleanCLIcache_span" class="fas fa-eraser">
                             </span>
                         </button>
                         <button id="listBoardsButton" class="iconButtons CLI" onclick="">
-                            <span id="listBoardsButton_span">
-                                <i class="fas fa-list"></i>
+                            <span id="listBoardsButton_span" class="fas fa-list">
                             </span>
                         </button>
                         <a href="https://arduino.github.io/arduino-cli/" id="CLI_githubLinkButton" target="_blank">
@@ -528,8 +487,7 @@
                     <br>
                     <input type="text" class="controlPanelInput" id="installBoardsInput" name="installBoardsInput">
                     <button id="installBoardsButton" class="iconButtons CLI" onclick="">
-                        <span id="installBoardsButton_span">
-                            <i class="fas fa-cloud-download-alt"></i>
+                        <span id="installBoardsButton_span" class="fas fa-cloud-download-alt">
                         </span>
                     </button>
                     <br>
@@ -559,8 +517,7 @@
                     <br>
                     <input type="text" class="controlPanelInput" id="searchlLibInput" name="searchlLibInput">
                     <button id="searchlLibButton" class="iconButtons CLI" onclick="">
-                        <span id="searchlLibButton_span">
-                            <i class="fab fa-searchengin"></i>
+                        <span id="searchlLibButton_span" class="fab fa-searchengin">
                         </span>
                     </button>
                     <br>
@@ -569,20 +526,13 @@
                     <br>
                     <input type="text" class="controlPanelInput" id="installLibInput" name="installLibInput">
                     <button id="installLibButton" class="iconButtons CLI" onclick="">
-                        <span id="installLibButton_span">
-                            <i class="fas fa-cloud-download-alt"></i>
+                        <span id="installLibButton_span" class="fas fa-cloud-download-alt">
                         </span>
                     </button>
                     <br>
                 </div>
             </div>
             <button class="accordion">
-                <!-- <select name="toolbox" onchange="document.forms.options.submit('options')"> -->
-                <!-- <option value="categories">Categories (untyped variables)</option> -->
-                <!-- <option value="categories-typed-variables">Categories (typed variables)</option> -->
-                <!-- <option value="simple">Simple</option> -->
-                <!-- <option value="test-blocks">Test Blocks</option> -->
-                <!-- </select> -->
                 <span id="categories_title_span" aria-expanded="false"
                     aria-controls="accordion_categories_content"></span>
             </button>
@@ -594,8 +544,7 @@
             <div id="IoT_controls" class="side_content config_content panel UIText">
                 <input type="text" class="controlPanelInput" id="launchWebServerInput" name="launchWebServerInput">
                 <button id="launchWebServerTo" class="iconButtons CLI">
-                    <span id="launchWebServer_span">
-                        <i class="fas fa-network-wired"></i>
+                    <span id="launchWebServer_span" class="fas fa-network-wired">
                     </span>
                 </button>
                 <!-- <br> -->
@@ -609,8 +558,7 @@
                 <br>
                 <input type="text" class="controlPanelInput" id="blynkConnectInput" name="serialConnectIOTInput">
                 <button id="serialConnectIOT_save" class="iconButtons CLI" onclick="">
-                    <span id="serialConnectIOT_span">
-                        <i class="fas fa-cloud-upload-alt"></i>
+                    <span id="serialConnectIOT_span" class="fas fa-cloud-upload-alt">
                     </span>
                 </button>
                 <br>
@@ -621,36 +569,31 @@
                 </button>
                 <div id="IoT_controls_Arrowhead" class="side_content config_content panel UIText">
                     <button id="ArrowheadServRegConfiguration" class="iconButtons CLI" onclick="ArrowheadServRegConfigurationShow()">
-                        <span id="ArrowheadServRegConfiguration_span">
-                            <i class="fab fa-wpforms"></i>
+                        <span id="ArrowheadServRegConfiguration_span" class="fab fa-wpforms">
                         </span>
                     </button>
                     <span id="ArrowheadConfiguration_ServReg_span">Configure service registry</span>
                     <br>
                     <button id="ArrowheadProviderConfiguration" class="iconButtons CLI" onclick="ArrowheadProviderConfigurationShow()">
-                        <span id="ArrowheadProviderConfiguration_span">
-                            <i class="fab fa-wpforms"></i>
+                        <span id="ArrowheadProviderConfiguration_span" class="fab fa-wpforms">
                         </span>
                     </button>
                     <span id="ArrowheadConfiguration_provider_span">Configure provider</span>
                     <br>
                     <button id="ArrowheadConsumerConfiguration" class="iconButtons CLI" onclick="ArrowheadConsumerConfigurationShow()">
-                        <span id="ArrowheadConsumerConfiguration_span">
-                            <i class="fab fa-wpforms"></i>
+                        <span id="ArrowheadConsumerConfiguration_span" class="fab fa-wpforms">
                         </span>
                     </button>
                     <span id="ArrowheadConfiguration_consumer_span">Configure consumer</span>
                     <br>
                     <button id="ArrowheadAuthConfiguration" class="iconButtons CLI" onclick="ArrowheadAuthConfigurationShow()">
-                        <span id="ArrowheadAuthConfiguration_span">
-                            <i class="fab fa-wpforms"></i>
+                        <span id="ArrowheadAuthConfiguration_span" class="fab fa-wpforms">
                         </span>
                     </button>
                     <span id="ArrowheadConfiguration_auth_span">Define authorization server</span>
                     <br>
                     <button id="ArrowheadOrchConfiguration" class="iconButtons CLI" onclick="ArrowheadOrchConfigurationShow()">
-                        <span id="ArrowheadOrchConfiguration_span">
-                            <i class="fab fa-wpforms"></i>
+                        <span id="ArrowheadOrchConfiguration_span" class="fab fa-wpforms">
                         </span>
                     </button>
                     <span id="ArrowheadConfiguration_orch_span">Define orchestrator server</span>
@@ -669,42 +612,11 @@
                     <br>
                     <input type="text" class="controlPanelInput" id="papyrusConnectInputFile" name="papyrusConnectInputFile" value="HomeAutomationSystemST4Econfig.json">
                     <button id="PapyrusConfiguration_save" class="iconButtons CLI">
-                        <span id="papyrusConnect_validate_span">
-                            <i class="fas fa-archive"></i>
+                        <span id="papyrusConnect_validate_span" class="fas fa-archive">
                         </span>
                     </button>
                     <span id="papyrusConfiguration_save_span">Store information</span>
                 </div>
-                <!-- <div id="horizontal_IoT_buttons">
-                    <button id="launchRedServer" class="iconButtons CLI">
-                        <span id="launchRedServer_span">
-                            <img src="./S4E/media/node-red.png"
-                                style="width: 30px; height: 30px; vertical-align: middle;" />
-                        </span>
-                    </button>
-                    <button id="launchWebServer" class="iconButtons CLI">
-                        <span id="launchWebServer_span">
-                            <i class="fas fa-network-wired"></i>
-                        </span>
-                    </button>
-                    <button id="papyrusConnect" class="iconButtons CLI">
-                        <span id="papyrusConnect_span">
-                            <img src="./S4E/media/Eclipse_papyrus_logo.png"
-                                style="width: 30px; height: 30px; vertical-align: middle;" />
-                        </span>
-                    </button>
-                    <button id="ArrowheadConfiguration_auto" class="iconButtons CLI">
-                        <span id="ArrowheadConfiguration_span">
-                            <img src="./S4E/media/arrowheadtools_invert.png"
-                                style="width: 30px; height: 30px; vertical-align: middle;" />
-                        </span>
-                    </button>
-                    <button id="serialConnectIOT" class="iconButtons CLI">
-                        <span id="serialConnectIOT_span">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                        </span>
-                    </button>
-                </div> -->
             </div>
         </div>
     </div>
@@ -715,24 +627,22 @@
         </div>
         <button name="circuitJSmodal_close"></button>
         <div id="button_window">
+            <button id="circuitJSmodal_replaceBlockly" class="iconButtons" onclick="circuitJSmodal_replace_Blockly()">
+                <i class="fas fa-angle-left"></i>
+            </button>
             <button id="circuitJSmodal_maximini" class="iconButtons" onclick="circuitJSmodal_maxi_mini()">
                 <i class="fa-regular fa-window-maximize"></i>
             </button>
         </div>
-        <div id="content_CircuitJS" class="content">
-            <div class="compiler-output">
-                <pre id="compiler-output-text"></pre>
-                <pre id="serial-output-text"></pre>
-            </div>
-        </div>
+        <div id="content_CircuitJS" class="content"></div>
         <div class="buttonpane">
-            <div id="status-label"></div>
+            <div id="circuitJSmodal_statusLabel" style="display: inline; vertical-align: middle;"></div>
             <div class="buttonset">
-                <button id="circuitJSmodal_run" name="circuitJSmodal_run" class="iconButtons">Run
-                    <!-- <i class="fas fa-play"></i> -->
+                <button id="circuitJSmodal_run" name="circuitJSmodal_run" class="iconButtons fas fa-play">
                 </button>
-                <button id="circuitJSmodal_stop" name="circuitJSmodal_stop" class="iconButtons">Stop
-                    <!-- <i class="fas fa-stop"></i> -->
+                <button id="circuitJSmodal_stop" name="circuitJSmodal_stop" class="iconButtons fas fa-stop">
+                </button>
+                <button id="circuitJSmodal_revert" name="circuitJSmodal_revert" class="iconButtons" style="display: none;">
                 </button>
             </div>
         </div>
@@ -744,7 +654,7 @@
         <button name="editorMonacoModal_close"></button>
         <div id="button_window">
             <button id="editorMonacoModal_maximini" class="iconButtons" onclick="editorMonacoModal_maxi_mini()">
-                <i class="fa-regular fa-window-maximize"></i>
+                <em class="fa-regular fa-window-maximize"></em></em>
             </button>
         </div>
         <div id="content_Monaco_editors" class="content">
@@ -753,20 +663,15 @@
         </div>
         <div class="buttonpane">
             <div class="buttonset">
-                <button id="editorMonacoModal_undo" name="editorMonacoModal_undo" class="iconButtons">Undo
-                    <!-- <i class="fas fa-level-up-alt"></i> -->
+                <button id="editorMonacoModal_undo" name="editorMonacoModal_undo" class="iconButtons fas fa-level-up-alt">
                 </button>
-                <button id="editorMonacoModal_redo" name="editorMonacoModal_redo" class="iconButtons">Redo
-                    <!-- <i class="fas fa-level-down-alt"></i> -->
+                <button id="editorMonacoModal_redo" name="editorMonacoModal_redo" class="iconButtons fas fa-level-down-alt">
                 </button>
-                <button id="editorMonacoModal_diff" name="editorMonacoModal_diff" class="iconButtons">Check
-                    <!-- <i class="fas fa-check-double"></i> -->
+                <button id="editorMonacoModal_diff" name="editorMonacoModal_diff" class="iconButtons fas fa-check-double">
                 </button>
-                <button id="editorMonacoModal_ok" name="editorMonacoModal_ok" class="iconButtons">OK
-                    <!-- <i class="fas fa-spell-check"></i> -->
+                <button id="editorMonacoModal_ok" name="editorMonacoModal_ok" class="iconButtons fas fa-spell-check">
                 </button>
-                <button id="editorMonacoModal_cancel" name="editorMonacoModal_cancel" class="iconButtons">Cancel
-                    <!-- <i class="fas fa-sync-alt"></i> -->
+                <button id="editorMonacoModal_cancel" name="editorMonacoModal_cancel" class="iconButtons fas fa-sync-alt">
                 </button>
             </div>
         </div>
@@ -774,7 +679,7 @@
     <div id="boardListModal" class="modal">
         <div class="modal-content" id="boardListModal_content">
             <div class="modal-header">
-                <i class="fas fa-microchip"></i>
+                <em class="fas fa-microchip"></em>
                 <span id="boardListModalHeader_span"></span>
                 <span class="closeModal" id="closeModalBoards">&times;</span>
             </div>
@@ -826,7 +731,7 @@
     <div id="portListModal" class="modal">
         <div class="modal-content" id="portListModal_content">
             <div class="modal-header">
-                <i class="fab fa-usb"></i>
+                <em class="fab fa-usb"></em>
                 <span id="portListModalHeader_span"></span>
                 <span class="closeModal" id="closeModalPorts">&times;</span>
             </div>
@@ -843,7 +748,7 @@
     <div id="flowsListModal" class="modal">
         <div class="modal-content" id="flowsListModal_content">
             <div class="modal-header">
-                <i class="fab fa-usb"></i>
+                <em class="fab fa-usb"></em>
                 <span id="flowsListModalHeader_span"></span>
                 <span class="closeModal" id="closeModalFlows">&times;</span>
             </div>
@@ -893,19 +798,19 @@
                     </div>
                     <div id="ArrowheadServRegConfigurationModalBody_buttons">
                         <button type="submit" id="ArrowheadServRegConfigurationModal_okay" class="modalDialogOkay">
-                            <i class="far fa-check-circle" style="font-size: 150%;"></i>
+                            <em class="far fa-check-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadServRegConfigurationModal_okay_nodejs" class="modalDialogOkay_nodejs">
-                            <i class="far fa-check-circle" style="font-size: 150%;"></i>
+                            <em class="far fa-check-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadServRegConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadServRegConfigurationModalForm').reset()">
-                            <i class="far fa-times-circle" style="font-size: 150%;"></i>
+                            <em class="far fa-times-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadServRegConfigurationModal_export" class="iconButtons" onclick="exportArrowheadServRegConfigFile()">
-                            <i class="fas fa-file-download"></i>
+                            <em class="fas fa-file-download"></em>
                         </button>
                         <button id="ArrowheadServRegConfigurationModal_import" class="iconButtons" onclick="importArrowheadServRegConfigFile()">
-                            <i class="fas fa-file-upload"></i>
+                            <em class="fas fa-file-upload"></em>
                         </button>
                     </div>
                 </form>
@@ -941,19 +846,19 @@
                     <input type="text" class="controlPanelInput" id="arrowhead_input_Provider_interfaces" name="arrowhead_input_Provider_interfaces"><br>
                     <div id="ArrowheadProviderConfigurationModalBody_buttons">
                         <button type="submit" id="ArrowheadProviderConfigurationModal_okay" class="modalDialogOkay">
-                            <i class="far fa-check-circle" style="font-size: 150%;"></i>
+                            <em class="far fa-check-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadProviderConfigurationModal_okay_nodejs" class="modalDialogOkay_nodejs">
-                            <i class="far fa-check-circle" style="font-size: 150%;"></i>
+                            <em class="far fa-check-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadProviderConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadProviderConfigurationModalForm').reset()">
-                            <i class="far fa-times-circle" style="font-size: 150%;"></i>
+                            <em class="far fa-times-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadProviderConfigurationModal_export" class="iconButtons" onclick="exportArrowheadProviderConfigFile()">
-                            <i class="fas fa-file-download"></i>
+                            <em class="fas fa-file-download"></em>
                         </button>
                         <button id="ArrowheadProviderConfigurationModal_import" class="iconButtons" onclick="importArrowheadProviderConfigFile()">
-                            <i class="fas fa-file-upload"></i>
+                            <em class="fas fa-file-upload"></em>
                         </button>
                     </div>
                 </form>
@@ -979,19 +884,19 @@
                     <input type="text" class="controlPanelInput" id="arrowhead_input_Consumer_service" name="arrowhead_input_Consumer_service"><br>
                     <div id="ArrowheadConsumerConfigurationModalBody_buttons">
                         <button type="submit" id="ArrowheadConsumerConfigurationModal_okay" class="modalDialogOkay">
-                            <i class="far fa-check-circle" style="font-size: 150%;"></i>
+                            <em class="far fa-check-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadConsumerConfigurationModal_okay_nodejs" class="modalDialogOkay_nodejs">
-                            <i class="far fa-check-circle" style="font-size: 150%;"></i>
+                            <em class="far fa-check-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadConsumerConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadConsumerConfigurationModalForm').reset()">
-                            <i class="far fa-times-circle" style="font-size: 150%;"></i>
+                            <em class="far fa-times-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadConsumerConfigurationModal_export" class="iconButtons" onclick="exportArrowheadConsumerConfigFile()">
-                            <i class="fas fa-file-download"></i>
+                            <em class="fas fa-file-download"></em>
                         </button>
                         <button id="ArrowheadConsumerConfigurationModal_import" class="iconButtons" onclick="importArrowheadConsumerConfigFile()">
-                            <i class="fas fa-file-upload"></i>
+                            <em class="fas fa-file-upload"></em>
                         </button>
                     </div>
                 </form>
@@ -1036,19 +941,19 @@
                     </div>
                     <div id="ArrowheadAuthConfigurationModalBody_buttons">
                         <button type="submit" id="ArrowheadAuthConfigurationModal_okay" class="modalDialogOkay">
-                            <i class="far fa-check-circle" style="font-size: 150%;"></i>
+                            <em class="far fa-check-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadAuthConfigurationModal_okay_nodejs" class="modalDialogOkay_nodejs">
-                            <i class="far fa-check-circle" style="font-size: 150%;"></i>
+                            <em class="far fa-check-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadAuthConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById( 'ArrowheadAuthConfigurationModalForm').reset()">
-                            <i class="far fa-times-circle" style="font-size: 150%;"></i>
+                            <em class="far fa-times-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadAuthConfigurationModal_export" class="iconButtons" onclick="exportArrowheadAuthConfigFile()">
-                            <i class="fas fa-file-download"></i>
+                            <em class="fas fa-file-download"></em>
                         </button>
                         <button id="ArrowheadAuthConfigurationModal_import" class="iconButtons" onclick="importArrowheadAuthConfigFile()">
-                            <i class="fas fa-file-upload"></i>
+                            <em class="fas fa-file-upload"></em>
                         </button>
                     </div>
                 </form>
@@ -1096,19 +1001,19 @@
                     </div>
                     <div id="ArrowheadOrchConfigurationModalBody_buttons">
                         <button type="submit" id="ArrowheadOrchConfigurationModal_okay" class="modalDialogOkay">
-                            <i class="far fa-check-circle" style="font-size: 150%;"></i>
+                            <em class="far fa-check-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadOrchConfigurationModal_okay_nodejs" class="modalDialogOkay_nodejs">
-                            <i class="far fa-check-circle" style="font-size: 150%;"></i>
+                            <em class="far fa-check-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadOrchConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById( 'ArrowheadOrchConfigurationModalForm').reset()">
-                            <i class="far fa-times-circle" style="font-size: 150%;"></i>
+                            <em class="far fa-times-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadOrchConfigurationModal_export" class="iconButtons" onclick="exportArrowheadOrchConfigFile()">
-                            <i class="fas fa-file-download"></i>
+                            <em class="fas fa-file-download"></em>
                         </button>
                         <button id="ArrowheadOrchConfigurationModal_import" class="iconButtons" onclick="importArrowheadOrchConfigFile()">
-                            <i class="fas fa-file-upload"></i>
+                            <em class="fas fa-file-upload"></em>
                         </button>
                     </div>
                 </form>
@@ -1122,20 +1027,20 @@
         <div class="content">
             <input id="ti1" value="TEST" />
             <button name="text2bin" onclick="text2bin();" class="iconButtons">
-                <span id="span_txt2bin"><i class="fas fa-exchange-alt"></i> </span>
+                <span id="span_txt2bin" class="fas fa-exchange-alt"></span>
             </button>
             <input id="ti2" />
             <button name="text2binCopy" onclick="text2binCopy();" class="iconButtons">
-                <span id="span_txt2binCopy"><i class="far fa-copy"></i> </span>
+                <span id="span_txt2binCopy" class="far fa-copy"></span>
             </button>
             <br />
             <input id="ti3" value="01010101" />
             <button name="bin2text" onclick="bin2text();" class="iconButtons">
-                <span id="span_bin2txt"><i class="fas fa-exchange-alt"></i> </span>
+                <span id="span_bin2txt" class="fas fa-exchange-alt"> </span>
             </button>
             <input id="ti4" />
             <button name="bin2textCopy" onclick="bin2textCopy();" class="iconButtons">
-                <span id="span_txt2binCopy"><i class="far fa-copy"></i> </span>
+                <span id="span_txt2binCopy" class="far fa-copy"> </span>
             </button>
         </div>
         <div class="buttonpane"></div>
