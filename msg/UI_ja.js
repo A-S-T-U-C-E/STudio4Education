@@ -35,6 +35,7 @@ var MSG = {
     renderSpan: "choose renderer",
     fullScreenButton_span: "full screen",
     fullToolboxButton_span: "shrink/expand toolbox",
+    blocksPictureButton_span: "show/hide pictures in blocks",
     undoButton_span: "Undo",
     redoButton_span: "Redo",
     boardButtonSpan: "list boards",

@@ -35,6 +35,7 @@ var MSG = {
     renderSpan: "tria renderitzador",
     fullScreenButton_span: "full screen",
     fullToolboxButton_span: "shrink/expand toolbox",
+    blocksPictureButton_span: "show/hide pictures in blocks",
     undoButton_span: "Desfés",
     redoButton_span: "Refés",
     boardButtonSpan: "list boards",

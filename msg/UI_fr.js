@@ -35,6 +35,7 @@ var MSG = {
     renderSpan: "forme des blocs",
     fullScreenButton_span: "plein écran",
     fullToolboxButton_span: "réduire les catégories",
+    blocksPictureButton_span: "show/hide pictures in blocks",
     undoButton_span: "annuler",
     redoButton_span: "refaire",
     boardButtonSpan: "liste des cartes",

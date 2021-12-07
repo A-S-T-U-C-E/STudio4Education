@@ -340,6 +340,12 @@ function iconsButtonMouserOver() {
     document.getElementById('fullToolboxButton').onmouseout = function() {
         document.getElementById("content_hoverButton").textContent = "";
     };
+    document.getElementById('blocksPictureButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['blocksPictureButton_span'];
+    };
+    document.getElementById('blocksPictureButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
     document.getElementById('undoButton').onmouseover = function() {
         document.getElementById("content_hoverButton").textContent = MSG['undoButton_span'];
     };
