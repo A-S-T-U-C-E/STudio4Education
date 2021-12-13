@@ -34,19 +34,18 @@ jsonToolbox["contents"][14] = toolbox_arrowheadframework["contents"][0];
  */
 Code.buildToolbox = function() {
     // set the toolbox from url 
-    var toolboxIds = Code.getStringParamFromUrl('toolboxids', '');
+    var toolboxIds = Code.getStringParamFromUrl('cat', '');
     var boardSelected = Code.getStringParamFromUrl('board', '');
     // set the default toolbox if none
     if (toolboxIds === undefined || toolboxIds === "") {
         if (boardSelected) {
-            toolboxIds = 'LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES,FUNCTIONS,BOARD';
+            toolboxIds = 'LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES_TYPED,FUNCTIONS,ONBOARD';
             window.localStorage.defaultToolbox = 1;
         } else {
-            toolboxIds = 'LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES,FUNCTIONS';
+            toolboxIds = 'LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES_TYPED,FUNCTIONS';
             window.localStorage.defaultToolbox = 0;
         }
     } else {
-        toolboxIds += ',LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES,FUNCTIONS,BOARD';
         window.localStorage.defaultToolbox = 2;
     }
     //save config in local browser storage for rendering in menu categories list
@@ -75,6 +74,15 @@ Code.buildToolbox = function() {
             k++;
         }
     }
+    var search = window.location.search;
+    if (search.length <= 1) {
+        search = '?cat=' + toolboxIds;
+    } else if (search.match(/[?&]cat=[^&]*/)) {
+        search = search.replace(/([?&]cat=)[^&]*/, '$1' + toolboxIds);
+    } else {
+        search = search.replace(/\?/, '?cat=' + toolboxIds + '&');
+    }
+    history.replaceState({}, 'search', search);
     return jsonToolboxToKeep;
 }
 
@@ -105,12 +113,12 @@ Code.buildControlPanelForToolbox = function() {
         }
     }
     // default is hiding everything else than basis categories
-    if (window.localStorage.defaultToolbox != 2) {
-        for (var j = (8 + parseInt(window.localStorage.defaultToolbox)); j <= rankInDisplayedToolbox; j++)
-            if (document.getElementById('checkbox_' + j) != null)
-                document.getElementById('checkbox_' + j).click();
-    }
-    window.localStorage.toolboxids = id_liste.slice(0, -1);
+    // if (window.localStorage.defaultToolbox != 2) {
+    for (var j = (8 + parseInt(window.localStorage.defaultToolbox)); j <= rankInDisplayedToolbox; j++)
+        if (document.getElementById('checkbox_' + j) != null)
+            document.getElementById('checkbox_' + j).click();
+        // }
+        // window.localStorage.toolboxids = id_liste.slice(0, -1);
 }
 
 /** change toolbox size

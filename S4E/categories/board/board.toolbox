@@ -2,8 +2,8 @@ var toolbox_ST = {
     "kind": "categoryToolbox",
     "contents": [{
         "kind": "category",
-        "name": "%{BKY_CAT_BOARD}",
-        "toolboxitemid": "BOARD",
+        "name": "%{BKY_CAT_ONBOARD}",
+        "toolboxitemid": "ONBOARD",
         "level": "1",
         "levels": "1,2,3",
         "categorystyle": "board_category",
@@ -19,12 +19,8 @@ var toolbox_ST = {
                 "type": "base_define_bloc"
             },
             {
-                "kind": "block",
-                "type": "base_define"
-            },
-            {
                 "kind": "category",
-                "name": "%{BKY_CAT_BOARD_IO}",
+                "name": "%{BKY_CAT_ONBOARD_IO}",
                 "level": "2",
                 "levels": "1,2,3",
                 "categorystyle": "board_category",
@@ -58,10 +54,6 @@ var toolbox_ST = {
                     },
                     {
                         "kind": "block",
-                        "blockxml": "<block type='board_base_delay'><value name='DELAY_TIME'><shadow type='math_number'><field name='NUM'>1000</field></shadow></value></block>"
-                    },
-                    {
-                        "kind": "block",
                         "type": "board_base_angle"
                     },
                     {
@@ -80,7 +72,18 @@ var toolbox_ST = {
             },
             {
                 "kind": "category",
-                "name": "%{BKY_CAT_BOARD_SERIAL}",
+                "name": "%{BKY_CAT_ONBOARD_TIME}",
+                "level": "2",
+                "levels": "1,2,3",
+                "categorystyle": "board_category",
+                "contents": [{
+                    "kind": "block",
+                    "blockxml": "<block type='board_base_delay'><value name='DELAY_TIME'><shadow type='math_number'><field name='NUM'>1000</field></shadow></value></block>"
+                }]
+            },
+            {
+                "kind": "category",
+                "name": "%{BKY_CAT_ONBOARD_SERIAL}",
                 "level": "2",
                 "levels": "1,2,3",
                 "categorystyle": "board_category",
@@ -128,7 +131,7 @@ var toolbox_ST = {
             },
             {
                 "kind": "category",
-                "name": "%{BKY_CAT_BOARD_IOT}",
+                "name": "%{BKY_CAT_ONBOARD_IOT}",
                 "level": "3",
                 "levels": "2,3",
                 "categorystyle": "board_category",

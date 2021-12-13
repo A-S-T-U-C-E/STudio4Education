@@ -23,10 +23,11 @@ Blockly.Msg.CAT_COLOUR = "couleurs";
 Blockly.Msg.CAT_VARIABLES = "variables";
 Blockly.Msg.CAT_FUNCTIONS = "procédures & fonctions";
 //categories for boards
-Blockly.Msg.CAT_BOARD = "carte";
-Blockly.Msg.CAT_BOARD_IO = "entrées / sorties";
-Blockly.Msg.CAT_BOARD_IOT = "communication réseau";
-Blockly.Msg.CAT_BOARD_SERIAL = "communication série";
+Blockly.Msg.CAT_ONBOARD = "carte";
+Blockly.Msg.CAT_ONBOARD_IO = "entrées / sorties";
+Blockly.Msg.CAT_ONBOARD_IOT = "communication réseau";
+Blockly.Msg.CAT_ONBOARD_SERIAL = "communication série";
+Blockly.Msg.CAT_ONBOARD_TIME = "temps & durée";
 Blockly.Msg.CAT_IKS01A3 = "X-NUCLEO-IKS01A3";
 Blockly.Msg.CAT_SERVO = "servomoteurs";
 Blockly.Msg.CAT_SEEED = "Seeed studio";

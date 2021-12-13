@@ -60,7 +60,7 @@ Blockly.Msg["ARRAY_TAILLE"] = "بحجم";
 Blockly.Msg["ARRAY_CONTIENT"] = "الذي يحتوي";
 Blockly.Msg["ARRAY_LIST"] = "القائمة";
 Blockly.Msg["ARRAY_ARRAY"] = "الصفيف";
-Blockly.Msg["ARRAY_fixe"] = "عين العنصر في الرتبة";
+Blockly.Msg["ARRAY_FIX"] = "عين العنصر في الرتبة";
 Blockly.Msg["ARRAY_DECLARE_NAME"] = "إنشاء جدول (صفيف) مسمى";
 Blockly.Msg["ARRAY_DECLARE_TYPE"] = "من نوع";
 Blockly.Msg["ARRAY_DECLARE_SIZE"] = "من عدد من العناصر";
@@ -112,7 +112,7 @@ Blockly.Msg["ARD_TYPE_VOLATILE"] = "عدد صحيح متقلب (للمقاطعة
 
 //Arduino base category blocks
 Blockly.Msg["ARDUINO_INOUT_BUILDIN_LED_HELPURL"] = "http://arduino.cc/en/Reference/DigitalWrite";
-Blockly.Msg["ARDUINO_INOUT_BUILDIN_LED_INPUT"] = "put the LEDs on the card to logic";
+Blockly.Msg["ARDUINO_INOUT_BUILDIN_LED_INPUT"] = "put the LED on the card to logic";
 Blockly.Msg["ARDUINO_INOUT_BUILDIN_LED_TOOLTIP"] = "off or turn on the LED on the Arduino board";
 Blockly.Msg["ARDUINO_INOUT_DIGITAL_WRITE_INPUT1"] = "put the pin Digital";
 Blockly.Msg["ARDUINO_INOUT_DIGITAL_WRITE_INPUT2"] = "to logic state";

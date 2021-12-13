@@ -34,22 +34,6 @@ Blockly.Blocks['base_define_bloc'] = {
     }
 };
 
-Blockly.Blocks['base_define'] = {
-    init: function() {
-        this.appendValueInput("TEXT1")
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField("define variable");
-        this.appendDummyInput()
-            .appendField("as")
-            .appendField(new Blockly.FieldTextInput(''), 'TEXT2');
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setStyle('board_blocks');
-        this.setTooltip(Blockly.Msg.ARDUINO_BASE_DEFINE_CONST_TOOLTIP);
-        this.setHelpUrl(Blockly.Msg.ARDUINO_BASE_DEFINE_CONST_HELPURL);
-    }
-};
-
 Blockly.Blocks['board_base_setup'] = {
     init: function() {
         this.appendDummyInput()

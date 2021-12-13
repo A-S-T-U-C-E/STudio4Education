@@ -216,19 +216,19 @@ var toolbox_standard = {
     }, {
         "kind": "category",
         "name": "%{BKY_CAT_VARIABLES}",
-        "toolboxitemid": "VARIABLES",
+        "toolboxitemid": "VARIABLES_TYPED",
         "level": "1",
         "levels": "1,2,3",
-        "categorystyle": "variable_category",
-        "custom": "VARIABLE"
+        "custom": "VARIABLES_TYPED",
+        "categorystyle": "variable_category"
     }, {
         "kind": "category",
         "name": "%{BKY_CAT_FUNCTIONS}",
         "toolboxitemid": "FUNCTIONS",
         "level": "1",
         "levels": "1,2,3",
-        "categorystyle": "procedure_category",
-        "custom": "PROCEDURE"
+        "custom": "PROCEDURE",
+        "categorystyle": "procedure_category"
     }, {
         "kind": "sep"
     }]

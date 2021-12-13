@@ -9,9 +9,6 @@ Blockly.Blocks.board_base_loop.getBlockType = function() {
 Blockly.Blocks.base_define_bloc.getBlockType = function() {
     return Blockly.Types.NULL;
 };
-Blockly.Blocks.base_define.getBlockType = function() {
-    return Blockly.Types.NULL;
-};
 Blockly.Blocks.board_base_inout_buildin_led.getBlockType = function() {
     return Blockly.Types.NULL;
 };

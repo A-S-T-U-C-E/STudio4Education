@@ -208,7 +208,7 @@ document.getElementById('ArrowheadServRegConfigurationModalForm').addEventListen
 document.getElementById('ArrowheadProviderConfigurationModalForm').addEventListener('submit', handleFormSubmit);
 document.getElementById('ArrowheadConsumerConfigurationModalForm').addEventListener('submit', handleFormSubmit);
 document.getElementById('ArrowheadAuthConfigurationModalForm').addEventListener('submit', handleFormSubmit);
-// document.getElementById('ArrowheadOrchConfigurationModalForm').addEventListener('submit', handleFormSubmit);
+document.getElementById('ArrowheadOrchConfigurationModalForm').addEventListener('submit', handleFormSubmit);
 
 /*
  * WIP

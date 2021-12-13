@@ -55,6 +55,7 @@ function genWorkspace(rtlArg, toolboxArg, rendererArg) {
             scaleSpeed: 1.1
         }
     });
+    Blockly.Variables.createFlyoutCategory(Code.mainWorkspace);
     // Code.minimapWorkspace = Blockly.inject('minimapDiv', {
     //     media: './@blockly/media/',
     //     readOnly: true,

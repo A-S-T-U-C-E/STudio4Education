@@ -97,11 +97,31 @@ Code.renderingConstantsInit = function() {
 function toggleCategory(categoryChecked) {
     var toolbox = Code.mainWorkspace.getToolbox();
     var category = toolbox.getToolboxItems()[categoryChecked];
-    if (document.getElementById('checkbox_' + categoryChecked).checked == false) {
+    var toolboxIdsToKeep = window.localStorage.toolboxids.split(",");
+    if (!document.getElementById('checkbox_' + categoryChecked).checked) {
         category.hide();
-        window.localStorage.toolboxids -= category;
+        const index = toolboxIdsToKeep.indexOf(category.id_);
+        if (index > -1) {
+            toolboxIdsToKeep.splice(index, 1);
+        }
     } else {
         category.show();
-        window.localStorage.toolboxids += category;
+        toolboxIdsToKeep.push(category.id_);
     }
+    window.localStorage.toolboxids = toolboxIdsToKeep;
+    var search = window.location.search;
+    if (search.length <= 1) {
+        search = '?cat=' + toolboxIdsToKeep;
+    } else if (search.match(/[?&]cat=[^&]*/)) {
+        search = search.replace(/([?&]cat=)[^&]*/, '$1' + toolboxIdsToKeep);
+    } else {
+        search = search.replace(/\?/, '?cat=' + toolboxIdsToKeep + '&');
+    }
+    history.replaceState({}, 'search', search);
+}
+
+function arrayRemove(arr, value) {
+    return arr.filter(function(ele) {
+        return ele != value;
+    });
 }

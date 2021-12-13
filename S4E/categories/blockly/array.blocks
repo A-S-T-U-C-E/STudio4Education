@@ -331,7 +331,7 @@ Blockly.Blocks["Array_create"] = {
 Blockly.Blocks["Array_fix"] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.ARRAY_fixe)
+            .appendField(Blockly.Msg.ARRAY_FIX)
             .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_GET_ITEM), 'VAR')
             .appendField(Blockly.Msg.ARRAY_dim)
             .appendField(new Blockly.FieldDropdown([

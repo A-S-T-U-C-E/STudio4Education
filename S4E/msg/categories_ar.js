@@ -23,10 +23,11 @@ Blockly.Msg.CAT_COLOUR = "ألوان";
 Blockly.Msg.CAT_VARIABLES = "متغيرات";
 Blockly.Msg.CAT_FUNCTIONS = "الإجراءات والدوال";
 //categories for boards
-Blockly.Msg.CAT_BOARD = "Board";
-Blockly.Msg.CAT_BOARD_IO = "Input / Output";
-Blockly.Msg.CAT_BOARD_IOT = "Network data";
-Blockly.Msg.CAT_BOARD_SERIAL = "Serial communication";
+Blockly.Msg.CAT_ONBOARD = "Board";
+Blockly.Msg.CAT_ONBOARD_IO = "Input / Output";
+Blockly.Msg.CAT_ONBOARD_IOT = "Network data";
+Blockly.Msg.CAT_ONBOARD_SERIAL = "Serial communication";
+Blockly.Msg.CAT_ONBOARD_TIME = "Time";
 Blockly.Msg.CAT_IKS01A3 = "X-NUCLEO-IKS01A3";
 Blockly.Msg.CAT_SERVO = "Servo";
 Blockly.Msg.CAT_SEEED = "Seeed studio";

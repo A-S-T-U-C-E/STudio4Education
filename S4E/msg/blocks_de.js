@@ -60,7 +60,7 @@ Blockly.Msg["ARRAY_TAILLE"] = "Größe";
 Blockly.Msg["ARRAY_CONTIENT"] = "Breite";
 Blockly.Msg["ARRAY_LIST"] = "Liste";
 Blockly.Msg["ARRAY_ARRAY"] = "Listenanordnung  (Array)";
-Blockly.Msg["ARRAY_fixe"] = "Element an Position ändern";
+Blockly.Msg["ARRAY_FIX"] = "Element an Position ändern";
 Blockly.Msg["ARRAY_DECLARE_NAME"] = "Listenanordnung  (Array) erstellen";
 Blockly.Msg["ARRAY_DECLARE_TYPE"] = "Typ";
 Blockly.Msg["ARRAY_DECLARE_SIZE"] = "Anzahl der Elemente";
@@ -112,7 +112,7 @@ Blockly.Msg["ARD_TYPE_VOLATILE"] = "Numerische Ganzzahl";
 
 //Arduino base cateory blocks
 Blockly.Msg["ARDUINO_INOUT_BUILDIN_LED_HELPURL"] = "http://arduino.cc/en/Reference/DigitalWrite";
-Blockly.Msg["ARDUINO_INOUT_BUILDIN_LED_INPUT"] = "put the LEDs on the card to logic";
+Blockly.Msg["ARDUINO_INOUT_BUILDIN_LED_INPUT"] = "put the LED on the board to logic";
 Blockly.Msg["ARDUINO_INOUT_BUILDIN_LED_TOOLTIP"] = "off or turn on the LED on the Arduino board";
 Blockly.Msg["ARDUINO_INOUT_DIGITAL_WRITE_INPUT1"] = "put the pin Digital";
 Blockly.Msg["ARDUINO_INOUT_DIGITAL_WRITE_INPUT2"] = "to logic state";

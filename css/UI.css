@@ -114,7 +114,7 @@ html[dir=rtl] {
 }
 
 #buttonsToolsPopup {
-    animation: fadein 0.5s;
+    animation: fadein 0.8s;
     position: absolute;
     top: 70px;
     left: 145px;
@@ -124,7 +124,7 @@ html[dir=rtl] {
 }
 
 #buttonsIotPopup {
-    animation: fadein 0.5s;
+    animation: fadein 0.8s;
     position: absolute;
     top: 70px;
     left: 185px;
@@ -134,7 +134,7 @@ html[dir=rtl] {
 }
 
 #buttonsSerialPopup {
-    animation: fadein 0.5s;
+    animation: fadein 0.8s;
     position: absolute;
     top: 70px;
     left: 385px;

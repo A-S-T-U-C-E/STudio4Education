@@ -126,6 +126,8 @@
             <button id="toolsButton" class="iconButtons" onclick="openMenuTools()">
                 <span id="toolsButton_span" class="fas fa-tools">
                 </span>
+                <span id="serialConnectButton_span" style="font-size: 0.6em;">⏷
+                </span>
             </button>
             <div id="toolsPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('toolsPopup').style.display = 'none';document.getElementById('toolsButton').classList.toggle('active');">
                 <div id="buttonsToolsPopup" class="menu_div">
@@ -168,6 +170,8 @@
             </div>
             <button id="iotConnectButton" class="iconButtons" onclick="openMenuIoT()">
                 <span id="iotConnectButton_span" class="fas fa-link">
+                </span>
+                <span id="serialConnectButton_span" style="font-size: 0.6em;">⏷
                 </span>
             </button>
             <div id="iotPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('iotPopup').style.display = 'none';document.getElementById('iotConnectButton').classList.toggle('active');">
@@ -237,6 +241,8 @@
             </button>
             <button id="serialConnectButton" class="iconButtons" onclick="openMenuSerial()">
                 <span id="serialConnectButton_span" class="fas fa-glasses">
+                </span>
+                <span id="serialConnectButton_span" style="font-size: 0.6em;">&#x23F7
                 </span>
             </button>
             <div id="serialPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('serialPopup').style.display = 'none';document.getElementById('serialConnectButton').classList.toggle('active');">
@@ -1100,7 +1106,7 @@
     <script src="./js/blockly_playground.js"></script>
     <script src="./js/keyboard_nav.js"></script>
     <script src="./js/init.js"></script>
-    <!-- <script src="./js/typed_variable.js"></script> -->
+    <script src="./js/typed_variable.js"></script>
     <script src="./js/buttons_functions.js"></script>
     <script src="./js/dialog.js"></script>
     <script src="./js/renderingConstant.js"></script>
@@ -1184,10 +1190,6 @@
     <script src="./tools/vs/loader.js"></script>
     <script src="./tools/vs/editor/editor.main.nls.js"></script>
     <script src="./tools/vs/editor/editor.main.js"></script>
-    <!-- <link href=' ./webfonts/AccessibleDfA.otf' rel='stylesheet' type='text/css'>
-    <link href=' ./webfonts/Bitter-Regular.otf' rel='stylesheet' type='text/css'>
-    <link href=' ./webfonts/Luciole-Regular.ttf' rel='stylesheet' type='text/css'>
-    <link href=' ./webfonts/OpenDyslexic-Regular.woff' rel='stylesheet' type='text/css'> -->
 
     <script>
         // require('../resources/app.asar/Arrowhead.js');
@@ -1195,9 +1197,11 @@
         // require('../resources/app.asar/menu_functions.js');
         // require('../resources/app.asar/menu_CLI_functions.js');
         // require('../resources/app.asar/menu_IDE_functions.js');
-        // require('../menu_functions.js');
-        // require('../menu_CLI_functions.js');
-        // require('../menu_IDE_functions.js');
+        // require('./Arrowhead.js');
+        // require('./renderer.js');
+        // require('./menu_functions.js');
+        // require('./menu_CLI_functions.js');
+        // require('./menu_IDE_functions.js');
     </script>
     <script type="text/javascript">
         window.onload = function() {
