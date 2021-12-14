@@ -99,9 +99,14 @@ Blockly.Themes.blackWhite.defaultBlockStyles = {
         "colourTertiary": "#000000"
     },
     "DHT_blocks": {
-        "colourPrimary": "#68CCF0",
-        "colourSecondary": "#68CCF0",
-        "colourTertiary": "#68CCF0"
+        "colourPrimary": "#000000",
+        "colourSecondary": "#000000",
+        "colourTertiary": "#000000"
+    },
+    "grove_blocks": {
+        "colourPrimary": "#000000",
+        "colourSecondary": "#000000",
+        "colourTertiary": "#000000"
     }
 };
 
@@ -152,7 +157,10 @@ Blockly.Themes.blackWhite.categoryStyles = {
         "colour": "#000000"
     },
     "DHT_blocks": {
-        "colour": "#68CCF0"
+        "colour": "#000000"
+    },
+    "grove_blocks": {
+        "colour": "#000000"
     }
 };
 

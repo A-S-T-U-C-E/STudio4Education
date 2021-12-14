@@ -1,0 +1,47 @@
+/**
+ * @license
+ * Copyright 2020 Sébastien CANET
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+/**
+ * @fileoverview DHT temperature & humidity sensors blocks for Blockly.
+ * @author scanet@libreduc.cc (Sébastien Canet)
+ */
+
+'use strict';
+
+goog.provide('Blockly.Constants.grove_dht_sensor');
+
+goog.require('Blockly');
+goog.require('Blockly.Blocks');
+goog.require('Blockly.Types');
+
+var grove_dht_sensor_MediaFolder = "./S4E/categories/seeed/grove_dht_sensor/";
+
+Blockly.Blocks['grove_dht_sensor_read'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.GROVE_INOUT_DHT_READ_TYPE)
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg.GROVE_INOUT_DHT_READ_H, "H"],
+                [Blockly.Msg.GROVE_INOUT_DHT_READ_C, "T"]
+            ]), "TYPE");
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(grove_dht_sensor_MediaFolder + 'grove_dht_sensor.png', Code.imageSize, Code.imageSize))
+            .appendField(Blockly.Msg.GROVE_INOUT_DHT_READ_SENSOR)
+            .appendField(new Blockly.FieldDropdown([
+                ["DHT11", "DHT11"],
+                ["DHT21", "DHT21"],
+                ["DHT22", "DHT22"]
+            ]), "SENSOR");
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.GROVE_INOUT_DHT_READ_PIN)
+            .appendField(new Blockly.FieldTextInput('', Blockly.Arduino.pinDigitalValidator), 'PIN');
+        this.setInputsInline(true);
+        this.setOutput(true, 'Number');
+        this.setStyle('grove_blocks');
+        this.setTooltip(Blockly.Msg.GROVE_INOUT_DHT_READ_TOOLTIP);
+        this.setHelpUrl(Blockly.Msg.GROVE_INOUT_DHT_HELPURL);
+    }
+};

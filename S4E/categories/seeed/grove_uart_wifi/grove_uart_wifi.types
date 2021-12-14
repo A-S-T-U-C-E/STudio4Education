@@ -1,0 +1,3 @@
+Blockly.Blocks.DHT_read.getBlockType = function() {
+    return Blockly.Types.DECIMAL;
+};

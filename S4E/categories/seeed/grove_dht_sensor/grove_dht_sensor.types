@@ -1,0 +1,3 @@
+Blockly.Blocks.grove_dht_sensor_read.getBlockType = function() {
+    return Blockly.Types.DECIMAL;
+};

@@ -1,0 +1,41 @@
+/**
+ * @license
+ * Copyright 2020 Sébastien CANET
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+/**
+ * @fileoverview DHT temperature & humidity sensors blocks for Blockly.
+ * @author scanet@libreduc.cc (Sébastien Canet)
+ */
+
+'use strict';
+
+goog.provide('Blockly.Arduino.DHT');
+
+goog.require('Blockly.Arduino');
+
+Blockly.Arduino['DHT_read'] = function() {
+    var dht_sensor = this.getFieldValue('DHT_sensor');
+    var dht_type = this.getFieldValue('DHT_type');
+    var dht_pin = this.getFieldValue('DHT_pin');
+    var code = '';
+    switch (dht_sensor) {
+        case 'H':
+            //      code += 'floatToStr(DHT' + dht_type + '_' + dht_pin + '.readHumidity()) + "%"';
+            code += dht_type + '_' + dht_pin + '.readHumidity()';
+            break;
+        case 'Tc':
+            //        code += 'floatToStr(DHT' + dht_type + '_' + dht_pin + '.readTemperature()) + "C"';
+            code += dht_type + '_' + dht_pin + '.readTemperature()';
+            break;
+        case 'Tf':
+            //        code += 'floatToStr(DHT' + dht_type + '_' + dht_pin + '.readTemperature(true)) + "F"';
+            code += dht_type + '_' + dht_pin + '.readTemperature(true)';
+            break;
+    }
+    Blockly.Arduino.includes_['define_DHT'] = '#include <DHT.h>'
+    Blockly.Arduino.definitions_['define_' + dht_type + '_' + dht_pin] = 'DHT ' + dht_type + '_' + dht_pin + '(' + dht_pin + ', ' + dht_type + ');';
+    Blockly.Arduino.setups_['setup_' + dht_type + '_' + dht_pin] = dht_type + '_' + dht_pin + '.begin();'
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};

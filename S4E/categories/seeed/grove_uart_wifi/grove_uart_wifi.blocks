@@ -1,0 +1,65 @@
+/**
+ * @license
+ * Copyright 2020 Sébastien CANET
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+/**
+ * @fileoverview DHT temperature & humidity sensors blocks for Blockly.
+ * @author scanet@libreduc.cc (Sébastien Canet)
+ */
+
+'use strict';
+
+goog.provide('Blockly.Constants.DHT');
+
+goog.require('Blockly');
+goog.require('Blockly.Blocks');
+goog.require('Blockly.Types');
+
+var dhtMediaFolder = "./S4E/categories/DHT/";
+
+var humidity = document.createElement('img');
+humidity.setAttribute('src', dhtMediaFolder + 'DHT_humidity.jpg');
+humidity.setAttribute('name', 'humidity');
+humidity.setAttribute('tooltip', 'humidity');
+humidity.setAttribute('height', '60px');
+humidity.setAttribute('width', '60px');
+var tempC = document.createElement('img');
+tempC.setAttribute('src', dhtMediaFolder + 'DHT_temp_celsius.png');
+tempC.setAttribute('name', 'temperatureC');
+tempC.setAttribute('tooltip', 'temperatureC');
+tempC.setAttribute('height', '60px');
+tempC.setAttribute('width', '60px');
+var tempF = document.createElement('img');
+tempF.setAttribute('src', dhtMediaFolder + 'DHT_temp_fahrenheit.png');
+tempF.setAttribute('name', 'temperatureF');
+tempF.setAttribute('tooltip', 'temperatureF');
+tempF.setAttribute('height', '60px');
+tempF.setAttribute('width', '60px');
+
+Blockly.Blocks['DHT_read'] = {
+    init: function() {
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_LEFT)
+            .appendField(Blockly.Msg.DHT_TEXT1)
+            .appendField(new FieldGridDropdown([
+                [humidity, "H"],
+                [tempC, "Tc"],
+                [tempF, "Tf"]
+            ]), "DHT_sensor")
+            .appendField(Blockly.Msg.DHT_TEXT2)
+            .appendField(new Blockly.FieldImage(dhtMediaFolder + 'DHT.jpg', Code.imageSize, Code.imageSize))
+            .appendField(new Blockly.FieldDropdown([
+                ["DHT11", "DHT11"],
+                ["DHT21", "DHT21"],
+                ["DHT22", "DHT22"]
+            ]), "DHT_type")
+            .appendField(Blockly.Msg.DHT_TEXT3)
+            .appendField(new Blockly.FieldTextInput('11'), 'DHT_pin');
+        this.setOutput(true, 'Boolean');
+        this.setStyle('DHT_blocks');
+        this.setTooltip(Blockly.Msg.DS18B20_TOOLTIP1);
+        this.setHelpUrl(Blockly.Msg.DS18B20_HELPURL);
+    }
+};

@@ -1,0 +1,54 @@
+/**
+ * @license
+ * Copyright 2020 Sébastien CANET
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+/**
+ * @fileoverview DHT temperature & humidity sensors blocks for Blockly.
+ * @author scanet@libreduc.cc (Sébastien Canet)
+ */
+
+'use strict';
+
+goog.provide('Blockly.Arduino.grove_dht_sensor');
+
+goog.require('Blockly.Arduino');
+
+Blockly.Arduino['grove_dht_sensor_read'] = function() {
+    var sensor = this.getFieldValue('SENSOR');
+    var pin = this.getFieldValue('PIN');
+    var type = this.getFieldValue('TYPE');
+    Blockly.Arduino.includes_['define_dht_' + pin + '_' + sensor] = '#include <SimpleDHT.h>\n'
+    Blockly.Arduino.userFunctions_['grove_dht_sensor_' + type] =
+        'float grove_dht_sensor_' + type + '(Simple' + sensor + ' DHT) {\n' +
+        '   byte temperature = 0;\n' +
+        '   byte humidity = 0;\n' +
+        '   int err = SimpleDHTErrSuccess;\n' +
+        '   Serial.begin(115200);\n' +
+        '   float temp_hum_val[2] = {0};\n' +
+        '   delay(1500);\n' +
+        '   if ((err = DHT.read(&temperature, &humidity, NULL)) != SimpleDHTErrSuccess) {\n' +
+        '      Serial.print("Read DHT failed, err="); Serial.print(SimpleDHTErrCode(err));\n' +
+        '      Serial.print(",");\n' +
+        '      Serial.println(SimpleDHTErrDuration(err));\n' +
+        '      delay(1000);\n' +
+        '      return;\n' +
+        '   } else {\n';
+
+    switch (type) {
+        case 'H':
+            Blockly.Arduino.userFunctions_['grove_dht_sensor_' + type] += '      return humidity;\n' +
+                '   }\n' +
+                '}';
+            break;
+        case 'T':
+            Blockly.Arduino.userFunctions_['grove_dht_sensor_' + type] += '      return temperature;\n' +
+                '   }\n' +
+                '}';
+            break;
+    }
+    Blockly.Arduino.definitions_['define_dht_' + pin + '_' + sensor] = 'Simple' + sensor + ' ' + sensor + '_' + pin + '(' + pin + ');';
+    var code = 'grove_dht_sensor_' + type + '(' + sensor + '_' + pin + ')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};

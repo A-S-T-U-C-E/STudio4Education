@@ -116,23 +116,8 @@ function genWorkspace(rtlArg, toolboxArg, rendererArg) {
 // }
 
 function changeTheme(themeChoice) {
-    if (themeChoice === "dark") {
-        Code.mainWorkspace.setTheme(Blockly.Themes.Dark);
-    } else if (themeChoice === "high_contrast") {
-        Code.mainWorkspace.setTheme(Blockly.Themes.HighContrast);
-    } else if (themeChoice === "deuteranopia") {
-        Code.mainWorkspace.setTheme(Blockly.Themes.Deuteranopia);
-    } else if (themeChoice === "tritanopia") {
-        Code.mainWorkspace.setTheme(Blockly.Themes.Tritanopia);
-    } else if (themeChoice === "modern") {
-        Code.mainWorkspace.setTheme(Blockly.Themes.Modern);
-    } else if (themeChoice === "blackWhite") {
-        Code.mainWorkspace.setTheme(Blockly.Themes.blackWhite);
-    } else if (themeChoice === "zelos") {
-        Code.mainWorkspace.setTheme(Blockly.Themes.Zelos);
-    } else {
-        Code.mainWorkspace.setTheme(Blockly.Themes.Classic);
-    }
+    Code.mainWorkspace.setTheme(Blockly.Themes[themeChoice]);
+    window.localStorage.setItem('choosedTheme', themeChoice);
 };
 
 function changeRenderer(rendererChoice) {
@@ -146,9 +131,9 @@ function changeRenderer(rendererChoice) {
     // Deserialize state into workspace.
     Blockly.Xml.domToWorkspace(state, Code.mainWorkspace);
     // Resize the gui.
-    // if (resizeEnabled) {
     Code.BlocklyWorkspaceOnresize();
-    // }
+    Code.changeFontFamily(window.localStorage.getItem('choosedFont'));
+    changeTheme(localStorage.getItem('choosedTheme'));
 };
 
 /**

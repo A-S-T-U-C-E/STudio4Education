@@ -1,0 +1,3 @@
+Blockly.Blocks.grove_led_bar_setLevel.getBlockType = function() {
+    return Blockly.Types.NULL;
+};

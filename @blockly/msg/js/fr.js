@@ -426,12 +426,13 @@ Blockly.Msg["PROCEDURES_DEFRETURN_TITLE"] = Blockly.Msg["PROCEDURES_DEFNORETURN_
 Blockly.Msg["TEXT_APPEND_VARIABLE"] = Blockly.Msg["VARIABLES_DEFAULT_NAME"];
 Blockly.Msg["TEXT_CREATE_JOIN_ITEM_TITLE_ITEM"] = Blockly.Msg["VARIABLES_DEFAULT_NAME"];
 
-Blockly.Msg["LOGIC_HUE"] = "210";
-Blockly.Msg["LOOPS_HUE"] = "120";
-Blockly.Msg["MATH_HUE"] = "230";
-Blockly.Msg["TEXTS_HUE"] = "160";
-Blockly.Msg["LISTS_HUE"] = "260";
-Blockly.Msg["COLOUR_HUE"] = "20";
-Blockly.Msg["VARIABLES_HUE"] = "330";
-Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";
-Blockly.Msg["PROCEDURES_HUE"] = "290";
+// SEEED GROVE
+
+Blockly.Msg.GROVE_INOUT_DHT_HELPURL = "https://github.com/winlinvip/SimpleDHT";
+Blockly.Msg.GROVE_INOUT_DHT_READ_C = "de la température °C";
+Blockly.Msg.GROVE_INOUT_DHT_READ_F = "de la température °F";
+Blockly.Msg.GROVE_INOUT_DHT_READ_H = "du % d'humidité";
+Blockly.Msg.GROVE_INOUT_DHT_READ_PIN = "sur la broche n°";
+Blockly.Msg.GROVE_INOUT_DHT_READ_SENSOR = "mesurée par le capteur ";
+Blockly.Msg.GROVE_INOUT_DHT_READ_TOOLTIP = "les capteurs de type DHT comportent 2 parties : thermistance et capteur d'humidité.";
+Blockly.Msg.GROVE_INOUT_DHT_READ_TYPE = "valeur";

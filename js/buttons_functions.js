@@ -590,6 +590,11 @@ Code.changeFontFamily = function(fontType) {
     var labelsToolbox = document.getElementsByClassName("blocklyText")
     for (var x = 0; x < labelsToolbox.length; x++)
         labelsToolbox[x].style.fontFamily = fontType;
+    // let actualTheme = Code.mainWorkspace.getTheme();
+    // console.log(actualTheme)
+    // Blockly.Themes[actualTheme.name].setComponentStyle('fontStyle', fontType);
+    // Code.mainWorkspace.setTheme(Blockly.Themes[actualTheme]);
+    window.localStorage.setItem('choosedFont', fontType);
 }
 
 /**

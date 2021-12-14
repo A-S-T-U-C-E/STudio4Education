@@ -231,7 +231,7 @@ Code.init = function() {
 
     //change theme color
     match = location.search.match(/theme=([^&]+)/);
-    var theme = match ? match[1] : 'zelos';
+    var theme = match ? match[1] : 'Zelos';
     document.forms.options.elements.themeMenu.value = theme;
     changeTheme(theme);
 

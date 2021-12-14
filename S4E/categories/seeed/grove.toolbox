@@ -1,0 +1,32 @@
+var toolbox_GROVE = {
+    "kind": "categoryToolbox",
+    "contents": [{
+        "kind": "category",
+        "name": "%{BKY_CAT_GROVE}",
+        "toolboxitemid": "GROVE",
+        "levels": "1,2,3",
+        "level": "1",
+        "categorystyle": "grove_category",
+        "contents": [{
+            "kind": "category",
+            "name": "%{BKY_CAT_GROVE_IN}",
+            "level": "1",
+            "levels": "1,2,3",
+            "categorystyle": "grove_category",
+            "contents": [{
+                "kind": "block",
+                "type": "grove_dht_sensor_read"
+            }]
+        }, {
+            "kind": "category",
+            "name": "%{BKY_CAT_GROVE_OUT}",
+            "level": "1",
+            "levels": "1,2,3",
+            "categorystyle": "grove_category",
+            "contents": [{
+                "kind": "block",
+                "type": "grove_led_bar_setLevel"
+            }]
+        }]
+    }]
+};
