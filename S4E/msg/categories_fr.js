@@ -34,6 +34,7 @@ Blockly.Msg.CAT_SEEED = "Seeed studio";
 Blockly.Msg.CAT_GROVE = "Grove";
 Blockly.Msg.CAT_GROVE_IN = "- capteurs";
 Blockly.Msg.CAT_GROVE_OUT = "- actionneurs";
+Blockly.Msg.CAT_GROVE_COMM = "- communication";
 Blockly.Msg.CAT_GROVE_LCD = "- LCD";
 Blockly.Msg.CAT_GROVE_MOTOR = "- moteurs";
 Blockly.Msg.CAT_DS18B20 = "thermistance DS18B20";

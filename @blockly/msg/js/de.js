@@ -425,14 +425,3 @@ Blockly.Msg["PROCEDURES_DEFRETURN_PROCEDURE"] = Blockly.Msg["PROCEDURES_DEFNORET
 Blockly.Msg["PROCEDURES_DEFRETURN_TITLE"] = Blockly.Msg["PROCEDURES_DEFNORETURN_TITLE"];
 Blockly.Msg["TEXT_APPEND_VARIABLE"] = Blockly.Msg["VARIABLES_DEFAULT_NAME"];
 Blockly.Msg["TEXT_CREATE_JOIN_ITEM_TITLE_ITEM"] = Blockly.Msg["VARIABLES_DEFAULT_NAME"];
-
-// SEEED GROVE
-
-Blockly.Msg.GROVE_INOUT_DHT_HELPURL = "https://github.com/winlinvip/SimpleDHT";
-Blockly.Msg.GROVE_INOUT_DHT_READ_C = "Temperatur C";
-Blockly.Msg.GROVE_INOUT_DHT_READ_F = "Temperatur F";
-Blockly.Msg.GROVE_INOUT_DHT_READ_H = "Luftfeuchtigkeit %";
-Blockly.Msg.GROVE_INOUT_DHT_READ_PIN = "Pin";
-Blockly.Msg.GROVE_INOUT_DHT_READ_SENSOR = "";
-Blockly.Msg.GROVE_INOUT_DHT_READ_TOOLTIP = "The DHT sensors are made of two parts, a capacitive humidity sensor and a thermistor.";
-Blockly.Msg.GROVE_INOUT_DHT_READ_TYPE = "Content";

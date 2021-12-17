@@ -240,6 +240,22 @@ Blockly.Msg["RELAY_MOSFET_TOOLTIP"] = "un transistor MOSFET est un télérupteur
 Blockly.Msg["RELAY_MOSFET_HELPURL"] = "http://sin.lyceeleyguescouffignal.fr/irf520-mosfet-driver-module";
 
 //DHT sensors
-Blockly.Msg.DHT_TEXT1 = "valeur en";
-Blockly.Msg.DHT_TEXT2 = "du capteur";
-Blockly.Msg.DHT_TEXT3 = "sur la broche";
+Blockly.Msg["DHT_TEXT1"] = "valeur en";
+Blockly.Msg["DHT_TEXT2"] = "du capteur";
+Blockly.Msg["DHT_TEXT3"] = "sur la broche";
+
+// SEEED GROVE
+
+Blockly.Msg["GROVE_INOUT_DHT_HELPURL"] = "https://github.com/winlinvip/SimpleDHT";
+Blockly.Msg["GROVE_INOUT_DHT_READ_C"] = "de la température °C";
+Blockly.Msg["GROVE_INOUT_DHT_READ_F"] = "de la température °F";
+Blockly.Msg["GROVE_INOUT_DHT_READ_H"] = "du % d'humidité";
+Blockly.Msg["GROVE_INOUT_DHT_READ_PIN"] = "sur la broche n°";
+Blockly.Msg["GROVE_INOUT_DHT_READ_SENSOR"] = "mesurée par le capteur ";
+Blockly.Msg["GROVE_INOUT_DHT_READ_TOOLTIP"] = "les capteurs de type DHT comportent 2 parties : thermistance et capteur d'humidité.";
+Blockly.Msg["GROVE_INOUT_DHT_READ_TYPE"] = "valeur";
+Blockly.Msg["GROVE_LED_BAR_INPUT"] = "sur bar graphe";
+Blockly.Msg["GROVE_LED_BAR_PIN"] = "connecté broche";
+Blockly.Msg["GROVE_LED_BAR_LEVEL"] = "allumer ce nombre de DEL";
+Blockly.Msg["GROVE_LED_BAR_TOOLTIP"] = "select how many LED on bargraphe are ON";
+Blockly.Msg["GROVE_LED_BAR_HELPURL"] = "";

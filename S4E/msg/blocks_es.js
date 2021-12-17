@@ -229,6 +229,22 @@ Blockly.Msg["RELAY_MOSFET_TOOLTIP"] = "the MOSFET transistor is a remote switch,
 Blockly.Msg["RELAY_MOSFET_HELPURL"] = "http://sin.lyceeleyguescouffignal.fr/irf520-mosfet-driver-module";
 
 //DHT sensors
-Blockly.Msg.DHT_TEXT1 = "value of";
-Blockly.Msg.DHT_TEXT2 = "on sensor";
-Blockly.Msg.DHT_TEXT3 = "wired on pin#";
+Blockly.Msg["DHT_TEXT1"] = "value of";
+Blockly.Msg["DHT_TEXT2"] = "on sensor";
+Blockly.Msg["DHT_TEXT3"] = "wired on pin#";
+
+// SEEED GROVE
+
+Blockly.Msg["GROVE_INOUT_DHT_HELPURL"] = "https://github.com/winlinvip/SimpleDHT";
+Blockly.Msg["GROVE_INOUT_DHT_READ_C"] = "temperatura °C";
+Blockly.Msg["GROVE_INOUT_DHT_READ_F"] = "temperatura °F";
+Blockly.Msg["GROVE_INOUT_DHT_READ_H"] = "humedad %";
+Blockly.Msg["GROVE_INOUT_DHT_READ_PIN"] = "Pin#";
+Blockly.Msg["GROVE_INOUT_DHT_READ_SENSOR"] = "medido por el sensor ";
+Blockly.Msg["GROVE_INOUT_DHT_READ_TOOLTIP"] = "los sensores del tipo DHT tienen dos partes: termistor y sensor de humedad.";
+Blockly.Msg["GROVE_INOUT_DHT_READ_TYPE"] = "valor";
+Blockly.Msg["GROVE_LED_BAR_INPUT"] = "on bar graphe";
+Blockly.Msg["GROVE_LED_BAR_PIN"] = "pin #";
+Blockly.Msg["GROVE_LED_BAR_LEVEL"] = "number of LED on";
+Blockly.Msg["GROVE_LED_BAR_TOOLTIP"] = "select how many LED on bargraphe are ON";
+Blockly.Msg["GROVE_LED_BAR_HELPURL"] = "";

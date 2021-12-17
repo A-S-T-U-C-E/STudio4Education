@@ -27,6 +27,16 @@ var toolbox_GROVE = {
                 "kind": "block",
                 "type": "grove_led_bar_setLevel"
             }]
+        }, {
+            "kind": "category",
+            "name": "%{BKY_CAT_GROVE_COMM}",
+            "level": "1",
+            "levels": "1,2,3",
+            "categorystyle": "grove_category",
+            "contents": [{
+                "kind": "block",
+                "type": "grove_uart_wifi"
+            }]
         }]
     }]
 };

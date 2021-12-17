@@ -425,14 +425,3 @@ Blockly.Msg["PROCEDURES_DEFRETURN_PROCEDURE"] = Blockly.Msg["PROCEDURES_DEFNORET
 Blockly.Msg["PROCEDURES_DEFRETURN_TITLE"] = Blockly.Msg["PROCEDURES_DEFNORETURN_TITLE"];
 Blockly.Msg["TEXT_APPEND_VARIABLE"] = Blockly.Msg["VARIABLES_DEFAULT_NAME"];
 Blockly.Msg["TEXT_CREATE_JOIN_ITEM_TITLE_ITEM"] = Blockly.Msg["VARIABLES_DEFAULT_NAME"];
-
-// SEEED GROVE
-
-Blockly.Msg.GROVE_INOUT_DHT_HELPURL =  "https://github.com/winlinvip/SimpleDHT" ;
-Blockly.Msg.GROVE_INOUT_DHT_READ_C =  "درجة الحرارة درجة مئوية" ;
-Blockly.Msg.GROVE_INOUT_DHT_READ_F =  "درجة الحرارة °F" ;
-Blockly.Msg.GROVE_INOUT_DHT_READ_H =  "% الرطوبة";
-Blockly.Msg.GROVE_INOUT_DHT_READ_PIN =  "على الدبوس رقم";
-Blockly.Msg.GROVE_INOUT_DHT_READ_SENSOR =  "تم القياس بواسطة المستشعر" ;
-Blockly.Msg.GROVE_INOUT_DHT_READ_TOOLTIP =  "مستشعرات نوع DHT تتكون من جزأين: الثرمستور (الحرارة) ومستشعر الرطوبة.";
-Blockly.Msg.GROVE_INOUT_DHT_READ_TYPE =  "قيمة";
