@@ -15,14 +15,37 @@ goog.provide('Blockly.Arduino.grove_led_bar_actuators');
 
 goog.require('Blockly.Arduino');
 
-Blockly.Arduino['grove_led_bar_setLevel'] = function() {
+Blockly.Arduino['grove_led_bar_setAllOff'] = function(block) {
     var dropdown_pin = block.getFieldValue('PIN');
-    var value_degree = Blockly.Arduino.valueToCode(block, 'LEVEL', Blockly.Arduino.ORDER_ATOMIC);
 
-    Blockly.Arduino.includes_['includes_servo'] = '#include <Servo.h>';
-    Blockly.Arduino.definitions_['var_servo' + dropdown_pin] = 'Servo servo_' + dropdown_pin + ';';
-    Blockly.Arduino.setups_['setup_servo_' + dropdown_pin] = 'servo_' + dropdown_pin + '.attach(' + dropdown_pin + ');';
+    Blockly.Arduino.includes_['includes_Grove_LED_Bar'] = '#include <Grove_LED_Bar.h>';
+    Blockly.Arduino.definitions_['def_Grove_LED_Bar' + dropdown_pin] = 'Grove_LED_Bar LED_bar_' + dropdown_pin + '(' + (parseInt(dropdown_pin) + 1) + ', ' + dropdown_pin + ', 0, LED_BAR_10);';
+    Blockly.Arduino.setups_['setup_Grove_LED_Bar_' + dropdown_pin] = 'LED_bar_' + dropdown_pin + '.begin();';
 
-    var code = 'servo_' + dropdown_pin + '.write(' + value_degree + ');\n';
+    var code = 'LED_bar_' + dropdown_pin + '.setLevel(0);\n';
+    return code;
+};
+
+Blockly.Arduino['grove_led_bar_setLevel'] = function(block) {
+    var dropdown_pin = block.getFieldValue('PIN');
+    var level = Blockly.Arduino.valueToCode(block, 'LEVEL', Blockly.Arduino.ORDER_ATOMIC);
+
+    Blockly.Arduino.includes_['includes_Grove_LED_Bar'] = '#include <Grove_LED_Bar.h>';
+    Blockly.Arduino.definitions_['def_Grove_LED_Bar' + dropdown_pin] = 'Grove_LED_Bar LED_bar_' + dropdown_pin + '(' + (parseInt(dropdown_pin) + 1) + ', ' + dropdown_pin + ', 0, LED_BAR_10);';
+    Blockly.Arduino.setups_['setup_Grove_LED_Bar_' + dropdown_pin] = 'LED_bar_' + dropdown_pin + '.begin();';
+
+    var code = 'LED_bar_' + dropdown_pin + '.setLevel(' + level + ');\n';
+    return code;
+};
+
+Blockly.Arduino['grove_led_bar_toggle'] = function(block) {
+    var dropdown_pin = block.getFieldValue('PIN');
+    var level = Blockly.Arduino.valueToCode(block, 'LEVEL', Blockly.Arduino.ORDER_ATOMIC);
+
+    Blockly.Arduino.includes_['includes_Grove_LED_Bar'] = '#include <Grove_LED_Bar.h>';
+    Blockly.Arduino.definitions_['def_Grove_LED_Bar' + dropdown_pin] = 'Grove_LED_Bar LED_bar_' + dropdown_pin + '(' + (parseInt(dropdown_pin) + 1) + ', ' + dropdown_pin + ', 0, LED_BAR_10);';
+    Blockly.Arduino.setups_['setup_Grove_LED_Bar_' + dropdown_pin] = 'LED_bar_' + dropdown_pin + '.begin();';
+
+    var code = 'LED_bar_' + dropdown_pin + '.toggleLed(' + level + ');\n';
     return code;
 };

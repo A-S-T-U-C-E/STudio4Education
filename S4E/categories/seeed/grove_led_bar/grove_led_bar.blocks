@@ -19,6 +19,22 @@ goog.require('Blockly.Types');
 
 var grove_led_bar_MediaFolder = "./S4E/categories/seeed/grove_led_bar/";
 
+Blockly.Blocks['grove_led_bar_setAllOff'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.GROVE_LED_BAR_INPUT)
+            .appendField(new Blockly.FieldImage(grove_led_bar_MediaFolder + "grove_led_bar.jpg", Code.imageSize, Code.imageSize))
+            .appendField(Blockly.Msg.GROVE_LED_BAR_PIN)
+            .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN")
+            .appendField(Blockly.Msg.GROVE_LED_BAR_ALL_OFF);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.GROVE_LED_BAR_TOOLTIP1);
+        this.setHelpUrl(Blockly.Msg.GROVE_LED_BAR_HELPURL);
+        this.setStyle('grove_blocks');
+    }
+};
+
 Blockly.Blocks['grove_led_bar_setLevel'] = {
     init: function() {
         this.appendDummyInput()
@@ -27,12 +43,31 @@ Blockly.Blocks['grove_led_bar_setLevel'] = {
             .appendField(Blockly.Msg.GROVE_LED_BAR_PIN)
             .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN");
         this.appendValueInput("LEVEL")
-            .setCheck(Blockly.Types.UNS_NUMBER)
+            .setCheck("Number")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.GROVE_LED_BAR_LEVEL);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setTooltip(Blockly.Msg.GROVE_LED_BAR_TOOLTIP);
+        this.setTooltip(Blockly.Msg.GROVE_LED_BAR_TOOLTIP2);
+        this.setHelpUrl(Blockly.Msg.GROVE_LED_BAR_HELPURL);
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_led_bar_toggle'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.GROVE_LED_BAR_INPUT)
+            .appendField(new Blockly.FieldImage(grove_led_bar_MediaFolder + "grove_led_bar.jpg", Code.imageSize, Code.imageSize))
+            .appendField(Blockly.Msg.GROVE_LED_BAR_PIN)
+            .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN");
+        this.appendValueInput("LEVEL")
+            .setCheck("Number")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.GROVE_LED_BAR_TOGGLE);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.GROVE_LED_BAR_TOOLTIP3);
         this.setHelpUrl(Blockly.Msg.GROVE_LED_BAR_HELPURL);
         this.setStyle('grove_blocks');
     }

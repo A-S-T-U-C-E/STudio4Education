@@ -4,14 +4,14 @@ var toolbox_GROVE = {
         "kind": "category",
         "name": "%{BKY_CAT_GROVE}",
         "toolboxitemid": "GROVE",
-        "levels": [1, 2, 3],
+        "levels": "1,2,3",
         "level": "1",
         "categorystyle": "grove_category",
         "contents": [{
             "kind": "category",
             "name": "%{BKY_CAT_GROVE_IN}",
             "level": "1",
-            "levels": [1, 2, 3],
+            "levels": "1,2,3",
             "categorystyle": "grove_category",
             "contents": [{
                 "kind": "block",
@@ -21,17 +21,23 @@ var toolbox_GROVE = {
             "kind": "category",
             "name": "%{BKY_CAT_GROVE_OUT}",
             "level": "1",
-            "levels": [1, 2, 3],
+            "levels": "1,2,3",
             "categorystyle": "grove_category",
             "contents": [{
                 "kind": "block",
+                "type": "grove_led_bar_setAllOff"
+            }, {
+                "kind": "block",
                 "type": "grove_led_bar_setLevel"
+            }, {
+                "kind": "block",
+                "type": "grove_led_bar_toggle"
             }]
         }, {
             "kind": "category",
             "name": "%{BKY_CAT_GROVE_COMM}",
             "level": "1",
-            "levels": [1, 2, 3],
+            "levels": "1,2,3",
             "categorystyle": "grove_category",
             "contents": [{
                 "kind": "block",

@@ -343,8 +343,13 @@ Blockly.Blocks["Array_fix"] = {
             ], function(option) {
                 this.sourceBlock_.updateShape_(option)
             }), "dim");
-        this.appendValueInput("value").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg._AT);
-        this.appendValueInput("D0").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.ARRAY_index);
+        this.appendValueInput("value")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg._AT);
+        this.appendValueInput("D0")
+            .setCheck("Number")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.ARRAY_index);
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
