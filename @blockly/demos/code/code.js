@@ -482,6 +482,8 @@ Code.changeLevel = function(levelMenuSelection) {
     Code.BlocklyWorkspaceOnresize();
     Blockly.svgResize(Code.mainWorkspace);
     iconsButtonMouserOver();
+    Code.buildToolbox;
+    Code.buildControlPanelForToolbox;
     Code.injectLanguageStrings();
 };
 

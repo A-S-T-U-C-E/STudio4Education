@@ -539,14 +539,17 @@
                 </div>
             </div>
             <button class="accordion">
-                <span id="categories_title_span" aria-expanded="false"
-                    aria-controls="accordion_categories_content"></span>
+                <span id="categories_title_span" aria-expanded="false" aria-controls="accordion_categories_content"></span>
             </button>
-            <div id="categories_content" class="side_content config_content panel UIText">
-                <span id="categories_content_selectAll">ALL</span>
+            <div id="categories_content_header" class="side_content config_content panel UIText">
                 <br>
-                <span id="categories_content_selectNone">NONE</span>
-                <br>
+                <input type="checkbox" onchange="Code.checkAll()" name="checkbox_All" id="checkbox_All">
+                <span id="categories_content_selectAll">ALL / NONE</span><br>
+                <span class="categories_search_wrapper" id="categories_search_wrapper" title="categories_search">
+                    <input id="categories_search" class="categories_search" type="text" size="10" onkeyup="Code.filterCategories()" placeholder="Search for category...">
+                </span>
+                <div id="categories_content">
+                </div>
             </div>
             <button class="accordion" id="IoT_controls_accordion">
                 <span id="iot_title_span" aria-expanded="false" aria-controls="accordion_categories_content"></span>

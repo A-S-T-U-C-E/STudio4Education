@@ -17,7 +17,7 @@ goog.require('Blockly');
 goog.require('Blockly.Blocks');
 goog.require('Blockly.Types');
 
-var dhtMediaFolder = "./S4E/categories/seeed/grove_uart_wifi";
+var grove_uart_wifiMediaFolder = "./S4E/categories/seeed/grove_uart_wifi";
 
 Blockly.Blocks['grove_uart_wifi'] = {
 };

@@ -346,6 +346,7 @@ Code.init = function() {
     Code.sketchNameSet();
     Code.mainWorkspace.addChangeListener(Code.renderContent);
     sessionStorage.setItem('toolboxSize', Code.mainWorkspace.getToolbox().getWidth());
+    Code.filterToolbox();
 };
 
 Code.addPluginToWorkspace = function() {

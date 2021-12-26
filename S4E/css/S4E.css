@@ -195,11 +195,7 @@
 
 
 /*****************/
-
-
 /*  Sketch name  */
-
-
 /*****************/
 
 .sketch_name_wrapper {
@@ -234,6 +230,36 @@
     border: none;
 }
 
+/***********************/
+/*  Filter categories  */
+/***********************/
+
+#categories_search_wrapper {
+    display: inline-block;
+    width: 100%;  
+}
+
+#categories_search {
+    background-image: url('../media/searchicon.png');
+    background-position: 10px 6px;
+    background-repeat: no-repeat;
+    width: 80% !important;
+    color: #000000;
+    max-width: 400px;
+    line-height: 64px;
+    height: 2rem !important;
+    /* font-size: 1.5rem !important; */
+    border: 1px solid #EEE !important;
+    font-style: italic;
+    /* background: transparent;   */
+    padding-left: 40px;
+}
+
+#categoriesSelectList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
 
 /*****************/
 

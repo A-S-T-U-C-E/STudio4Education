@@ -59,24 +59,20 @@ var MSG = {
     resetButton_span: "réinitialiser S4E",
     resetQuestion_span: "Réinitialiser S4E et ",
     helpButton_span: "aide",
-    helpModalSpan_title: "Aide",
-    helpModalSpan_text: '<table>' +
-        '<tbody>' +
-        '<tr>' +
-        '<td style="width: 142px;"><img src="./S4E/media/logo_only.png" alt="" width="129" height="144" /></td>' +
-        '<td>' +
-        '<p style="text-align: left;"><strong>STudio4Education</strong></p>' +
-        '<p style="text-align: left;">Créé pour le projet <strong>Arrowhead</strong> (<a href="https://www.arrowhead.eu/arrowheadtools" rel="nofollow">https://www.arrowhead.eu/arrowheadtools</a>), STudio4Education est un <strong>programme web d\'édition et de programmation visuelle par blocs pour les cartes <a href="https://www.st.com" rel="nofollow">ST microelectronics</a></strong>, il est basé sur <a href="https://developers.google.com/blockly/" rel="nofollow">Blockly</a>, l\'éditeur graphique de programmation en ligne.</p>' +
+    helpModalSpan_title: "Aide - à propos",
+    helpModalSpan_text:
+        '<img src="./S4E/media/logo_only.png" alt="" style="height:100px; float:left; margin: 0 10px 10px 0;" />' +
+        '<p style="text-align: left;">Créé pour le projet <a href="https://www.arrowhead.eu/arrowheadtools" rel="nofollow"><strong>Arrowhead</strong></a>, S4E est un <strong>programme web d\'édition et de programmation visuelle par blocs pour les cartes <a href="https://www.st.com" rel="nofollow">STmicroelectronics</a></strong>, il est basé sur <a href="https://developers.google.com/blockly/" rel="nofollow">Blockly</a>, l\'éditeur graphique de programmation en ligne.</p>' +
         '<p style="text-align: left;">STudio4Education fournit un environnement de programmation par blocs et leurs traductions en code C.</p>' +
-        '</td>' +
-        '</tr>' +
-        '</tbody>' +
-        '</table>' +
-        '<p style="text-align: left;">Accessibilité : <a href="https://github.com/A-S-T-U-C-E/STudio4Education#accessibility">documentation en ligne</a>.</p>' +
-        '<p style="text-align: left;">Documentation officielle de Blockly : <a href="https://developers.google.com/blockly/guides/configure/web/keyboard-nav" rel="nofollow">développeurs Blockly</a>.</p>' +
-        '<p style="text-align: left;">Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">on Github</a>.</p>' +
-        '<p style="text-align: left;">Un bug ? Merci d\'écrire ici : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">sur Github</a>.</p>' +
-        '<p style="text-align: center;">v0.9.0 - BSD3 license - Sébastien CANET',
+        '<p style="text-align: left;">Accessibilité : <a href="https://github.com/A-S-T-U-C-E/STudio4Education#accessibility">documentation en ligne</a>.</br>' +
+        'Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">sur Github</a>.</br>' +
+        'Un bug ? Merci d\'écrire ici : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">sur Github</a>.</br>' +
+        'Remerciements & bibliothèques : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki/Thanks">sur Github</a>.</p>' +
+        '<p style="text-align: center;">v0.9.0 - BSD3 license - Sébastien CANET' +
+        '<p style="text-align: center;"><a href = (https://www.paypal.com/fr/cgi-bin/webscr?cmd=_flow&SESSION=o8z3KNFl16Tjlxhk1mBekCcRsG_3_NDe0CfWh8b1vfSYIbMxJnwa92YwM3y&dispatch=5885d80a13c0db1f8e263663d3faee8d4fe1dd75ca3bd4f11d72275b28239088">Meci de faire un don pour soutenir les logiciels libres !</br><img src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif" alt="Paypal"/></a></p>' +
+        '<p style="text-align: left;">PROFS FRANCAIS & ASSOCIATIONS</br>' +
+        'vous pouvez aussi me demander une facture légale pour que votre établissement me fasse un <i>don</i> officiel par virement bancaire.</br>' +
+        'Je ne fais pas payer de licence mais je compte sur vous pour aider du montant auquel vous estimez mes travaux.</p>',
     //menu tools
     toolsButton_span: "outils",
     wiringButton_span: "câblage de circuits",

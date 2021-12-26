@@ -59,24 +59,17 @@ var MSG = {
     resetButton_span: "Reset S4E",
     resetQuestion_span: "Reset S4E and",
     helpButton_span: "About",
-    helpModalSpan_title: "Help - About",
-    helpModalSpan_text: '<table>' +
-        '<tbody>' +
-        '<tr>' +
-        '<td style="width: 142px;"><img src="./S4E/media/logo_only.png" alt="" width="129" height="144" /></td>' +
-        '<td>' +
-        '<p style="text-align: left;"><strong>STudio4Education</strong></p>' +
-        '<p style="text-align: left;">Designed for <strong>Arrowhead</strong> Tools Project (<a href="https://www.arrowhead.eu/arrowheadtools" rel="nofollow">https://www.arrowhead.eu/arrowheadtools</a>), STudio4Education is a <strong>web-based visual programming editor for <a href="https://www.st.com" rel="nofollow">ST microelectronics</a></strong> boards, thanks to <a href="https://developers.google.com/blockly/" rel="nofollow">Blockly</a>, the web-based, graphical programming editor.</p>' +
+    helpModalSpan_title: "Help / About",
+    helpModalSpan_text:
+        '<img src="./S4E/media/logo_only.png" alt="" style="height:100px; float:left; margin: 0 10px 10px 0;" />' +
+        '<p style="text-align: left;">Designed for <a href="https://www.arrowhead.eu/arrowheadtools" rel="nofollow"><strong>Arrowhead</strong> Tools Project</a>, S4E is a <strong>web-based visual programming editor for <a href="https://www.st.com" rel="nofollow">STmicroelectronics</a></strong> boards, thanks to <a href="https://developers.google.com/blockly/" rel="nofollow">Blockly</a>, the web-based, graphical programming editor.</p>' +
         '<p style="text-align: left;">STudio4Education provides static type language blocks and code generators for simple C programming.</p>' +
-        '</td>' +
-        '</tr>' +
-        '</tbody>' +
-        '</table>' +
-        '<p style="text-align: left;">Accessibility: <a href="https://github.com/A-S-T-U-C-E/STudio4Education#accessibility">online documentation</a>.</p>' +
-        '<p style="text-align: left;">Blockly official documentation: <a href="https://developers.google.com/blockly/guides/configure/web/keyboard-nav" rel="nofollow">Blockly developers</a>.</p>' +
-        '<p style="text-align: left;">Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">on Github</a>.</p>' +
-        '<p style="text-align: left;">A bug? Post it here: <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">on Github</a>.</p>' +
-        '<p style="text-align: center;">v0.9.0 - BSD3 license - Sébastien CANET',
+        '<p style="text-align: left;">Accessibility: <a href="https://github.com/A-S-T-U-C-E/STudio4Education#accessibility">online documentation</a>.</br>' +
+        'Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">on Github</a>.</br>' +
+        'A bug? Post it here: <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">on Github</a>.</br>' +
+        'Thanks & libraries: <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki/Thanks">on Github</a>.</p>' +
+        '<p style="text-align: center;">v0.9.0 - BSD3 license - Sébastien CANET' +
+        '<p style="text-align: center;"><a href = (https://www.paypal.com/fr/cgi-bin/webscr?cmd=_flow&SESSION=o8z3KNFl16Tjlxhk1mBekCcRsG_3_NDe0CfWh8b1vfSYIbMxJnwa92YwM3y&dispatch=5885d80a13c0db1f8e263663d3faee8d4fe1dd75ca3bd4f11d72275b28239088">Thanks for donation with Paypal to help me improve this software.</br><img src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif" alt="Paypal"/></a></p>',
     //menu tools
     toolsButton_span: "tools",
     wiringButton_span: "wiring",

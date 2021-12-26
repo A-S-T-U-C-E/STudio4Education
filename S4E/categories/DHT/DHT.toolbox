@@ -4,7 +4,7 @@ var toolbox_DHT = {
         "kind": "category",
         "name": "%{BKY_CAT_DHT}",
         "toolboxitemid": "DHT",
-        "levels": "1,2,3",
+        "levels": [1, 2, 3],
         "level": "1",
         "categorystyle": "DHT_category",
         "contents": [{

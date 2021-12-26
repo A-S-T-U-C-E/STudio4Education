@@ -1,11 +1,11 @@
-var toolbox_ST = {
+var toolbox_board = {
     "kind": "categoryToolbox",
     "contents": [{
         "kind": "category",
         "name": "%{BKY_CAT_ONBOARD}",
         "toolboxitemid": "ONBOARD",
         "level": "1",
-        "levels": "1,2,3",
+        "levels": [1, 2, 3],
         "categorystyle": "board_category",
         "contents": [{
                 "kind": "block",
@@ -22,7 +22,7 @@ var toolbox_ST = {
                 "kind": "category",
                 "name": "%{BKY_CAT_ONBOARD_IO}",
                 "level": "2",
-                "levels": "1,2,3",
+                "levels": [1, 2, 3],
                 "categorystyle": "board_category",
                 "contents": [{
                         "kind": "block",
@@ -74,7 +74,7 @@ var toolbox_ST = {
                 "kind": "category",
                 "name": "%{BKY_CAT_ONBOARD_TIME}",
                 "level": "2",
-                "levels": "1,2,3",
+                "levels": [1, 2, 3],
                 "categorystyle": "board_category",
                 "contents": [{
                     "kind": "block",
@@ -85,7 +85,7 @@ var toolbox_ST = {
                 "kind": "category",
                 "name": "%{BKY_CAT_ONBOARD_SERIAL}",
                 "level": "2",
-                "levels": "1,2,3",
+                "levels": [1, 2, 3],
                 "categorystyle": "board_category",
                 "contents": [{
                         "kind": "block",

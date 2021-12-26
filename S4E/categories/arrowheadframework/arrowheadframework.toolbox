@@ -4,8 +4,8 @@ var toolbox_arrowheadframework = {
         "kind": "category",
         "name": "%{BKY_CAT_ARROWHEADFRAMEWORK}",
         "toolboxitemid": "AHF",
-        "level": "1",
-        "levels": "1,2,3",
+        "level": "3",
+        "levels": "3",
         "categorystyle": "arrowheadframework_category",
         "cssConfig": {
             "icon": "customIcon url(arrowheadframework.svg)"
@@ -13,8 +13,8 @@ var toolbox_arrowheadframework = {
         "contents": [{
                 "kind": "category",
                 "name": "%{BKY_CAT_ARROWHEADFRAMEWORK_ESP}",
-                "levels": "1,2,3",
                 "level": "3",
+                "levels": "3",
                 "categorystyle": "arrowheadframework_category",
                 "contents": [{
                     "kind": "block",
@@ -39,8 +39,8 @@ var toolbox_arrowheadframework = {
             {
                 "kind": "category",
                 "name": "%{BKY_CAT_ARROWHEADFRAMEWORK_WIFI}",
-                "levels": "1,2,3",
                 "level": "3",
+                "levels": "3",
                 "categorystyle": "arrowheadframework_category",
                 "contents": [{
                     "kind": "block",
@@ -50,8 +50,8 @@ var toolbox_arrowheadframework = {
             {
                 "kind": "category",
                 "name": "%{BKY_CAT_ARROWHEADFRAMEWORK_RJ}",
-                "levels": "1,2,3",
                 "level": "3",
+                "levels": "3",
                 "categorystyle": "arrowheadframework_category",
                 "contents": [{
                     "kind": "block",
