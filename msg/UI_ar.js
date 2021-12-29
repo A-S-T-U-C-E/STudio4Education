@@ -50,7 +50,7 @@ var MSG = {
     menuButton_span: "File menu",
     newButton_span: "New project",
     save_span: "Save file name?",
-    sketch_name_default: "sketch_name",
+    sketch_name_default: "sketch name",
     sketch_name_wrapper: "project sketch name",
     saveXMLButton_span: "Save to S4E file",
     loadXMLfakeButton_span: "Load S4E file",
@@ -60,8 +60,7 @@ var MSG = {
     resetQuestion_span: "Reset S4E and",
     helpButton_span: "help",
     helpModalSpan_title: "Help / About",
-    helpModalSpan_text:
-        '<img src="./S4E/media/logo_only.png" alt="" style="height:100px; float:left; margin: 0 10px 10px 0;" />' +
+    helpModalSpan_text: '<img src="./S4E/media/logo_only.png" alt="" style="height:100px; float:left; margin: 0 10px 10px 0;" />' +
         '<p style="text-align: left;">Designed for <a href="https://www.arrowhead.eu/arrowheadtools" rel="nofollow"><strong>Arrowhead</strong> Tools Project</a>, S4E is a <strong>web-based visual programming editor for <a href="https://www.st.com" rel="nofollow">STmicroelectronics</a></strong> boards, thanks to <a href="https://developers.google.com/blockly/" rel="nofollow">Blockly</a>, the web-based, graphical programming editor.</p>' +
         '<p style="text-align: left;">STudio4Education provides static type language blocks and code generators for simple C programming.</p>' +
         '<p style="text-align: left;">Accessibility: <a href="https://github.com/A-S-T-U-C-E/STudio4Education#accessibility">online documentation</a>.</br>' +
@@ -171,6 +170,8 @@ var MSG = {
     installLibButton_span: "install this library",
     //categories panel
     categories_title_span: "categories choice",
+    categories_content_selectAll_span: "ALL / NONE",
+    categories_search_placeholder: "Search for category...",
     //IoT panel
     iot_title_span: "IoT control",
     ArrowheadConfiguration_helper_span: "Arrowhead configuration",
@@ -212,16 +213,20 @@ var MSG = {
     IDE_upload2: ' on port ',
     IDE_upload3: '\nupload: in progress...\n<i class="fa fa-spinner fa-pulse fa-1_5x fa-fw"></i>',
     IDE_upload_ok: '\nupload: OK',
-    serial_btn_start: "<span class='fa fa-play'></span> Start",
-    serial_info_stop: 'stop<br>',
-    serial_btn_stop: "<span class='fas fa-stop'></span> Stop",
-    serial_info_start: 'communication starting<br>',
-    serial_CSV: 'Export data to CSV',
+    serialModalTitle_titlebar_span: 'Serial monitor',
     inputTextSerial: 'Text',
     btn_serialSend_span: 'Send',
-    btn_serialConnect_span: 'Start',
+    btn_serialConnect_span: 'Start connection',
+    btn_serialStop_span: "Stop",
     btn_serialPeekClear_span: 'Clean',
-    btn_serialPeekCSV_span: 'Export',
+    btn_serialAddTimeStamp_span: 'Timestamp',
+    btn_serialPeekCSV_span: 'Export CSV',
+    btn_serialPeekJSON_span: 'Export JSON',
     btn_serialChart_span: 'Graph',
-    btn_serialChartPause_span: 'Start'
+    btn_serialChartPause_span: 'Pause',
+    btn_serialChartStart_span: 'Restart',
+    btn_serialChartMin_span: 'Min.',
+    btn_serialChartMax_span: 'Max.',
+    btn_serialChartNb_span: 'Nb.',
+    input_serialChartJSONheaders_span: 'JSON headers (;)'
 };

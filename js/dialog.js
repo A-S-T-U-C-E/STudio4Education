@@ -45,7 +45,7 @@ function showConvertModalDialog() {
     dialog.showDialog();
 
     function callbackDialog(btnName) {
-        if (btnName == "close") {
+        if (btnName == "convertModalDialog_close") {
             document.getElementById("ti2").value = "";
             document.getElementById("ti4").value = "";
             document.getElementById(id).style.display = 'none';
@@ -74,12 +74,46 @@ function showColorsModalDialog() {
     document.getElementById("colorsModalDialogContent").children[0].style.width = '100%';
     document.getElementById("colorsModalDialogContent").children[0].style.height = '535px';
     var id = 'colorsModalDialog';
-    var dialog = new DialogBox(id, callbackDialog);
+    var dialog = new DialogBox(id, callbackDialogColorModal);
     dialog.showDialog();
 
-    function callbackDialog(btnName) {
-        if (btnName == "close") {
+    function callbackDialogColorModal(btnName) {
+        if (btnName == "colorsModalDialog_close") {
             document.getElementById(id).style.display = 'none';
+        }
+    }
+}
+/*
+ * False modal with serial monitor WebSerial API
+ */
+function showSerialMonitorModalDialog() {
+    var id = 'serialMonitorModalDialog';
+    var dialog = new DialogBox(id, callbackDialogSerialMonitorModal);
+    dialog.showDialog();
+    var serialConnectSpeedAvailable = JSON.parse(localStorage.getItem("availableSpeed"));
+    serialConnectSpeedAvailable.forEach((serialConnectSpeed) => {
+        var option = document.createElement('option');
+        option.value = serialConnectSpeed;
+        option.text = serialConnectSpeed;
+        document.getElementById('serialConnectSpeed_Menu').appendChild(option);
+    });
+
+    function callbackDialogSerialMonitorModal(btnName) {
+        if (btnName == "serialMonitorModalDialog_close") {
+            document.getElementById(id).style.display = 'none';
+            if (_maximiniSerial == 'maxi') {
+                document.getElementById("serialMonitorModalDialog_mini").style.display = 'block';
+                document.getElementById("serialMonitorModalDialog_maxi").style.display = 'none';
+                document.body.appendChild(_serialModal);
+                document.getElementById("content_serial_div").style.position = "absolute";
+                _serialModal.style.left = serialModal_old_X + "px";
+                _serialModal.style.top = serialModal_old_Y + "px";
+                _serialModal.style.width = serialModal_old_width + "px";
+                _serialModal.style.height = serialModal_old_height + "px";
+                document.getElementById("serialMonitorModalDialogContent").style.width = "calc(100% - 32px)";
+                document.getElementById("serialModalTitle_titlebar").style.width = "calc(100% - 32px)";
+                _maximiniSerial == 'mini'
+            }
         }
     }
 }
@@ -137,7 +171,7 @@ function dragElement(elmnt) {
 /*
  * Modify position of code editor modal
  */
-var _maximini = "mini";
+var _maximiniMonaco = "mini";
 const _editorModal = document.getElementById("editorMonacoModal");
 let editorMonacoModal_old_X = 0;
 let editorMonacoModal_old_Y = 0;
@@ -145,8 +179,8 @@ let editorMonacoModal_old_width = 0;
 let editorMonacoModal_old_height = 0;
 
 function editorMonacoModal_maxi_mini() {
-    const icon = document.getElementById("editorMonacoModal_maximini").querySelector('i');
-    if (_maximini == 'mini') {
+    const icon = document.getElementById("editorMonacoModal_maximini").querySelector('em');
+    if (_maximiniMonaco == 'mini') {
         editorMonacoModal_old_X = _editorModal.getBoundingClientRect().left;
         editorMonacoModal_old_Y = _editorModal.getBoundingClientRect().top;
         editorMonacoModal_old_width = _editorModal.getBoundingClientRect().right - _editorModal.getBoundingClientRect().left;
@@ -160,7 +194,7 @@ function editorMonacoModal_maxi_mini() {
         document.getElementById("content_Monaco_editors").style.width = "100%";
         document.getElementById("editorMonacoModal_titlebar").style.width = "100%";
         Code.editor.layout();
-        _maximini = 'maxi';
+        _maximiniMonaco = 'maxi';
     } else {
         icon.classList.remove('fa-window-minimize');
         icon.classList.add('fa-window-maximize');
@@ -171,7 +205,47 @@ function editorMonacoModal_maxi_mini() {
         document.getElementById("content_Monaco_editors").style.width = "calc(100% - 32px)";
         document.getElementById("editorMonacoModal_titlebar").style.width = "calc(100% - 32px)";
         Code.editor.layout();
-        _maximini = 'mini';
+        _maximiniMonaco = 'mini';
+    }
+}
+
+var _maximiniSerial = "mini";
+const _serialModal = document.getElementById("serialMonitorModalDialog");
+let serialModal_old_X = 0;
+let serialModal_old_Y = 0;
+let serialModal_old_width = 0;
+let serialModal_old_height = 0;
+
+function serialMonitorModalDialog_maxi_mini() {
+    const icon = document.getElementById("serialMonitorModalDialog_maximini").querySelector('em');
+    if (_maximiniSerial == 'mini') {
+        serialModal_old_X = _serialModal.getBoundingClientRect().left;
+        serialModal_old_Y = _serialModal.getBoundingClientRect().top;
+        serialModal_old_width = _serialModal.getBoundingClientRect().right - _serialModal.getBoundingClientRect().left;
+        serialModal_old_height = _serialModal.getBoundingClientRect().bottom - _serialModal.getBoundingClientRect().top;
+        document.getElementById("serialMonitorModalDialog_mini").style.display = 'none';
+        document.getElementById("serialMonitorModalDialog_maxi").style.display = 'block';
+        document.getElementById("content_serial_div").appendChild(_serialModal);
+        document.getElementById("content_serial_div").style.position = "relative";
+        _serialModal.style.left = "0px";
+        _serialModal.style.top = "0px";
+        _serialModal.style.width = "100%";
+        _serialModal.style.height = "100%";
+        document.getElementById("serialMonitorModalDialogContent").style.width = "calc(100% - 32px)";
+        document.getElementById("serialModalTitle_titlebar").style.width = "calc(100% - 32px)";
+        _maximiniSerial = 'maxi';
+    } else {
+        document.getElementById("serialMonitorModalDialog_mini").style.display = 'block';
+        document.getElementById("serialMonitorModalDialog_maxi").style.display = 'none';
+        document.body.appendChild(_serialModal);
+        document.getElementById("content_serial_div").style.position = "absolute";
+        _serialModal.style.left = serialModal_old_X + "px";
+        _serialModal.style.top = serialModal_old_Y + "px";
+        _serialModal.style.width = serialModal_old_width + "px";
+        _serialModal.style.height = serialModal_old_height + "px";
+        document.getElementById("serialMonitorModalDialogContent").style.width = "calc(100% - 32px)";
+        document.getElementById("serialModalTitle_titlebar").style.width = "calc(100% - 32px)";
+        _maximiniSerial = 'mini';
     }
 }
 

@@ -195,7 +195,11 @@
 
 
 /*****************/
+
+
 /*  Sketch name  */
+
+
 /*****************/
 
 .sketch_name_wrapper {
@@ -205,6 +209,7 @@
 
 .sketch_name_icon {
     border: 0;
+    font-size: 1.5em;
     background: none;
     box-shadow: none;
     border-radius: 0px;
@@ -230,13 +235,18 @@
     border: none;
 }
 
+
 /***********************/
+
+
 /*  Filter categories  */
+
+
 /***********************/
 
 #categories_search_wrapper {
     display: inline-block;
-    width: 100%;  
+    width: 100%;
 }
 
 #categories_search {
@@ -259,7 +269,13 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
-  }
+}
+
+#categories_content_filter_button {
+    position: relative;
+    left: 122px;
+}
+
 
 /*****************/
 

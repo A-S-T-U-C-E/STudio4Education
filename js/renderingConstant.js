@@ -20,10 +20,10 @@ Code.sketchNameSizeEffect = function() {
 
     var correctInput = function() {
         // If nothing in the input, add default name
-        if (document.getElementById('sketch_name').value == '') {
-            document.getElementById('sketch_name').value = MSG['sketch_name_default'];
-            document.getElementById('sketch_name').setAttribute("size", 10);
-        }
+        // if (document.getElementById('sketch_name').value == '') {
+        //     document.getElementById('sketch_name').value = MSG['sketch_name_default'];
+        //     document.getElementById('sketch_name').setAttribute("size", 10);
+        // }
         // Replace all spaces with underscores
         document.getElementById('sketch_name').value = document.getElementById('sketch_name').value.replace(/ /g, '_');
     };
@@ -43,8 +43,6 @@ Code.sketchNameSizeEffect = function() {
     });
     //detect click outside input
     document.getElementById('sketch_name').addEventListener("blur", function() {
-        if (document.getElementById("sketch_name").value == '')
-            document.getElementById("sketch_name").value = MSG['sketch_name_default'];
         resizeInput();
     });
     sketchNameInput.focus(correctInput());

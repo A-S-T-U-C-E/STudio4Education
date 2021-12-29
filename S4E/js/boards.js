@@ -67,6 +67,7 @@ Code.changeBoard = function() {
     document.getElementById("boardDescriptionSelector").value = newBoard;
     document.getElementById("boardSelected_span").textContent = profile["default"].description;
     document.getElementById("portSelected_span").textContent = ' : ' + document.getElementById('serialMenu').options[document.getElementById('serialMenu').selectedIndex].value;
+    localStorage.setItem("availableSpeed", JSON.stringify(profile.default['serialList']));
     window.history.pushState({}, "S4E", Code.addReplaceParamToUrl(window.location.search, "board", newBoard));
     // "reboot" elements
     document.getElementById('overlayForModals').style.display = "none";

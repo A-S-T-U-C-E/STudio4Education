@@ -50,7 +50,7 @@ var MSG = {
     menuButton_span: "menu fichiers",
     newButton_span: "nouveau projet",
     save_span: "nom du fichier de sauvegarde ?",
-    sketch_name_default: "nom_du_projet",
+    sketch_name_default: "nom du projet",
     sketch_name_wrapper: "nom de sauvegarde du projet",
     saveXMLButton_span: "enregistrer le fichier Blockly",
     loadXMLfakeButton_span: "ouvrir un fichier Blockly",
@@ -60,8 +60,7 @@ var MSG = {
     resetQuestion_span: "Réinitialiser S4E et ",
     helpButton_span: "aide",
     helpModalSpan_title: "Aide - à propos",
-    helpModalSpan_text:
-        '<img src="./S4E/media/logo_only.png" alt="" style="height:100px; float:left; margin: 0 10px 10px 0;" />' +
+    helpModalSpan_text: '<img src="./S4E/media/logo_only.png" alt="" style="height:100px; float:left; margin: 0 10px 10px 0;" />' +
         '<p style="text-align: left;">Créé pour le projet <a href="https://www.arrowhead.eu/arrowheadtools" rel="nofollow"><strong>Arrowhead</strong></a>, S4E est un <strong>programme web d\'édition et de programmation visuelle par blocs pour les cartes <a href="https://www.st.com" rel="nofollow">STmicroelectronics</a></strong>, il est basé sur <a href="https://developers.google.com/blockly/" rel="nofollow">Blockly</a>, l\'éditeur graphique de programmation en ligne.</p>' +
         '<p style="text-align: left;">STudio4Education fournit un environnement de programmation par blocs et leurs traductions en code C.</p>' +
         '<p style="text-align: left;">Accessibilité : <a href="https://github.com/A-S-T-U-C-E/STudio4Education#accessibility">documentation en ligne</a>.</br>' +
@@ -97,7 +96,7 @@ var MSG = {
     ArrowheadConfiguration_provider_span: "Fournisseur de service",
     ArrowheadConfiguration_consumer_span: "Consommateur",
     ArrowheadConfiguration_auth_span: "Serveur d'authorisation",
-    ArrowheadConfiguration_orch_span: "Serveur d'orchestration",    
+    ArrowheadConfiguration_orch_span: "Serveur d'orchestration",
     blynkConnect_span: "connexion à Blynk",
     serialConnectIOT_span: "envoi de données IdO",
     //monaco code editor
@@ -174,6 +173,8 @@ var MSG = {
     installLibButton_span: "installer cette bibliothèque",
     //categories panel
     categories_title_span: "catégories de blocs",
+    categories_content_selectAll_span: "toutes / aucune",
+    categories_search_placeholder: "Chercher la catégorie...",
     //IoT panel
     iot_title_span: "Internet des Objets",
     ArrowheadConfiguration_helper_span: "Arrowhead configuration",
@@ -215,16 +216,20 @@ var MSG = {
     IDE_upload2: ' sur port ',
     IDE_upload3: '\nTéléversement : en cours...\n<i class="fa fa-spinner fa-pulse fa-1_5x fa-fw"></i>',
     IDE_upload_ok: '\nTéléversement : OK',
-    serial_btn_start: "<span class='fa fa-play'></span> Démarrer",
-    serial_info_stop: 'arrêt<br>',
-    serial_btn_stop: "<span class='fas fa-stop'></span> Arrêter",
-    serial_info_start: 'démarrage de la communication<br>',
-    serial_CSV: 'Exporter les données au format CSV',
+    serialModalTitle_titlebar_span: 'Moniteur série',
     inputTextSerial: 'Texte',
     btn_serialSend_span: 'Envoyer',
     btn_serialConnect_span: "Démarrer",
+    btn_serialStop_span: "Déconnecter",
     btn_serialPeekClear_span: 'Effacer',
-    btn_serialPeekCSV_span: 'Exporter',
+    btn_serialAddTimeStamp_span: 'Horodatage',
+    btn_serialPeekCSV_span: 'Exporter en CSV',
+    btn_serialPeekJSON_span: 'Exporter en JSON',
     btn_serialChart_span: 'Graphique',
-    btn_serialChartPause_span: 'Démarrer'
+    btn_serialChartPause_span: 'Pause',
+    btn_serialChartStart_span: 'Tracer',
+    btn_serialChartMin_span: 'Min.',
+    btn_serialChartMax_span: 'Max.',
+    btn_serialChartNb_span: 'Nb.',
+    input_serialChartJSONheaders_span: 'En-tête JSON (;)',
 };

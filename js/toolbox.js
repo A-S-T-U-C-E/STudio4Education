@@ -62,7 +62,7 @@ Code.buildToolbox = function() {
     var level = Code.getStringParamFromUrl('level', '').substr(Code.getStringParamFromUrl('level', '').length - 1);
     if (!level) level = 1;
     for (let i = 0; i < jsonToolbox.contents.length; i++) {
-        if(jsonToolbox.contents[i].levels.indexOf(parseInt(level)) > -1) {
+        if (jsonToolbox.contents[i].levels.indexOf(parseInt(level)) > -1) {
             jsonToolboxToKeep.contents[k] = jsonToolbox.contents[i];
             // console.log(jsonToolboxToKeep)
             // console.log(jsonToolboxToKeep.contents[k])
@@ -98,13 +98,13 @@ Code.buildControlPanelForToolbox = function() {
     var toolboxIds = window.localStorage.toolboxids.split(",");
     var jsonToolboxToKeep = Code.mainWorkspace.getToolbox();
     for (let i = 0; i < jsonToolboxToKeep.contents_.length; i++) {
-        if (!jsonToolboxToKeep.contents_[i].parent_){
+        if (!jsonToolboxToKeep.contents_[i].parent_) {
             ligne = '<li><input type="checkbox" ';
             if (toolboxIds.indexOf(jsonToolboxToKeep.contents_[i].id_) > -1)
                 ligne += 'checked="checked" ';
             else Code.mainWorkspace.getToolbox().getToolboxItems()[i].hide();
             ligne += 'onchange="toggleCategory(' + i + ')" name="checkbox_' + i + '" id="checkbox_' + i + '"/> ' +
-                        '<span id="checkboxSpan_' + i + '">' + Code.mainWorkspace.getToolbox().getToolboxItems()[i]['name_'] + '</span></li>';
+                '<span id="checkboxSpan_' + i + '">' + Code.mainWorkspace.getToolbox().getToolboxItems()[i]['name_'] + '</span></li>';
             $('#categoriesSelectList')[0].innerHTML += ligne;
         }
     }
@@ -143,20 +143,20 @@ Code.buildControlPanelForToolbox2 = function() {
 
 /**
  * checks all checkboxes in catgories list
-**/
- Code.checkAll = function (event) {     
-    if(this.checked) {
-        for(var i=0; i < Code.mainWorkspace.getToolbox().getToolboxItems().length; i++) {
-           if (document.getElementById('checkbox_' + i))
-               if (document.getElementById('checkbox_' + i).checked)
-                   document.getElementById('checkbox_' + i).click();
+ **/
+Code.checkAll = function(event) {
+    if (this.checked) {
+        for (var i = 0; i < Code.mainWorkspace.getToolbox().getToolboxItems().length; i++) {
+            if (document.getElementById('checkbox_' + i))
+                if (document.getElementById('checkbox_' + i).checked)
+                    document.getElementById('checkbox_' + i).click();
         }
         this.checked = false;
     } else {
-        for(var i=0; i < Code.mainWorkspace.getToolbox().getToolboxItems().length; i++) {
-           if (document.getElementById('checkbox_' + i))
-               if (!document.getElementById('checkbox_' + i).checked)
-                   document.getElementById('checkbox_' + i).click();
+        for (var i = 0; i < Code.mainWorkspace.getToolbox().getToolboxItems().length; i++) {
+            if (document.getElementById('checkbox_' + i))
+                if (!document.getElementById('checkbox_' + i).checked)
+                    document.getElementById('checkbox_' + i).click();
         }
         this.checked = true;
     }
@@ -165,7 +165,7 @@ Code.buildControlPanelForToolbox2 = function() {
 /**
  * filter categories in setup panel
  * inspired by https://www.w3schools.com/howto/howto_js_filter_lists.asp
-**/
+ **/
 Code.filterCategories = function() {
     var input, filter, ul, li, span, i, txtValue;
     input = document.getElementById('categories_search');
@@ -181,25 +181,24 @@ Code.filterCategories = function() {
             li[i].style.display = "none";
         }
     }
-  }
+}
 
 
 /**
  * filter categories in toolbox
  * inspired by https://www.w3schools.com/howto/howto_js_filter_lists.asp
-**/
+ **/
 Code.filterToolbox = function() {
     var search = 'temperature';
     console.log(jsonToolbox)
-    var jsonData = JSON.parse(jsonToolbox["contents"]);
-    for (var i = 0; i < jsonToolbox.objects.length; i++) {
-        var object = jsonData.objects[i];
-        if(object.id != 'temperature') {
-            delete jsonData.objects[i];
-        }
-    }
-    console.log(jsonData)
-
+        // var jsonData = JSON.parse(jsonToolbox["contents"]);
+        // for (var i = 0; i < jsonToolbox.objects.length; i++) {
+        //     var object = jsonData.objects[i];
+        //     if (object.id != 'temperature') {
+        //         delete jsonData.objects[i];
+        //     }
+        // }
+        // console.log(jsonData)
 }
 
 /** change toolbox size

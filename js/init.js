@@ -451,7 +451,8 @@ Code.injectLanguageStrings = function() {
     // document.getElementById('parametersButton_span_menu').textContent = MSG['setup_sideButton_span'];
     document.getElementById('lateral-panel-setup-label').title = MSG['setup_sideButton_span'];
     document.getElementById('sketch_name_wrapper').title = MSG['sketch_name_wrapper'];
-    document.getElementById('sketch_name').title = MSG['sketch_name'];
+    document.getElementById('sketch_name').title = MSG['sketch_name_wrapper'];
+    document.getElementsByName('sketch_name')[0].placeholder = MSG['sketch_name_default'];
     document.getElementById('helpButton').title = MSG['helpButton_span'];
     document.getElementById('helpModalSpan_title').innerHTML = MSG['helpModalSpan_title'];
     document.getElementById('helpModalSpan_text').innerHTML = MSG['helpModalSpan_text'];
@@ -528,6 +529,8 @@ Code.injectLanguageStrings = function() {
     document.getElementById('optionFontSpacingPage').textContent = MSG['optionFontSpacingPage'];
     //categories panel
     document.getElementById('categories_title_span').textContent = MSG['categories_title_span'];
+    document.getElementById('categories_content_selectAll_span').textContent = MSG['categories_content_selectAll_span'];
+    document.getElementsByName('categories_search')[0].placeholder = MSG['categories_search_placeholder'];
     //IoT panel
     document.getElementById('iot_title_span').textContent = MSG['iot_title_span'];
     document.getElementById('papyrusConnect_helper_span').textContent = MSG['papyrusConnect_helper_span'];
@@ -558,12 +561,34 @@ Code.injectLanguageStrings = function() {
     document.getElementById('boardModal_flash').textContent = MSG['boardModal_flash'];
     document.getElementById('boardModal_sram').textContent = MSG['boardModal_sram'];
     document.getElementById('boardModal_eeprom').textContent = MSG['boardModal_eeprom'];
-    // serial list modal
+    // serial modal
     document.getElementById('portListModalHeader_span').textContent = MSG['portListModalHeader_span'];
+    document.getElementsByName('inputTextSerial')[0].placeholder = MSG['inputTextSerial'];
+    document.getElementById('btn_serialSend').title = MSG['btn_serialSend_span'];
+    document.getElementById('btn_serialSend').value = MSG['btn_serialSend_span'];
+    document.getElementById('btn_serialConnect').title = MSG['btn_serialConnect_span'];
+    document.getElementById('btn_serialConnect').value = MSG['btn_serialConnect_span'];
+    document.getElementById('btn_serialPeekClear').title = MSG['btn_serialPeekClear_span'];
+    document.getElementById('btn_serialPeekClear').value = MSG['btn_serialPeekClear_span'];
+    document.getElementById('btn_serialAddTimeStamp_span').textContent = MSG['btn_serialAddTimeStamp_span'];
+    document.getElementById('btn_serialPeekCSV').title = MSG['btn_serialPeekCSV_span'];
+    document.getElementById('btn_serialPeekCSV').value = MSG['btn_serialPeekCSV_span'];
+    document.getElementById('btn_serialPeekJSON').title = MSG['btn_serialPeekJSON_span'];
+    document.getElementById('btn_serialPeekJSON').value = MSG['btn_serialPeekJSON_span'];
+    document.getElementById('btn_serialChart').title = MSG['btn_serialChart_span'];
+    document.getElementById('btn_serialChart').value = MSG['btn_serialChart_span'];
+    document.getElementById('btn_serialChartPause').title = MSG['btn_serialChartPause_span'];
+    document.getElementById('btn_serialChartPause').value = MSG['btn_serialChartPause_span'];
+    document.getElementById('btn_serialChartMin_span').textContent = MSG['btn_serialChartMin_span'];
+    document.getElementById('btn_serialChartMax_span').textContent = MSG['btn_serialChartMax_span'];
+    document.getElementById('btn_serialChartNb_span').textContent = MSG['btn_serialChartNb_span'];
+    document.getElementById('input_serialChartJSONheaders_span').textContent = MSG['input_serialChartJSONheaders_span'];
     // code editor modal
     document.getElementById('editorMonacoModal_titlebar').textContent = MSG['editorMonacoModal_titlebar'];
     // circuitJS modal
     document.getElementById('circuitJSmodalTitle').textContent = MSG['circuitJSmodalTitle_titlebar'];
+    // serial modal
+    document.getElementById('serialModalTitle_titlebar_span').textContent = MSG['serialModalTitle_titlebar_span'];
     //keyboard nav
     // Blockly.navigation.ACTION_PREVIOUS.name = MSG['actionName0'];
     // Blockly.navigation.ACTION_OUT.name = MSG['actionName1'];
@@ -605,11 +630,11 @@ Code.discard = function() {
 };
 
 // Load Blockly's language strings.
-document.write('<script src="./@blockly/msg/js/' + Code.LANG + '.js"></script>\n');
+document.write('<script async src="./@blockly/msg/js/' + Code.LANG + '.js"></script>\n');
 
 // Load language strings.
-document.write('<script src="./msg/UI_' + Code.LANG + '.js"></script>\n');
-document.write('<script src="./S4E/msg/blocks_' + Code.LANG + '.js"></script>\n');
-document.write('<script src="./S4E/msg/categories_' + Code.LANG + '.js"></script>\n');
+document.write('<script async src="./msg/UI_' + Code.LANG + '.js"></script>\n');
+document.write('<script async src="./S4E/msg/blocks_' + Code.LANG + '.js"></script>\n');
+document.write('<script async src="./S4E/msg/categories_' + Code.LANG + '.js"></script>\n');
 
 window.addEventListener('load', Code.init);

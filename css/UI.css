@@ -345,7 +345,7 @@ html[dir=rtl] {
     min-height: 280px;
 }
 
-#button_window {
+.Modal_button_window {
     position: absolute;
     right: 32px;
     top: 0px;

@@ -150,7 +150,6 @@ Code.changeLanguage = function() {
         Code.mainWorkspace.addChangeListener(Code.renderContent);
         Code.buildControlPanelForToolbox();
         Code.injectLanguageStrings();
-        document.getElementById('sketch_name').value = MSG['sketch_name_default'];
         Blockly.Xml.clearWorkspaceAndLoadFromXml(state, Code.mainWorkspace);
     }, 50);
     // Code.addPluginToWorkspace();

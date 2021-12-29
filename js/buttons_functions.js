@@ -220,16 +220,16 @@ Code.boardsListModalShow = function() {
     window.addEventListener('click', Code.boardsListModalHide, 'once');
     Code.boardDescription();
 };
-Code.portsListModalShow = function() {
-    document.getElementById('overlayForModals').style.display = "block";
-    document.getElementById('portListModal').classList.add('show');
-    var portValue = document.getElementById("serialMenu").value;
-    if (portValue !== 'none') {
-        document.getElementById("serialMenu").selectedIndex = portValue;
-        document.getElementById("serialMenu").value = portValue;
-    }
-    window.addEventListener('click', Code.portsListModalHide, 'once');
-};
+// Code.portsListModalShow = function() {
+//     document.getElementById('overlayForModals').style.display = "block";
+//     document.getElementById('portListModal').classList.add('show');
+//     var portValue = document.getElementById("serialMenu").value;
+//     if (portValue !== 'none') {
+//         document.getElementById("serialMenu").selectedIndex = portValue;
+//         document.getElementById("serialMenu").value = portValue;
+//     }
+//     window.addEventListener('click', Code.portsListModalHide, 'once');
+// };
 Code.flowsListModalShow = function() {
     document.getElementById('overlayForModals').style.display = "block";
     document.getElementById('flowsListModal').classList.add('show');
@@ -239,10 +239,10 @@ document.getElementById("closeModalBoards").onclick = function() {
     document.getElementById('overlayForModals').style.display = "none";
     document.getElementById('boardListModal').classList.remove('show');
 };
-document.getElementById("closeModalPorts").onclick = function() {
-    document.getElementById('overlayForModals').style.display = "none";
-    document.getElementById('portListModal').classList.remove('show');
-};
+// document.getElementById("closeModalPorts").onclick = function() {
+//     document.getElementById('overlayForModals').style.display = "none";
+//     document.getElementById('portListModal').classList.remove('show');
+// };
 document.getElementById("closeModalFlows").onclick = function() {
     document.getElementById('overlayForModals').style.display = "none";
     document.getElementById('flowsListModal').classList.remove('show');
@@ -254,12 +254,12 @@ Code.boardsListModalHide = function(event) {
         document.getElementById('boardListModal').classList.remove('show');
     }
 };
-Code.portsListModalHide = function(event) {
-    if (document.getElementById('portListModal_content').contains(event.target)) {} else {
-        document.getElementById('overlayForModals').style.display = "none";
-        document.getElementById('portListModal').classList.remove('show');
-    }
-};
+// Code.portsListModalHide = function(event) {
+//     if (document.getElementById('portListModal_content').contains(event.target)) {} else {
+//         document.getElementById('overlayForModals').style.display = "none";
+//         document.getElementById('portListModal').classList.remove('show');
+//     }
+// };
 Code.flowsListModalHide = function(event) {
     if (document.getElementById('flowsListModal_content').contains(event.target)) {} else {
         document.getElementById('overlayForModals').style.display = "none";
@@ -340,7 +340,7 @@ let circuitJSmodal_old_width = 0;
 let circuitJSmodal_old_height = 0;
 
 function circuitJSmodal_maxi_mini() {
-    const icon = document.getElementById("circuitJSmodal_maximini").querySelector('i');
+    const icon = document.getElementById("circuitJSmodal_maximini").querySelector('em');
     if (_maximini == 'mini') {
         circuitJSmodal_old_X = _circuitJSmodal.getBoundingClientRect().left;
         circuitJSmodal_old_Y = _circuitJSmodal.getBoundingClientRect().top;
@@ -369,7 +369,7 @@ function circuitJSmodal_maxi_mini() {
 }
 
 function circuitJSmodal_replace_Blockly() {
-    const icon = document.getElementById("circuitJSmodal_replaceBlockly").querySelector('i');
+    const icon = document.getElementById("circuitJSmodal_replaceBlockly").querySelector('em');
     if (_leftright == 'right') {
         circuitJSmodal_old_X = _circuitJSmodal.getBoundingClientRect().left;
         circuitJSmodal_old_Y = _circuitJSmodal.getBoundingClientRect().top;
@@ -386,6 +386,7 @@ function circuitJSmodal_replace_Blockly() {
     } else {
         icon.classList.remove('fa-angle-right');
         icon.classList.add('fa-angle-left');
+        document.body.appendChild(_circuitJSmodal);
         _circuitJSmodal.style.left = circuitJSmodal_old_X + "px";
         _circuitJSmodal.style.top = circuitJSmodal_old_Y + "px";
         _circuitJSmodal.style.width = circuitJSmodal_old_width + "px";
@@ -864,3 +865,38 @@ function increaseVal(theType) {
     convert2Hex(decRval, decGval, decBval, "DONE");
     convert2Dec(hexRval, hexGval, hexBval, "DONE");
 }
+
+/**
+ * Web Serial API functions
+ **/
+
+Code.getPorts = async function() {
+    if (!('serial' in navigator)) {
+        Blockly.alert("This site requires the experimental Web Serial API. Your browser either does not support this, or does not have it enabled.");
+    } else try {
+        Code.serialPort = await navigator.serial.requestPort();
+        document.getElementById('serialButton').className = 'iconButtonsClicked';
+        window.sessionStorage.setItem('portSelected', true);
+        const { usbProductId, usbVendorId } = Code.serialPort.getInfo();
+        document.getElementById('portSelected_span').innerHTML = 'connected';
+        // navigator.usb.getDevices()
+        //     .then(devices => {
+        //         devices.forEach(device => {
+        //             if (device.vendorId == usbVendorId)
+        //                 console.log("Product name: " + device.productName);
+        //         });
+        //     })
+        //     .catch(error => { Blockly.alert(error); });
+    } catch (error) {
+        Blockly.alert('no port selected')
+        document.getElementById('serialButton').className = 'iconButtons';
+        window.sessionStorage.setItem('portSelected', false);
+        document.getElementById('portSelected_span').innerHTML = 'not connected';
+    }
+}
+navigator.usb.addEventListener("connect", (event) => {
+    Blockly.alert('New device connected');
+});
+navigator.usb.addEventListener("disconnect", (event) => {
+    Blockly.alert('Device disconnected');
+});

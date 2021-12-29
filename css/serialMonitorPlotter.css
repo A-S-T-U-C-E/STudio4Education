@@ -1,0 +1,125 @@
+/**
+* @license
+* Copyright 2020 Sébastien CANET
+* SPDX-License-Identifier: BSD-3-Clause
+*/
+
+
+/**
+ * @fileoverview CSS for add-on used in Electron version,
+ * add a 'serial monitor' to interact with boards.
+ * @author scanet@libreduc.cc (Sébastien CANET)
+ */
+
+#serialMonitorModalDialogContent {
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+}
+
+.flex-container-serial {
+    display: flex;
+}
+
+.flex-items-serial {
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.column {
+    flex-direction: row;
+    height: calc(100% - 150px);
+    margin-bottom: 15px;
+}
+
+.ligne {
+    flex-direction: column;
+}
+
+#serialSendBox {
+    width: 100%;
+}
+
+#inputSerialPeek {
+    border-radius: 5px;
+    overflow: auto;
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 100%;
+    resize: none;
+}
+
+#serialPeek {
+    margin-right: 5px;
+    height: 100%;
+    width: 100%;
+    min-width: 120px;
+    padding: 5px;
+}
+
+#serialGraphWindow {
+    display: none;
+    position: relative;
+    margin: 5px 5px 5px 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.serialButtons1 {
+    padding-right: 5px;
+}
+
+.serialButtons2 {
+    padding-right: 5px;
+}
+
+.serialButtons3 {
+    padding-right: 5px;
+}
+
+.serialGraphButtons {
+    visibility: hidden;
+}
+
+#serialGraph {
+    background: #444;
+    font-family: consolas;
+    color: white;
+    font-size: 10px;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+}
+
+.inputButtons {
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+    vertical-align: middle;
+    background: #03234b;
+    color: #FFFFFF;
+    font-size: 1em;
+}
+
+.inputButtons:hover {
+    background: #FFFFFF;
+    color: #03234b;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.inputButtons:active {
+    background: #FFCC00;
+}
+
+.inputButtons:active::after {
+    transition-property: background;
+    transition-duration: 10s;
+}
+
+.inputButtons:disabled {
+    background: #F3F1EF;
+    color: #03234B;
+    cursor: not-allowed;
+}

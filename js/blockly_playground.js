@@ -228,6 +228,8 @@ function setOnOffLine() {
         for (var i = 0; i < elmts.length; i++)
             elmts[i].disabled = true;
     }
+    if (!navigator.serial)
+        document.getElementById('serialMonitorButton').disabled = true;
     // disable elements not yet finished - server menu
     // document.getElementById('papyrusConnect').disabled = true;
     // document.getElementById('ArrowheadConfiguration_auto').disabled = true;

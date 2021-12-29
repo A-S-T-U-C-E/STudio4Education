@@ -7,10 +7,11 @@
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <title>S4E</title>
     <link rel="icon" type="image/png" href="./S4E/media/logo_only.png" />
+    <link rel="stylesheet" href="./css/draggable-resizable-dialog.css" />
     <link rel="stylesheet" href="./css/font_awesome_all.min.css" />
     <link rel="stylesheet" href="./css/keyboard_nav.css" />
     <link rel="stylesheet" href="./css/lateral-panel.css" />
-    <link rel="stylesheet" href="./css/draggable-resizable-dialog.css" />
+    <link rel="stylesheet" href="./css/serialMonitorPlotter.css" />
     <link rel="stylesheet" href="./css/UI.css" />
     <link rel="stylesheet" href="./S4E/css/S4E.css" />
     <link rel="stylesheet" href="./S4E/css/override_css.css" />
@@ -231,7 +232,8 @@
                 <span id="verifyButton_span" class="fas fa-tasks">
                 </span>
             </button>
-            <button id="serialButton" class="iconButtons" onclick="Code.portsListModalShow()">
+            <!-- <button id="serialButton" class="iconButtons" onclick="Code.portsListModalShow()"> -->
+            <button id="serialButton" class="iconButtons" onclick="Code.getPorts()">
                 <span id="serialButton_span" class="fab fa-usb">
                 </span>
             </button>
@@ -248,7 +250,7 @@
             <div id="serialPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('serialPopup').style.display = 'none';document.getElementById('serialConnectButton').classList.toggle('active');">
                 <div id="buttonsSerialPopup" class="menu_div">
                     <div id="buttonsSerialPopupInside">
-                        <button id="serialMonitorButton" class="iconButtons CLI">
+                        <button id="serialMonitorButton" class="iconButtons CLI" onclick="showSerialMonitorModalDialog()">
                             <span id="serialMonitorButton_span" class="fas fa-search">
                             </span>
                         </button>
@@ -271,8 +273,8 @@
                 </div>
             </div>
             <span class="sketch_name_wrapper" id="sketch_name_wrapper">
-                <em class="sketch_name_icon iconButtons fas fa-pen"></em>
-                <input id="sketch_name" class="sketch_name" type="text" size="10">
+                <em class="sketch_name_icon fas fa-pen"></em>
+                <input id="sketch_name" name="sketch_name" class="sketch_name" type="text" size="10" placeholder="sketch name">
             </span>
             <button id="helpButton" class="iconButtons" onclick="toggleDisplayHelpModal()">
                 <span id="helpButton_span" class="fas fa-question">
@@ -330,8 +332,10 @@
             </div>
         </flex-resizer>
         <flex-item id="content_serial">
-            <pre id="compiler-output-text" style="display: none;"></pre>
-            <pre id="serial-output-text" style="display: none;"></pre>
+            <div id="content_serial_div">
+                <pre id="compiler-output-text" style="display: none;"></pre>
+                <pre id="serial-output-text" style="display: none;"></pre>
+            </div>
         </flex-item>
     </flex>
     <div id="helpModal" class="helpModal">
@@ -542,11 +546,15 @@
                 <span id="categories_title_span" aria-expanded="false" aria-controls="accordion_categories_content"></span>
             </button>
             <div id="categories_content_header" class="side_content config_content panel UIText">
-                <br>
                 <input type="checkbox" onchange="Code.checkAll()" name="checkbox_All" id="checkbox_All">
-                <span id="categories_content_selectAll">ALL / NONE</span><br>
+                <span id="categories_content_selectAll_span"></span>
+                <button id="categories_content_filter_button" class="iconButtons CLI" onclick="">
+                    <span id="categories_content_filter_span" class="fas fa-filter">
+                    </span>
+                </button>
+                <br>
                 <span class="categories_search_wrapper" id="categories_search_wrapper" title="categories_search">
-                    <input id="categories_search" class="categories_search" type="text" size="10" onkeyup="Code.filterCategories()" placeholder="Search for category...">
+                    <input id="categories_search" name="categories_search" class="categories_search" type="text" size="10" onkeyup="Code.filterCategories()" placeholder="Search for category...">
                 </span>
                 <div id="categories_content">
                 </div>
@@ -639,12 +647,12 @@
             <span id="circuitJSmodalTitle" class="modal-header">Code editor</span>
         </div>
         <button name="circuitJSmodal_close"></button>
-        <div id="button_window">
+        <div id="circuitJSmodal_button_window" class="Modal_button_window">
             <button id="circuitJSmodal_replaceBlockly" class="iconButtons" onclick="circuitJSmodal_replace_Blockly()">
-                <i class="fas fa-angle-left"></i>
+                <em class="fas fa-angle-left"></em>
             </button>
             <button id="circuitJSmodal_maximini" class="iconButtons" onclick="circuitJSmodal_maxi_mini()">
-                <i class="fa-regular fa-window-maximize"></i>
+                <em class="fa-regular fa-window-maximize"></em>
             </button>
         </div>
         <div id="content_CircuitJS" class="content"></div>
@@ -665,9 +673,9 @@
             <span id="editorMonacoModal_titlebar" class="modal-header">Code editor</span>
         </div>
         <button name="editorMonacoModal_close"></button>
-        <div id="button_window">
+        <div id="editorMonacoModal_button_window" class="Modal_button_window">
             <button id="editorMonacoModal_maximini" class="iconButtons" onclick="editorMonacoModal_maxi_mini()">
-                <em class="fa-regular fa-window-maximize"></em></em>
+                <em class="fa-regular fa-window-maximize"></em>
             </button>
         </div>
         <div id="content_Monaco_editors" class="content">
@@ -1033,10 +1041,68 @@
             </div>
         </div>
     </div>
+    <!-- serial monitor "modal" -->
+    <div id="serialMonitorModalDialog" class="dialog" style="width: 640px; height: 500px; z-index: 100;">
+        <div class="titlebar" id="serialModalTitle_titlebar">
+            <span id="serialModalTitle_titlebar_span" class="modal-header"></span>
+        </div>
+        <button name="serialMonitorModalDialog_close"></button>
+        <div id="serialMonitorModalDialog_button_window" class="Modal_button_window">
+            <button id="serialMonitorModalDialog_maximini" class="iconButtons" onclick="serialMonitorModalDialog_maxi_mini()">
+                <em id="serialMonitorModalDialog_mini" class="fas fa-thumbtack"></em>
+                <span id="serialMonitorModalDialog_maxi" class='fa-stack' style="font-size: .5em; display: none;">
+                    <em class='fas fa-thumbtack fa-stack-1x'></em>
+                    <em class='fas fa-ban fa-stack-2x'></em>
+                </span>
+            </button>
+        </div>
+        <div class="content" id="serialMonitorModalDialogContent">
+            <div id="serialMonitorModalDialogContent">
+                <div class="flex-container-serial">
+                    <input type="text" name="inputTextSerial" id="serialSendBox" class="form-control" />
+                    <input type="button" name="btn_serialSend" id="btn_serialSend" class="inputButtons" />
+                </div>
+                <div class="flex-container-serial column" id="serialVisu">
+                    <div id="serialPeek" class="serialPeek flex-item-serial">
+                        <textarea type="text" name="inputSerialPeek" id="inputSerialPeek"></textarea>
+                    </div>
+                    <div id="serialGraphWindow" class="serialGraphWindow flex-item-serial">
+                        <canvas id="serialGraph" class="serialGraphWindow"> </canvas>
+                    </div>
+                </div>
+                <div class="flex-container-serial ligne">
+                    <div id="serialButtons1" class="serialButtons1 flex-item-serial">
+                        <select id="serialConnectSpeed_Menu"> </select>
+                        <input type="button" name="btn_serialConnect" id="btn_serialConnect" class="inputButtons" />
+                        <input type="button" name="btn_serialPeekClear" id="btn_serialPeekClear" class="inputButtons" />
+                        <input type="checkbox" id="btn_serialAddTimeStamp" />
+                        <span id="btn_serialAddTimeStamp_span"></span>
+                    </div>
+                    <div id="serialButtons2" class="serialButtons2 flex-item-serial">
+                        <input type="button" name="btn_serialChart" id="btn_serialChart" class="inputButtons" />
+                        <input type="button" name="btn_serialChartPause" id="btn_serialChartPause" class="inputButtons" />
+                        <span id="btn_serialChartMin_span"></span>
+                        <input type="text" id="input_serialChartZoomMin" size="10" style="width:50px;" />
+                        <span id="btn_serialChartMax_span"></span>
+                        <input type="text" id="input_serialChartZoomMax" size="10" style="width:50px;" />
+                        <span id="btn_serialChartNb_span"></span>
+                        <input type="text" id="input_serialChartZoomLength" size="10" style="width:50px;" value="60" />
+                    </div>
+                    <div id="serialButtons3" class="serialButtons3 flex-item-serial">
+                        <input type="button" name="btn_serialPeekCSV" id="btn_serialPeekCSV" class="inputButtons" />
+                        <span id="input_serialChartJSONheaders_span"></span>
+                        <input type="text" id="input_serialChartJSONheaders" size="8" style="width:100px;" />
+                        <input type="button" name="btn_serialPeekJSON" id="btn_serialPeekJSON" class="inputButtons" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="buttonpane"></div>
+    </div>
     <!-- convert bin <-> text"modal" -->
     <div id="convertModalDialog" class="dialog" style="min-width: 645px; min-height: 165px;">
-        <div class="titlebar UIText">Conversion</div>
-        <button name="close"></button>
+        <div class="titlebar UIText" id="convertModalDialog_titlebar">Conversion</div>
+        <button name="convertModalDialog_close"></button>
         <div class="content">
             <input id="ti1" value="TEST" />
             <button name="text2bin" onclick="text2bin();" class="iconButtons">
@@ -1061,7 +1127,7 @@
     <!-- convert colors <-> values"modal" -->
     <div id="colorsModalDialog" class="dialog" style="min-width: 505px; min-height: 605px;">
         <div class="titlebar UIText">Conversion</div>
-        <button name="close"></button>
+        <button name="colorsModalDialog_close"></button>
         <div class="content" id="colorsModalDialogContent"></div>
     </div>
     <!-- Blockly libraries -->
@@ -1118,9 +1184,11 @@
     <script src="./js/buttons_functions.js"></script>
     <script src="./js/dialog.js"></script>
     <script src="./js/renderingConstant.js"></script>
+    <script src="./js/serialMonitor.js"></script>
     <script src="./js/toolbox.js"></script>
     <script src="./@blockly/demos/custom-dialogs/custom-dialog.js"></script>
     <!-- S4E libraries of external functions -->
+    <script src="./js/lib/chart.min.js"></script>
     <script src="./js/lib/diff.js"></script>
     <script src="./js/lib/draggable-resizable-dialog.js"></script>
     <script src="./js/lib/iro.min.js"></script>
