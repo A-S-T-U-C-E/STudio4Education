@@ -13,6 +13,7 @@ v0.9.0
 - add conversion tool text <-> binary
 - add colors conversion tool
 - add conversion blocks to send data in SenML format
+- add WebSerial API
 
 v0.8.1
 - finish text blocks translation in Arudino code

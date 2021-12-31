@@ -232,6 +232,7 @@
                 <span id="verifyButton_span" class="fas fa-tasks">
                 </span>
             </button>
+            <!-- <button id="serialButton" class="iconButtons"> -->
             <!-- <button id="serialButton" class="iconButtons" onclick="Code.portsListModalShow()"> -->
             <button id="serialButton" class="iconButtons" onclick="Code.getPorts()">
                 <span id="serialButton_span" class="fab fa-usb">
@@ -1266,28 +1267,27 @@
     <script src="./S4E/categories/servo/servo.arduino"></script>
     <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.arduino"></script>
     <script>
-        var require = {
+        require('../resources/app.asar/Arrowhead.js');
+        require('../resources/app.asar/renderer.js');
+        require('../resources/app.asar/menu_functions.js');
+        require('../resources/app.asar/menu_CLI_functions.js');
+        require('../resources/app.asar/menu_IDE_functions.js');
+        // require('../Arrowhead.js');
+        // require('../renderer.js');
+        // require('../menu_functions.js');
+        // require('../menu_CLI_functions.js');
+        // require('../menu_IDE_functions.js');
+    </script>
+    <script src="./tools/vs/loader.js"></script>
+    <script>
+        require.config({
             paths: {
                 'vs': './tools/vs'
             }
-        };
+        });
     </script>
-    <script src="./tools/vs/loader.js"></script>
     <script src="./tools/vs/editor/editor.main.nls.js"></script>
     <script src="./tools/vs/editor/editor.main.js"></script>
-
-    <script>
-        // require('../resources/app.asar/Arrowhead.js');
-        // require('../resources/app.asar/renderer.js');
-        // require('../resources/app.asar/menu_functions.js');
-        // require('../resources/app.asar/menu_CLI_functions.js');
-        // require('../resources/app.asar/menu_IDE_functions.js');
-        // require('./Arrowhead.js');
-        // require('./renderer.js');
-        // require('./menu_functions.js');
-        // require('./menu_CLI_functions.js');
-        // require('./menu_IDE_functions.js');
-    </script>
     <script type="text/javascript">
         window.onload = function() {
             if (document.readyState === 'complete') {
@@ -1313,7 +1313,6 @@
             }
         }
     </script>
-
 </body>
 
 </HTML>

@@ -191,14 +191,29 @@ Code.filterCategories = function() {
 Code.filterToolbox = function() {
     var search = 'temperature';
     console.log(jsonToolbox)
-        // var jsonData = JSON.parse(jsonToolbox["contents"]);
-        // for (var i = 0; i < jsonToolbox.objects.length; i++) {
-        //     var object = jsonData.objects[i];
-        //     if (object.id != 'temperature') {
-        //         delete jsonData.objects[i];
-        //     }
-        // }
-        // console.log(jsonData)
+
+    let dataStr = JSON.parse(jsonToolbox["contents"], search, 2);
+    let cleanJsonRegex = new RegExp(`,.*${search}.*[, ]`, "g");
+
+    let nameJsonStr = dataStr.replace(cleanJsonRegex, "");
+
+    console.log(nameJsonStr); // "{\"name\":\"ABC\"}"
+    // let jsonObj = JSON.parse(jsonToolbox["contents"]);
+
+    // let cleanJsonRegex = new RegExp(`,.*${search}.*[, ]`, "g");
+    // let nameJsonStr = jsonObj.replace(cleanJsonRegex, "");
+    // console.log(nameJsonStr); // "{\"name\":\"ABC\"}"
+
+
+    // var jsonData = JSON.parse(jsonToolbox);
+    // console.log(jsonData)
+    // for (var i = 0; i < jsonToolbox.objects.length; i++) {
+    //     var object = jsonData.objects[i];
+    //     if (object.id != search) {
+    //         delete jsonData.objects[i];
+    //     }
+    // }
+    // console.log(jsonData)
 }
 
 /** change toolbox size

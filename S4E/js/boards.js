@@ -67,8 +67,17 @@ Code.changeBoard = function() {
     document.getElementById("boardDescriptionSelector").value = newBoard;
     document.getElementById("boardSelected_span").textContent = profile["default"].description;
     document.getElementById("portSelected_span").textContent = ' : ' + document.getElementById('serialMenu').options[document.getElementById('serialMenu').selectedIndex].value;
-    localStorage.setItem("availableSpeed", JSON.stringify(profile.default['serialList']));
+    sessionStorage.setItem("availableSpeed", JSON.stringify(profile.default['serialList']));
     window.history.pushState({}, "S4E", Code.addReplaceParamToUrl(window.location.search, "board", newBoard));
+    //update serial speed list in serial monitor
+    document.getElementById('serialConnectSpeed_Menu').length = 0;
+    var serialConnectSpeedAvailable = profile.default['serialList'];
+    serialConnectSpeedAvailable.forEach((serialConnectSpeed) => {
+        var option = document.createElement('option');
+        option.value = serialConnectSpeed;
+        option.text = serialConnectSpeed;
+        document.getElementById('serialConnectSpeed_Menu').appendChild(option);
+    });
     // "reboot" elements
     document.getElementById('overlayForModals').style.display = "none";
     document.getElementById('boardListModal').classList.remove('show');
@@ -78,34 +87,4 @@ Code.changeBoard = function() {
     var xml = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
     Code.mainWorkspace.clear()
     Blockly.Xml.domToWorkspace(xml, Code.mainWorkspace);
-};
-
-/**
- * Set COM port
- */
-Code.setPort = function() {
-    var serialPortMenu = document.getElementById('serialMenu');
-    var newPort = encodeURIComponent(serialPortMenu.options[serialPortMenu.selectedIndex].value);
-    document.getElementById('overlayForModals').style.display = "none";
-    document.getElementById('portListModal').classList.remove('show');
-    document.getElementById("portSelected_span").textContent = ' : ' + newPort;
-    if (newPort != 'none') {
-        document.getElementById('serialButton').classList.add('active');
-        document.getElementById('serialButton').title = newPort;
-        document.getElementById('serialButton').onmouseover = function() {
-            document.getElementById("content_hoverButton").textContent = newPort;
-        };
-        document.getElementById('serialButton').onmouseout = function() {
-            document.getElementById("content_hoverButton").textContent = "";
-        }
-    } else {
-        document.getElementById('serialButton').classList.remove('active');
-        document.getElementById('serialButton').title = MSG['serialButtonSpan'];
-        document.getElementById('serialButton').onmouseover = function() {
-            document.getElementById("content_hoverButton").textContent = MSG['serialButtonSpan'];
-        };
-        document.getElementById('serialButton').onmouseout = function() {
-            document.getElementById("content_hoverButton").textContent = "";
-        };
-    }
 };

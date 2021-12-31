@@ -104,11 +104,18 @@ Code.blockPicture = function() {
 Code.copyToClipboard = function() {
     if (document.selection) { // IE
         var range = document.body.createTextRange();
-        range.moveToElementText(Code.editor.getValue());
+        if (Code.editor)
+            range.moveToElementText(Code.editor.getValue());
+        else range.moveToElementText(Blockly.Arduino.workspaceToCode(Code.mainWorkspace));
         range.select();
         document.execCommand("copy");
     } else if (window.getSelection) {
-        navigator.clipboard.writeText(Code.editor.getValue())
+        if (Code.editor)
+            navigator.clipboard.writeText(Code.editor.getValue())
+            .then(() => { console.log('Code copied!') })
+            .catch((error) => { console.log('Copy failed! ${error}') });
+        else
+            navigator.clipboard.writeText(Blockly.Arduino.workspaceToCode(Code.mainWorkspace))
             .then(() => { console.log('Code copied!') })
             .catch((error) => { console.log('Copy failed! ${error}') });
     }
@@ -220,16 +227,16 @@ Code.boardsListModalShow = function() {
     window.addEventListener('click', Code.boardsListModalHide, 'once');
     Code.boardDescription();
 };
-// Code.portsListModalShow = function() {
-//     document.getElementById('overlayForModals').style.display = "block";
-//     document.getElementById('portListModal').classList.add('show');
-//     var portValue = document.getElementById("serialMenu").value;
-//     if (portValue !== 'none') {
-//         document.getElementById("serialMenu").selectedIndex = portValue;
-//         document.getElementById("serialMenu").value = portValue;
-//     }
-//     window.addEventListener('click', Code.portsListModalHide, 'once');
-// };
+Code.portsListModalShow = async function() {
+    document.getElementById('overlayForModals').style.display = "block";
+    document.getElementById('portListModal').classList.add('show');
+    var portValue = document.getElementById("serialMenu").value;
+    if (portValue !== 'none') {
+        document.getElementById("serialMenu").selectedIndex = portValue;
+        document.getElementById("serialMenu").value = portValue;
+    }
+    window.addEventListener('click', Code.portsListModalHide, 'once');
+};
 Code.flowsListModalShow = function() {
     document.getElementById('overlayForModals').style.display = "block";
     document.getElementById('flowsListModal').classList.add('show');
@@ -239,10 +246,10 @@ document.getElementById("closeModalBoards").onclick = function() {
     document.getElementById('overlayForModals').style.display = "none";
     document.getElementById('boardListModal').classList.remove('show');
 };
-// document.getElementById("closeModalPorts").onclick = function() {
-//     document.getElementById('overlayForModals').style.display = "none";
-//     document.getElementById('portListModal').classList.remove('show');
-// };
+document.getElementById("closeModalPorts").onclick = function() {
+    document.getElementById('overlayForModals').style.display = "none";
+    document.getElementById('portListModal').classList.remove('show');
+};
 document.getElementById("closeModalFlows").onclick = function() {
     document.getElementById('overlayForModals').style.display = "none";
     document.getElementById('flowsListModal').classList.remove('show');
@@ -254,12 +261,12 @@ Code.boardsListModalHide = function(event) {
         document.getElementById('boardListModal').classList.remove('show');
     }
 };
-// Code.portsListModalHide = function(event) {
-//     if (document.getElementById('portListModal_content').contains(event.target)) {} else {
-//         document.getElementById('overlayForModals').style.display = "none";
-//         document.getElementById('portListModal').classList.remove('show');
-//     }
-// };
+Code.portsListModalHide = function(event) {
+    if (document.getElementById('portListModal_content').contains(event.target)) {} else {
+        document.getElementById('overlayForModals').style.display = "none";
+        document.getElementById('portListModal').classList.remove('show');
+    }
+};
 Code.flowsListModalHide = function(event) {
     if (document.getElementById('flowsListModal_content').contains(event.target)) {} else {
         document.getElementById('overlayForModals').style.display = "none";
@@ -874,29 +881,23 @@ Code.getPorts = async function() {
     if (!('serial' in navigator)) {
         Blockly.alert("This site requires the experimental Web Serial API. Your browser either does not support this, or does not have it enabled.");
     } else try {
+        // request WebSerial API for port list
+        // in Electron it fires 'select-serial-port' in main.js
         Code.serialPort = await navigator.serial.requestPort();
         document.getElementById('serialButton').className = 'iconButtonsClicked';
         window.sessionStorage.setItem('portSelected', true);
-        const { usbProductId, usbVendorId } = Code.serialPort.getInfo();
-        document.getElementById('portSelected_span').innerHTML = 'connected';
-        // navigator.usb.getDevices()
-        //     .then(devices => {
-        //         devices.forEach(device => {
-        //             if (device.vendorId == usbVendorId)
-        //                 console.log("Product name: " + device.productName);
-        //         });
-        //     })
-        //     .catch(error => { Blockly.alert(error); });
     } catch (error) {
-        Blockly.alert('no port selected')
-        document.getElementById('serialButton').className = 'iconButtons';
-        window.sessionStorage.setItem('portSelected', false);
-        document.getElementById('portSelected_span').innerHTML = 'not connected';
+        if (!Code.serialPort) {
+            Blockly.alert('no port selected')
+            document.getElementById('serialButton').className = 'iconButtons';
+            window.sessionStorage.setItem('portSelected', false);
+        }
     }
 }
-navigator.usb.addEventListener("connect", (event) => {
+navigator.serial.addEventListener("connect", (event) => {
     Blockly.alert('New device connected');
 });
-navigator.usb.addEventListener("disconnect", (event) => {
+navigator.serial.addEventListener("disconnect", (event) => {
     Blockly.alert('Device disconnected');
+    // console.log(event.target)
 });

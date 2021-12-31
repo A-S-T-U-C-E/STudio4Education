@@ -75,7 +75,7 @@ Code.renderContent = function() {
             else
                 Code.editor.setValue(generatedCode);
         }
-        var diff = JsDiff.diffWords(PREVIOUS_CODE_, generatedCode);
+        var diff = Diff.diffWords(PREVIOUS_CODE_, generatedCode);
         var resultStringArray = [];
         for (var i = 0; i < diff.length; i++) {
             if (!diff[i].removed) {

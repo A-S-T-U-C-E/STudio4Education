@@ -90,7 +90,8 @@ function showSerialMonitorModalDialog() {
     var id = 'serialMonitorModalDialog';
     var dialog = new DialogBox(id, callbackDialogSerialMonitorModal);
     dialog.showDialog();
-    var serialConnectSpeedAvailable = JSON.parse(localStorage.getItem("availableSpeed"));
+    var serialConnectSpeedAvailable = JSON.parse(sessionStorage.getItem("availableSpeed"));
+    document.getElementById('serialConnectSpeed_Menu').length = 0;
     serialConnectSpeedAvailable.forEach((serialConnectSpeed) => {
         var option = document.createElement('option');
         option.value = serialConnectSpeed;
@@ -112,7 +113,7 @@ function showSerialMonitorModalDialog() {
                 _serialModal.style.height = serialModal_old_height + "px";
                 document.getElementById("serialMonitorModalDialogContent").style.width = "calc(100% - 32px)";
                 document.getElementById("serialModalTitle_titlebar").style.width = "calc(100% - 32px)";
-                _maximiniSerial == 'mini'
+                _maximiniSerial = 'mini'
             }
         }
     }

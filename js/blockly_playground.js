@@ -184,7 +184,6 @@ function setOnOffLine() {
         document.getElementById('verifyButton').disabled = false;
         document.getElementById('serialButton').disabled = false;
         document.getElementById('uploadButton').disabled = false;
-        document.getElementById('serialConnectButton').disabled = false;
         document.getElementById('serialMenu').disabled = false;
         // not same button if in Electron or browser, if local nodejs watches events
         document.getElementById('wiringButton').setAttribute('onclick', '');
@@ -206,7 +205,6 @@ function setOnOffLine() {
         document.getElementById('verifyButton').disabled = true;
         document.getElementById('serialButton').disabled = true;
         document.getElementById('uploadButton').disabled = true;
-        document.getElementById('serialConnectButton').disabled = true;
         document.getElementById('serialMenu').disabled = true;
         // not same button if in Electron or browser, if web just webpages launched in browser
         document.getElementById('wiringButton').setAttribute('onclick', './tools/hackcable/index.html');

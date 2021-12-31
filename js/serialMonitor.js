@@ -37,15 +37,22 @@ document.getElementById('btn_serialConnect').addEventListener("click", clickConn
  * Click handler for the connect/disconnect button.
  */
 async function clickConnect() {
-    if (Code.serialPort) {
-        await disconnect();
-        Code.chart.destroy();
-        toggleUIConnected(false);
-        return;
+    if (Code.serialPort === undefined) {
+        Blockly.alert('select a port first')
+    } else {
+        if (document.getElementById('btn_serialConnect').classList.contains('active')) {
+            await disconnect();
+            if (Code.chart)
+                Code.chart.destroy();
+            toggleUIConnected(false);
+        } else {
+            await connect();
+            if (Code.chart)
+                Code.chart.destroy();
+            toggleUIConnected(true);
+            createGraph();
+        }
     }
-    await connect();
-    toggleUIConnected(true);
-    createGraph();
 }
 
 function createGraph() {
@@ -170,7 +177,9 @@ class JSONTransformer {
  * output stream.
  */
 async function connect() {
-    Code.serialPort = await navigator.serial.requestPort();
+    // unused, requestPort is launched by 'serialButton'
+    // if (!Code.serialPort)
+    //     Code.serialPort = await navigator.serial.requestPort();
     let baudrate = document.getElementById('serialConnectSpeed_Menu').value;
     await Code.serialPort.open({ baudRate: baudrate });
     const encoder = new TextEncoderStream();
@@ -203,9 +212,10 @@ async function disconnect() {
         outputStream = null;
         outputDone = null;
     }
-    Code.chart.stop();
+    if (Code.chart)
+        Code.chart.stop();
     await Code.serialPort.close();
-    Code.serialPort = null;
+    // Code.serialPort = null;
 }
 
 function toggleUIConnected(connected) {
@@ -215,6 +225,8 @@ function toggleUIConnected(connected) {
     }
     document.getElementById('btn_serialSend').disabled = !connected;
     document.getElementById('btn_serialConnect').value = label;
+    document.getElementById('btn_serialConnect').classList.toggle("active");
+    document.getElementById('serialConnectButton').classList.toggle("active");
 }
 
 document.getElementById('btn_serialChartPause').onclick = function() {
