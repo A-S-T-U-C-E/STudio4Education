@@ -57,24 +57,27 @@
                 <img id="logo" src="./S4E/media/STudio4Education_logo.png" style="height: 25px; vertical-align: middle;" />
             </div>
             <div id="optionsTopButtons" text-align="center">
+                <button id="fullScreenButton" type="button" class="iconButtonsTop" onclick="fullScreen()">
+                    <em class="fas fa-expand-arrows-alt"></em>
+                </button>
                 <button id="btn_fake_min" type="button" class="iconButtonsTop">
-                    <i class="far fa-window-minimize"></i>
+                    <em class="far fa-window-minimize"></em>
                 </button>
                 <button id="btn_fake_max" type="button" class="iconButtonsTop">
-                    <i class="far fa-window-maximize"></i>
+                    <em class="far fa-window-maximize"></em>
                 </button>
                 <button id="btn_fake_restore" type="button" class="iconButtonsTop">
-                    <i class="far fa-window-restore"></i>
+                    <em class="far fa-window-restore"></em>
                 </button>
                 <button id="btn_fake_close" type="button" class="iconButtonsTop">
-                    <i class="far fa-window-close"></i>
+                    <em class="far fa-window-close"></em>
                 </button>
             </div>
         </div>
         <div id="functionsIcons">
             <button id="menuButton" class="iconButtons" onclick="document.getElementById('menuPopup').style.display = 'block';document.getElementById('menuButton').classList.toggle('active');">
                 <span id="menuButtonButton_span">
-                    <i class="fas fa-ellipsis-v"></i>
+                    <em class="fas fa-ellipsis-v"></em>
                 </span>
             </button>
             <div id="menuPopup" class="popup_bckgrd" onclick="document.getElementById('menuPopup').style.display = 'none';document.getElementById('menuButton').classList.toggle('active');">
@@ -111,10 +114,6 @@
             </button>
             <button id="saveCodeButtonMenu" class="iconButtons" onclick="Code.saveCodeFile()">
                 <span id="saveCodeButton_span" class="far fa-file-code">
-                </span>
-            </button>
-            <button id="fullScreenButton" class="iconButtons" onclick="fullScreen()">
-                <span id="fullScreenButton_span" class="fas fa-expand-arrows-alt">
                 </span>
             </button>
             <button id="fullToolboxButton" class="iconButtons" onclick="Code.fullToolbox()">
@@ -714,7 +713,7 @@
                         <optgroup label="C / C++">
                             <option value="none">...</option>
                         <optgroup label="STMicroelectronics">
-                            <option value="ST_nucleo_L432KC">Nucleo-32 L432KC</option>
+                            <option value="ST_nucleo_F042K6">Nucleo-32 F042K6</option>
                             <option value="ST_nucleo_L476RG">Nucleo-64 L476RG</option>
                             <option value="ST_nucleo_H753ZI">Nucleo-144 H753ZI</option>
                             <option value="ST_mp157c_dk2">STM32MP1 Discovery kits</option>

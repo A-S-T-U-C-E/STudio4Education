@@ -179,7 +179,6 @@ Code.changeLevel = function(levelMenuSelection) {
             document.getElementById("redoButton").classList.add("iconButtons");
             document.getElementById("functionsIcons").prepend(document.getElementById("blocksPictureButton"));
             document.getElementById("functionsIcons").prepend(document.getElementById("fullToolboxButton"));
-            document.getElementById("functionsIcons").prepend(document.getElementById("fullScreenButton"));
             document.getElementById("functionsIcons").prepend(document.getElementById("saveXMLButton"));
             document.getElementById("functionsIcons").prepend(document.getElementById("loadXMLfakeButton"));
             document.getElementById("functionsIcons").prepend(document.getElementById("newButton"));

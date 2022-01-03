@@ -444,6 +444,7 @@ flex.content_wrapper {
     color: rgba(29, 147, 47, 1);
     width: 100%;
     min-height: 0.5px;
+    overflow-y: auto;
 }
 
 #resizer_h {

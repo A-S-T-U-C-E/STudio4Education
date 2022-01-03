@@ -177,10 +177,38 @@ function fontSpacingPageModify(classToModify, spacingToModify) {
     }
 }
 
+//from is-electron "library" https://github.com/cheton/is-electron
+function isElectron() {
+    // Renderer process
+    if (typeof window !== 'undefined' && typeof window.process === 'object' && window.process.type === 'renderer') {
+        return true;
+    }
+
+    // Main process
+    if (typeof process !== 'undefined' && typeof process.versions === 'object' && !!process.versions.electron) {
+        return true;
+    }
+
+    // Detect the user agent when the `nodeIntegration` option is set to false
+    if (typeof navigator === 'object' && typeof navigator.userAgent === 'string' && navigator.userAgent.indexOf('Electron') >= 0) {
+        return true;
+    }
+
+    return false;
+}
+
 function setOnOffLine() {
     // Set different config online vs local copy.
+    document.getElementById('btn_fake_min').style.display = 'none';
+    document.getElementById('btn_fake_max').style.display = 'none';
+    document.getElementById('btn_fake_close').style.display = 'none';
     if (window.location.protocol === 'file:') {
-        document.getElementById('optionsTopButtons').style.display = "inline";
+        if (isElectron()) {
+            document.getElementById('btn_fake_min').style.display = 'inline';
+            document.getElementById('btn_fake_max').style.display = 'inline';
+            document.getElementById('btn_fake_close').style.display = 'inline';
+            document.getElementById('fullScreenButton').style.display = 'none';
+        } else document.getElementById('fullScreenButton').style.display = 'inline';
         document.getElementById('verifyButton').disabled = false;
         document.getElementById('serialButton').disabled = false;
         document.getElementById('uploadButton').disabled = false;
@@ -201,7 +229,7 @@ function setOnOffLine() {
         // document.getElementById('ArrowheadOrchConfigurationModal_okay').style.display = "none";
         // document.getElementById('ArrowheadOrchConfigurationModal_okay_nodejs').style.display = "inline";
     } else {
-        document.getElementById('optionsTopButtons').style.display = "none";
+        document.getElementById('fullScreenButton').style.display = 'inline';
         document.getElementById('verifyButton').disabled = true;
         document.getElementById('serialButton').disabled = true;
         document.getElementById('uploadButton').disabled = true;
