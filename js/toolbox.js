@@ -219,29 +219,19 @@ Code.filterToolbox = function() {
 /** change toolbox size
  *  init.js store it in 'toolboxSize' session storage
  */
-let firstShrink_ = false;
 Code.fullToolbox = function() {
-    document.getElementsByClassName("blocklyToolboxContents")[0].removeEventListener('overflow', OnOverflowChanged, true);
-    document.getElementsByClassName("blocklyToolboxContents")[0].removeEventListener('underflow', OnUnderflowChanged, true);
-    document.getElementsByClassName("blocklyToolboxContents")[0].removeEventListener('overflowchanged', OnOverUnderFlowChanged, true);
-    let initialToolboxSize = sessionStorage.getItem('toolboxSize');
-    if (document.getElementById("fullToolboxButton").classList.contains("iconButtonsClicked")) {
-        document.getElementById("fullToolboxButton").classList.remove("iconButtonsClicked");
-        document.getElementById("fullToolboxButton").classList.add("iconButtons");
-        document.getElementsByClassName("blocklyToolboxDiv")[0].style.width = initialToolboxSize + 'px';
-        Code.mainWorkspace.getToolbox().width_ = initialToolboxSize;
+    var x = document.getElementsByClassName('blocklyTreeLabel');
+    if (x[0].style.display === "none") {
+        for (var i = 0; i < x.length; ++i) {
+            x[i].style.display = 'inline';
+        }
     } else {
-        document.getElementById("fullToolboxButton").classList.add("iconButtonsClicked");
-        document.getElementById("fullToolboxButton").classList.remove("iconButtons");
-        initialToolboxSize = Code.mainWorkspace.getToolbox().getWidth();
-        document.getElementsByClassName("blocklyToolboxDiv")[0].style.width = '37px';
-        Code.mainWorkspace.getToolbox().width_ = 37;
-        firstShrink_ = true;
+        for (var i = 0; i < x.length; ++i) {
+            x[i].style.display = 'none';
+        }
     }
+    document.getElementById("fullToolboxButton").classList.toggle("active");
     Blockly.getMainWorkspace().resize();
-    document.getElementsByClassName("blocklyToolboxDiv")[0].addEventListener('overflow', OnOverflowChanged, true);
-    document.getElementsByClassName("blocklyToolboxDiv")[0].addEventListener('underflow', OnUnderflowChanged, true);
-    document.getElementsByClassName("blocklyToolboxDiv")[0].addEventListener('overflowchanged', OnOverUnderFlowChanged, true);
 };
 
 function OnOverUnderFlowChanged(event) {

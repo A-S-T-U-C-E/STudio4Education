@@ -1,3 +1,6 @@
+v0.9.1
+- fix toolbox shrink/expand function
+
 v0.9.0
 - change structure: simplify by adding all definition files in same folder
 - automatic typing for variables
