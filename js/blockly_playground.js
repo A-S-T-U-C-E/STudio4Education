@@ -56,18 +56,18 @@ function genWorkspace(rtlArg, toolboxArg, rendererArg) {
         }
     });
     Blockly.Variables.createFlyoutCategory(Code.mainWorkspace);
-    // Code.minimapWorkspace = Blockly.inject('minimapDiv', {
-    //     media: './@blockly/media/',
-    //     readOnly: true,
-    //     zoom: {
-    //         controls: false,
-    //         wheel: true,
-    //         startScale: 0.1,
-    //         maxScale: 0.1,
-    //         minScale: 0.01
-    //     }
-    // });
-    // Minimap.init(Code.mainWorkspace, Code.minimapWorkspace, 10);
+    Code.minimapWorkspace = Blockly.inject('minimapDiv', {
+        media: './@blockly/media/',
+        readOnly: true,
+        zoom: {
+            controls: false,
+            wheel: true,
+            startScale: 0.1, //you can change this accorting to your needs.
+            maxScale: 0.1,
+            minScale: 0.01
+        }
+    });
+    // Minimap.init(Code.mainWorkspace, Code.minimapWorkspace);
 }
 // function setRenderDebugOptionCheckboxState(overrideOptions) {
 //     Code.blockRendering.Debug.config = overrideOptions || {};

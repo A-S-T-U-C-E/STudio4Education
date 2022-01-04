@@ -374,13 +374,13 @@ html[dir=rtl] {
 /* Content blocks */
 
 #minimapDiv {
-    /* display: none; */
+    display: none;
     position: absolute;
     height: 140px;
     width: 200px;
     bottom: 33px;
     right: 90px;
-    z-index: 10;
+    z-index: 1000;
 }
 
 .minimap {

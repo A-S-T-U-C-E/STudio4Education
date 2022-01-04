@@ -72,8 +72,8 @@ Minimap.init = function(workspace, minimap) {
         'width': this.rect.right - this.rect.left,
         'class': 'minimap',
     }, document.getElementById('minimapDiv'));
-    this.svg.style.top = this.rect.top + 'px';
-    this.svg.style.left = this.rect.left + 'px';
+    this.svg.style.top = '0px';
+    this.svg.style.left = '0px';
 
     // Creating a rectangle in the minimap that represents current view.
     Blockly.utils.dom.createSvgElement('rect', {
@@ -146,9 +146,9 @@ Minimap.mirrorEvent = function(event) {
  * Called when window is resized. Repositions the minimap overlay.
  */
 Minimap.repositionMinimap = function() {
-    Minimap.rect = document.getElementById('mapDiv').getBoundingClientRect();
-    Minimap.svg.style.top = Minimap.rect.top + 'px';
-    Minimap.svg.style.left = Minimap.rect.left + 'px';
+    Minimap.rect = document.getElementById('minimapDiv').getBoundingClientRect();
+    Minimap.svg.top = Minimap.rect.top + 'px';
+    Minimap.svg.left = Minimap.rect.left + 'px';
 };
 
 /**
@@ -230,10 +230,10 @@ Minimap.updateMapDragger = function(e) {
     var finalY = y - Minimap.rect.top - (draggerHeight / 2);
     var finalX = x - Minimap.rect.left - (draggerWidth / 2);
 
-    var maxValidY = (Minimap.workspace.getMetrics().contentHeight - Minimap.workspace.getMetrics().viewHeight) *
-        Minimap.minimap.scale;
-    var maxValidX = (Minimap.workspace.getMetrics().contentWidth - Minimap.workspace.getMetrics().viewWidth) *
-        Minimap.minimap.scale;
+    // var maxValidY = (Minimap.workspace.getMetrics().contentHeight - Minimap.workspace.getMetrics().viewHeight) *
+    //     Minimap.minimap.scale;
+    // var maxValidX = (Minimap.workspace.getMetrics().contentWidth - Minimap.workspace.getMetrics().viewWidth) *
+    //     Minimap.minimap.scale;
 
     if (y + (draggerHeight / 2) > Minimap.rect.bottom) {
         finalY = Minimap.rect.bottom - Minimap.rect.top - draggerHeight;
@@ -241,11 +241,19 @@ Minimap.updateMapDragger = function(e) {
         finalY = 0;
     }
 
-    if (x + (draggerWidth / 2) > Minimap.rect.right) {
+    if ((x + draggerWidth / 2) > Minimap.rect.right) {
         finalX = Minimap.rect.right - Minimap.rect.left - draggerWidth;
-    } else if (x < Minimap.rect.left + (draggerWidth / 2)) {
+    } else if (x < (Minimap.rect.left + draggerWidth / 2)) {
         finalX = 0;
     }
+
+    // Do not go below lower bound of scrollbar.
+    // if (finalY > maxValidY) {
+    //   finalY = maxValidY;
+    // }
+    // if (finalX > maxValidX) {
+    //   finalX = maxValidX;
+    // }
 
     Minimap.mapDragger.setAttribute("y", finalY);
     Minimap.mapDragger.setAttribute("x", finalX);

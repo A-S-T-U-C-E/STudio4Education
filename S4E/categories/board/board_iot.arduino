@@ -21,10 +21,10 @@ Blockly.Arduino['board_iot_autoFormatWebsocket'] = function(block) {
     for (var i = 0; i < block.itemCount_; i++) {
         elements[i] = Blockly.Arduino.valueToCode(block, 'ADD' + i,
             Blockly.Arduino.ORDER_NONE) || 'null';
-        code += "Serial.print(" + elements[i] + ");\n";
-        code += "Serial.print(';');\n";
+        code += "WebSocket.send(" + elements[i] + ");\n";
+        code += "WebSocket.send(';');\n";
     }
     code = code.substring(0, code.length - 19);
-    code += "Serial.println();\n";
+    code += "WebSocket.send();\n";
     return code;
 };
