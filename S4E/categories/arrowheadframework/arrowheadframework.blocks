@@ -46,9 +46,9 @@ Blockly.Blocks['ahf_esp_define'] = {
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setStyle('arrowheadframework_blocks');
         this.setTooltip('name of the system, must match the common name of the certificate');
         this.setHelpUrl('https://github.com/arrowhead-f/ArrowheadESP');
+        this.setStyle('arrowheadframework_blocks');
     }
 };
 
@@ -103,9 +103,9 @@ Blockly.Blocks['ahf_esp_service_registry_def'] = {
             .setCheck("Number");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setStyle('arrowheadframework_blocks');
         this.setTooltip("Used to stablish where Arrowhead Core Systems can be found");
         this.setHelpUrl("https://github.com/arrowhead-f/ArrowheadESP");
+        this.setStyle('arrowheadframework_blocks');
     }
 };
 
@@ -116,9 +116,9 @@ Blockly.Blocks['ahf_esp_connection_registry_test'] = {
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", Code.imageSize, Code.imageSize, "*"))
             .appendField("result of connection");
         this.setOutput(true);
-        this.setStyle('arrowheadframework_blocks');
         this.setTooltip('name of the system, must match the common name of the certificate');
         this.setHelpUrl('https://github.com/arrowhead-f/ArrowheadESP');
+        this.setStyle('arrowheadframework_blocks');
     }
 };
 
@@ -129,9 +129,9 @@ Blockly.Blocks['ahf_esp_SR_register_test'] = {
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", Code.imageSize, Code.imageSize, "*"))
             .appendField("registering service status code");
         this.setOutput(true);
-        this.setStyle('arrowheadframework_blocks');
         this.setTooltip('register to Service Registry and send back status code');
         this.setHelpUrl('https://github.com/arrowhead-f/ArrowheadESP');
+        this.setStyle('arrowheadframework_blocks');
     }
 };
 
@@ -142,9 +142,9 @@ Blockly.Blocks['ahf_esp_SR_unregister_test'] = {
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "esp8266.png", Code.imageSize, Code.imageSize, "*"))
             .appendField("UNregistering service status code");
         this.setOutput(true);
-        this.setStyle('arrowheadframework_blocks');
         this.setTooltip('unregister from Service Registry and send back status code');
         this.setHelpUrl('https://github.com/arrowhead-f/ArrowheadESP');
+        this.setStyle('arrowheadframework_blocks');
     }
 };
 
@@ -158,9 +158,9 @@ Blockly.Blocks['ahf_esp_format_data_SenML'] = {
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setStyle('arrowheadframework_blocks');
         this.setTooltip('format sensors data as SenML');
         this.setHelpUrl('https://github.com/arrowhead-f/ArrowheadESP');
+        this.setStyle('arrowheadframework_blocks');
     }
 };
 
@@ -172,9 +172,9 @@ Blockly.Blocks['ahf_esp_keep_connection'] = {
             .appendField("keep data alive");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setStyle('arrowheadframework_blocks');
         this.setTooltip('name of the system, must match the common name of the certificate');
         this.setHelpUrl('https://github.com/arrowhead-f/ArrowheadESP');
+        this.setStyle('arrowheadframework_blocks');
     }
 };
 
@@ -243,8 +243,8 @@ Blockly.Blocks['ahf_custom_parameters'] = {
             .setCheck("String")
             .appendField("Server SSL trust store password");
         this.setInputsInline(false);
-        this.setStyle('arrowheadframework_blocks');
         this.setTooltip('this blocks helps to...');
         this.setHelpUrl('https://www.arduino.cc/reference/en/');
+        this.setStyle('arrowheadframework_blocks');
     }
 };

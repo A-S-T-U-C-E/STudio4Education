@@ -92,12 +92,14 @@ function showSerialMonitorModalDialog() {
     dialog.showDialog();
     var serialConnectSpeedAvailable = JSON.parse(sessionStorage.getItem("availableSpeed"));
     document.getElementById('serialConnectSpeed_Menu').length = 0;
-    serialConnectSpeedAvailable.forEach((serialConnectSpeed) => {
-        var option = document.createElement('option');
-        option.value = serialConnectSpeed;
-        option.text = serialConnectSpeed;
-        document.getElementById('serialConnectSpeed_Menu').appendChild(option);
-    });
+    if (serialConnectSpeedAvailable) {
+        serialConnectSpeedAvailable.forEach((serialConnectSpeed) => {
+            var option = document.createElement('option');
+            option.value = serialConnectSpeed;
+            option.text = serialConnectSpeed;
+            document.getElementById('serialConnectSpeed_Menu').appendChild(option);
+        });
+    } else Blockly.alert('Select a board first');
 
     function callbackDialogSerialMonitorModal(btnName) {
         if (btnName == "serialMonitorModalDialog_close") {
@@ -218,7 +220,6 @@ let serialModal_old_width = 0;
 let serialModal_old_height = 0;
 
 function serialMonitorModalDialog_maxi_mini() {
-    const icon = document.getElementById("serialMonitorModalDialog_maximini").querySelector('em');
     if (_maximiniSerial == 'mini') {
         serialModal_old_X = _serialModal.getBoundingClientRect().left;
         serialModal_old_Y = _serialModal.getBoundingClientRect().top;

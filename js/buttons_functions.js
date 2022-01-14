@@ -67,7 +67,7 @@ function exitFullScreen() {
         fullScreenButton.className = 'iconButtonsClicked';
         fullScreen_ = true;
     } else {
-        fullScreenButton.className = 'iconButtons';
+        fullScreenButton.className = 'iconButtonsTop';
         fullScreen_ = false;
     }
 };
@@ -218,11 +218,8 @@ Code.boardsListModalShow = function() {
     document.getElementById('boardListModal').classList.add('show');
     for (var i = 0; i < document.getElementById("boardDescriptionSelector").length; i++)
         document.getElementById("boardDescriptionSelector").options[i].style.backgroundColor = 'white';
-    var boardValue = document.getElementById("boardMenu").value;
-    if (boardValue !== 'none') {
-        document.getElementById("boardDescriptionSelector").selectedIndex = boardValue;
-        document.getElementById("boardDescriptionSelector").value = boardValue;
-        document.getElementById("boardDescriptionSelector").options[document.getElementById("boardDescriptionSelector").selectedIndex].style.backgroundColor = 'yellow';
+    if (document.getElementById("boardDescriptionSelector").value !== '') {
+        document.getElementById("boardDescriptionSelector").options[sessionStorage.getItem('boardIndex')].style.backgroundColor = "yellow";
     }
     window.addEventListener('click', Code.boardsListModalHide, 'once');
     Code.boardDescription();
@@ -591,13 +588,10 @@ Code.ResetWorkspace = function() {
  */
 
 Code.changeFontFamily = function(fontType) {
+    var oldFont = document.querySelectorAll('.blocklyText').style.fontFamily;
     document.body.style.fontFamily = fontType;
-    var labelsToolbox = document.getElementsByClassName("blocklyTreeLabel")
-    for (var x = 0; x < labelsToolbox.length; x++)
-        labelsToolbox[x].style.fontFamily = fontType;
-    var labelsToolbox = document.getElementsByClassName("blocklyText")
-    for (var x = 0; x < labelsToolbox.length; x++)
-        labelsToolbox[x].style.fontFamily = fontType;
+    document.body.style.classList.replace(oldFont, fontType);
+
     // let actualTheme = Code.mainWorkspace.getTheme();
     // console.log(actualTheme)
     // Blockly.Themes[actualTheme.name].setComponentStyle('fontStyle', fontType);

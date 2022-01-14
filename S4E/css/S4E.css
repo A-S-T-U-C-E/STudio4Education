@@ -130,7 +130,6 @@
 
 /* surcharger .iconButton */
 
-#boardMenu,
 #serialMenu {
     color: #000000;
     font-size: large;
@@ -233,6 +232,7 @@
     font-style: italic;
     background: transparent;
     border: none;
+    padding: 0px;
 }
 
 

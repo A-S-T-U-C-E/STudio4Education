@@ -135,7 +135,7 @@ input:checked+.slider:before {
 /* Adds space between the categories, rounds the corners and adds space around the label */
 
 .blocklyTreeRow {
-    padding: 2px;
+    padding: 2px !important;
     border-radius: 4px;
     height: initial;
 }

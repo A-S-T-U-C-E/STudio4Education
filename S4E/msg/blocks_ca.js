@@ -6,10 +6,6 @@
 
 'use strict';
 
-// goog.provide('Blockly.Msg["blocks_ca');
-
-// goog.require('Blockly.Msg');
-
 //text in blocks
 Blockly.Msg["FIELDDROPDOWN"] = [
     ["1 (activat)", "HIGH"],
@@ -32,13 +28,12 @@ Blockly.Msg["FIELDDROPDOWN_ONOFF3"] = [
 Blockly.Msg["ARRAY_CREATE_EMPTY_TITLE"] = 'buit!';
 Blockly.Msg["tab_create"] = "crea un bloc per la lista %1'";
 Blockly.Msg["tab_create_fix"] = "crea el bloc 'estableix un element a la matriu %1'";
-Blockly.Msg["ARRAY_CREATE_WITH"] = "establert amb";
 Blockly.Msg["ARRAY_taille"] = "mida";
 Blockly.Msg["ARRAY_contenu"] = "conté";
 Blockly.Msg["ARRAY_dim"] = "mida de ";
 Blockly.Msg["ARRAY_index"] = "índex";
 Blockly.Msg["_AT"] = "a";
-Blockly.Msg["ARRAY_CREATE_WITH"] = "creat amb";
+Blockly.Msg["ARRAY_CREATE_WITH"] = "establert amb";
 Blockly.Msg["ARRAY_CREATE_WITH_CONTAINER_TITLE_ADD"] = "matriu";
 Blockly.Msg["ARRAY_CREATE_WITH_CONTAINER_TOOLTIP"] = "Afegeix, treu, o reorrena seccions per reconfigurar aquest bloc matriu.";
 Blockly.Msg["ARRAY_CREATE_WITH_HELPURL"] = "";
@@ -85,8 +80,6 @@ Blockly.Msg["CONTROLS_SWITCH_TOOLTIP_2"] = "Si el valor és cert executa el prim
 Blockly.Msg["CONTROLS_SWITCH_TOOLTIP_3"] = "Si el valor és cert executa el primer bloc d'ordres. En cas contrari executa el bloc següent d'ordres si la condició és certa.";
 Blockly.Msg["CONTROLS_SWITCH_TOOLTIP_4"] = "Si el valor és cert executa el primer bloc d'ordres. En cas contrari executa el bloc següent d'ordres si la condició és certa. Si ninguna condició és verifica, llavors executa el darrer bloc d'ordres per defecte.";
 Blockly.Msg["CONTROLS_SWITCH_VAR_TOOLTIP"] = "Desplaça el bloc des de l'esquerra per afegir-lo.";
-Blockly.Msg["CONTROLS_SWITCH_CASEBREAK_TOOLTIP"] = "Afegeix un bloc d'ordres cas trenca";
-Blockly.Msg["CONTROLS_SWITCH_DEFAULT_TOOLTIP"] = "Afegeix un bloc d'accions per defecte";
 //blockly variables
 Blockly.Msg["VARIABLES_AS"] = "tipus";
 Blockly.Msg["VARIABLES_SET_CONST"] = "constant";
@@ -163,6 +156,18 @@ Blockly.Msg["SERIAL_READSTRINGUNTIL_TOOLTIP"] = "llegeix els caràcters un per u
 Blockly.Msg["SERIAL_PRINT_CONTENT"] = "envia el text al port sèrie:";
 Blockly.Msg["SERIAL_PRINT_TOOLTIP"] = "envia dades al port sèrie per a vigilancia amb el monitor ASCII";
 Blockly.Msg["SERIAL_PRINT_HELPURL"] = "http://www.arduino.cc/en/Serial/Print";
+
+//IOT
+Blockly.Msg["IOT_LISTS_CREATE_WITH_ITEM_TITLE"] = "data";
+Blockly.Msg["IOT_LISTS_CREATE_EMPTY_HELPURL"] = "https://github.com/google/blockly/wiki/Lists#create-empty-list";
+Blockly.Msg["IOT_LISTS_CREATE_EMPTY_TITLE"] = "cannot send blank list";
+Blockly.Msg["IOT_LISTS_CREATE_EMPTY_TOOLTIP"] = "need elements to create a list";
+Blockly.Msg["IOT_LISTS_CREATE_WITH_CONTAINER_TITLE_ADD"] = "list";
+Blockly.Msg["IOT_LISTS_CREATE_WITH_CONTAINER_TOOLTIP"] = "add, remove, or sort elements in list";
+Blockly.Msg["IOT_LISTS_CREATE_WITH_HELPURL"] = "https://github.com/google/blockly/wiki/Lists#create-list-with";
+Blockly.Msg["IOT_LISTS_CREATE_WITH_INPUT_WITH"] = "create list with";
+Blockly.Msg["IOT_LISTS_CREATE_WITH_ITEM_TOOLTIP"] = "add an element to list";
+Blockly.Msg["IOT_LISTS_CREATE_WITH_TOOLTIP"] = "create a list with any elements";
 
 //Arduino base servo category blocks
 Blockly.Msg["SERVO_MOVE_TOOLTIP"] = "rotació posible entre 0~180 graus";
@@ -243,12 +248,69 @@ Blockly.Msg["GROVE_INOUT_DHT_READ_PIN"] = "Pin#";
 Blockly.Msg["GROVE_INOUT_DHT_READ_SENSOR"] = "mesurat pel sensor ";
 Blockly.Msg["GROVE_INOUT_DHT_READ_TOOLTIP"] = "els sensors del tipus DHT tenen dos parts: termistor i sensor de humitat.";
 Blockly.Msg["GROVE_INOUT_DHT_READ_TYPE"] = "valor";
-Blockly.Msg["GROVE_LED_BAR_INPUT"] = "on bar graphe";
-Blockly.Msg["GROVE_LED_BAR_PIN"] = "pin #";
-Blockly.Msg["GROVE_LED_BAR_LEVEL"] = "light LED n°";
-Blockly.Msg["GROVE_LED_BAR_ALL_OFF"] = "switch off all LED";
-Blockly.Msg["GROVE_LED_BAR_TOGGLE"] = "toggle state of LED n°";
-Blockly.Msg["GROVE_LED_BAR_TOOLTIP1"] = "select how many LED on bargraphe are ON";
-Blockly.Msg["GROVE_LED_BAR_TOOLTIP2"] = "choose which LED to switch on";
-Blockly.Msg["GROVE_LED_BAR_TOOLTIP3"] = "toggle state of LED n°";
-Blockly.Msg["GROVE_LED_BAR_HELPURL"] = "";
+Blockly.Msg["GROVE_INOUT_LED_BAR_INPUT"] = "on bar graphe";
+Blockly.Msg["GROVE_INOUT_LED_BAR_PIN"] = "pin #";
+Blockly.Msg["GROVE_INOUT_LED_BAR_LEVEL"] = "light LED n°";
+Blockly.Msg["GROVE_INOUT_LED_BAR_ALL_OFF"] = "switch off all LED";
+Blockly.Msg["GROVE_INOUT_LED_BAR_TOGGLE"] = "toggle state of LED n°";
+Blockly.Msg["GROVE_INOUT_LED_BAR_TOOLTIP1"] = "select how many LED on bargraphe are ON";
+Blockly.Msg["GROVE_INOUT_LED_BAR_TOOLTIP2"] = "choose which LED to switch on";
+Blockly.Msg["GROVE_INOUT_LED_BAR_TOOLTIP3"] = "toggle state of LED n°";
+Blockly.Msg["GROVE_INOUT_LED_BAR_HELPURL"] = "https://github.com/Seeed-Studio/Grove_LED_Bar";
+Blockly.Msg['GROVE_INOUT_LCD_RGB_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_HELPURL'] = "http://www.seeedstudio.com/wiki/index.php?title=GROVE_-_Starter_Bundle_V1.0b#Serial_LCD";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_TEXT'] = "pantalla LCD";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_INPUT1'] = "al pin";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_INPUT2'] = "escriu a la línia 1";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_INPUT3'] = "escriu a la línia 2";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_INPUT4'] = "retard (ms)";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_TOOLTIP'] = "escriu el text sobre una pantalla LCD de 2 línies i 16 caràcters";
+Blockly.Msg['GROVE_INOUT_LCD_POWER_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_POWER_TEXT'] = "pantalla LCD";
+Blockly.Msg['GROVE_INOUT_LCD_POWER_INPUT'] = "al pin";
+Blockly.Msg['GROVE_INOUT_LCD_POWER_STATE'] = "potencia";
+Blockly.Msg['GROVE_INOUT_LCD_POWER_TOOLTIP'] = "posa el LCD engegat/aturat";
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_TEXT'] = "pantalla LCD";
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_CLEAN'] = "esborra la pantalla";
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_INPUT'] = "al pin";
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_EFFECT'] = "efecte";
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_EFFECT_EFFECT'] = [
+    ["desplaça a l'esquerra", "LEFT"],
+    ["desplaça a la dreta", "RIGHT"],
+    ["desplaçament automàtic", "AUTO"]
+];
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_TOOLTIP'] = "posa el LCD engegat/aturat";
+Blockly.Msg['GROVE_INOUT_LCD_INIT_HELPURL'] = "http://wiki.seeed.cc/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_INIT_TEXT'] = "INIT Grove LCD RGB";
+Blockly.Msg['GROVE_INOUT_LCD_INIT_TOOLTIP'] = "Inicialització del LCD";
+Blockly.Msg['GROVE_INOUT_LCD_CLEAR_HELPURL'] = "http://wiki.seeed.cc/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_CLEAR_TEXT'] = "CLEAR Grove LCD RGB";
+Blockly.Msg['GROVE_INOUT_LCD_CLEAR_TOOLTIP'] = "Esborrat de la pantalla LCD";
+Blockly.Msg['GROVE_INOUT_LCD_SCROLL_HELPURL'] = "http://wiki.seeed.cc/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_SCROLL_TEXT'] = "TEXT SCROLLING";
+Blockly.Msg['GROVE_INOUT_LCD_SCROLL_EFFECT'] = "Escrit amb un ";
+Blockly.Msg['GROVE_INOUT_LCD_SCROLL_EFFECT_FIELDDROPDOWN'] = [
+    ["desplaçament a l'esquerra", "LEFT"],
+    ["desplaçament a la dreta", "RIGHT"],
+    ["despalaçament automàtic", "AUTO"]
+];
+Blockly.Msg['GROVE_INOUT_LCD_SCROLL_TOOLTIP'] = "Tria el sentit del desplaçament del texte";
+Blockly.Msg['GROVE_INOUT_LCD_SET_CURSOR_TEXT'] = "SET CURSOR";
+Blockly.Msg['GROVE_INOUT_LCD_SET_CURSOR_TOOLTIP'] = "Posiciona el cursor a les coordenades especificades";
+Blockly.Msg['GROVE_INOUT_LCD_SET_CURSOR_HELPURL'] = "http://wiki.seeed.cc/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_SET_RGB_TEXT'] = "SET RGB Backlight";
+Blockly.Msg['GROVE_INOUT_LCD_SET_RGB_TOOLTIP'] = "Defineix el color de fons";
+Blockly.Msg['GROVE_INOUT_LCD_SET_RGB_HELPURL'] = "http://wiki.seeed.cc/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_DATA'] = "PRINT";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_INPUTDATA'] = "DATA";
+Blockly.Msg['GROVE_INOUT_LCD_WRITE_DATA'] = "WRITE";
+Blockly.Msg['GROVE_INOUT_LCD_WRITE_TOOLTIP'] = "Escriu el caràcter corresponent al codi ASCII especificat";
+Blockly.Msg['GROVE_INOUT_LCD_WRITE_HELPURL'] = "http://wiki.seeed.cc/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_WRITE_INPUTDATA'] = "DATA";
+Blockly.Msg['GROVE_INOUT_LCD_WRITE_FORMAT_FIELDDROPDOWN'] = [
+    ["0x", "0x"],
+    ["0b", "0b"],
+    ["decimal", "1"],
+    ["variable", "2"]
+];

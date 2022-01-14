@@ -114,8 +114,6 @@ Blockly.Blocks['board_serial_text_prompt_ext'] = {
             [Blockly.Msg['TEXT_PROMPT_TYPE_TEXT'], 'TEXT'],
             [Blockly.Msg['TEXT_PROMPT_TYPE_NUMBER'], 'NUMBER']
         ];
-        this.setHelpUrl(Blockly.Msg['TEXT_PROMPT_HELPURL']);
-        this.setStyle('board_blocks');
         // Assign 'this' to a variable for use in the closures below.
         var thisBlock = this;
         var dropdown = new Blockly.FieldDropdown(TYPES, function(newOp) {
@@ -129,6 +127,8 @@ Blockly.Blocks['board_serial_text_prompt_ext'] = {
                 Blockly.Msg['TEXT_PROMPT_TOOLTIP_TEXT'] :
                 Blockly.Msg['TEXT_PROMPT_TOOLTIP_NUMBER'];
         });
+        this.setHelpUrl(Blockly.Msg['TEXT_PROMPT_HELPURL']);
+        this.setStyle('board_blocks');
     },
     /**
      * Modify this block to have the correct output type.
@@ -477,14 +477,14 @@ Blockly.Blocks['board_serial_autoFormatCSV'] = {
      * @this {Blockly.Block}
      */
     init: function() {
-        this.setStyle('board_blocks');
         this.itemCount_ = 2;
         this.updateShape_();
+        this.setMutator(new Blockly.Mutator(['board_serial_autoFormatCSV_item']));
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setMutator(new Blockly.Mutator(['board_serial_autoFormatCSV_item']));
         this.setTooltip(Blockly.Msg['LISTS_CREATE_WITH_TOOLTIP']);
         this.setHelpUrl(Blockly.Msg['LISTS_CREATE_WITH_HELPURL']);
+        this.setStyle('board_blocks');
     },
     /**
      * Create XML to represent list inputs.
@@ -603,12 +603,12 @@ Blockly.Blocks['board_serial_autoFormatCSV_container'] = {
      * @this {Blockly.Block}
      */
     init: function() {
-        this.setStyle('board_blocks');
+        this.contextMenu = false;
         this.appendDummyInput()
             .appendField(Blockly.Msg['LISTS_CREATE_WITH_CONTAINER_TITLE_ADD']);
         this.appendStatementInput('STACK');
         this.setTooltip(Blockly.Msg['LISTS_CREATE_WITH_CONTAINER_TOOLTIP']);
-        this.contextMenu = false;
+        this.setStyle('board_blocks');
     }
 };
 
@@ -618,12 +618,12 @@ Blockly.Blocks['board_serial_autoFormatCSV_item'] = {
      * @this {Blockly.Block}
      */
     init: function() {
-        this.setStyle('board_blocks');
+        this.contextMenu = false;
         this.appendDummyInput()
             .appendField(Blockly.Msg['LISTS_CREATE_WITH_ITEM_TITLE']);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg['LISTS_CREATE_WITH_ITEM_TOOLTIP']);
-        this.contextMenu = false;
+        this.setStyle('board_blocks');
     }
 };

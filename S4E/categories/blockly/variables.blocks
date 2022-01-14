@@ -25,13 +25,13 @@ Blockly.Blocks['variables_get'] = {
      * @this Blockly.Block
      */
     init: function() {
+        this.contextMenuMsg_ = Blockly.Msg.VARIABLES_GET_CREATE_SET;
         this.appendDummyInput()
             .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'VAR');
         this.setOutput(true);
-        this.setStyle('variable_blocks');
         this.setTooltip(Blockly.Msg.VARIABLES_GET_TOOLTIP);
         this.setHelpUrl(Blockly.Msg.VARIABLES_GET_HELPURL);
-        this.contextMenuMsg_ = Blockly.Msg.VARIABLES_GET_CREATE_SET;
+        this.setStyle('variable_blocks');
     },
     contextMenuType_: 'variables_set',
     /**
@@ -78,16 +78,16 @@ Blockly.Blocks['variables_set'] = {
      * @this Blockly.Block
      */
     init: function() {
+        this.contextMenuMsg_ = Blockly.Msg.VARIABLES_SET_CREATE_GET;
         this.appendValueInput("VALUE")
             .appendField(Blockly.Msg["VARIABLES_SET"].substring(0, Blockly.Msg["VARIABLES_SET"].indexOf('%1')))
             .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'VAR')
-            .appendField(Blockly.Msg["VARIABLES_SET"].substring(Blockly.Msg["VARIABLES_SET"].indexOf('%1') + 2, Blockly.Msg["VARIABLES_SET"].indexOf('%2')))
-        this.setHelpUrl(Blockly.Msg.HELPURL);
-        this.setTooltip(Blockly.Msg.VARIABLES_SET_TOOLTIP);
-        this.setStyle('variable_blocks');
+            .appendField(Blockly.Msg["VARIABLES_SET"].substring(Blockly.Msg["VARIABLES_SET"].indexOf('%1') + 2, Blockly.Msg["VARIABLES_SET"].indexOf('%2')));
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.contextMenuMsg_ = Blockly.Msg.VARIABLES_SET_CREATE_GET;
+        this.setTooltip(Blockly.Msg.VARIABLES_SET_TOOLTIP);
+        this.setHelpUrl(Blockly.Msg.HELPURL);
+        this.setStyle('variable_blocks');
     },
     contextMenuType_: 'variables_get',
     customContextMenu: Blockly.Blocks['variables_get'].customContextMenu,
@@ -115,9 +115,9 @@ Blockly.Blocks['variables_set_type'] = {
                 Blockly.Types.getValidTypeArray()), 'VARIABLE_SETTYPE_TYPE');
         this.setInputsInline(true);
         this.setOutput(true);
-        this.setStyle('variable_blocks');
         this.setTooltip('Sets a value to a specific type');
         this.setHelpUrl('http://arduino.cc/en/Reference/HomePage');
+        this.setStyle('variable_blocks');
     },
     /**
      * Assigns a type to the block based on the selected type to cast.
@@ -132,16 +132,16 @@ Blockly.Blocks['variables_set_type'] = {
 
 Blockly.Blocks['variables_const'] = {
     init: function() {
+        this.contextMenuMsg_ = Blockly.Msg.VARIABLES_SET_CREATE_GET;
         this.appendValueInput("VAL_CONST")
             .appendField(Blockly.Msg.VARIABLES_SET_CONST)
             .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'VAR')
             .appendField(Blockly.Msg.VARIABLES_SET_CONST_AT);
-        this.setStyle('variable_blocks');
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg.VARIABLES_SET_CONST_TOOLTIP);
         this.setHelpUrl(Blockly.Msg.VARIABLES_SET_CONST_HELPURL);
-        this.contextMenuMsg_ = Blockly.Msg.VARIABLES_SET_CREATE_GET;
+        this.setStyle('variable_blocks');
     },
     contextMenuType_: 'variables_get',
     customContextMenu: Blockly.Blocks['variables_get'].customContextMenu,
@@ -152,6 +152,7 @@ Blockly.Blocks['variables_const'] = {
 
 Blockly.Blocks['variables_set_init'] = {
     init: function() {
+        this.contextMenuMsg_ = Blockly.Msg.VARIABLES_SET_CREATE_GET;
         this.appendValueInput("VALUE")
             .appendField(Blockly.Msg.VARIABLES_SET_INIT)
             .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'VAR')
@@ -160,10 +161,9 @@ Blockly.Blocks['variables_set_init'] = {
             .appendField(Blockly.Msg._AT);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setStyle('variable_blocks');
-        this.setHelpUrl(Blockly.Msg.VARIABLES_SET_INIT_HELPURL);
         this.setTooltip(Blockly.Msg.VARIABLES_SET_INIT_TOOLTIP);
-        this.contextMenuMsg_ = Blockly.Msg.VARIABLES_SET_CREATE_GET;
+        this.setHelpUrl(Blockly.Msg.VARIABLES_SET_INIT_HELPURL);
+        this.setStyle('variable_blocks');
     },
     contextMenuType_: 'variables_get',
     customContextMenu: Blockly.Blocks['variables_get'].customContextMenu,
@@ -193,8 +193,8 @@ Blockly.Blocks['variables_define'] = {
             //     .appendField(new Blockly.FieldTextInput(''), 'TEXT2');
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setStyle('variable_blocks');
         this.setTooltip(Blockly.Msg.ARDUINO_BASE_DEFINE_CONST_TOOLTIP);
         this.setHelpUrl(Blockly.Msg.ARDUINO_BASE_DEFINE_CONST_HELPURL);
+        this.setStyle('variable_blocks');
     }
 };

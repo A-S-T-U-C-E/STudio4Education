@@ -1,3 +1,45 @@
-Blockly.Blocks.grove_uart_wifi.getBlockType = function() {
+Blockly.Blocks.grove_uart_wifi_declare.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.grove_uart_wifi_server_declare.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.grove_uart_wifi_check_shield.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.grove_uart_wifi_begin.getBlockType = function() {
+    return Blockly.Types.NUMBER;
+};
+Blockly.Blocks.grove_uart_wifi_localIP.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.grove_uart_wifi_ssid.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.grove_uart_wifi_server_begin.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.grove_uart_wifi_server_available.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.grove_uart_wifi_server_client_object.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
+};
+Blockly.Blocks.grove_uart_wifi_server_client_connected.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
+};
+Blockly.Blocks.grove_uart_wifi_server_client_available.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
+};
+Blockly.Blocks.grove_uart_wifi_server_client_read.getBlockType = function() {
+    return Blockly.Types.CHARACTER;
+};
+Blockly.Blocks.grove_uart_wifi_server_client_stop.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.grove_uart_wifi_server_client_print.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.grove_uart_wifi_server_client_print_multilinetextinput.getBlockType = function() {
     return Blockly.Types.NULL;
 };

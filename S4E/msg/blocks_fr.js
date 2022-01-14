@@ -6,10 +6,6 @@
 
 'use strict';
 
-// goog.provide('Blockly.Msg["blocks_fr');
-
-// goog.require('Blockly.Msg');
-
 //text in blocks
 Blockly.Msg["FIELDDROPDOWN"] = [
     ["1 (état haut)", "HIGH"],
@@ -32,12 +28,12 @@ Blockly.Msg["FIELDDROPDOWN_ONOFF3"] = [
 Blockly.Msg["ARRAY_CREATE_EMPTY_TITLE"] = 'vide !';
 Blockly.Msg["tab_create"] = "Créer le bloc 'élément du tableau %1'";
 Blockly.Msg["tab_create_fix"] = "Créer le bloc 'mettre un élément du tableau %1 à'";
-Blockly.Msg["ARRAY_CREATE_WITH"] = "constituée de";
 Blockly.Msg["ARRAY_taille"] = "taille";
 Blockly.Msg["ARRAY_contenu"] = "qui contient";
 Blockly.Msg["ARRAY_dim"] = "taille de ";
 Blockly.Msg["ARRAY_index"] = "index";
 Blockly.Msg["_AT"] = "à";
+Blockly.Msg["ARRAY_CREATE_WITH"] = "constituée de";
 Blockly.Msg["ARRAY_CREATE_WITH_CONTAINER_TITLE_ADD"] = "liste ou tableau";
 Blockly.Msg["ARRAY_CREATE_WITH_CONTAINER_TOOLTIP"] = "ajoute, enlève, ou réordonne les éléments dans le bloc Tableau.";
 Blockly.Msg["ARRAY_CREATE_WITH_HELPURL"] = "";
@@ -84,8 +80,6 @@ Blockly.Msg["CONTROLS_SWITCH_TOOLTIP_2"] = "Si une valeur est vraie alors exécu
 Blockly.Msg["CONTROLS_SWITCH_TOOLTIP_3"] = "Si une valeur est vraie alors exécuter le premier bloc de commandes. Sinon exécuter le bloc suivant de commandes si la condition est vraie.";
 Blockly.Msg["CONTROLS_SWITCH_TOOLTIP_4"] = "Si une valeur est vraie alors exécuter le premier bloc de commandes. Sinon exécuter le bloc suivant de commandes si la condition est vraie.  Si aucune condition n'est vérifiée, alors faire le bloc de commandes par défaut.";
 Blockly.Msg["CONTROLS_SWITCH_VAR_TOOLTIP"] = "Déplacer le bloc de gauche pour l'ajouter.";
-Blockly.Msg["CONTROLS_SWITCH_CASEBREAK_TOOLTIP"] = "Ajoute un bloc de commandes sous condition";
-Blockly.Msg["CONTROLS_SWITCH_DEFAULT_TOOLTIP"] = "Ajoute un bloc d'actions par défaut";
 //blockly variables
 Blockly.Msg["VARIABLES_AS"] = "de type";
 Blockly.Msg["VARIABLES_SET_CONST"] = "constante";
@@ -165,7 +159,7 @@ Blockly.Msg["SERIAL_PRINT_HELPURL"] = "http://www.arduino.cc/en/Serial/Print";
 
 //IOT
 Blockly.Msg["IOT_LISTS_CREATE_WITH_ITEM_TITLE"] = "donnée";
-Blockly.Msg["IOT_LISTS_CREATE_EMPTY_HELPURL"] = "https://github.com/google/blockly/wiki/Lists#create-empty-list"; // untranslated
+Blockly.Msg["IOT_LISTS_CREATE_EMPTY_HELPURL"] = "https://github.com/google/blockly/wiki/Lists#create-empty-list";
 Blockly.Msg["IOT_LISTS_CREATE_EMPTY_TITLE"] = "ne peut pas renvoyer une liste vide";
 Blockly.Msg["IOT_LISTS_CREATE_EMPTY_TOOLTIP"] = "il faut rajouter des éléments pour envoyer une liste";
 Blockly.Msg["IOT_LISTS_CREATE_WITH_CONTAINER_TITLE_ADD"] = "liste";
@@ -254,12 +248,69 @@ Blockly.Msg["GROVE_INOUT_DHT_READ_PIN"] = "sur la broche n°";
 Blockly.Msg["GROVE_INOUT_DHT_READ_SENSOR"] = "mesurée par le capteur ";
 Blockly.Msg["GROVE_INOUT_DHT_READ_TOOLTIP"] = "les capteurs de type DHT comportent 2 parties : thermistance et capteur d'humidité.";
 Blockly.Msg["GROVE_INOUT_DHT_READ_TYPE"] = "valeur";
-Blockly.Msg["GROVE_LED_BAR_INPUT"] = "sur bar graphe";
-Blockly.Msg["GROVE_LED_BAR_PIN"] = "connecté broche";
-Blockly.Msg["GROVE_LED_BAR_LEVEL"] = "allumer la DEL n°";
-Blockly.Msg["GROVE_LED_BAR_ALL_OFF"] = "éteindre toutes les DEL";
-Blockly.Msg["GROVE_LED_BAR_TOGGLE"] = "allumer la DEL n°";
-Blockly.Msg["GROVE_LED_BAR_TOOLTIP1"] = "met à zéro toutes les DEL, le bar-graphe est éteint";
-Blockly.Msg["GROVE_LED_BAR_TOOLTIP2"] = "choisir les DEL allumées";
-Blockly.Msg["GROVE_LED_BAR_TOOLTIP3"] = "change l'état de la DEL, si allumée alors on l'éteint, et inversement";
-Blockly.Msg["GROVE_LED_BAR_HELPURL"] = "https://github.com/Seeed-Studio/Grove_LED_Bar";
+Blockly.Msg["GROVE_INOUT_LED_BAR_INPUT"] = "sur bar graphe";
+Blockly.Msg["GROVE_INOUT_LED_BAR_PIN"] = "connecté broche";
+Blockly.Msg["GROVE_INOUT_LED_BAR_LEVEL"] = "allumer la DEL n°";
+Blockly.Msg["GROVE_INOUT_LED_BAR_ALL_OFF"] = "éteindre toutes les DEL";
+Blockly.Msg["GROVE_INOUT_LED_BAR_TOGGLE"] = "allumer la DEL n°";
+Blockly.Msg["GROVE_INOUT_LED_BAR_TOOLTIP1"] = "met à zéro toutes les DEL, le bar-graphe est éteint";
+Blockly.Msg["GROVE_INOUT_LED_BAR_TOOLTIP2"] = "choisir les DEL allumées";
+Blockly.Msg["GROVE_INOUT_LED_BAR_TOOLTIP3"] = "change l'état de la DEL, si allumée alors on l'éteint, et inversement";
+Blockly.Msg["GROVE_INOUT_LED_BAR_HELPURL"] = "https://github.com/Seeed-Studio/Grove_LED_Bar";
+Blockly.Msg['GROVE_INOUT_LCD_RGB_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_HELPURL'] = "http://www.seeedstudio.com/wiki/index.php?title=GROVE_-_Starter_Bundle_V1.0b#Serial_LCD";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_TEXT'] = "écran LCD";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_INPUT1'] = "sur la broche";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_INPUT2'] = "écrire sur la ligne 1";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_INPUT3'] = "écrire sur la ligne 2";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_INPUT4'] = "pendant (ms)";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_TOOLTIP'] = "écris le texte sur un écran LCD série de 2 lignes sur 16 caractères";
+Blockly.Msg['GROVE_INOUT_LCD_POWER_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_POWER_TEXT'] = "écran LCD";
+Blockly.Msg['GROVE_INOUT_LCD_POWER_INPUT'] = "sur la broche";
+Blockly.Msg['GROVE_INOUT_LCD_POWER_STATE'] = "mettre sur";
+Blockly.Msg['GROVE_INOUT_LCD_POWER_TOOLTIP'] = "éclairage de l'écran LCD on/off";
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_TEXT'] = "écran LCD";
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_CLEAN'] = "effacer l'écran";
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_INPUT'] = "sur la broche";
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_EFFECT'] = "écrit avec l'effet";
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_EFFECT_EFFECT'] = [
+    ["défilement à gauche", "LEFT"],
+    ["défilement à droite", "RIGHT"],
+    ["défilement automatique", "AUTO"]
+];
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_TOOLTIP'] = "Turn LCD power on/off";
+Blockly.Msg['GROVE_INOUT_LCD_INIT_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_INIT_TEXT'] = "initialisation du LCD";
+Blockly.Msg['GROVE_INOUT_LCD_INIT_TOOLTIP'] = "initialisation du LCD";
+Blockly.Msg['GROVE_INOUT_LCD_CLEAR_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_CLEAR_TEXT'] = "nettoyage du LCD";
+Blockly.Msg['GROVE_INOUT_LCD_CLEAR_TOOLTIP'] = "effaçage de l'écran LCD";
+Blockly.Msg['GROVE_INOUT_LCD_SCROLL_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_SCROLL_TEXT'] = "défilement du texte";
+Blockly.Msg['GROVE_INOUT_LCD_SCROLL_EFFECT'] = "écrit avec l\'effet de ";
+Blockly.Msg['GROVE_INOUT_LCD_SCROLL_EFFECT_FIELDDROPDOWN'] = [
+    ["défilement à gauche", "LEFT"],
+    ["défilement à droite", "RIGHT"],
+    ["défilement automatique", "AUTO"]
+];
+Blockly.Msg['GROVE_INOUT_LCD_SCROLL_TOOLTIP'] = "choix du sens de défilement du texte";
+Blockly.Msg['GROVE_INOUT_LCD_SET_CURSOR_TEXT'] = "positionne le curseur";
+Blockly.Msg['GROVE_INOUT_LCD_SET_CURSOR_TOOLTIP'] = "positionne le curseur aux coordonnées spécifiées";
+Blockly.Msg['GROVE_INOUT_LCD_SET_CURSOR_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_SET_RGB_TEXT'] = "définir la couleur d\'arrière - plan ";
+Blockly.Msg['GROVE_INOUT_LCD_SET_RGB_TOOLTIP'] = "définit la couleur du rétro-éclairage";
+Blockly.Msg['GROVE_INOUT_LCD_SET_RGB_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_DATA'] = "affiche";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_INPUTDATA'] = "donnée";
+Blockly.Msg['GROVE_INOUT_LCD_WRITE_DATA'] = "écrit";
+Blockly.Msg['GROVE_INOUT_LCD_WRITE_TOOLTIP'] = "écrit le caractère correspondant au code ASCII spécifié";
+Blockly.Msg['GROVE_INOUT_LCD_WRITE_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_WRITE_INPUTDATA'] = "donnée";
+Blockly.Msg['GROVE_INOUT_LCD_WRITE_FORMAT_FIELDDROPDOWN'] = [
+    ["0x", "0x"],
+    ["0b", "0b"],
+    ["décimal", "1"],
+    ["variable", "2"]
+];

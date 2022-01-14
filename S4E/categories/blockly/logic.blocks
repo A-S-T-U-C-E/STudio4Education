@@ -603,8 +603,6 @@ Blockly.Blocks['controls_switch'] = {
      * @this Blockly.Block
      */
     init: function() {
-        this.setHelpUrl(Blockly.Msg.CONTROLS_SWITCH_HELPURL);
-        this.setStyle("logic_blocks");
         this.appendDummyInput()
             .appendField(Blockly.Msg.CONTROLS_SWITCH_VAR_TITLE)
             .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_GET_ITEM), 'SWVAR')
@@ -636,6 +634,8 @@ Blockly.Blocks['controls_switch'] = {
         });
         this.casebreakCount_ = 0;
         this.defaultCount_ = 0;
+        this.setHelpUrl(Blockly.Msg.CONTROLS_SWITCH_HELPURL);
+        this.setStyle("logic_blocks");
     },
     /**
      * Notification that a variable is renaming.
@@ -803,12 +803,12 @@ Blockly.Blocks['controls_switch_var'] = {
      * @this Blockly.Block
      */
     init: function() {
-        this.setStyle("logic_blocks");
+        this.contextMenu = false;
         this.appendDummyInput()
             .appendField(Blockly.Msg.CONTROLS_SWITCH_MSG_SWITCHVAR);
         this.appendStatementInput('STACK');
         this.setTooltip(Blockly.Msg.CONTROLS_SWITCH_VAR_TOOLTIP);
-        this.contextMenu = false;
+        this.setStyle("logic_blocks");
     }
 };
 
@@ -818,13 +818,13 @@ Blockly.Blocks['controls_case_break'] = {
      * @this Blockly.Block
      */
     init: function() {
-        this.setStyle("logic_blocks");
+        this.contextMenu = false;
         this.appendDummyInput()
             .appendField(Blockly.Msg.CONTROLS_SWITCH_MSG_CASEBREAK);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.CONTROLS_SWITCH_CASEBREAK_TOOLTIP);
-        this.contextMenu = false;
+        this.setStyle("logic_blocks");
     }
 };
 
@@ -834,11 +834,11 @@ Blockly.Blocks['controls_case_default'] = {
      * @this Blockly.Block
      */
     init: function() {
-        this.setStyle("logic_blocks");
+        this.contextMenu = false;
         this.appendDummyInput()
             .appendField(Blockly.Msg.CONTROLS_SWITCH_MSG_DEFAULT);
         this.setPreviousStatement(true);
         this.setTooltip(Blockly.Msg.CONTROLS_SWITCH_DEFAULT_TOOLTIP);
-        this.contextMenu = false;
+        this.setStyle("logic_blocks");
     }
 };

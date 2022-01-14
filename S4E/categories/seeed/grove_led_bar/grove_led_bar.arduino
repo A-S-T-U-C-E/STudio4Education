@@ -38,7 +38,7 @@ Blockly.Arduino['grove_led_bar_setLevel'] = function(block) {
     return code;
 };
 
-Blockly.Arduino['grove_led_bar_toggle'] = function(block) {
+Blockly.Arduino['GROVE_INOUT_LED_BAR_TOGGLE'] = function(block) {
     var dropdown_pin = block.getFieldValue('PIN');
     var level = Blockly.Arduino.valueToCode(block, 'LEVEL', Blockly.Arduino.ORDER_ATOMIC);
 

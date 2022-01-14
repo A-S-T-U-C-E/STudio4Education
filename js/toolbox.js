@@ -233,36 +233,3 @@ Code.fullToolbox = function() {
     document.getElementById("fullToolboxButton").classList.toggle("active");
     Blockly.getMainWorkspace().resize();
 };
-
-function OnOverUnderFlowChanged(event) {
-    if (document.getElementsByClassName("blocklyToolboxDiv")[0].style.width == '37px') {
-        document.getElementsByClassName("blocklyToolboxDiv")[0].style.width = '54px';
-        Code.mainWorkspace.getToolbox().width_ = 54;
-    } else
-    if (document.getElementsByClassName("blocklyToolboxDiv")[0].style.width == '54px') {
-        document.getElementsByClassName("blocklyToolboxDiv")[0].style.width = '37px';
-        Code.mainWorkspace.getToolbox().width_ = 37;
-    }
-    toolboxSize = Code.mainWorkspace.getToolbox().getWidth();
-    Blockly.getMainWorkspace().resize();
-}
-
-function OnOverflowChanged(event) {
-    if (!firstShrink_)
-        if (document.getElementsByClassName("blocklyToolboxDiv")[0].style.width == '37px') {
-            document.getElementsByClassName("blocklyToolboxDiv")[0].style.width = '54px';
-            toolboxSize = Code.mainWorkspace.getToolbox().getWidth();
-            Code.mainWorkspace.getToolbox().width_ = 54;
-            Blockly.getMainWorkspace().resize();
-        }
-    firstShrink_ = false;
-}
-
-function OnUnderflowChanged(event) {
-    if (document.getElementsByClassName("blocklyToolboxDiv")[0].style.width == '54px') {
-        document.getElementsByClassName("blocklyToolboxDiv")[0].style.width = '37px';
-        toolboxSize = Code.mainWorkspace.getToolbox().getWidth();
-        Code.mainWorkspace.getToolbox().width_ = 37;
-        Blockly.getMainWorkspace().resize();
-    }
-}

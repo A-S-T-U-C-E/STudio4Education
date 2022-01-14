@@ -40,8 +40,8 @@ Blockly.Blocks['grove_dht_sensor_read'] = {
             .appendField(new Blockly.FieldTextInput('', Blockly.Arduino.pinDigitalValidator), 'PIN');
         this.setInputsInline(true);
         this.setOutput(true, 'Number');
-        this.setStyle('grove_blocks');
         this.setTooltip(Blockly.Msg.GROVE_INOUT_DHT_READ_TOOLTIP);
         this.setHelpUrl(Blockly.Msg.GROVE_INOUT_DHT_HELPURL);
+        this.setStyle('grove_blocks');
     }
 };

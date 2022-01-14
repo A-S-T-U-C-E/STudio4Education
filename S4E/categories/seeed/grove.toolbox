@@ -10,6 +10,7 @@ var toolbox_GROVE = {
         "contents": [{
             "kind": "category",
             "name": "%{BKY_CAT_GROVE_IN}",
+            "toolboxitemid": "GROVE_IN",
             "level": "1",
             "levels": "1,2,3",
             "categorystyle": "grove_category",
@@ -20,6 +21,7 @@ var toolbox_GROVE = {
         }, {
             "kind": "category",
             "name": "%{BKY_CAT_GROVE_OUT}",
+            "toolboxitemid": "GROVE_OUT",
             "level": "1",
             "levels": "1,2,3",
             "categorystyle": "grove_category",
@@ -31,17 +33,123 @@ var toolbox_GROVE = {
                 "type": "grove_led_bar_setLevel"
             }, {
                 "kind": "block",
-                "type": "grove_led_bar_toggle"
+                "type": "GROVE_INOUT_LED_BAR_TOGGLE"
             }]
         }, {
             "kind": "category",
             "name": "%{BKY_CAT_GROVE_COMM}",
+            "toolboxitemid": "GROVE_COMM",
+            "level": "3",
+            "levels": "3",
+            "categorystyle": "grove_category",
+            "contents": [{
+                "kind": "block",
+                "type": "grove_uart_wifi_declare"
+            }, {
+                "kind": "block",
+                "type": "grove_uart_wifi_server_declare"
+            }, {
+                "kind": "block",
+                "type": "grove_uart_wifi_check_shield"
+            }, {
+                "kind": "block",
+                "type": "grove_uart_wifi_begin"
+            }, {
+                "kind": "block",
+                "type": "grove_uart_wifi_localIP"
+            }, {
+                "kind": "block",
+                "type": "grove_uart_wifi_ssid"
+            }, {
+                "kind": "block",
+                "type": "grove_uart_wifi_server_begin"
+            }, {
+                "kind": "block",
+                "type": "grove_uart_wifi_server_available"
+            }, {
+                "kind": "block",
+                "type": "grove_uart_wifi_server_client_object"
+            }, {
+                "kind": "block",
+                "type": "grove_uart_wifi_server_client_connected"
+            }, {
+                "kind": "block",
+                "type": "grove_uart_wifi_server_client_available"
+            }, {
+                "kind": "block",
+                "type": "grove_uart_wifi_server_client_read"
+            }, {
+                "kind": "block",
+                "type": "grove_uart_wifi_server_client_stop"
+            }, {
+                "kind": "block",
+                "type": "grove_uart_wifi_server_client_print"
+            }, {
+                "kind": "block",
+                "type": "grove_uart_wifi_server_client_print_multilinetextinput"
+            }]
+        }, {
+            "kind": "category",
+            "name": "%{BKY_CAT_GROVE_LCD}",
+            "toolboxitemid": "GROVE_LCD",
             "level": "1",
             "levels": "1,2,3",
             "categorystyle": "grove_category",
             "contents": [{
                 "kind": "block",
-                "type": "grove_uart_wifi"
+                "level": "1",
+                "levels": "1,2,3",
+                "type": "grove_lcd_rgb_print"
+            }, {
+                "kind": "block",
+                "level": "1",
+                "levels": "1,2,3",
+                "type": "grove_lcd_rgb_power"
+            }, {
+                "kind": "block",
+                "level": "1",
+                "levels": "1,2,3",
+                "type": "grove_lcd_rgb_clean"
+            }, {
+                "kind": "block",
+                "level": "1",
+                "levels": "1,2,3",
+                "type": "grove_lcd_rgb_effect"
+            }, {
+                "kind": "block",
+                "level": "2",
+                "levels": "2,3",
+                "type": "grove_lcd_rgb_init"
+            }, {
+                "kind": "block",
+                "level": "2",
+                "levels": "2,3",
+                "type": "grove_lcd_rgb_clear"
+            }, {
+                "kind": "block",
+                "level": "2",
+                "levels": "2,3",
+                "type": "grove_lcd_rgb_scrolling"
+            }, {
+                "kind": "block",
+                "level": "2",
+                "levels": "2,3",
+                "type": "grove_lcd_rgb_set_cursor"
+            }, {
+                "kind": "block",
+                "level": "2",
+                "levels": "2,3",
+                "type": "grove_lcd_rgb_set_RGB"
+            }, {
+                "kind": "block",
+                "level": "2",
+                "levels": "2,3",
+                "type": "grove_lcd_rgb_print_data"
+            }, {
+                "kind": "block",
+                "level": "2",
+                "levels": "2,3",
+                "type": "grove_lcd_rgb_write_data"
             }]
         }]
     }]

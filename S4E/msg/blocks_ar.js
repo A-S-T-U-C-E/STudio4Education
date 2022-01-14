@@ -6,10 +6,6 @@
 
 'use strict';
 
-// goog.provide('Blockly.Msg["blocks_en');
-
-// goog.require('Blockly.Msg');
-
 //text in blocks
 Blockly.Msg["FIELDDROPDOWN"] = [
     ["HIGH", "HIGH"],
@@ -32,13 +28,12 @@ Blockly.Msg["FIELDDROPDOWN_ONOFF3"] = [
 Blockly.Msg["ARRAY_CREATE_EMPTY_TITLE"] = "فارغ";
 Blockly.Msg["tab_create"] = "'إنشاء الكتلة 'عنصر للصفيف %1'";
 Blockly.Msg["tab_create_fix"] = "إنشاء الكتلة 'تعيين عنصر الصفيف %1 على'";
-Blockly.Msg["ARRAY_CREATE_WITH"] = "مكونة من";
-Blockly.Msg["ARRAY_taille"]
-"] = سعة";
+Blockly.Msg["ARRAY_taille"] = "سعة";
 Blockly.Msg["ARRAY_contenu"] = "الذي يحتوي على";
 Blockly.Msg["ARRAY_dim"] = "حجم";
 Blockly.Msg["ARRAY_index"] = "مؤشر";
 Blockly.Msg["_AT"] = "إلى";
+Blockly.Msg["ARRAY_CREATE_WITH"] = "مكونة من";
 Blockly.Msg["ARRAY_CREATE_WITH_CONTAINER_TITLE_ADD"] = "قائمة أو جدول";
 Blockly.Msg["ARRAY_CREATE_WITH_CONTAINER_TOOLTIP"] = "إضافة أو إزالة أو إعادة ترتيب العناصر في كتلة الصفيف.";
 Blockly.Msg["ARRAY_CREATE_WITH_HELPURL"] = "";
@@ -85,8 +80,6 @@ Blockly.Msg["CONTROLS_SWITCH_TOOLTIP_2"] = "If a value is true, then do the firs
 Blockly.Msg["CONTROLS_SWITCH_TOOLTIP_3"] = "If the first value is true, then do the first block of statements. Otherwise, if the second value is true, do the second block of statements.";
 Blockly.Msg["CONTROLS_SWITCH_TOOLTIP_4"] = "If the first value is true, then do the first block of statements. Otherwise, if the second value is true, do the second block of statements. If none of the values are true, do the last block of statements.";
 Blockly.Msg["CONTROLS_SWITCH_VAR_TOOLTIP"] = "Drag from the left into here to add";
-Blockly.Msg["CONTROLS_SWITCH_CASEBREAK_TOOLTIP"] = "Add additional case break do";
-Blockly.Msg["CONTROLS_SWITCH_DEFAULT_TOOLTIP"] = "Add optional default action";
 //blockly variables
 Blockly.Msg["VARIABLES_AS"] = "من النوع";
 Blockly.Msg["VARIABLES_SET_CONST"] = "الثابت %1 مثبت على %2";
@@ -164,6 +157,18 @@ Blockly.Msg["SERIAL_PRINT_CONTENT"] = "send the data to the serial port:";
 Blockly.Msg["SERIAL_PRINT_TOOLTIP"] = "sends data over the serial port for sruvaillance by the monitor in ASCII";
 Blockly.Msg["SERIAL_PRINT_HELPURL"] = "http://www.arduino.cc/en/Serial/Print";
 
+//IOT
+Blockly.Msg["IOT_LISTS_CREATE_WITH_ITEM_TITLE"] = "data";
+Blockly.Msg["IOT_LISTS_CREATE_EMPTY_HELPURL"] = "https://github.com/google/blockly/wiki/Lists#create-empty-list";
+Blockly.Msg["IOT_LISTS_CREATE_EMPTY_TITLE"] = "cannot send blank list";
+Blockly.Msg["IOT_LISTS_CREATE_EMPTY_TOOLTIP"] = "need elements to create a list";
+Blockly.Msg["IOT_LISTS_CREATE_WITH_CONTAINER_TITLE_ADD"] = "list";
+Blockly.Msg["IOT_LISTS_CREATE_WITH_CONTAINER_TOOLTIP"] = "add, remove, or sort elements in list";
+Blockly.Msg["IOT_LISTS_CREATE_WITH_HELPURL"] = "https://github.com/google/blockly/wiki/Lists#create-list-with";
+Blockly.Msg["IOT_LISTS_CREATE_WITH_INPUT_WITH"] = "create list with";
+Blockly.Msg["IOT_LISTS_CREATE_WITH_ITEM_TOOLTIP"] = "add an element to list";
+Blockly.Msg["IOT_LISTS_CREATE_WITH_TOOLTIP"] = "create a list with any elements";
+
 //Arduino base servo category blocks
 Blockly.Msg["SERVO_MOVE_TOOLTIP"] = "rotation possible between 0 ~ 180 degrees";
 Blockly.Msg["SERVO_MOVE_HELPURL"] = "http://www.arduino.cc/playground/ComponentLib/servo";
@@ -235,20 +240,77 @@ Blockly.Msg["DHT_TEXT3"] = "wired on pin#";
 
 // SEEED GROVE
 
-Blockly.Msg["GROVE_INOUT_DHT_HELPURL"] =  "https://github.com/winlinvip/SimpleDHT" ;
-Blockly.Msg["GROVE_INOUT_DHT_READ_C"] =  "درجة الحرارة درجة مئوية" ;
-Blockly.Msg["GROVE_INOUT_DHT_READ_F"] =  "درجة الحرارة °F" ;
-Blockly.Msg["GROVE_INOUT_DHT_READ_H"] =  "% الرطوبة";
-Blockly.Msg["GROVE_INOUT_DHT_READ_PIN"] =  "على الدبوس رقم";
-Blockly.Msg["GROVE_INOUT_DHT_READ_SENSOR"] =  "تم القياس بواسطة المستشعر" ;
-Blockly.Msg["GROVE_INOUT_DHT_READ_TOOLTIP"] =  "مستشعرات نوع DHT تتكون من جزأين: الثرمستور (الحرارة) ومستشعر الرطوبة.";
-Blockly.Msg["GROVE_INOUT_DHT_READ_TYPE"] =  "قيمة";
-Blockly.Msg["GROVE_LED_BAR_INPUT"] = "on bar graphe";
-Blockly.Msg["GROVE_LED_BAR_PIN"] = "pin #";
-Blockly.Msg["GROVE_LED_BAR_LEVEL"] = "light LED n°";
-Blockly.Msg["GROVE_LED_BAR_ALL_OFF"] = "switch off all LED";
-Blockly.Msg["GROVE_LED_BAR_TOGGLE"] = "toggle state of LED n°";
-Blockly.Msg["GROVE_LED_BAR_TOOLTIP1"] = "select how many LED on bargraphe are ON";
-Blockly.Msg["GROVE_LED_BAR_TOOLTIP2"] = "choose which LED to switch on";
-Blockly.Msg["GROVE_LED_BAR_TOOLTIP3"] = "toggle state of LED n°";
-Blockly.Msg["GROVE_LED_BAR_HELPURL"] = "";
+Blockly.Msg["GROVE_INOUT_DHT_HELPURL"] = "https://github.com/winlinvip/SimpleDHT";
+Blockly.Msg["GROVE_INOUT_DHT_READ_C"] = "درجة الحرارة درجة مئوية";
+Blockly.Msg["GROVE_INOUT_DHT_READ_F"] = "درجة الحرارة °F";
+Blockly.Msg["GROVE_INOUT_DHT_READ_H"] = "% الرطوبة";
+Blockly.Msg["GROVE_INOUT_DHT_READ_PIN"] = "على الدبوس رقم";
+Blockly.Msg["GROVE_INOUT_DHT_READ_SENSOR"] = "تم القياس بواسطة المستشعر";
+Blockly.Msg["GROVE_INOUT_DHT_READ_TOOLTIP"] = "مستشعرات نوع DHT تتكون من جزأين: الثرمستور (الحرارة) ومستشعر الرطوبة.";
+Blockly.Msg["GROVE_INOUT_DHT_READ_TYPE"] = "قيمة";
+Blockly.Msg["GROVE_INOUT_LED_BAR_INPUT"] = "on bar graphe";
+Blockly.Msg["GROVE_INOUT_LED_BAR_PIN"] = "pin #";
+Blockly.Msg["GROVE_INOUT_LED_BAR_LEVEL"] = "light LED n°";
+Blockly.Msg["GROVE_INOUT_LED_BAR_ALL_OFF"] = "switch off all LED";
+Blockly.Msg["GROVE_INOUT_LED_BAR_TOGGLE"] = "toggle state of LED n°";
+Blockly.Msg["GROVE_INOUT_LED_BAR_TOOLTIP1"] = "select how many LED on bargraphe are ON";
+Blockly.Msg["GROVE_INOUT_LED_BAR_TOOLTIP2"] = "choose which LED to switch on";
+Blockly.Msg["GROVE_INOUT_LED_BAR_TOOLTIP3"] = "toggle state of LED n°";
+Blockly.Msg["GROVE_INOUT_LED_BAR_HELPURL"] = "https://github.com/Seeed-Studio/Grove_LED_Bar";
+Blockly.Msg['GROVE_INOUT_LCD_RGB_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_HELPURL'] = "http://www.seeedstudio.com/wiki/index.php?title=GROVE_-_Starter_Bundle_V1.0b#Serial_LCD";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_TEXT'] = "شاشة ال.سي.دي";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_INPUT1'] = "على الدبوس";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_INPUT2'] = "الكتابة على السطر 1";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_INPUT3'] = "الكتابة على السطر 2";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_INPUT4'] = "أثناء (ميلي ثانية)";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_TOOLTIP'] = "كتابة النص على شاشة ال.سي.دي تسلسلية من سطرين بـ 16 حرفًا";
+Blockly.Msg['GROVE_INOUT_LCD_POWER_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_POWER_TEXT'] = "شاشة ال.سي.دي";
+Blockly.Msg['GROVE_INOUT_LCD_POWER_INPUT'] = "على الدبوس";
+Blockly.Msg['GROVE_INOUT_LCD_POWER_STATE'] = "حالة التشغيل";
+Blockly.Msg['GROVE_INOUT_LCD_POWER_TOOLTIP'] = "تشغيل / إيقاف إضاءة شاشة ال.سي.دي";
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_TEXT'] = "شاشة ال.سي.دي";
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_CLEAN'] = "حذف الشاشة";
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_INPUT'] = "على الدبوس";
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_EFFECT'] = "أكتب مع تأثير";
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_EFFECT_EFFECT'] = [
+    ["التمرير لليسار", "LEFT"],
+    ["التمرير لليمين", "RIGHT"],
+    ["التمرير التلقائي", "AUTO"]
+];
+Blockly.Msg['GROVE_INOUT_LCD_EFFECT_TOOLTIP'] = "تشغيل / إيقاف تشغيل طاقة ال.سي.دي";
+Blockly.Msg['GROVE_INOUT_LCD_INIT_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_INIT_TEXT'] = "تهيئة Grove LCD RGB";
+Blockly.Msg['GROVE_INOUT_LCD_INIT_TOOLTIP'] = "تهيئة شاشة ال.سي.دي";
+Blockly.Msg['GROVE_INOUT_LCD_CLEAR_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_CLEAR_TEXT'] = "مسح Grove LCD RGB";
+Blockly.Msg['GROVE_INOUT_LCD_CLEAR_TOOLTIP'] = "مسح شاشة ال.سي.دي";
+Blockly.Msg['GROVE_INOUT_LCD_SCROLL_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_SCROLL_TEXT'] = "تمرير النص";
+Blockly.Msg['GROVE_INOUT_LCD_SCROLL_EFFECT'] = "أكتب مع";
+Blockly.Msg['GROVE_INOUT_LCD_SCROLL_EFFECT_FIELDDROPDOWN'] = [
+    ["التمرير لليسار", "LEFT"],
+    ["التمرير لليمين", "RIGHT"],
+    ["التمرير التلقائي", "AUTO"]
+];
+Blockly.Msg['GROVE_INOUT_LCD_SCROLL_TOOLTIP'] = "اختيار اتجاه تمرير النص";
+Blockly.Msg['GROVE_INOUT_LCD_SET_CURSOR_TEXT'] = "إجعل المؤشر في";
+Blockly.Msg['GROVE_INOUT_LCD_SET_CURSOR_TOOLTIP'] = "ضع المؤشر في الإحداثيات المحددة";
+Blockly.Msg['GROVE_INOUT_LCD_SET_CURSOR_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_SET_RGB_TEXT'] = "إجعل أر.جي.بي الخلفية";
+Blockly.Msg['GROVE_INOUT_LCD_SET_RGB_TOOLTIP'] = "يحدد لون الإضاءة الخلفية";
+Blockly.Msg['GROVE_INOUT_LCD_SET_RGB_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_DATA'] = "طباعة";
+Blockly.Msg['GROVE_INOUT_LCD_PRINT_INPUTDATA'] = "DATA";
+Blockly.Msg['GROVE_INOUT_LCD_WRITE_DATA'] = "الكتابة";
+Blockly.Msg['GROVE_INOUT_LCD_WRITE_TOOLTIP'] = "كتابة الحرف المطابق لرمز ASCII المحدد";
+Blockly.Msg['GROVE_INOUT_LCD_WRITE_HELPURL'] = "https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/";
+Blockly.Msg['GROVE_INOUT_LCD_WRITE_INPUTDATA'] = "DATA";
+Blockly.Msg['GROVE_INOUT_LCD_WRITE_FORMAT_FIELDDROPDOWN'] = [
+    ["0x", "0x"],
+    ["0b", "0b"],
+    ["عشري", "1"],
+    ["متغير", "2"]
+];

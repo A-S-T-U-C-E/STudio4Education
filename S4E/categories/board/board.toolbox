@@ -21,6 +21,7 @@ var toolbox_board = {
             {
                 "kind": "category",
                 "name": "%{BKY_CAT_ONBOARD_IO}",
+                "toolboxitemid": "ONBOARD_IO",
                 "level": "2",
                 "levels": [1, 2, 3],
                 "categorystyle": "board_category",
@@ -73,6 +74,7 @@ var toolbox_board = {
             {
                 "kind": "category",
                 "name": "%{BKY_CAT_ONBOARD_TIME}",
+                "toolboxitemid": "ONBOARD_TIME",
                 "level": "2",
                 "levels": [1, 2, 3],
                 "categorystyle": "board_category",
@@ -84,6 +86,7 @@ var toolbox_board = {
             {
                 "kind": "category",
                 "name": "%{BKY_CAT_ONBOARD_SERIAL}",
+                "toolboxitemid": "ONBOARD_SERIAL",
                 "level": "2",
                 "levels": [1, 2, 3],
                 "categorystyle": "board_category",
@@ -132,6 +135,7 @@ var toolbox_board = {
             {
                 "kind": "category",
                 "name": "%{BKY_CAT_ONBOARD_IOT}",
+                "toolboxitemid": "ONBOARD_IOT",
                 "level": "3",
                 "levels": "2,3",
                 "categorystyle": "board_category",

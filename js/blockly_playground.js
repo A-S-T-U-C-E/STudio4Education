@@ -208,10 +208,15 @@ function setOnOffLine() {
             document.getElementById('btn_fake_max').style.display = 'inline';
             document.getElementById('btn_fake_close').style.display = 'inline';
             document.getElementById('fullScreenButton').style.display = 'none';
-        } else document.getElementById('fullScreenButton').style.display = 'inline';
-        document.getElementById('verifyButton').disabled = false;
-        document.getElementById('serialButton').disabled = false;
-        document.getElementById('uploadButton').disabled = false;
+            document.getElementById('verifyButton').disabled = false;
+            document.getElementById('uploadButton').disabled = false;
+        } else {
+            document.getElementById('fullScreenButton').style.display = 'inline';
+            document.getElementById('verifyButton').disabled = true;
+            document.getElementById('uploadButton').disabled = true;
+        }
+        if (!navigator.serial)
+            document.getElementById('serialButton').disabled = true;
         document.getElementById('serialMenu').disabled = false;
         // not same button if in Electron or browser, if local nodejs watches events
         document.getElementById('wiringButton').setAttribute('onclick', '');
@@ -231,7 +236,8 @@ function setOnOffLine() {
     } else {
         document.getElementById('fullScreenButton').style.display = 'inline';
         document.getElementById('verifyButton').disabled = true;
-        document.getElementById('serialButton').disabled = true;
+        if (!navigator.serial)
+            document.getElementById('serialButton').disabled = true;
         document.getElementById('uploadButton').disabled = true;
         document.getElementById('serialMenu').disabled = true;
         // not same button if in Electron or browser, if web just webpages launched in browser
@@ -256,6 +262,7 @@ function setOnOffLine() {
     }
     if (!navigator.serial)
         document.getElementById('serialMonitorButton').disabled = true;
+    else document.getElementById('serialMonitorButton').disabled = false;
     // disable elements not yet finished - server menu
     // document.getElementById('papyrusConnect').disabled = true;
     // document.getElementById('ArrowheadConfiguration_auto').disabled = true;

@@ -85,6 +85,14 @@
     transition: all .5s;
 }
 
+#lateral-panel-setup-bloc {
+    background-image: url('../S4E/media/circuit_animation.gif');
+    background-size: 350px;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: bottom;
+}
+
 #lateral-panel-setup-input:checked~#lateral-panel-setup-label {
     right: 200%;
     background: #FFCC00;

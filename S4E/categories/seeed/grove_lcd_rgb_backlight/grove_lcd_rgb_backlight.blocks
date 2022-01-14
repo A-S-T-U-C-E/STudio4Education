@@ -1,0 +1,215 @@
+/**
+ * @license
+ * Copyright 2020 Sébastien CANET
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+/**
+ * @fileoverview DHT temperature & humidity sensors blocks for Blockly.
+ * @author scanet@libreduc.cc (Sébastien Canet)
+ */
+
+'use strict';
+
+goog.provide('Blockly.Constants.grove_lcd_rgb_backlight');
+
+goog.require('Blockly');
+goog.require('Blockly.Blocks');
+goog.require('Blockly.Types');
+
+var grove_lcd_rgb_backlight_MediaFolder = "./S4E/categories/seeed/grove_lcd_rgb_backlight/";
+
+Blockly.Blocks['grove_lcd_rgb_print'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg['GROVE_INOUT_LCD_PRINT_TEXT'])
+            .appendField(new Blockly.FieldImage(grove_lcd_rgb_backlight_MediaFolder + 'grove_lcd_rgb_backlight.png', Code.imageSize, Code.imageSize));
+        this.appendValueInput("TEXT")
+            .setCheck('String')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg['GROVE_INOUT_LCD_PRINT_INPUT2']);
+        this.appendValueInput("TEXT2")
+            .setCheck('String')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg['GROVE_INOUT_LCD_PRINT_INPUT3']);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg['GROVE_INOUT_LCD_PRINT_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['GROVE_INOUT_LCD_RGB_HELPURL']);
+        this.setStyle('grove_blocks');
+    }
+};
+
+//grove lcd power on/off
+Blockly.Blocks['grove_lcd_rgb_power'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg['GROVE_INOUT_LCD_POWER_TEXT'])
+            .appendField(new Blockly.FieldImage(grove_lcd_rgb_backlight_MediaFolder + 'grove_lcd_rgb_backlight.png', Code.imageSize, Code.imageSize));
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg['GROVE_INOUT_LCD_POWER_STATE'])
+            .appendField(new Blockly.FieldDropdown(Blockly.Msg.FIELDDROPDOWN_ONOFF), "STAT");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg['GROVE_INOUT_LCD_POWER_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['GROVE_INOUT_LCD_RGB_HELPURL']);
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_lcd_rgb_clean'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg['GROVE_INOUT_LCD_EFFECT_CLEAN'])
+            .appendField(new Blockly.FieldImage(grove_lcd_rgb_backlight_MediaFolder + 'grove_lcd_rgb_backlight.png', Code.imageSize, Code.imageSize));
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg['GROVE_INOUT_LCD_EFFECT_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['GROVE_INOUT_LCD_RGB_HELPURL']);
+        this.setStyle('grove_blocks');
+    }
+};
+
+//scroll left/right/no scroll/blink/noblink
+Blockly.Blocks['grove_lcd_rgb_effect'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg['GROVE_INOUT_LCD_EFFECT_TEXT'])
+            .appendField(new Blockly.FieldImage(grove_lcd_rgb_backlight_MediaFolder + 'grove_lcd_rgb_backlight.png', Code.imageSize, Code.imageSize));
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg['GROVE_INOUT_LCD_EFFECT_EFFECT'])
+            .appendField(new Blockly.FieldDropdown(Blockly.Msg['GROVE_INOUT_LCD_EFFECT_EFFECT_EFFECT']), "STAT");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg['GROVE_INOUT_LCD_EFFECT_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['GROVE_INOUT_LCD_RGB_HELPURL']);
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_lcd_rgb_init'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.GROVE_INOUT_LCD_INIT_TEXT)
+            .appendField(new Blockly.FieldImage(grove_lcd_rgb_backlight_MediaFolder + 'grove_lcd_rgb_backlight.png', Code.imageSize, Code.imageSize));
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.GROVE_INOUT_LCD_INIT_TOOLTIP);
+        this.setHelpUrl(Blockly.Msg.GROVE_INOUT_LCD_INIT_HELPURL);
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_lcd_rgb_clear'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.GROVE_INOUT_LCD_CLEAR_TEXT)
+            .appendField(new Blockly.FieldImage(grove_lcd_rgb_backlight_MediaFolder + 'grove_lcd_rgb_backlight.png', Code.imageSize, Code.imageSize));
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.GROVE_INOUT_LCD_CLEAR_TOOLTIP);
+        this.setHelpUrl(Blockly.Msg.GROVE_INOUT_LCD_CLEAR_HELPURL);
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_lcd_rgb_scrolling'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.GROVE_INOUT_LCD_SCROLL_TEXT)
+            .appendField(new Blockly.FieldImage(grove_lcd_rgb_backlight_MediaFolder + 'grove_lcd_rgb_backlight.png', Code.imageSize, Code.imageSize));
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.GROVE_INOUT_LCD_SCROLL_EFFECT)
+            .appendField(new Blockly.FieldDropdown(Blockly.Msg.GROVE_INOUT_LCD_SCROLL_EFFECT_FIELDDROPDOWN), "EFFECT");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.GROVE_INOUT_LCD_SCROLL_TOOLTIP);
+        this.setHelpUrl(Blockly.Msg.GROVE_INOUT_LCD_SCROLL_HELPURL);
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_lcd_rgb_set_cursor'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.GROVE_INOUT_LCD_SET_CURSOR_TEXT)
+            .appendField(new Blockly.FieldImage(grove_lcd_rgb_backlight_MediaFolder + 'grove_lcd_rgb_backlight.png', Code.imageSize, Code.imageSize));
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("Ligne")
+            .appendField(new Blockly.FieldTextInput("0"), "Line");
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("Colonne")
+            .appendField(new Blockly.FieldTextInput("0"), "Row");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.GROVE_INOUT_LCD_SET_CURSOR_TOOLTIP);
+        this.setHelpUrl(Blockly.Msg.GROVE_INOUT_LCD_SET_CURSOR_HELPURL);
+        this.setStyle('grove_blocks');
+    }
+};
+
+
+Blockly.Blocks['grove_lcd_rgb_set_RGB'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.GROVE_INOUT_LCD_SET_RGB_TEXT)
+            .appendField(new Blockly.FieldImage(grove_lcd_rgb_backlight_MediaFolder + 'grove_lcd_rgb_backlight.png', Code.imageSize, Code.imageSize));
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("Red")
+            .appendField(new Blockly.FieldTextInput("255"), "Red");
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("Green")
+            .appendField(new Blockly.FieldTextInput("255"), "Green");
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("Blue")
+            .appendField(new Blockly.FieldTextInput("255"), "Blue");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.GROVE_INOUT_LCD_SET_RGB_TOOLTIP);
+        this.setHelpUrl(Blockly.Msg.GROVE_INOUT_LCD_SET_RGB_HELPURL);
+        this.setStyle('grove_blocks');
+    }
+};
+
+
+Blockly.Blocks['grove_lcd_rgb_print_data'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.GROVE_INOUT_LCD_PRINT_DATA)
+            .appendField(new Blockly.FieldImage(grove_lcd_rgb_backlight_MediaFolder + 'grove_lcd_rgb_backlight.png', Code.imageSize, Code.imageSize));
+        this.appendValueInput("DATA")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.GROVE_INOUT_LCD_PRINT_INPUTDATA);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.GROVE_INOUT_LCD_PRINT_TOOLTIP);
+        this.setHelpUrl(Blockly.Msg.GROVE_INOUT_LCD_PRINT_HELPURL);
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_lcd_rgb_write_data'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.GROVE_INOUT_LCD_WRITE_DATA)
+            .appendField(new Blockly.FieldImage(grove_lcd_rgb_backlight_MediaFolder + 'grove_lcd_rgb_backlight.png', Code.imageSize, Code.imageSize));
+        this.appendDummyInput()
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.GROVE_INOUT_LCD_WRITE_INPUTDATA)
+            .appendField(new Blockly.FieldDropdown(Blockly.Msg.GROVE_INOUT_LCD_WRITE_FORMAT_FIELDDROPDOWN), "FORMAT")
+            .appendField(new Blockly.FieldTextInput(""), "DATA");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.GROVE_INOUT_LCD_WRITE_TOOLTIP);
+        this.setHelpUrl(Blockly.Msg.GROVE_INOUT_LCD_WRITE_HELPURL);
+        this.setStyle('grove_blocks');
+    }
+};

@@ -58,8 +58,8 @@ Blockly.Blocks['DHT_read'] = {
             .appendField(Blockly.Msg.DHT_TEXT3)
             .appendField(new Blockly.FieldTextInput('11'), 'DHT_pin');
         this.setOutput(true, 'Boolean');
-        this.setStyle('DHT_blocks');
         this.setTooltip(Blockly.Msg.DS18B20_TOOLTIP1);
         this.setHelpUrl(Blockly.Msg.DS18B20_HELPURL);
+        this.setStyle('DHT_blocks');
     }
 };

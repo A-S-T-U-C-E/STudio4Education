@@ -28,9 +28,9 @@ Blockly.Blocks['base_define_bloc'] = {
             .appendField("define");
         this.appendStatementInput('DO')
             .appendField(Blockly.LANG_CONTROLS_REPEAT_INPUT_DO);
-        this.setStyle('board_blocks');
         this.setTooltip(Blockly.Msg.ARDUINO_BASE_DEFINE_TOOLTIP);
         this.setHelpUrl(Blockly.Msg.ARDUINO_BASE_DEFINE_HELPURL);
+        this.setStyle('board_blocks');
     }
 };
 
@@ -41,9 +41,9 @@ Blockly.Blocks['board_base_setup'] = {
         this.appendStatementInput("SETUP")
             .setCheck(null);
         this.setInputsInline(false);
-        this.setStyle('board_blocks');
         this.setTooltip('The setup() function is called when a sketch starts.\nUse it to initialize variables, pin modes, start using libraries, etc.\nThe setup() function will only run once, after each powerup or reset of the Arduino board.');
         this.setHelpUrl('https://www.arduino.cc/reference/en/language/structure/sketch/setup/');
+        this.setStyle('board_blocks');
     }
 };
 
@@ -54,21 +54,21 @@ Blockly.Blocks['board_base_loop'] = {
         this.appendStatementInput("LOOP")
             .setCheck(null);
         this.setInputsInline(false);
-        this.setStyle('board_blocks');
         this.setTooltip('the loop() function does precisely what its name suggests, and loops consecutively');
         this.setHelpUrl('https://www.arduino.cc/reference/en/language/structure/sketch/loop/');
+        this.setStyle('board_blocks');
     }
 };
 
 Blockly.Blocks['board_base_inout_buildin_led'] = {
     init: function() {
-        this.setHelpUrl(Blockly.Msg.ARDUINO_INOUT_BUILDIN_LED_HELPURL);
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARDUINO_INOUT_BUILDIN_LED_INPUT)
             .appendField(new Blockly.FieldDropdown(Blockly.Msg.FIELDDROPDOWN), 'STAT');
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg.ARDUINO_INOUT_BUILDIN_LED_TOOLTIP);
+        this.setHelpUrl(Blockly.Msg.ARDUINO_INOUT_BUILDIN_LED_HELPURL);
         this.setStyle('board_blocks');
     }
 };

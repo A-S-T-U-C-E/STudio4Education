@@ -3,7 +3,7 @@ var toolbox_arrowheadframework = {
     "contents": [{
         "kind": "category",
         "name": "%{BKY_CAT_ARROWHEADFRAMEWORK}",
-        "toolboxitemid": "AHF",
+        "toolboxitemid": "ARROWHEADFRAMEWORK",
         "level": "3",
         "levels": "3",
         "categorystyle": "arrowheadframework_category",
@@ -13,6 +13,7 @@ var toolbox_arrowheadframework = {
         "contents": [{
                 "kind": "category",
                 "name": "%{BKY_CAT_ARROWHEADFRAMEWORK_ESP}",
+                "toolboxitemid": "ARROWHEADFRAMEWORK_ESP",
                 "level": "3",
                 "levels": "3",
                 "categorystyle": "arrowheadframework_category",
@@ -39,6 +40,7 @@ var toolbox_arrowheadframework = {
             {
                 "kind": "category",
                 "name": "%{BKY_CAT_ARROWHEADFRAMEWORK_WIFI}",
+                "toolboxitemid": "ARROWHEADFRAMEWORK_WIFI",
                 "level": "3",
                 "levels": "3",
                 "categorystyle": "arrowheadframework_category",
@@ -50,6 +52,7 @@ var toolbox_arrowheadframework = {
             {
                 "kind": "category",
                 "name": "%{BKY_CAT_ARROWHEADFRAMEWORK_RJ}",
+                "toolboxitemid": "ARROWHEADFRAMEWORK_RJ",
                 "level": "3",
                 "levels": "3",
                 "categorystyle": "arrowheadframework_category",

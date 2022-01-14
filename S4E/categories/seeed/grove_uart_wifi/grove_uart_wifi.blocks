@@ -17,7 +17,236 @@ goog.require('Blockly');
 goog.require('Blockly.Blocks');
 goog.require('Blockly.Types');
 
-var grove_uart_wifiMediaFolder = "./S4E/categories/seeed/grove_uart_wifi";
+var grove_uart_wifiMediaFolder = "./S4E/categories/seeed/grove_uart_wifi/";
 
-Blockly.Blocks['grove_uart_wifi'] = {
+Blockly.Blocks['grove_uart_wifi_declare'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("define WiFi UART v2")
+            .appendField(new Blockly.FieldImage(grove_uart_wifiMediaFolder + "grove_uart_wifi.png", Code.imageSize, Code.imageSize));
+        this.appendValueInput("Rx")
+            .setCheck("Number")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("Rx");
+        this.appendValueInput("Tx")
+            .setCheck("Number")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("Tx");
+        this.appendValueInput("NAME")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("Name of communication object");
+        // this.appendDummyInput("")
+        //     .setAlign(Blockly.ALIGN_RIGHT)
+        //     .appendField("Name of communication object")
+        //     .appendField(new Blockly.FieldInstance('Servo', 'softCOMM', false, false, false), 'SOFTSERIAL_NAME');
+        this.appendValueInput("SPEED")
+            .setCheck("Number")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("Communication object's speed");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip("");
+        this.setHelpUrl("https://wiki.seeedstudio.com/Grove-UART_Wifi_V2/");
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_uart_wifi_server_declare'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(grove_uart_wifiMediaFolder + "grove_uart_wifi_wifi.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField("start WiFi server");
+        this.appendValueInput("SERIAL_NAME")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("serial name");
+        this.appendValueInput("NAME")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("server name");
+        this.appendValueInput("PORT")
+            .setCheck("Number")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("server port");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip("");
+        this.setHelpUrl("https://github.com/bportaluri/WiFiEsp");
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_uart_wifi_check_shield'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(grove_uart_wifiMediaFolder + "grove_uart_wifi_wifi.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField("check if WiFi board works");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip("verify presence and info back on serial, if not, loop forever");
+        this.setHelpUrl("https://github.com/bportaluri/WiFiEsp");
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_uart_wifi_begin'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(grove_uart_wifiMediaFolder + "grove_uart_wifi_wifi.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField("status of WiFi connection on WPA/WPA2 network");
+        this.appendValueInput("SSID")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("ssid");
+        this.appendValueInput("PASS")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("password");
+        this.setOutput(true, null);
+        this.setTooltip("verify presence and info back on serial, if not, loop forever");
+        this.setHelpUrl("https://github.com/bportaluri/WiFiEsp");
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_uart_wifi_localIP'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(grove_uart_wifiMediaFolder + "grove_uart_wifi_wifi.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField("local IP address");
+        this.setOutput(true, null);
+        this.setTooltip("WiFi shield's local IP address");
+        this.setHelpUrl("https://github.com/bportaluri/WiFiEsp");
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_uart_wifi_ssid'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(grove_uart_wifiMediaFolder + "grove_uart_wifi_wifi.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField("SSID of the network");
+        this.setOutput(true, null);
+        this.setTooltip("SSID of the network you're attached to");
+        this.setHelpUrl("https://github.com/bportaluri/WiFiEsp");
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_uart_wifi_server_begin'] = {
+    init: function() {
+        this.appendValueInput("NAME")
+            .setCheck("String")
+            .appendField(new Blockly.FieldImage(grove_uart_wifiMediaFolder + "grove_uart_wifi_wifi.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField("launch web server, named");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip("launch webserver which name was declared in previous block");
+        this.setHelpUrl("https://github.com/bportaluri/WiFiEsp");
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_uart_wifi_server_available'] = {
+    init: function() {
+        this.appendValueInput("NAME")
+            .setCheck("String")
+            .appendField(new Blockly.FieldImage(grove_uart_wifiMediaFolder + "grove_uart_wifi_wifi.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField("listen for available client for server");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip("listen for incoming clients");
+        this.setHelpUrl("https://github.com/bportaluri/WiFiEsp");
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_uart_wifi_server_client_object'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(grove_uart_wifiMediaFolder + "grove_uart_wifi_wifi.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField("client has data available for reading");
+        this.setOutput(true, "Boolean");
+        this.setTooltip("check if client has data available for reading, false if not");
+        this.setHelpUrl("https://github.com/bportaluri/WiFiEsp");
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_uart_wifi_server_client_connected'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(grove_uart_wifiMediaFolder + "grove_uart_wifi_wifi.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField("client is connected to server");
+        this.setOutput(true, "Boolean");
+        this.setTooltip("check if client is connected, boolean");
+        this.setHelpUrl("https://github.com/bportaluri/WiFiEsp");
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_uart_wifi_server_client_available'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(grove_uart_wifiMediaFolder + "grove_uart_wifi_wifi.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField("client is available to send datas");
+        this.setOutput(true, "Boolean");
+        this.setTooltip("check if client is available, ready to send datas, boolean");
+        this.setHelpUrl("https://github.com/bportaluri/WiFiEsp");
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_uart_wifi_server_client_read'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(grove_uart_wifiMediaFolder + "grove_uart_wifi_wifi.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField("datas from server's client");
+        this.setOutput(true, "String");
+        this.setTooltip("get datas from client connected to server");
+        this.setHelpUrl("https://github.com/bportaluri/WiFiEsp");
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_uart_wifi_server_client_stop'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(grove_uart_wifiMediaFolder + "grove_uart_wifi_wifi.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField("stop client connection");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip("stop connection of client");
+        this.setHelpUrl("https://github.com/bportaluri/WiFiEsp");
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_uart_wifi_server_client_print'] = {
+    init: function() {
+        this.appendValueInput("NAME")
+            .setCheck("String")
+            .appendField(new Blockly.FieldImage(grove_uart_wifiMediaFolder + "grove_uart_wifi_wifi.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField("send to client HTML code");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip("HTML response to client, line by line if needed");
+        this.setHelpUrl("https://github.com/bportaluri/WiFiEsp");
+        this.setStyle('grove_blocks');
+    }
+};
+
+Blockly.Blocks['grove_uart_wifi_server_client_print_multilinetextinput'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(grove_uart_wifiMediaFolder + "grove_uart_wifi_wifi.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField("send to client HTML code")
+            .appendField(new Blockly.FieldMultilineInput('default text\n with newline character'), 'NAME');
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip("HTML response to client, multiline");
+        this.setHelpUrl("https://github.com/bportaluri/WiFiEsp");
+        this.setStyle('grove_blocks');
+    }
 };

@@ -30,9 +30,9 @@ Blockly.Blocks['ds18b20_search'] = {
             .appendField(Blockly.Msg.DS18B20_INPUT2)
             .appendField(new Blockly.FieldTextInput('1'), 'ds18b20_address');
         this.setOutput(true, 'Boolean');
-        this.setStyle('ds18b20_blocks');
         this.setTooltip(Blockly.Msg.DS18B20_TOOLTIP1);
         this.setHelpUrl(Blockly.Msg.DS18B20_HELPURL);
+        this.setStyle('ds18b20_blocks');
     }
 };
 
@@ -46,7 +46,7 @@ Blockly.Blocks['ds18b20_temp'] = {
             .appendField(new Blockly.FieldTextInput('1'), 'ds18b20_address');
         this.setOutput(true, 'float');
         this.setTooltip(Blockly.Msg.DS18B20_TOOLTIP2);
-        this.setStyle('ds18b20_blocks');
         this.setHelpUrl(Blockly.Msg.DS18B20_HELPURL);
+        this.setStyle('ds18b20_blocks');
     }
 };

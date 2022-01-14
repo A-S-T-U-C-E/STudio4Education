@@ -24,7 +24,6 @@ Code.setBoard = function() {
     if (!boardId) {
         boardId = "none";
     }
-    document.getElementById('boardMenu').value = boardId;
     profile.default = profile[boardId][0];
     // change tooltip & info when a board is selected
     if (boardId != "none") {
@@ -63,6 +62,13 @@ Code.changeBoard = function() {
         search = search.replace(/\?/, '?board=' + newBoard + '&');
     }
     profile["default"] = profile[newBoard][0];
+
+    if (newBoard !== 'none')
+        document.getElementById("lateral-panel-setup-bloc").style.backgroundImage = "url('./S4E/media/boards/" + newBoard + ".png')";
+    else
+        document.getElementById("lateral-panel-setup-bloc").style.backgroundImage = "url('./S4E/media/circuit_animation.gif')";
+    sessionStorage.setItem('board', newBoard);
+    sessionStorage.setItem('boardIndex', boardMenu.selectedIndex);
     document.getElementById("boardDescriptionSelector").selectedIndex = newBoard;
     document.getElementById("boardDescriptionSelector").value = newBoard;
     document.getElementById("boardSelected_span").textContent = profile["default"].description;

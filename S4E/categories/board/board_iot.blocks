@@ -27,14 +27,14 @@ Blockly.Blocks['board_iot_autoFormatWebsocket'] = {
      * @this {Blockly.Block}
      */
     init: function() {
-        this.setStyle('board_blocks');
         this.itemCount_ = 2;
         this.updateShape_();
+        this.setMutator(new Blockly.Mutator(['board_iot_autoFormatWebsocket_item']));
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setMutator(new Blockly.Mutator(['board_iot_autoFormatWebsocket_item']));
         this.setTooltip(Blockly.Msg['IOT_LISTS_CREATE_WITH_TOOLTIP']);
         this.setHelpUrl(Blockly.Msg['IOT_LISTS_CREATE_WITH_HELPURL']);
+        this.setStyle('board_blocks');
     },
     /**
      * Create XML to represent list inputs.
@@ -153,12 +153,12 @@ Blockly.Blocks['board_iot_autoFormatWebsocket_container'] = {
      * @this {Blockly.Block}
      */
     init: function() {
-        this.setStyle('board_blocks');
+        this.contextMenu = false;
         this.appendDummyInput()
             .appendField(Blockly.Msg['IOT_LISTS_CREATE_WITH_CONTAINER_TITLE_ADD']);
         this.appendStatementInput('STACK');
         this.setTooltip(Blockly.Msg['IOT_LISTS_CREATE_WITH_CONTAINER_TOOLTIP']);
-        this.contextMenu = false;
+        this.setStyle('board_blocks');
     }
 };
 
@@ -168,12 +168,12 @@ Blockly.Blocks['board_iot_autoFormatWebsocket_item'] = {
      * @this {Blockly.Block}
      */
     init: function() {
-        this.setStyle('board_blocks');
+        this.contextMenu = false;
         this.appendDummyInput()
             .appendField(Blockly.Msg['IOT_LISTS_CREATE_WITH_ITEM_TITLE']);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg['IOT_LISTS_CREATE_WITH_ITEM_TOOLTIP']);
-        this.contextMenu = false;
+        this.setStyle('board_blocks');
     }
 };
