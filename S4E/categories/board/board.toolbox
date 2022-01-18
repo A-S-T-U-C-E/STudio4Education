@@ -104,6 +104,10 @@ var toolbox_board = {
                     },
                     {
                         "kind": "block",
+                        "type": "board_serial_write"
+                    },
+                    {
+                        "kind": "block",
                         "type": "board_serial_available"
                     },
                     {

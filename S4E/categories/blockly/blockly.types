@@ -75,6 +75,11 @@ Blockly.Blocks.math_constant.getBlockType = function() {
 Blockly.Blocks.math_number_property.getBlockType = function() {
     return Blockly.Types.BOOLEAN;
 };
+Blockly.Blocks.math_change.getBlockType = function() {
+    var numString = this.getFieldValue('DELTA');
+    console.log(numString)
+    return Blockly.Types.identifyNumber(numString);
+};
 Blockly.Blocks.math_round.getBlockType = function() {
     return Blockly.Types.NUMBER;
 };
@@ -141,6 +146,7 @@ Blockly.Blocks.text_charAt.getBlockType = function() {
 Blockly.Blocks.text_getSubstring.getBlockType = function() {
     return Blockly.Types.TEXT;
 };
+
 Blockly.Blocks.text_changeCase.getBlockType = function() {
     return Blockly.Types.TEXT;
 };

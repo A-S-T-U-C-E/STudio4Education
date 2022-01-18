@@ -420,6 +420,7 @@ flex.content_wrapper {
 #content_code {
     min-width: 0.5px;
     background-color: #ffffff;
+    overflow: auto;
 }
 
 #content_pre_code_large {
@@ -439,12 +440,19 @@ flex.content_wrapper {
     background-color: #FDBEBE;
 }
 
-#content_serial {
+#content_console {
     background: #000000;
     color: rgba(29, 147, 47, 1);
     width: 100%;
-    min-height: 0.5px;
+    min-height: 1px;
     overflow-y: auto;
+}
+
+#content_console_buttons {
+    float: right;
+    position: relative;
+    right: 10px;
+    top: 10px;
 }
 
 #resizer_h {

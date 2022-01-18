@@ -34,6 +34,12 @@ Blockly.Arduino['board_serial_print'] = function(block) {
     return code;
 };
 
+Blockly.Arduino['board_serial_write'] = function(block) {
+    var content = Blockly.Arduino.valueToCode(block, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0';
+    var code = 'Serial.write(' + content + ');\n';
+    return code;
+};
+
 Blockly.Arduino['board_serial_available'] = function(block) {
     var code = 'Serial.available()';
     return [code, Blockly.Arduino.ORDER_ATOMIC];

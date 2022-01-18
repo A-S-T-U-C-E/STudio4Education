@@ -154,6 +154,10 @@ var toolbox_standard = {
         "contents": [{
             "levels": [1, 2, 3],
             "kind": "block",
+            "type": "text_no_quote"
+        }, {
+            "levels": [1, 2, 3],
+            "kind": "block",
             "type": "text"
         }, {
             "levels": [1, 2, 3],

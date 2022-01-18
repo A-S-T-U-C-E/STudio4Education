@@ -21,10 +21,11 @@
     display: flex;
 }
 
-.flex-items-serial {
+
+/* .flex-items-serial {
     flex-grow: 1;
     flex-shrink: 0;
-}
+} */
 
 .column {
     flex-direction: row;

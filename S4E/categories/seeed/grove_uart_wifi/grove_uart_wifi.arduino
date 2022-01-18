@@ -33,8 +33,9 @@ Blockly.Arduino['grove_uart_wifi_server_declare'] = function(block) {
     var value_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
     value_name = value_name.replace('"', '').replace('"', '');
     var value_port = Blockly.Arduino.valueToCode(block, 'PORT', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.includes_['grove_uart_wifi_server_' + value_port] = '#include "WiFiEsp.h"';
+    Blockly.Arduino.includes_['grove_uart_wifi_server_' + value_port] = '#include <WiFiEsp.h>';
     Blockly.Arduino.definitions_['grove_uart_wifi_server_' + value_port] = 'WiFiEspServer ' + value_name + '(' + value_port + ');';
+    Blockly.Arduino.definitions_['grove_uart_wifi_server_status'] = 'byte status = WL_IDLE_STATUS;     // the Wifi radio\'s status;';
     Blockly.Arduino.setups_['grove_uart_wifi_server_' + value_port] = 'WiFi.init(&' + value_serial_name + ');';
     return '';
 }
@@ -49,11 +50,12 @@ Blockly.Arduino['grove_uart_wifi_check_shield'] = function(block) {
 
 Blockly.Arduino['grove_uart_wifi_begin'] = function(block) {
     var value_ssid = Blockly.Arduino.valueToCode(block, 'SSID', Blockly.Arduino.ORDER_ATOMIC);
-    value_ssid = value_ssid.replace('"', '').replace('"', '');
     var value_pass = Blockly.Arduino.valueToCode(block, 'PASS', Blockly.Arduino.ORDER_ATOMIC);
-    value_pass = value_pass.replace('"', '').replace('"', '');
-    var code = 'WiFi.begin("' + value_ssid + '", "' + value_pass + '")';
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
+    var code = 'while (status != WL_CONNECTED) {\n' +
+        '  Serial.println("Connect to WPA/WPA2 network");\n' +
+        '  status = WiFi.begin(' + value_ssid + ', ' + value_pass + ');\n' +
+        '}\n';
+    return code;
 }
 
 Blockly.Arduino['grove_uart_wifi_localIP'] = function(block) {
@@ -107,6 +109,7 @@ Blockly.Arduino['grove_uart_wifi_server_client_stop'] = function(block) {
 
 Blockly.Arduino['grove_uart_wifi_server_client_print'] = function(block) {
     var value_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
+    value_name = value_name.replaceAll(/\\\\/g, '\\');
     var code = 'client.print(' + value_name + ');\n';
     return code;
 };
@@ -114,6 +117,7 @@ Blockly.Arduino['grove_uart_wifi_server_client_print'] = function(block) {
 Blockly.Arduino['grove_uart_wifi_server_client_print_multilinetextinput'] = function(block) {
     var value_name = block.getFieldValue('NAME');
     value_name = '"' + value_name.replaceAll('\n', '" + "') + '"';
+    value_name = value_name.replaceAll(/\\\\/g, '\\');
     var code = 'client.print(' + value_name + ');\n';
     return code;
 };

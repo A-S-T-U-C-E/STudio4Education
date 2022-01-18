@@ -67,7 +67,7 @@ var MSG = {
         'Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">sur Github</a>.</br>' +
         'Un bug ? Merci d\'écrire ici : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">sur Github</a>.</br>' +
         'Remerciements & bibliothèques : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki/Thanks">sur Github</a>.</p>' +
-        '<p style="text-align: center;">v0.9.0 - BSD3 license - Sébastien CANET' +
+        '<p style="text-align: center;">v0.9.1 - BSD3 license - Sébastien CANET' +
         '<p style="text-align: center;"><a href = (https://www.paypal.com/fr/cgi-bin/webscr?cmd=_flow&SESSION=o8z3KNFl16Tjlxhk1mBekCcRsG_3_NDe0CfWh8b1vfSYIbMxJnwa92YwM3y&dispatch=5885d80a13c0db1f8e263663d3faee8d4fe1dd75ca3bd4f11d72275b28239088">Meci de faire un don pour soutenir les logiciels libres !</br><img src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif" alt="Paypal"/></a></p>' +
         '<p style="text-align: left;">PROFS FRANCAIS & ASSOCIATIONS</br>' +
         'vous pouvez aussi me demander une facture légale pour que votre établissement me fasse un <i>don</i> officiel par virement bancaire.</br>' +
@@ -103,6 +103,8 @@ var MSG = {
     editorDiffToggle_span: "comparer les modifications du code",
     copyCodeButton_span: "copier le code dans le presse papiers",
     openCodeButton_span: "ouvrir l'éditeur de code",
+    copyConsoleButton_span: "copier la console dans le presse papiers",
+    cleanConsoleButton_span: "vider la console",
     //lateral panel
     highlightSpan: "surbrillance des blocs déposés",
     minimapSpan: "(dés)active la mini carte",

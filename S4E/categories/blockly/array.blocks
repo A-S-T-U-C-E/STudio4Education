@@ -254,9 +254,15 @@ Blockly.Blocks["Array_create"] = {
     init: function() {
         var prog = window.localStorage.prog;
         if (prog != "python") {
-            this.appendDummyInput().appendField(Blockly.Msg.ARRAY_CREATE + Blockly.Msg.ARRAY_ARRAY).appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_GET_ITEM), 'VAR').appendField(Blockly.Msg.VARIABLES_AS).appendField(new Blockly.FieldDropdown(Blockly.Types.getValidTypeArray()), "type");
+            this.appendDummyInput()
+                .appendField(Blockly.Msg.ARRAY_CREATE + Blockly.Msg.ARRAY_ARRAY)
+                .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_GET_ITEM), 'VAR')
+                .appendField(Blockly.Msg.VARIABLES_AS)
+                .appendField(new Blockly.FieldDropdown(Blockly.Types.getValidTypeArray()), "type");
         } else {
-            this.appendDummyInput().appendField(Blockly.Msg.ARRAY_CREATE + Blockly.Msg.ARRAY_ARRAY).appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_GET_ITEM), 'VAR');
+            this.appendDummyInput()
+                .appendField(Blockly.Msg.ARRAY_CREATE + Blockly.Msg.ARRAY_ARRAY)
+                .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_GET_ITEM), 'VAR');
         }
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)

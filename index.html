@@ -311,7 +311,7 @@
                 <pre id="content_editor_code" class="content_pre_code_large"></pre>
                 <pre id="content_diffEditor_code" class="content_pre_code_large"></pre>
                 <div id="content_code_buttons">
-                    <button id="copyCodeButton" class="iconButtons" onclick="Code.copyToClipboard()">
+                    <button id="copyCodeButton" class="iconButtons" onclick="Code.copyCodeToClipboard()">
                         <span id="copyCodeButton_span" class="far fa-copy">
                         </span>
                     </button>
@@ -332,11 +332,19 @@
                 <span id="portSelected_span"> </span>
             </div>
         </flex-resizer>
-        <flex-item id="content_serial">
-            <div id="content_serial_div">
-                <pre id="compiler-output-text" style="display: none;"></pre>
-                <pre id="serial-output-text" style="display: none;"></pre>
+        <flex-item id="content_console" style="flex: 0 1">
+            <div id="content_console_buttons">
+                <button id="copyConsoleButton" class="iconButtons" onclick="Code.copyConsoleToClipboard()">
+                    <span id="copyConsoleButton_span" class="far fa-copy">
+                    </span>
+                </button>
+                <button id="cleanConsoleButton" class="iconButtons" onclick="Code.cleanConsole()">
+                    <span id="cleanConsoleButton_span" class="fas fa-eraser">
+                    </span>
+                </button>
             </div>
+            <pre id="compiler-output-text"></pre>
+            <pre id="serial-output-text"></pre>
         </flex-item>
     </flex>
     <div id="helpModal" class="helpModal">

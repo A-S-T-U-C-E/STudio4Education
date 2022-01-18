@@ -69,6 +69,9 @@ Blockly.Blocks.board_serial_printfor.getBlockType = function() {
 Blockly.Blocks.board_serial_print.getBlockType = function() {
     return Blockly.Types.NULL;
 };
+Blockly.Blocks.board_serial_write.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
 Blockly.Blocks.board_serial_available.getBlockType = function() {
     return Blockly.Types.BOOLEAN;
 };

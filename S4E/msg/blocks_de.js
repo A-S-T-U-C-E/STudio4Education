@@ -102,6 +102,11 @@ Blockly.Msg["ARD_TYPE_UNDEF"] = "Undefiniert";
 Blockly.Msg["ARD_TYPE_UNS_NUMBER"] = "Vorzeichenlose Zahl";
 Blockly.Msg["ARD_TYPE_UNS_LONG"] = "Vorzeichenlose Lang-Zahl";
 Blockly.Msg["ARD_TYPE_VOLATILE"] = "Numerische Ganzzahl";
+//blockly instances
+Blockly.Msg["ARD_NEW_INSTANCE"] = "Neuer Instanzname";
+Blockly.Msg["ARD_RENAME_INSTANCE"] = "Instanzname umbenennen";
+Blockly.Msg["ARD_NEW_INSTANCE_TITLE"] = "Neuer Name:";
+Blockly.Msg["ARD_RENAME_INSTANCE_TITLE"] = "Benenne alle '%1' Instanzen um zu:";
 
 //Arduino base cateory blocks
 Blockly.Msg["ARDUINO_INOUT_BUILDIN_LED_HELPURL"] = "http://arduino.cc/en/Reference/DigitalWrite";
@@ -155,7 +160,10 @@ Blockly.Msg["SERIAL_READSTRINGUNTIL_CONTENT"] = "Lese Zeichen bis nichts mehr ko
 Blockly.Msg["SERIAL_READSTRINGUNTIL_TOOLTIP"] = "Liest Zeichen von der seriellen Schnittstelle in einen Zwischenpuffer als Zeichenkette";
 Blockly.Msg["SERIAL_PRINT_CONTENT"] = "send the data to the serial port:";
 Blockly.Msg["SERIAL_PRINT_TOOLTIP"] = "sends data over the serial port for sruvaillance by the monitor in ASCII";
-Blockly.Msg["SERIAL_PRINT_HELPURL"] = "http://www.arduino.cc/en/Serial/Print";
+Blockly.Msg["SERIAL_PRINT_HELPURL"] = "https://www.arduino.cc/reference/en/language/functions/communication/serial/print/";
+Blockly.Msg["SERIAL_WRITE_CONTENT"] = "writes to the serial port binary data";
+Blockly.Msg["SERIAL_WRITE_TOOLTIP"] = "this data is sent as a byte or series of bytes; to send the characters representing the digits of a number use the print() function instead.";
+Blockly.Msg["SERIAL_WRITE_HELPURL"] = "https://www.arduino.cc/reference/en/language/functions/communication/serial/write/";
 
 //IOT
 Blockly.Msg["IOT_LISTS_CREATE_WITH_ITEM_TITLE"] = "data";
@@ -250,7 +258,7 @@ Blockly.Msg["GROVE_INOUT_DHT_READ_TOOLTIP"] = "The DHT sensors are made of two p
 Blockly.Msg["GROVE_INOUT_DHT_READ_TYPE"] = "Content";
 Blockly.Msg["GROVE_INOUT_LED_BAR_INPUT"] = "on bar graphe";
 Blockly.Msg["GROVE_INOUT_LED_BAR_PIN"] = "pin #";
-Blockly.Msg["GROVE_INOUT_LED_BAR_LEVEL"] = "light LED n°";
+Blockly.Msg["GROVE_INOUT_LED_BAR_LEVEL"] = "light LED to level";
 Blockly.Msg["GROVE_INOUT_LED_BAR_ALL_OFF"] = "switch off all LED";
 Blockly.Msg["GROVE_INOUT_LED_BAR_TOGGLE"] = "toggle state of LED n°";
 Blockly.Msg["GROVE_INOUT_LED_BAR_TOOLTIP1"] = "select how many LED on bargraphe are ON";

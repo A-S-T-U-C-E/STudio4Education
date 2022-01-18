@@ -1,10 +1,13 @@
 /**
- * @license Licensed under the Apache License, Version 2.0 (the "License"):
- *          http://www.apache.org/licenses/LICENSE-2.0
+ * @license
+ * Copyright 2012 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
  * @fileoverview Utility functions for handling Instances.
+ * @author Carlosperate (ardublockly)
+ * @author scanet@libreduc.cc (Sébastien Canet)
  */
 'use strict';
 
@@ -38,16 +41,17 @@ Blockly.Instances.allInstancesOf = function(instanceType, workspace) {
         var blockInstances = blocks[i].getInstances(instanceType);
         for (var j = 0; j < blockInstances.length; j++) {
             var instanceName = blockInstances[j];
+            var id = instanceName.toLowerCase().replace(/\s/g, '');
             // Instance name may be null if the block is only half-built.
             if (instanceName) {
-                instanceHash[instanceName.toLowerCase()] = instanceName;
+                instanceHash[id] = instanceName;
             }
         }
     }
     // Flatten the hash into a list.
     var instanceList = [];
-    for (var name in instanceHash) {
-        instanceList.push(instanceHash[name]);
+    for (var id in instanceHash) {
+        instanceList.push(instanceHash[id]);
     }
     return instanceList;
 };
@@ -75,8 +79,7 @@ Blockly.Instances.getAnyInstanceOf = function(instanceType, workspace) {
 };
 
 /** Indicates if the given instance is present in the workspace. */
-Blockly.Instances.isInstancePresent = function(
-    instanceName, instanceType, block) {
+Blockly.Instances.isInstancePresent = function(instanceName, instanceType, block) {
     var blocks;
     if (block.workspace && block.workspace.getAllBlocks) {
         blocks = block.workspace.getAllBlocks();
@@ -121,7 +124,15 @@ Blockly.Instances.renameInstance = function(oldName, newName, instanceType, work
  * @return {string} New instance name.
  */
 Blockly.Instances.generateUniqueName = function(workspace) {
-    var combinedList = workspace.getAllVariables().concat(Blockly.Instances.allInstances(workspace));
+    var combinedList = [];
+    var nameList = workspace.getAllVariables();
+    nameList.forEach(element => {
+        combinedList.push(element.name);
+    });
+    nameList = Blockly.Instances.allInstances(workspace);
+    nameList.forEach(element => {
+        combinedList.push(element);
+    });
     var newName = '';
     if (combinedList.length) {
         var nameSuffix = 1;
@@ -215,17 +226,16 @@ Blockly.Instances.appendToName_ = function(instanceName, nameList) {
         return Blockly.Instances.generateUniqueName(workspace);
     } else {
         var newName = instanceName;
-        var nameSuffix = 1;
+        var nameSuffix = 2;
 
-        /*    if (instanceName.match(/_\d+$/)) {
-              // instanceName ends with and underscore and a number, so increase count
-              var instanceNameSuffix = instanceName.match(/\d+$/)[0];
-              instanceName = instanceName.slice(
-                  0, (instanceNameSuffix.length * -1) - 1);
-              nameSuffix = parseInt(instanceNameSuffix, 10) + 1;
-              newName = instanceName + '_' + nameSuffix;
-            }
-        */
+        if (instanceName.match(/_\d+$/)) {
+            // instanceName ends with and underscore and a number, so increase count
+            var instanceNameSuffix = instanceName.match(/\d+$/)[0];
+            instanceName = instanceName.slice(
+                0, (instanceNameSuffix.length * -1) - 1);
+            nameSuffix = parseInt(instanceNameSuffix, 10) + 1;
+            newName = instanceName + '_' + nameSuffix;
+        }
         while (nameList.indexOf(newName) !== -1) {
             newName = instanceName + '_' + nameSuffix++;
         }

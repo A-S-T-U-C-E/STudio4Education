@@ -1,26 +1,13 @@
 /**
  * @license
- * Visual Blocks Editor
- *
- * Copyright 2011 Google Inc.
- * https://developers.google.com/blockly/
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2012 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
  * @fileoverview The class representing one block.
- * @author Carlosperate
+ * @author Carlosperate (ardublockly)
+ * @author scanet@libreduc.cc (Sébastien Canet)
  */
 'use strict';
 
@@ -33,7 +20,6 @@ goog.require('Blockly.Mutator');
 goog.require('Blockly.Warning');
 goog.require('Blockly.Workspace');
 goog.require('Blockly.Xml');
-
 
 /**
  * Return all instances referenced by this block.
@@ -65,18 +51,13 @@ Blockly.Block.prototype.getInstances = function(opt_instanceType) {
  * @param {string} newName Renamed instance.
  * @param {string} instanceType Type of the instances to rename.
  */
-Blockly.Block.prototype.renameInstance = function(
-    oldName, newName, instanceType) {
+Blockly.Block.prototype.renameInstance = function(oldName, newName, instanceType) {
     for (var i = 0, input; input = this.inputList[i]; i++) {
         for (var j = 0, field; field = input.fieldRow[j]; j++) {
             if (field instanceof Blockly.FieldInstance) {
                 var validInstance = field.getInstanceTypeValue(instanceType);
                 if (validInstance && Blockly.Names.equals(oldName, validInstance)) {
                     field.setValue(newName);
-                    field.getOptions(false);
-                    // work around for https://github.com/google/blockly/issues/3553
-                    // field.doValueUpdate_(field.getValue());
-                    field.forceRerender();
                 }
             }
         }

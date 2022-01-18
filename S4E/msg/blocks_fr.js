@@ -102,6 +102,11 @@ Blockly.Msg["ARD_TYPE_UNDEF"] = "non défini";
 Blockly.Msg["ARD_TYPE_UNS_NUMBER"] = "nombre entier positif (unsigned int)";
 Blockly.Msg["ARD_TYPE_UNS_LONG"] = "nombre entier long positif (unsigned long)";
 Blockly.Msg["ARD_TYPE_VOLATILE"] = "nombre entier volatile (pour interruption)";
+//blockly instances
+Blockly.Msg["ARD_NEW_INSTANCE"] = 'nouvelle instance';
+Blockly.Msg["ARD_RENAME_INSTANCE"] = 'renommer cette instance';
+Blockly.Msg["ARD_NEW_INSTANCE_TITLE"] = "nouveau nom d'instance:";
+Blockly.Msg["ARD_RENAME_INSTANCE_TITLE"] = 'renommer toutes les "%1" instances en :';
 
 //Arduino base cateory blocks
 Blockly.Msg["ARDUINO_INOUT_BUILDIN_LED_HELPURL"] = "http://arduino.cc/en/Reference/DigitalWrite";
@@ -155,7 +160,10 @@ Blockly.Msg["SERIAL_READSTRINGUNTIL_CONTENT"] = "chaîne lue jusqu'au caractère
 Blockly.Msg["SERIAL_READSTRINGUNTIL_TOOLTIP"] = "lis les caractères un par un jusqu'à celui recherché, et renvoie toute la chaîne de caractères";
 Blockly.Msg["SERIAL_PRINT_CONTENT"] = "afficher sur le port série le texte";
 Blockly.Msg["SERIAL_PRINT_TOOLTIP"] = "envoie des données sur le port série pour surveillance par le moniteur en ASCII";
-Blockly.Msg["SERIAL_PRINT_HELPURL"] = "http://www.arduino.cc/en/Serial/Print";
+Blockly.Msg["SERIAL_PRINT_HELPURL"] = "https://www.arduino.cc/reference/en/language/functions/communication/serial/print/";
+Blockly.Msg["SERIAL_WRITE_CONTENT"] = "afficher sur le port série les données brutes";
+Blockly.Msg["SERIAL_WRITE_TOOLTIP"] = "Ces données sont envoyées sous la forme d'un octet ou d'une série d'octets ; pour envoyer les caractères représentant les chiffres d'un nombre, utilisez plutôt la fonction print().";
+Blockly.Msg["SERIAL_WRITE_HELPURL"] = "https://www.arduino.cc/reference/en/language/functions/communication/serial/write/";
 
 //IOT
 Blockly.Msg["IOT_LISTS_CREATE_WITH_ITEM_TITLE"] = "donnée";
@@ -250,7 +258,7 @@ Blockly.Msg["GROVE_INOUT_DHT_READ_TOOLTIP"] = "les capteurs de type DHT comporte
 Blockly.Msg["GROVE_INOUT_DHT_READ_TYPE"] = "valeur";
 Blockly.Msg["GROVE_INOUT_LED_BAR_INPUT"] = "sur bar graphe";
 Blockly.Msg["GROVE_INOUT_LED_BAR_PIN"] = "connecté broche";
-Blockly.Msg["GROVE_INOUT_LED_BAR_LEVEL"] = "allumer la DEL n°";
+Blockly.Msg["GROVE_INOUT_LED_BAR_LEVEL"] = "allumer le niveau";
 Blockly.Msg["GROVE_INOUT_LED_BAR_ALL_OFF"] = "éteindre toutes les DEL";
 Blockly.Msg["GROVE_INOUT_LED_BAR_TOGGLE"] = "allumer la DEL n°";
 Blockly.Msg["GROVE_INOUT_LED_BAR_TOOLTIP1"] = "met à zéro toutes les DEL, le bar-graphe est éteint";

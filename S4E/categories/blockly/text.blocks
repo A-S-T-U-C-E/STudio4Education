@@ -41,20 +41,37 @@ Blockly.Blocks["test_field_grid_dropdown"] = {
     }
 };
 
-Blockly.defineBlocksWithJsonArray([{
-    "type": "text_date",
-    "message0": "date: %1",
-    "args0": [{
-        "type": "field_date",
-        "name": "DATE",
-        "date": "2021-07-01",
-        'textEdit': 'false'
-    }],
-    "output": "String",
-    "helpUrl": "%{BKY_MATH_DATE_HELPURL}",
-    "style": "text_blocks",
-    "tooltip": "%{BKY_MATH_DATE_TOOLTIP}"
-}]);
+Blockly.defineBlocksWithJsonArray([ //blocks added
+    {
+        "type": "text_date",
+        "message0": "date: %1",
+        "args0": [{
+            "type": "field_date",
+            "name": "DATE",
+            "date": "2021-07-01",
+            'textEdit': 'false'
+        }],
+        "output": "String",
+        "helpUrl": "%{BKY_MATH_DATE_HELPURL}",
+        "style": "text_blocks",
+        "tooltip": "%{BKY_MATH_DATE_TOOLTIP}"
+    }, {
+        "type": "text_no_quote",
+        "message0": "%1",
+        "args0": [{
+            "type": "field_input",
+            "name": "TEXT",
+            "text": ""
+        }],
+        "output": "String",
+        "style": "text_blocks",
+        "helpUrl": "%{BKY_TEXT_TEXT_HELPURL}",
+        "tooltip": "%{BKY_TEXT_TEXT_TOOLTIP}",
+        "extensions": [
+            "parent_tooltip_when_inline"
+        ]
+    }
+]);
 
 Blockly.defineBlocksWithJsonArray([ // BEGIN JSON EXTRACT
     // Block for text value

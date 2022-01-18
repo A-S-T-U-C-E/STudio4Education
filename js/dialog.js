@@ -108,7 +108,7 @@ function showSerialMonitorModalDialog() {
                 document.getElementById("serialMonitorModalDialog_mini").style.display = 'block';
                 document.getElementById("serialMonitorModalDialog_maxi").style.display = 'none';
                 document.body.appendChild(_serialModal);
-                document.getElementById("content_serial_div").style.position = "absolute";
+                document.getElementById("content_console").style.position = "absolute";
                 _serialModal.style.left = serialModal_old_X + "px";
                 _serialModal.style.top = serialModal_old_Y + "px";
                 _serialModal.style.width = serialModal_old_width + "px";
@@ -227,8 +227,8 @@ function serialMonitorModalDialog_maxi_mini() {
         serialModal_old_height = _serialModal.getBoundingClientRect().bottom - _serialModal.getBoundingClientRect().top;
         document.getElementById("serialMonitorModalDialog_mini").style.display = 'none';
         document.getElementById("serialMonitorModalDialog_maxi").style.display = 'block';
-        document.getElementById("content_serial_div").appendChild(_serialModal);
-        document.getElementById("content_serial_div").style.position = "relative";
+        document.getElementById("content_console").appendChild(_serialModal);
+        document.getElementById("content_console").style.position = "relative";
         _serialModal.style.left = "0px";
         _serialModal.style.top = "0px";
         _serialModal.style.width = "100%";
@@ -240,7 +240,7 @@ function serialMonitorModalDialog_maxi_mini() {
         document.getElementById("serialMonitorModalDialog_mini").style.display = 'block';
         document.getElementById("serialMonitorModalDialog_maxi").style.display = 'none';
         document.body.appendChild(_serialModal);
-        document.getElementById("content_serial_div").style.position = "absolute";
+        document.getElementById("content_console").style.position = "absolute";
         _serialModal.style.left = serialModal_old_X + "px";
         _serialModal.style.top = serialModal_old_Y + "px";
         _serialModal.style.width = serialModal_old_width + "px";
@@ -624,6 +624,18 @@ function iconsButtonMouserOver() {
         document.getElementById("content_hoverButton").textContent = MSG['copyCodeButton_span'];
     };
     document.getElementById('copyCodeButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('copyConsoleButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['copyConsoleButton_span'];
+    };
+    document.getElementById('copyConsoleButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('cleanConsoleButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['cleanConsoleButton_span'];
+    };
+    document.getElementById('cleanConsoleButton').onmouseout = function() {
         document.getElementById("content_hoverButton").textContent = "";
     };
     document.getElementById('coreUpdateButton').onmouseover = function() {

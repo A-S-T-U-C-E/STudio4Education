@@ -22,6 +22,12 @@ goog.require('Blockly.Arduino');
  * @param {!Blockly.Block} block Block to generate the code from.
  * @return {array} Completed code with order of operation.
  */
+Blockly.Arduino['text_no_quote'] = function(block) {
+    var code = Blockly.Arduino.quote_(block.getFieldValue('TEXT'));
+    code = code.replace('"', '').replace('"', '');
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
 Blockly.Arduino['text'] = function(block) {
     var code = Blockly.Arduino.quote_(block.getFieldValue('TEXT'));
     return [code, Blockly.Arduino.ORDER_ATOMIC];

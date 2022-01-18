@@ -50,7 +50,7 @@ var numVariablesCallBack = function(workspace) {
     xmlList.push(createintBtnXml);
     if (variableModelList.length > 0) {
         // New variables are added to the end of the variableModelList.
-        var mostRecentVariable = variableModelList[variableModelList.length - 1];
+        // var mostRecentVariable = variableModelList[variableModelList.length - 1];
         variableModelList.sort(Blockly.VariableModel.compareByName);
         if (Blockly.Blocks['variables_set']) {
             var block = Blockly.utils.xml.createElement('block');

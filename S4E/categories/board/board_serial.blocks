@@ -67,6 +67,18 @@ Blockly.Blocks['board_serial_print'] = {
     }
 };
 
+Blockly.Blocks['board_serial_write'] = {
+    init: function() {
+        this.appendValueInput("CONTENT")
+            .appendField(Blockly.Msg.SERIAL_WRITE_CONTENT);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.SERIAL_WRITE_TOOLTIP);
+        this.setHelpUrl(Blockly.Msg.SERIAL_WRITE_HELPURL);
+        this.setStyle('board_blocks');
+    }
+};
+
 Blockly.Blocks['board_serial_available'] = {
     init: function() {
         this.appendDummyInput("")

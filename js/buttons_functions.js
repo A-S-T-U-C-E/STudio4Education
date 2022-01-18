@@ -101,7 +101,7 @@ Code.blockPicture = function() {
 /**
  * Copy code from div code_peek in clipboard system
  */
-Code.copyToClipboard = function() {
+Code.copyCodeToClipboard = function() {
     if (document.selection) { // IE
         var range = document.body.createTextRange();
         if (Code.editor)
@@ -119,6 +119,30 @@ Code.copyToClipboard = function() {
             .then(() => { console.log('Code copied!') })
             .catch((error) => { console.log('Copy failed! ${error}') });
     }
+};
+
+/**
+ * Copy code from console in clipboard system
+ */
+Code.copyConsoleToClipboard = function() {
+    if (document.selection) { // IE
+        var range = document.body.createTextRange();
+        range.moveToElementText(document.getElementById("content_console").textContent);
+        range.select();
+        document.execCommand("copy");
+    } else if (window.getSelection) {
+        navigator.clipboard.writeText(document.getElementById("content_console").textContent)
+            .then(() => { console.log('Code copied!') })
+            .catch((error) => { console.log('Copy failed! ${error}') });
+    }
+};
+
+/**
+ * Copy code from console in clipboard system
+ */
+Code.cleanConsole = function() {
+    document.getElementById("compiler-output-text").textContent = "";
+    document.getElementById("serial-output-text").textContent = "";
 };
 
 /**

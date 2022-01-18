@@ -1,13 +1,10 @@
 /**
- * @license
- * Copyright 2012 Google LLC
- * SPDX-License-Identifier: Apache-2.0
+ * @license Licensed under the Apache License, Version 2.0 (the "License"):
+ *          http://www.apache.org/licenses/LICENSE-2.0
  */
 
 /**
  * @fileoverview Instances input field.
- * @author Carlosperate (ardublockly)
- * @author scanet@libreduc.cc (Sébastien Canet)
  */
 'use strict';
 
@@ -17,6 +14,7 @@ goog.require('Blockly.FieldDropdown');
 goog.require('Blockly.Instances');
 goog.require('Blockly.Msg');
 goog.require('Blockly.utils');
+
 
 /**
  * Class for a specific type of instances' dropdown field.
@@ -36,33 +34,17 @@ goog.require('Blockly.utils');
 Blockly.FieldInstance = function(
     instanceType, instanceName, uniqueName, opt_lockNew, opt_lockRename,
     opt_editDropdownData, opt_validator) {
-    Blockly.FieldInstance.superClass_.constructor.call(this,
-        this.dropdownCreate, opt_validator);
+
+    Blockly.FieldInstance.superClass_.constructor.call(this, this.dropdownCreate(instanceName), opt_validator);
 
     this.instanceType_ = instanceType;
     this.setValue(instanceName);
     this.uniqueName_ = (uniqueName === true);
     this.lockNew_ = (opt_lockNew === true);
     this.lockRename_ = (opt_lockRename === true);
-    this.editDropdownData = (opt_editDropdownData instanceof Function) ?
-        opt_editDropdownData : null;
+    this.editDropdownData = (opt_editDropdownData instanceof Function) ? opt_editDropdownData : null;
 };
-
-/**
- * Inherit the prototype methods from one constructor into another.
- * @param {Function} childCtor Child class.
- * @param {Function} parentCtor Parent class.
- */
-goog.inherits = function(childCtor, parentCtor) {
-    /** @constructor */
-    function tempCtor() {};
-    tempCtor.prototype = parentCtor.prototype;
-    childCtor.superClass_ = parentCtor.prototype;
-    childCtor.prototype = new tempCtor();
-    /** @override */
-    childCtor.prototype.constructor = childCtor;
-};
-goog.inherits(Blockly.FieldInstance, Blockly.FieldDropdown);
+Blockly.utils.object.inherits(Blockly.FieldInstance, Blockly.FieldDropdown);
 
 /**
  * Sets a new change handler for instance field.
@@ -87,9 +69,9 @@ Blockly.FieldInstance.prototype.setValidator = function(handler) {
             }
             return v2 === value ? undefined : v2;
         };
-    } else
+    } else {
         wrappedHandler = Blockly.FieldInstance.dropdownChange;
-
+    }
     Blockly.FieldInstance.superClass_.setValidator.call(this, wrappedHandler);
 };
 
@@ -98,8 +80,7 @@ Blockly.FieldInstance.prototype.setValidator = function(handler) {
  */
 Blockly.FieldInstance.prototype.init = function() {
     // Nothing to do if the dropdown has already been initialised once.
-    if (this.fieldGroup_)
-        return;
+    if (this.fieldGroup_) return;
 
     Blockly.FieldInstance.superClass_.init.call(this);
 
@@ -119,22 +100,17 @@ Blockly.FieldInstance.prototype.init = function() {
             }
         } else {
             // Pick an existing name from the workspace if any exists
-            var existingName =
-                Blockly.Instances.getAnyInstanceOf(this.instanceType_, workspace);
-            if (existingName)
-                this.setValue(existingName);
+            var instanceList =
+                Blockly.Instances.allInstancesOf(this.instanceType_,
+                    this.sourceBlock_.workspace);
+            if (instanceList.indexOf(this.getText()) == -1) {
+                var existingName =
+                    Blockly.Instances.getAnyInstanceOf(this.instanceType_, workspace);
+                if (existingName) this.setValue(existingName);
+            }
         }
     }
 };
-
-/**
- * Get the instance's name (use a variableDB to convert into a real name).
- * Unlike a regular dropdown, instances are literal and have no neutral value.
- * @return {string} Current text.
- */
-// Blockly.FieldInstance.prototype.getValue = function() {
-//     return this.getText();
-// };
 
 Blockly.FieldInstance.prototype.getInstanceTypeValue = function(instanceType) {
     return (instanceType === this.instanceType_) ? this.getText() : undefined;
@@ -146,19 +122,19 @@ Blockly.FieldInstance.prototype.getInstanceTypeValue = function(instanceType) {
  */
 Blockly.FieldInstance.prototype.setValue = function(newValue) {
     if (this.sourceBlock_ && Blockly.Events.isEnabled()) {
-        Blockly.Events.fire(new Blockly.Events.Change(
+        Blockly.Events.fire(new(Blockly.Events.get(Blockly.Events.BLOCK_CHANGE))(
             this.sourceBlock_, 'field', this.name, this.value_, newValue));
     }
     this.value_ = newValue;
-    this.setText(newValue);
+    this.forceRerender();
 };
 
 /**
  * Return a sorted list of instance names for instance dropdown menus.
- * If editDropdownData has been defined it passes this list to the
+ * If editDropdownData has been defined it passes this list to the 
  * @return {!Array.<string>} Array of instance names.
  */
-Blockly.FieldInstance.prototype.dropdownCreate = function() {
+Blockly.FieldInstance.prototype.dropdownCreate = function(name) {
     if (this.sourceBlock_ && this.sourceBlock_.workspace) {
         var instanceList =
             Blockly.Instances.allInstancesOf(this.instanceType_,
@@ -167,21 +143,19 @@ Blockly.FieldInstance.prototype.dropdownCreate = function() {
         var instanceList = [];
     }
     // Ensure that the currently selected instance is an option.
-    var name = this.getText();
+    // var name = this.getText();
+    if (!name) name = this.getText();
     if (name && instanceList.indexOf(name) == -1) {
         instanceList.push(name);
     }
     instanceList.sort(Blockly.VariableModel.compareByName);
     if (!this.lockRename_) {
-        instanceList.push(Blockly.Msg.RENAME_INSTANCE);
+        instanceList.push(Blockly.Msg.ARD_RENAME_INSTANCE);
     }
     if (!this.lockNew_) {
-        instanceList.push(Blockly.Msg.NEW_INSTANCE);
+        instanceList.push(Blockly.Msg.ARD_NEW_INSTANCE);
     }
-
-    // If configured, pass data to external handler for additional processing
-    var options = this.editDropdownData ? this.editDropdownData(options) : [];
-
+    var options = [];
     // Instances are not language specific, so use for display and internal name
     for (var i = 0; i < instanceList.length; i++) {
         options[i] = [instanceList[i], instanceList[i]];
@@ -189,75 +163,67 @@ Blockly.FieldInstance.prototype.dropdownCreate = function() {
 
     return options;
 };
-Blockly.FieldInstance.prototype.dropdownCreate2 = function() {
-    var name = this.getValue();
-    var instanceList = [];
-    if (this.sourceBlock_ && this.sourceBlock_.workspace) {
-        instanceList =
-            Blockly.Instances.allInstancesOf(this.instanceType_,
-                this.sourceBlock_.workspace);
-    }
-    if (name && instanceList.indexOf(name) == -1) {
-        instanceList.push(name);
-    }
-    instanceList.sort(Blockly.VariableModel.compareByName);
-    if (!this.lockRename_) {
-        instanceList.push(Blockly.Msg.RENAME_INSTANCE);
-    }
-    if (!this.lockNew_) {
-        instanceList.push(Blockly.Msg.NEW_INSTANCE);
-    }
 
-    var options = this.editDropdownData ? this.editDropdownData(options) : [];
-    for (var i = 0; i < instanceList.length; i++) {
-        options[i] = [instanceList[i], instanceList[i]];
-    }
-    return options;
+// Blockly.FieldInstance.prototype.onItemSelected_ = function(menu, menuItem) {
+//     var text = menuItem.getValue();
 
-}
+//     function promptName(promptText, defaultText, callback) {
+//         Blockly.hideChaff();
+//         var newVar = Blockly.prompt(promptText, defaultText, function(newVar) {
+//             // Merge runs of whitespace.  Strip leading and trailing whitespace.
+//             // Beyond this, all names are legal.
+//             if (newVar) {
+//                 newVar = newVar.replace(/[\s\xa0]+/g, ' ').trim();
+//                 // newVar = newVar.replace(/[\s\xa0]+/g, ' ').replace(/^ | $/g, '');
+//                 if (newVar == Blockly.Msg.ARD_RENAME_INSTANCE ||
+//                     newVar == Blockly.Msg.ARD_NEW_INSTANCE) {
+//                     newVar = null; // Ok, not ALL names are legal...
+//                 }
+//             }
+//             callback(newVar);
+//         });
+//     }
+//     var workspace = this.sourceBlock_.workspace;
+//     if (text == Blockly.Msg.ARD_RENAME_INSTANCE) {
+//         var oldInstance = this.getText();
+//         var thisFieldInstance = this;
+//         var callbackRename = function(text) {
+//             if (text) {
+//                 Blockly.Instances.renameInstance(
+//                     oldInstance, text, thisFieldInstance.instanceType_, workspace);
+//             }
+//         };
+//         promptName(Blockly.Msg.ARD_RENAME_INSTANCE_TITLE.replace('%1', oldInstance),
+//             oldInstance, callbackRename);
+//         return null;
+//     } else if (text == Blockly.Msg.ARD_NEW_INSTANCE) {
+//         return Blockly.Instances.generateUniqueName(workspace);
+//     }
+//     return undefined;
+// };
 
-/**
- * Event handler for a change in instance name.
- * Special case the 'New instance...' and 'Rename instance...' options.
- * In both of these special cases, prompt the user for a new name.
- * @param {string} text The selected dropdown menu option.
- * @return {null|undefined|string} An acceptable new instance name, or null if
- *     change is to be either aborted (cancel button) or has been already
- *     handled (rename), or undefined if an existing instance was chosen.
- * @this {!Blockly.FieldInstance}
- */
-Blockly.FieldInstance.dropdownChange = function(text) {
-    function promptName(promptText, defaultText, callback) {
-        Blockly.hideChaff();
-        var newVar = Blockly.prompt(promptText, defaultText, function(newVar) {
-            // Merge runs of whitespace.  Strip leading and trailing whitespace.
-            // Beyond this, all names are legal.
-            if (newVar) {
-                newVar = newVar.replace(/[\s\xa0]+/g, ' ').replace(/^ | $/g, '');
-                if (newVar == Blockly.Msg.RENAME_INSTANCE ||
-                    newVar == Blockly.Msg.NEW_INSTANCE) {
-                    newVar = null; // Ok, not ALL names are legal...
-                }
-            }
-            callback(newVar);
-        });
-    }
+Blockly.FieldInstance.prototype.onItemSelected_ = function(menu, menuItem) {
+    var id = menuItem.getValue();
     var workspace = this.sourceBlock_.workspace;
-    if (text == Blockly.Msg.RENAME_INSTANCE) {
-        var oldInstance = this.getText();
-        var thisFieldInstance = this;
-        var callbackRename = function(text) {
-            if (text) {
-                Blockly.Instances.renameInstance(
-                    oldInstance, text, thisFieldInstance.instanceType_, workspace);
-            }
-        };
-        promptName(Blockly.Msg.RENAME_INSTANCE_TITLE.replace('%1', oldInstance),
-            oldInstance, callbackRename);
-        return null;
-    } else if (text == Blockly.Msg.NEW_INSTANCE) {
-        //TODO: this return needs to be replaced with an asynchronous callback
-        return Blockly.Instances.generateUniqueName(workspace);
+    // Handle special cases.
+    if (this.sourceBlock_ && workspace) {
+        if (id == Blockly.Msg.ARD_RENAME_INSTANCE) {
+            var oldInstance = this.getText();
+            var thisFieldInstance = this;
+            var callbackRename = function(text) {
+                if (text) {
+                    Blockly.Instances.renameInstance(
+                        oldInstance, text, thisFieldInstance.instanceType_, workspace);
+                }
+            };
+            Blockly.prompt(Blockly.Msg.ARD_RENAME_INSTANCE_TITLE.replace('%1', oldInstance),
+                oldInstance, callbackRename);
+            return;
+        } else if (id == Blockly.Msg.ARD_NEW_INSTANCE) {
+            Blockly.Instances.generateUniqueName(workspace);
+            return;
+        }
     }
-    return undefined;
+    // Handle unspecial case.
+    this.setValue(id);
 };

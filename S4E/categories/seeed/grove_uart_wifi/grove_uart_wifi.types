@@ -8,7 +8,7 @@ Blockly.Blocks.grove_uart_wifi_check_shield.getBlockType = function() {
     return Blockly.Types.NULL;
 };
 Blockly.Blocks.grove_uart_wifi_begin.getBlockType = function() {
-    return Blockly.Types.NUMBER;
+    return Blockly.Types.NULL;
 };
 Blockly.Blocks.grove_uart_wifi_localIP.getBlockType = function() {
     return Blockly.Types.TEXT;

@@ -39,11 +39,12 @@ Blockly.Blocks['grove_uart_wifi_declare'] = {
         // this.appendDummyInput("")
         //     .setAlign(Blockly.ALIGN_RIGHT)
         //     .appendField("Name of communication object")
-        //     .appendField(new Blockly.FieldInstance('Servo', 'softCOMM', false, false, false), 'SOFTSERIAL_NAME');
+        //     .appendField(new Blockly.FieldInstance('SoftSerial', 'softCOMM', false, false, false), 'SOFTSERIAL_NAME');
         this.appendValueInput("SPEED")
             .setCheck("Number")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField("Communication object's speed");
+        this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip("");
@@ -81,7 +82,7 @@ Blockly.Blocks['grove_uart_wifi_check_shield'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(grove_uart_wifiMediaFolder + "grove_uart_wifi_wifi.png", Code.imageSize / 3, Code.imageSize / 3))
-            .appendField("check if WiFi board works");
+            .appendField("loop check if WiFi board works");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip("verify presence and info back on serial, if not, loop forever");
@@ -94,7 +95,7 @@ Blockly.Blocks['grove_uart_wifi_begin'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(grove_uart_wifiMediaFolder + "grove_uart_wifi_wifi.png", Code.imageSize / 3, Code.imageSize / 3))
-            .appendField("status of WiFi connection on WPA/WPA2 network");
+            .appendField("attempt to connect to WiFi network");
         this.appendValueInput("SSID")
             .setCheck("String")
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -103,8 +104,9 @@ Blockly.Blocks['grove_uart_wifi_begin'] = {
             .setCheck("String")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField("password");
-        this.setOutput(true, null);
-        this.setTooltip("verify presence and info back on serial, if not, loop forever");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip("attempt to connect to WiFi network, if not, loop forever");
         this.setHelpUrl("https://github.com/bportaluri/WiFiEsp");
         this.setStyle('grove_blocks');
     }

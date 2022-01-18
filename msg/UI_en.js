@@ -66,7 +66,7 @@ var MSG = {
         'Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">on Github</a>.</br>' +
         'A bug? Post it here: <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">on Github</a>.</br>' +
         'Thanks & libraries: <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki/Thanks">on Github</a>.</p>' +
-        '<p style="text-align: center;">v0.9.0 - BSD3 license - Sébastien CANET' +
+        '<p style="text-align: center;">v0.9.1 - BSD3 license - Sébastien CANET' +
         '<p style="text-align: center;"><a href = (https://www.paypal.com/fr/cgi-bin/webscr?cmd=_flow&SESSION=o8z3KNFl16Tjlxhk1mBekCcRsG_3_NDe0CfWh8b1vfSYIbMxJnwa92YwM3y&dispatch=5885d80a13c0db1f8e263663d3faee8d4fe1dd75ca3bd4f11d72275b28239088">Thanks for donation with Paypal to help me improve this software.</br><img src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif" alt="Paypal"/></a></p>',
     //menu tools
     toolsButton_span: "tools",
@@ -99,6 +99,8 @@ var MSG = {
     editorDiffToggle_span: "compare code modifications",
     copyCodeButton_span: "copy code to clipboard",
     openCodeButton_span: "Open code editor",
+    copyConsoleButton_span: "copy console to clipboard",
+    cleanConsoleButton_span: "clean console content",
     //lateral panel
     highlightSpan: "highlights the content on the workspace",
     minimapSpan: "(de)activate minimap",

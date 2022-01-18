@@ -102,6 +102,11 @@ Blockly.Msg["ARD_TYPE_UNDEF"] = "未定義"; //"Undefined"
 Blockly.Msg["ARD_TYPE_UNS_NUMBER"] = "Unsigned number(符号なし整数16bit長)"; //"Unsigned number"
 Blockly.Msg["ARD_TYPE_UNS_LONG"] = "Unsigned Long Number(符号なし整数32bit長)"; //"Unsigned Long Number"
 Blockly.Msg["ARD_TYPE_VOLATILE"] = "Volatile integer(volatile整数)"; //"Volatile integer"
+//blockly instances
+Blockly.Msg["ARD_NEW_INSTANCE"] = '新しい名前';
+Blockly.Msg["ARD_RENAME_INSTANCE"] = '名前を変更';
+Blockly.Msg["ARD_NEW_INSTANCE_TITLE"] = 'New instance name:';
+Blockly.Msg["ARD_RENAME_INSTANCE_TITLE"] = 'Rename all "%1" instances to:';
 
 //Arduino base cateory blocks
 Blockly.Msg["ARDUINO_INOUT_BUILDIN_LED_HELPURL"] = "http://arduino.cc/en/Reference/DigitalWrite";
@@ -154,8 +159,11 @@ Blockly.Msg["SERIAL_READSTRINGUNTIL_HELPURL"] = "https://www.arduino.cc/en/Seria
 Blockly.Msg["SERIAL_READSTRINGUNTIL_CONTENT"] = "文字列受信　終端："; //"String read until"
 Blockly.Msg["SERIAL_READSTRINGUNTIL_TOOLTIP"] = "シリアルバッファから文字列読み込み"; //"reads characters from the serial buffer into a string"
 Blockly.Msg["SERIAL_PRINT_CONTENT"] = "シリアルでデータを送る　ポート:";
-Blockly.Msg["SERIAL_PRINT_TOOLTIP"] = "データを送信してモニターで監視します"; //"sends data over the serial port for sruvaillance by the monitor in ASCII";
-Blockly.Msg["SERIAL_PRINT_HELPURL"] = "http://www.arduino.cc/en/Serial/Print";
+Blockly.Msg["SERIAL_PRINT_TOOLTIP"] = "データを送信してモニターで監視します";
+Blockly.Msg["SERIAL_PRINT_HELPURL"] = "https://www.arduino.cc/reference/en/language/functions/communication/serial/print/";
+Blockly.Msg["SERIAL_WRITE_CONTENT"] = "writes to the serial port binary data";
+Blockly.Msg["SERIAL_WRITE_TOOLTIP"] = "this data is sent as a byte or series of bytes; to send the characters representing the digits of a number use the print() function instead.";
+Blockly.Msg["SERIAL_WRITE_HELPURL"] = "https://www.arduino.cc/reference/en/language/functions/communication/serial/write/";
 
 //IOT
 Blockly.Msg["IOT_LISTS_CREATE_WITH_ITEM_TITLE"] = "data";
@@ -250,7 +258,7 @@ Blockly.Msg["GROVE_INOUT_DHT_READ_TOOLTIP"] = "The DHT sensors are made of two p
 Blockly.Msg["GROVE_INOUT_DHT_READ_TYPE"] = "Content";
 Blockly.Msg["GROVE_INOUT_LED_BAR_INPUT"] = "on bar graphe";
 Blockly.Msg["GROVE_INOUT_LED_BAR_PIN"] = "pin #";
-Blockly.Msg["GROVE_INOUT_LED_BAR_LEVEL"] = "light LED n°";
+Blockly.Msg["GROVE_INOUT_LED_BAR_LEVEL"] = "light LED to level";
 Blockly.Msg["GROVE_INOUT_LED_BAR_ALL_OFF"] = "switch off all LED";
 Blockly.Msg["GROVE_INOUT_LED_BAR_TOGGLE"] = "toggle state of LED n°";
 Blockly.Msg["GROVE_INOUT_LED_BAR_TOOLTIP1"] = "select how many LED on bargraphe are ON";
