@@ -1,0 +1,33 @@
+var toolbox_NTPClient = {
+    "kind": "categoryToolbox",
+    "contents": [{
+        "kind": "category",
+        "name": "%{BKY_CAT_NTPCLIENT}",
+        "toolboxitemid": "NTPClient",
+        "levels": [1, 2, 3],
+        "level": "1",
+        "categorystyle": "board_category",
+        "contents": [ {
+            "kind": "block",
+            "type": "NTPCLIENT_DEFINE_UDP"
+        }, {
+            "kind": "block",
+            "type": "NTPCLIENT_DEFINE_NTPCLIENT"
+        }, {
+            "kind": "block",
+            "type": "NTPCLIENT_BEGIN"
+        }, {
+            "kind": "block",
+            "type": "NTPCLIENT_UPDATE"
+        }, {
+            "kind": "block",
+            "type": "NTPCLIENT_FORCEUPDATE"
+        }, {
+            "kind": "block",
+            "type": "NTPCLIENT_GET_EPOCH_TIME"
+        }, {
+            "kind": "block",
+            "type": "NTPCLIENT_GET_FORMATTED_TIME"
+        }]
+    }]
+};

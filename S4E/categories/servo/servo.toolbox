@@ -9,7 +9,7 @@ var toolbox_servo = {
         "categorystyle": "servo_category",
         "contents": [{
             "kind": "block",
-            "type": "servo_move_external",
+            "type": "SERVO_MOVE_EXTERNAL",
             "value": {
                 "kind": "category",
                 "name": "DEGREE",
@@ -24,10 +24,10 @@ var toolbox_servo = {
             }
         }, {
             "kind": "block",
-            "type": "servo_move_slider"
+            "type": "SERVO_MOVE_SLIDER"
         }, {
             "kind": "block",
-            "type": "servo_read_degrees"
+            "type": "SERVO_READ_DEGREES"
         }]
     }]
 };

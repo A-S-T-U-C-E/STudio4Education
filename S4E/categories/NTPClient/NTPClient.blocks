@@ -1,0 +1,133 @@
+/**
+ * @license
+ * Copyright 2012 Fred Lin
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/**
+ * @fileoverview NTPClient blocks for Blockly.
+ * @author scanet@libreduc.cc (Sébastien Canet)
+ */
+
+'use strict';
+
+goog.provide('Blockly.Constants.NTPClient');
+
+goog.require('Blockly');
+goog.require('Blockly.Blocks');
+goog.require('Blockly.Types');
+
+var NTPClientMediaFolder = "./S4E/categories/NTPClient/";
+
+Blockly.Blocks['NTPCLIENT_DEFINE_UDP'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(NTPClientMediaFolder + "NTPClient.png", Code.imageSize, Code.imageSize))
+            .appendField(Blockly.Msg['NTPCLIENT_DEFINE_UDP']);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setStyle('board_blocks');
+        this.setTooltip(Blockly.Msg['NTPCLIENT_DEFINE_UDP_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['NTPCLIENT_HELPURL']);
+    }
+};
+
+Blockly.Blocks['NTPCLIENT_DEFINE_NTPCLIENT'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(NTPClientMediaFolder + "NTPClient.png", Code.imageSize, Code.imageSize))
+            .appendField(Blockly.Msg['NTPCLIENT_DEFINE_NTPCLIENT']);
+        this.appendValueInput("NAME")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg['NTPCLIENT_DEFINE_NTPCLIENT_NAME']);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setStyle('board_blocks');
+        this.setTooltip(Blockly.Msg['NTPCLIENT_DEFINE_NTPCLIENT_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['NTPCLIENT_HELPURL']);
+    }
+};
+
+Blockly.Blocks['NTPCLIENT_BEGIN'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(NTPClientMediaFolder + "NTPClient.png", Code.imageSize, Code.imageSize))
+            .appendField(Blockly.Msg['NTPCLIENT_BEGIN']);
+        this.appendValueInput("NAME")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg['NTPCLIENT_BEGIN_NAME']);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setStyle('board_blocks');
+        this.setTooltip(Blockly.Msg['NTPCLIENT_BEGIN_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['NTPCLIENT_HELPURL']);
+    }
+};
+
+Blockly.Blocks['NTPCLIENT_UPDATE'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(NTPClientMediaFolder + "NTPClient.png", Code.imageSize, Code.imageSize))
+            .appendField(Blockly.Msg['NTPCLIENT_UPDATE']);
+        this.appendValueInput("NAME")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg['NTPCLIENT_UPDATE_NAME']);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setStyle('board_blocks');
+        this.setTooltip(Blockly.Msg['NTPCLIENT_UPDATE_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['NTPCLIENT_HELPURL']);
+    }
+};
+
+Blockly.Blocks['NTPCLIENT_FORCEUPDATE'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(NTPClientMediaFolder + "NTPClient.png", Code.imageSize, Code.imageSize))
+            .appendField(Blockly.Msg['NTPCLIENT_FORCEUPDATE']);
+        this.appendValueInput("NAME")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg['NTPCLIENT_FORCEUPDATE_NAME']);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setStyle('board_blocks');
+        this.setTooltip(Blockly.Msg['NTPCLIENT_FORCEUPDATE_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['NTPCLIENT_HELPURL']);
+    }
+};
+
+Blockly.Blocks['NTPCLIENT_GET_EPOCH_TIME'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(NTPClientMediaFolder + "NTPClient.png", Code.imageSize, Code.imageSize))
+            .appendField(Blockly.Msg['NTPCLIENT_GET_EPOCH_TIME']);
+        this.appendValueInput("NAME")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg['NTPCLIENT_GET_EPOCH_TIME_NAME']);
+        this.setOutput(true, null);
+        this.setStyle('board_blocks');
+        this.setTooltip(Blockly.Msg['NTPCLIENT_GET_EPOCH_TIME_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['NTPCLIENT_HELPURL']);
+    }
+};
+
+Blockly.Blocks['NTPCLIENT_GET_FORMATTED_TIME'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(NTPClientMediaFolder + "NTPClient.png", Code.imageSize, Code.imageSize))
+            .appendField(Blockly.Msg['NTPCLIENT_GET_FORMATTED_TIME']);
+        this.appendValueInput("NAME")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg['NTPCLIENT_GET_FORMATTED_TIME_NAME']);
+        this.setOutput(true, null);
+        this.setStyle('board_blocks');
+        this.setTooltip(Blockly.Msg['NTPCLIENT_GET_FORMATTED_TIME_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['NTPCLIENT_HELPURL']);
+    }
+};

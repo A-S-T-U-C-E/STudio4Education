@@ -19,22 +19,22 @@ var toolbox_arrowheadframework = {
                 "categorystyle": "arrowheadframework_category",
                 "contents": [{
                     "kind": "block",
-                    "type": "ahf_esp_define"
+                    "type": "AHF_ESP_DEFINE"
                 }, {
                     "kind": "block",
-                    "type": "ahf_esp_service_registry_def"
+                    "type": "AHF_ESP_SERVICE_REGISTRY_DEF"
                 }, {
                     "kind": "block",
-                    "type": "ahf_esp_SR_register_test"
+                    "type": "AHF_ESP_SR_REGISTER_TEST"
                 }, {
                     "kind": "block",
-                    "type": "ahf_esp_SR_unregister_test"
+                    "type": "AHF_ESP_SR_UNREGISTER_TEST"
                 }, {
                     "kind": "block",
-                    "type": "ahf_esp_format_data_SenML"
+                    "type": "AHF_ESP_FORMAT_DATA_SENML"
                 }, {
                     "kind": "block",
-                    "type": "ahf_esp_keep_connection"
+                    "type": "AHF_ESP_KEEP_CONNECTION"
                 }]
             },
             {
@@ -46,7 +46,7 @@ var toolbox_arrowheadframework = {
                 "categorystyle": "arrowheadframework_category",
                 "contents": [{
                     "kind": "block",
-                    "type": "ahf_esp_define"
+                    "type": "AHF_ESP_DEFINE"
                 }]
             },
             {
@@ -58,7 +58,7 @@ var toolbox_arrowheadframework = {
                 "categorystyle": "arrowheadframework_category",
                 "contents": [{
                     "kind": "block",
-                    "type": "ahf_esp_define"
+                    "type": "AHF_ESP_DEFINE"
                 }]
             }
         ]

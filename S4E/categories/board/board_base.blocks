@@ -22,7 +22,7 @@ goog.require('Blockly.Types');
 
 var mediaFolder = "./S4E/media/";
 
-Blockly.Blocks['base_define_bloc'] = {
+Blockly.Blocks['BASE_DEFINE_BLOC'] = {
     init: function() {
         this.appendDummyInput("")
             .appendField("define");
@@ -34,7 +34,7 @@ Blockly.Blocks['base_define_bloc'] = {
     }
 };
 
-Blockly.Blocks['board_base_setup'] = {
+Blockly.Blocks['BOARD_BASE_SETUP'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("setup");
@@ -47,7 +47,7 @@ Blockly.Blocks['board_base_setup'] = {
     }
 };
 
-Blockly.Blocks['board_base_loop'] = {
+Blockly.Blocks['BOARD_BASE_LOOP'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("loop");
@@ -60,7 +60,7 @@ Blockly.Blocks['board_base_loop'] = {
     }
 };
 
-Blockly.Blocks['board_base_inout_buildin_led'] = {
+Blockly.Blocks['BOARD_BASE_INOUT_BUILDIN_LED'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARDUINO_INOUT_BUILDIN_LED_INPUT)
@@ -73,7 +73,7 @@ Blockly.Blocks['board_base_inout_buildin_led'] = {
     }
 };
 
-Blockly.Blocks['board_base_inout_digital_write'] = {
+Blockly.Blocks['BOARD_BASE_INOUT_DIGITAL_WRITE'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(mediaFolder + "digital.jpg", 32, 32), 'iconToChange')
@@ -96,7 +96,7 @@ Blockly.Blocks['board_base_inout_digital_write'] = {
     }
 };
 
-Blockly.Blocks['board_base_inout_digital_read'] = {
+Blockly.Blocks['BOARD_BASE_INOUT_DIGITAL_READ'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARDUINO_INOUT_DIGITAL_READ_INPUT)
@@ -108,7 +108,7 @@ Blockly.Blocks['board_base_inout_digital_read'] = {
     }
 };
 
-Blockly.Blocks['board_base_inout_highlow'] = {
+Blockly.Blocks['BOARD_BASE_INOUT_HIGHLOW'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown(Blockly.Msg.FIELDDROPDOWN), 'BOOL')
@@ -119,7 +119,7 @@ Blockly.Blocks['board_base_inout_highlow'] = {
     }
 };
 
-Blockly.Blocks['board_base_inout_analog_write'] = {
+Blockly.Blocks['BOARD_BASE_INOUT_ANALOG_WRITE'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(mediaFolder + "pwm.png", Code.imageSize, Code.imageSize))
@@ -137,7 +137,7 @@ Blockly.Blocks['board_base_inout_analog_write'] = {
     }
 };
 
-Blockly.Blocks['board_base_inout_analog_write_slider'] = {
+Blockly.Blocks['BOARD_BASE_INOUT_ANALOG_WRITE_SLIDER'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(mediaFolder + "pwm.png", Code.imageSize, Code.imageSize))
@@ -156,7 +156,7 @@ Blockly.Blocks['board_base_inout_analog_write_slider'] = {
     }
 };
 
-Blockly.Blocks['board_base_inout_analog_read'] = {
+Blockly.Blocks['BOARD_BASE_INOUT_ANALOG_READ'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARDUINO_INOUT_ANALOG_READ_INPUT)
@@ -168,7 +168,7 @@ Blockly.Blocks['board_base_inout_analog_read'] = {
     }
 };
 
-Blockly.Blocks['board_base_delay'] = {
+Blockly.Blocks['BOARD_BASE_DELAY'] = {
     init: function() {
         this.appendValueInput("DELAY_TIME", 'Number')
             .appendField(Blockly.Msg.ARDUINO_BASE_DELAY_DELAY_TIME)
@@ -182,7 +182,7 @@ Blockly.Blocks['board_base_delay'] = {
     }
 };
 
-Blockly.Blocks['board_base_angle'] = {
+Blockly.Blocks['BOARD_BASE_ANGLE'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARDUINO_BASE_ANGLE)
@@ -194,7 +194,7 @@ Blockly.Blocks['board_base_angle'] = {
     }
 };
 
-Blockly.Blocks['board_base_map'] = {
+Blockly.Blocks['BOARD_BASE_MAP'] = {
     init: function() {
         this.appendValueInput("NUM")
             .appendField(Blockly.Msg.ARDUINO_BASE_MAP1)
@@ -212,7 +212,7 @@ Blockly.Blocks['board_base_map'] = {
     }
 };
 
-Blockly.Blocks['board_base_inout_tone'] = {
+Blockly.Blocks['BOARD_BASE_INOUT_TONE'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARDUINO_TONE_INPUT1)
@@ -230,7 +230,7 @@ Blockly.Blocks['board_base_inout_tone'] = {
     }
 };
 
-Blockly.Blocks['board_base_inout_notone'] = {
+Blockly.Blocks['BOARD_BASE_INOUT_NOTONE'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARDUINO_NOTONE_INPUT)

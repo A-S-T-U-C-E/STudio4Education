@@ -77,7 +77,7 @@ Blockly.Types.LARGE_NUMBER = new Blockly.Type({
 
 /** Large unsigned integer number. */
 Blockly.Types.LARGE_UNS_NUMBER = new Blockly.Type({
-    typeId: 'Unisgned Large Number',
+    typeId: 'Unsigned Large Number',
     typeMsgName: 'ARD_TYPE_UNS_LONG',
     compatibleTypes: [
         Blockly.Types.SHORT_NUMBER,

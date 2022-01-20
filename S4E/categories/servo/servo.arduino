@@ -16,7 +16,7 @@ goog.provide('Blockly.Arduino.servo');
 
 goog.require('Blockly.Arduino');
 
-Blockly.Arduino['servo_move_external'] = function(block) {
+Blockly.Arduino['SERVO_MOVE_EXTERNAL'] = function(block) {
     var dropdown_pin = block.getFieldValue('PIN');
     var value_degree = Blockly.Arduino.valueToCode(block, 'DEGREE', Blockly.Arduino.ORDER_ATOMIC);
 
@@ -28,7 +28,7 @@ Blockly.Arduino['servo_move_external'] = function(block) {
     return code;
 };
 
-Blockly.Arduino['servo_move_slider'] = function(block) {
+Blockly.Arduino['SERVO_MOVE_SLIDER'] = function(block) {
     var dropdown_pin = block.getFieldValue('PIN');
     var value_degree = block.getFieldValue('DEGREE');
 
@@ -40,7 +40,7 @@ Blockly.Arduino['servo_move_slider'] = function(block) {
     return code;
 };
 
-Blockly.Arduino['servo_read_degrees'] = function(block) {
+Blockly.Arduino['SERVO_READ_DEGREES'] = function(block) {
     var dropdown_pin = block.getFieldValue('PIN');
 
     Blockly.Arduino.includes_['includes_servo'] = '#include <Servo.h>';

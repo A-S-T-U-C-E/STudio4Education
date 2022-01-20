@@ -1,0 +1,61 @@
+/**
+ * @license
+ * Copyright 2012 Fred Lin
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/**
+ * @fileoverview NTPClient blocks for Blockly.
+ * @author scanet@libreduc.cc (Sébastien CANET)
+ */
+
+'use strict';
+
+goog.provide('Blockly.Arduino.NTPClient');
+
+goog.require('Blockly.Arduino');
+
+Blockly.Arduino['NTPCLIENT_DEFINE_UDP'] = function(block) {
+    Blockly.Arduino.includes_['includes_ntpcliend'] = '#include <NTPClient.h>';
+    Blockly.Arduino.includes_['includes_wifiudp'] = '#include <WiFiUdp.h>';
+    Blockly.Arduino.definitions_['definition_wifiudp'] = 'WiFiUDP ntpUDP;';
+    return '';
+};
+
+Blockly.Arduino['NTPCLIENT_DEFINE_NTPCLIENT'] = function(block) {
+    Blockly.Arduino.includes_['includes_ntpcliend'] = '#include <NTPClient.h>';
+    Blockly.Arduino.includes_['includes_wifiudp'] = '#include <WiFiUdp.h>';
+    var value_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
+    Blockly.Arduino.definitions_['definition_ntpclient'] = 'NTPClient ' + value_name + '(ntpUDP);';
+    return '';
+};
+
+Blockly.Arduino['NTPCLIENT_BEGIN'] = function(block) {
+    var value_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
+    var code = value_name + '.begin();\n';
+    return code;
+};
+
+Blockly.Arduino['NTPCLIENT_UPDATE'] = function(block) {
+    var value_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
+    var code = value_name + '.update();\n';
+    return code;
+};
+
+Blockly.Arduino['NTPCLIENT_FORCEUPDATE'] = function(block) {
+    var value_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
+    var code = value_name + '.forceUpdate();\n';
+    return code;
+};
+
+Blockly.Arduino['NTPCLIENT_GET_EPOCH_TIME'] = function(block) {
+    var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
+    var code = value_name + '.getEpochTime()';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['NTPCLIENT_GET_FORMATTED_TIME'] = function(block) {
+    var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
+    var code = value_name + '.getFormattedTime()';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};

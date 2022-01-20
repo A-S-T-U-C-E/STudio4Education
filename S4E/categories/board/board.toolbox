@@ -9,14 +9,14 @@ var toolbox_board = {
         "categorystyle": "board_category",
         "contents": [{
                 "kind": "block",
-                "type": "board_base_setup"
+                "type": "BOARD_BASE_SETUP"
             },
             {
                 "kind": "block",
-                "type": "board_base_loop"
+                "type": "BOARD_BASE_LOOP"
             }, {
                 "kind": "block",
-                "type": "base_define_bloc"
+                "type": "BASE_DEFINE_BLOC"
             },
             {
                 "kind": "category",
@@ -27,47 +27,47 @@ var toolbox_board = {
                 "categorystyle": "board_category",
                 "contents": [{
                         "kind": "block",
-                        "type": "board_base_inout_buildin_led"
+                        "type": "BOARD_BASE_INOUT_BUILDIN_LED"
                     },
                     {
                         "kind": "block",
-                        "type": "board_base_inout_digital_write"
+                        "type": "BOARD_BASE_INOUT_DIGITAL_WRITE"
                     },
                     {
                         "kind": "block",
-                        "type": "board_base_inout_digital_read"
+                        "type": "BOARD_BASE_INOUT_DIGITAL_READ"
                     },
                     {
                         "kind": "block",
-                        "type": "board_base_inout_highlow"
+                        "type": "BOARD_BASE_INOUT_HIGHLOW"
                     },
                     {
                         "kind": "block",
-                        "blockxml": "<block type='board_base_inout_analog_write'><value name='PWM'><shadow type='math_number'><field name='NUM'>0</field></shadow></value></block>"
+                        "blockxml": "<block type='BOARD_BASE_INOUT_ANALOG_WRITE'><value name='PWM'><shadow type='math_number'><field name='NUM'>0</field></shadow></value></block>"
                     },
                     {
                         "kind": "block",
-                        "type": "board_base_inout_analog_write_slider"
+                        "type": "BOARD_BASE_INOUT_ANALOG_WRITE_SLIDER"
                     },
                     {
                         "kind": "block",
-                        "type": "board_base_inout_analog_read"
+                        "type": "BOARD_BASE_INOUT_ANALOG_READ"
                     },
                     {
                         "kind": "block",
-                        "type": "board_base_angle"
+                        "type": "BOARD_BASE_ANGLE"
                     },
                     {
                         "kind": "block",
-                        "type": "board_base_map"
+                        "type": "BOARD_BASE_MAP"
                     },
                     {
                         "kind": "block",
-                        "blockxml": "<block type='board_base_inout_tone'><value name='NUM'><shadow type='math_number'><field name='NUM'>440</field></shadow></value></block>"
+                        "blockxml": "<block type='BOARD_BASE_INOUT_TONE'><value name='NUM'><shadow type='math_number'><field name='NUM'>440</field></shadow></value></block>"
                     },
                     {
                         "kind": "block",
-                        "type": "board_base_inout_notone"
+                        "type": "BOARD_BASE_INOUT_NOTONE"
                     }
                 ]
             },
@@ -80,7 +80,7 @@ var toolbox_board = {
                 "categorystyle": "board_category",
                 "contents": [{
                     "kind": "block",
-                    "blockxml": "<block type='board_base_delay'><value name='DELAY_TIME'><shadow type='math_number'><field name='NUM'>1000</field></shadow></value></block>"
+                    "blockxml": "<block type='BOARD_BASE_DELAY'><value name='DELAY_TIME'><shadow type='math_number'><field name='NUM'>1000</field></shadow></value></block>"
                 }]
             },
             {
@@ -92,39 +92,39 @@ var toolbox_board = {
                 "categorystyle": "board_category",
                 "contents": [{
                         "kind": "block",
-                        "type": "board_serial_init"
+                        "type": "BOARD_SERIAL_INIT"
                     },
                     {
                         "kind": "block",
-                        "type": "board_serial_printfor"
+                        "type": "BOARD_SERIAL_PRINTFOR"
                     },
                     {
                         "kind": "block",
-                        "type": "board_serial_print"
+                        "type": "BOARD_SERIAL_PRINT"
                     },
                     {
                         "kind": "block",
-                        "type": "board_serial_write"
+                        "type": "BOARD_SERIAL_WRITE"
                     },
                     {
                         "kind": "block",
-                        "type": "board_serial_available"
+                        "type": "BOARD_SERIAL_AVAILABLE"
                     },
                     {
                         "kind": "block",
-                        "type": "board_serial_read"
+                        "type": "BOARD_SERIAL_READ"
                     },
                     {
                         "kind": "block",
-                        "type": "board_serial_readStringUntil"
+                        "type": "BOARD_SERIAL_READSTRINGUNTIL"
                     },
                     {
                         "kind": "block",
-                        "blockxml": "<block type='board_serial_text_prompt_ext'><value name='TEXT'> <shadow type='text'> <field name='TEXT'>abc</field> </shadow> </value></block>"
+                        "blockxml": "<block type='BOARD_SERIAL_TEXT_PROMPT_EXT'><value name='TEXT'> <shadow type='text'> <field name='TEXT'>abc</field> </shadow> </value></block>"
                     },
                     {
                         "kind": "block",
-                        "type": "board_serial_flush"
+                        "type": "BOARD_SERIAL_FLUSH"
                     },
                     {
                         "kind": "block",
@@ -132,7 +132,7 @@ var toolbox_board = {
                     },
                     {
                         "kind": "block",
-                        "type": "board_serial_autoFormatCSV"
+                        "type": "BOARD_SERIAL_AUTOFORMAT_CSV"
                     }
                 ]
             },
@@ -145,7 +145,7 @@ var toolbox_board = {
                 "categorystyle": "board_category",
                 "contents": [{
                     "kind": "block",
-                    "type": "board_iot_autoFormatWebsocket"
+                    "type": "BOARD_IOT_AUTOFORMATWEBSOCKET"
                 }]
             }
         ]

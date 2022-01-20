@@ -1,0 +1,385 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="JM[nz+dViX5nWWjQ23ac">temp_sensor</variable>
+    <variable id="nqa#dt^K.L^a/A7.*eL@">data</variable>
+  </variables>
+  <block type="BOARD_BASE_SETUP" id="xR5_f!8({?YY?qS%CiOD" x="-88" y="-163">
+    <statement name="SETUP">
+      <block type="GROVE_LCD_RGB_POWER" id="x3P/K+Ls:FTuZChj|,WH">
+        <field name="STAT">ON</field>
+        <next>
+          <block type="GROVE_LED_BAR_SETALLOFF" id="?`h!2iU{EFB+JKArgD(T">
+            <field name="PIN">6</field>
+            <next>
+              <block type="WIFI_ESP_UART_DEFINE" id="}YU7ij%cVa-Y!SJ=,h38">
+                <value name="Rx">
+                  <block type="math_number" id="+^!L0/}mR33mWlqM/fb(">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+                <value name="Tx">
+                  <block type="math_number" id="!/YywsGFs=A:CNrzG5c{">
+                    <field name="NUM">3</field>
+                  </block>
+                </value>
+                <value name="NAME">
+                  <block type="text" id="pE=G./=vi;XHS%~3#vyM">
+                    <field name="TEXT">Serial1</field>
+                  </block>
+                </value>
+                <value name="SPEED">
+                  <block type="math_number" id="TaKa+*emP}.{M`ClH|LO">
+                    <field name="NUM">9600</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="BOARD_SERIAL_INIT" id="@a%Uz8TuNGfhuSD40miR">
+                    <field name="SPEED">115200</field>
+                    <next>
+                      <block type="WIFI_ESP_UART_SERVER_DEFINE" id="pWUbXakDCcG[%Sqtu35o">
+                        <value name="SERIAL_NAME">
+                          <block type="text" id="D|6:U]Mj=dUZ0=oiW6Z(">
+                            <field name="TEXT">Serial1</field>
+                          </block>
+                        </value>
+                        <value name="NAME">
+                          <block type="text_no_quote" id="5?=:x2=uj@byOb:j%|2d">
+                            <field name="TEXT">server</field>
+                          </block>
+                        </value>
+                        <value name="PORT">
+                          <block type="math_number" id="%w?+v~ZT8e)obO*VvPi0">
+                            <field name="NUM">8088</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="WIFI_ESP_UART_CHECK_SHIELD" id="3Ci,TKF|g-:.M@c(=4C|">
+                            <next>
+                              <block type="GROVE_LCD_RGB_PRINT" id="lHQOpIOF=%`HVgLLUQUe">
+                                <value name="TEXT">
+                                  <block type="text" id="pkjH^xt?72$RMFO6MTrA">
+                                    <field name="TEXT">ASTUCE</field>
+                                  </block>
+                                </value>
+                                <value name="TEXT2">
+                                  <block type="text" id="3o(27G)?U~KjZ[ylkEDR">
+                                    <field name="TEXT">presents</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="WIFI_ESP_UART_BEGIN" id="gc#p_Ql-ujj[pf!h3d}|">
+                                    <value name="SSID">
+                                      <block type="text" id="F72]_gA28*9A@Qq:Ni6b">
+                                        <field name="TEXT">Sebouille</field>
+                                      </block>
+                                    </value>
+                                    <value name="PASS">
+                                      <block type="text" id="LZdu0WZeF{Rb}N5C:E?m">
+                                        <field name="TEXT">666C@C@666</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="GROVE_LCD_RGB_PRINT" id=";m7mG=P}wzw)]~Jh7!m/">
+                                        <value name="TEXT">
+                                          <block type="text" id="kqY{utTD@w%6}Z`VX%yn">
+                                            <field name="TEXT">Connected to</field>
+                                          </block>
+                                        </value>
+                                        <value name="TEXT2">
+                                          <block type="WIFI_ESP_UART_SSID" id="#wAHL8Td?l,(x4.Tj-aU"></block>
+                                        </value>
+                                        <next>
+                                          <block type="BOARD_SERIAL_PRINT" id="QTt#q.O3L9qVBGa[4Z_}">
+                                            <value name="CONTENT">
+                                              <block type="text" id="Q@/i6!@zA-7d0o^|^,ZD">
+                                                <field name="TEXT">Connected to</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="BOARD_SERIAL_PRINT" id="gf-6Z!I@i:Lw`F)vFKN,">
+                                                <value name="CONTENT">
+                                                  <block type="WIFI_ESP_UART_SSID" id="X#n~N)]@:XlTKOKIex;s"></block>
+                                                </value>
+                                                <next>
+                                                  <block type="BOARD_BASE_DELAY" id="+9E$@aUWjR]@D6Z_AIS$">
+                                                    <value name="DELAY_TIME">
+                                                      <shadow type="math_number" id=")7sm{R?JB8FtBc*]r71-">
+                                                        <field name="NUM">2000</field>
+                                                      </shadow>
+                                                    </value>
+                                                    <next>
+                                                      <block type="BOARD_SERIAL_PRINT" id="f17KG,1HwvpEjD@BoJr_">
+                                                        <value name="CONTENT">
+                                                          <block type="text" id="?tlP,MWGU7k8Y/czY7A?">
+                                                            <field name="TEXT">IP adress</field>
+                                                          </block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="BOARD_SERIAL_PRINT" id="bTzmOr5z=,n,3SE16yh{">
+                                                            <value name="CONTENT">
+                                                              <block type="WIFI_ESP_UART_LOCALIP" id="{C{YWEjMp.apWQXJpajy"></block>
+                                                            </value>
+                                                            <next>
+                                                              <block type="WIFI_ESP_UART_SERVER_BEGIN" id="(LWmcJg11-p7-kVN=0;R">
+                                                                <value name="NAME">
+                                                                  <block type="text" id="|]jWyYY0k)+G*m4_TOl=">
+                                                                    <field name="TEXT">server</field>
+                                                                  </block>
+                                                                </value>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="BOARD_BASE_LOOP" id="d/PVN9R4XUEVi-l:9}AT" x="-88" y="1062">
+    <statement name="LOOP">
+      <block type="variables_set" id="=6.bdIoP9wHUXZ76S/68">
+        <field name="VAR" id="JM[nz+dViX5nWWjQ23ac">temp_sensor</field>
+        <value name="VALUE">
+          <block type="GROVE_DHT_SENSOR_READ" id=".C5eD?VtV*rHN6wQ1EJ1">
+            <field name="TYPE">T</field>
+            <field name="SENSOR">DHT11</field>
+            <field name="PIN">4</field>
+          </block>
+        </value>
+        <next>
+          <block type="WIFI_ESP_UART_SERVER_AVAILABLE" id="K5Hp+/}TL.*w@cN*=Ejk">
+            <value name="NAME">
+              <block type="text" id="Vanp8vF6fxXNok!vDWef">
+                <field name="TEXT">server</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="3%)4UJmvA-efUfQW5yu#">
+                <value name="IF0">
+                  <block type="WIFI_ESP_UART_SERVER_CLIENT_OBJECT" id="jNYuJ}`I_r:)g8)Bg2S["></block>
+                </value>
+                <statement name="DO0">
+                  <block type="controls_whileUntil" id="^`Bt.x]2)nCbKbU*4jn7">
+                    <field name="MODE">WHILE</field>
+                    <value name="BOOL">
+                      <block type="WIFI_ESP_UART_SERVER_CLIENT_CONNECTED" id="?;Uq@Vb-PQW]{rtqE4V~"></block>
+                    </value>
+                    <statement name="DO">
+                      <block type="controls_if" id="Wo{).pvA45TrZSCXB?f~">
+                        <value name="IF0">
+                          <block type="WIFI_ESP_UART_SERVER_CLIENT_AVAILABLE" id="t)12+%%^j1E)3=,Eq]t+"></block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="variables_set" id="^{/R0%lL%Sf3_]:YT:iu">
+                            <field name="VAR" id="nqa#dt^K.L^a/A7.*eL@">data</field>
+                            <value name="VALUE">
+                              <block type="WIFI_ESP_UART_SERVER_CLIENT_READ" id="QqV6,{|jI[)}:.nHv,[+"></block>
+                            </value>
+                            <next>
+                              <block type="BOARD_SERIAL_PRINT" id="NrXga^OZg_mo`W|RejdN">
+                                <value name="CONTENT">
+                                  <block type="variables_get" id="Roa$zhEy{J[OEKsRosR@">
+                                    <field name="VAR" id="nqa#dt^K.L^a/A7.*eL@">data</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="controls_if" id="e2lCQ3MPgi*T(oR*2kO~">
+                                    <value name="IF0">
+                                      <block type="logic_compare" id="9cPN9OAA1351n5@Dtzy8">
+                                        <field name="OP">EQ</field>
+                                        <value name="A">
+                                          <block type="variables_get" id="Ff{2b[|^9h/VZa4N]sQL">
+                                            <field name="VAR" id="nqa#dt^K.L^a/A7.*eL@">data</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="text_char" id="Lwht)CEuOqIRC6aq5]L[">
+                                            <field name="TEXT">\n</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <statement name="DO0">
+                                      <block type="BOARD_SERIAL_PRINT" id="q3^)48n213`B.f=1yguI">
+                                        <value name="CONTENT">
+                                          <block type="text" id="L0^W_m)vkq{+3wwpu;6@">
+                                            <field name="TEXT">sending response</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="U=jfzarA1WG!T;?V9i06">
+                                            <value name="NAME">
+                                              <block type="text" id="cjG!REX6ncCB9SSsr?Pt">
+                                                <field name="TEXT">HTTP/1.1 200 OK\r\n</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="5m1cVk[),XXa{JyFuWoB">
+                                                <value name="NAME">
+                                                  <block type="text" id="U4I(uOsz21,{l8j%U6m[">
+                                                    <field name="TEXT">Content-Type: text/html\r\n</field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="];EHYB!y}/;|U;_+b76v">
+                                                    <value name="NAME">
+                                                      <block type="text" id="NUd]{1=hTE|S{8[wLj7i">
+                                                        <field name="TEXT">Connection: close\r\n</field>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id=",kUn0cuOvyTx%7Ct0|$=">
+                                                        <value name="NAME">
+                                                          <block type="text" id="BdJbG/Zz}pjK1-wH`~2L">
+                                                            <field name="TEXT">Refresh: 20\r\n</field>
+                                                          </block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="7~B_9#LNg_(QII3s0)_S">
+                                                            <value name="NAME">
+                                                              <block type="text" id="[:?hk@|!Bjt!ekz4xo7T">
+                                                                <field name="TEXT">\r\n</field>
+                                                              </block>
+                                                            </value>
+                                                            <next>
+                                                              <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="rRong=xwI{)Imny`6Z`8">
+                                                                <value name="NAME">
+                                                                  <block type="text" id="p][P$M05Shk*3JPC@Q`E">
+                                                                    <field name="TEXT">&lt;!DOCTYPE HTML&gt;\r\n</field>
+                                                                  </block>
+                                                                </value>
+                                                                <next>
+                                                                  <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="pAXF7./jXVc$sIu]s(8j">
+                                                                    <value name="NAME">
+                                                                      <block type="text" id="kmk4ppmh|,RWJ$G9!Pz)">
+                                                                        <field name="TEXT">&lt;html&gt;\r\n</field>
+                                                                      </block>
+                                                                    </value>
+                                                                    <next>
+                                                                      <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="eC+z:ZYHHIK~vfoEVMRg">
+                                                                        <value name="NAME">
+                                                                          <block type="text" id="gHJ4eil2)#)SD9S=h3SF">
+                                                                            <field name="TEXT">&lt;h1&gt;STudio4Education&lt;/h1&gt;\r\n</field>
+                                                                          </block>
+                                                                        </value>
+                                                                        <next>
+                                                                          <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="H6j$uh4}DmRIHk.rA1r9">
+                                                                            <value name="NAME">
+                                                                              <block type="text" id="KFUmO;{D[2VM0|CxCw~f">
+                                                                                <field name="TEXT">Humidity:</field>
+                                                                              </block>
+                                                                            </value>
+                                                                            <next>
+                                                                              <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="R={ER,2GpI!LsM:Z{zb+">
+                                                                                <value name="NAME">
+                                                                                  <block type="variables_get" id="]}8`P{Ox1FBW!4fHGHPd">
+                                                                                    <field name="VAR" id="JM[nz+dViX5nWWjQ23ac">temp_sensor</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <next>
+                                                                                  <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="a.uWa-*BFS=MU}Yy2lbM">
+                                                                                    <value name="NAME">
+                                                                                      <block type="text" id="dT:{;,]b(sOT17W/f#:k">
+                                                                                        <field name="TEXT">&lt;br&gt;\r\n</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <next>
+                                                                                      <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="@7Si`GI$(^H%$2[ESO)o">
+                                                                                        <value name="NAME">
+                                                                                          <block type="text" id="*okjT6ae#W:xT?/j?tbS">
+                                                                                            <field name="TEXT">&lt;/html&gt;\r\n</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <next>
+                                                                                          <block type="controls_flow_statements" id="#*l~ttBuYq5g7D7-4I5V">
+                                                                                            <field name="FLOW">BREAK</field>
+                                                                                          </block>
+                                                                                        </next>
+                                                                                      </block>
+                                                                                    </next>
+                                                                                  </block>
+                                                                                </next>
+                                                                              </block>
+                                                                            </next>
+                                                                          </block>
+                                                                        </next>
+                                                                      </block>
+                                                                    </next>
+                                                                  </block>
+                                                                </next>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </statement>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="BOARD_BASE_DELAY" id="h2s~|8%$jN,v@PrK0tvO">
+                        <value name="DELAY_TIME">
+                          <shadow type="math_number" id="[Cs,F}Cj6V!iwB9yek:$">
+                            <field name="NUM">50</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="WIFI_ESP_UART_SERVER_CLIENT_STOP" id="z2!0iKsPMfZl8H2ZH4r^">
+                            <next>
+                              <block type="BOARD_SERIAL_PRINT" id="P*.YBO38!V9w$~N,7?*{">
+                                <value name="CONTENT">
+                                  <block type="text" id="6qdRtZj^PEN_2V5=sV86">
+                                    <field name="TEXT">client disconnected</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

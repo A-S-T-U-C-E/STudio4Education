@@ -43,4 +43,7 @@ Blockly.Msg.CAT_ARROWHEADFRAMEWORK = "Arrowhead";
 Blockly.Msg.CAT_ARROWHEADFRAMEWORK_ESP = " ESP library use";
 Blockly.Msg.CAT_ARROWHEADFRAMEWORK_WIFI = " WiFi connection";
 Blockly.Msg.CAT_ARROWHEADFRAMEWORK_RJ = " Ethernet connection";
+Blockly.Msg.CAT_COMMUNICATION = "communication";
 Blockly.Msg.CAT_DHT = "DHT sensor";
+Blockly.Msg.CAT_NTPCLIENT = "NTP client";
+Blockly.Msg.CAT_WIFIESP = "WiFi ESP";

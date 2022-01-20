@@ -11,113 +11,18 @@
 
 'use strict';
 
-goog.provide('Blockly.Arduino.grove_uart_wifi');
+goog.provide('Blockly.Arduino.GROVE_UART_WIFI');
 
 goog.require('Blockly.Arduino');
 
-Blockly.Arduino['grove_uart_wifi_declare'] = function(block) {
+Blockly.Arduino['GROVE_UART_WIFI_DEFINE'] = function(block) {
     var value_rx = Blockly.Arduino.valueToCode(block, 'Rx', Blockly.Arduino.ORDER_ATOMIC);
     var value_tx = Blockly.Arduino.valueToCode(block, 'Tx', Blockly.Arduino.ORDER_ATOMIC);
     var value_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
     value_name = value_name.replace('"', '').replace('"', '');
     var value_speed = Blockly.Arduino.valueToCode(block, 'SPEED', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.includes_['grove_uart_wifi_declare'] = '#include <SoftwareSerial.h>';
-    Blockly.Arduino.definitions_['grove_uart_wifi_declare'] = 'SoftwareSerial ' + value_name + '(' + value_rx + ', ' + value_tx + ');';
-    Blockly.Arduino.setups_['grove_uart_wifi_declare'] = value_name + '.begin(' + value_speed + ');';
+    Blockly.Arduino.includes_['GROVE_UART_WIFI_DEFINE'] = '#include <SoftwareSerial.h>';
+    Blockly.Arduino.definitions_['GROVE_UART_WIFI_DEFINE'] = 'SoftwareSerial ' + value_name + '(' + value_rx + ', ' + value_tx + ');';
+    Blockly.Arduino.setups_['GROVE_UART_WIFI_DEFINE'] = value_name + '.begin(' + value_speed + ');';
     return '';
-};
-
-Blockly.Arduino['grove_uart_wifi_server_declare'] = function(block) {
-    var value_serial_name = Blockly.Arduino.valueToCode(block, 'SERIAL_NAME', Blockly.Arduino.ORDER_ATOMIC);
-    value_serial_name = value_serial_name.replace('"', '').replace('"', '');
-    var value_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
-    value_name = value_name.replace('"', '').replace('"', '');
-    var value_port = Blockly.Arduino.valueToCode(block, 'PORT', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.includes_['grove_uart_wifi_server_' + value_port] = '#include <WiFiEsp.h>';
-    Blockly.Arduino.definitions_['grove_uart_wifi_server_' + value_port] = 'WiFiEspServer ' + value_name + '(' + value_port + ');';
-    Blockly.Arduino.definitions_['grove_uart_wifi_server_status'] = 'byte status = WL_IDLE_STATUS;     // the Wifi radio\'s status;';
-    Blockly.Arduino.setups_['grove_uart_wifi_server_' + value_port] = 'WiFi.init(&' + value_serial_name + ');';
-    return '';
-}
-
-Blockly.Arduino['grove_uart_wifi_check_shield'] = function(block) {
-    var code = 'if (WiFi.status() == WL_NO_SHIELD) {\n' +
-        '  Serial.println("WiFi shield not present");\n' +
-        '  while (true);\n' +
-        '}\n';
-    return code;
-};
-
-Blockly.Arduino['grove_uart_wifi_begin'] = function(block) {
-    var value_ssid = Blockly.Arduino.valueToCode(block, 'SSID', Blockly.Arduino.ORDER_ATOMIC);
-    var value_pass = Blockly.Arduino.valueToCode(block, 'PASS', Blockly.Arduino.ORDER_ATOMIC);
-    var code = 'while (status != WL_CONNECTED) {\n' +
-        '  Serial.println("Connect to WPA/WPA2 network");\n' +
-        '  status = WiFi.begin(' + value_ssid + ', ' + value_pass + ');\n' +
-        '}\n';
-    return code;
-}
-
-Blockly.Arduino['grove_uart_wifi_localIP'] = function(block) {
-    var code = 'String() + WiFi.localIP()[0] + "." + WiFi.localIP()[1] + "." + WiFi.localIP()[2] + "." + WiFi.localIP()[3]';
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino['grove_uart_wifi_ssid'] = function(block) {
-    var code = 'WiFi.SSID()';
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino['grove_uart_wifi_server_begin'] = function(block) {
-    var value_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
-    value_name = value_name.replace('"', '').replace('"', '');
-    var code = value_name + '.begin();\n';
-    return code;
-};
-
-Blockly.Arduino['grove_uart_wifi_server_available'] = function(block) {
-    var value_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
-    value_name = value_name.replace('"', '').replace('"', '');
-    var code = 'WiFiEspClient client = ' + value_name + '.available();\n';
-    return code;
-};
-
-Blockly.Arduino['grove_uart_wifi_server_client_object'] = function(block) {
-    var code = 'client';
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino['grove_uart_wifi_server_client_connected'] = function(block) {
-    var code = 'client.connected()';
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino['grove_uart_wifi_server_client_available'] = function(block) {
-    var code = 'client.available()';
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino['grove_uart_wifi_server_client_read'] = function(block) {
-    var code = 'client.read()';
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino['grove_uart_wifi_server_client_stop'] = function(block) {
-    var code = 'client.stop();\n';
-    return code;
-};
-
-Blockly.Arduino['grove_uart_wifi_server_client_print'] = function(block) {
-    var value_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
-    value_name = value_name.replaceAll(/\\\\/g, '\\');
-    var code = 'client.print(' + value_name + ');\n';
-    return code;
-};
-
-Blockly.Arduino['grove_uart_wifi_server_client_print_multilinetextinput'] = function(block) {
-    var value_name = block.getFieldValue('NAME');
-    value_name = '"' + value_name.replaceAll('\n', '" + "') + '"';
-    value_name = value_name.replaceAll(/\\\\/g, '\\');
-    var code = 'client.print(' + value_name + ');\n';
-    return code;
 };

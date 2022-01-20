@@ -1,24 +1,24 @@
-Blockly.Blocks.ahf_esp_define.getBlockType = function() {
+Blockly.Blocks.AHF_ESP_DEFINE.getBlockType = function() {
     return Blockly.Types.NULL;
 };
-Blockly.Blocks.ahf_esp_service_registry_def.getBlockType = function() {
+Blockly.Blocks.AHF_ESP_SERVICE_REGISTRY_DEF.getBlockType = function() {
     return Blockly.Types.NULL;
 };
-Blockly.Blocks.ahf_esp_connection_registry_test.getBlockType = function() {
+Blockly.Blocks.AHF_ESP_CONNECTION_REGISTRY_TEST.getBlockType = function() {
     return Blockly.Types.TEXT;
 };
-Blockly.Blocks.ahf_esp_SR_register_test.getBlockType = function() {
+Blockly.Blocks.AHF_ESP_SR_REGISTER_TEST.getBlockType = function() {
     return Blockly.Types.TEXT;
 };
-Blockly.Blocks.ahf_esp_SR_unregister_test.getBlockType = function() {
+Blockly.Blocks.AHF_ESP_SR_UNREGISTER_TEST.getBlockType = function() {
     return Blockly.Types.TEXT;
 };
-Blockly.Blocks.ahf_esp_format_data_SenML.getBlockType = function() {
+Blockly.Blocks.AHF_ESP_FORMAT_DATA_SENML.getBlockType = function() {
     return Blockly.Types.NULL;
 };
-Blockly.Blocks.ahf_esp_keep_connection.getBlockType = function() {
+Blockly.Blocks.AHF_ESP_KEEP_CONNECTION.getBlockType = function() {
     return Blockly.Types.NULL;
 };
-Blockly.Blocks.ahf_custom_parameters.getBlockType = function() {
+Blockly.Blocks.AHF_CUSTOM_PARAMETERS.getBlockType = function() {
     return Blockly.Types.NULL;
 };

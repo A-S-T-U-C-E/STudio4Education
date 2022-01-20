@@ -21,7 +21,7 @@ goog.require('Blockly.Types');
 
 var mediaFolder = "./S4E/media/";
 
-Blockly.Blocks['board_serial_init'] = {
+Blockly.Blocks['BOARD_SERIAL_INIT'] = {
     init: function() {
         this.setInputsInline(true);
         this.appendDummyInput("")
@@ -35,7 +35,7 @@ Blockly.Blocks['board_serial_init'] = {
     }
 };
 
-Blockly.Blocks['board_serial_printfor'] = {
+Blockly.Blocks['BOARD_SERIAL_PRINTFOR'] = {
     init: function() {
         this.setInputsInline(true);
         this.appendValueInput("CONTENT")
@@ -55,7 +55,7 @@ Blockly.Blocks['board_serial_printfor'] = {
     }
 };
 
-Blockly.Blocks['board_serial_print'] = {
+Blockly.Blocks['BOARD_SERIAL_PRINT'] = {
     init: function() {
         this.appendValueInput("CONTENT")
             .appendField(Blockly.Msg.SERIAL_PRINT_CONTENT);
@@ -67,7 +67,7 @@ Blockly.Blocks['board_serial_print'] = {
     }
 };
 
-Blockly.Blocks['board_serial_available'] = {
+Blockly.Blocks['BOARD_SERIAL_AVAILABLE'] = {
     init: function() {
         this.appendDummyInput("")
             .appendField(Blockly.Msg.SERIAL_AVAILABLE);
@@ -79,7 +79,7 @@ Blockly.Blocks['board_serial_available'] = {
     }
 };
 
-Blockly.Blocks['board_serial_read'] = {
+Blockly.Blocks['BOARD_SERIAL_READ'] = {
     init: function() {
         this.appendDummyInput("")
             .appendField(Blockly.Msg.SERIAL_READ);
@@ -91,7 +91,7 @@ Blockly.Blocks['board_serial_read'] = {
     }
 };
 
-Blockly.Blocks['board_serial_readStringUntil'] = {
+Blockly.Blocks['BOARD_SERIAL_READSTRINGUNTIL'] = {
     init: function() {
         this.appendValueInput("CONTENT")
             .setCheck('String')
@@ -104,7 +104,7 @@ Blockly.Blocks['board_serial_readStringUntil'] = {
     }
 };
 
-Blockly.Blocks['board_serial_flush'] = {
+Blockly.Blocks['BOARD_SERIAL_FLUSH'] = {
     init: function() {
         this.appendDummyInput("")
             .appendField(Blockly.Msg.SERIAL_FLUSH);

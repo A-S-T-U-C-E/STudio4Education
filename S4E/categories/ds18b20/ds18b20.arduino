@@ -15,7 +15,7 @@ goog.provide('Blockly.Arduino.ds18b20');
 
 goog.require('Blockly.Arduino');
 
-Blockly.Arduino['ds18b20_search'] = function() {
+Blockly.Arduino['DS18B20_SEARCH'] = function() {
     var ds18b20_pin = this.getFieldValue('ds18b20_pin');
     var ds18b20_addr = this.getFieldValue('ds18b20_address');
     Blockly.Arduino.includes_['ds18b20_include'] = '#include <OneWire.h>';
@@ -25,9 +25,9 @@ Blockly.Arduino['ds18b20_search'] = function() {
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino['ds18b20_temp'] = function() {
+Blockly.Arduino['DS18B20_TEMP'] = function() {
     var ds18b20_addr = this.getFieldValue('ds18b20_address');
-    Blockly.Arduino.userFunctions_['ds18b20_temp'] =
+    Blockly.Arduino.userFunctions_['DS18B20_TEMP'] =
         'float dstemp(byte addr[]) {\n' +
         '   byte data[12],i;\n' +
         '   ds18b20.reset();\n' +

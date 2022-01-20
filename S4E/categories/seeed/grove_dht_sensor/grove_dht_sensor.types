@@ -1,3 +1,3 @@
-Blockly.Blocks.grove_dht_sensor_read.getBlockType = function() {
+Blockly.Blocks.GROVE_DHT_SENSOR_READ.getBlockType = function() {
     return Blockly.Types.SHORT_NUMBER;
 };

@@ -322,3 +322,73 @@ Blockly.Msg['GROVE_INOUT_LCD_WRITE_FORMAT_FIELDDROPDOWN'] = [
     ["عشري", "1"],
     ["متغير", "2"]
 ];
+Blockly.Msg['GROVE_UART_WIFI_DEFINE'] = "define WiFi UART v2";
+Blockly.Msg['GROVE_UART_WIFI_DEFINE_RX'] = "Rx";
+Blockly.Msg['GROVE_UART_WIFI_DEFINE_TX'] = "Tx";
+Blockly.Msg['GROVE_UART_WIFI_DEFINE_OBJECT'] = "name of communication object";
+Blockly.Msg['GROVE_UART_WIFI_DEFINE_SPEED'] = "communication object's speed";
+Blockly.Msg['GROVE_UART_WIFI_DEFINE_TOOLTIP'] = "define Grove WiFi's pins, RxTx to communicate with softserial object";
+Blockly.Msg['GROVE_UART_WIFI_DEFINE_HELPURL'] = "https://wiki.seeedstudio.com/Grove-UART_Wifi_V2/";
+
+// WiFi ESP library
+
+Blockly.Msg['WIFI_ESP_LIBRARY_HELPURL'] = "https://github.com/bportaluri/WiFiEsp";
+Blockly.Msg['WIFI_ESP_SERVER_DEFINE'] = "start WiFi server";
+Blockly.Msg['WIFI_ESP_SERVER_SERIAL_NAME'] = "serial name";
+Blockly.Msg['WIFI_ESP_SERVER_NAME'] = "server name";
+Blockly.Msg['WIFI_ESP_SERVER_PORT'] = "server port";
+Blockly.Msg['WIFI_ESP_DEFINE_TOOLTIP'] = "define web server, using communication object";
+Blockly.Msg['WIFI_ESP_CHECK_SHIELD'] = "loop check if WiFi board works";
+Blockly.Msg['WIFI_ESP_CHECK_SHIELD_TOOLTIP'] = "verify presence and info back on serial, if not, loop forever";
+Blockly.Msg['WIFI_ESP_BEGIN'] = "attempt to connect to WiFi network";
+Blockly.Msg['WIFI_ESP_BEGIN_SSID'] = "ssid";
+Blockly.Msg['WIFI_ESP_BEGIN_PASS'] = "password";
+Blockly.Msg['WIFI_ESP_BEGIN_TOOLTIP'] = "attempt to connect to WiFi network, if not, loop forever";
+Blockly.Msg['WIFI_ESP_LOCALIP'] = "local IP address";
+Blockly.Msg['WIFI_ESP_LOCALIP_TOOLTIP'] = "WiFi shield's local IP address";
+Blockly.Msg['WIFI_ESP_SSID'] = "SSID of the network";
+Blockly.Msg['WIFI_ESP_SSID_TOOLTIP'] = "SSID of the network you're attached to";
+Blockly.Msg['WIFI_ESP_SERVER_BEGIN'] = "launch web server, named";
+Blockly.Msg['WIFI_ESP_SERVER_BEGIN_TOOLTIP'] = "launch webserver which name was declared in previous block";
+Blockly.Msg['WIFI_ESP_SERVER_AVAILABLE'] = "listen for available client for server";
+Blockly.Msg['WIFI_ESP_SERVER_AVAILABLE_TOOLTIP'] = "listen for incoming clients";
+Blockly.Msg['WIFI_ESP_SERVER_AVAILABLE'] = "listen for available client for server";
+Blockly.Msg['WIFI_ESP_SERVER_AVAILABLE_TOOLTIP'] = "listen for incoming clients";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_OBJECT'] = "client has data available for reading";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_OBJECT_TOOLTIP'] = "check if client has data available for reading, false if not";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_CONNECTED'] = "client is connected to server";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_CONNECTED_TOOLTIP'] = "check if client is connected, boolean";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_AVAILABLE'] = "client is available to send datas";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_AVAILABLE_TOOLTIP'] = "check if client is available, ready to send datas, boolean";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_READ'] = "datas from server's client";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_READ_TOOLTIP'] = "get datas from client connected to server";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_STOP'] = "stop client connection";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_STOP_TOOLTIP'] = "stop connection of client";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_PRINT'] = "send to client HTML code";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_PRINT_TOOLTIP'] = "HTML response to client, line by line if needed";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_PRINT_MULTILINETEXTINPUT'] = "send to client HTML code";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_PRINT_MULTILINETEXTINPUT_TOOLTIP'] = "HTML response to client, multiline";
+
+// NTP client library
+
+Blockly.Msg['NTPCLIENT_HELPURL'] = "https://github.com/arduino-libraries/NTPClient";
+Blockly.Msg['NTPCLIENT_DEFINE_UDP'] = "define WiFiUDP element for NTP use";
+Blockly.Msg['NTPCLIENT_DEFINE_UDP_TOOLTIP'] = "define WiFiUDP element for NTPClient use";
+Blockly.Msg['NTPCLIENT_DEFINE_NTPCLIENT'] = "define NTPClient object";
+Blockly.Msg['NTPCLIENT_DEFINE_NTPCLIENT_NAME'] = "name of NTP client";
+Blockly.Msg['NTPCLIENT_DEFINE_NTPCLIENT_TOOLTIP'] = "define NTPClient, by default 'pool.ntp.org' is used with 60 seconds update interval and no offset";
+Blockly.Msg['NTPCLIENT_BEGIN'] = "begin NTP communication";
+Blockly.Msg['NTPCLIENT_BEGIN_NAME'] = "name of NTP client";
+Blockly.Msg['NTPCLIENT_BEGIN_TOOLTIP'] = "begin NTP communication for client with right name";
+Blockly.Msg['NTPCLIENT_UPDATE'] = "update NTP information";
+Blockly.Msg['NTPCLIENT_UPDATE_NAME'] = "name of NTP client";
+Blockly.Msg['NTPCLIENT_UPDATE_TOOLTIP'] = "update NTP communication & information for client";
+Blockly.Msg['NTPCLIENT_FORCEUPDATE'] = "force update NTP information";
+Blockly.Msg['NTPCLIENT_FORCEUPDATE_NAME'] = "name of NTP client";
+Blockly.Msg['NTPCLIENT_FORCEUPDATE_TOOLTIP'] = "force update NTP communication & information for client";
+Blockly.Msg['NTPCLIENT_GET_EPOCH_TIME'] = "epoch time returned by the NTP server";
+Blockly.Msg['NTPCLIENT_GET_EPOCH_TIME_NAME'] = "name of NTP client";
+Blockly.Msg['NTPCLIENT_GET_EPOCH_TIME_TOOLTIP'] = "returns the Unix epoch, which are the seconds elapsed since 00:00:00 UTC on 1 January 1970 (leap seconds are ignored, every day is treated as having 86400 seconds)";
+Blockly.Msg['NTPCLIENT_GET_FORMATTED_TIME'] = "formatted time returned by the NTP server";
+Blockly.Msg['NTPCLIENT_GET_FORMATTED_TIME_NAME'] = "name of NTP client";
+Blockly.Msg['NTPCLIENT_GET_FORMATTED_TIME_TOOLTIP'] = "send back time in text string";

@@ -38,7 +38,7 @@ tempF.setAttribute('tooltip', 'temperatureF');
 tempF.setAttribute('height', '60px');
 tempF.setAttribute('width', '60px');
 
-Blockly.Blocks['DHT_read'] = {
+Blockly.Blocks['DHT_READ'] = {
     init: function() {
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_LEFT)

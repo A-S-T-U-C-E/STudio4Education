@@ -1,33 +1,33 @@
-Blockly.Blocks.grove_lcd_rgb_print.getBlockType = function() {
-	return Blockly.Types.BOOLEAN;
+Blockly.Blocks.GROVE_LCD_RGB_PRINT.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
 };
-Blockly.Blocks.grove_lcd_rgb_power.getBlockType = function() {
-	return Blockly.Types.BOOLEAN;
+Blockly.Blocks.GROVE_LCD_RGB_POWER.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
 };
-Blockly.Blocks.grove_lcd_rgb_clean.getBlockType = function() {
-	return Blockly.Types.NUMBER;
+Blockly.Blocks.GROVE_LCD_RGB_CLEAN.getBlockType = function() {
+    return Blockly.Types.NUMBER;
 };
-Blockly.Blocks.grove_lcd_rgb_effect.getBlockType = function() {
-	return Blockly.Types.NUMBER;
+Blockly.Blocks.GROVE_LCD_RGB_EFFECT.getBlockType = function() {
+    return Blockly.Types.NUMBER;
 };
-Blockly.Blocks.grove_lcd_rgb_init.getBlockType = function() {
-	return Blockly.Types.BOOLEAN;
+Blockly.Blocks.GROVE_LCD_RGB_INIT.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
 };
-Blockly.Blocks.grove_lcd_rgb_clear.getBlockType = function() {
-	return Blockly.Types.NUMBER;
+Blockly.Blocks.GROVE_LCD_RGB_CLEAR.getBlockType = function() {
+    return Blockly.Types.NUMBER;
 };
-Blockly.Blocks.grove_lcd_rgb_scrolling.getBlockType = function() {
-	return Blockly.Types.BOOLEAN;
+Blockly.Blocks.GROVE_LCD_RGB_SCROLLING.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
 };
-Blockly.Blocks.grove_lcd_rgb_set_cursor.getBlockType = function() {
-	return Blockly.Types.DECIMAL;
+Blockly.Blocks.GROVE_LCD_RGB_SET_CURSOR.getBlockType = function() {
+    return Blockly.Types.DECIMAL;
 };
-Blockly.Blocks.grove_lcd_rgb_set_RGB.getBlockType = function() {
-	return Blockly.Types.NUMBER;
+Blockly.Blocks.GROVE_LCD_RGB_SET_RGB.getBlockType = function() {
+    return Blockly.Types.NUMBER;
 };
-Blockly.Blocks.grove_lcd_rgb_print_data.getBlockType = function() {
-	return Blockly.Types.BOOLEAN;
+Blockly.Blocks.GROVE_LCD_RGB_PRINT_DATA.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
 };
-Blockly.Blocks.grove_lcd_rgb_write_data.getBlockType = function() {
-	return Blockly.Types.NUMBER;
+Blockly.Blocks.GROVE_LCD_RGB_WRITE_DATA.getBlockType = function() {
+    return Blockly.Types.NUMBER;
 };

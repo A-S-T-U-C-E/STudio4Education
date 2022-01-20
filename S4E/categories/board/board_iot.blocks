@@ -21,7 +21,7 @@ goog.require('Blockly.Types');
 
 var mediaFolder = "./S4E/media/";
 
-Blockly.Blocks['board_iot_autoFormatWebsocket'] = {
+Blockly.Blocks['BOARD_IOT_AUTOFORMATWEBSOCKET'] = {
     /**
      * Block for creating a list with any number of elements of any type.
      * @this {Blockly.Block}
@@ -29,7 +29,7 @@ Blockly.Blocks['board_iot_autoFormatWebsocket'] = {
     init: function() {
         this.itemCount_ = 2;
         this.updateShape_();
-        this.setMutator(new Blockly.Mutator(['board_iot_autoFormatWebsocket_item']));
+        this.setMutator(new Blockly.Mutator(['BOARD_IOT_AUTOFORMATWEBSOCKET_ITEM']));
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg['IOT_LISTS_CREATE_WITH_TOOLTIP']);
@@ -62,11 +62,11 @@ Blockly.Blocks['board_iot_autoFormatWebsocket'] = {
      * @this {Blockly.Block}
      */
     decompose: function(workspace) {
-        var containerBlock = workspace.newBlock('board_iot_autoFormatWebsocket_container');
+        var containerBlock = workspace.newBlock('BOARD_IOT_AUTOFORMATWEBSOCKET_CONTAINER');
         containerBlock.initSvg();
         var connection = containerBlock.getInput('STACK').connection;
         for (var i = 0; i < this.itemCount_; i++) {
-            var itemBlock = workspace.newBlock('board_iot_autoFormatWebsocket_item');
+            var itemBlock = workspace.newBlock('BOARD_IOT_AUTOFORMATWEBSOCKET_ITEM');
             itemBlock.initSvg();
             connection.connect(itemBlock.previousConnection);
             connection = itemBlock.nextConnection;
@@ -147,7 +147,7 @@ Blockly.Blocks['board_iot_autoFormatWebsocket'] = {
     }
 };
 
-Blockly.Blocks['board_iot_autoFormatWebsocket_container'] = {
+Blockly.Blocks['BOARD_IOT_AUTOFORMATWEBSOCKET_CONTAINER'] = {
     /**
      * Mutator block for list container.
      * @this {Blockly.Block}
@@ -162,7 +162,7 @@ Blockly.Blocks['board_iot_autoFormatWebsocket_container'] = {
     }
 };
 
-Blockly.Blocks['board_iot_autoFormatWebsocket_item'] = {
+Blockly.Blocks['BOARD_IOT_AUTOFORMATWEBSOCKET_ITEM'] = {
     /**
      * Mutator block for adding items.
      * @this {Blockly.Block}

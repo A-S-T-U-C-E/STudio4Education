@@ -21,7 +21,7 @@ goog.require('Blockly.Types');
 
 var mediaFolder = "./S4E/media/";
 
-Blockly.Blocks['board_serial_init'] = {
+Blockly.Blocks['BOARD_SERIAL_INIT'] = {
     init: function() {
         this.setInputsInline(true);
         this.appendDummyInput("")
@@ -35,7 +35,7 @@ Blockly.Blocks['board_serial_init'] = {
     }
 };
 
-Blockly.Blocks['board_serial_printfor'] = {
+Blockly.Blocks['BOARD_SERIAL_PRINTFOR'] = {
     init: function() {
         this.setInputsInline(true);
         this.appendValueInput("CONTENT")
@@ -55,7 +55,7 @@ Blockly.Blocks['board_serial_printfor'] = {
     }
 };
 
-Blockly.Blocks['board_serial_print'] = {
+Blockly.Blocks['BOARD_SERIAL_PRINT'] = {
     init: function() {
         this.appendValueInput("CONTENT")
             .appendField(Blockly.Msg.SERIAL_PRINT_CONTENT);
@@ -67,7 +67,7 @@ Blockly.Blocks['board_serial_print'] = {
     }
 };
 
-Blockly.Blocks['board_serial_write'] = {
+Blockly.Blocks['BOARD_SERIAL_WRITE'] = {
     init: function() {
         this.appendValueInput("CONTENT")
             .appendField(Blockly.Msg.SERIAL_WRITE_CONTENT);
@@ -79,7 +79,7 @@ Blockly.Blocks['board_serial_write'] = {
     }
 };
 
-Blockly.Blocks['board_serial_available'] = {
+Blockly.Blocks['BOARD_SERIAL_AVAILABLE'] = {
     init: function() {
         this.appendDummyInput("")
             .appendField(Blockly.Msg.SERIAL_AVAILABLE);
@@ -91,7 +91,7 @@ Blockly.Blocks['board_serial_available'] = {
     }
 };
 
-Blockly.Blocks['board_serial_read'] = {
+Blockly.Blocks['BOARD_SERIAL_READ'] = {
     init: function() {
         this.appendDummyInput("")
             .appendField(Blockly.Msg.SERIAL_READ);
@@ -103,7 +103,7 @@ Blockly.Blocks['board_serial_read'] = {
     }
 };
 
-Blockly.Blocks['board_serial_readStringUntil'] = {
+Blockly.Blocks['BOARD_SERIAL_READSTRINGUNTIL'] = {
     init: function() {
         this.appendValueInput("CONTENT")
             .setCheck('String')
@@ -116,7 +116,7 @@ Blockly.Blocks['board_serial_readStringUntil'] = {
     }
 };
 
-Blockly.Blocks['board_serial_text_prompt_ext'] = {
+Blockly.Blocks['BOARD_SERIAL_TEXT_PROMPT_EXT'] = {
     /**
      * Block for prompt function (external message).
      * @this {Blockly.Block}
@@ -171,7 +171,7 @@ Blockly.Blocks['board_serial_text_prompt_ext'] = {
     }
 };
 
-Blockly.Blocks['board_serial_flush'] = {
+Blockly.Blocks['BOARD_SERIAL_FLUSH'] = {
     init: function() {
         this.appendDummyInput("")
             .appendField(Blockly.Msg.SERIAL_FLUSH);
@@ -205,7 +205,7 @@ Blockly.defineBlocksWithJsonArray(
         "nextStatement": null,
         "style": "board_blocks",
         "helpUrl": "lien vers le wiki",
-        "mutator": "serial_formatCSV_mutator",
+        "mutator": "SERIAL_FORMAT_CSV_MUTATOR",
         "tooltip": "serial_formatCSV_tooltip"
     }, {
         "type": "mutator_stack",
@@ -479,11 +479,11 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
     }
 };
 
-Blockly.Extensions.registerMutator('serial_formatCSV_mutator',
+Blockly.Extensions.registerMutator('SERIAL_FORMAT_CSV_MUTATOR',
     Blockly.Block.FORMATCSV_MUTATOR_MIXIN, null, ['mutator_data', 'mutator_sep']);
 
 
-Blockly.Blocks['board_serial_autoFormatCSV'] = {
+Blockly.Blocks['BOARD_SERIAL_AUTOFORMAT_CSV'] = {
     /**
      * Block for creating a list with any number of elements of any type.
      * @this {Blockly.Block}
@@ -491,7 +491,7 @@ Blockly.Blocks['board_serial_autoFormatCSV'] = {
     init: function() {
         this.itemCount_ = 2;
         this.updateShape_();
-        this.setMutator(new Blockly.Mutator(['board_serial_autoFormatCSV_item']));
+        this.setMutator(new Blockly.Mutator(['BOARD_SERIAL_AUTOFORMAT_CSV_ITEM']));
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg['LISTS_CREATE_WITH_TOOLTIP']);
@@ -524,11 +524,11 @@ Blockly.Blocks['board_serial_autoFormatCSV'] = {
      * @this {Blockly.Block}
      */
     decompose: function(workspace) {
-        var containerBlock = workspace.newBlock('board_serial_autoFormatCSV_container');
+        var containerBlock = workspace.newBlock('BOARD_SERIAL_AUTOFORMAT_CSV_CONTAINER');
         containerBlock.initSvg();
         var connection = containerBlock.getInput('STACK').connection;
         for (var i = 0; i < this.itemCount_; i++) {
-            var itemBlock = workspace.newBlock('board_serial_autoFormatCSV_item');
+            var itemBlock = workspace.newBlock('BOARD_SERIAL_AUTOFORMAT_CSV_ITEM');
             itemBlock.initSvg();
             connection.connect(itemBlock.previousConnection);
             connection = itemBlock.nextConnection;
@@ -609,7 +609,7 @@ Blockly.Blocks['board_serial_autoFormatCSV'] = {
     }
 };
 
-Blockly.Blocks['board_serial_autoFormatCSV_container'] = {
+Blockly.Blocks['BOARD_SERIAL_AUTOFORMAT_CSV_CONTAINER'] = {
     /**
      * Mutator block for list container.
      * @this {Blockly.Block}
@@ -624,7 +624,7 @@ Blockly.Blocks['board_serial_autoFormatCSV_container'] = {
     }
 };
 
-Blockly.Blocks['board_serial_autoFormatCSV_item'] = {
+Blockly.Blocks['BOARD_SERIAL_AUTOFORMAT_CSV_ITEM'] = {
     /**
      * Mutator block for adding items.
      * @this {Blockly.Block}

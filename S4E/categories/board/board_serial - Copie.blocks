@@ -20,12 +20,12 @@ goog.require('Blockly');
 
 var mediaFolder = "./S4E/media/";
 
-Blockly.Blocks['board_serial_init'] = {
-    init: function () {
+Blockly.Blocks['BOARD_SERIAL_INIT'] = {
+    init: function() {
         this.setInputsInline(true);
         this.appendDummyInput("")
-        .appendField(Blockly.Msg.SERIAL_INIT)
-        .appendField(new Blockly.FieldDropdown(profile.default.serial), "SPEED");
+            .appendField(Blockly.Msg.SERIAL_INIT)
+            .appendField(new Blockly.FieldDropdown(profile.default.serial), "SPEED");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg.SERIAL_PRINT_TOOLTIP);
@@ -34,13 +34,18 @@ Blockly.Blocks['board_serial_init'] = {
     }
 };
 
-Blockly.Blocks['board_serial_printfor'] = {
-    init: function () {
+Blockly.Blocks['BOARD_SERIAL_PRINTFOR'] = {
+    init: function() {
         this.setInputsInline(true);
         this.appendValueInput("CONTENT")
-        .setCheck('Number')
-        .appendField(Blockly.Msg.SERIAL_PRINT_FORMAT)
-        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.SERIAL_PRINT_FORDECIMAL, "DEC"], [Blockly.Msg.SERIAL_PRINT_FORHEXA, "HEX"], [Blockly.Msg.SERIAL_PRINT_FORBIN, "BIN"], [Blockly.Msg.SERIAL_PRINT_FOROCT, "OCT"]]), "TYPE");
+            .setCheck('Number')
+            .appendField(Blockly.Msg.SERIAL_PRINT_FORMAT)
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg.SERIAL_PRINT_FORDECIMAL, "DEC"],
+                [Blockly.Msg.SERIAL_PRINT_FORHEXA, "HEX"],
+                [Blockly.Msg.SERIAL_PRINT_FORBIN, "BIN"],
+                [Blockly.Msg.SERIAL_PRINT_FOROCT, "OCT"]
+            ]), "TYPE");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg.SERIAL_PRINT_TOOLTIP);
@@ -49,10 +54,10 @@ Blockly.Blocks['board_serial_printfor'] = {
     }
 };
 
-Blockly.Blocks['board_serial_print'] = {
-    init: function () {
+Blockly.Blocks['BOARD_SERIAL_PRINT'] = {
+    init: function() {
         this.appendValueInput("CONTENT")
-        .appendField(Blockly.Msg.SERIAL_PRINT_CONTENT);
+            .appendField(Blockly.Msg.SERIAL_PRINT_CONTENT);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg.SERIAL_PRINT_TOOLTIP);
@@ -61,10 +66,10 @@ Blockly.Blocks['board_serial_print'] = {
     }
 };
 
-Blockly.Blocks['board_serial_available'] = {
-    init: function () {
+Blockly.Blocks['BOARD_SERIAL_AVAILABLE'] = {
+    init: function() {
         this.appendDummyInput("")
-        .appendField(Blockly.Msg.SERIAL_AVAILABLE);
+            .appendField(Blockly.Msg.SERIAL_AVAILABLE);
         this.setInputsInline(true);
         this.setOutput(true, "Number");
         this.setTooltip(Blockly.Msg.SERIAL_PRINT_TOOLTIP);
@@ -73,10 +78,10 @@ Blockly.Blocks['board_serial_available'] = {
     }
 };
 
-Blockly.Blocks['board_serial_read'] = {
-    init: function () {
+Blockly.Blocks['BOARD_SERIAL_READ'] = {
+    init: function() {
         this.appendDummyInput("")
-        .appendField(Blockly.Msg.SERIAL_READ);
+            .appendField(Blockly.Msg.SERIAL_READ);
         this.setInputsInline(true);
         this.setOutput(true, "Number");
         this.setTooltip(Blockly.Msg.SERIAL_PRINT_TOOLTIP);
@@ -85,11 +90,11 @@ Blockly.Blocks['board_serial_read'] = {
     }
 };
 
-Blockly.Blocks['board_serial_readStringUntil'] = {
-    init: function () {
+Blockly.Blocks['BOARD_SERIAL_READSTRINGUNTIL'] = {
+    init: function() {
         this.appendValueInput("CONTENT")
-        .setCheck('String')
-        .appendField(Blockly.Msg.SERIAL_READSTRINGUNTIL_CONTENT);
+            .setCheck('String')
+            .appendField(Blockly.Msg.SERIAL_READSTRINGUNTIL_CONTENT);
         this.setInputsInline(true);
         this.setOutput(true, "String");
         this.setTooltip(Blockly.Msg.SERIAL_READSTRINGUNTIL_TOOLTIP);
@@ -98,10 +103,10 @@ Blockly.Blocks['board_serial_readStringUntil'] = {
     }
 };
 
-Blockly.Blocks['board_serial_flush'] = {
-    init: function () {
+Blockly.Blocks['BOARD_SERIAL_FLUSH'] = {
+    init: function() {
         this.appendDummyInput("")
-        .appendField(Blockly.Msg.SERIAL_FLUSH);
+            .appendField(Blockly.Msg.SERIAL_FLUSH);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg.SERIAL_PRINT_TOOLTIP);
@@ -111,55 +116,51 @@ Blockly.Blocks['board_serial_flush'] = {
 };
 Blockly.defineBlocksWithJsonArray(
     [{
-            "type": "board_serial_formatCSV",
-            "message0": "serialize CSV %1",
-            "args0": [{
-                    "type": "input_dummy"
-                }
-            ],
-            "message1": "data %1",
-            "args1": [{
-                    "type": "input_value",
-                    "name": "DATA0",
-                    "check": ['int', 'float', 'Number', 'Array']
-                }
-            ],
-            "message2": "separator %1",
-            "args2": [{
-                    "type": "input_value",
-                    "name": "SEP0",
-                    "check": "String"
-                }
-            ],
-            "previousStatement": null,
-            "nextStatement": null,
-            "style": "board_blocks",
-            "helpUrl": "lien vers le wiki",
-            "mutator": "serial_formatCSV_mutator",
-            "tooltip": "serial_formatCSV_tooltip"
-        }, {
-            "type": "mutator_stack",
-            "message0": "stack",
-            "nextStatement": null,
-            "enableContextMenu": null,
-            "style": "board_blocks",
-            "tooltip": "%{BKY_mutator_this.stack_TOOLTIP}"
-        }, {
-            "type": "mutator_data",
-            "message0": "data to send",
-            "previousStatement": null,
-            "nextStatement": null,
-            "style": "board_blocks",
-            "tooltip": "%{BKY_mutator_data_TOOLTIP}"
-        }, {
-            "type": "mutator_sep",
-            "message0": "separator",
-            "previousStatement": null,
-            "nextStatement": null,
-            "style": "board_blocks",
-            "tooltip": "%{BKY_mutator_sep_TOOLTIP}"
-        }
-    ]);
+        "type": "board_serial_formatCSV",
+        "message0": "serialize CSV %1",
+        "args0": [{
+            "type": "input_dummy"
+        }],
+        "message1": "data %1",
+        "args1": [{
+            "type": "input_value",
+            "name": "DATA0",
+            "check": ['int', 'float', 'Number', 'Array']
+        }],
+        "message2": "separator %1",
+        "args2": [{
+            "type": "input_value",
+            "name": "SEP0",
+            "check": "String"
+        }],
+        "previousStatement": null,
+        "nextStatement": null,
+        "style": "board_blocks",
+        "helpUrl": "lien vers le wiki",
+        "mutator": "SERIAL_FORMAT_CSV_MUTATOR",
+        "tooltip": "serial_formatCSV_tooltip"
+    }, {
+        "type": "mutator_stack",
+        "message0": "stack",
+        "nextStatement": null,
+        "enableContextMenu": null,
+        "style": "board_blocks",
+        "tooltip": "%{BKY_mutator_this.stack_TOOLTIP}"
+    }, {
+        "type": "mutator_data",
+        "message0": "data to send",
+        "previousStatement": null,
+        "nextStatement": null,
+        "style": "board_blocks",
+        "tooltip": "%{BKY_mutator_data_TOOLTIP}"
+    }, {
+        "type": "mutator_sep",
+        "message0": "separator",
+        "previousStatement": null,
+        "nextStatement": null,
+        "style": "board_blocks",
+        "tooltip": "%{BKY_mutator_sep_TOOLTIP}"
+    }]);
 
 /**
  * Mutator methods added to controls_if blocks.
@@ -185,7 +186,7 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
      * @return {Element} XML storage element.
      * @this {Blockly.Block}
      */
-    mutationToDom: function () {
+    mutationToDom: function() {
         if (!this.dataCount_ && !this.sepCount_) {
             return null;
         }
@@ -204,7 +205,7 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
      * @param {!Element} xmlElement XML storage element.
      * @this {Blockly.Block}
      */
-    domToMutation: function (xmlElement) {
+    domToMutation: function(xmlElement) {
         this.dataCount_ = parseInt(xmlElement.getAttribute('attribData'), 10) || 0;
         this.sepCount_ = parseInt(xmlElement.getAttribute('attribSep'), 10) || 0;
         this.totalCount_ = this.dataCount_ + this.sepCount_;
@@ -217,24 +218,24 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
      * @return {!Blockly.Block} Root block in mutator.
      * @this {Blockly.Block}
      */
-    decompose: function (workspace) {
+    decompose: function(workspace) {
         var containerBlock = workspace.newBlock('mutator_stack');
         containerBlock.initSvg();
         var connection = containerBlock.nextConnection;
         for (var i = 0; i < this.totalCount_; i++) {
             switch (this.stack_[i]) {
-            case 'd':
-                var dataBlock = workspace.newBlock('mutator_data');
-                dataBlock.initSvg();
-                connection.connect(dataBlock.previousConnection);
-                connection = dataBlock.nextConnection;
-                break;
-            case 's':
-                var sepBlock = workspace.newBlock('mutator_sep');
-                sepBlock.initSvg();
-                connection.connect(sepBlock.previousConnection);
-                connection = sepBlock.nextConnection;
-                break;
+                case 'd':
+                    var dataBlock = workspace.newBlock('mutator_data');
+                    dataBlock.initSvg();
+                    connection.connect(dataBlock.previousConnection);
+                    connection = dataBlock.nextConnection;
+                    break;
+                case 's':
+                    var sepBlock = workspace.newBlock('mutator_sep');
+                    sepBlock.initSvg();
+                    connection.connect(sepBlock.previousConnection);
+                    connection = sepBlock.nextConnection;
+                    break;
             }
         }
         // console.log('stack ' + this.stack_);
@@ -246,7 +247,7 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
      * @param {!Blockly.Block} containerBlock Root block in mutator.
      * @this {Blockly.Block}
      */
-    compose: function (containerBlock) {
+    compose: function(containerBlock) {
         var clauseBlock = containerBlock.nextConnection.targetBlock();
         // Count number of inputs.
         this.dataCount_ = 0;
@@ -261,14 +262,14 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
                     this.dataCount_++;
                     this.totalCount_++;
                     dataConnections.push(clauseBlock.valueConnection_);
-            clauseBlock = clauseBlock.nextConnection && clauseBlock.nextConnection.targetBlock();
+                    clauseBlock = clauseBlock.nextConnection && clauseBlock.nextConnection.targetBlock();
                     break;
                 case 'mutator_sep':
                     this.stack_[this.totalCount_] = 's';
                     this.sepCount_++;
                     this.totalCount_++;
                     separatorConnections.push(clauseBlock.valueConnection_);
-            clauseBlock = clauseBlock.nextConnection && clauseBlock.nextConnection.targetBlock();
+                    clauseBlock = clauseBlock.nextConnection && clauseBlock.nextConnection.targetBlock();
                     break;
                 default:
                     throw TypeError('Unknown block type: ' + clauseBlock.type);
@@ -284,22 +285,22 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
      * @param {!Blockly.Block} containerBlock Root block in mutator.
      * @this {Blockly.Block}
      */
-    saveConnections: function (containerBlock) {
+    saveConnections: function(containerBlock) {
         var clauseBlock = containerBlock.nextConnection.targetBlock();
         var i = 0;
         var j = 0;
         while (clauseBlock) {
             switch (clauseBlock.type) {
-            case 'mutator_data':
-                var input = this.getInput('DATA' + i);
-                i++;
-                break;
-            case 'mutator_sep':
-                var input = this.getInput('SEP' + j);
-                j++;
-                break;
-            default:
-                throw TypeError('Unknown block type: ' + clauseBlock.type);
+                case 'mutator_data':
+                    var input = this.getInput('DATA' + i);
+                    i++;
+                    break;
+                case 'mutator_sep':
+                    var input = this.getInput('SEP' + j);
+                    j++;
+                    break;
+                default:
+                    throw TypeError('Unknown block type: ' + clauseBlock.type);
             }
             clauseBlock.valueConnection_ = input && input.connection.targetConnection;
             // console.log(clauseBlock.valueConnection_);
@@ -314,25 +315,25 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
      * Reconstructs the block with all child blocks attached.
      * @this {Blockly.Block}
      */
-    rebuildShape_: function () {
+    rebuildShape_: function() {
         var valueConnections = [null];
         var i = 0;
         var j = 0;
         var k = 0;
         while (i < this.totalCount_) {
             switch (this.stack_[i]) {
-            case 'd':
-                var inputData = this.getInput('DATA' + j);
-                console.log(inputData);
-                valueConnections.push(inputData.connection.targetConnection);
-                j++;
-                break;
-            case 's':
-                var inputSep = this.getInput('SEP' + k);
-                console.log(inputSep);
-                valueConnections.push(inputSep.connection.targetConnection);
-                k++;
-                break;
+                case 'd':
+                    var inputData = this.getInput('DATA' + j);
+                    console.log(inputData);
+                    valueConnections.push(inputData.connection.targetConnection);
+                    j++;
+                    break;
+                case 's':
+                    var inputSep = this.getInput('SEP' + k);
+                    console.log(inputSep);
+                    valueConnections.push(inputSep.connection.targetConnection);
+                    k++;
+                    break;
             }
             i++;
         }
@@ -348,7 +349,7 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
      * @this {Blockly.Block}
      * @private
      */
-    updateShape_: function () {
+    updateShape_: function() {
         // Delete everything.
         var i = 0;
         while (this.getInput('DATA' + i)) {
@@ -365,18 +366,18 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
         var k = 0;
         for (i = 0; i < this.totalCount_; i++) {
             switch (this.stack_[i]) {
-            case 'd':
-                this.appendValueInput('DATA' + j)
-                    .setCheck('Number')
-                    .appendField("new data");
-                j++;
-                break;
-            case 's':
-                this.appendValueInput('SEP' + k)
-                    .setCheck('String')
-                    .appendField("data separator");
-                k++;
-                break;
+                case 'd':
+                    this.appendValueInput('DATA' + j)
+                        .setCheck('Number')
+                        .appendField("new data");
+                    j++;
+                    break;
+                case 's':
+                    this.appendValueInput('SEP' + k)
+                        .setCheck('String')
+                        .appendField("data separator");
+                    k++;
+                    break;
             }
         }
         console.log('updateShape_');
@@ -391,24 +392,24 @@ Blockly.Block.FORMATCSV_MUTATOR_MIXIN = {
      * connection for else input.
      * @this {Blockly.Block}
      */
-    reconnectChildBlocks_: function (valueConnections) {
+    reconnectChildBlocks_: function(valueConnections) {
         var j = 0;
         var k = 0;
         for (var i = 0; i < this.totalCount_; i++) {
             switch (this.stack_[i]) {
-            case 'd':
-                Blockly.Mutator.reconnect(valueConnections[i], this, 'DATA' + j);
-                j++;
-                break;
-            case 's':
-                Blockly.Mutator.reconnect(valueConnections[i], this, 'SEP' + k);
-                k++
-                break;
+                case 'd':
+                    Blockly.Mutator.reconnect(valueConnections[i], this, 'DATA' + j);
+                    j++;
+                    break;
+                case 's':
+                    Blockly.Mutator.reconnect(valueConnections[i], this, 'SEP' + k);
+                    k++
+                    break;
             }
         }
         console.log('reconnectChildBlocks_');
     }
 };
 
-Blockly.Extensions.registerMutator('serial_formatCSV_mutator',
+Blockly.Extensions.registerMutator('SERIAL_FORMAT_CSV_MUTATOR',
     Blockly.Block.FORMATCSV_MUTATOR_MIXIN, null, ['mutator_data', 'mutator_sep']);

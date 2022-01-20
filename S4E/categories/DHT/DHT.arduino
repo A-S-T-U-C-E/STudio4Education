@@ -15,7 +15,7 @@ goog.provide('Blockly.Arduino.DHT');
 
 goog.require('Blockly.Arduino');
 
-Blockly.Arduino['DHT_read'] = function() {
+Blockly.Arduino['DHT_READ'] = function() {
     var dht_sensor = this.getFieldValue('DHT_sensor');
     var dht_type = this.getFieldValue('DHT_type');
     var dht_pin = this.getFieldValue('DHT_pin');

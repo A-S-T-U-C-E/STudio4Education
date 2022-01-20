@@ -5,7 +5,7 @@
     <variable id="nqa#dt^K.L^a/A7.*eL@">data</variable>
     <variable id="JM[nz+dViX5nWWjQ23ac">temp_sensor</variable>
   </variables>
-  <block type="board_base_setup" id="xR5_f!8({?YY?qS%CiOD" x="-88" y="-163">
+  <block type="BOARD_BASE_SETUP" id="xR5_f!8({?YY?qS%CiOD" x="-88" y="-163">
     <statement name="SETUP">
       <block type="variables_set" id="monma}[M3b/I2TP|}P=*">
         <field name="VAR" id="WyI.NeH.7tOrMhs]S*}}">requestCount</field>
@@ -15,10 +15,10 @@
           </block>
         </value>
         <next>
-          <block type="grove_led_bar_setAllOff" id="?`h!2iU{EFB+JKArgD(T">
+          <block type="GROVE_LED_BAR_SETALLOFF" id="?`h!2iU{EFB+JKArgD(T">
             <field name="PIN">6</field>
             <next>
-              <block type="grove_uart_wifi_declare" id="}YU7ij%cVa-Y!SJ=,h38">
+              <block type="WIFI_ESP_UART_DEFINE" id="}YU7ij%cVa-Y!SJ=,h38">
                 <value name="Rx">
                   <block type="math_number" id="+^!L0/}mR33mWlqM/fb(">
                     <field name="NUM">2</field>
@@ -40,10 +40,10 @@
                   </block>
                 </value>
                 <next>
-                  <block type="board_serial_init" id="@a%Uz8TuNGfhuSD40miR">
+                  <block type="BOARD_SERIAL_INIT" id="@a%Uz8TuNGfhuSD40miR">
                     <field name="SPEED">115200</field>
                     <next>
-                      <block type="grove_uart_wifi_server_declare" id="pWUbXakDCcG[%Sqtu35o">
+                      <block type="WIFI_ESP_UART_SERVER_DEFINE" id="pWUbXakDCcG[%Sqtu35o">
                         <value name="SERIAL_NAME">
                           <block type="text" id="D|6:U]Mj=dUZ0=oiW6Z(">
                             <field name="TEXT">SerialWiFi</field>
@@ -60,9 +60,9 @@
                           </block>
                         </value>
                         <next>
-                          <block type="grove_uart_wifi_check_shield" id="3Ci,TKF|g-:.M@c(=4C|">
+                          <block type="WIFI_ESP_UART_CHECK_SHIELD" id="3Ci,TKF|g-:.M@c(=4C|">
                             <next>
-                              <block type="grove_uart_wifi_begin" id="gc#p_Ql-ujj[pf!h3d}|">
+                              <block type="WIFI_ESP_UART_BEGIN" id="gc#p_Ql-ujj[pf!h3d}|">
                                 <value name="SSID">
                                   <block type="text" id="F72]_gA28*9A@Qq:Ni6b">
                                     <field name="TEXT">Sebouille</field>
@@ -74,19 +74,19 @@
                                   </block>
                                 </value>
                                 <next>
-                                  <block type="board_serial_print" id="QTt#q.O3L9qVBGa[4Z_}">
+                                  <block type="BOARD_SERIAL_PRINT" id="QTt#q.O3L9qVBGa[4Z_}">
                                     <value name="CONTENT">
                                       <block type="text" id="Q@/i6!@zA-7d0o^|^,ZD">
                                         <field name="TEXT">Connected to</field>
                                       </block>
                                     </value>
                                     <next>
-                                      <block type="board_serial_print" id="gf-6Z!I@i:Lw`F)vFKN,">
+                                      <block type="BOARD_SERIAL_PRINT" id="gf-6Z!I@i:Lw`F)vFKN,">
                                         <value name="CONTENT">
-                                          <block type="grove_uart_wifi_ssid" id="X#n~N)]@:XlTKOKIex;s"></block>
+                                          <block type="WIFI_ESP_UART_SSID" id="X#n~N)]@:XlTKOKIex;s"></block>
                                         </value>
                                         <next>
-                                          <block type="grove_uart_wifi_server_begin" id="(LWmcJg11-p7-kVN=0;R">
+                                          <block type="WIFI_ESP_UART_SERVER_BEGIN" id="(LWmcJg11-p7-kVN=0;R">
                                             <value name="NAME">
                                               <block type="text" id="|]jWyYY0k)+G*m4_TOl=">
                                                 <field name="TEXT">server</field>
@@ -113,9 +113,9 @@
       </block>
     </statement>
   </block>
-  <block type="board_base_loop" id="d/PVN9R4XUEVi-l:9}AT" x="-87" y="563">
+  <block type="BOARD_BASE_LOOP" id="d/PVN9R4XUEVi-l:9}AT" x="-87" y="563">
     <statement name="LOOP">
-      <block type="grove_uart_wifi_server_available" id="K5Hp+/}TL.*w@cN*=Ejk">
+      <block type="WIFI_ESP_UART_SERVER_AVAILABLE" id="K5Hp+/}TL.*w@cN*=Ejk">
         <value name="NAME">
           <block type="text" id="Vanp8vF6fxXNok!vDWef">
             <field name="TEXT">server</field>
@@ -124,10 +124,10 @@
         <next>
           <block type="controls_if" id="3%)4UJmvA-efUfQW5yu#">
             <value name="IF0">
-              <block type="grove_uart_wifi_server_client_object" id="jNYuJ}`I_r:)g8)Bg2S["></block>
+              <block type="WIFI_ESP_UART_SERVER_CLIENT_OBJECT" id="jNYuJ}`I_r:)g8)Bg2S["></block>
             </value>
             <statement name="DO0">
-              <block type="board_serial_print" id="f6CscGGn@Oju`f!e[?kE">
+              <block type="BOARD_SERIAL_PRINT" id="f6CscGGn@Oju`f!e[?kE">
                 <value name="CONTENT">
                   <block type="text" id="lX;X;0gAmhj/m6i-rhDS">
                     <field name="TEXT">New client</field>
@@ -145,21 +145,21 @@
                       <block type="controls_whileUntil" id="^`Bt.x]2)nCbKbU*4jn7">
                         <field name="MODE">WHILE</field>
                         <value name="BOOL">
-                          <block type="grove_uart_wifi_server_client_connected" id="?;Uq@Vb-PQW]{rtqE4V~"></block>
+                          <block type="WIFI_ESP_UART_SERVER_CLIENT_CONNECTED" id="?;Uq@Vb-PQW]{rtqE4V~"></block>
                         </value>
                         <statement name="DO">
                           <block type="controls_if" id="Wo{).pvA45TrZSCXB?f~">
                             <value name="IF0">
-                              <block type="grove_uart_wifi_server_client_available" id="t)12+%%^j1E)3=,Eq]t+"></block>
+                              <block type="WIFI_ESP_UART_SERVER_CLIENT_AVAILABLE" id="t)12+%%^j1E)3=,Eq]t+"></block>
                             </value>
                             <statement name="DO0">
                               <block type="variables_set" id="^{/R0%lL%Sf3_]:YT:iu">
                                 <field name="VAR" id="nqa#dt^K.L^a/A7.*eL@">data</field>
                                 <value name="VALUE">
-                                  <block type="grove_uart_wifi_server_client_read" id="QqV6,{|jI[)}:.nHv,[+"></block>
+                                  <block type="WIFI_ESP_UART_SERVER_CLIENT_READ" id="QqV6,{|jI[)}:.nHv,[+"></block>
                                 </value>
                                 <next>
-                                  <block type="board_serial_write" id="36iQNX1o]Yz+NlG1$Tgf">
+                                  <block type="BOARD_SERIAL_WRITE" id="36iQNX1o]Yz+NlG1$Tgf">
                                     <value name="CONTENT">
                                       <block type="variables_get" id="Roa$zhEy{J[OEKsRosR@">
                                         <field name="VAR" id="nqa#dt^K.L^a/A7.*eL@">data</field>
@@ -193,7 +193,7 @@
                                           </block>
                                         </value>
                                         <statement name="DO0">
-                                          <block type="board_serial_print" id="q3^)48n213`B.f=1yguI">
+                                          <block type="BOARD_SERIAL_PRINT" id="q3^)48n213`B.f=1yguI">
                                             <value name="CONTENT">
                                               <block type="text" id="L0^W_m)vkq{+3wwpu;6@">
                                                 <field name="TEXT">sending response</field>
@@ -203,84 +203,84 @@
                                               <block type="variables_set" id="=6.bdIoP9wHUXZ76S/68">
                                                 <field name="VAR" id="JM[nz+dViX5nWWjQ23ac">temp_sensor</field>
                                                 <value name="VALUE">
-                                                  <block type="grove_dht_sensor_read" id=".C5eD?VtV*rHN6wQ1EJ1">
+                                                  <block type="GROVE_DHT_SENSOR_READ" id=".C5eD?VtV*rHN6wQ1EJ1">
                                                     <field name="TYPE">T</field>
                                                     <field name="SENSOR">DHT11</field>
                                                     <field name="PIN">4</field>
                                                   </block>
                                                 </value>
                                                 <next>
-                                                  <block type="grove_uart_wifi_server_client_print" id="U=jfzarA1WG!T;?V9i06">
+                                                  <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="U=jfzarA1WG!T;?V9i06">
                                                     <value name="NAME">
                                                       <block type="text" id="cjG!REX6ncCB9SSsr?Pt">
                                                         <field name="TEXT">HTTP/1.1 200 OK\r\n</field>
                                                       </block>
                                                     </value>
                                                     <next>
-                                                      <block type="grove_uart_wifi_server_client_print" id="5m1cVk[),XXa{JyFuWoB">
+                                                      <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="5m1cVk[),XXa{JyFuWoB">
                                                         <value name="NAME">
                                                           <block type="text" id="U4I(uOsz21,{l8j%U6m[">
                                                             <field name="TEXT">Content-Type: text/html\r\n</field>
                                                           </block>
                                                         </value>
                                                         <next>
-                                                          <block type="grove_uart_wifi_server_client_print" id="];EHYB!y}/;|U;_+b76v">
+                                                          <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="];EHYB!y}/;|U;_+b76v">
                                                             <value name="NAME">
                                                               <block type="text" id="NUd]{1=hTE|S{8[wLj7i">
                                                                 <field name="TEXT">Connection: close\r\n</field>
                                                               </block>
                                                             </value>
                                                             <next>
-                                                              <block type="grove_uart_wifi_server_client_print" id=",kUn0cuOvyTx%7Ct0|$=">
+                                                              <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id=",kUn0cuOvyTx%7Ct0|$=">
                                                                 <value name="NAME">
                                                                   <block type="text" id="BdJbG/Zz}pjK1-wH`~2L">
                                                                     <field name="TEXT">Refresh: 20\r\n</field>
                                                                   </block>
                                                                 </value>
                                                                 <next>
-                                                                  <block type="grove_uart_wifi_server_client_print" id="7~B_9#LNg_(QII3s0)_S">
+                                                                  <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="7~B_9#LNg_(QII3s0)_S">
                                                                     <value name="NAME">
                                                                       <block type="text" id="[:?hk@|!Bjt!ekz4xo7T">
                                                                         <field name="TEXT">\r\n</field>
                                                                       </block>
                                                                     </value>
                                                                     <next>
-                                                                      <block type="grove_uart_wifi_server_client_print" id="rRong=xwI{)Imny`6Z`8">
+                                                                      <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="rRong=xwI{)Imny`6Z`8">
                                                                         <value name="NAME">
                                                                           <block type="text" id="p][P$M05Shk*3JPC@Q`E">
                                                                             <field name="TEXT">&lt;!DOCTYPE HTML&gt;\r\n</field>
                                                                           </block>
                                                                         </value>
                                                                         <next>
-                                                                          <block type="grove_uart_wifi_server_client_print" id="pAXF7./jXVc$sIu]s(8j">
+                                                                          <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="pAXF7./jXVc$sIu]s(8j">
                                                                             <value name="NAME">
                                                                               <block type="text" id="kmk4ppmh|,RWJ$G9!Pz)">
                                                                                 <field name="TEXT">&lt;html&gt;\r\n</field>
                                                                               </block>
                                                                             </value>
                                                                             <next>
-                                                                              <block type="grove_uart_wifi_server_client_print" id="eC+z:ZYHHIK~vfoEVMRg">
+                                                                              <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="eC+z:ZYHHIK~vfoEVMRg">
                                                                                 <value name="NAME">
                                                                                   <block type="text" id="gHJ4eil2)#)SD9S=h3SF">
                                                                                     <field name="TEXT">&lt;h1&gt;STudio4Education&lt;/h1&gt;\r\n</field>
                                                                                   </block>
                                                                                 </value>
                                                                                 <next>
-                                                                                  <block type="grove_uart_wifi_server_client_print" id="H6j$uh4}DmRIHk.rA1r9">
+                                                                                  <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="H6j$uh4}DmRIHk.rA1r9">
                                                                                     <value name="NAME">
                                                                                       <block type="text" id="KFUmO;{D[2VM0|CxCw~f">
                                                                                         <field name="TEXT">Humidity:</field>
                                                                                       </block>
                                                                                     </value>
                                                                                     <next>
-                                                                                      <block type="grove_uart_wifi_server_client_print" id="R={ER,2GpI!LsM:Z{zb+">
+                                                                                      <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="R={ER,2GpI!LsM:Z{zb+">
                                                                                         <value name="NAME">
                                                                                           <block type="variables_get" id="]}8`P{Ox1FBW!4fHGHPd">
                                                                                             <field name="VAR" id="JM[nz+dViX5nWWjQ23ac">temp_sensor</field>
                                                                                           </block>
                                                                                         </value>
                                                                                         <next>
-                                                                                          <block type="grove_uart_wifi_server_client_print" id="?`[R4YV8iT!cV)rtsI*m">
+                                                                                          <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="?`[R4YV8iT!cV)rtsI*m">
                                                                                             <value name="NAME">
                                                                                               <block type="text" id="{g@8?p-%B0^oXb)1Vc20">
                                                                                                 <field name="TEXT">&lt;br&gt;\r\n</field>
@@ -295,28 +295,28 @@
                                                                                                   </shadow>
                                                                                                 </value>
                                                                                                 <next>
-                                                                                                  <block type="grove_uart_wifi_server_client_print" id="pQqM=R*OVgld]}v*Rx$g">
+                                                                                                  <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="pQqM=R*OVgld]}v*Rx$g">
                                                                                                     <value name="NAME">
                                                                                                       <block type="text" id="2fSLIj_RVepHQtG-6b:u">
                                                                                                         <field name="TEXT">Request nb:</field>
                                                                                                       </block>
                                                                                                     </value>
                                                                                                     <next>
-                                                                                                      <block type="grove_uart_wifi_server_client_print" id="#hT+ul@nex|Qqu,qAj@W">
+                                                                                                      <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="#hT+ul@nex|Qqu,qAj@W">
                                                                                                         <value name="NAME">
                                                                                                           <block type="variables_get" id="zjL[(5i[OKt*;s+EX:|y">
                                                                                                             <field name="VAR" id="WyI.NeH.7tOrMhs]S*}}">requestCount</field>
                                                                                                           </block>
                                                                                                         </value>
                                                                                                         <next>
-                                                                                                          <block type="grove_uart_wifi_server_client_print" id="a.uWa-*BFS=MU}Yy2lbM">
+                                                                                                          <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="a.uWa-*BFS=MU}Yy2lbM">
                                                                                                             <value name="NAME">
                                                                                                               <block type="text" id="dT:{;,]b(sOT17W/f#:k">
                                                                                                                 <field name="TEXT">&lt;br&gt;\r\n</field>
                                                                                                               </block>
                                                                                                             </value>
                                                                                                             <next>
-                                                                                                              <block type="grove_uart_wifi_server_client_print" id="@7Si`GI$(^H%$2[ESO)o">
+                                                                                                              <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="@7Si`GI$(^H%$2[ESO)o">
                                                                                                                 <value name="NAME">
                                                                                                                   <block type="text" id="*okjT6ae#W:xT?/j?tbS">
                                                                                                                     <field name="TEXT">&lt;/html&gt;\r\n</field>
@@ -427,23 +427,23 @@
                           </block>
                         </statement>
                         <next>
-                          <block type="board_base_delay" id="h2s~|8%$jN,v@PrK0tvO">
+                          <block type="BOARD_BASE_DELAY" id="h2s~|8%$jN,v@PrK0tvO">
                             <value name="DELAY_TIME">
                               <shadow type="math_number" id="[Cs,F}Cj6V!iwB9yek:$">
                                 <field name="NUM">10</field>
                               </shadow>
                             </value>
                             <next>
-                              <block type="grove_uart_wifi_server_client_stop" id="z2!0iKsPMfZl8H2ZH4r^">
+                              <block type="WIFI_ESP_UART_SERVER_CLIENT_STOP" id="z2!0iKsPMfZl8H2ZH4r^">
                                 <next>
-                                  <block type="board_serial_print" id="P*.YBO38!V9w$~N,7?*{">
+                                  <block type="BOARD_SERIAL_PRINT" id="P*.YBO38!V9w$~N,7?*{">
                                     <value name="CONTENT">
                                       <block type="text" id="6qdRtZj^PEN_2V5=sV86">
                                         <field name="TEXT">client disconnected</field>
                                       </block>
                                     </value>
                                     <next>
-                                      <block type="grove_led_bar_setLevel" id="$v~0(4]ecBBs3.dL?)0v">
+                                      <block type="GROVE_LED_BAR_SETLEVEL" id="$v~0(4]ecBBs3.dL?)0v">
                                         <field name="PIN">6</field>
                                         <value name="LEVEL">
                                           <block type="math_arithmetic" id="[n-z_@[iHIbA(lQsHXC{">

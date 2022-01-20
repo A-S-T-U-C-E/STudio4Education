@@ -15,7 +15,7 @@ goog.provide('Blockly.Arduino.grove_lcd_rgb_backlight');
 
 goog.require('Blockly.Arduino');
 
-Blockly.Arduino['grove_lcd_rgb_print'] = function() {
+Blockly.Arduino['GROVE_LCD_RGB_PRINT'] = function() {
     var text1 = Blockly.Arduino.valueToCode(this, 'TEXT',
         Blockly.Arduino.ORDER_UNARY_POSTFIX) || '\'\'';
     var text2 = Blockly.Arduino.valueToCode(this, 'TEXT2',
@@ -39,7 +39,7 @@ Blockly.Arduino['grove_lcd_rgb_print'] = function() {
     return code;
 };
 
-Blockly.Arduino['grove_lcd_rgb_power'] = function() {
+Blockly.Arduino['GROVE_LCD_RGB_POWER'] = function() {
     var dropdown_stat = this.getFieldValue('STAT');
 
     Blockly.Arduino.includes_['define_lcd_rgb'] = '#include <rgb_lcd.h>';
@@ -58,7 +58,7 @@ Blockly.Arduino['grove_lcd_rgb_power'] = function() {
     return code;
 };
 
-Blockly.Arduino['grove_lcd_rgb_clean'] = function() {
+Blockly.Arduino['GROVE_LCD_RGB_CLEAN'] = function() {
     var dropdown_stat = this.getFieldValue('STAT');
 
     Blockly.Arduino.includes_['define_lcd_rgb'] = '#include <rgb_lcd.h>';
@@ -73,7 +73,7 @@ Blockly.Arduino['grove_lcd_rgb_clean'] = function() {
     return code;
 };
 
-Blockly.Arduino['grove_lcd_rgb_effect'] = function() {
+Blockly.Arduino['GROVE_LCD_RGB_EFFECT'] = function() {
     var dropdown_stat = this.getFieldValue('STAT');
 
     Blockly.Arduino.includes_['define_lcd_rgb'] = '#include <rgb_lcd.h>\n';
@@ -94,7 +94,7 @@ Blockly.Arduino['grove_lcd_rgb_effect'] = function() {
     return code;
 };
 
-Blockly.Arduino['grove_lcd_rgb_init'] = function() {
+Blockly.Arduino['GROVE_LCD_RGB_INIT'] = function() {
     Blockly.Arduino.includes_['define_lcd_rgb'] = '#include <rgb_lcd.h>';
     Blockly.Arduino.includes_['define_Wire'] = '#include <Wire.h>';
     Blockly.Arduino.definitions_['var_lcd_rgb'] = 'rgb_lcd LCD_RGB;';
@@ -103,14 +103,14 @@ Blockly.Arduino['grove_lcd_rgb_init'] = function() {
     return code;
 };
 
-Blockly.Arduino['grove_lcd_rgb_clear'] = function() {
+Blockly.Arduino['GROVE_LCD_RGB_CLEAR'] = function() {
 
     var code = 'LCD_RGB.clear();\n';
 
     return code;
 };
 
-Blockly.Arduino['grove_lcd_rgb_scrolling'] = function() {
+Blockly.Arduino['GROVE_LCD_RGB_SCROLLING'] = function() {
     var dropdown_stat = this.getFieldValue('EFFECT');
 
     var code = 'LCD_RGB';
@@ -124,7 +124,7 @@ Blockly.Arduino['grove_lcd_rgb_scrolling'] = function() {
     return code;
 };
 
-Blockly.Arduino['grove_lcd_rgb_set_cursor'] = function() {
+Blockly.Arduino['GROVE_LCD_RGB_SET_CURSOR'] = function() {
 
     var ligne = this.getFieldValue('Line');
     var colonne = this.getFieldValue('Row');
@@ -133,7 +133,7 @@ Blockly.Arduino['grove_lcd_rgb_set_cursor'] = function() {
     return code;
 };
 
-Blockly.Arduino['grove_lcd_rgb_set_RGB'] = function() {
+Blockly.Arduino['GROVE_LCD_RGB_SET_RGB'] = function() {
 
     var rouge = this.getFieldValue('Red');
     var vert = this.getFieldValue('Green');
@@ -143,7 +143,7 @@ Blockly.Arduino['grove_lcd_rgb_set_RGB'] = function() {
     return code;
 };
 
-Blockly.Arduino['grove_lcd_rgb_print_data'] = function() {
+Blockly.Arduino['GROVE_LCD_RGB_PRINT_DATA'] = function() {
     var data1 = Blockly.Arduino.valueToCode(this, 'DATA', Blockly.Arduino.ORDER_UNARY_POSTFIX) || '\'\'';
 
     var code = 'LCD_RGB.print(' + data1 + ');\n';
@@ -152,7 +152,7 @@ Blockly.Arduino['grove_lcd_rgb_print_data'] = function() {
 };
 
 
-Blockly.Arduino['grove_lcd_rgb_write_data'] = function() {
+Blockly.Arduino['GROVE_LCD_RGB_WRITE_DATA'] = function() {
     var data1 = this.getFieldValue('DATA');
 
     var dropdown_stat = this.getFieldValue('FORMAT');

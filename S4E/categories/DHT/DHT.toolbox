@@ -9,7 +9,7 @@ var toolbox_DHT = {
         "categorystyle": "DHT_category",
         "contents": [{
             "kind": "block",
-            "type": "DHT_read"
+            "type": "DHT_READ"
         }]
     }]
 };

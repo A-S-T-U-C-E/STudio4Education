@@ -15,7 +15,7 @@ goog.provide('Blockly.Arduino.grove_led_bar_actuators');
 
 goog.require('Blockly.Arduino');
 
-Blockly.Arduino['grove_led_bar_setAllOff'] = function(block) {
+Blockly.Arduino['GROVE_LED_BAR_SETALLOFF'] = function(block) {
     var dropdown_pin = block.getFieldValue('PIN');
 
     Blockly.Arduino.includes_['includes_Grove_LED_Bar'] = '#include <Grove_LED_Bar.h>';
@@ -26,7 +26,7 @@ Blockly.Arduino['grove_led_bar_setAllOff'] = function(block) {
     return code;
 };
 
-Blockly.Arduino['grove_led_bar_setLevel'] = function(block) {
+Blockly.Arduino['GROVE_LED_BAR_SETLEVEL'] = function(block) {
     var dropdown_pin = block.getFieldValue('PIN');
     var level = Blockly.Arduino.valueToCode(block, 'LEVEL', Blockly.Arduino.ORDER_ATOMIC);
 

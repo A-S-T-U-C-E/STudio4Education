@@ -29,6 +29,7 @@ jsonToolbox["contents"][12] = toolbox_DHT["contents"][0];
 jsonToolbox["contents"][13] = toolbox_X_NUCLEO_IKS01A3["contents"][0];
 jsonToolbox["contents"][14] = toolbox_arrowheadframework["contents"][0];
 jsonToolbox["contents"][15] = toolbox_GROVE["contents"][0];
+jsonToolbox["contents"][16] = toolbox_communication["contents"][0];
 
 /**
  * Build the toolbox using toolbox definition in json files

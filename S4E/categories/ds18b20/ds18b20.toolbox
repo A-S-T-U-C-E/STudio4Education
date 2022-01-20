@@ -9,10 +9,10 @@ var toolbox_ds18b20 = {
         "categorystyle": "ds18b20_category",
         "contents": [{
             "kind": "block",
-            "type": "ds18b20_search"
+            "type": "DS18B20_SEARCH"
         }, {
             "kind": "block",
-            "type": "ds18b20_temp"
+            "type": "DS18B20_TEMP"
         }]
     }]
 };

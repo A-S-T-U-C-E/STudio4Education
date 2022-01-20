@@ -15,7 +15,7 @@ goog.provide('Blockly.Arduino.board_iot');
 
 goog.require('Blockly.Arduino');
 
-Blockly.Arduino['board_iot_autoFormatWebsocket'] = function(block) {
+Blockly.Arduino['BOARD_IOT_AUTOFORMATWEBSOCKET'] = function(block) {
     var elements = new Array(block.itemCount_);
     var code = '';
     for (var i = 0; i < block.itemCount_; i++) {

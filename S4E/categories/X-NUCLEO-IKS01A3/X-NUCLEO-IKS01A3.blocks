@@ -22,15 +22,15 @@ var X_NUCLEO_IKS01A3_MediaFolder = "./S4E/categories/X-NUCLEO-IKS01A3/";
 Blockly.Blocks['X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ_INPUT)
+            .appendField(Blockly.Msg["X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ_INPUT"])
             .appendField(new Blockly.FieldImage(X_NUCLEO_IKS01A3_MediaFolder + "X-NUCLEO-IKS01A3.jpg", Code.imageSize, Code.imageSize))
             .appendField(new Blockly.FieldDropdown([
-                [Blockly.Msg.X_NUCLEO_IKS01A3_HTS221_TEMP_INPUT, "TEMP"],
-                [Blockly.Msg.X_NUCLEO_IKS01A3_HTS221_HUMID_INPUT, "HUMID"]
+                [Blockly.Msg["X_NUCLEO_IKS01A3_HTS221_TEMP_INPUT"], "TEMP"],
+                [Blockly.Msg["X_NUCLEO_IKS01A3_HTS221_HUMID_INPUT"], "HUMID"]
             ]), "HS221");
         this.setOutput(true);
-        this.setTooltip(Blockly.Msg.X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ_TOOLTIP);
-        this.setHelpUrl(Blockly.Msg.X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ_HELPURL);
+        this.setTooltip(Blockly.Msg["X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ_TOOLTIP"]);
+        this.setHelpUrl(Blockly.Msg["X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ_HELPURL"]);
         this.setStyle('X-NUCLEO-IKS01A3_blocks');
     }
 };
@@ -38,11 +38,11 @@ Blockly.Blocks['X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ'] = {
 Blockly.Blocks['X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ_INPUT)
+            .appendField(Blockly.Msg["X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ_INPUT"])
             .appendField(new Blockly.FieldImage(X_NUCLEO_IKS01A3_MediaFolder + "X-NUCLEO-IKS01A3.jpg", Code.imageSize, Code.imageSize));
         this.setOutput(true);
-        this.setTooltip(Blockly.Msg.X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ_TOOLTIP);
-        this.setHelpUrl(Blockly.Msg.X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ_HELPURL);
+        this.setTooltip(Blockly.Msg["X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ_TOOLTIP"]);
+        this.setHelpUrl(Blockly.Msg["X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ_HELPURL"]);
         this.setStyle('X-NUCLEO-IKS01A3_blocks');
     }
 };
@@ -50,15 +50,15 @@ Blockly.Blocks['X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ'] = {
 Blockly.Blocks['X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_READ'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_READ_INPUT)
+            .appendField(Blockly.Msg["X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_READ_INPUT"])
             .appendField(new Blockly.FieldImage(X_NUCLEO_IKS01A3_MediaFolder + "X-NUCLEO-IKS01A3.jpg", Code.imageSize, Code.imageSize))
             .appendField(new Blockly.FieldDropdown([
-                [Blockly.Msg.X_NUCLEO_IKS01A3_LPS22HH_TEMP_INPUT, "TEMP"],
-                [Blockly.Msg.X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_INPUT, "PRESSION"]
+                [Blockly.Msg["X_NUCLEO_IKS01A3_LPS22HH_TEMP_INPUT"], "TEMP"],
+                [Blockly.Msg["X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_INPUT"], "PRESSION"]
             ]), "LPS22HH");
         this.setOutput(true);
-        this.setTooltip(Blockly.Msg.X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_READ_TOOLTIP);
-        this.setHelpUrl(Blockly.Msg.X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_READ_HELPURL);
+        this.setTooltip(Blockly.Msg["X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_READ_TOOLTIP"]);
+        this.setHelpUrl(Blockly.Msg["X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_READ_HELPURL"]);
         this.setStyle('X-NUCLEO-IKS01A3_blocks');
     }
 };
@@ -66,16 +66,16 @@ Blockly.Blocks['X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_READ'] = {
 Blockly.Blocks['X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_INPUT)
+            .appendField(Blockly.Msg["X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_INPUT"])
             .appendField(new Blockly.FieldImage(X_NUCLEO_IKS01A3_MediaFolder + "X-NUCLEO-IKS01A3.jpg", Code.imageSize, Code.imageSize))
             .appendField(new Blockly.FieldDropdown([
-                [Blockly.Msg.X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_X, "X_AXIS"],
-                [Blockly.Msg.X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_Y, "Y_AXIS"],
-                [Blockly.Msg.X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_Z, "Z_AXIS"]
+                [Blockly.Msg["X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_X"], "X_AXIS"],
+                [Blockly.Msg["X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_Y"], "Y_AXIS"],
+                [Blockly.Msg["X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_Z"], "Z_AXIS"]
             ]), "LIS2DW12");
         this.setOutput(true);
-        this.setTooltip(Blockly.Msg.X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_TOOLTIP);
-        this.setHelpUrl(Blockly.Msg.X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_HELPURL);
+        this.setTooltip(Blockly.Msg["X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_TOOLTIP"]);
+        this.setHelpUrl(Blockly.Msg["X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER_HELPURL"]);
         this.setStyle('X-NUCLEO-IKS01A3_blocks');
     }
 };
@@ -83,20 +83,20 @@ Blockly.Blocks['X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER'] = {
 Blockly.Blocks['X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_INPUT)
+            .appendField(Blockly.Msg["X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_INPUT"])
             .appendField(new Blockly.FieldDropdown([
-                [Blockly.Msg.X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_ACC, "ACC"],
-                [Blockly.Msg.X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_GYRO, "GYRO"]
+                [Blockly.Msg["X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_ACC"], "ACC"],
+                [Blockly.Msg["X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_GYRO"], "GYRO"]
             ]), "LSM6DSO_SENSOR")
             .appendField(new Blockly.FieldImage(X_NUCLEO_IKS01A3_MediaFolder + "X-NUCLEO-IKS01A3.jpg", Code.imageSize, Code.imageSize))
             .appendField(new Blockly.FieldDropdown([
-                [Blockly.Msg.X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_X, "X_AXIS"],
-                [Blockly.Msg.X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_Y, "Y_AXIS"],
-                [Blockly.Msg.X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_Z, "Z_AXIS"]
+                [Blockly.Msg["X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_X"], "X_AXIS"],
+                [Blockly.Msg["X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_Y"], "Y_AXIS"],
+                [Blockly.Msg["X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_Z"], "Z_AXIS"]
             ]), "LSM6DSO_AXIS");
         this.setOutput(true);
-        this.setTooltip(Blockly.Msg.X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_TOOLTIP);
-        this.setHelpUrl(Blockly.Msg.X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_HELPURL);
+        this.setTooltip(Blockly.Msg["X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_TOOLTIP"]);
+        this.setHelpUrl(Blockly.Msg["X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION_HELPURL"]);
         this.setStyle('X-NUCLEO-IKS01A3_blocks');
     }
 };
@@ -104,16 +104,16 @@ Blockly.Blocks['X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION'] = {
 Blockly.Blocks['X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_INPUT)
+            .appendField(Blockly.Msg["X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_INPUT"])
             .appendField(new Blockly.FieldImage(X_NUCLEO_IKS01A3_MediaFolder + "X-NUCLEO-IKS01A3.jpg", Code.imageSize, Code.imageSize))
             .appendField(new Blockly.FieldDropdown([
-                [Blockly.Msg.X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_X, "X_AXIS"],
-                [Blockly.Msg.X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_Y, "Y_AXIS"],
-                [Blockly.Msg.X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_Z, "Z_AXIS"]
+                [Blockly.Msg["X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_X"], "X_AXIS"],
+                [Blockly.Msg["X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_Y"], "Y_AXIS"],
+                [Blockly.Msg["X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_Z"], "Z_AXIS"]
             ]), "LIS2MDL_AXIS");
         this.setOutput(true);
-        this.setTooltip(Blockly.Msg.X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_TOOLTIP);
-        this.setHelpUrl(Blockly.Msg.X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_HELPURL);
+        this.setTooltip(Blockly.Msg["X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_TOOLTIP"]);
+        this.setHelpUrl(Blockly.Msg["X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC_HELPURL"]);
         this.setStyle('X-NUCLEO-IKS01A3_blocks');
     }
 };

@@ -19,7 +19,7 @@ goog.require('Blockly.Types');
 
 var arrowheadframeworkMediaFolder = "./S4E/categories/arrowheadframework/";
 
-Blockly.Blocks['ahf_esp_define'] = {
+Blockly.Blocks['AHF_ESP_DEFINE'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", Code.imageSize, Code.imageSize, "*"))
@@ -52,7 +52,7 @@ Blockly.Blocks['ahf_esp_define'] = {
     }
 };
 
-Blockly.Blocks['ahf_esp_service_registry_def'] = {
+Blockly.Blocks['AHF_ESP_SERVICE_REGISTRY_DEF'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", Code.imageSize, Code.imageSize, "*"))
@@ -109,7 +109,7 @@ Blockly.Blocks['ahf_esp_service_registry_def'] = {
     }
 };
 
-Blockly.Blocks['ahf_esp_connection_registry_test'] = {
+Blockly.Blocks['AHF_ESP_CONNECTION_REGISTRY_TEST'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", Code.imageSize, Code.imageSize, "*"))
@@ -122,7 +122,7 @@ Blockly.Blocks['ahf_esp_connection_registry_test'] = {
     }
 };
 
-Blockly.Blocks['ahf_esp_SR_register_test'] = {
+Blockly.Blocks['AHF_ESP_SR_REGISTER_TEST'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", Code.imageSize, Code.imageSize, "*"))
@@ -135,7 +135,7 @@ Blockly.Blocks['ahf_esp_SR_register_test'] = {
     }
 };
 
-Blockly.Blocks['ahf_esp_SR_unregister_test'] = {
+Blockly.Blocks['AHF_ESP_SR_UNREGISTER_TEST'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", Code.imageSize, Code.imageSize, "*"))
@@ -148,7 +148,7 @@ Blockly.Blocks['ahf_esp_SR_unregister_test'] = {
     }
 };
 
-Blockly.Blocks['ahf_esp_format_data_SenML'] = {
+Blockly.Blocks['AHF_ESP_FORMAT_DATA_SENML'] = {
     init: function() {
         this.appendValueInput("DATA")
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", Code.imageSize, Code.imageSize, "*"))
@@ -164,7 +164,7 @@ Blockly.Blocks['ahf_esp_format_data_SenML'] = {
     }
 };
 
-Blockly.Blocks['ahf_esp_keep_connection'] = {
+Blockly.Blocks['AHF_ESP_KEEP_CONNECTION'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", Code.imageSize, Code.imageSize, "*"))
@@ -178,7 +178,7 @@ Blockly.Blocks['ahf_esp_keep_connection'] = {
     }
 };
 
-Blockly.Blocks['ahf_custom_parameters'] = {
+Blockly.Blocks['AHF_CUSTOM_PARAMETERS'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(arrowheadframeworkMediaFolder + "arrowheadframework.svg", Code.imageSize, Code.imageSize, "*"));

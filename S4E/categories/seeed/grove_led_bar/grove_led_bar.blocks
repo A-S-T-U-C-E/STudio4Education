@@ -19,37 +19,37 @@ goog.require('Blockly.Types');
 
 var grove_led_bar_MediaFolder = "./S4E/categories/seeed/grove_led_bar/";
 
-Blockly.Blocks['grove_led_bar_setAllOff'] = {
+Blockly.Blocks['GROVE_LED_BAR_SETALLOFF'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.GROVE_INOUT_LED_BAR_INPUT)
+            .appendField(Blockly.Msg["GROVE_INOUT_LED_BAR_INPUT"])
             .appendField(new Blockly.FieldImage(grove_led_bar_MediaFolder + "grove_led_bar.jpg", Code.imageSize, Code.imageSize))
-            .appendField(Blockly.Msg.GROVE_INOUT_LED_BAR_PIN)
+            .appendField(Blockly.Msg["GROVE_INOUT_LED_BAR_PIN"])
             .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN")
-            .appendField(Blockly.Msg.GROVE_INOUT_LED_BAR_ALL_OFF);
+            .appendField(Blockly.Msg["GROVE_INOUT_LED_BAR_ALL_OFF"]);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setTooltip(Blockly.Msg.GROVE_INOUT_LED_BAR_TOOLTIP1);
-        this.setHelpUrl(Blockly.Msg.GROVE_INOUT_LED_BAR_HELPURL);
+        this.setTooltip(Blockly.Msg["GROVE_INOUT_LED_BAR_TOOLTIP1"]);
+        this.setHelpUrl(Blockly.Msg["GROVE_INOUT_LED_BAR_HELPURL"]);
         this.setStyle('grove_blocks');
     }
 };
 
-Blockly.Blocks['grove_led_bar_setLevel'] = {
+Blockly.Blocks['GROVE_LED_BAR_SETLEVEL'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.GROVE_INOUT_LED_BAR_INPUT)
+            .appendField(Blockly.Msg["GROVE_INOUT_LED_BAR_INPUT"])
             .appendField(new Blockly.FieldImage(grove_led_bar_MediaFolder + "grove_led_bar.jpg", Code.imageSize, Code.imageSize))
-            .appendField(Blockly.Msg.GROVE_INOUT_LED_BAR_PIN)
+            .appendField(Blockly.Msg["GROVE_INOUT_LED_BAR_PIN"])
             .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN");
         this.appendValueInput("LEVEL")
             .setCheck("Number")
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.GROVE_INOUT_LED_BAR_LEVEL);
+            .appendField(Blockly.Msg["GROVE_INOUT_LED_BAR_LEVEL"]);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setTooltip(Blockly.Msg.GROVE_INOUT_LED_BAR_TOOLTIP2);
-        this.setHelpUrl(Blockly.Msg.GROVE_INOUT_LED_BAR_HELPURL);
+        this.setTooltip(Blockly.Msg["GROVE_INOUT_LED_BAR_TOOLTIP2"]);
+        this.setHelpUrl(Blockly.Msg["GROVE_INOUT_LED_BAR_HELPURL"]);
         this.setStyle('grove_blocks');
     }
 };
@@ -57,18 +57,18 @@ Blockly.Blocks['grove_led_bar_setLevel'] = {
 Blockly.Blocks['GROVE_INOUT_LED_BAR_TOGGLE'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(Blockly.Msg.GROVE_INOUT_LED_BAR_INPUT)
+            .appendField(Blockly.Msg["GROVE_INOUT_LED_BAR_INPUT"])
             .appendField(new Blockly.FieldImage(grove_led_bar_MediaFolder + "grove_led_bar.jpg", Code.imageSize, Code.imageSize))
-            .appendField(Blockly.Msg.GROVE_INOUT_LED_BAR_PIN)
+            .appendField(Blockly.Msg["GROVE_INOUT_LED_BAR_PIN"])
             .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN");
         this.appendValueInput("LEVEL")
             .setCheck("Number")
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.GROVE_INOUT_LED_BAR_TOGGLE);
+            .appendField(Blockly.Msg["GROVE_INOUT_LED_BAR_TOGGLE"]);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setTooltip(Blockly.Msg.GROVE_INOUT_LED_BAR_TOOLTIP3);
-        this.setHelpUrl(Blockly.Msg.GROVE_INOUT_LED_BAR_HELPURL);
+        this.setTooltip(Blockly.Msg["GROVE_INOUT_LED_BAR_TOOLTIP3"]);
+        this.setHelpUrl(Blockly.Msg["GROVE_INOUT_LED_BAR_HELPURL"]);
         this.setStyle('grove_blocks');
     }
 };

@@ -1,0 +1,91 @@
+var toolbox_communication = {
+    "kind": "categoryToolbox",
+    "contents": [{
+        "kind": "category",
+        "name": "%{BKY_CAT_COMMUNICATION}",
+        "toolboxitemid": "communication",
+        "levels": [1, 2, 3],
+        "level": "1",
+        "categorystyle": "board_category",
+        "contents": [{
+            "kind": "category",
+            "name": "%{BKY_CAT_NTPCLIENT}",
+            "toolboxitemid": "NTPClient",
+            "levels": [1, 2, 3],
+            "level": "1",
+            "categorystyle": "board_category",
+            "contents": [{
+                "kind": "block",
+                "type": "NTPCLIENT_DEFINE_UDP"
+            }, {
+                "kind": "block",
+                "type": "NTPCLIENT_DEFINE_NTPCLIENT"
+            }, {
+                "kind": "block",
+                "type": "NTPCLIENT_BEGIN"
+            }, {
+                "kind": "block",
+                "type": "NTPCLIENT_UPDATE"
+            }, {
+                "kind": "block",
+                "type": "NTPCLIENT_FORCEUPDATE"
+            }, {
+                "kind": "block",
+                "type": "NTPCLIENT_GET_EPOCH_TIME"
+            }, {
+                "kind": "block",
+                "type": "NTPCLIENT_GET_FORMATTED_TIME"
+            }]
+        }, {
+            "kind": "category",
+            "name": "%{BKY_CAT_WIFIESP}",
+            "toolboxitemid": "WIFIESP",
+            "level": "3",
+            "levels": "3",
+            "categorystyle": "board_category",
+            "contents": [{
+                "kind": "block",
+                "type": "WIFI_ESP_UART_SERVER_DEFINE"
+            }, {
+                "kind": "block",
+                "type": "WIFI_ESP_UART_CHECK_SHIELD"
+            }, {
+                "kind": "block",
+                "type": "WIFI_ESP_UART_BEGIN"
+            }, {
+                "kind": "block",
+                "type": "WIFI_ESP_UART_LOCALIP"
+            }, {
+                "kind": "block",
+                "type": "WIFI_ESP_UART_SSID"
+            }, {
+                "kind": "block",
+                "type": "WIFI_ESP_UART_SERVER_BEGIN"
+            }, {
+                "kind": "block",
+                "type": "WIFI_ESP_UART_SERVER_AVAILABLE"
+            }, {
+                "kind": "block",
+                "type": "WIFI_ESP_UART_SERVER_CLIENT_OBJECT"
+            }, {
+                "kind": "block",
+                "type": "WIFI_ESP_UART_SERVER_CLIENT_CONNECTED"
+            }, {
+                "kind": "block",
+                "type": "WIFI_ESP_UART_SERVER_CLIENT_AVAILABLE"
+            }, {
+                "kind": "block",
+                "type": "WIFI_ESP_UART_SERVER_CLIENT_READ"
+            }, {
+                "kind": "block",
+                "type": "WIFI_ESP_UART_SERVER_CLIENT_STOP"
+            }, {
+                "kind": "block",
+                "type": "WIFI_ESP_UART_SERVER_CLIENT_PRINT"
+            }, {
+                "kind": "block",
+                "type": "WIFI_ESP_UART_SERVER_CLIENT_PRINT_MULTILINETEXTINPUT"
+            }]
+        }]
+    }]
+};

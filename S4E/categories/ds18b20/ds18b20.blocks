@@ -19,7 +19,7 @@ goog.require('Blockly.Types');
 
 var ds18b20MediaFolder = "./S4E/categories/ds18b20/";
 
-Blockly.Blocks['ds18b20_search'] = {
+Blockly.Blocks['DS18B20_SEARCH'] = {
     init: function() {
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_LEFT)
@@ -36,7 +36,7 @@ Blockly.Blocks['ds18b20_search'] = {
     }
 };
 
-Blockly.Blocks['ds18b20_temp'] = {
+Blockly.Blocks['DS18B20_TEMP'] = {
     init: function() {
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_LEFT)

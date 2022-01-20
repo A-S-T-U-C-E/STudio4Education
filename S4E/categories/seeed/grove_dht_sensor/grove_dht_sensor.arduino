@@ -15,7 +15,7 @@ goog.provide('Blockly.Arduino.grove_dht_sensor');
 
 goog.require('Blockly.Arduino');
 
-Blockly.Arduino['grove_dht_sensor_read'] = function() {
+Blockly.Arduino['GROVE_DHT_SENSOR_READ'] = function() {
     var sensor = this.getFieldValue('SENSOR');
     var pin = this.getFieldValue('PIN');
     var type = this.getFieldValue('TYPE');

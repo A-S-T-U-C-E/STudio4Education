@@ -1,0 +1,21 @@
+Blockly.Blocks.NTPCLIENT_DEFINE_UDP.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.NTPCLIENT_DEFINE_NTPCLIENT.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.NTPCLIENT_BEGIN.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.NTPCLIENT_UPDATE.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.NTPCLIENT_FORCEUPDATE.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.NTPCLIENT_GET_EPOCH_TIME.getBlockType = function() {
+    return Blockly.Types.LARGE_UNS_NUMBER;
+};
+Blockly.Blocks.NTPCLIENT_GET_FORMATTED_TIME.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
