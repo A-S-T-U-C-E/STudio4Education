@@ -128,6 +128,34 @@ Code.BlocklyWorkspaceOnresize = function(e) {
     // }
     // blocklyDiv.style.top = metrics.absoluteTop + 'px';
 };
+/**
+ * Javascript equivalent o $.get() from jQuery
+ */
+Code.urlGet = function(url, method, callback, params = null) {
+    var obj;
+    try {
+        obj = new XMLHttpRequest();
+    } catch (e) {
+        try {
+            obj = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (e) {
+            try {
+                obj = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e) {
+                alert("Your browser does not support Ajax.");
+                return false;
+            }
+        }
+    }
+    obj.onreadystatechange = function() {
+        if (obj.readyState == 4) {
+            callback(obj);
+        }
+    }
+    obj.open(method, url, true);
+    obj.send(params);
+    return obj;
+}
 
 /**
  * Initialize Blockly.  Called on page load.
@@ -203,10 +231,9 @@ Code.init = function() {
     var urlFile = Code.getStringParamFromUrl('url', '');
     var loadOnce = null;
     try {
-        loadOnce = window.localStorage.loadOnceBlocks;
+        loadOnce = sessionStorage.getItem('loadOnceBlocks');
     } catch (e) {
-        // Firefox sometimes throws a SecurityError when accessing
-        // localStorage.
+        // Firefox sometimes throws a SecurityError when accessing localStorage.
         // Restarting Firefox fixes this, so it looks like a bug.
     }
     if (urlFile) {
@@ -215,14 +242,12 @@ Code.init = function() {
                 Code.loadBlocks();
             }
         }
-        // $.get( urlFile, function( data ) {
-        // Code.loadBlocks(data );
-        // }, 'text');
+        var distantData = Code.urlGet(urlFile, 'get', function(obj) {});
+        Code.loadBlocks(distantData);
     } else {
         Code.loadBlocks();
     }
 
-    // Code.loadBlocks('');
     // Hook a save function onto unload.
     window.addEventListener('unload', auto_save_and_restore_blocks, false);
     if ('BlocklyStorage' in window) {
