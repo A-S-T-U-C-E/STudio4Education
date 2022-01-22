@@ -18,24 +18,24 @@
           <block type="GROVE_LED_BAR_SETALLOFF" id="?`h!2iU{EFB+JKArgD(T">
             <field name="PIN">6</field>
             <next>
-              <block type="WIFI_ESP_UART_DEFINE" id="}YU7ij%cVa-Y!SJ=,h38">
+              <block type="GROVE_UART_WIFI_DEFINE" id="8M[9+M#-!LpIeSx?cWd)">
                 <value name="Rx">
-                  <block type="math_number" id="+^!L0/}mR33mWlqM/fb(">
-                    <field name="NUM">2</field>
+                  <block type="math_number" id="RpsWDQ07X3jnC;e?K:sb">
+                    <field name="NUM">6</field>
                   </block>
                 </value>
                 <value name="Tx">
-                  <block type="math_number" id="!/YywsGFs=A:CNrzG5c{">
-                    <field name="NUM">3</field>
+                  <block type="math_number" id="10N%0H]v$6I#PCTkgvBe">
+                    <field name="NUM">7</field>
                   </block>
                 </value>
                 <value name="NAME">
-                  <block type="text" id="pE=G./=vi;XHS%~3#vyM">
+                  <block type="text" id="%-D)~8gr).c,_#ATdnVP">
                     <field name="TEXT">SerialWiFi</field>
                   </block>
                 </value>
                 <value name="SPEED">
-                  <block type="math_number" id="TaKa+*emP}.{M`ClH|LO">
+                  <block type="math_number" id="vDb/biSiA%oH,?I{!(+u">
                     <field name="NUM">9600</field>
                   </block>
                 </value>

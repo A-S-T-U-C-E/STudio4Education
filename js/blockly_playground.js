@@ -16,7 +16,7 @@ goog.require('Blockly.WorkspaceCommentSvg.render');
 'use strict';
 var Code;
 
-function genWorkspace(rtlArg, toolboxArg, rendererArg) {
+Code.genWorkspace = function(rtlArg, toolboxArg, rendererArg) {
     Code.mainWorkspace = Blockly.inject('content_blocks', {
         comments: true,
         collapse: true,
@@ -69,6 +69,7 @@ function genWorkspace(rtlArg, toolboxArg, rendererArg) {
     });
     // Minimap.init(Code.mainWorkspace, Code.minimapWorkspace);
 }
+
 // function setRenderDebugOptionCheckboxState(overrideOptions) {
 //     Code.blockRendering.Debug.config = overrideOptions || {};
 //     if (!overrideOptions) {
@@ -118,7 +119,7 @@ function genWorkspace(rtlArg, toolboxArg, rendererArg) {
 function changeTheme(themeChoice) {
     Code.mainWorkspace.setTheme(Blockly.Themes[themeChoice]);
     window.localStorage.setItem('choosedTheme', themeChoice);
-};
+}
 
 function changeRenderer(rendererChoice) {
     // Serialize current workspace state.
@@ -134,7 +135,7 @@ function changeRenderer(rendererChoice) {
     Code.BlocklyWorkspaceOnresize();
     Code.changeFontFamily(window.localStorage.getItem('choosedFont'));
     changeTheme(localStorage.getItem('choosedTheme'));
-};
+}
 
 /**
  * Sort and list elements with class 'access' for size change
@@ -282,7 +283,7 @@ function getToolboxElement() {
     // The three possible values are: "simple", "categories",
     // "categories-typed-variables".
     return document.getElementById('toolbox-' + toolboxSuffix);
-};
+}
 
 function toggleAccessibilityMode(state) {
     if (state) {
@@ -290,7 +291,7 @@ function toggleAccessibilityMode(state) {
     } else {
         Code.navigationController.disable(Code.mainWorkspace);
     }
-};
+}
 
 function toggleHighlightMode(state) {
     let contentHighlight = new ContentHighlight(Code.mainWorkspace);
@@ -303,7 +304,7 @@ function toggleHighlightMode(state) {
     //     contentHighlight = sessionStorage.getItem('contentHighlightObject');
     //     contentHighlight.dispose();
     // }
-};
+}
 
 function toggleMinimap(state) {
     if (state === true) {
@@ -311,7 +312,7 @@ function toggleMinimap(state) {
     } else {
         document.getElementById("minimapDiv").style.display = "none";
     }
-};
+}
 
 function configureContextualMenu(menuOptions, e) {
     var screenshotOption = {
@@ -324,4 +325,4 @@ function configureContextualMenu(menuOptions, e) {
     menuOptions.push(screenshotOption);
     // Adds a default-sized workspace comment to the workspace.
     menuOptions.push(Blockly.ContextMenu.workspaceCommentOption(Code.mainWorkspace, e));
-};
+}

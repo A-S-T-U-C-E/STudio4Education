@@ -1,5 +1,13 @@
+v0.9.5
+- open file distant with url argument in URL
+- add NTP blocks
+- fix console monitor bug
+
 v0.9.1
 - fix toolbox shrink/expand function
+- add Grove WiFi UART blocks
+- add Grove DHT blocks
+- add serial monitor
 
 v0.9.0
 - change structure: simplify by adding all definition files in same folder

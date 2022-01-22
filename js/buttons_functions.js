@@ -17,7 +17,7 @@ function auto_save_and_restore_blocks() {
     var xml = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
     var text = Blockly.Xml.domToText(xml);
     window.sessionStorage.loadOnceBlocks = text;
-};
+}
 
 var fullScreen_ = false;
 
@@ -912,10 +912,11 @@ Code.getPorts = async function() {
         }
     }
 }
-navigator.serial.addEventListener("connect", (event) => {
-    Blockly.alert('New device connected');
-});
-navigator.serial.addEventListener("disconnect", (event) => {
-    Blockly.alert('Device disconnected');
-    // console.log(event.target)
-});
+if (navigator.serial) {
+    navigator.serial.addEventListener("connect", (event) => {
+        Blockly.alert('New device connected');
+    });
+    navigator.serial.addEventListener("disconnect", (event) => {
+        Blockly.alert('Device disconnected');
+    });
+}

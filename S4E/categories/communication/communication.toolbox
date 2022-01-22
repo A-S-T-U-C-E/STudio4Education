@@ -3,7 +3,7 @@ var toolbox_communication = {
     "contents": [{
         "kind": "category",
         "name": "%{BKY_CAT_COMMUNICATION}",
-        "toolboxitemid": "COMMUNICATE",
+        "toolboxitemid": "COMMUNICATION",
         "levels": [1, 2, 3],
         "level": "1",
         "categorystyle": "board_category",

@@ -11,24 +11,24 @@
           <block type="GROVE_LED_BAR_SETALLOFF" id="?`h!2iU{EFB+JKArgD(T">
             <field name="PIN">6</field>
             <next>
-              <block type="WIFI_ESP_UART_DEFINE" id="}YU7ij%cVa-Y!SJ=,h38">
+              <block type="GROVE_UART_WIFI_DEFINE" id="4y5#{-ZjVXlkAQfJD+4i">
                 <value name="Rx">
-                  <block type="math_number" id="+^!L0/}mR33mWlqM/fb(">
-                    <field name="NUM">2</field>
+                  <block type="math_number" id="FqrOpwo/+`[l$_]=BeY)">
+                    <field name="NUM">6</field>
                   </block>
                 </value>
                 <value name="Tx">
-                  <block type="math_number" id="!/YywsGFs=A:CNrzG5c{">
-                    <field name="NUM">3</field>
+                  <block type="math_number" id="{ZU)UBePY8TOVFI|L^`Z">
+                    <field name="NUM">7</field>
                   </block>
                 </value>
                 <value name="NAME">
-                  <block type="text" id="pE=G./=vi;XHS%~3#vyM">
+                  <block type="text" id="NvA!+E8?_f/Da5*OJToM">
                     <field name="TEXT">Serial1</field>
                   </block>
                 </value>
                 <value name="SPEED">
-                  <block type="math_number" id="TaKa+*emP}.{M`ClH|LO">
+                  <block type="math_number" id="s%BFI!0f())AY5lkuL2Z">
                     <field name="NUM">9600</field>
                   </block>
                 </value>
@@ -367,6 +367,29 @@
                                     <field name="TEXT">client disconnected</field>
                                   </block>
                                 </value>
+                                <next>
+                                  <block type="GROVE_LED_BAR_SETLEVEL" id="Q%+sVVy44v@.q|0pd?K=">
+                                    <field name="PIN">0</field>
+                                    <value name="LEVEL">
+                                      <block type="math_arithmetic" id="~`yuxoMe~TSOQgX_=ek#">
+                                        <field name="OP">DIVIDE</field>
+                                        <value name="A">
+                                          <shadow type="math_number" id="vzK49qZrK6?Vt6F?Z}yl">
+                                            <field name="NUM">1</field>
+                                          </shadow>
+                                          <block type="variables_get" id="K27+O[8s~tsL_aeT!Dy{">
+                                            <field name="VAR" id="JM[nz+dViX5nWWjQ23ac">temp_sensor</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <shadow type="math_number" id="UAxyTz|N)v5PQdecB?gm">
+                                            <field name="NUM">3</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
                               </block>
                             </next>
                           </block>

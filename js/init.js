@@ -8,31 +8,6 @@
  * @fileoverview JS function for intialisation, forked from https://github.com/google/blockly/commit/4e2f8e6e02b0473a86330eb7414794e6bfea430e.
  * @author scanet@libreduc.cc (Sébastien CANET)
  */
-// document.addEventListener('DOMContentLoaded', function(event) {
-//     if (!Code.editor) {
-//         Code.editor = monaco.editor.create(document.getElementById('content_code'), {
-//             scrollBeyondLastLine: false,
-//             language: 'cpp',
-//             automaticLayout: true,
-//             readOnly: true
-//         });
-//     }
-//     monaco.editor.defineTheme('defaultTheme', {
-//         base: 'vs-dark',
-//         inherit: true,
-//         rules: [{ background: '000000' }],
-//         colors: {
-//             'editor.foreground': '#AAAA00',
-//             'editor.background': '#000000',
-//             'editorCursor.foreground': '#8B0000',
-//             'editor.lineHighlightBackground': '#0000FF20',
-//             'editorLineNumber.foreground': '#eeee88',
-//             'editor.selectionBackground': '#88000030',
-//             'editor.inactiveSelectionBackground': '#88000015'
-//         }
-//     });
-//     monaco.editor.setTheme('defaultTheme');
-// })
 
 Code.imageSize = 32;
 
@@ -100,7 +75,6 @@ Code.renderContent = function() {
 Code.BlocklyWorkspaceOnresize = function(e) {
     var blocklyArea = document.getElementById('content_area');
     var blocklyDiv = document.getElementById('content_blocks');
-    const metrics = Code.mainWorkspace.getMetrics();
     var element = blocklyArea;
     var x = 0;
     var y = 0;
@@ -115,6 +89,7 @@ Code.BlocklyWorkspaceOnresize = function(e) {
     blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
     Blockly.svgResize(Code.mainWorkspace);
     // TODO yet to finish...
+    // const metrics = Code.mainWorkspace.getMetrics();
     // if (Code.mainWorkspace.RTL) {
     //     blocklyDiv.style.left = metrics.absoluteLeft + 'px';
     //     blocklyDiv.style.right = 'auto';
@@ -128,39 +103,51 @@ Code.BlocklyWorkspaceOnresize = function(e) {
     // }
     // blocklyDiv.style.top = metrics.absoluteTop + 'px';
 };
+
 /**
  * Javascript equivalent o $.get() from jQuery
  */
-Code.urlGet = function(url, method, callback, params = null) {
+Code.urlGet = async function(url, fecthMethod, callback, params = null) {
     var obj;
-    try {
-        obj = new XMLHttpRequest();
-    } catch (e) {
+    if (window.fetch) {
+        await fetch(url, {
+                method: fecthMethod,
+                params
+            })
+            .then(response => {
+                obj = response.text();
+            })
+            .catch(error => Blockly.alert("Erreur : " + error));
+    } else {
         try {
-            obj = new ActiveXObject("Msxml2.XMLHTTP");
+            obj = new XMLHttpRequest();
         } catch (e) {
             try {
-                obj = new ActiveXObject("Microsoft.XMLHTTP");
+                obj = new ActiveXObject("Msxml2.XMLHTTP");
             } catch (e) {
-                alert("Your browser does not support Ajax.");
-                return false;
+                try {
+                    obj = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e) {
+                    alert("Your browser does not support Ajax.");
+                    return false;
+                }
             }
         }
-    }
-    obj.onreadystatechange = function() {
-        if (obj.readyState == 4) {
-            callback(obj);
+        obj.onreadystatechange = function() {
+            if (obj.readyState == 4) {
+                callback(obj);
+            }
         }
+        obj.open(fecthMethod, url, true);
+        obj.send(params);
     }
-    obj.open(method, url, true);
-    obj.send(params);
     return obj;
 }
 
 /**
  * Initialize Blockly.  Called on page load.
  */
-Code.init = function() {
+Code.init = async function() {
     // board menu as  URL choice
     Code.setBoard();
     Code.initLanguage();
@@ -173,11 +160,10 @@ Code.init = function() {
             Blockly.Msg[messageKey.toUpperCase()] = MSG[messageKey];
         }
     }
-
     var match = location.search.match(/renderer=([^&]+)/);
     var renderer = match ? match[1] : 'thrasos';
     document.forms.options.elements.rendererMenu.value = renderer;
-    genWorkspace(rtl, Code.buildToolbox(), renderer);
+    Code.genWorkspace(rtl, Code.buildToolbox(), renderer);
     Code.buildControlPanelForToolbox();
     // Skill level menu
     match = location.search.match(/level=([^&]+)/);
@@ -227,27 +213,6 @@ Code.init = function() {
     BlocklyWorkspaceOnresize();
     Blockly.svgResize(Code.mainWorkspace);
     window.addEventListener('resize', BlocklyWorkspaceOnresize, false);
-    // load blocks stored in session or passed by url
-    var urlFile = Code.getStringParamFromUrl('url', '');
-    var loadOnce = null;
-    try {
-        loadOnce = sessionStorage.getItem('loadOnceBlocks');
-    } catch (e) {
-        // Firefox sometimes throws a SecurityError when accessing localStorage.
-        // Restarting Firefox fixes this, so it looks like a bug.
-    }
-    if (urlFile) {
-        if (loadOnce !== null) {
-            if (!confirm(MSG['xmlLoad'])) {
-                Code.loadBlocks();
-            }
-        }
-        var distantData = Code.urlGet(urlFile, 'get', function(obj) {});
-        Code.loadBlocks(distantData);
-    } else {
-        Code.loadBlocks();
-    }
-
     // Hook a save function onto unload.
     window.addEventListener('unload', auto_save_and_restore_blocks, false);
     if ('BlocklyStorage' in window) {
@@ -371,7 +336,39 @@ Code.init = function() {
     Code.sketchNameSet();
     Code.mainWorkspace.addChangeListener(Code.renderContent);
     sessionStorage.setItem('toolboxSize', Code.mainWorkspace.getToolbox().getWidth());
-    Code.filterToolbox();
+    // Code.filterToolbox();
+    // load blocks stored in session or passed by url
+    var urlFile = Code.getStringParamFromUrl('url', '');
+    var loadOnce = null;
+    try {
+        loadOnce = sessionStorage.getItem('loadOnceBlocks');
+    } catch (e) {
+        // Firefox sometimes throws a SecurityError when accessing localStorage.
+        // Restarting Firefox fixes this, so it looks like a bug.
+    }
+    if (urlFile) {
+        var distantData = await Code.urlGet(urlFile, 'get', function(obj) {});
+        distantData = Blockly.Xml.textToDom(distantData);
+        if (loadOnce != null) {
+            Blockly.confirm(MSG['xmlLoad'], function(response) {
+                if (response) {
+                    //once loaded blocks but replace
+                    Blockly.Xml.clearWorkspaceAndLoadFromXml(distantData, Code.mainWorkspace);
+                } else {
+                    //once loaded and merge
+                    Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(loadOnce), Code.mainWorkspace);
+                    Blockly.Xml.appendDomToWorkspace(distantData, Code.mainWorkspace);
+                }
+            })
+        } else {
+            // no blocks, load url
+            Blockly.Xml.domToWorkspace(distantData, Code.mainWorkspace);
+        }
+    } else {
+        //no URL, load blocks (or not, depends if load once/already blocks)
+        Code.loadBlocks();
+        // sessionStorage.removeItem('loadOnceBlocks');
+    }
 };
 
 Code.addPluginToWorkspace = function() {

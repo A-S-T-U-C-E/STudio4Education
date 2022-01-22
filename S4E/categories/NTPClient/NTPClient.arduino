@@ -49,13 +49,13 @@ Blockly.Arduino['NTPCLIENT_FORCEUPDATE'] = function(block) {
 };
 
 Blockly.Arduino['NTPCLIENT_GET_EPOCH_TIME'] = function(block) {
-    var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
+    var value_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
     var code = value_name + '.getEpochTime()';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino['NTPCLIENT_GET_FORMATTED_TIME'] = function(block) {
-    var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
+    var value_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
     var code = value_name + '.getFormattedTime()';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
