@@ -620,6 +620,12 @@ flex.content_wrapper {
 
 /* Modal board selector information */
 
+.optgroupBoards {
+    background-color: #02224a;
+    color: white;
+    font-size: 1.2em;
+}
+
 #boardDescriptionSelector {
     overflow: auto;
 }

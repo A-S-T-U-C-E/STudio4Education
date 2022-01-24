@@ -712,16 +712,6 @@
                     <select id="boardDescriptionSelector" size="11" onchange="Code.boardDescription()">
                         <optgroup label="C / C++">
                             <option value="none">...</option>
-                        <optgroup label="STMicroelectronics">
-                            <option value="ST_nucleo_F042K6">Nucleo-32 F042K6</option>
-                            <option value="ST_nucleo_L476RG">Nucleo-64 L476RG</option>
-                            <option value="ST_nucleo_H753ZI">Nucleo-144 H753ZI</option>
-                            <option value="ST_mp157c_dk2">STM32MP1 Discovery kits</option>
-                        </optgroup>
-                        <optgroup label="Espressif">
-                            <option value="ESP_esp8266">ESP8266</option>
-                            <option value="ESP_esp32">ESP32</option>
-                        </optgroup>
                         </optgroup>
                     </select>
                 </div>
@@ -1207,6 +1197,10 @@
     <script src="./S4E/themes/themes_components_override.js" async></script>
     <!-- S4E libraries of boards definition -->
     <script src="./S4E/js/boards.json"></script>
+    <script src="./S4E/js/boards_arduino.json"></script>
+    <script src="./S4E/js/boards_esp.json"></script>
+    <script src="./S4E/js/boards_microbit.json"></script>
+    <script src="./S4E/js/boards_st.json"></script>
     <script src="./S4E/js/boards.js"></script>
     <!-- S4E specific: block design -->
     <script src="./S4E/categories/blockly/variables.blocks"></script>

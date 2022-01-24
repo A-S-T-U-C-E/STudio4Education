@@ -11,6 +11,9 @@
 
 Code.imageSize = 32;
 
+if (!(sessionStorage.getItem('installedBoardsST')))
+    sessionStorage.setItem('installedBoardsST', 1);
+
 /**
  * Load blocks saved in session/local storage.
  * @param {string} defaultXml Text representation of default blocks.
@@ -148,7 +151,9 @@ Code.urlGet = async function(url, fecthMethod, callback, params = null) {
  * Initialize Blockly.  Called on page load.
  */
 Code.init = async function() {
-    // board menu as  URL choice
+    if (sessionStorage.getItem('installedBoardsST') == 1) Code.installBoards('ST');
+    if (sessionStorage.getItem('installedBoardsArduino') == 1) Code.installBoards('arduino');
+    if (sessionStorage.getItem('installedBoardsESP') == 1) Code.installBoards('esp');
     Code.setBoard();
     Code.initLanguage();
     setOnOffLine();

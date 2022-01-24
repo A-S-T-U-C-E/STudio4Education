@@ -215,6 +215,10 @@ function setOnOffLine() {
             document.getElementById('fullScreenButton').style.display = 'inline';
             document.getElementById('verifyButton').disabled = true;
             document.getElementById('uploadButton').disabled = true;
+            document.getElementById('installSTBoards').setAttribute('onclick', 'Code.installBoards("ST");');
+            document.getElementById('installArduinoBoards').setAttribute('onclick', 'Code.installBoards("arduino");');
+            document.getElementById('installEspBoards').setAttribute('onclick', 'Code.installBoards("esp");');
+            document.getElementById('installMicrobitBoards').setAttribute('onclick', 'Code.installBoards("microbit");');
         }
         if (!navigator.serial)
             document.getElementById('serialButton').disabled = true;
@@ -256,6 +260,10 @@ function setOnOffLine() {
         // document.getElementById('ArrowheadAuthConfigurationModal_okay_nodejs').style.display = "none";
         // document.getElementById('ArrowheadOrchConfigurationModal_okay').style.display = "inline";
         // document.getElementById('ArrowheadOrchConfigurationModal_okay_nodejs').style.display = "none";
+        document.getElementById('installSTBoards').setAttribute('onclick', 'Code.installBoards("ST");');
+        document.getElementById('installArduinoBoards').setAttribute('onclick', 'Code.installBoards("arduino");');
+        document.getElementById('installEspBoards').setAttribute('onclick', 'Code.installBoards("esp");');
+        document.getElementById('installMicrobitBoards').setAttribute('onclick', 'Code.installBoards("microbit");');
         // hide everything relative to arduino-cli or nodejs if online
         var elmts = getElementsByClass("CLI", null, null);
         for (var i = 0; i < elmts.length; i++)

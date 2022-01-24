@@ -242,11 +242,13 @@ Code.boardsListModalShow = function() {
     document.getElementById('boardListModal').classList.add('show');
     for (var i = 0; i < document.getElementById("boardDescriptionSelector").length; i++)
         document.getElementById("boardDescriptionSelector").options[i].style.backgroundColor = 'white';
-    if (document.getElementById("boardDescriptionSelector").value !== '') {
-        document.getElementById("boardDescriptionSelector").options[sessionStorage.getItem('boardIndex')].style.backgroundColor = "yellow";
+    if (sessionStorage.getItem("boardIndex")) {
+        document.getElementById("boardDescriptionSelector").selectedIndex = sessionStorage.getItem('board');
+        document.getElementById("boardDescriptionSelector").value = sessionStorage.getItem('board');
+        document.getElementById('boardDescriptionSelector').options[sessionStorage.getItem('boardIndex')].style.backgroundColor = "yellow";
     }
-    window.addEventListener('click', Code.boardsListModalHide, 'once');
     Code.boardDescription();
+    window.addEventListener('click', Code.boardsListModalHide, 'once');
 };
 Code.portsListModalShow = async function() {
     document.getElementById('overlayForModals').style.display = "block";
@@ -300,13 +302,13 @@ Code.flowsListModalHide = function(event) {
  **/
 Code.boardDescription = function() {
     var boardValue = document.getElementById("boardDescriptionSelector").value;
-    if (boardValue === '')
+    if (!boardValue)
         boardValue = 'none';
-    document.getElementById("board_mini_picture").setAttribute("src", profile[boardValue][0]['picture']);
-    // document.getElementById("board_connect").textContent = profile[boardValue][0]['usb'];
-    // document.getElementById("board_cpu").textContent = profile[boardValue][0]['cpu'];
-    // document.getElementById("board_voltage").textContent = profile[boardValue][0]['voltage'];
-    // document.getElementById("board_inout").textContent = profile[boardValue][0]['inout'];
+    document.getElementById("board_mini_picture").setAttribute("src", profile[boardValue][0].picture);
+    // document.getElementById("board_connect").textContent = profile[boardValue][0].usb;
+    // document.getElementById("board_cpu").textContent = profile[boardValue][0].cpu;
+    // document.getElementById("board_voltage").textContent = profile[boardValue][0].voltage;
+    // document.getElementById("board_inout").textContent = profile[boardValue][0].inout;
 };
 
 /**
