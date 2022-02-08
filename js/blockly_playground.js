@@ -19,55 +19,52 @@ var Code;
 Code.genWorkspace = function(rtlArg, toolboxArg, rendererArg) {
     Code.mainWorkspace = Blockly.inject('content_blocks', {
         comments: true,
-        collapse: true,
-        disable: true,
         grid: {
             spacing: 25,
             length: 0,
             colour: '#ccc',
             snap: true
         },
-        horizontalLayout: false,
-        maxBlocks: Infinity,
-        maxInstances: {
-            'test_basic_limit_instances': 3
-        },
         maxTrashcanContents: 256,
         media: './@blockly/media/',
-        sounds: true,
-        oneBasedIndex: true,
-        readOnly: false,
-        rtl: rtlArg,
         move: {
             scrollbars: true,
             drag: true,
             wheel: false
         },
+        oneBasedIndex: true,
+        renderer: rendererArg,
+        rtl: rtlArg,
+        sounds: true,
         toolbox: toolboxArg,
         toolboxPosition: 'start',
-        renderer: rendererArg,
         zoom: {
             controls: true,
             wheel: true,
             startScale: 1.0,
-            maxScale: 4,
-            minScale: 0.25,
+            maxScale: 5,
+            minScale: 0.1,
             scaleSpeed: 1.1
         }
     });
     Blockly.Variables.createFlyoutCategory(Code.mainWorkspace);
+
+}
+
+Code.genMiniWorkspace = function(zoomFactor) {
+    document.getElementById('minimapDiv').style.display = 'inline';
+    var workspaceMetrics = Code.mainWorkspace.getMetrics();
+    document.getElementById('minimapDiv').style.width = workspaceMetrics.scrollWidth / 10 + 'px';
+    document.getElementById('minimapDiv').style.height = workspaceMetrics.scrollHeight / 10 + 'px';
     Code.minimapWorkspace = Blockly.inject('minimapDiv', {
-        media: './@blockly/media/',
         readOnly: true,
         zoom: {
             controls: false,
-            wheel: true,
-            startScale: 0.1, //you can change this accorting to your needs.
-            maxScale: 0.1,
-            minScale: 0.01
+            startScale: Code.mainWorkspace.getScale() / zoomFactor,
+            wheel: false
         }
     });
-    // Minimap.init(Code.mainWorkspace, Code.minimapWorkspace);
+    Minimap.init(Code.mainWorkspace, Code.minimapWorkspace, zoomFactor);
 }
 
 // function setRenderDebugOptionCheckboxState(overrideOptions) {
@@ -127,7 +124,7 @@ function changeRenderer(rendererChoice) {
     // Dispose of the current workspace
     Code.mainWorkspace.dispose();
     // Create a new workspace with options.
-    genWorkspace(Code.isRtl(), Code.buildToolbox(), rendererChoice);
+    Code.genWorkspace(Code.isRtl(), Code.buildToolbox(), rendererChoice);
     Code.buildControlPanelForToolbox();
     // Deserialize state into workspace.
     Blockly.Xml.domToWorkspace(state, Code.mainWorkspace);
@@ -316,9 +313,20 @@ function toggleHighlightMode(state) {
 
 function toggleMinimap(state) {
     if (state === true) {
-        document.getElementById("minimapDiv").style.display = "block";
-    } else {
-        document.getElementById("minimapDiv").style.display = "none";
+        Code.genMiniWorkspace(10);
+    } else if (Code.minimapWorkspace) {
+        Code.mainWorkspace.removeChangeListener(Minimap.mirrorEvent);
+        Blockly.browserEvents.unbind(Minimap.mapDragger, "mousedown", null, Minimap.mousedown);
+        window.removeEventListener('resize', Minimap.repositionMinimap);
+        Minimap.svg.addEventListener('mouseup', Minimap.updateMapDragger);
+        Code.mainWorkspace.removeChangeListener(Minimap.mirrorEvent);
+        Code.minimapWorkspace.dispose();
+        const elementToDelete = document.querySelectorAll('.minimap');
+        for (const el of elementToDelete) {
+            el.parentNode.removeChild(el);
+        }
+        delete Minimap;
+        document.getElementById('minimapDiv').style.display = 'none';
     }
 }
 

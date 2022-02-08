@@ -1,0 +1,34 @@
+ /**
+  * @license
+  * Copyright 2020 Sébastien CANET
+  * SPDX-License-Identifier: BSD-3-Clause
+  */
+
+ /**
+  * @fileoverview Boards definitions.
+  * @author scanet@libreduc.cc (Sébastien CANET) 
+  */
+
+ var profile_microbit = {
+     "none": [{
+         "_id": "microbit",
+         "description": "Micro:bit",
+         "cpu": "",
+         "digital": [],
+         "dropdownDigital": [],
+         "PWM": [],
+         "dropdownPWM": [],
+         "analog": [],
+         "dropdownAnalog": [],
+         "interrupt": [],
+         "I2C": [],
+         "SPI": [],
+         "serial": [],
+         "dropdownserial": [],
+         "serialPin": [],
+         "speed": "",
+         "upload_arg": "none",
+         "picture": "./S4E/media/boards/none.jpg",
+         "help_link": "https://github.com/A-S-T-U-C-E/STudio4Education/wiki"
+     }]
+ }

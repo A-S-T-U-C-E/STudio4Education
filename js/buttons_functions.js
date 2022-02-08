@@ -158,7 +158,7 @@ Code.editorMonacoModalShow = function() {
     if (!Code.editor)
         Code.editor = monaco.editor.create(document.getElementById('content_code_Monaco'), {
             scrollBeyondLastLine: false,
-            language: 'cpp',
+            language: 'arduino',
             automaticLayout: true
         });
     document.getElementById("content_Monaco_editors").appendChild(document.getElementById("content_code_Monaco"));
@@ -169,8 +169,8 @@ Code.editorMonacoModalShow = function() {
             automaticLayout: true
         });
         Code.diffEditor.setModel({
-            original: monaco.editor.createModel(Blockly.Arduino.workspaceToCode(Code.mainWorkspace), 'cpp'),
-            modified: monaco.editor.createModel(Blockly.Arduino.workspaceToCode(Code.mainWorkspace), 'cpp'),
+            original: monaco.editor.createModel(Blockly.Arduino.workspaceToCode(Code.mainWorkspace), 'arduino'),
+            modified: monaco.editor.createModel(Blockly.Arduino.workspaceToCode(Code.mainWorkspace), 'arduino'),
         });
     }
     document.getElementById("content_Monaco_editors").appendChild(document.getElementById("content_diffCode_Monaco"));

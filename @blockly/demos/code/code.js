@@ -247,6 +247,22 @@ Code.changeLevel = function(levelMenuSelection) {
             document.getElementById("openCodeButton").style.display = 'inline';
             document.getElementById("content_code").style.minWidth = '0.5px';
             document.getElementById("resizer_h").style.width = '15px';
+            // require.config({
+            //     paths: {
+            //         'vs': './www/tools/vs'
+            //     }
+            // });
+            // window.MonacoEnvironment = {
+            //     getWorkerUrl: function(moduleId, label) {
+            //         if (label === "cpp") {
+            //             return "./cpp.worker.bundle.js";
+            //         }
+            //         if (label === "python") {
+            //             return "./python.worker.bundle.js";
+            //         }
+            //         return "./editor.worker.bundle.js";
+            //     }
+            // }
             if (!Code.editor)
                 Code.editor = monaco.editor.create(document.getElementById('content_code_Monaco'), {
                     scrollBeyondLastLine: false,
@@ -334,6 +350,11 @@ Code.changeLevel = function(levelMenuSelection) {
             document.getElementById("openCodeButton").style.display = 'none';
             document.getElementById("content_code").style.minWidth = '200px';
             document.getElementById("resizer_h").style.width = '45px';
+            // require.config({
+            //     paths: {
+            //         'vs': './www/tools/vs'
+            //     }
+            // });
             if (!Code.editor)
                 Code.editor = monaco.editor.create(document.getElementById('content_code_Monaco'), {
                     scrollBeyondLastLine: false,

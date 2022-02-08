@@ -33,6 +33,10 @@ body {
     background-color: #2196F3;
 }
 
+.blockly-ws-search button {
+    width: 14px !important;
+}
+
 #buttonsMenuPopupInside,
 #buttonsToolsPopupInside,
 #buttonsIotPopupInside,

@@ -218,7 +218,7 @@ Code.filterToolbox = function() {
 }
 
 /** change toolbox size
- *  init.js store it in 'toolboxSize' session storage
+ *  show or hide text on labels
  */
 Code.fullToolbox = function() {
     var x = document.getElementsByClassName('blocklyTreeLabel');
