@@ -113,12 +113,12 @@ Code.genMiniWorkspace = function(zoomFactor) {
 //     }
 // }
 
-function changeTheme(themeChoice) {
+function changeThemeBlockly(themeChoice) {
     Code.mainWorkspace.setTheme(Blockly.Themes[themeChoice]);
     window.localStorage.setItem('choosedTheme', themeChoice);
 }
 
-function changeRenderer(rendererChoice) {
+function changeRendererBlockly(rendererChoice) {
     // Serialize current workspace state.
     const state = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
     // Dispose of the current workspace
@@ -131,7 +131,41 @@ function changeRenderer(rendererChoice) {
     // Resize the gui.
     Code.BlocklyWorkspaceOnresize();
     Code.changeFontFamily(window.localStorage.getItem('choosedFont'));
-    changeTheme(localStorage.getItem('choosedTheme'));
+    changeThemeBlockly(localStorage.getItem('choosedTheme'));
+}
+
+function changeThemeUI(themeChoice) {
+    localStorage.setItem('themeUI', themeChoice);
+    document.documentElement.className = themeChoice;
+}
+
+function editorLoadThemeList() {
+    return fetch('./tools/vs/themes/themelist.json')
+        .then(r => r.json())
+        .then(data => {
+            var themes = Object.keys(data);
+            themes.forEach(theme => {
+                var opt = document.createElement('option');
+                opt.value = theme;
+                opt.text = data[theme]
+                document.getElementById('codeEditorColorMenu').add(opt);
+            });
+        });
+}
+
+function changeThemeMonacoEditor(themeChoice) {
+    if (!('fetch' in window)) {
+        console.log('Fetch API not found, please upgrade your browser.');
+    } else
+    if (Code.editor) {
+        localStorage.setItem('themeMonaco', themeChoice);
+        fetch('./tools/vs/themes/' + themeChoice + '.json')
+            .then(data => data.json())
+            .then(data => {
+                monaco.editor.defineTheme(themeChoice, data);
+                monaco.editor.setTheme(themeChoice);
+            })
+    }
 }
 
 /**

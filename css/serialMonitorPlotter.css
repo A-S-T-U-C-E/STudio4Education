@@ -44,7 +44,8 @@
 #inputSerialPeek {
     border-radius: 5px;
     overflow: auto;
-    background-color: #FFFFFF;
+    background-color: var(--backgroundColor);
+    color: var(--textColor);
     width: 100%;
     height: 100%;
     resize: none;
@@ -85,7 +86,7 @@
 #serialGraph {
     background: #444;
     font-family: consolas;
-    color: white;
+    color: var(--textColor);
     font-size: 10px;
     pointer-events: none;
     width: 100%;
@@ -98,14 +99,14 @@
     box-shadow: none;
     border-radius: 0px;
     vertical-align: middle;
-    background: #03234b;
-    color: #FFFFFF;
+    background: var(--backgroundColor);
+    color: var(--textColor);
     font-size: 1em;
 }
 
 .inputButtons:hover {
-    background: #FFFFFF;
-    color: #03234b;
+    background: var(--textColor);
+    color: var(--backgroundColor);
     cursor: pointer;
     transition: 0.5s ease;
 }
@@ -121,6 +122,6 @@
 
 .inputButtons:disabled {
     background: #F3F1EF;
-    color: #03234B;
+    color: var(--backgroundColor);
     cursor: not-allowed;
 }

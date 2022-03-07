@@ -4,14 +4,17 @@ var toolbox_relay = {
         "kind": "category",
         "name": "%{BKY_CAT_RELAY}",
         "toolboxitemid": "RELAY",
-        "levels": [1, 2, 3],
-        "level": "1",
+        "levels": "2, 3",
         "categorystyle": "relay_category",
         "contents": [{
             "kind": "block",
+            "id": "static.relay",
+            "levels": "2, 3",
             "type": "RELAY_LOGICAL",
         }, {
             "kind": "block",
+            "id": "mosfet.relay",
+            "levels": "2, 3",
             "type": "RELAY_MOSFET"
         }]
     }]

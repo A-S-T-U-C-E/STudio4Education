@@ -1,3 +1,0 @@
-Blockly.Blocks.GROVE_UART_WIFI_DEFINE.getBlockType = function() {
-    return Blockly.Types.NULL;
-};

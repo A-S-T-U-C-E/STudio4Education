@@ -387,18 +387,21 @@
                     <br>
                     <br>
                     <span id="interfaceColorSpan" class="UIText">...</span>
-                    <select id="interfaceColorMenu">
-                        <option value="S4E" selected="selected">S4E</option>
+                    <select id="interfaceColorMenu" onchange="changeThemeUI(this.value)">
+                        <option value="UItheme-S4E" selected="selected">S4E</option>
+                        <option value="UItheme-Arduino">Arduino</option>
+                        <option value="UItheme-ESP">ESP</option>
+                        <option value="UItheme-BaW">Black & white</option>
                     </select>
                     <br>
                     <span id="codeEditorColorSpan" class="UIText">...</span>
-                    <select id="codeEditorColorMenu">
+                    <select id="codeEditorColorMenu" onchange="changeThemeMonacoEditor(this.value)">
                         <option value="S4E" selected="selected">S4E</option>
                     </select>
                     <br>
                     <br>
                     <span id="themeSpan" class="UIText">...</span>
-                    <select id="themeMenu" onchange="changeTheme(this.value)">
+                    <select id="themeMenu" onchange="changeThemeBlockly(this.value)">
                         <option value="Classic" id="themeClassicSpan">classic</option>
                         <option value="Modern" id="themeModernSpan">modern</option>
                         <option value="Deuteranopia" id="themeDeuteranopiaSpan">deuteranopia</option>
@@ -410,7 +413,7 @@
                     </select>
                     <br>
                     <span id="renderSpan" class="UIText">...</span>
-                    <select id="rendererMenu" onchange="changeRenderer(this.value)">
+                    <select id="rendererMenu" onchange="changeRendererBlockly(this.value)">
                         <option value="geras">Geras</option>
                         <option value="thrasos">Thrasos</option>
                         <option value="zelos">Zelos</option>
@@ -470,6 +473,21 @@
                     <option value="line" id="lineCursorSpan">line</option>
                 </select>
                 <br>
+                <br>
+                <div id="setup_save_buttons">
+                    <button id="setup_reset_button" class="iconButtons" onclick="">
+                        <span id="setup_reset_button_span" class="fas fa-eraser">
+                        </span>
+                    </button>
+                    <button id="setup_save_button" class="iconButtons" onclick="">
+                        <span id="setup_save_button_span" class="fas fa-file-download">
+                        </span>
+                    </button>
+                    <button id="setup_load_button" class="iconButtons" onclick="">
+                        <span id="setup_load_button_span" class="fas fa-file-upload">
+                        </span>
+                    </button>
+                </div>
             </div>
             <button class="accordion">
                 <span id="CLI_title_span" aria-expanded="false" aria-controls="accordion_CLI_content"></span>
@@ -549,13 +567,13 @@
             <div id="categories_content_header" class="side_content config_content panel UIText">
                 <input type="checkbox" onchange="Code.checkAll()" name="checkbox_All" id="checkbox_All">
                 <span id="categories_content_selectAll_span"></span>
-                <button id="categories_content_filter_button" class="iconButtons CLI" onclick="">
+                <button id="categories_content_filter_button" class="iconButtons CLI" onclick="Code.filterCategoriesKeywords()">
                     <span id="categories_content_filter_span" class="fas fa-filter">
                     </span>
                 </button>
                 <br>
                 <span class="categories_search_wrapper" id="categories_search_wrapper" title="categories_search">
-                    <input id="categories_search" name="categories_search" class="categories_search" type="text" size="10" onkeyup="Code.filterCategories()" placeholder="Search for category...">
+                    <input id="categories_search" name="categories_search" class="categories_search" type="text" size="10" onkeyup="Code.filterCategoriesSearch()" placeholder="Search for category...">
                 </span>
                 <div id="categories_content">
                 </div>
@@ -1121,6 +1139,24 @@
         <button name="colorsModalDialog_close"></button>
         <div class="content" id="colorsModalDialogContent"></div>
     </div>
+    <!-- categoris filter modal dialog -->
+    <div id="filterModalDialog" class="dialog" style="min-width: 400px; min-height: 400px;">
+        <div class="titlebar UIText">Categories filter</div>
+        <button name="filterModalDialog_close"></button>
+        <div class="content" id="filterModalDialogContentColumns">
+            <div class="filterModalDialogContentGrid" id="filterModalDialogContentGrid"></div>
+        </div>
+        <div class="buttonpane">
+            <div class="buttonset">
+                <button id="filterModalDialog_filter" name="filterModalDialog_filter" class="fa-solid fa-arrow-down-short-wide">
+                </button>
+                <button id="filterModalDialog_cancel" name="filterModalDialog_cancel" class="fa-solid fa-filter-circle-xmark">
+                </button>
+                <button id="filterModalDialog_ok" name="filterModalDialog_ok" class="fa-solid fa-check-double">
+                </button>
+            </div>
+        </div>
+    </div>
     <!-- Blockly libraries -->
     <script src="./@blockly/blockly_compressed.js"></script>
     <script src="./@blockly/closure/goog/base.js"></script>
@@ -1156,7 +1192,7 @@
     <script src="./@blockly/demos/code/code.js"></script>
     <script src="./@blockly/tests/playgrounds/screenshot.js" async></script>
     <!-- S4E external toolbox hacked -->
-    <script src="./S4E/categories/arrowheadframework/arrowheadframework.toolbox"></script>
+    <script src="./S4E/categories/arrowhead/arrowhead.toolbox"></script>
     <script src="./S4E/categories/board/board.toolbox"></script>
     <script src="./S4E/categories/communication/communication.toolbox"></script>
     <script src="./S4E/categories/ds18b20/ds18b20.toolbox"></script>
@@ -1221,8 +1257,8 @@
     <script src="./S4E/categories/board/board_iot.blocks"></script>
     <script src="./S4E/categories/board/board_serial.blocks"></script>
     <script src="./S4E/categories/board/board.types"></script>
-    <script src="./S4E/categories/arrowheadframework/arrowheadframework.blocks"></script>
-    <script src="./S4E/categories/arrowheadframework/arrowheadframework.types"></script>
+    <script src="./S4E/categories/arrowhead/arrowhead.blocks"></script>
+    <script src="./S4E/categories/arrowhead/arrowhead.types"></script>
     <script src="./S4E/categories/ds18b20/ds18b20.blocks"></script>
     <script src="./S4E/categories/ds18b20/ds18b20.types"></script>
     <script src="./S4E/categories/DHT/DHT.blocks"></script>
@@ -1237,12 +1273,12 @@
     <script src="./S4E/categories/seeed/grove_lcd_rgb_backlight/grove_lcd_rgb_backlight.types"></script>
     <script src="./S4E/categories/seeed/grove_led_bar/grove_led_bar.blocks"></script>
     <script src="./S4E/categories/seeed/grove_led_bar/grove_led_bar.types"></script>
-    <script src="./S4E/categories/seeed/grove_uart_wifi/grove_uart_wifi.blocks"></script>
-    <script src="./S4E/categories/seeed/grove_uart_wifi/grove_uart_wifi.types"></script>
+    <script src="./S4E/categories/seeed/grove_wifi_uart/grove_wifi_uart.blocks"></script>
+    <script src="./S4E/categories/seeed/grove_wifi_uart/grove_wifi_uart.types"></script>
     <script src="./S4E/categories/servo/servo.blocks"></script>
     <script src="./S4E/categories/servo/servo.types"></script>
-    <script src="./S4E/categories/wifiesp/wifiesp.blocks"></script>
-    <script src="./S4E/categories/wifiesp/wifiesp.types"></script>
+    <script src="./S4E/categories/wifi_esp/wifi_esp.blocks"></script>
+    <script src="./S4E/categories/wifi_esp/wifi_esp.types"></script>
     <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.blocks"></script>
     <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.types"></script>
     <!-- S4E specific: common generator code -->
@@ -1259,7 +1295,7 @@
     <script src="./S4E/categories/board/board_base.arduino"></script>
     <script src="./S4E/categories/board/board_iot.arduino"></script>
     <script src="./S4E/categories/board/board_serial.arduino"></script>
-    <script src="./S4E/categories/arrowheadframework/arrowheadframework.arduino"></script>
+    <script src="./S4E/categories/arrowhead/arrowhead.arduino"></script>
     <script src="./S4E/categories/ds18b20/ds18b20.arduino"></script>
     <script src="./S4E/categories/DHT/DHT.arduino"></script>
     <script src="./S4E/categories/NTPClient/NTPClient.arduino"></script>
@@ -1267,16 +1303,16 @@
     <script src="./S4E/categories/seeed/grove_dht_sensor/grove_dht_sensor.arduino"></script>
     <script src="./S4E/categories/seeed/grove_lcd_rgb_backlight/grove_lcd_rgb_backlight.arduino"></script>
     <script src="./S4E/categories/seeed/grove_led_bar/grove_led_bar.arduino"></script>
-    <script src="./S4E/categories/seeed/grove_uart_wifi/grove_uart_wifi.arduino"></script>
+    <script src="./S4E/categories/seeed/grove_wifi_uart/grove_wifi_uart.arduino"></script>
     <script src="./S4E/categories/servo/servo.arduino"></script>
-    <script src="./S4E/categories/wifiesp/wifiesp.arduino"></script>
+    <script src="./S4E/categories/wifi_esp/wifi_esp.arduino"></script>
     <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.arduino"></script>
     <script>
-        // require('../resources/app.asar/Arrowhead.js');
-        // require('../resources/app.asar/renderer.js');
-        // require('../resources/app.asar/menu_functions.js');
-        // require('../resources/app.asar/menu_CLI_functions.js');
-        // require('../resources/app.asar/menu_IDE_functions.js');
+        require('../resources/app.asar/Arrowhead.js');
+        require('../resources/app.asar/renderer.js');
+        require('../resources/app.asar/menu_functions.js');
+        require('../resources/app.asar/menu_CLI_functions.js');
+        require('../resources/app.asar/menu_IDE_functions.js');
         // require('../Arrowhead.js');
         // require('../renderer.js');
         // require('../menu_functions.js');

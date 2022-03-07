@@ -76,7 +76,7 @@ var profile_arduino = {
         ],
         "speed": "57600",
         "upload_arg": "arduino:avr:leonardo",
-        "picture": "./S4E/media/boards/arduino_leonardo.jpg",
+        "picture": "./S4E/media/boards/arduino_leonardo.png",
         "help_link": "https://www.arduino.cc/en/Main/ArduinoBoardLeonardo"
     }],
     "arduino_mega": [{
@@ -154,7 +154,7 @@ var profile_arduino = {
         ],
         "speed": "115200",
         "upload_arg": "arduino:avr:mega:cpu=atmega2560",
-        "picture": "./S4E/media/boards/arduino_mega.jpg",
+        "picture": "./S4E/media/boards/arduino_mega.png",
         "help_link": "https://www.arduino.cc/en/Main/ArduinoBoardMega2560"
     }],
     "arduino_micro": [{
@@ -233,7 +233,7 @@ var profile_arduino = {
         ],
         "speed": "57600",
         "upload_arg": "arduino:avr:micro",
-        "picture": "./S4E/media/boards/arduino_micro.jpg",
+        "picture": "./S4E/media/boards/arduino_micro.png",
         "help_link": "https://www.arduino.cc/en/Main/ArduinoBoardMicro"
     }],
     "arduino_mini": [{
@@ -309,7 +309,7 @@ var profile_arduino = {
         ],
         "speed": "115200",
         "upload_arg": "arduino:avr:mini",
-        "picture": "./S4E/media/boards/arduino_mini.jpg",
+        "picture": "./S4E/media/boards/arduino_mini.png",
         "help_link": "https://docs.arduino.cc/retired/boards/arduino-mini-05-without-header"
     }],
     "arduino_nano": [{
@@ -382,7 +382,7 @@ var profile_arduino = {
         ],
         "speed": "115200",
         "upload_arg": "arduino:avr:nano:cpu=atmega328",
-        "picture": "./S4E/media/boards/arduino_nano.jpg",
+        "picture": "./S4E/media/boards/arduino_nano.png",
         "help_link": "https://www.arduino.cc/en/Main/ArduinoBoardNano"
     }],
     "arduino_pro8": [{
@@ -456,7 +456,7 @@ var profile_arduino = {
         ],
         "speed": "57600",
         "upload_arg": "arduino:avr:pro:cpu=8MHzatmega328",
-        "picture": "./S4E/media/boards/arduino_pro.jpg",
+        "picture": "./S4E/media/boards/arduino_pro.png",
         "help_link": "https://docs.arduino.cc/retired/boards/arduino-pro-mini"
     }],
     "arduino_pro16": [{
@@ -530,7 +530,7 @@ var profile_arduino = {
         ],
         "speed": "57600",
         "upload_arg": "arduino:avr:pro:cpu=16MHzatmega328",
-        "picture": "./S4E/media/boards/arduino_pro.jpg",
+        "picture": "./S4E/media/boards/arduino_pro.png",
         "help_link": "https://docs.arduino.cc/retired/boards/arduino-pro-mini"
     }],
     "arduino_uno": [{
@@ -601,7 +601,7 @@ var profile_arduino = {
         ],
         "speed": "115200",
         "upload_arg": "arduino:avr:uno",
-        "picture": "./S4E/media/boards/arduino_uno.jpg",
+        "picture": "./S4E/media/boards/arduino_uno.png",
         "help_link": "https://www.arduino.cc/en/Main/ArduinoBoardUno"
     }],
     "arduino_yun": [{
@@ -674,7 +674,7 @@ var profile_arduino = {
         ],
         "speed": "57600",
         "upload_arg": "arduino:avr:yun",
-        "picture": "./S4E/media/boards/arduino_yun.jpg",
+        "picture": "./S4E/media/boards/arduino_yun.png",
         "help_link": "https://docs.arduino.cc/retired/boards/arduino-yun"
     }],
     "lilypad": [{
@@ -745,7 +745,7 @@ var profile_arduino = {
         ],
         "speed": "57600",
         "upload_arg": "arduino:avr:lilypad",
-        "picture": "./S4E/media/boards/lilypad.jpg",
+        "picture": "./S4E/media/boards/lilypad.png",
         "help_link": "https://docs.arduino.cc/retired/boards/lilypad-arduino-main-board"
     }],
     "dagu_rs027": [{
@@ -816,7 +816,7 @@ var profile_arduino = {
         ],
         "speed": "19200",
         "upload_arg": "arduino:avr:pro:cpu=8MHzatmega168",
-        "picture": "./S4E/media/boards/dagu_rs027.jpg",
+        "picture": "./S4E/media/boards/dagu_rs027.png",
         "help_link": "https://www.generationrobots.com/media/RS027-mini-driver-instruction-manual.pdf"
     }],
     "dagu_rs040": [{
@@ -890,7 +890,7 @@ var profile_arduino = {
         ],
         "speed": "57600",
         "upload_arg": "arduino:avr:nano:cpu=atmega328",
-        "picture": "./S4E/media/boards/dagu_rs040.jpg",
+        "picture": "./S4E/media/boards/dagu_rs040.png",
         "help_link": "https://www.generationrobots.com/media/RS027-mini-driver-instruction-manual.pdf"
     }],
     "makeblock_mcore": [{
@@ -946,7 +946,7 @@ var profile_arduino = {
         ],
         "speed": "115200",
         "upload_arg": "arduino:avr:uno",
-        "picture": "./S4E/media/boards/makeblock_mcore.jpg",
+        "picture": "./S4E/media/boards/makeblock_mcore.png",
         "help_link": "https://support.makeblock.com/hc/en-us/articles/4412894402967-mCore-Main-Control-Board-for-mBot"
     }],
     "makeblock_megaPi": [{
@@ -1024,7 +1024,7 @@ var profile_arduino = {
         ],
         "speed": "115200",
         "upload_arg": "arduino:avr:mega:cpu=atmega2560",
-        "picture": "./S4E/media/boards/makeblock_megaPi.jpg",
+        "picture": "./S4E/media/boards/makeblock_megaPi.png",
         "help_link": "https://support.makeblock.com/hc/en-us/articles/4412894483095-About-MegaPi"
     }],
     "makeblock_orion": [{
@@ -1091,7 +1091,7 @@ var profile_arduino = {
         ],
         "speed": "115200",
         "upload_arg": "arduino:avr:uno",
-        "picture": "./S4E/media/boards/makeblock_orion.jpg",
+        "picture": "./S4E/media/boards/makeblock_orion.png",
         "help_link": "https://support.makeblock.com/hc/en-us/articles/4412149618327-About-Me-Auriga"
     }],
     "dfrobot_romeo": [{
@@ -1168,7 +1168,7 @@ var profile_arduino = {
         ],
         "speed": "57600",
         "upload_arg": "arduino:avr:leonardo",
-        "picture": "./S4E/media/boards/dfrobot_romeo.jpg",
+        "picture": "./S4E/media/boards/dfrobot_romeo.png",
         "help_link": "https://www.dfrobot.com/product-844.html"
     }],
     "dfrobot_romeo_ble": [{
@@ -1242,7 +1242,7 @@ var profile_arduino = {
         ],
         "speed": "115200",
         "upload_arg": "arduino:avr:uno",
-        "picture": "./S4E/media/boards/dfrobot_romeo_ble.jpg",
+        "picture": "./S4E/media/boards/dfrobot_romeo_ble.png",
         "help_link": "https://www.dfrobot.com/product-1176.html"
     }]
 }

@@ -1,0 +1,29 @@
+id;label;comment;type;levels
+esp.ahf;ESP for Arrowhead framework;ESP WiFi use for Arrowhead framework;c;3
+wifi.ahf;WiFi for Arrowhead framework;Generic WiFi use for Arrowhead framework;c;3
+network.ahf;Network for Arrowhead framework;Generic wire use for Arrowhead framework;c;3
+algorithm.blockly;Blockly base blocks;Blockly base blocks, needed for algorithm at least;x;1,2,3
+common.board;Board: basic structure;Specific for program structure (setup, loop, etc);x;1,2,3
+IO.board;Board: basic I/O;GPIO classic blocks;x;1,2,3
+time.board;Board: basic time;Time calculation classic blocks;x;1,2,3
+serial.board;Board: basic USB serial communication;USB serial communication;c;1,2,3
+iot.board;Board: basic data format for export;Data format and conversion for export (IoT);x;2,3
+ntp.board ;Board: basic NTP client time;NTP client time & format datas;c;2,3
+wifi_uart.esp;ESP as WiFi gateway;ESP Grove component used to  add UART commands, and communicate via WiFi;c;2,3
+temperature.dht;DHT11/21/22 temperature sensor;temperature sensor;s;1,2,3
+humidity.dht;DHT11/21/22 humidity sensor;humidity sensor;s;1,2,3
+temperature.ds18b20;DS18B20 temperature sensor;temperature sensor;s;1,2,3
+static.relay;Static relay 220V;relay 250VAC - 10A;a;2,3
+mosfet.relay;Mosfet relay 220V;relay 250VAC - 10A;a;2,3
+dht.grove ;Grove DHT sensor;Grove DHT11/21/22 temperature sensor;s;1,2,3
+led_bar.grove ;Grove bar graphe;Grove bar graphe;a;1,2,3
+wifi_uart.grove ;Grove UART WiFi module;Grove UART WiFi module, use ESP as gateway;c;1,2,3
+lcd_rgb.grove ;Grove LCD with RGB backlight;Grove LCD with RGB backlight;a;1,2,3
+angular.servo;Angular servomotor;Servomotor 0~180°;a;2,3
+continuous.servo;Continuous rotation servomotor;continuous rotation servomotor;a;2,3
+temperature.x_nucleo_iks01a3;Onboard temperature sensor;X-NUCLEO-IKS01A3 temperature sensor;s;2,3
+humidity.x_nucleo_iks01a3;Onboard humidity sensor;X-NUCLEO-IKS01A3 humidity sensor;s;2,3
+pressure.x_nucleo_iks01a3;Onboard atmospheric pressure sensor;X-NUCLEO-IKS01A3 atmospheric pressure sensor;s;2,3
+accelerometer.x_nucleo_iks01a3;Onboard 3D accelerometer;X-NUCLEO-IKS01A3 accelerometer;s;2,3
+gyro.x_nucleo_iks01a3;Onboard gyroscope;X-NUCLEO-IKS01A3 gyroscope;s;2,3
+magnet.x_nucleo_iks01a3;Onboard magnetometer;X-NUCLEO-IKS01A3 magnetometer;s;2,3

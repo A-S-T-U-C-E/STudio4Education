@@ -4,43 +4,42 @@ var toolbox_X_NUCLEO_IKS01A3 = {
         "kind": "category",
         "name": "%{BKY_CAT_IKS01A3}",
         "toolboxitemid": "X-NUCLEO-IKS01A3",
-        "level": "2",
-        "levels": [2, 3],
+        "levels": "2, 3",
         "categorystyle": "X-NUCLEO-IKS01A3_category",
         "contents": [{
                 "kind": "block",
                 "id": "temperature.x_nucleo_iks01a3, humidity.x_nucleo_iks01a3",
-                "level": "2",
+                "levels": "2, 3",
                 "type": "X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ"
             },
             {
                 "kind": "block",
                 "id": "temperature.x_nucleo_iks01a3",
-                "level": "2",
+                "levels": "2, 3",
                 "type": "X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ"
             },
             {
                 "kind": "block",
-                "id": "temperature.x_nucleo_iks01a3, pressure.x_nucleo_iks01a3",
-                "level": "2",
+                "id": "pressure.x_nucleo_iks01a3",
+                "levels": "2, 3",
                 "type": "X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_READ"
             },
             {
                 "kind": "block",
                 "id": "accelerometer.x_nucleo_iks01a3",
-                "level": "2",
+                "levels": "2, 3",
                 "type": "X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER"
             },
             {
                 "kind": "block",
                 "id": "accelerometer.x_nucleo_iks01a3, gyro.x_nucleo_iks01a3",
-                "level": "2",
+                "levels": "2, 3",
                 "type": "X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION"
             },
             {
                 "kind": "block",
                 "id": "magnet.x_nucleo_iks01a3",
-                "level": "2",
+                "levels": "2, 3",
                 "type": "X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC"
             }
         ]

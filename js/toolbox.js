@@ -27,9 +27,191 @@ jsonToolbox["contents"][10] = toolbox_ds18b20["contents"][0];
 jsonToolbox["contents"][11] = toolbox_relay["contents"][0];
 jsonToolbox["contents"][12] = toolbox_DHT["contents"][0];
 jsonToolbox["contents"][13] = toolbox_X_NUCLEO_IKS01A3["contents"][0];
-jsonToolbox["contents"][14] = toolbox_arrowheadframework["contents"][0];
+jsonToolbox["contents"][14] = toolbox_arrowhead["contents"][0];
 jsonToolbox["contents"][15] = toolbox_GROVE["contents"][0];
 jsonToolbox["contents"][16] = toolbox_communication["contents"][0];
+/**
+ * Build the toolbox using toolbox definition in json files
+ */
+Code.filterCategoriesKeywords = function() {
+    if (window.sessionStorage.getItem('filtersAlreadyOpened') == "false") {
+        let skillLevel = document.getElementById('levelMenu').value.slice(-1);
+        var ids = [];
+        jsonToolbox["contents"].forEach(category => {
+            if (category.hasOwnProperty("contents"))
+                category["contents"].forEach(subcategory => {
+                    if (subcategory.kind == "block") {
+                        if (subcategory.id.indexOf("blockly") == -1) {
+                            if (subcategory.id.indexOf(",") !== -1) {
+                                let tempArray = subcategory.id.split(', ');
+                                tempArray.forEach(elemt => {
+                                    if (subcategory.levels.indexOf(skillLevel) > -1) ids.push(elemt)
+                                })
+                            } else
+                            if (subcategory.levels.indexOf(skillLevel) > -1) ids.push(subcategory.id);
+                        }
+                    } else
+                        subcategory["contents"].forEach(block => {
+                            if (block.id.indexOf("blockly") == -1) {
+                                if (block.id.indexOf(",") !== -1) {
+                                    let tempArray = block.id.split(', ');
+                                    tempArray.forEach(elemt => {
+                                        if (block.levels.indexOf(skillLevel) > -1) ids.push(elemt)
+                                    })
+                                } else
+                                if (block.levels.indexOf(skillLevel) > -1) ids.push(block.id);
+                            }
+                        })
+                })
+        });
+        // clean all duplicate entries
+        var uniqueIds = [...new Set(ids)];
+        ids = [];
+        // split to get all parts of id
+        uniqueIds.forEach(element => {
+            if (element.indexOf(".") !== -1) {
+                let tempArray = element.split('.');
+                tempArray.forEach(elemt => ids.push(elemt));
+            } else
+                ids.push(element);
+        });
+        uniqueIds = [...new Set(ids)];
+        uniqueIds.sort();
+        for (var elemntId in uniqueIds) {
+            if (uniqueIds.hasOwnProperty(elemntId)) {
+                var pair = uniqueIds[elemntId];
+                var checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.name = "filterCategory";
+                checkbox.value = pair;
+                document.getElementById('filterModalDialogContentGrid').appendChild(checkbox);
+                var label = document.createElement('label')
+                label.htmlFor = pair;
+                label.appendChild(document.createTextNode(pair));
+                document.getElementById('filterModalDialogContentGrid').appendChild(label);
+            }
+        }
+        window.sessionStorage.setItem('filtersAlreadyOpened', "true");
+    }
+    var id = 'filterModalDialog';
+    var dialog = new DialogBox(id, callbackDialog);
+    dialog.showDialog();
+    var toolboxConcatFiltered = {
+        "kind": "categoryToolbox",
+        "contents": []
+    };
+
+    function callbackDialog(btnName) {
+        if (btnName == "filterModalDialog_close") {
+            document.getElementById(id).style.display = 'none';
+        }
+        if (btnName == "filterModalDialog_ok") {
+            var toolboxIds = '';
+            if (toolboxConcatFiltered)
+                toolboxConcatFiltered["contents"].forEach(category => {
+                    toolboxIds += category.toolboxitemid + ',';
+                })
+            toolboxIds = toolboxIds.slice(0, -1);
+            window.localStorage.toolboxids = toolboxIds;
+            toolboxIds = toolboxIds.split(",");
+            var search = window.location.search;
+            if (search.length <= 1) {
+                search = '?cat=' + toolboxIds;
+            } else if (search.match(/[?&]cat=[^&]*/)) {
+                search = search.replace(/([?&]cat=)[^&]*/, '$1' + toolboxIds);
+            } else {
+                search = search.replace(/\?/, '?cat=' + toolboxIds + '&');
+            }
+            history.replaceState({}, 'search', search);
+            document.getElementById(id).style.display = 'none';
+        }
+        if (btnName == "filterModalDialog_filter") {
+            let result = createFilterCategoriesList(toolboxConcatFiltered, '');
+            if (result != 'noCheckedCategory') {
+                Code.mainWorkspace.updateToolbox(result);
+                Code.buildControlPanelForToolbox();
+            }
+        }
+        if (btnName == "filterModalDialog_cancel") {
+            let checks = document.querySelectorAll('#filterModalDialogContentGrid input[type="checkbox"]');
+            for (let i = 0; i < checks.length; i++) {
+                let check = checks[i];
+                if (!check.disabled) {
+                    check.checked = false;
+                }
+            }
+            $('#categories_content')[0].innerHTML = '';
+            let toolboxReload = Code.buildToolbox();
+            Code.buildControlPanelForToolbox(toolboxReload);
+        }
+    }
+}
+
+function createFilterCategoriesList(toolboxConcatFiltered, markedCheckboxValues) {
+    let skillLevel = document.getElementById('levelMenu').value.slice(-1);
+    if (!markedCheckboxValues) {
+        var markedCheckbox = document.getElementsByName('filterCategory');
+        for (let checkboxToTest of markedCheckbox) {
+            if (checkboxToTest.checked)
+                markedCheckboxValues += checkboxToTest.value + ',';
+        }
+    }
+    if (typeof markedCheckboxValues !== 'undefined' && markedCheckboxValues.length > 0) {
+        markedCheckboxValues = markedCheckboxValues.slice(0, -1).split(",");
+        toolboxConcatFiltered["contents"] = [];
+        // copy first algorithmic elements: logic, loops, etc
+        // ONLY WAY TO DEEP COPY AN ARRAY!
+        for (let i = 0; i < 8; i++)
+            toolboxConcatFiltered["contents"][i] = JSON.parse(JSON.stringify(jsonToolbox["contents"][i]));
+        //needed for recursive search in array
+        function checkVal(array, value) {
+            // `Array#some` loops through the array until the iterator
+            // function returns true; it returns true if the iterator
+            // does at some point, false otherwise
+            return array.some(function(entry) {
+                // If this entry in the array is an array, recurse
+                if (Array.isArray(entry)) {
+                    return checkVal(entry, value);
+                }
+                // It isn't, do an equality check
+                return entry === value;
+            });
+        }
+        for (let value of markedCheckboxValues) {
+            let jsonToolboxFiltered = {};
+            // ONLY WAY TO DEEP COPY AN ARRAY!
+            jsonToolboxFiltered = JSON.parse(JSON.stringify(jsonToolbox["contents"]));
+            // "filter": empty key with wrong value
+            jsonToolboxFiltered.forEach(category => {
+                // jsonToolbox["contents"][category]
+                if (category.hasOwnProperty("contents")) {
+                    category["contents"].forEach(subcategory => {
+                        // jsonToolbox["contents"][category]["contents"][subcategory]["contents"][block] blocks in subcategory
+                        if (subcategory.kind != "block") {
+                            subcategory["contents"] = subcategory["contents"].filter(block => {
+                                return ((block.id.indexOf(value) > -1) && (block.levels.indexOf(skillLevel) > -1) && (!checkVal(toolboxConcatFiltered["contents"], block)));
+                            });
+                        }
+                    });
+                    // jsonToolbox["contents"][category]["contents"] blocks in category
+                    category["contents"] = category["contents"].filter(block => {
+                        return ((block.kind == "category" && Array.isArray(block.contents) && block.contents.length > 0) ||
+                            (block.kind == "block" && block.id.indexOf(value) > -1) && (block.levels.indexOf(skillLevel) > -1) && (!checkVal(toolboxConcatFiltered["contents"], block)));
+                    });
+                }
+            });
+            // "filter": delete empty keys and categories
+            let jsonToolboxFilteredTemp = jsonToolboxFiltered.filter(block =>
+                (block.kind == "category" && Array.isArray(block.contents) && block.contents.length > 0) ||
+                (block.kind == "block" && (block.levels.indexOf(skillLevel) > -1) && (block.id.indexOf(value) > -1))
+            );
+            //concat new elements with older ones
+            toolboxConcatFiltered["contents"] = [...new Set([...toolboxConcatFiltered["contents"], ...jsonToolboxFilteredTemp])];
+        }
+        toolboxConcatFiltered["contents"].sort();
+        return toolboxConcatFiltered;
+    } else return 'noCheckedCategory';
+}
 
 /**
  * Build the toolbox using toolbox definition in json files
@@ -60,7 +242,7 @@ Code.buildToolbox = function() {
     };
     var k = 0;
     toolboxIds = toolboxIds.split(",");
-    var level = Code.getStringParamFromUrl('level', '').substr(Code.getStringParamFromUrl('level', '').length - 1);
+    var level = Code.getStringParamFromUrl('level', '').slice(-1);
     if (!level) level = 1;
     for (let i = 0; i < jsonToolbox.contents.length; i++) {
         if (jsonToolbox.contents[i].levels.indexOf(parseInt(level)) > -1) {
@@ -93,13 +275,16 @@ Code.buildToolbox = function() {
 /** add categories from list in jsonToolbox
  * and create toolbox control panel checklist
  */
-Code.buildControlPanelForToolbox = function() {
-    var ligne = '';
+Code.buildControlPanelForToolbox = function(newToolbox) {
+    if (newToolbox)
+        Code.mainWorkspace.updateToolbox(newToolbox);
+    var level = Code.getStringParamFromUrl('level', '').slice(-1);
     $('#categories_content')[0].innerHTML = '<ul id="categoriesSelectList"><br></ul>';
-    var toolboxIds = window.localStorage.toolboxids.split(",");
-    var jsonToolboxToKeep = Code.mainWorkspace.getToolbox();
+    let toolboxIds = window.localStorage.toolboxids.split(",");
+    let jsonToolboxToKeep = Code.mainWorkspace.getToolbox();
+    let ligne = '';
     for (let i = 0; i < jsonToolboxToKeep.contents_.length; i++) {
-        if (!jsonToolboxToKeep.contents_[i].parent_) {
+        if ((!jsonToolboxToKeep.contents_[i].parent_) && (jsonToolboxToKeep.contents_[i].toolboxItemDef_.levels.indexOf(level) > -1)) {
             ligne = '<li><input type="checkbox" ';
             if (toolboxIds.indexOf(jsonToolboxToKeep.contents_[i].id_) > -1)
                 ligne += 'checked="checked" ';
@@ -109,15 +294,13 @@ Code.buildControlPanelForToolbox = function() {
             $('#categoriesSelectList')[0].innerHTML += ligne;
         }
     }
-    // $('#categories_content')[0].innerHTML += '</ul>';
 }
-Code.buildControlPanelForToolbox2 = function() {
-    var ligne = '',
-        id_liste = "";
+Code.buildControlPanelForToolbox3 = function() {
+    var ligne = '';
     var rankInDisplayedToolbox = {};
-    var level = Code.getStringParamFromUrl('level', '').substr(Code.getStringParamFromUrl('level', '').length - 1);
+    var level = Code.getStringParamFromUrl('level', '').slice(-1);
     for (let i = 0; i < jsonToolbox.contents.length; i++) {
-        if (jsonToolbox.contents[i].level == 1) {
+        if (jsonToolbox.contents[i].level == level) {
             rankInDisplayedToolbox = Code.mainWorkspace.getToolbox().getToolboxItems().findIndex(x => x['id_'] == jsonToolbox.contents[i].toolboxitemid);
             if (rankInDisplayedToolbox >= 0) {
                 ligne = '<input type="checkbox" checked="checked" onchange="toggleCategory(' + rankInDisplayedToolbox + ')" name="checkbox_' + rankInDisplayedToolbox + '" id="checkbox_' + rankInDisplayedToolbox + '"/> ' +
@@ -147,14 +330,14 @@ Code.buildControlPanelForToolbox2 = function() {
  **/
 Code.checkAll = function(event) {
     if (this.checked) {
-        for (var i = 0; i < Code.mainWorkspace.getToolbox().getToolboxItems().length; i++) {
+        for (let i = 0; i < Code.mainWorkspace.getToolbox().getToolboxItems().length; i++) {
             if (document.getElementById('checkbox_' + i))
                 if (document.getElementById('checkbox_' + i).checked)
                     document.getElementById('checkbox_' + i).click();
         }
         this.checked = false;
     } else {
-        for (var i = 0; i < Code.mainWorkspace.getToolbox().getToolboxItems().length; i++) {
+        for (let i = 0; i < Code.mainWorkspace.getToolbox().getToolboxItems().length; i++) {
             if (document.getElementById('checkbox_' + i))
                 if (!document.getElementById('checkbox_' + i).checked)
                     document.getElementById('checkbox_' + i).click();
@@ -167,7 +350,7 @@ Code.checkAll = function(event) {
  * filter categories in setup panel
  * inspired by https://www.w3schools.com/howto/howto_js_filter_lists.asp
  **/
-Code.filterCategories = function() {
+Code.filterCategoriesSearch = function() {
     var input, filter, ul, li, span, i, txtValue;
     input = document.getElementById('categories_search');
     filter = input.value.toUpperCase();
@@ -184,51 +367,18 @@ Code.filterCategories = function() {
     }
 }
 
-
-/**
- * filter categories in toolbox
- * inspired by https://www.w3schools.com/howto/howto_js_filter_lists.asp
- **/
-Code.filterToolbox = function() {
-    var search = 'temperature';
-    console.log(jsonToolbox)
-
-    let dataStr = JSON.parse(jsonToolbox["contents"], search, 2);
-    let cleanJsonRegex = new RegExp(`,.*${search}.*[, ]`, "g");
-
-    let nameJsonStr = dataStr.replace(cleanJsonRegex, "");
-
-    console.log(nameJsonStr); // "{\"name\":\"ABC\"}"
-    // let jsonObj = JSON.parse(jsonToolbox["contents"]);
-
-    // let cleanJsonRegex = new RegExp(`,.*${search}.*[, ]`, "g");
-    // let nameJsonStr = jsonObj.replace(cleanJsonRegex, "");
-    // console.log(nameJsonStr); // "{\"name\":\"ABC\"}"
-
-
-    // var jsonData = JSON.parse(jsonToolbox);
-    // console.log(jsonData)
-    // for (var i = 0; i < jsonToolbox.objects.length; i++) {
-    //     var object = jsonData.objects[i];
-    //     if (object.id != search) {
-    //         delete jsonData.objects[i];
-    //     }
-    // }
-    // console.log(jsonData)
-}
-
 /** change toolbox size
  *  show or hide text on labels
  */
 Code.fullToolbox = function() {
-    var x = document.getElementsByClassName('blocklyTreeLabel');
-    if (x[0].style.display === "none") {
-        for (var i = 0; i < x.length; ++i) {
-            x[i].style.display = 'inline';
+    var blocklyTreeLabels = document.getElementsByClassName('blocklyTreeLabel');
+    if (blocklyTreeLabels[0].style.display === "none") {
+        for (let blocklyTreeLabel of blocklyTreeLabels) {
+            blocklyTreeLabel.style.display = 'inline';
         }
     } else {
-        for (var i = 0; i < x.length; ++i) {
-            x[i].style.display = 'none';
+        for (let blocklyTreeLabel of blocklyTreeLabels) {
+            blocklyTreeLabel.style.display = 'none';
         }
     }
     document.getElementById("fullToolboxButton").classList.toggle("active");

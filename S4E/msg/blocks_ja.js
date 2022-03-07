@@ -322,13 +322,13 @@ Blockly.Msg['GROVE_INOUT_LCD_WRITE_FORMAT_FIELDDROPDOWN'] = [
     ["decimal", "1"],
     ["variable", "2"]
 ];
-Blockly.Msg['GROVE_UART_WIFI_DEFINE'] = "define WiFi UART v2";
-Blockly.Msg['GROVE_UART_WIFI_DEFINE_RX'] = "Rx";
-Blockly.Msg['GROVE_UART_WIFI_DEFINE_TX'] = "Tx";
-Blockly.Msg['GROVE_UART_WIFI_DEFINE_OBJECT'] = "name of communication object";
-Blockly.Msg['GROVE_UART_WIFI_DEFINE_SPEED'] = "communication object's speed";
-Blockly.Msg['GROVE_UART_WIFI_DEFINE_TOOLTIP'] = "define Grove WiFi's pins, RxTx to communicate with softserial object";
-Blockly.Msg['GROVE_UART_WIFI_DEFINE_HELPURL'] = "https://wiki.seeedstudio.com/Grove-UART_Wifi_V2/";
+Blockly.Msg['GROVE_WIFI_UART_DEFINE'] = "define WiFi UART v2";
+Blockly.Msg['GROVE_WIFI_UART_DEFINE_RX'] = "Rx";
+Blockly.Msg['GROVE_WIFI_UART_DEFINE_TX'] = "Tx";
+Blockly.Msg['GROVE_WIFI_UART_DEFINE_OBJECT'] = "name of communication object";
+Blockly.Msg['GROVE_WIFI_UART_DEFINE_SPEED'] = "communication object's speed";
+Blockly.Msg['GROVE_WIFI_UART_DEFINE_TOOLTIP'] = "define Grove WiFi's pins, RxTx to communicate with softserial object";
+Blockly.Msg['GROVE_WIFI_UART_DEFINE_HELPURL'] = "https://wiki.seeedstudio.com/Grove-WIFI_UART_V2/";
 
 // WiFi ESP library
 

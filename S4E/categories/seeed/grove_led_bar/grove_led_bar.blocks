@@ -25,7 +25,7 @@ Blockly.Blocks['GROVE_LED_BAR_SETALLOFF'] = {
             .appendField(Blockly.Msg["GROVE_INOUT_LED_BAR_INPUT"])
             .appendField(new Blockly.FieldImage(grove_led_bar_MediaFolder + "grove_led_bar.jpg", Code.imageSize, Code.imageSize))
             .appendField(Blockly.Msg["GROVE_INOUT_LED_BAR_PIN"])
-            .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN")
+            .appendField(new Blockly.FieldDropdown(profile["default"][0].dropdownDigital), "PIN")
             .appendField(Blockly.Msg["GROVE_INOUT_LED_BAR_ALL_OFF"]);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -41,7 +41,7 @@ Blockly.Blocks['GROVE_LED_BAR_SETLEVEL'] = {
             .appendField(Blockly.Msg["GROVE_INOUT_LED_BAR_INPUT"])
             .appendField(new Blockly.FieldImage(grove_led_bar_MediaFolder + "grove_led_bar.jpg", Code.imageSize, Code.imageSize))
             .appendField(Blockly.Msg["GROVE_INOUT_LED_BAR_PIN"])
-            .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN");
+            .appendField(new Blockly.FieldDropdown(profile["default"][0].dropdownDigital), "PIN");
         this.appendValueInput("LEVEL")
             .setCheck("Number")
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -60,7 +60,7 @@ Blockly.Blocks['GROVE_INOUT_LED_BAR_TOGGLE'] = {
             .appendField(Blockly.Msg["GROVE_INOUT_LED_BAR_INPUT"])
             .appendField(new Blockly.FieldImage(grove_led_bar_MediaFolder + "grove_led_bar.jpg", Code.imageSize, Code.imageSize))
             .appendField(Blockly.Msg["GROVE_INOUT_LED_BAR_PIN"])
-            .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN");
+            .appendField(new Blockly.FieldDropdown(profile["default"][0].dropdownDigital), "PIN");
         this.appendValueInput("LEVEL")
             .setCheck("Number")
             .setAlign(Blockly.ALIGN_RIGHT)

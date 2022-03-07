@@ -58,6 +58,34 @@ html[dir=rtl] {
     text-align: right;
 }
 
+.UItheme-S4E {
+    --backgroundColor: #03234B;
+    --barreColor: #00abdf;
+    --textColor: #FFFFFF;
+    --iconButtonActive: #FFCC00;
+}
+
+.UItheme-Arduino {
+    --backgroundColor: #008184;
+    --barreColor: #00979d;
+    --textColor: #FFFFFF;
+    --iconButtonActive: #FFCC00;
+}
+
+.UItheme-ESP {
+    --backgroundColor: #e7352c;
+    --barreColor: #e7352c;
+    --textColor: #000000;
+    --iconButtonActive: #000000;
+}
+
+.UItheme-BaW {
+    --backgroundColor: #000000;
+    --barreColor: #000000;
+    --textColor: #ffffff;
+    --iconButtonActive: #ffffff;
+}
+
 .blocklyTrash,
 .blocklyZoom>image {
     opacity: 1 !important;
@@ -65,7 +93,7 @@ html[dir=rtl] {
 
 .TitleText {
     vertical-align: middle;
-    color: #FFFFFF;
+    color: var(--textColor);
     font-size: x-large;
     font-weight: bold;
 }
@@ -86,7 +114,7 @@ html[dir=rtl] {
 }
 
 .popup_bckgrd>div {
-    background-color: #fff;
+    background-color: var(--textColor);
     box-shadow: 10px 10px 60px #555;
     display: inline-block;
     height: auto;
@@ -153,7 +181,7 @@ html[dir=rtl] {
 }
 
 .menu_text {
-    color: white;
+    color: var(--textColor);
     display: inline;
 }
 
@@ -244,7 +272,7 @@ html[dir=rtl] {
     padding: 10px;
     border-radius: 4px;
     font-size: x-large;
-    color: #FFFFFF;
+    color: var(--textColor);
     text-align: center;
     vertical-align: middle;
 }

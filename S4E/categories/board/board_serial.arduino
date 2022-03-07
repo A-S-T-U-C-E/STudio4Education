@@ -69,7 +69,7 @@ Blockly.Arduino['BOARD_SERIAL_READSTRINGUNTIL'] = function(block) {
 Blockly.Arduino['BOARD_SERIAL_TEXT_PROMPT_EXT'] = function(block) {
     // Get the first Serial peripheral of arduino board
     var serialId = 'Serial';
-    // var serialId = profile.defaultBoard.serial;
+    // var serialId = profile["default"][0]Board.serial;
     var returnType = block.getFieldValue('TYPE');
 
     // The function code changes based on reading a number or string
@@ -130,7 +130,7 @@ Blockly.Arduino['board_serial_formatJSON'] = function(block) {
     return code;
 };
 
-Blockly.Arduino['board_serial_formatCSV'] = function(block) {
+Blockly.Arduino['bOARD_SERIAL_FORMAT_CSV'] = function(block) {
     var i = 0;
     var j = 0;
     var k = 0;

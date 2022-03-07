@@ -78,7 +78,7 @@ Blockly.Blocks['BOARD_BASE_INOUT_DIGITAL_WRITE'] = {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(mediaFolder + "digital.jpg", 32, 32), 'iconToChange')
             .appendField(Blockly.Msg.ARDUINO_INOUT_DIGITAL_WRITE_INPUT1)
-            .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN")
+            .appendField(new Blockly.FieldDropdown(profile["default"][0].dropdownDigital), "PIN")
             .appendField(Blockly.Msg.ARDUINO_INOUT_DIGITAL_WRITE_INPUT2)
             .appendField(new Blockly.FieldDropdown(Blockly.Msg.FIELDDROPDOWN, this.changeIcon), 'STAT');
         this.setPreviousStatement(true, null);
@@ -100,7 +100,7 @@ Blockly.Blocks['BOARD_BASE_INOUT_DIGITAL_READ'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARDUINO_INOUT_DIGITAL_READ_INPUT)
-            .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN");
+            .appendField(new Blockly.FieldDropdown(profile["default"][0].dropdownDigital), "PIN");
         this.setOutput(true, 'Boolean');
         this.setTooltip(Blockly.Msg.ARDUINO_INOUT_DIGITAL_READ_TOOLTIP);
         this.setHelpUrl(Blockly.Msg.ARDUINO_INOUT_DIGITAL_READ_HELPURL);
@@ -124,7 +124,7 @@ Blockly.Blocks['BOARD_BASE_INOUT_ANALOG_WRITE'] = {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(mediaFolder + "pwm.png", Code.imageSize, Code.imageSize))
             .appendField(Blockly.Msg.ARDUINO_INOUT_ANALOG_WRITE_INPUT1)
-            .appendField(new Blockly.FieldDropdown(profile.default.dropdownPWM), "PIN");
+            .appendField(new Blockly.FieldDropdown(profile["default"][0].dropdownPWM), "PIN");
         this.appendValueInput("PWM", 'Number')
             .appendField(Blockly.Msg.ARDUINO_INOUT_ANALOG_WRITE_INPUT2)
             .setCheck("Number");
@@ -142,7 +142,7 @@ Blockly.Blocks['BOARD_BASE_INOUT_ANALOG_WRITE_SLIDER'] = {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(mediaFolder + "pwm.png", Code.imageSize, Code.imageSize))
             .appendField(Blockly.Msg.ARDUINO_INOUT_ANALOG_WRITE_INPUT1)
-            .appendField(new Blockly.FieldDropdown(profile.default.dropdownPWM), "PIN");
+            .appendField(new Blockly.FieldDropdown(profile["default"][0].dropdownPWM), "PIN");
         this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARDUINO_INOUT_ANALOG_WRITE_INPUT2)
@@ -160,7 +160,7 @@ Blockly.Blocks['BOARD_BASE_INOUT_ANALOG_READ'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARDUINO_INOUT_ANALOG_READ_INPUT)
-            .appendField(new Blockly.FieldDropdown(profile.default.dropdownAnalog), "PIN");
+            .appendField(new Blockly.FieldDropdown(profile["default"][0].dropdownAnalog), "PIN");
         this.setOutput(true, 'int');
         this.setTooltip(Blockly.Msg.ARDUINO_INOUT_ANALOG_READ_TOOLTIP);
         this.setHelpUrl(Blockly.Msg.ARDUINO_INOUT_ANALOG_READ_HELPURL);
@@ -168,7 +168,7 @@ Blockly.Blocks['BOARD_BASE_INOUT_ANALOG_READ'] = {
     }
 };
 
-Blockly.Blocks['BOARD_BASE_DELAY'] = {
+Blockly.Blocks['BOARD_BASE_TIME_DELAY'] = {
     init: function() {
         this.appendValueInput("DELAY_TIME", 'Number')
             .appendField(Blockly.Msg.ARDUINO_BASE_DELAY_DELAY_TIME)
@@ -182,7 +182,7 @@ Blockly.Blocks['BOARD_BASE_DELAY'] = {
     }
 };
 
-Blockly.Blocks['BOARD_BASE_ANGLE'] = {
+Blockly.Blocks['BOARD_BASE_INOUT_ANGLE'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARDUINO_BASE_ANGLE)
@@ -194,7 +194,7 @@ Blockly.Blocks['BOARD_BASE_ANGLE'] = {
     }
 };
 
-Blockly.Blocks['BOARD_BASE_MAP'] = {
+Blockly.Blocks['BOARD_BASE_INOUT_MAP'] = {
     init: function() {
         this.appendValueInput("NUM")
             .appendField(Blockly.Msg.ARDUINO_BASE_MAP1)
@@ -216,7 +216,7 @@ Blockly.Blocks['BOARD_BASE_INOUT_TONE'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARDUINO_TONE_INPUT1)
-            .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN");
+            .appendField(new Blockly.FieldDropdown(profile["default"][0].dropdownDigital), "PIN");
         this.appendValueInput("NUM")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.ARDUINO_TONE_INPUT2)
@@ -234,7 +234,7 @@ Blockly.Blocks['BOARD_BASE_INOUT_NOTONE'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg.ARDUINO_NOTONE_INPUT)
-            .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN");
+            .appendField(new Blockly.FieldDropdown(profile["default"][0].dropdownDigital), "PIN");
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);

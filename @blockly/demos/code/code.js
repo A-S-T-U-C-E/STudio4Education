@@ -115,7 +115,7 @@ Code.changeLanguage = function() {
     Code.mainWorkspace.dispose();
     // need to wait before redrawing block, due to translation
     setTimeout(function() {
-        genWorkspace(Code.isRtl(), Code.buildToolbox(), document.forms.options.elements.rendererMenu.value);
+        Code.genWorkspace(Code.isRtl(), Code.buildToolbox(), document.forms.options.elements.rendererMenu.value);
         Code.mainWorkspace.addChangeListener(Code.renderContent);
         Code.buildControlPanelForToolbox();
         Code.injectLanguageStrings();
@@ -127,8 +127,9 @@ Code.changeLanguage = function() {
 /**
  * Modify interface for different skill levels
  */
-Code.changeLevel = function(levelMenuSelection) {
+Code.changeLevel = async function() {
     var levelMenuSelection = document.getElementById('levelMenu').options[levelMenu.selectedIndex].value;
+    window.sessionStorage.setItem('filtersAlreadyOpened', "false");
     var search = window.location.search;
     if (search.length <= 1) {
         search = '?level=' + levelMenuSelection;
@@ -471,8 +472,17 @@ Code.changeLevel = function(levelMenuSelection) {
     Code.BlocklyWorkspaceOnresize();
     Blockly.svgResize(Code.mainWorkspace);
     iconsButtonMouserOver();
-    Code.buildToolbox;
-    Code.buildControlPanelForToolbox;
+    let checks = document.querySelectorAll('#filterModalDialogContentGrid input[type="checkbox"]');
+    for (let i = 0; i < checks.length; i++) {
+        let check = checks[i];
+        if (!check.disabled) {
+            check.checked = false;
+        }
+    }
+    $('#filterModalDialogContentGrid')[0].innerHTML = '';
+    $('#categories_content')[0].innerHTML = '';
+    let toolboxReload = Code.buildToolbox();
+    Code.buildControlPanelForToolbox(toolboxReload);
     Code.injectLanguageStrings();
 };
 

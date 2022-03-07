@@ -11,13 +11,13 @@
 
 .UIText {
     vertical-align: middle;
-    color: #FFFFFF;
+    color: var(--textColor);
     font-weight: bold;
 }
 
 .UITextSmall {
     vertical-align: middle;
-    color: #FFFFFF;
+    color: var(--textColor);
     font-size: large;
     font-weight: bold;
 }
@@ -45,21 +45,21 @@
     padding: 2px;
     line-height: 0;
     vertical-align: middle;
-    background: #03234b;
-    color: #FFFFFF;
+    background: var(--backgroundColor);
+    color: var(--textColor);
     font-size: 1.5em;
     min-width: 35px;
 }
 
 .iconButtons:hover {
-    background: #FFFFFF;
-    color: #03234b;
+    color: var(--backgroundColor);
+    background: var(--textColor);
     cursor: pointer;
     transition: 0.5s ease;
 }
 
 .iconButtons:active {
-    background: #FFCC00;
+    background: var(--iconButtonActive);
 }
 
 .iconButtons:active::after {
@@ -69,7 +69,7 @@
 
 .iconButtons:disabled {
     background: #F3F1EF;
-    color: #03234B;
+    color: var(--backgroundColor);
     cursor: not-allowed;
 }
 
@@ -81,21 +81,21 @@
     padding: 2px;
     line-height: 0;
     vertical-align: middle;
-    background: #FFFFFF;
-    color: #03234b;
+    background: var(--textColor);
+    color: var(--backgroundColor);
     font-size: 1.5em;
     width: 35px;
 }
 
 .iconButtonsTop:hover {
-    background: #03234b;
-    color: #FFFFFF;
+    background: var(--backgroundColor);
+    color: var(--textColor);
     cursor: pointer;
     transition: 0.5s ease;
 }
 
 .iconButtonsTop:active {
-    background: #FFCC00;
+    background: var(--iconButtonActive);
 }
 
 .iconButtonsTop:active::after {
@@ -104,7 +104,7 @@
 }
 
 .iconButtonsTop:disabled {
-    background: #03234B;
+    background: var(--backgroundColor);
     color: #F3F1EF;
     cursor: not-allowed;
 }
@@ -117,8 +117,8 @@
     padding: 2px;
     line-height: 0;
     vertical-align: middle;
-    background: #FFCC00;
-    color: #03234B;
+    background: var(--iconButtonActive);
+    color: var(--backgroundColor);
     font-size: x-large;
     width: 32px;
 }
@@ -141,7 +141,7 @@
 }
 
 #resizer_v {
-    background-color: #00abdf;
+    background-color: var(--barreColor);
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
@@ -217,7 +217,7 @@
     padding: 2px;
     line-height: 0;
     vertical-align: middle;
-    background: #03234b;
+    background: var(--backgroundColor);
     color: #FFFFFF;
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
@@ -276,6 +276,19 @@
 #categories_content_filter_button {
     position: relative;
     left: 122px;
+}
+
+.filterModalDialogContentGrid {
+    display: grid;
+    grid-template-columns: 0.1fr 0.1fr;
+    grid-auto-columns: 1.5em;
+    grid-gap: .1em;
+}
+
+#filterModalDialogContentColumns {
+    column-width: 150px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 

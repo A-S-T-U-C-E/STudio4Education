@@ -8,9 +8,9 @@
 /* CSS specific added for the theme */
 
 body {
-    background-color: #03234B;
+    background-color: var(--backgroundColor);
     border: solid 0.05em;
-    border-color: #03234B;
+    border-color: var(--backgroundColor);
 }
 
 #logo {
@@ -18,19 +18,20 @@ body {
 }
 
 #optionsTop {
-    background-color: #FFFFFF;
+    /* background-color: var(--backgroundColor); */
+    background-color: #ffffff;
 }
 
 #resizer_h {
-    background-color: #03234B;
+    background-color: var(--backgroundColor);
 }
 
 #helpModal_header {
-    background-color: #03234B;
+    background-color: var(--backgroundColor);
 }
 
 #keyboard_nav_header {
-    background-color: #2196F3;
+    background-color: var(--barreColor);
 }
 
 .blockly-ws-search button {
@@ -41,51 +42,51 @@ body {
 #buttonsToolsPopupInside,
 #buttonsIotPopupInside,
 #buttonsSerialPopupInside {
-    background-color: #03234b;
+    background-color: var(--backgroundColor);
     padding: 5px;
 }
 
 .TitleText {
-    color: #03234B;
+    color: var(--backgroundColor);
 }
 
 .config_content {
-    background-color: #03234B;
+    background-color: var(--backgroundColor);
 }
 
 .modal-header,
 .modal-footer {
-    background-color: #03234B;
+    background-color: var(--backgroundColor);
 }
 
 .accordion {
-    background-color: #03234B;
+    background-color: var(--backgroundColor);
 }
 
 .accordion:hover {
-    color: #03234B;
+    color: var(--backgroundColor);
 }
 
 .active {
-    color: #03234B;
-    background-color: #FFCC00;
+    color: var(--backgroundColor);
+    background-color: var(--iconButtonActive);
 }
 
 .collapsibleButton {
-    background-color: #03234B;
+    background-color: var(--backgroundColor);
 }
 
 .active:after {
-    color: #03234B;
+    color: var(--backgroundColor);
 }
 
 #lateral-panel-setup-label {
-    color: #03234B;
+    color: var(--backgroundColor);
 }
 
 .closeModal:hover,
 .closeModal:focus {
-    color: #FFCC00;
+    color: var(--iconButtonActive);
 }
 
 
@@ -93,18 +94,18 @@ body {
 
 .active,
 .collapsibleButton:hover {
-    background-color: #FFCC00;
+    background-color: var(--iconButtonActive);
 }
 
 
 /* enhance sliders behavior */
 
 input:checked+.slider {
-    background-color: #00abdf;
+    background-color: var(--barreColor);
 }
 
 input:focus+.slider {
-    box-shadow: 0 0 1px #00abdf;
+    box-shadow: 0 0 1px var(--barreColor);
 }
 
 input:checked+.slider:before {

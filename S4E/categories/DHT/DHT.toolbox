@@ -4,11 +4,12 @@ var toolbox_DHT = {
         "kind": "category",
         "name": "%{BKY_CAT_DHT}",
         "toolboxitemid": "DHT",
-        "levels": [1, 2, 3],
-        "level": "1",
+        "levels": "1, 2, 3",
         "categorystyle": "DHT_category",
         "contents": [{
             "kind": "block",
+            "id": "temperature.dht, humidity.dht",
+            "levels": "1, 2, 3",
             "type": "DHT_READ"
         }]
     }]

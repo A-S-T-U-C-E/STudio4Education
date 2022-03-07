@@ -14,7 +14,7 @@
 goog.provide('Blockly.Boards');
 
 //set default profile
-profile.default = profile["none"];
+profile["default"] = profile["none"];
 
 /**
  * Set board when click in board modal
@@ -24,7 +24,7 @@ Code.setBoard = function() {
     if (!boardId) {
         boardId = "none";
     }
-    profile.default = profile[boardId];
+    profile["default"] = profile[boardId];
     // change tooltip & info when a board is selected
     if (boardId != "none") {
         profile["default"] = profile[boardId];
@@ -78,11 +78,11 @@ Code.changeBoard = function() {
     document.getElementById("boardDescriptionSelector").value = newBoard;
     document.getElementById("boardSelected_span").textContent = profile["default"][0].description;
     document.getElementById("portSelected_span").textContent = ' : ' + document.getElementById('serialMenu').options[document.getElementById('serialMenu').selectedIndex].value;
-    sessionStorage.setItem("availableSpeed", JSON.stringify(profile.default['serial']));
+    sessionStorage.setItem("availableSpeed", JSON.stringify(profile["default"][0]['serial']));
     window.history.pushState({}, "S4E", Code.addReplaceParamToUrl(window.location.search, "board", newBoard));
     //update serial speed list in serial monitor
     document.getElementById('serialConnectSpeed_Menu').length = 0;
-    var serialConnectSpeedAvailable = profile.default[0]['serial'];
+    var serialConnectSpeedAvailable = profile["default"][0]['serial'];
     serialConnectSpeedAvailable.forEach((serialConnectSpeed) => {
         var option = document.createElement('option');
         option.value = serialConnectSpeed;

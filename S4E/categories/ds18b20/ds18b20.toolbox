@@ -4,14 +4,17 @@ var toolbox_ds18b20 = {
         "kind": "category",
         "name": "%{BKY_CAT_DS18B20}",
         "toolboxitemid": "DS18B20",
-        "levels": [1, 2, 3],
-        "level": "1",
+        "levels": "1, 2, 3",
         "categorystyle": "ds18b20_category",
         "contents": [{
             "kind": "block",
+            "id": "temperature.ds18b20",
+            "levels": "1, 2, 3",
             "type": "DS18B20_SEARCH"
         }, {
             "kind": "block",
+            "id": "temperature.ds18b20",
+            "levels": "1, 2, 3",
             "type": "DS18B20_TEMP"
         }]
     }]

@@ -26,7 +26,7 @@ Blockly.Blocks['BOARD_SERIAL_INIT'] = {
         this.setInputsInline(true);
         this.appendDummyInput("")
             .appendField(Blockly.Msg.SERIAL_INIT)
-            .appendField(new Blockly.FieldDropdown(profile.default.serial), "SPEED");
+            .appendField(new Blockly.FieldDropdown(profile["default"][0].serial), "SPEED");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg.SERIAL_PRINT_TOOLTIP);
@@ -116,7 +116,7 @@ Blockly.Blocks['BOARD_SERIAL_FLUSH'] = {
     }
 };
 
-Blockly.Blocks['board_serial_formatCSV'] = {
+Blockly.Blocks['bOARD_SERIAL_FORMAT_CSV'] = {
     /**
      * Block for creating a list with any number of elements of any type.
      * @this {Blockly.Block}

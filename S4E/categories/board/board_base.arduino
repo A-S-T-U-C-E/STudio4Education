@@ -97,18 +97,18 @@ Blockly.Arduino['BOARD_BASE_INOUT_ANALOG_READ'] = function(block) {
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino['BOARD_BASE_DELAY'] = function(block) {
+Blockly.Arduino['BOARD_BASE_TIME_DELAY'] = function(block) {
     var delay_time = Blockly.Arduino.valueToCode(this, 'DELAY_TIME', Blockly.Arduino.ORDER_ATOMIC) || '1000'
     var code = 'delay(' + delay_time + ');\n';
     return code;
 };
 
-Blockly.Arduino['BOARD_BASE_ANGLE'] = function(block) {
+Blockly.Arduino['BOARD_BASE_INOUT_ANGLE'] = function(block) {
     var angle = this.getFieldValue('ANGLE');
     return [angle, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino['BOARD_BASE_MAP'] = function(block) {
+Blockly.Arduino['BOARD_BASE_INOUT_MAP'] = function(block) {
     var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_NONE);
     var value_dmax = Blockly.Arduino.valueToCode(this, 'DMAX', Blockly.Arduino.ORDER_ATOMIC);
     var code = 'map(' + value_num + ', 0, 1024, 0, ' + value_dmax + ')';

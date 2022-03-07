@@ -15,7 +15,7 @@
     /* font-weight: 400; */
     /* color: #fff; */
     background: #ffffff;
-    border: 1px solid #03234b;
+    border: 1px solid var(--backgroundColor);
     /* change allowed; Border to separate multipe dialog boxes */
     margin: 0;
     position: absolute;
@@ -34,7 +34,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     cursor: move;
-    background: #03234b;
+    background: var(--backgroundColor);
 }
 
 .dialog .content {
@@ -78,8 +78,8 @@
 .dialog button {
     -webkit-transition: 0.25s;
     transition: 0.25s;
-    color: #fff;
-    background-color: #03234b;
+    color: var(--textColor);
+    background-color: var(--backgroundColor);
 }
 
 .dialog button::-moz-focus-inner {
@@ -108,7 +108,7 @@
     padding: 0;
     border: 0;
     font-size: 1.4em;
-    background: #e80;
+    /* background: var(--iconButtonActive); */
 }
 
 
@@ -140,7 +140,7 @@
     /* change allowed */
     margin-left: 16px;
     /* change NOT allowed */
-    background: #39c
+    background: var(--barreColor);
 }
 
 .dialog .buttonset button:first-child {

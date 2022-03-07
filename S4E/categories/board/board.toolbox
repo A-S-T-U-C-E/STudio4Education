@@ -4,69 +4,95 @@ var toolbox_board = {
         "kind": "category",
         "name": "%{BKY_CAT_ONBOARD}",
         "toolboxitemid": "ONBOARD",
-        "level": "1",
-        "levels": [1, 2, 3],
+        "levels": "1, 2, 3",
         "categorystyle": "board_category",
         "contents": [{
                 "kind": "block",
+                "id": "common.board",
+                "levels": "1, 2, 3",
                 "type": "BOARD_BASE_SETUP"
             },
             {
                 "kind": "block",
+                "id": "common.board",
+                "levels": "1, 2, 3",
                 "type": "BOARD_BASE_LOOP"
             }, {
                 "kind": "block",
+                "id": "common.board",
+                "levels": "1, 2, 3",
                 "type": "BASE_DEFINE_BLOC"
             },
             {
                 "kind": "category",
                 "name": "%{BKY_CAT_ONBOARD_IO}",
                 "toolboxitemid": "ONBOARD_IO",
-                "level": "2",
-                "levels": [1, 2, 3],
+                "levels": "1, 2, 3",
                 "categorystyle": "board_category",
                 "contents": [{
                         "kind": "block",
+                        "id": "IO.board",
+                        "levels": "1, 2, 3",
                         "type": "BOARD_BASE_INOUT_BUILDIN_LED"
                     },
                     {
                         "kind": "block",
+                        "id": "IO.board",
+                        "levels": "1, 2, 3",
                         "type": "BOARD_BASE_INOUT_DIGITAL_WRITE"
                     },
                     {
                         "kind": "block",
+                        "id": "IO.board",
+                        "levels": "1, 2, 3",
                         "type": "BOARD_BASE_INOUT_DIGITAL_READ"
                     },
                     {
                         "kind": "block",
+                        "id": "IO.board",
+                        "levels": "1, 2, 3",
                         "type": "BOARD_BASE_INOUT_HIGHLOW"
                     },
                     {
                         "kind": "block",
+                        "id": "IO.board",
+                        "levels": "1, 2, 3",
                         "blockxml": "<block type='BOARD_BASE_INOUT_ANALOG_WRITE'><value name='PWM'><shadow type='math_number'><field name='NUM'>0</field></shadow></value></block>"
                     },
                     {
                         "kind": "block",
+                        "id": "IO.board",
+                        "levels": "1, 2, 3",
                         "type": "BOARD_BASE_INOUT_ANALOG_WRITE_SLIDER"
                     },
                     {
                         "kind": "block",
+                        "id": "IO.board",
+                        "levels": "1, 2, 3",
                         "type": "BOARD_BASE_INOUT_ANALOG_READ"
                     },
                     {
                         "kind": "block",
-                        "type": "BOARD_BASE_ANGLE"
+                        "id": "IO.board",
+                        "levels": "1, 2, 3",
+                        "type": "BOARD_BASE_INOUT_ANGLE"
                     },
                     {
                         "kind": "block",
-                        "type": "BOARD_BASE_MAP"
+                        "id": "IO.board",
+                        "levels": "1, 2, 3",
+                        "type": "BOARD_BASE_INOUT_MAP"
                     },
                     {
                         "kind": "block",
+                        "id": "IO.board",
+                        "levels": "1, 2, 3",
                         "blockxml": "<block type='BOARD_BASE_INOUT_TONE'><value name='NUM'><shadow type='math_number'><field name='NUM'>440</field></shadow></value></block>"
                     },
                     {
                         "kind": "block",
+                        "id": "IO.board",
+                        "levels": "1, 2, 3",
                         "type": "BOARD_BASE_INOUT_NOTONE"
                     }
                 ]
@@ -75,63 +101,85 @@ var toolbox_board = {
                 "kind": "category",
                 "name": "%{BKY_CAT_ONBOARD_TIME}",
                 "toolboxitemid": "ONBOARD_TIME",
-                "level": "2",
-                "levels": [1, 2, 3],
+                "levels": "1, 2, 3",
                 "categorystyle": "board_category",
                 "contents": [{
                     "kind": "block",
-                    "blockxml": "<block type='BOARD_BASE_DELAY'><value name='DELAY_TIME'><shadow type='math_number'><field name='NUM'>1000</field></shadow></value></block>"
+                    "id": "time.board",
+                    "levels": "1, 2, 3",
+                    "blockxml": "<block type='BOARD_BASE_TIME_DELAY'><value name='DELAY_TIME'><shadow type='math_number'><field name='NUM'>1000</field></shadow></value></block>"
                 }]
             },
             {
                 "kind": "category",
                 "name": "%{BKY_CAT_ONBOARD_SERIAL}",
                 "toolboxitemid": "ONBOARD_SERIAL",
-                "level": "2",
-                "levels": [1, 2, 3],
+                "levels": "1, 2, 3",
                 "categorystyle": "board_category",
                 "contents": [{
                         "kind": "block",
+                        "id": "serial.board",
+                        "levels": "1, 2, 3",
                         "type": "BOARD_SERIAL_INIT"
                     },
                     {
                         "kind": "block",
+                        "id": "serial.board",
+                        "levels": "1, 2, 3",
                         "type": "BOARD_SERIAL_PRINTFOR"
                     },
                     {
                         "kind": "block",
+                        "id": "serial.board",
+                        "levels": "1, 2, 3",
                         "type": "BOARD_SERIAL_PRINT"
                     },
                     {
                         "kind": "block",
+                        "id": "serial.board",
+                        "levels": "1, 2, 3",
                         "type": "BOARD_SERIAL_WRITE"
                     },
                     {
                         "kind": "block",
+                        "id": "serial.board",
+                        "levels": "1, 2, 3",
                         "type": "BOARD_SERIAL_AVAILABLE"
                     },
                     {
                         "kind": "block",
+                        "id": "serial.board",
+                        "levels": "1, 2, 3",
                         "type": "BOARD_SERIAL_READ"
                     },
                     {
                         "kind": "block",
+                        "id": "serial.board",
+                        "levels": "1, 2, 3",
                         "type": "BOARD_SERIAL_READSTRINGUNTIL"
                     },
                     {
                         "kind": "block",
+                        "id": "serial.board",
+                        "levels": "1, 2, 3",
                         "blockxml": "<block type='BOARD_SERIAL_TEXT_PROMPT_EXT'><value name='TEXT'> <shadow type='text'> <field name='TEXT'>abc</field> </shadow> </value></block>"
                     },
                     {
                         "kind": "block",
+                        "id": "serial.board",
+                        "levels": "1, 2, 3",
                         "type": "BOARD_SERIAL_FLUSH"
                     },
                     {
                         "kind": "block",
-                        "type": "board_serial_formatCSV"
+                        "id": "serial.board",
+                        "levels": "1, 2, 3",
+                        "type": "bOARD_SERIAL_FORMAT_CSV"
                     },
                     {
                         "kind": "block",
+                        "id": "serial.board",
+                        "levels": "1, 2, 3",
                         "type": "BOARD_SERIAL_AUTOFORMAT_CSV"
                     }
                 ]
@@ -140,11 +188,12 @@ var toolbox_board = {
                 "kind": "category",
                 "name": "%{BKY_CAT_ONBOARD_IOT}",
                 "toolboxitemid": "ONBOARD_IOT",
-                "level": "3",
                 "levels": "2,3",
                 "categorystyle": "board_category",
                 "contents": [{
                     "kind": "block",
+                    "id": "iot.board",
+                    "levels": "2, 3",
                     "type": "BOARD_IOT_AUTOFORMATWEBSOCKET"
                 }]
             }

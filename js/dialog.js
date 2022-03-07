@@ -614,6 +614,24 @@ function iconsButtonMouserOver() {
     document.getElementById('lateral-panel-setup-label').onmouseout = function() {
         document.getElementById("content_hoverButton").textContent = "";
     };
+    document.getElementById('setup_reset_button_span').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['setup_reset_button_span'];
+    };
+    document.getElementById('setup_reset_button_span').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('setup_save_button_span').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['setup_save_button_span'];
+    };
+    document.getElementById('setup_save_button_span').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('setup_load_button_span').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['setup_load_button_span'];
+    };
+    document.getElementById('setup_load_button_span').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
     document.getElementById('openCodeButton').onmouseover = function() {
         document.getElementById("content_hoverButton").textContent = MSG['openCodeButton_span'];
     };

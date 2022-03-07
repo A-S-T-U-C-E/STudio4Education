@@ -4,86 +4,125 @@ var toolbox_communication = {
         "kind": "category",
         "name": "%{BKY_CAT_COMMUNICATION}",
         "toolboxitemid": "COMMUNICATION",
-        "levels": [1, 2, 3],
-        "level": "1",
+        "levels": "2, 3",
         "categorystyle": "board_category",
         "contents": [{
             "kind": "category",
             "name": "%{BKY_CAT_NTPCLIENT}",
             "toolboxitemid": "NTPClient",
-            "levels": [1, 2, 3],
-            "level": "1",
+            "levels": "2, 3",
             "categorystyle": "board_category",
             "contents": [{
                 "kind": "block",
+                "id": "ntp.board",
+                "levels": "2, 3",
                 "type": "NTPCLIENT_DEFINE_UDP"
             }, {
                 "kind": "block",
+                "id": "ntp.board",
+                "levels": "2, 3",
                 "type": "NTPCLIENT_DEFINE_NTPCLIENT"
             }, {
                 "kind": "block",
+                "id": "ntp.board",
+                "levels": "2, 3",
                 "type": "NTPCLIENT_BEGIN"
             }, {
                 "kind": "block",
+                "id": "ntp.board",
+                "levels": "2, 3",
                 "type": "NTPCLIENT_UPDATE"
             }, {
                 "kind": "block",
+                "id": "ntp.board",
+                "levels": "2, 3",
                 "type": "NTPCLIENT_FORCEUPDATE"
             }, {
                 "kind": "block",
+                "id": "ntp.board",
+                "levels": "2, 3",
                 "type": "NTPCLIENT_GET_EPOCH_TIME"
             }, {
                 "kind": "block",
+                "id": "ntp.board",
+                "levels": "2, 3",
                 "type": "NTPCLIENT_GET_FORMATTED_TIME"
             }]
         }, {
             "kind": "category",
-            "name": "%{BKY_CAT_WIFIESP}",
-            "toolboxitemid": "WIFIESP",
-            "level": "3",
+            "name": "%{BKY_CAT_WIFI_ESP}",
+            "toolboxitemid": "WIFI_ESP",
             "levels": "3",
             "categorystyle": "board_category",
             "contents": [{
                 "kind": "block",
+                "id": "wifi_uart.esp",
+                "levels": "2, 3",
                 "type": "WIFI_ESP_UART_SERVER_DEFINE"
             }, {
                 "kind": "block",
+                "id": "wifi_uart.esp",
+                "levels": "2, 3",
                 "type": "WIFI_ESP_UART_CHECK_SHIELD"
             }, {
                 "kind": "block",
+                "id": "wifi_uart.esp",
+                "levels": "2, 3",
                 "type": "WIFI_ESP_UART_BEGIN"
             }, {
                 "kind": "block",
+                "id": "wifi_uart.esp",
+                "levels": "2, 3",
                 "type": "WIFI_ESP_UART_LOCALIP"
             }, {
                 "kind": "block",
+                "id": "wifi_uart.esp",
+                "levels": "2, 3",
                 "type": "WIFI_ESP_UART_SSID"
             }, {
                 "kind": "block",
+                "id": "wifi_uart.esp",
+                "levels": "2, 3",
                 "type": "WIFI_ESP_UART_SERVER_BEGIN"
             }, {
                 "kind": "block",
+                "id": "wifi_uart.esp",
+                "levels": "2, 3",
                 "type": "WIFI_ESP_UART_SERVER_AVAILABLE"
             }, {
                 "kind": "block",
+                "id": "wifi_uart.esp",
+                "levels": "2, 3",
                 "type": "WIFI_ESP_UART_SERVER_CLIENT_OBJECT"
             }, {
                 "kind": "block",
+                "id": "wifi_uart.esp",
+                "levels": "2, 3",
                 "type": "WIFI_ESP_UART_SERVER_CLIENT_CONNECTED"
             }, {
                 "kind": "block",
+                "id": "wifi_uart.esp",
+                "levels": "2, 3",
                 "type": "WIFI_ESP_UART_SERVER_CLIENT_AVAILABLE"
             }, {
                 "kind": "block",
+                "id": "wifi_uart.esp",
+                "levels": "2, 3",
                 "type": "WIFI_ESP_UART_SERVER_CLIENT_READ"
             }, {
                 "kind": "block",
+                "id": "wifi_uart.esp",
+                "levels": "2, 3",
                 "type": "WIFI_ESP_UART_SERVER_CLIENT_STOP"
             }, {
                 "kind": "block",
+                "id": "wifi_uart.esp",
+                "levels": "2, 3",
                 "type": "WIFI_ESP_UART_SERVER_CLIENT_PRINT"
             }, {
                 "kind": "block",
+                "id": "wifi_uart.esp",
+                "levels": "2, 3",
                 "type": "WIFI_ESP_UART_SERVER_CLIENT_PRINT_MULTILINETEXTINPUT"
             }]
         }]

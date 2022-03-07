@@ -5,108 +5,114 @@ var toolbox_GROVE = {
         "name": "%{BKY_CAT_GROVE}",
         "toolboxitemid": "GROVE",
         "levels": "1,2,3",
-        "level": "1",
         "categorystyle": "grove_category",
         "contents": [{
             "kind": "category",
             "name": "%{BKY_CAT_GROVE_IN}",
             "toolboxitemid": "GROVE_IN",
-            "level": "1",
             "levels": "1,2,3",
             "categorystyle": "grove_category",
             "contents": [{
                 "kind": "block",
+                "id": "dht.grove",
+                "levels": "1, 2, 3",
                 "type": "GROVE_DHT_SENSOR_READ"
             }]
         }, {
             "kind": "category",
             "name": "%{BKY_CAT_GROVE_OUT}",
             "toolboxitemid": "GROVE_OUT",
-            "level": "1",
             "levels": "1,2,3",
             "categorystyle": "grove_category",
             "contents": [{
                 "kind": "block",
+                "id": "led_bar.grove",
+                "levels": "1, 2, 3",
                 "type": "GROVE_LED_BAR_SETALLOFF"
             }, {
                 "kind": "block",
+                "id": "led_bar.grove",
+                "levels": "1, 2, 3",
                 "type": "GROVE_LED_BAR_SETLEVEL"
             }, {
                 "kind": "block",
+                "id": "led_bar.grove",
+                "levels": "1, 2, 3",
                 "type": "GROVE_INOUT_LED_BAR_TOGGLE"
             }]
         }, {
             "kind": "category",
             "name": "%{BKY_CAT_GROVE_COMM}",
             "toolboxitemid": "GROVE_COMM",
-            "level": "3",
-            "levels": "3",
+            "level": "2, 3",
+            "levels": "2, 3",
             "categorystyle": "grove_category",
             "contents": [{
                 "kind": "block",
-                "type": "GROVE_UART_WIFI_DEFINE"
+                "id": "wifi_uart.grove",
+                "levels": "2, 3",
+                "type": "GROVE_WIFI_UART_DEFINE"
             }]
         }, {
             "kind": "category",
             "name": "%{BKY_CAT_GROVE_LCD}",
             "toolboxitemid": "GROVE_LCD",
-            "level": "1",
             "levels": "1,2,3",
             "categorystyle": "grove_category",
             "contents": [{
                 "kind": "block",
-                "level": "1",
-                "levels": "1,2,3",
+                "id": "lcd_rgb.grove",
+                "levels": "1, 2, 3",
                 "type": "GROVE_LCD_RGB_PRINT"
             }, {
                 "kind": "block",
-                "level": "1",
-                "levels": "1,2,3",
+                "id": "lcd_rgb.grove",
+                "levels": "1, 2, 3",
                 "type": "GROVE_LCD_RGB_POWER"
             }, {
                 "kind": "block",
-                "level": "1",
-                "levels": "1,2,3",
+                "id": "lcd_rgb.grove",
+                "levels": "1, 2, 3",
                 "type": "GROVE_LCD_RGB_CLEAN"
             }, {
                 "kind": "block",
-                "level": "1",
-                "levels": "1,2,3",
+                "id": "lcd_rgb.grove",
+                "levels": "1, 2, 3",
                 "type": "GROVE_LCD_RGB_EFFECT"
             }, {
                 "kind": "block",
-                "level": "2",
-                "levels": "2,3",
+                "id": "lcd_rgb.grove",
+                "levels": "1, 2, 3",
                 "type": "GROVE_LCD_RGB_INIT"
             }, {
                 "kind": "block",
-                "level": "2",
-                "levels": "2,3",
+                "id": "lcd_rgb.grove",
+                "levels": "1, 2, 3",
                 "type": "GROVE_LCD_RGB_CLEAR"
             }, {
                 "kind": "block",
-                "level": "2",
-                "levels": "2,3",
+                "id": "lcd_rgb.grove",
+                "levels": "1, 2, 3",
                 "type": "GROVE_LCD_RGB_SCROLLING"
             }, {
                 "kind": "block",
-                "level": "2",
-                "levels": "2,3",
+                "id": "lcd_rgb.grove",
+                "levels": "1, 2, 3",
                 "type": "GROVE_LCD_RGB_SET_CURSOR"
             }, {
                 "kind": "block",
-                "level": "2",
-                "levels": "2,3",
+                "id": "lcd_rgb.grove",
+                "levels": "1, 2, 3",
                 "type": "GROVE_LCD_RGB_SET_RGB"
             }, {
                 "kind": "block",
-                "level": "2",
-                "levels": "2,3",
+                "id": "lcd_rgb.grove",
+                "levels": "1, 2, 3",
                 "type": "GROVE_LCD_RGB_PRINT_DATA"
             }, {
                 "kind": "block",
-                "level": "2",
-                "levels": "2,3",
+                "id": "lcd_rgb.grove",
+                "levels": "1, 2, 3",
                 "type": "GROVE_LCD_RGB_WRITE_DATA"
             }]
         }]

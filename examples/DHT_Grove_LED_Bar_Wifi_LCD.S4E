@@ -11,7 +11,7 @@
           <block type="GROVE_LED_BAR_SETALLOFF" id="?`h!2iU{EFB+JKArgD(T">
             <field name="PIN">6</field>
             <next>
-              <block type="GROVE_UART_WIFI_DEFINE" id="4y5#{-ZjVXlkAQfJD+4i">
+              <block type="GROVE_WIFI_UART_DEFINE" id="4y5#{-ZjVXlkAQfJD+4i">
                 <value name="Rx">
                   <block type="math_number" id="FqrOpwo/+`[l$_]=BeY)">
                     <field name="NUM">6</field>
@@ -101,7 +101,7 @@
                                                   <block type="WIFI_ESP_UART_SSID" id="X#n~N)]@:XlTKOKIex;s"></block>
                                                 </value>
                                                 <next>
-                                                  <block type="BOARD_BASE_DELAY" id="+9E$@aUWjR]@D6Z_AIS$">
+                                                  <block type="BOARD_BASE_TIME_DELAY" id="+9E$@aUWjR]@D6Z_AIS$">
                                                     <value name="DELAY_TIME">
                                                       <shadow type="math_number" id=")7sm{R?JB8FtBc*]r71-">
                                                         <field name="NUM">2000</field>
@@ -352,7 +352,7 @@
                       </block>
                     </statement>
                     <next>
-                      <block type="BOARD_BASE_DELAY" id="h2s~|8%$jN,v@PrK0tvO">
+                      <block type="BOARD_BASE_TIME_DELAY" id="h2s~|8%$jN,v@PrK0tvO">
                         <value name="DELAY_TIME">
                           <shadow type="math_number" id="[Cs,F}Cj6V!iwB9yek:$">
                             <field name="NUM">50</field>

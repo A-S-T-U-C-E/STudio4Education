@@ -322,13 +322,13 @@ Blockly.Msg['GROVE_INOUT_LCD_WRITE_FORMAT_FIELDDROPDOWN'] = [
     ["décimal", "1"],
     ["variable", "2"]
 ];
-Blockly.Msg['GROVE_UART_WIFI_DEFINE'] = "connexion du WiFi UART v2";
-Blockly.Msg['GROVE_UART_WIFI_DEFINE_RX'] = "sur Rx en broche";
-Blockly.Msg['GROVE_UART_WIFI_DEFINE_TX'] = "sur Tx en broche";
-Blockly.Msg['GROVE_UART_WIFI_DEFINE_OBJECT'] = "nom de l'objet de communication";
-Blockly.Msg['GROVE_UART_WIFI_DEFINE_SPEED'] = "vitesse de communication";
-Blockly.Msg['GROVE_UART_WIFI_DEFINE_TOOLTIP'] = "définit les broches du Grove WiFi ainsi que\nla vitesse pour l'objet de communication";
-Blockly.Msg['GROVE_UART_WIFI_DEFINE_HELPURL'] = "https://wiki.seeedstudio.com/Grove-UART_Wifi_V2/";
+Blockly.Msg['GROVE_WIFI_UART_DEFINE'] = "connexion du WiFi UART v2";
+Blockly.Msg['GROVE_WIFI_UART_DEFINE_RX'] = "sur Rx en broche";
+Blockly.Msg['GROVE_WIFI_UART_DEFINE_TX'] = "sur Tx en broche";
+Blockly.Msg['GROVE_WIFI_UART_DEFINE_OBJECT'] = "nom de l'objet de communication";
+Blockly.Msg['GROVE_WIFI_UART_DEFINE_SPEED'] = "vitesse de communication";
+Blockly.Msg['GROVE_WIFI_UART_DEFINE_TOOLTIP'] = "définit les broches du Grove WiFi ainsi que\nla vitesse pour l'objet de communication";
+Blockly.Msg['GROVE_WIFI_UART_DEFINE_HELPURL'] = "https://wiki.seeedstudio.com/Grove-WIFI_UART_V2/";
 
 // WiFi ESP library
 

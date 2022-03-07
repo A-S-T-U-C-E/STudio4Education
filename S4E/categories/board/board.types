@@ -30,13 +30,13 @@ Blockly.Blocks.BOARD_BASE_INOUT_ANALOG_WRITE_SLIDER.getBlockType = function() {
 Blockly.Blocks.BOARD_BASE_INOUT_ANALOG_READ.getBlockType = function() {
     return Blockly.Types.NUMBER;
 };
-Blockly.Blocks.BOARD_BASE_DELAY.getBlockType = function() {
+Blockly.Blocks.BOARD_BASE_TIME_DELAY.getBlockType = function() {
     return Blockly.Types.NULL;
 };
-Blockly.Blocks.BOARD_BASE_ANGLE.getBlockType = function() {
+Blockly.Blocks.BOARD_BASE_INOUT_ANGLE.getBlockType = function() {
     return Blockly.Types.NUMBER;
 };
-Blockly.Blocks.BOARD_BASE_MAP.getBlockType = function() {
+Blockly.Blocks.BOARD_BASE_INOUT_MAP.getBlockType = function() {
     return Blockly.Types.NUMBER;
 };
 Blockly.Blocks.BOARD_BASE_INOUT_TONE.getBlockType = function() {
@@ -87,7 +87,7 @@ Blockly.Blocks.BOARD_SERIAL_TEXT_PROMPT_EXT.getBlockType = function() {
 Blockly.Blocks.BOARD_SERIAL_FLUSH.getBlockType = function() {
     return Blockly.Types.NULL;
 };
-Blockly.Blocks.board_serial_formatCSV.getBlockType = function() {
+Blockly.Blocks.bOARD_SERIAL_FORMAT_CSV.getBlockType = function() {
     return Blockly.Types.NULL;
 };
 Blockly.Blocks.BOARD_SERIAL_AUTOFORMAT_CSV.getBlockType = function() {

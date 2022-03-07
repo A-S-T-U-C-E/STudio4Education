@@ -31,7 +31,7 @@ Blockly.Themes.Classic.blockStyles['X-NUCLEO-IKS01A3_blocks'] = {
 Blockly.Themes.Classic.blockStyles['relay_blocks'] = {
     "colourPrimary": "#65ACE2"
 };
-Blockly.Themes.Classic.blockStyles['arrowheadframework_blocks'] = {
+Blockly.Themes.Classic.blockStyles['arrowhead_blocks'] = {
     "colourPrimary": "#004676"
 };
 Blockly.Themes.Classic.blockStyles['DHT_blocks'] = {
@@ -73,7 +73,7 @@ Blockly.Themes.Classic.blockStyles['DHT_blocks'] = {
 //     "colourSecondary": "#65ACE2",
 //     "colourTertiary": "#65ACE2"
 // };
-// Blockly.Themes.Modern.blockStyles['arrowheadframework_blocks'] = {
+// Blockly.Themes.Modern.blockStyles['arrowhead_blocks'] = {
 //     "colourPrimary": "#004676",
 //     "colourSecondary": "#004676",
 //     "colourTertiary": "#004676"
@@ -119,7 +119,7 @@ Blockly.Themes.Deuteranopia.blockStyles['relay_blocks'] = {
     "colourSecondary": "#65ACE2",
     "colourTertiary": "#65ACE2"
 };
-Blockly.Themes.Deuteranopia.blockStyles['arrowheadframework_blocks'] = {
+Blockly.Themes.Deuteranopia.blockStyles['arrowhead_blocks'] = {
     "colourPrimary": "#004676",
     "colourSecondary": "#004676",
     "colourTertiary": "#004676"
@@ -165,7 +165,7 @@ Blockly.Themes.Tritanopia.blockStyles['relay_blocks'] = {
     "colourSecondary": "#65ACE2",
     "colourTertiary": "#65ACE2"
 };
-Blockly.Themes.Tritanopia.blockStyles['arrowheadframework_blocks'] = {
+Blockly.Themes.Tritanopia.blockStyles['arrowhead_blocks'] = {
     "colourPrimary": "#004676",
     "colourSecondary": "#004676",
     "colourTertiary": "#004676"
@@ -211,7 +211,7 @@ Blockly.Themes.Zelos.blockStyles['relay_blocks'] = {
     "colourSecondary": "#65ACE2",
     "colourTertiary": "#65ACE2"
 };
-Blockly.Themes.Zelos.blockStyles['arrowheadframework_blocks'] = {
+Blockly.Themes.Zelos.blockStyles['arrowhead_blocks'] = {
     "colourPrimary": "#004676",
     "colourSecondary": "#004676",
     "colourTertiary": "#004676"
@@ -257,7 +257,7 @@ Blockly.Themes.HighContrast.blockStyles['relay_blocks'] = {
     "colourSecondary": "#65ACE2",
     "colourTertiary": "#65ACE2"
 };
-Blockly.Themes.HighContrast.blockStyles['arrowheadframework_blocks'] = {
+Blockly.Themes.HighContrast.blockStyles['arrowhead_blocks'] = {
     "colourPrimary": "#004676",
     "colourSecondary": "#004676",
     "colourTertiary": "#004676"
@@ -303,7 +303,7 @@ Blockly.Themes.Dark.blockStyles['relay_blocks'] = {
     "colourSecondary": "#65ACE2",
     "colourTertiary": "#65ACE2"
 };
-Blockly.Themes.Dark.blockStyles['arrowheadframework_blocks'] = {
+Blockly.Themes.Dark.blockStyles['arrowhead_blocks'] = {
     "colourPrimary": "#004676",
     "colourSecondary": "#004676",
     "colourTertiary": "#004676"

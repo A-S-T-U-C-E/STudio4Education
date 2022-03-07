@@ -26,7 +26,7 @@ Blockly.Blocks['SERVO_MOVE_EXTERNAL'] = {
             .appendField(Blockly.Msg["SERVO_MOVE_INPUT"])
             .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", Code.imageSize, Code.imageSize))
             .appendField(Blockly.Msg["SERVO_PIN"])
-            .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN");
+            .appendField(new Blockly.FieldDropdown(profile["default"][0].dropdownDigital), "PIN");
         this.appendValueInput("DEGREE")
             .setCheck(Blockly.Types.UNS_NUMBER)
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -45,7 +45,7 @@ Blockly.Blocks['SERVO_MOVE_SLIDER'] = {
             .appendField(Blockly.Msg["SERVO_MOVE_INPUT"])
             .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", Code.imageSize, Code.imageSize))
             .appendField(Blockly.Msg["SERVO_PIN"])
-            .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN");
+            .appendField(new Blockly.FieldDropdown(profile["default"][0].dropdownDigital), "PIN");
         this.appendDummyInput("DEGREE")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg["SERVO_MOVE_DEGREE"])
@@ -64,7 +64,7 @@ Blockly.Blocks['SERVO_READ_DEGREES'] = {
             .appendField(Blockly.Msg["SERVO_READ_DEGREES_INPUT"])
             .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", Code.imageSize, Code.imageSize))
             .appendField(Blockly.Msg["SERVO_PIN"])
-            .appendField(new Blockly.FieldDropdown(profile.default.dropdownDigital), "PIN");
+            .appendField(new Blockly.FieldDropdown(profile["default"][0].dropdownDigital), "PIN");
         this.setOutput(true, "Number");
         this.setTooltip(Blockly.Msg["SERVO_READ_DEGREES_TOOLTIP"]);
         this.setHelpUrl(Blockly.Msg["SERVO_READ_DEGREES_HELPURL"]);

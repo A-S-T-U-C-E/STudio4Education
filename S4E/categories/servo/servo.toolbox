@@ -4,11 +4,12 @@ var toolbox_servo = {
         "kind": "category",
         "name": "%{BKY_CAT_SERVO}",
         "toolboxitemid": "SERVO",
-        "levels": [1, 2, 3],
-        "level": "1",
+        "levels": "2, 3",
         "categorystyle": "servo_category",
         "contents": [{
             "kind": "block",
+            "id": "angular.servo",
+            "levels": "2, 3",
             "type": "SERVO_MOVE_EXTERNAL",
             "value": {
                 "kind": "category",
@@ -24,9 +25,13 @@ var toolbox_servo = {
             }
         }, {
             "kind": "block",
+            "id": "angular.servo",
+            "levels": "2, 3",
             "type": "SERVO_MOVE_SLIDER"
         }, {
             "kind": "block",
+            "id": "angular.servo",
+            "levels": "2, 3",
             "type": "SERVO_READ_DEGREES"
         }]
     }]

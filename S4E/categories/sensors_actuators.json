@@ -1,0 +1,197 @@
+[{
+        "id": "esp.arrowhead",
+        "label": "ESP for Arrowhead framework",
+        "comment": "ESP WiFi use for Arrowhead framework",
+        "type": "c",
+        "levels": "3"
+    },
+    {
+        "id": "wifi.arrowhead",
+        "label": "WiFi for Arrowhead framework",
+        "comment": "Generic WiFi use for Arrowhead framework",
+        "type": "c",
+        "levels": "3"
+    },
+    {
+        "id": "network.arrowhead",
+        "label": "Network for Arrowhead framework",
+        "comment": "Generic wire use for Arrowhead framework",
+        "type": "c",
+        "levels": "3"
+    },
+    {
+        "id": "algorithm.blockly",
+        "label": "Blockly base blocks",
+        "comment": "Blockly base blocks, needed for algorithm at least",
+        "type": "x",
+        "levels": "1,2,3"
+    },
+    {
+        "id": "common.board",
+        "label": "Board: basic structure",
+        "comment": "Specific for program structure (setup, loop, etc)",
+        "type": "x",
+        "levels": "1,2,3"
+    },
+    {
+        "id": "IO.board",
+        "label": "Board: basic I/O",
+        "comment": "GPIO classic blocks",
+        "type": "x",
+        "levels": "1,2,3"
+    },
+    {
+        "id": "time.board",
+        "label": "Board: basic time",
+        "comment": "Time calculation classic blocks",
+        "type": "x",
+        "levels": "1,2,3"
+    },
+    {
+        "id": "serial.board",
+        "label": "Board: basic USB serial communication",
+        "comment": "USB serial communication",
+        "type": "c",
+        "levels": "1,2,3"
+    },
+    {
+        "id": "iot.board",
+        "label": "Board: basic data format for export",
+        "comment": "Data format and conversion for export (IoT)",
+        "type": "x",
+        "levels": "2,3"
+    },
+    {
+        "id": "ntp.board ",
+        "label": "Board: basic NTP client time",
+        "comment": "NTP client time & format datas",
+        "type": "c",
+        "levels": "2,3"
+    },
+    {
+        "id": "wifi_uart.esp",
+        "label": "ESP as WiFi gateway",
+        "comment": "ESP Grove component used to  add UART commands, and communicate via WiFi",
+        "type": "c",
+        "levels": "2,3"
+    },
+    {
+        "id": "temperature.dht",
+        "label": "DHT11/21/22 temperature sensor",
+        "comment": "temperature sensor",
+        "type": "s",
+        "levels": "1,2,3"
+    },
+    {
+        "id": "humidity.dht",
+        "label": "DHT11/21/22 humidity sensor",
+        "comment": "humidity sensor",
+        "type": "s",
+        "levels": "1,2,3"
+    },
+    {
+        "id": "temperature.ds18b20",
+        "label": "DS18B20 temperature sensor",
+        "comment": "temperature sensor",
+        "type": "s",
+        "levels": "1,2,3"
+    },
+    {
+        "id": "static.relay",
+        "label": "Static relay 220V",
+        "comment": "relay 250VAC - 10A",
+        "type": "a",
+        "levels": "2,3"
+    },
+    {
+        "id": "mosfet.relay",
+        "label": "Mosfet relay 220V",
+        "comment": "relay 250VAC - 10A",
+        "type": "a",
+        "levels": "2,3"
+    },
+    {
+        "id": "dht.grove ",
+        "label": "Grove DHT sensor",
+        "comment": "Grove DHT11/21/22 temperature sensor",
+        "type": "s",
+        "levels": "1,2,3"
+    },
+    {
+        "id": "led_bar.grove ",
+        "label": "Grove bar graphe",
+        "comment": "Grove bar graphe",
+        "type": "a",
+        "levels": "1,2,3"
+    },
+    {
+        "id": "wifi_uart.grove ",
+        "label": "Grove UART WiFi module",
+        "comment": "Grove UART WiFi module, use ESP as gateway",
+        "type": "c",
+        "levels": "1,2,3"
+    },
+    {
+        "id": "lcd_rgb.grove ",
+        "label": "Grove LCD with RGB backlight",
+        "comment": "Grove LCD with RGB backlight",
+        "type": "a",
+        "levels": "1,2,3"
+    },
+    {
+        "id": "angular.servo",
+        "label": "Angular servomotor",
+        "comment": "Servomotor 0~180°",
+        "type": "a",
+        "levels": "2,3"
+    },
+    {
+        "id": "continuous.servo",
+        "label": "Continuous rotation servomotor",
+        "comment": "continuous rotation servomotor",
+        "type": "a",
+        "levels": "2,3"
+    },
+    {
+        "id": "temperature.x_nucleo_iks01a3",
+        "label": "Onboard temperature sensor",
+        "comment": "X-NUCLEO-IKS01A3 temperature sensor",
+        "type": "s",
+        "levels": "2,3"
+    },
+    {
+        "id": "humidity.x_nucleo_iks01a3",
+        "label": "Onboard humidity sensor",
+        "comment": "X-NUCLEO-IKS01A3 humidity sensor",
+        "type": "s",
+        "levels": "2,3"
+    },
+    {
+        "id": "pressure.x_nucleo_iks01a3",
+        "label": "Onboard atmospheric pressure sensor",
+        "comment": "X-NUCLEO-IKS01A3 atmospheric pressure sensor",
+        "type": "s",
+        "levels": "2,3"
+    },
+    {
+        "id": "accelerometer.x_nucleo_iks01a3",
+        "label": "Onboard 3D accelerometer",
+        "comment": "X-NUCLEO-IKS01A3 accelerometer",
+        "type": "s",
+        "levels": "2,3"
+    },
+    {
+        "id": "gyro.x_nucleo_iks01a3",
+        "label": "Onboard gyroscope",
+        "comment": "X-NUCLEO-IKS01A3 gyroscope",
+        "type": "s",
+        "levels": "2,3"
+    },
+    {
+        "id": "magnet.x_nucleo_iks01a3",
+        "label": "Onboard magnetometer",
+        "comment": "X-NUCLEO-IKS01A3 magnetometer",
+        "type": "s",
+        "levels": "2,3"
+    }
+]

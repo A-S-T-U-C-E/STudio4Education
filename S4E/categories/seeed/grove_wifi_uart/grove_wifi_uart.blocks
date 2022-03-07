@@ -1,0 +1,54 @@
+/**
+ * @license
+ * Copyright 2020 Sébastien CANET
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+/**
+ * @fileoverview DHT temperature & humidity sensors blocks for Blockly.
+ * @author scanet@libreduc.cc (Sébastien Canet)
+ */
+
+'use strict';
+
+goog.provide('Blockly.Constants.GROVE_WIFI_UART');
+
+goog.require('Blockly');
+goog.require('Blockly.Blocks');
+goog.require('Blockly.Types');
+
+var grove_wifi_uartMediaFolder = "./S4E/categories/seeed/grove_wifi_uart/";
+
+Blockly.Blocks['GROVE_WIFI_UART_DEFINE'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg['GROVE_WIFI_UART_DEFINE'])
+            .appendField(new Blockly.FieldImage(grove_wifi_uartMediaFolder + "grove_wifi_uart.png", Code.imageSize, Code.imageSize));
+        this.appendValueInput("Rx")
+            .setCheck("Number")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg['GROVE_WIFI_UART_DEFINE_RX']);
+        this.appendValueInput("Tx")
+            .setCheck("Number")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg['GROVE_WIFI_UART_DEFINE_TX']);
+        this.appendValueInput("NAME")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg['GROVE_WIFI_UART_DEFINE_OBJECT']);
+        // this.appendDummyInput("")
+        //     .setAlign(Blockly.ALIGN_RIGHT)
+        //     .appendField("Name of communication object")
+        //     .appendField(new Blockly.FieldInstance('SoftSerial', 'softCOMM', false, false, false), 'SOFTSERIAL_NAME');
+        this.appendValueInput("SPEED")
+            .setCheck("Number")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg['GROVE_WIFI_UART_DEFINE_SPEED']);
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg['GROVE_WIFI_UART_DEFINE_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['GROVE_WIFI_UART_DEFINE_HELPURL']);
+        this.setStyle('grove_blocks');
+    }
+};

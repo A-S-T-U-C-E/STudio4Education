@@ -93,7 +93,7 @@ Blockly.Themes.blackWhite.defaultBlockStyles = {
         "colourSecondary": "#000000",
         "colourTertiary": "#000000"
     },
-    "arrowheadframework_blocks": {
+    "arrowhead_blocks": {
         "colourPrimary": "#000000",
         "colourSecondary": "#000000",
         "colourTertiary": "#000000"
@@ -153,7 +153,7 @@ Blockly.Themes.blackWhite.categoryStyles = {
     "relay_category": {
         "colour": "#000000"
     },
-    "arrowheadframework_category": {
+    "arrowhead_category": {
         "colour": "#000000"
     },
     "DHT_blocks": {

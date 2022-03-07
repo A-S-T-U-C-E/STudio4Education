@@ -174,7 +174,7 @@ Code.init = async function() {
     match = location.search.match(/level=([^&]+)/);
     var level = match ? match[1] : 'skill1';
     document.forms.options.elements.levelMenu.value = level;
-    Code.changeLevel(level);
+    Code.changeLevel();
     levelMenu.addEventListener('change', Code.changeLevel, true);
     Code.addPluginToWorkspace();
     // add plugin disable-top-blocks
@@ -193,7 +193,9 @@ Code.init = async function() {
     match = location.search.match(/theme=([^&]+)/);
     var theme = match ? match[1] : 'Zelos';
     document.forms.options.elements.themeMenu.value = theme;
-    changeTheme(theme);
+    changeThemeBlockly(theme);
+    changeThemeUI(document.getElementById('interfaceColorMenu').options[document.getElementById('interfaceColorMenu').selectedIndex].value);
+    editorLoadThemeList();
 
     //keyboard nav attribution
     // var actions = [
@@ -305,7 +307,6 @@ Code.init = async function() {
     Code.sketchNameSizeEffect();
     Code.sketchNameSet();
     Code.mainWorkspace.addChangeListener(Code.renderContent);
-    // Code.filterToolbox();
     // load blocks stored in session or passed by url
     var urlFile = Code.getStringParamFromUrl('url', '');
     var loadOnce = null;
@@ -337,6 +338,16 @@ Code.init = async function() {
         //no URL, load blocks (or not, depends if load once/already blocks)
         Code.loadBlocks();
         // sessionStorage.removeItem('loadOnceBlocks');
+    }
+    var categoriesKeywordsFilter = Code.getStringParamFromUrl('kwids', '');
+    if (categoriesKeywordsFilter) {
+        let toolboxConcatFiltered = {
+            "kind": "categoryToolbox",
+            "contents": []
+        };
+        toolboxConcatFiltered = createFilterCategoriesList(toolboxConcatFiltered, categoriesKeywordsFilter)
+        Code.mainWorkspace.updateToolbox(toolboxConcatFiltered);
+        Code.buildControlPanelForToolbox();
     }
 };
 

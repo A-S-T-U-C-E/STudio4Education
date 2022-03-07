@@ -80,7 +80,7 @@
 
 #lateral-panel-setup-input:checked~#lateral-panel-setup-label {
     right: 200%;
-    background: #FFCC00;
+    background: var(--iconButtonActive);
 }
 
 #lateral-panel-setup-input:checked~#lateral-panel-setup-bloc {
@@ -101,7 +101,7 @@
  */
 
 .accordion {
-    color: #FFFFFF;
+    color: var(--textColor);
     cursor: pointer;
     padding: 8px;
     width: 100%;
@@ -115,8 +115,8 @@
 }
 
 .accordion2nde {
-    background-color: #03234B;
-    color: #FFFFFF;
+    background-color: var(--backgroundColor);
+    color: var(--textColor);
     cursor: pointer;
     padding: 6px;
     width: 100%;
@@ -147,8 +147,8 @@
 
 .accordion:hover,
 .accordion2nde:hover {
-    background-color: #FFFFFF;
-    color: #03234B;
+    background-color: var(--textColor);
+    color: var(--backgroundColor);
 }
 
 
@@ -156,7 +156,7 @@
 
 .panel {
     padding: 0 18px;
-    background-color: white;
+    background-color: var(--textColor);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
