@@ -66,6 +66,7 @@ Code.filterCategoriesKeywords = function() {
         });
         // clean all duplicate entries
         var uniqueIds = [...new Set(ids)];
+        window.sessionStorage.setItem('filtersIds', uniqueIds);
         ids = [];
         // split to get all parts of id
         uniqueIds.forEach(element => {
@@ -102,6 +103,20 @@ Code.filterCategoriesKeywords = function() {
     };
 
     function callbackDialog(btnName) {
+        if (btnName == "filterModalDialog_export") {
+            var blob = new Blob([window.sessionStorage.getItem('filtersIds').replaceAll(',', ';\n')], {
+                type: 'text/xml;charset=utf-8'
+            });
+            var fakeDownloadLink = document.createElement("a");
+            fakeDownloadLink.download = 'categories.csv';
+            fakeDownloadLink.href = window.URL.createObjectURL(blob);
+            fakeDownloadLink.onclick = function destroyClickedElement(event) {
+                document.body.removeChild(event.target);
+            };
+            fakeDownloadLink.style.display = "none";
+            document.body.appendChild(fakeDownloadLink);
+            fakeDownloadLink.click();
+        }
         if (btnName == "filterModalDialog_close") {
             document.getElementById(id).style.display = 'none';
         }

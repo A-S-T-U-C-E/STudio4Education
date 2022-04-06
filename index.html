@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="google" value="notranslate">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <title>S4E</title>
     <link rel="icon" type="image/png" href="./S4E/media/logo_only.png" />
     <link rel="stylesheet" href="./css/draggable-resizable-dialog.css" />
@@ -98,7 +99,7 @@
                 </span>
             </button>
             <button id="newButton" class="iconButtons" onclick="Code.newProject()">
-                <span id="newButton_span" class="far fa-file">
+                <span id="newButton_span" class="fas fa-file">
                 </span>
             </button>
             <button id="loadXMLfakeButton" class="iconButtons" onclick="Code.loadXmlBlocklyFile()">
@@ -110,11 +111,11 @@
                 </span>
             </button>
             <button id="saveCodeButton" class="iconButtons" onclick="Code.saveCodeFile()">
-                <span id="saveCodeButton_span" class="far fa-file-code">
+                <span id="saveCodeButton_span" class="fas fa-file-code">
                 </span>
             </button>
             <button id="saveCodeButtonMenu" class="iconButtons" onclick="Code.saveCodeFile()">
-                <span id="saveCodeButton_span" class="far fa-file-code">
+                <span id="saveCodeButton_span" class="fas fa-file-code">
                 </span>
             </button>
             <button id="fullToolboxButton" class="iconButtons active" onclick="Code.fullToolbox()">
@@ -122,12 +123,13 @@
                 </span>
             </button>
             <button id="blocksPictureButton" class="iconButtons" onclick="Code.blockPicture()">
-                <span id="blocksPictureButton_span" class="far fa-eye"></span>
+                <span id="blocksPictureButton_span" class="fas fa-eye">                    
+                </span>
             </button>
             <button id="toolsButton" class="iconButtons" onclick="openMenuTools()">
-                <span id="toolsButton_span" class="fas fa-tools">
-                </span>
-                <span id="serialConnectButton_span" style="font-size: 0.6em;">⏷
+                <span id="toolsButton_span" class="fa-stack" style="font-size: 0.5em;">
+                    <em class="fas fa-tools fa-stack-2x"></em>
+                    <em class="fas fa-caret-down fa-stack-1x" style="left: 18px; top: 12px;"></em>
                 </span>
             </button>
             <div id="toolsPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('toolsPopup').style.display = 'none';document.getElementById('toolsButton').classList.toggle('active');">
@@ -170,20 +172,20 @@
                 </div>
             </div>
             <button id="iotConnectButton" class="iconButtons" onclick="openMenuIoT()">
-                <span id="iotConnectButton_span" class="fas fa-link">
-                </span>
-                <span id="serialConnectButton_span" style="font-size: 0.6em;">⏷
+                <span id="iotConnectButton_span" class="fa-stack" style="font-size: 0.5em;">
+                    <em class="fas fa-link fa-stack-2x"></em>
+                    <em class="fas fa-caret-down fa-stack-1x" style="left: 18px; top: 12px;"></em>
                 </span>
             </button>
             <div id="iotPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('iotPopup').style.display = 'none';document.getElementById('iotConnectButton').classList.toggle('active');">
                 <div id="buttonsIotPopup" class="menu_div">
                     <div id="buttonsIotPopupInside">
-                        <button id="launchRedServer" class="iconButtons CLI">
-                            <span id="launchRedServer_span">
+                        <button id="launchNodeRed" class="iconButtons CLI">
+                            <span id="launchNodeRed_span">
                                 <img src="./S4E/media/node-red.png" style="width: 30px; height: 30px; vertical-align: middle;" />
                             </span>
                         </button>
-                        <span id="launchRedServer_span_menu" class="menu_text"></span>
+                        <span id="launchNodeRed_span_menu" class="menu_text"></span>
                         <br>
                         <hr>
                         <button id="launchWebServer" class="iconButtons CLI">
@@ -235,7 +237,7 @@
             <!-- <button id="serialButton" class="iconButtons"> -->
             <!-- <button id="serialButton" class="iconButtons" onclick="Code.portsListModalShow()"> -->
             <button id="serialButton" class="iconButtons" onclick="Code.getPorts()">
-                <span id="serialButton_span" class="fab fa-usb">
+                <span id="serialButton_span" class="fas fa-plug">
                 </span>
             </button>
             <button id="uploadButton" class="iconButtons">
@@ -243,9 +245,9 @@
                 </span>
             </button>
             <button id="serialConnectButton" class="iconButtons" onclick="openMenuSerial()">
-                <span id="serialConnectButton_span" class="fas fa-glasses">
-                </span>
-                <span id="serialConnectButton_span" style="font-size: 0.6em;">&#x23F7
+                <span id="serialConnectButton_span" class="fa-stack" style="font-size: 0.5em;">
+                    <em class="fas fa-glasses fa-stack-2x"></em>
+                    <em class="fas fa-caret-down fa-stack-1x" style="left: 18px; top: 12px;"></em>
                 </span>
             </button>
             <div id="serialPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('serialPopup').style.display = 'none';document.getElementById('serialConnectButton').classList.toggle('active');">
@@ -259,7 +261,7 @@
                         <br>
                         <hr>
                         <button id="nodeRedFlowButton" class="iconButtons CLI" onclick="Code.flowsListModalShow()" disabled>
-                            <span id="nodeRedFlowButton_span" class="fa-solid fa-chart-line">
+                            <span id="nodeRedFlowButton_span" class="fas fa-chart-line">
                             </span>
                         </button>
                         <span id="nodeRedFlowButton_span_menu" class="menu_text"></span>
@@ -290,11 +292,11 @@
                 <div id="content_blocks" style="position: absolute;">
                     <div id="minimapDiv"></div>
                     <button id="undoButton" class="iconWorkspaceButtons" onclick="Code.Undo()" style="bottom: 327px">
-                        <span id="undoButton_span" class="fa-solid fa-arrow-rotate-left">
+                        <span id="undoButton_span" class="fas fa-undo">
                         </span>
                     </button>
                     <button id="redoButton" class="iconWorkspaceButtons" onclick="Code.Redo()" style="bottom: 290px">
-                        <span id="redoButton_span" class="fa-solid fa-arrow-rotate-right">
+                        <span id="redoButton_span" class="fas fa-redo">
                         </span>
                     </button>
                 </div>
@@ -313,7 +315,7 @@
                 <pre id="content_diffEditor_code" class="content_pre_code_large"></pre>
                 <div id="content_code_buttons">
                     <button id="copyCodeButton" class="iconButtons" onclick="Code.copyCodeToClipboard()">
-                        <span id="copyCodeButton_span" class="far fa-copy">
+                        <span id="copyCodeButton_span" class="fas fa-copy">
                         </span>
                     </button>
                     <button id="openCodeButton" class="iconButtons" onclick="Code.editorMonacoModalShow()">
@@ -336,7 +338,7 @@
         <flex-item id="content_console" style="flex: 0 1">
             <div id="content_console_buttons">
                 <button id="copyConsoleButton" class="iconButtons" onclick="Code.copyConsoleToClipboard()">
-                    <span id="copyConsoleButton_span" class="far fa-copy">
+                    <span id="copyConsoleButton_span" class="fas fa-copy">
                     </span>
                 </button>
                 <button id="cleanConsoleButton" class="iconButtons" onclick="Code.cleanConsole()">
@@ -487,6 +489,10 @@
                         <span id="setup_load_button_span" class="fas fa-file-upload">
                         </span>
                     </button>
+                    <button id="s4e_update_button" class="iconButtons" onclick="">
+                        <span id="s4e_update_button_span" class="fas fa-sync">
+                        </span>
+                    </button>
                 </div>
             </div>
             <button class="accordion">
@@ -546,7 +552,7 @@
                     <br>
                     <input type="text" class="controlPanelInput" id="searchlLibInput" name="searchlLibInput">
                     <button id="searchlLibButton" class="iconButtons CLI" onclick="">
-                        <span id="searchlLibButton_span" class="fab fa-searchengin">
+                        <span id="searchlLibButton_span" class="fa fa-search">
                         </span>
                     </button>
                     <br>
@@ -565,16 +571,16 @@
                 <span id="categories_title_span" aria-expanded="false" aria-controls="accordion_categories_content"></span>
             </button>
             <div id="categories_content_header" class="side_content config_content panel UIText">
-                <input type="checkbox" onchange="Code.checkAll()" name="checkbox_All" id="checkbox_All">
-                <span id="categories_content_selectAll_span"></span>
-                <button id="categories_content_filter_button" class="iconButtons CLI" onclick="Code.filterCategoriesKeywords()">
+                <span class="categories_search_wrapper" id="categories_search_wrapper" title="categories_search">
+                    <input id="categories_search" name="categories_search" class="categories_search" type="text" size="10" onkeyup="Code.filterCategoriesSearch()" placeholder="Search for category...">
+                </span>
+                <button id="categories_content_filter_button" class="iconButtons" onclick="Code.filterCategoriesKeywords()">
                     <span id="categories_content_filter_span" class="fas fa-filter">
                     </span>
                 </button>
                 <br>
-                <span class="categories_search_wrapper" id="categories_search_wrapper" title="categories_search">
-                    <input id="categories_search" name="categories_search" class="categories_search" type="text" size="10" onkeyup="Code.filterCategoriesSearch()" placeholder="Search for category...">
-                </span>
+                <input type="checkbox" onchange="Code.checkAll()" name="checkbox_All" id="checkbox_All">
+                <span id="categories_content_selectAll_span"></span>
                 <div id="categories_content">
                 </div>
             </div>
@@ -582,7 +588,7 @@
                 <span id="iot_title_span" aria-expanded="false" aria-controls="accordion_categories_content"></span>
             </button>
             <div id="IoT_controls" class="side_content config_content panel UIText">
-                <input type="text" class="controlPanelInput" id="launchWebServerInput" name="launchWebServerInput">
+                <input type="text" class="controlPanelInput" id="launchWebServerInput" name="launchWebServerInput" placeholder="address:IP">
                 <button id="launchWebServerTo" class="iconButtons CLI">
                     <span id="launchWebServer_span" class="fas fa-network-wired">
                     </span>
@@ -596,9 +602,23 @@
                 <!-- </span> -->
                 <!-- </button> -->
                 <br>
-                <input type="text" class="controlPanelInput" id="blynkConnectInput" name="serialConnectIOTInput">
+                <input type="text" class="controlPanelInput" id="serialConnectIOTInput" name="serialConnectIOTInput" placeholder="address:IP">
                 <button id="serialConnectIOT_save" class="iconButtons CLI" onclick="">
                     <span id="serialConnectIOT_span" class="fas fa-cloud-upload-alt">
+                    </span>
+                </button>
+                <br>
+                <input type="password" class="controlPanelInput" id="arrowheadManagementInput" name="arrowheadManagementInput" placeholder="password" autocomplete="off">
+                <button id="arrowheadManagement" class="iconButtons CLI" onclick="">
+                    <img src="./S4E/media/arrowheadtools_invert.png" style="width: 30px; height: 30px; vertical-align: middle;" />
+                    <span id="arrowheadManagementInput_span">
+                    </span>
+                </button>
+                <br>
+                <input type="text" class="controlPanelInput" id="nodeRedServerInput" name="nodeRedServerInput" placeholder="IP">
+                <button id="launchNodeRedServer" class="iconButtons CLI" onclick="">
+                    <img src="./S4E/media/node-red.png" style="width: 30px; height: 30px; vertical-align: middle;" />
+                    <span id="nodeRedServerInput_span">
                     </span>
                 </button>
                 <br>
@@ -643,19 +663,39 @@
                     <span id="papyrusConnect_helper_span" aria-expanded="false" aria-controls="accordion_categories_content"></span>
                 </button>
                 <div id="IoT_controls_Papyrus" class="side_content config_content panel UIText">
-                    <br>
-                    <span id="papyrusConfiguration_id_span">Id of download service</span>
-                    <br>
-                    <input type="text" class="controlPanelInput" id="papyrusConnectInputId" name="papyrusConnectInputId" value="170">
-                    <br>
-                    <span id="papyrusConfiguration_name_span">Name of configuration file to download</span>
-                    <br>
-                    <input type="text" class="controlPanelInput" id="papyrusConnectInputFile" name="papyrusConnectInputFile" value="HomeAutomationSystemST4Econfig.json">
-                    <button id="PapyrusConfiguration_save" class="iconButtons CLI">
-                        <span id="papyrusConnect_validate_span" class="fas fa-archive">
-                        </span>
+                    <span id="papyrusConfiguration_local_title_span" style="font-size: 1.2em;">Local file</span>
+                    <button id="papyrusConfiguration_local_load" class="iconButtons config_content_sub" onclick="Code.configurationPapyrusImport()">
+                        <em class="fas fa-file-upload"></em>
                     </button>
-                    <span id="papyrusConfiguration_save_span">Store information</span>
+                    <span id="papyrusConfiguration_local_load_span"></span>
+                    <br>
+                    <span id="papyrusConfiguration_server_title_span" style="font-size: 1.2em;">Server configuration</span>
+                    <br>
+                    <span id="papyrusConfiguration_server_name_span" class="config_content_sub">Name of configuration file to download</span>
+                    <br>
+                    <input type="text" class="controlPanelInput" class="config_content_sub" id="papyrusConfiguration_server_inputIp" name="papyrusConfiguration_server_inputIp" value="170">
+                    <br>
+                    <span id="papyrusConfiguration_server_ip_span" class="config_content_sub" placeholder="address:IP">Server's address</span>
+                    <br>
+                    <input type="text" class="controlPanelInput" class="config_content_sub" id="papyrusConfiguration_server_inputFile" name="papyrusConfiguration_server_inputFile" value="HomeAutomationSystemST4Econfig.json">
+                    <button id="papyrusConfiguration_server_save" class="iconButtons CLI config_content_sub">
+                        <em class="fas fa-folder-plus"></em>
+                    </button>
+                    <span id="papyrusConfiguration_AHF_save_span">Store information</span>
+                    <br>
+                    <span id="papyrusConfiguration_AHF_title_span" style="font-size: 1.2em;">Arrowhead</span>
+                    <br>
+                    <span id="papyrusConfiguration_AHF_id_span" class="config_content_sub">Id of download service</span>
+                    <br>
+                    <input type="text" class="controlPanelInput" class="config_content_sub" id="papyrusConfiguration_AHF_inputId" name="papyrusConfiguration_AHF_inputId" value="170">
+                    <br>
+                    <span id="papyrusConfiguration_AHF_name_span" class="config_content_sub">Name of configuration file to download</span>
+                    <br>
+                    <input type="text" class="controlPanelInput" class="config_content_sub" id="papyrusConfiguration_AHF_inputFile" name="papyrusConfiguration_AHF_inputFile" value="HomeAutomationSystemST4Econfig.json">
+                    <button id="papyrusConfiguration_AHF_save" class="iconButtons CLI config_content_sub">
+                        <em class="fas fa-folder-plus"></em>
+                    </button>
+                    <span id="papyrusConfiguration_AHF_save_span">Store information</span>
                 </div>
             </div>
         </div>
@@ -671,7 +711,7 @@
                 <em class="fas fa-angle-left"></em>
             </button>
             <button id="circuitJSmodal_maximini" class="iconButtons" onclick="circuitJSmodal_maxi_mini()">
-                <em class="fa-regular fa-window-maximize"></em>
+                <em class="fas fa-window-maximize"></em>
             </button>
         </div>
         <div id="content_CircuitJS" class="content"></div>
@@ -694,7 +734,7 @@
         <button name="editorMonacoModal_close"></button>
         <div id="editorMonacoModal_button_window" class="Modal_button_window">
             <button id="editorMonacoModal_maximini" class="iconButtons" onclick="editorMonacoModal_maxi_mini()">
-                <em class="fa-regular fa-window-maximize"></em>
+                <em class="far fa-window-maximize"></em>
             </button>
         </div>
         <div id="content_Monaco_editors" class="content">
@@ -827,10 +867,7 @@
                         <input type="text" class="controlPanelInput" id="arrowhead_input_servreg_tls_server_protocol" name="arrowhead_input_servreg_tls_server_protocol"><br>
                     </div>
                     <div id="ArrowheadServRegConfigurationModalBody_buttons">
-                        <button type="submit" id="ArrowheadServRegConfigurationModal_okay" class="modalDialogOkay">
-                            <em class="far fa-check-circle" style="font-size: 150%;"></em>
-                        </button>
-                        <button id="ArrowheadServRegConfigurationModal_okay_nodejs" class="modalDialogOkay_nodejs">
+                        <button type="submit hidden" id="ArrowheadServRegConfigurationModal_okay" class="modalDialogOkay">
                             <em class="far fa-check-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadServRegConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadServRegConfigurationModalForm').reset()">
@@ -878,9 +915,6 @@
                         <button type="submit" id="ArrowheadProviderConfigurationModal_okay" class="modalDialogOkay">
                             <em class="far fa-check-circle" style="font-size: 150%;"></em>
                         </button>
-                        <button id="ArrowheadProviderConfigurationModal_okay_nodejs" class="modalDialogOkay_nodejs">
-                            <em class="far fa-check-circle" style="font-size: 150%;"></em>
-                        </button>
                         <button id="ArrowheadProviderConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadProviderConfigurationModalForm').reset()">
                             <em class="far fa-times-circle" style="font-size: 150%;"></em>
                         </button>
@@ -914,9 +948,6 @@
                     <input type="text" class="controlPanelInput" id="arrowhead_input_Consumer_service" name="arrowhead_input_Consumer_service"><br>
                     <div id="ArrowheadConsumerConfigurationModalBody_buttons">
                         <button type="submit" id="ArrowheadConsumerConfigurationModal_okay" class="modalDialogOkay">
-                            <em class="far fa-check-circle" style="font-size: 150%;"></em>
-                        </button>
-                        <button id="ArrowheadConsumerConfigurationModal_okay_nodejs" class="modalDialogOkay_nodejs">
                             <em class="far fa-check-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadConsumerConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadConsumerConfigurationModalForm').reset()">
@@ -973,10 +1004,7 @@
                         <button type="submit" id="ArrowheadAuthConfigurationModal_okay" class="modalDialogOkay">
                             <em class="far fa-check-circle" style="font-size: 150%;"></em>
                         </button>
-                        <button id="ArrowheadAuthConfigurationModal_okay_nodejs" class="modalDialogOkay_nodejs">
-                            <em class="far fa-check-circle" style="font-size: 150%;"></em>
-                        </button>
-                        <button id="ArrowheadAuthConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById( 'ArrowheadAuthConfigurationModalForm').reset()">
+                        <button id="ArrowheadAuthConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadAuthConfigurationModalForm').reset()">
                             <em class="far fa-times-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadAuthConfigurationModal_export" class="iconButtons" onclick="exportArrowheadAuthConfigFile()">
@@ -1033,10 +1061,7 @@
                         <button type="submit" id="ArrowheadOrchConfigurationModal_okay" class="modalDialogOkay">
                             <em class="far fa-check-circle" style="font-size: 150%;"></em>
                         </button>
-                        <button id="ArrowheadOrchConfigurationModal_okay_nodejs" class="modalDialogOkay_nodejs">
-                            <em class="far fa-check-circle" style="font-size: 150%;"></em>
-                        </button>
-                        <button id="ArrowheadOrchConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById( 'ArrowheadOrchConfigurationModalForm').reset()">
+                        <button id="ArrowheadOrchConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadOrchConfigurationModalForm').reset()">
                             <em class="far fa-times-circle" style="font-size: 150%;"></em>
                         </button>
                         <button id="ArrowheadOrchConfigurationModal_export" class="iconButtons" onclick="exportArrowheadOrchConfigFile()">
@@ -1050,7 +1075,7 @@
             </div>
         </div>
     </div>
-    <!-- serial monitor "modal" -->
+    <!-- serial monitor"modal" -->
     <div id="serialMonitorModalDialog" class="dialog" style="width: 640px; height: 500px; z-index: 100;">
         <div class="titlebar" id="serialModalTitle_titlebar">
             <span id="serialModalTitle_titlebar_span" class="modal-header"></span>
@@ -1148,15 +1173,22 @@
         </div>
         <div class="buttonpane">
             <div class="buttonset">
-                <button id="filterModalDialog_filter" name="filterModalDialog_filter" class="fa-solid fa-arrow-down-short-wide">
+                <button id="filterModalDialog_export" name="filterModalDialog_export" class="fas fa-file-export">
                 </button>
-                <button id="filterModalDialog_cancel" name="filterModalDialog_cancel" class="fa-solid fa-filter-circle-xmark">
+                <button id="filterModalDialog_filter" name="filterModalDialog_filter" class="fas fa-sort-amount-down-alt">
                 </button>
-                <button id="filterModalDialog_ok" name="filterModalDialog_ok" class="fa-solid fa-check-double">
+                <button id="filterModalDialog_cancel" name="filterModalDialog_cancel" class="fas fa-ban">
+                </button>
+                <button id="filterModalDialog_ok" name="filterModalDialog_ok" class="fas fa-check-double">
                 </button>
             </div>
         </div>
     </div>
+    <!-- Font Awesome v6 SVG+JS method -->
+    <!-- <script async src="./js/lib/fontawesome_brands.min.min.js"></script>
+    <script async src="./js/lib/fontawesome_regular.min.js"></script>
+    <script async src="./js/lib/fontawesome_solid.min.js"></script>
+    <script async src="./js/lib/fontawesome.min.js"></script> -->
     <!-- Blockly libraries -->
     <script src="./@blockly/blockly_compressed.js"></script>
     <script src="./@blockly/closure/goog/base.js"></script>
@@ -1308,16 +1340,16 @@
     <script src="./S4E/categories/wifi_esp/wifi_esp.arduino"></script>
     <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.arduino"></script>
     <script>
-        require('../resources/app.asar/Arrowhead.js');
-        require('../resources/app.asar/renderer.js');
-        require('../resources/app.asar/menu_functions.js');
-        require('../resources/app.asar/menu_CLI_functions.js');
-        require('../resources/app.asar/menu_IDE_functions.js');
-        // require('../Arrowhead.js');
-        // require('../renderer.js');
-        // require('../menu_functions.js');
-        // require('../menu_CLI_functions.js');
-        // require('../menu_IDE_functions.js');
+        // require('../resources/app.asar/Arrowhead.js');
+        // require('../resources/app.asar/renderer.js');
+        // require('../resources/app.asar/menu_functions.js');
+        // require('../resources/app.asar/menu_CLI_functions.js');
+        // require('../resources/app.asar/menu_IDE_functions.js');
+        require('../Arrowhead.js');
+        require('../renderer.js');
+        require('../menu_functions.js');
+        require('../menu_CLI_functions.js');
+        require('../menu_IDE_functions.js');
     </script>
     <script src="./tools/vs/loader.js"></script>
     <script>

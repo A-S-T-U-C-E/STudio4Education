@@ -48,9 +48,9 @@ Code.genWorkspace = function(rtlArg, toolboxArg, rendererArg) {
         }
     });
     Blockly.Variables.createFlyoutCategory(Code.mainWorkspace);
-
 }
 
+/* The above code is creating a minimap workspace that is displayed in the right side of the screen. */
 Code.genMiniWorkspace = function(zoomFactor) {
     document.getElementById('minimapDiv').style.display = 'inline';
     var workspaceMetrics = Code.mainWorkspace.getMetrics();
@@ -139,8 +139,10 @@ function changeThemeUI(themeChoice) {
     document.documentElement.className = themeChoice;
 }
 
-function editorLoadThemeList() {
-    return fetch('./tools/vs/themes/themelist.json')
+function editorLoadThemeList(appDataDirEntry) {
+    return fetch('./tools/vs/themes/themelist.json', {
+            mode: 'cors'
+        })
         .then(r => r.json())
         .then(data => {
             var themes = Object.keys(data);
@@ -242,6 +244,10 @@ function setOnOffLine() {
             document.getElementById('fullScreenButton').style.display = 'none';
             document.getElementById('verifyButton').disabled = false;
             document.getElementById('uploadButton').disabled = false;
+            // show everything relative to arduino-cli or nodejs if online
+            let elmts = getElementsByClass("CLI", null, null);
+            for (let i = 0; i < elmts.length; i++)
+                elmts[i].disabled = false;
         } else {
             document.getElementById('fullScreenButton').style.display = 'inline';
             document.getElementById('verifyButton').disabled = true;
@@ -250,6 +256,10 @@ function setOnOffLine() {
             document.getElementById('installArduinoBoards').setAttribute('onclick', 'Code.installBoards("arduino");');
             document.getElementById('installEspBoards').setAttribute('onclick', 'Code.installBoards("esp");');
             document.getElementById('installMicrobitBoards').setAttribute('onclick', 'Code.installBoards("microbit");');
+            // hide everything relative to arduino-cli or nodejs if online
+            let elmts = getElementsByClass("CLI", null, null);
+            for (let i = 0; i < elmts.length; i++)
+                elmts[i].disabled = true;
         }
         if (!navigator.serial)
             document.getElementById('serialButton').disabled = true;
@@ -259,16 +269,6 @@ function setOnOffLine() {
         // document.getElementById('circuitjsButton').setAttribute('onclick', 'Code.CircuitJS()');
         document.getElementById('factoryButton').setAttribute('onclick', '');
         document.getElementById('htmlButton').setAttribute('onclick', '');
-        // document.getElementById('ArrowheadServRegConfigurationModal_okay').style.display = "none";
-        // document.getElementById('ArrowheadServRegConfigurationModal_okay_nodejs').style.display = "inline";
-        // document.getElementById('ArrowheadProviderConfigurationModal_okay').style.display = "none";
-        // document.getElementById('ArrowheadProviderConfigurationModal_okay_nodejs').style.display = "inline";
-        // document.getElementById('ArrowheadConsumerConfigurationModal_okay').style.display = "none";
-        // document.getElementById('ArrowheadConsumerConfigurationModal_okay_nodejs').style.display = "inline";
-        // document.getElementById('ArrowheadAuthConfigurationModal_okay').style.display = "none";
-        // document.getElementById('ArrowheadAuthConfigurationModal_okay_nodejs').style.display = "inline";
-        // document.getElementById('ArrowheadOrchConfigurationModal_okay').style.display = "none";
-        // document.getElementById('ArrowheadOrchConfigurationModal_okay_nodejs').style.display = "inline";
     } else {
         document.getElementById('fullScreenButton').style.display = 'inline';
         document.getElementById('verifyButton').disabled = true;
@@ -281,37 +281,18 @@ function setOnOffLine() {
         // document.getElementById('circuitjsButton').setAttribute('onclick', './tools/circuitjs/circuitjs.html');
         document.getElementById('factoryButton').setAttribute('onclick', "Code.BlockFactory()");
         document.getElementById('htmlButton').setAttribute('onclick', './tools/html/html_factory.html');
-        // document.getElementById('ArrowheadServRegConfigurationModal_okay').style.display = "inline";
-        // document.getElementById('ArrowheadServRegConfigurationModal_okay_nodejs').style.display = "none";
-        // document.getElementById('ArrowheadProviderConfigurationModal_okay').style.display = "inline";
-        // document.getElementById('ArrowheadProviderConfigurationModal_okay_nodejs').style.display = "none";
-        // document.getElementById('ArrowheadConsumerConfigurationModal_okay').style.display = "inline";
-        // document.getElementById('ArrowheadConsumerConfigurationModal_okay_nodejs').style.display = "none";
-        // document.getElementById('ArrowheadAuthConfigurationModal_okay').style.display = "inline";
-        // document.getElementById('ArrowheadAuthConfigurationModal_okay_nodejs').style.display = "none";
-        // document.getElementById('ArrowheadOrchConfigurationModal_okay').style.display = "inline";
-        // document.getElementById('ArrowheadOrchConfigurationModal_okay_nodejs').style.display = "none";
         document.getElementById('installSTBoards').setAttribute('onclick', 'Code.installBoards("ST");');
         document.getElementById('installArduinoBoards').setAttribute('onclick', 'Code.installBoards("arduino");');
         document.getElementById('installEspBoards').setAttribute('onclick', 'Code.installBoards("esp");');
         document.getElementById('installMicrobitBoards').setAttribute('onclick', 'Code.installBoards("microbit");');
         // hide everything relative to arduino-cli or nodejs if online
-        var elmts = getElementsByClass("CLI", null, null);
-        for (var i = 0; i < elmts.length; i++)
+        let elmts = getElementsByClass("CLI", null, null);
+        for (let i = 0; i < elmts.length; i++)
             elmts[i].disabled = true;
     }
     if (!navigator.serial)
         document.getElementById('serialMonitorButton').disabled = true;
     else document.getElementById('serialMonitorButton').disabled = false;
-    // disable elements not yet finished - server menu
-    // document.getElementById('papyrusConnect').disabled = true;
-    // document.getElementById('ArrowheadConfiguration_auto').disabled = true;
-    document.getElementById('serialConnectIOT').disabled = true;
-    // disable elements not yet finished - lateral panel menu
-    document.getElementById('launchWebServerTo').disabled = true;
-    // document.getElementById('papyrusConnectTo').disabled = true;
-    // document.getElementById('ArrowheadConfiguration').disabled = true;
-    document.getElementById('serialConnectIOT_save').disabled = true;
 }
 
 function getToolboxElement() {

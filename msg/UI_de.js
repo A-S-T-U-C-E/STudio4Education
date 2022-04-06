@@ -23,7 +23,7 @@ var MSG = {
     textVariable: "Text",
     screenshot: "Download Screenshot",
     xmlError: "Konnte die Datei nicht landen. Eventuell wurde sie mit einer anderen Version von Blockly erzeugt?",
-    xmlLoad:"Möchtest Du die aktuellen Blöcke ersetzen? \n Klicke 'Cancel' um sie hinzuzufügen",
+    xmlLoad: "Möchtest Du die aktuellen Blöcke ersetzen? \n Klicke 'Cancel' um sie hinzuzufügen",
     badXml: "Fehler beim Parsen von XML:\n%1\n\nWähle 'OK' zum Verwerfen deiner Änderungen oder 'Abbrechen' zum weiteren Bearbeiten des XML.",
     languageSpan: "choose language",
     levelSpan: "skill level",
@@ -68,7 +68,7 @@ var MSG = {
         'Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">on Github</a>.</br>' +
         'A bug? Post it here: <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">on Github</a>.</br>' +
         'Thanks & libraries: <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki/Thanks">on Github</a>.</p>' +
-        '<p style="text-align: center;">v0.9.1 - BSD3 license - Sébastien CANET' +
+        '<p style="text-align: center;">v0.9.3 - BSD3 license - Sébastien CANET' +
         '<p style="text-align: center;"><a href = (https://www.paypal.com/fr/cgi-bin/webscr?cmd=_flow&SESSION=o8z3KNFl16Tjlxhk1mBekCcRsG_3_NDe0CfWh8b1vfSYIbMxJnwa92YwM3y&dispatch=5885d80a13c0db1f8e263663d3faee8d4fe1dd75ca3bd4f11d72275b28239088">Thanks for donation with Paypal to help me improve this software.</br><img src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif" alt="Paypal"/></a></p>',
     //menu tools
     toolsButton_span: "tools",
@@ -80,13 +80,13 @@ var MSG = {
     dataConversionButton_span: "data encoding",
     //menu IoT
     iotConnectButton_span: "servers",
-    launchRedServer_span: "Node-RED server",
+    launchNodeRed_span: "Node-RED server",
     launchWebServer_span: "local server",
     papyrusConnect_span: "Papyrus connect",
     papyrusConnect_helper_span: "Papyrus configuration",
-    papyrusConfiguration_id_span: "ID of download service",
-    papyrusConfiguration_name_span: "name of config file",
-    papyrusConfiguration_save_span: "save information",
+    papyrusConfiguration_AHF_id_span: "ID of download service",
+    papyrusConfiguration_AHF_name_span: "name of config file",
+    papyrusConfiguration_AHF_save_span: "save information",
     ArrowheadConfiguration_helper_span: "Arrowhead configuration",
     ArrowheadConfiguration_span: "connect as provider to Arrowhead cloud",
     ArrowheadConfiguration_span_menu: "Arrowhead connect",

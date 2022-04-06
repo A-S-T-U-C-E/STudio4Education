@@ -572,10 +572,10 @@ function iconsButtonMouserOver() {
     document.getElementById('iotConnectButton').onmouseout = function() {
         document.getElementById("content_hoverButton").textContent = "";
     };
-    document.getElementById('launchRedServer').onmouseover = function() {
-        document.getElementById("content_hoverButton").textContent = MSG['launchRedServer_span'];
+    document.getElementById('launchNodeRed').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['launchNodeRed_span'];
     };
-    document.getElementById('launchRedServer').onmouseout = function() {
+    document.getElementById('launchNodeRed').onmouseout = function() {
         document.getElementById("content_hoverButton").textContent = "";
     };
     document.getElementById('launchWebServer').onmouseover = function() {

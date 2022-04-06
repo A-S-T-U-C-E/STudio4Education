@@ -250,6 +250,7 @@ Code.boardsListModalShow = function() {
     Code.boardDescription();
     window.addEventListener('click', Code.boardsListModalHide, 'once');
 };
+/* Creating a modal window that will display a list of available serial ports. */
 Code.portsListModalShow = async function() {
     document.getElementById('overlayForModals').style.display = "block";
     document.getElementById('portListModal').classList.add('show');
@@ -260,19 +261,26 @@ Code.portsListModalShow = async function() {
     }
     window.addEventListener('click', Code.portsListModalHide, 'once');
 };
+/* Showing the modal window for the flows list. */
 Code.flowsListModalShow = function() {
     document.getElementById('overlayForModals').style.display = "block";
     document.getElementById('flowsListModal').classList.add('show');
     window.addEventListener('click', Code.flowsListModalHide, 'once');
 };
+/* The above code is creating a JavaScript function that will close the modal when the user clicks on
+the close button. */
 document.getElementById("closeModalBoards").onclick = function() {
     document.getElementById('overlayForModals').style.display = "none";
     document.getElementById('boardListModal').classList.remove('show');
 };
+/* The above code is creating a JavaScript function that will close the modal when the user clicks on
+the close button. */
 document.getElementById("closeModalPorts").onclick = function() {
     document.getElementById('overlayForModals').style.display = "none";
     document.getElementById('portListModal').classList.remove('show');
 };
+/* The above code is creating a JavaScript function that will close the modal when the user clicks on
+the close button. */
 document.getElementById("closeModalFlows").onclick = function() {
     document.getElementById('overlayForModals').style.display = "none";
     document.getElementById('flowsListModal').classList.remove('show');
@@ -323,6 +331,7 @@ Code.Redo = function() {
 
 /**
  * Launch CircuitJS simulator
+ * The above code is creating a web page that allows you to program your Arduino using CircuitJS.
  */
 var dialogCircuitJS;
 Code.CircuitJS = function() {
@@ -398,6 +407,9 @@ function circuitJSmodal_maxi_mini() {
     }
 }
 
+/**
+ * Replace the CircuitJS modal with the Blockly modal
+ */
 function circuitJSmodal_replace_Blockly() {
     const icon = document.getElementById("circuitJSmodal_replaceBlockly").querySelector('em');
     if (_leftright == 'right') {
@@ -922,3 +934,48 @@ if (navigator.serial) {
         Blockly.alert('Device disconnected');
     });
 }
+
+/**
+ * Papyrus SysML diagram configuration file import
+ **/
+Code.configurationPapyrusImport = function() {
+    // Create event listener function
+    var parseInputPapyrusfile = function(e) {
+        var files = e.target.files;
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            if (reader.result != null) {
+                var idsCategories = JSON.parse(reader.result);
+                var categoryIdsList = "";
+                for (let i = 0; i < idsCategories.jsonComponents.length; i++)
+                    categoryIdsList += idsCategories.jsonComponents[i].id + ',';
+                categoryIdsList = categoryIdsList.slice(0, -1);
+                var urlToLoad = '?level=skill3&';
+                if (idsCategories.arguments)
+                    urlToLoad += idsCategories.arguments;
+                if (categoryIdsList)
+                    urlToLoad += '&kwids=' + categoryIdsList;
+                self.location = urlToLoad;
+            } else {
+                Blockly.alert(MSG['badXml'], callback);
+            }
+        };
+        reader.readAsText(files[0]);
+    };
+    // Create once invisible browse button with event listener, and click it
+    var selectFile = document.getElementById('select_file');
+    if (selectFile === null) {
+        var selectFileDom = document.createElement('INPUT');
+        selectFileDom.type = 'file';
+        selectFileDom.id = 'select_file';
+        selectFileDom.accept = '.json';
+        selectFileDom.style.display = 'none';
+        document.body.appendChild(selectFileDom);
+        selectFile = document.getElementById('select_file');
+        selectFile.addEventListener('change', parseInputPapyrusfile, false);
+    }
+    selectFile.onclick = function destroyClickedElement(event) {
+        document.body.removeChild(event.target);
+    };
+    selectFile.click();
+};

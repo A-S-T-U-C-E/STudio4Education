@@ -68,10 +68,10 @@ var MSG = {
         'Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">sur Github</a>.</br>' +
         'Un bug ? Merci d\'écrire ici : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">sur Github</a>.</br>' +
         'Remerciements & bibliothèques : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki/Thanks">sur Github</a>.</p>' +
-        '<p style="text-align: center;">v0.9.1 - BSD3 license - Sébastien CANET' +
-        '<p style="text-align: center;"><a href = (https://www.paypal.com/fr/cgi-bin/webscr?cmd=_flow&SESSION=o8z3KNFl16Tjlxhk1mBekCcRsG_3_NDe0CfWh8b1vfSYIbMxJnwa92YwM3y&dispatch=5885d80a13c0db1f8e263663d3faee8d4fe1dd75ca3bd4f11d72275b28239088">Meci de faire un don pour soutenir les logiciels libres !</br><img src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif" alt="Paypal"/></a></p>' +
-        '<p style="text-align: left;">PROFS FRANCAIS & ASSOCIATIONS</br>' +
-        'vous pouvez aussi me demander une facture légale pour que votre établissement me fasse un <i>don</i> officiel par virement bancaire.</br>' +
+        '<p style="text-align: center;">v0.9.3 - BSD3 license - Sébastien CANET' +
+        '<p style="text-align: center;"><a href = (https://www.paypal.com/fr/cgi-bin/webscr?cmd=_flow&SESSION=o8z3KNFl16Tjlxhk1mBekCcRsG_3_NDe0CfWh8b1vfSYIbMxJnwa92YwM3y&dispatch=5885d80a13c0db1f8e263663d3faee8d4fe1dd75ca3bd4f11d72275b28239088">Merci de faire un don pour soutenir les logiciels libres !</br><img src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif" alt="Paypal"/></a></p>' +
+        '<p style="text-align: left;color:red;">PROFS FRANCAIS & ASSOCIATIONS</br>' +
+        'vous pouvez aussi me demander une facture, légale, pour que votre établissement me fasse un <i>"don"</i> officiel par virement bancaire pour une activité de service de développement.</br>' +
         'Je ne fais pas payer de licence mais je compte sur vous pour aider du montant auquel vous estimez mes travaux.</p>',
     //menu tools
     toolsButton_span: "outils",
@@ -83,13 +83,13 @@ var MSG = {
     dataConversionButton_span: "encodage de données",
     //menu IoT
     iotConnectButton_span: "connexion aux serveurs",
-    launchRedServer_span: "lancer le serveur Node-RED",
+    launchNodeRed_span: "lancer le serveur Node-RED",
     launchWebServer_span: "lancer le serveur local",
     papyrusConnect_span: "connexion à Papyrus",
     papyrusConnect_helper_span: "Papyrus configuration",
-    papyrusConfiguration_id_span: "id du service",
-    papyrusConfiguration_name_span: "nom du fichier de configuration",
-    papyrusConfiguration_save_span: "enregistrer",
+    papyrusConfiguration_AHF_id_span: "id du service",
+    papyrusConfiguration_AHF_name_span: "nom du fichier de configuration",
+    papyrusConfiguration_AHF_save_span: "enregistrer",
     ArrowheadConfiguration_helper_span: "Arrowhead configuration",
     ArrowheadConfiguration_span: "connecter comme fournisseur au serveur Arrowhead",
     ArrowheadConfiguration_span_menu: "connexion à Arrowhead",

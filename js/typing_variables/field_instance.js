@@ -202,6 +202,7 @@ Blockly.FieldInstance.prototype.dropdownCreate = function(name) {
 //     return undefined;
 // };
 
+/* A function that is called when the user selects an item from the dropdown menu. */
 Blockly.FieldInstance.prototype.onItemSelected_ = function(menu, menuItem) {
     var id = menuItem.getValue();
     var workspace = this.sourceBlock_.workspace;

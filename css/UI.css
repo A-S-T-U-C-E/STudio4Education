@@ -302,6 +302,7 @@ html[dir=rtl] {
     top: -100%;
     opacity: 0;
     transition: top 0.5s, opacity 0.4s;
+    display: none;
 }
 
 .helpModal.show {
@@ -326,8 +327,7 @@ html[dir=rtl] {
 
 /* modal buttons */
 
-.modalDialogOkay,
-.modalDialogOkay_nodejs {
+.modalDialogOkay {
     border: none;
     font-size: large;
     background-color: #4CAF50;
@@ -337,8 +337,7 @@ html[dir=rtl] {
     vertical-align: middle;
 }
 
-.modalDialogOkay:active,
-.modalDialogOkay_nodejs:active {
+.modalDialogOkay:active {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
     top: 3px;
 }
@@ -535,6 +534,11 @@ flex.content_wrapper {
 
 .config_content {
     margin: 5px;
+}
+
+.config_content_sub {
+    position: relative;
+    left: 10px;
 }
 
 
