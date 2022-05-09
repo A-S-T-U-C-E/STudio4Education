@@ -228,10 +228,12 @@
     color: #FFFFFF;
     max-width: 400px;
     line-height: 64px;
-    height: 2rem !important;
+    font-family: "Font Awesome 5 Brands";
+    font-weight: 900;
     font-size: 1.5rem !important;
+    height: 2rem !important;
     border-bottom: 0px solid #EEE !important;
-    font-style: italic;
+    text-decoration: inherit;
     background: transparent;
     border: none;
     padding: 0px;

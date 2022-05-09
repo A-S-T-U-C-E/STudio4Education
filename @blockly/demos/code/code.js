@@ -120,8 +120,10 @@ Code.changeLanguage = function() {
         Code.buildControlPanelForToolbox();
         Code.injectLanguageStrings();
         Blockly.Xml.clearWorkspaceAndLoadFromXml(state, Code.mainWorkspace);
+        changeThemeBlockly(document.getElementById('themeMenu').value);
     }, 50);
     // Code.addPluginToWorkspace();
+
 };
 
 /**
@@ -235,7 +237,6 @@ Code.changeLevel = async function() {
             document.getElementById("iotConnectButton").style.display = 'none';
             document.getElementById("serialConnectButton").style.display = 'inline';
             document.getElementById("blocksPictureButton").style.display = 'inline';
-            // document.getElementById("horizontal_IoT_buttons").style.display = 'inline';
             document.getElementById("IoT_controls_accordion").style.visibility = 'hidden';
             document.getElementById("IoT_controls").style.visibility = 'hidden';
             document.getElementById("editorDiffToggle").style.visibility = 'hidden';
@@ -338,7 +339,6 @@ Code.changeLevel = async function() {
             document.getElementById("iotConnectButton").style.display = 'inline';
             document.getElementById("serialConnectButton").style.display = 'inline';
             document.getElementById("blocksPictureButton").style.display = 'inline';
-            // document.getElementById("horizontal_IoT_buttons").style.display = 'none';
             document.getElementById("IoT_controls_accordion").style.visibility = 'inherit';
             document.getElementById("IoT_controls").style.visibility = 'inherit';
             document.getElementById("editorDiffToggle").style.visibility = 'visible';
@@ -351,22 +351,41 @@ Code.changeLevel = async function() {
             document.getElementById("openCodeButton").style.display = 'none';
             document.getElementById("content_code").style.minWidth = '200px';
             document.getElementById("resizer_h").style.width = '45px';
-            // require.config({
-            //     paths: {
-            //         'vs': './www/tools/vs'
-            //     }
-            // });
+            if (isElectron()) {
+                require.config({
+                    paths: {
+                        'vs': './www/tools/vs'
+                    }
+                });
+                window.MonacoEnvironment = {
+                    getWorkerUrl: function(moduleId, label) {
+                        if (label === "cpp") {
+                            return "./cpp.worker.bundle.js";
+                        }
+                        if (label === "python") {
+                            return "./python.worker.bundle.js";
+                        }
+                        return "./editor.worker.bundle.js";
+                    }
+                }
+            }
             if (!Code.editor)
                 Code.editor = monaco.editor.create(document.getElementById('content_code_Monaco'), {
                     scrollBeyondLastLine: false,
                     language: 'cpp',
-                    automaticLayout: true
+                    automaticLayout: true,
+                    autoIndent: true,
+                    formatOnPaste: true,
+                    formatOnType: true
                 });
             if (!Code.diffEditor) {
                 Code.diffEditor = monaco.editor.createDiffEditor(document.getElementById('content_diffCode_Monaco'), {
                     followsCaret: true,
                     ignoreCharChanges: true,
-                    automaticLayout: true
+                    automaticLayout: true,
+                    autoIndent: true,
+                    formatOnPaste: true,
+                    formatOnType: true
                 });
                 Code.diffEditor.setModel({
                     original: monaco.editor.createModel(Blockly.Arduino.workspaceToCode(Code.mainWorkspace), 'cpp'),

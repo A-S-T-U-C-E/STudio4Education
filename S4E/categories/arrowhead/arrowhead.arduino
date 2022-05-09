@@ -36,6 +36,7 @@ Blockly.Arduino['AHF_ESP_SERVICE_REGISTRY_DEF'] = function(block) {
     var system_port = Blockly.Arduino.valueToCode(block, 'PORT', Blockly.Arduino.ORDER_ATOMIC);
     var service_definition = Blockly.Arduino.valueToCode(block, 'SERVICE_DEFINITION', Blockly.Arduino.ORDER_ATOMIC);
     var dropdown_security = block.getFieldValue('SECURE');
+    sessionStorage.setItem('AHF_secure', dropdown_security);
     var dropdown_interface = (Blockly.Arduino.valueToCode(block, 'INTERFACE', Blockly.Arduino.ORDER_ATOMIC)).replaceAll('"', '');
     var value_endofvalidity = (Blockly.Arduino.valueToCode(block, 'endOfValidity', Blockly.Arduino.ORDER_ATOMIC) + " 00:00:00").replaceAll('"', '');
     var value_version = Blockly.Arduino.valueToCode(block, 'VERSION', Blockly.Arduino.ORDER_ATOMIC);
@@ -55,10 +56,13 @@ Blockly.Arduino['AHF_ESP_SERVICE_REGISTRY_DEF'] = function(block) {
 };
 
 Blockly.Arduino['AHF_ESP_CONNECTION_REGISTRY_TEST'] = function(block) {
+    if (sessionStorage.getItem('AHF_secure') == 'NOT_SECURE')
+        sessionStorage.setItem('AHF_secure_bool', false);
+    else sessionStorage.setItem('AHF_secure_bool', true);
     Blockly.Arduino.userFunctions_['AHF_ESP_CONNECTION_REGISTRY_TEST'] =
         'String connect_WiFi_and_load_Certificates() {\n' +
         '  String responseTo = "false";\n' +
-        '  bool startupSuccess = Arrowhead.begin(false);\n' +
+        '  bool startupSuccess = Arrowhead.begin(' + sessionStorage.getItem('AHF_secure_bool') + ');\n' +
         '  if(startupSuccess){\n' +
         '    String response = "";\n' +
         '    int statusCode = Arrowhead.serviceRegistryEcho(false, &response);\n' +
@@ -75,10 +79,13 @@ Blockly.Arduino['AHF_ESP_CONNECTION_REGISTRY_TEST'] = function(block) {
 };
 
 Blockly.Arduino['AHF_ESP_SR_REGISTER_TEST'] = function(block) {
+    if (sessionStorage.getItem('AHF_secure') == 'NOT_SECURE')
+        sessionStorage.setItem('AHF_secure_bool', false);
+    else sessionStorage.setItem('AHF_secure_bool', true);
     Blockly.Arduino.userFunctions_['AHF_ESP_CONNECTION_REGISTRY_TEST'] =
         'String connect_WiFi_and_load_Certificates() {\n' +
         '  String responseTo = "";\n' +
-        '  bool startupSuccess = Arrowhead.begin(false);\n' +
+        '  bool startupSuccess = Arrowhead.begin(' + sessionStorage.getItem('AHF_secure_bool') + ');\n' +
         '  if(startupSuccess){\n' +
         '    String response = "";\n' +
         '    int statusCode = Arrowhead.serviceRegistryEcho(false, &response);\n' +
@@ -96,10 +103,13 @@ Blockly.Arduino['AHF_ESP_SR_REGISTER_TEST'] = function(block) {
 };
 
 Blockly.Arduino['AHF_ESP_SR_UNREGISTER_TEST'] = function(block) {
+    if (sessionStorage.getItem('AHF_secure') == 'NOT_SECURE')
+        sessionStorage.setItem('AHF_secure_bool', false);
+    else sessionStorage.setItem('AHF_secure_bool', true);
     Blockly.Arduino.userFunctions_['AHF_ESP_CONNECTION_REGISTRY_TEST'] =
         'String connect_WiFi_and_load_Certificates() {\n' +
         '  String responseTo = "";\n' +
-        '  bool startupSuccess = Arrowhead.begin();\n' +
+        '  bool startupSuccess = Arrowhead.begin(' + sessionStorage.getItem('AHF_secure_bool') + ');\n' +
         '  if(startupSuccess){\n' +
         '    String response = "";\n' +
         '    int statusCode = Arrowhead.serviceRegistryEcho(&response);\n' +

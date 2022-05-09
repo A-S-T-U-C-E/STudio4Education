@@ -138,6 +138,9 @@ Blockly.Themes.blackWhite.categoryStyles = {
     "variable_dynamic_category": {
         "colour": "#000000"
     },
+    "backpack_category": {
+        "colour": "#000000"
+    },
     "board_category": {
         "colour": "#000000"
     },

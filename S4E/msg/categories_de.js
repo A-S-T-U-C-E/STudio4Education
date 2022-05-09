@@ -22,6 +22,7 @@ Blockly.Msg.CAT_ARRAY = "Array / Anordnung";
 Blockly.Msg.CAT_COLOUR = "Farben";
 Blockly.Msg.CAT_VARIABLES = "Variable Werte";
 Blockly.Msg.CAT_FUNCTIONS = "Funktionen";
+Blockly.Msg.CAT_BACKPACK = "Backpack";
 //categories for boards
 Blockly.Msg.CAT_ONBOARD = "Board";
 Blockly.Msg.CAT_ONBOARD_IO = " Input / Output";

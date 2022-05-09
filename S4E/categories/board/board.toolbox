@@ -174,7 +174,7 @@ var toolbox_board = {
                         "kind": "block",
                         "id": "serial.board",
                         "levels": "1, 2, 3",
-                        "type": "bOARD_SERIAL_FORMAT_CSV"
+                        "type": "BOARD_SERIAL_FORMAT_CSV"
                     },
                     {
                         "kind": "block",

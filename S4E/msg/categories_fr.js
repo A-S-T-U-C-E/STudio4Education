@@ -22,6 +22,7 @@ Blockly.Msg.CAT_ARRAY = "listes - tableaux";
 Blockly.Msg.CAT_COLOUR = "couleurs";
 Blockly.Msg.CAT_VARIABLES = "variables";
 Blockly.Msg.CAT_FUNCTIONS = "procédures & fonctions";
+Blockly.Msg.CAT_BACKPACK = "Sac à dos";
 //categories for boards
 Blockly.Msg.CAT_ONBOARD = "carte";
 Blockly.Msg.CAT_ONBOARD_IO = " entrées / sorties";

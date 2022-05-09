@@ -53,7 +53,6 @@
 
 #lateral-panel-setup-label {
     z-index: 1;
-    top: 41px;
     right: 100%;
     width: 28px;
     height: 28px;
@@ -65,6 +64,7 @@
 #lateral-panel-setup-label,
 #lateral-panel-setup-bloc {
     position: absolute;
+    top: 40px;
     background: #FFF;
     box-shadow: -0.5em 0 .4em rgba(0, 0, 0, 0.3);
     transition: all .5s;
@@ -74,8 +74,8 @@
     background-image: url('../S4E/media/circuit_animation.gif');
     background-size: 350px;
     background-repeat: no-repeat;
-    background-position-x: right;
-    background-position-y: bottom;
+    background-position-x: center;
+    background-position-y: calc(100% - 40px);
 }
 
 #lateral-panel-setup-input:checked~#lateral-panel-setup-label {
@@ -114,7 +114,7 @@
     font-weight: bold;
 }
 
-.accordion2nde {
+.accordionSub {
     background-color: var(--backgroundColor);
     color: var(--textColor);
     cursor: pointer;
@@ -137,7 +137,7 @@
     margin-left: 5px;
 }
 
-.accordion2nde:after {
+.accordionSub:after {
     content: "\0271A";
     /* Unicode character for "plus" sign (+) */
     font-size: large;
@@ -146,7 +146,7 @@
 }
 
 .accordion:hover,
-.accordion2nde:hover {
+.accordionSub:hover {
     background-color: var(--textColor);
     color: var(--backgroundColor);
 }

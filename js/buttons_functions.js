@@ -449,7 +449,21 @@ Code.BlockFactory = function() {
     if (!lang) {
         lang = "en";
     }
-    parent.open('tools/blockFactory/blockFactory.html?lang=' + lang);
+    window.open('tools/blockFactory/blockFactory.html?lang=' + lang, '_blank').focus();
+};
+Code.HackCable = function() {
+    var lang = Code.getStringParamFromUrl('lang', '');
+    if (!lang) {
+        lang = "en";
+    }
+    window.open('tools/hackcable/index.html', '_blank').focus();
+};
+Code.HTMLFactory = function() {
+    var lang = Code.getStringParamFromUrl('lang', '');
+    if (!lang) {
+        lang = "en";
+    }
+    window.open('tools/html/html_factory.html', '_blank').focus();
 };
 
 /**
@@ -626,9 +640,16 @@ Code.ResetWorkspace = function() {
  */
 
 Code.changeFontFamily = function(fontType) {
-    var oldFont = document.querySelectorAll('.blocklyText').style.fontFamily;
+    var oldFont = '';
+    if (document.querySelector('.blocklyText').style.fontFamily)
+        oldFont = document.querySelector('.blocklyText').style.fontFamily;
     document.body.style.fontFamily = fontType;
-    document.body.style.classList.replace(oldFont, fontType);
+    Array.from(document.querySelectorAll(".blocklyText"))
+        .forEach((element) => element.style.fontFamily = fontType);
+    Array.from(document.querySelectorAll(".blocklyTreeLabel"))
+        .forEach((element) => element.style.fontFamily = fontType);
+    document.body.className = document.body.className.replace(oldFont, fontType);
+
 
     // let actualTheme = Code.mainWorkspace.getTheme();
     // console.log(actualTheme)
@@ -664,7 +685,8 @@ Code.changeRenderingConstant = function(value) {
             break;
         case 'fontSizeEditor':
             let options = { "fontSize": value }
-            Code.editor.updateOptions(options);
+            if (Code.editor) Code.editor.updateOptions(options);
+            if (Code.diffEditor) Code.diffEditor.updateOptions(options);
             break;
         case 'fontSizePage':
             var labelsPanel = document.getElementsByClassName("UIText");
@@ -949,12 +971,16 @@ Code.configurationPapyrusImport = function() {
                 var categoryIdsList = "";
                 for (let i = 0; i < idsCategories.jsonComponents.length; i++)
                     categoryIdsList += idsCategories.jsonComponents[i].id + ',';
-                categoryIdsList = categoryIdsList.slice(0, -1);
-                var urlToLoad = '?level=skill3&';
+                /* Taking the categoryIdsList and removing the last character (which is a comma) and
+                replacing all commas with periods. Then it is splitting the string into an array. */
+                var uniqueCategoryIdsList = categoryIdsList.slice(0, -1).replaceAll(',', '.').split('.');
+                /* Removing duplicate values from an array. */
+                uniqueCategoryIdsList = [...new Set(uniqueCategoryIdsList)];
+                var urlToLoad = '?cat=LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES_TYPED,FUNCTIONS&level=skill3';
                 if (idsCategories.arguments)
-                    urlToLoad += idsCategories.arguments;
-                if (categoryIdsList)
-                    urlToLoad += '&kwids=' + categoryIdsList;
+                    urlToLoad += '&' + idsCategories.arguments;
+                if (uniqueCategoryIdsList)
+                    urlToLoad += '&kwids=' + uniqueCategoryIdsList.toString();
                 self.location = urlToLoad;
             } else {
                 Blockly.alert(MSG['badXml'], callback);

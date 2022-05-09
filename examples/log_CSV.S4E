@@ -1,0 +1,35 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <block type="BOARD_SERIAL_INIT" id="bdI{PQDsqgl4cfgF,J2h" x="188" y="463">
+    <field name="SPEED">9600</field>
+    <next>
+      <block type="BOARD_SERIAL_AUTOFORMAT_CSV" id="CiwcTb8#~m7TY~(/bfu(">
+        <mutation items="4"></mutation>
+        <value name="ADD0">
+          <block type="text" id="a2T[b-g}v`Rvm`g~SaW}">
+            <field name="TEXT">Temperature</field>
+          </block>
+        </value>
+        <value name="ADD1">
+          <block type="X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ" id="lr@njx#!G@Csvk:,r#z2"></block>
+        </value>
+        <value name="ADD2">
+          <block type="text" id="(`6L(.}rLmBi0v.A}O+/">
+            <field name="TEXT">Humidity</field>
+          </block>
+        </value>
+        <value name="ADD3">
+          <block type="X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ" id="l:MULWf=*9c3j@}YH]cF"></block>
+        </value>
+        <next>
+          <block type="BOARD_BASE_TIME_DELAY" id="i$BSuzjSFCaik0_z@%xF">
+            <value name="DELAY_TIME">
+              <shadow type="math_number" id="XLzC_`%MLs,D$^`_@#[=">
+                <field name="NUM">500</field>
+              </shadow>
+            </value>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>

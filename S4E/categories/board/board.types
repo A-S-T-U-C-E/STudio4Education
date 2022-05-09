@@ -87,7 +87,7 @@ Blockly.Blocks.BOARD_SERIAL_TEXT_PROMPT_EXT.getBlockType = function() {
 Blockly.Blocks.BOARD_SERIAL_FLUSH.getBlockType = function() {
     return Blockly.Types.NULL;
 };
-Blockly.Blocks.bOARD_SERIAL_FORMAT_CSV.getBlockType = function() {
+Blockly.Blocks.BOARD_SERIAL_FORMAT_CSV.getBlockType = function() {
     return Blockly.Types.NULL;
 };
 Blockly.Blocks.BOARD_SERIAL_AUTOFORMAT_CSV.getBlockType = function() {

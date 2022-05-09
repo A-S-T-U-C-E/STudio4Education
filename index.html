@@ -54,9 +54,9 @@
     </script>
     <flex class="content_wrapper">
         <div id="optionsTop">
-            <img id="logo" src="./media/title.png" style="height: 35px; position: absolute; left: 250px;" />
+            <img id="logo" src="./media/title.png" style="height: 35px; position: absolute; left: 250px;" alt="decoration" />
             <div id="optionsTopTitle">
-                <img id="logo" src="./S4E/media/STudio4Education_logo.png" style="height: 25px; vertical-align: middle;" />
+                <img id="logo" src="./S4E/media/STudio4Education_logo.png" style="height: 25px; vertical-align: middle;" alt="Studio4Education logo" />
             </div>
             <div id="optionsTopButtons" text-align="center">
                 <button id="fullScreenButton" type="button" class="iconButtonsTop" onclick="fullScreen()">
@@ -276,8 +276,8 @@
                 </div>
             </div>
             <span class="sketch_name_wrapper" id="sketch_name_wrapper">
-                <em class="sketch_name_icon fas fa-pen"></em>
-                <input id="sketch_name" name="sketch_name" class="sketch_name" type="text" size="10" placeholder="sketch name">
+                <!-- <em class="sketch_name_icon fas fa-pen"></em> -->
+                <input id="sketch_name" name="sketch_name" class="sketch_name" type="text" size="10" placeholder="&#xf3c6">
             </span>
             <button id="helpButton" class="iconButtons" onclick="toggleDisplayHelpModal()">
                 <span id="helpButton_span" class="fas fa-question">
@@ -458,6 +458,12 @@
                 <input id="highlightModeCheck" type="checkbox" onclick="toggleHighlightMode(this.checked)">
                 <span id="highlightSpan" class="UIText"></span>
                 <br>
+                <input id="tootboxAutocloseCheck" type="checkbox" checked onclick="this.checked ? Code.mainWorkspace.toolbox_.flyout_.autoClose=true: Code.mainWorkspace.toolbox_.flyout_.autoClose=false">
+                <span id="toolboxAutocloseSpan" class="UIText"></span>
+                <br>
+                <input id="toolboxContinuousCheck" type="checkbox" onclick="toggleContinuousToolbox(this.checked)" disabled>
+                <span id="toolboxContinuousSpan" class="UIText"></span>
+                <br>
                 <br>
                 <input id="minimapCheck" type="checkbox" onclick="toggleMinimap(this.checked)">
                 <span id="minimapSpan" class="UIText"></span>
@@ -466,7 +472,7 @@
                 <input id="accessibilityModeCheck" type="checkbox" onclick="toggleAccessibilityMode(this.checked)">
                 <span id="accessibilitySpan" class="UIText"></span>
                 <br>
-                <input id="displayKeyMappings" type="checkbox" onclick="toggleDisplayKeyMappings(this.checked)">
+                <input id="displayKeyMappings" type="checkbox" onclick="toggleDisplayKeyMappings(this.checked)" disabled>
                 <span id="keyMappingSpan" class="UIText"></span>
                 <br>
                 <select id="cursorChanger" name="cursor" onchange="changeCursor(this.value)">
@@ -477,19 +483,19 @@
                 <br>
                 <br>
                 <div id="setup_save_buttons">
-                    <button id="setup_reset_button" class="iconButtons" onclick="">
+                    <button id="setup_reset_button" class="iconButtons">
                         <span id="setup_reset_button_span" class="fas fa-eraser">
                         </span>
                     </button>
-                    <button id="setup_save_button" class="iconButtons" onclick="">
+                    <button id="setup_save_button" class="iconButtons">
                         <span id="setup_save_button_span" class="fas fa-file-download">
                         </span>
                     </button>
-                    <button id="setup_load_button" class="iconButtons" onclick="">
+                    <button id="setup_load_button" class="iconButtons">
                         <span id="setup_load_button_span" class="fas fa-file-upload">
                         </span>
                     </button>
-                    <button id="s4e_update_button" class="iconButtons" onclick="">
+                    <button id="s4e_update_button" class="iconButtons">
                         <span id="s4e_update_button_span" class="fas fa-sync">
                         </span>
                     </button>
@@ -501,15 +507,15 @@
             <div id="CLI_content" class="side_content config_content CLI panel">
                 <div id="configCLI">
                     <div id="CLI_title">
-                        <button id="coreUpdateButton" class="iconButtons CLI" onclick="">
+                        <button id="coreUpdateButton" class="iconButtons CLI">
                             <span id="coreUpdateButton_span" class="fas fa-sync">
                             </span>
                         </button>
-                        <button id="cleanCLIcacheButton" class="iconButtons CLI" onclick="">
+                        <button id="cleanCLIcacheButton" class="iconButtons CLI">
                             <span id="cleanCLIcache_span" class="fas fa-eraser">
                             </span>
                         </button>
-                        <button id="listBoardsButton" class="iconButtons CLI" onclick="">
+                        <button id="listBoardsButton" class="iconButtons CLI">
                             <span id="listBoardsButton_span" class="fas fa-list">
                             </span>
                         </button>
@@ -521,27 +527,27 @@
                     <span id="installBoard_title_span" class="UIText CLI">install board</span>
                     <br>
                     <input type="text" class="controlPanelInput" id="installBoardsInput" name="installBoardsInput">
-                    <button id="installBoardsButton" class="iconButtons CLI" onclick="">
+                    <button id="installBoardsButton" class="iconButtons CLI">
                         <span id="installBoardsButton_span" class="fas fa-cloud-download-alt">
                         </span>
                     </button>
                     <br>
-                    <button id="installSTBoards" class="iconButtons CLI" onclick="">
+                    <button id="installSTBoards" class="iconButtons">
                         <span id="installSTBoards_span">
                             <img src="./S4E/media/st_logo.jpg" style="height: 40px" />
                         </span>
                     </button>
-                    <button id="installArduinoBoards" class="iconButtons CLI" onclick="">
+                    <button id="installArduinoBoards" class="iconButtons">
                         <span id="installArduinoBoards_span">
                             <img src="./S4E/media/arduino_logo.svg" style="height: 40px" />
                         </span>
                     </button>
-                    <button id="installEspBoards" class="iconButtons CLI" onclick="">
+                    <button id="installEspBoards" class="iconButtons">
                         <span id="installEspBoards_span">
                             <img src="./S4E/media/espressif_logo.svg" style="height: 40px" />
                         </span>
                     </button>
-                    <button id="installMicrobitBoards" class="iconButtons CLI" onclick="">
+                    <button id="installMicrobitBoards" class="iconButtons">
                         <span id="installMicrobitBoards_span">
                             <img src="./S4E/media/microbit_logo.png" style="height: 40px" />
                         </span>
@@ -551,7 +557,7 @@
                     <span id="searchlLib_title_span" class="UIText">search library</span>
                     <br>
                     <input type="text" class="controlPanelInput" id="searchlLibInput" name="searchlLibInput">
-                    <button id="searchlLibButton" class="iconButtons CLI" onclick="">
+                    <button id="searchlLibButton" class="iconButtons CLI">
                         <span id="searchlLibButton_span" class="fa fa-search">
                         </span>
                     </button>
@@ -560,7 +566,7 @@
                     <span id="installLib_title_span" class="UIText">install library</span>
                     <br>
                     <input type="text" class="controlPanelInput" id="installLibInput" name="installLibInput">
-                    <button id="installLibButton" class="iconButtons CLI" onclick="">
+                    <button id="installLibButton" class="iconButtons CLI">
                         <span id="installLibButton_span" class="fas fa-cloud-download-alt">
                         </span>
                     </button>
@@ -596,34 +602,33 @@
                 <!-- <br> -->
                 <!-- <br> -->
                 <!-- <input type="text" class="controlPanelInput" id="blynkConnectInput" name="blynkConnectInput"> -->
-                <!-- <button id="blynkConnect" class="iconButtons CLI" onclick=""> -->
+                <!-- <button id="blynkConnect" class="iconButtons CLI"> -->
                 <!-- <span id="blynkConnect_span"> -->
                 <!-- <img src="./S4E/media/blynk.png" style="width: 30px; height: 30px; vertical-align: middle;"/> -->
                 <!-- </span> -->
                 <!-- </button> -->
                 <br>
                 <input type="text" class="controlPanelInput" id="serialConnectIOTInput" name="serialConnectIOTInput" placeholder="address:IP">
-                <button id="serialConnectIOT_save" class="iconButtons CLI" onclick="">
+                <button id="serialConnectIOT_save" class="iconButtons CLI">
                     <span id="serialConnectIOT_span" class="fas fa-cloud-upload-alt">
                     </span>
                 </button>
                 <br>
                 <input type="password" class="controlPanelInput" id="arrowheadManagementInput" name="arrowheadManagementInput" placeholder="password" autocomplete="off">
-                <button id="arrowheadManagement" class="iconButtons CLI" onclick="">
+                <button id="arrowheadManagement" class="iconButtons CLI">
                     <img src="./S4E/media/arrowheadtools_invert.png" style="width: 30px; height: 30px; vertical-align: middle;" />
                     <span id="arrowheadManagementInput_span">
                     </span>
                 </button>
                 <br>
                 <input type="text" class="controlPanelInput" id="nodeRedServerInput" name="nodeRedServerInput" placeholder="IP">
-                <button id="launchNodeRedServer" class="iconButtons CLI" onclick="">
+                <button id="launchNodeRedServer" class="iconButtons CLI">
                     <img src="./S4E/media/node-red.png" style="width: 30px; height: 30px; vertical-align: middle;" />
                     <span id="nodeRedServerInput_span">
                     </span>
                 </button>
                 <br>
-                <br>
-                <button class="accordion2nde">
+                <button class="accordionSub" id="arrowheadConfig">
                     <img src="./S4E/media/arrowheadtools_invert.png" style="width: 30px; height: 30px; vertical-align: middle;" />
                     <span id="ArrowheadConfiguration_helper_span" aria-expanded="false" aria-controls="accordion_categories_content"></span>
                 </button>
@@ -658,8 +663,8 @@
                     </button>
                     <span id="ArrowheadConfiguration_orch_span">Define orchestrator server</span>
                 </div>
-                <button class="accordion2nde">
-                    <img src="./S4E/media/Eclipse_papyrus_logo.png" style="width: 30px; height: 30px; vertical-align: middle;" />
+                <button class="accordionSub">
+                    <img src="./S4E/media/Eclipse_papyrus_logo.png" style="width: 30px; height: 30px; vertical-align: middle;" alt="logo"/>
                     <span id="papyrusConnect_helper_span" aria-expanded="false" aria-controls="accordion_categories_content"></span>
                 </button>
                 <div id="IoT_controls_Papyrus" class="side_content config_content panel UIText">
@@ -669,33 +674,37 @@
                     </button>
                     <span id="papyrusConfiguration_local_load_span"></span>
                     <br>
-                    <span id="papyrusConfiguration_server_title_span" style="font-size: 1.2em;">Server configuration</span>
-                    <br>
-                    <span id="papyrusConfiguration_server_name_span" class="config_content_sub">Name of configuration file to download</span>
-                    <br>
-                    <input type="text" class="controlPanelInput" class="config_content_sub" id="papyrusConfiguration_server_inputIp" name="papyrusConfiguration_server_inputIp" value="170">
-                    <br>
-                    <span id="papyrusConfiguration_server_ip_span" class="config_content_sub" placeholder="address:IP">Server's address</span>
-                    <br>
-                    <input type="text" class="controlPanelInput" class="config_content_sub" id="papyrusConfiguration_server_inputFile" name="papyrusConfiguration_server_inputFile" value="HomeAutomationSystemST4Econfig.json">
-                    <button id="papyrusConfiguration_server_save" class="iconButtons CLI config_content_sub">
-                        <em class="fas fa-folder-plus"></em>
-                    </button>
-                    <span id="papyrusConfiguration_AHF_save_span">Store information</span>
-                    <br>
-                    <span id="papyrusConfiguration_AHF_title_span" style="font-size: 1.2em;">Arrowhead</span>
-                    <br>
-                    <span id="papyrusConfiguration_AHF_id_span" class="config_content_sub">Id of download service</span>
-                    <br>
-                    <input type="text" class="controlPanelInput" class="config_content_sub" id="papyrusConfiguration_AHF_inputId" name="papyrusConfiguration_AHF_inputId" value="170">
-                    <br>
-                    <span id="papyrusConfiguration_AHF_name_span" class="config_content_sub">Name of configuration file to download</span>
-                    <br>
-                    <input type="text" class="controlPanelInput" class="config_content_sub" id="papyrusConfiguration_AHF_inputFile" name="papyrusConfiguration_AHF_inputFile" value="HomeAutomationSystemST4Econfig.json">
-                    <button id="papyrusConfiguration_AHF_save" class="iconButtons CLI config_content_sub">
-                        <em class="fas fa-folder-plus"></em>
-                    </button>
-                    <span id="papyrusConfiguration_AHF_save_span">Store information</span>
+                    <form id="PapyrusConfigurationFormServer">
+                        <span id="papyrusConfiguration_server_title_span" style="font-size: 1.2em;">Server configuration</span>
+                        <br>
+                        <span id="papyrusConfiguration_server_name_span" class="config_content_sub">Name of configuration file to download</span>
+                        <br>
+                        <input type="text" class="controlPanelInput" class="config_content_sub" id="papyrusConfiguration_server_inputIp" name="papyrusConfiguration_server_inputIp">
+                        <br>
+                        <span id="papyrusConfiguration_server_ip_span" class="config_content_sub" placeholder="address:IP">Server's address</span>
+                        <br>
+                        <input type="text" class="controlPanelInput" class="config_content_sub" id="papyrusConfiguration_server_inputFile" name="papyrusConfiguration_server_inputFile">
+                        <button type="submit" id="papyrusConfiguration_server_save" class="iconButtons CLI config_content_sub">
+                            <em class="fas fa-folder-plus"></em>
+                        </button>
+                        <span id="papyrusConfiguration_AHF_save_span">Store information</span>
+                        <br>
+                    </form>
+                    <form id="PapyrusConfigurationFormArrowhead">
+                        <span id="papyrusConfiguration_AHF_title_span" style="font-size: 1.2em;">Arrowhead</span>
+                        <br>
+                        <span id="papyrusConfiguration_AHF_id_span" class="config_content_sub" style="display : none;">Id of download service</span>
+                        <!-- <br> -->
+                        <input type="text" class="controlPanelInput" class="config_content_sub" style="display : none;" id="papyrusConfiguration_AHF_inputId" name="papyrusConfiguration_AHF_inputId">
+                        <!-- <br> -->
+                        <span id="papyrusConfiguration_AHF_name_span" class="config_content_sub">Name of configuration file to download</span>
+                        <!-- <br> -->
+                        <input type="text" class="controlPanelInput" class="config_content_sub" id="papyrusConfiguration_AHF_inputFile" name="papyrusConfiguration_AHF_inputFile">
+                        <button type="submit" id="papyrusConfiguration_AHF_save" class="iconButtons CLI config_content_sub">
+                            <em class="fas fa-folder-plus"></em>
+                        </button>
+                        <span id="papyrusConfiguration_AHF_save_span">Store information</span>
+                    </form>
                 </div>
             </div>
         </div>
@@ -839,16 +848,16 @@
             </div>
             <div class="modal-body" id="ArrowheadServRegConfigurationModalBody">
                 <form id="ArrowheadServRegConfigurationModalForm">
-                    <span id="arrowhead_input_ServReg_host_span">Host</span>
-                    <input type="text" class="controlPanelInput" id="arrowhead_input_ServReg_host" name="arrowhead_input_ServReg_host"><br>
-                    <span id="arrowhead_input_ServReg_port_span">Port</span>
-                    <input type="text" class="controlPanelInput" id="arrowhead_input_ServReg_port" name="arrowhead_input_ServReg_port"><br>
-                    <span id="arrowhead_input_ServReg_path_span">Path</span>
-                    <input type="text" class="controlPanelInput" id="arrowhead_input_ServReg_path" name="arrowhead_input_ServReg_path"><br>
+                    <span id="arrowhead_input_ServiceRegistry_host_span">Host</span>
+                    <input type="text" class="controlPanelInput" id="arrowhead_input_ServiceRegistry_host" name="arrowhead_input_ServiceRegistry_host"><br>
+                    <span id="arrowhead_input_ServiceRegistry_port_span">Port</span>
+                    <input type="text" class="controlPanelInput" id="arrowhead_input_ServiceRegistry_port" name="arrowhead_input_ServiceRegistry_port"><br>
+                    <span id="arrowhead_input_ServiceRegistry_path_span">Path</span>
+                    <input type="text" class="controlPanelInput" id="arrowhead_input_ServiceRegistry_path" name="arrowhead_input_ServiceRegistry_path"><br>
                     <br>
-                    <input type="checkbox" class="" id="arrowhead_input_servreg_tls_useKey" name="arrowhead_input_servreg_tls_useKey">
-                    <span id="arrowhead_input_servreg_tls_useKey_span">Use key and certificates from local files</span><br>
-                    <div class="arrowhead_input_servreg_tls_local_div">
+                    <input type="checkbox" class="" id="arrowhead_input_ServiceRegistry_tls_useKey" name="arrowhead_input_ServiceRegistry_tls_useKey" onclick="document.getElementById('arrowhead_input_servreg_tls_local_div').style.display = this.checked ? 'block' : 'none'">
+                    <span id="arrowhead_input_ServiceRegistry_tls_useKey_span">Use key and certificates from local files</span><br>
+                    <div id="arrowhead_input_servreg_tls_local_div" class="arrowhead_input_servreg_tls_local_div" style="display: none;">
                         <span id="arrowhead_input_servreg_tls_local_path_span">Certificate path</span>
                         <input type="text" class="controlPanelInput" id="arrowhead_input_servreg_tls_local_path" name="arrowhead_input_servreg_tls_local_path"><br>
                         <span id="arrowhead_input_servreg_tls_local_key_span">Private Key path</span>
@@ -858,9 +867,9 @@
                         <span id="arrowhead_input_servreg_tls_local_certificate_span">CA Certificate</span>
                         <input type="text" class="controlPanelInput" id="arrowhead_input_servreg_tls_local_certificate" name="arrowhead_input_servreg_tls_local_certificate"><br>
                     </div>
-                    <input type="checkbox" class="" id="arrowhead_input_servreg_tls_server" name="arrowhead_input_servreg_tls_server">
+                    <input type="checkbox" class="" id="arrowhead_input_servreg_tls_server" name="arrowhead_input_servreg_tls_server" onclick="document.getElementById('arrowhead_input_servreg_tls_server_div').style.display = this.checked ? 'block' : 'none'">
                     <span id="arrowhead_input_servreg_tls_server_span">Verify server certificate</span><br>
-                    <div class="arrowhead_input_servreg_tls_server_div">
+                    <div id="arrowhead_input_servreg_tls_server_div" class="arrowhead_input_servreg_tls_server_div" style="display: none;">
                         <span id="arrowhead_input_servreg_tls_server_name_span">Server name</span>
                         <input type="text" class="controlPanelInput" id="arrowhead_input_servreg_tls_server_name" name="arrowhead_input_servreg_tls_server_name"><br>
                         <span id="arrowhead_input_servreg_tls_server_protocol_span">ALPN Protocol</span>
@@ -873,10 +882,10 @@
                         <button id="ArrowheadServRegConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadServRegConfigurationModalForm').reset()">
                             <em class="far fa-times-circle" style="font-size: 150%;"></em>
                         </button>
-                        <button id="ArrowheadServRegConfigurationModal_export" class="iconButtons" onclick="exportArrowheadServRegConfigFile()">
+                        <button id="ArrowheadServRegConfigurationModal_export" class="iconButtons">
                             <em class="fas fa-file-download"></em>
                         </button>
-                        <button id="ArrowheadServRegConfigurationModal_import" class="iconButtons" onclick="importArrowheadServRegConfigFile()">
+                        <button id="ArrowheadServRegConfigurationModal_import" class="iconButtons">
                             <em class="fas fa-file-upload"></em>
                         </button>
                     </div>
@@ -898,7 +907,7 @@
                     <span id="arrowhead_input_Provider_port_span">Port</span>
                     <input type="text" class="controlPanelInput" id="arrowhead_input_Provider_port" name="arrowhead_input_Provider_port"><br>
                     <span id="arrowhead_input_Provider_name_span">Name</span>
-                    <input type="text" class="controlPanelInput" id="arrowhead_input_Provider_path" name="arrowhead_input_Provider_path"><br>
+                    <input type="text" class="controlPanelInput" id="arrowhead_input_Provider_name" name="arrowhead_input_Provider_name"><br>
                     <span id="arrowhead_input_Provider_serviceDef_span">Service definition</span>
                     <input type="text" class="controlPanelInput" id="arrowhead_input_Provider_serviceDef" name="arrowhead_input_Provider_serviceDef"><br>
                     <span id="arrowhead_input_Provider_servicePath_span">Service path</span>
@@ -918,10 +927,10 @@
                         <button id="ArrowheadProviderConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadProviderConfigurationModalForm').reset()">
                             <em class="far fa-times-circle" style="font-size: 150%;"></em>
                         </button>
-                        <button id="ArrowheadProviderConfigurationModal_export" class="iconButtons" onclick="exportArrowheadProviderConfigFile()">
+                        <button id="ArrowheadProviderConfigurationModal_export" class="iconButtons">
                             <em class="fas fa-file-download"></em>
                         </button>
-                        <button id="ArrowheadProviderConfigurationModal_import" class="iconButtons" onclick="importArrowheadProviderConfigFile()">
+                        <button id="ArrowheadProviderConfigurationModal_import" class="iconButtons">
                             <em class="fas fa-file-upload"></em>
                         </button>
                     </div>
@@ -943,7 +952,7 @@
                     <span id="arrowhead_input_Consumer_port_span">Port</span>
                     <input type="text" class="controlPanelInput" id="arrowhead_input_Consumer_port" name="arrowhead_input_Consumer_port"><br>
                     <span id="arrowhead_input_Consumer_name_span">Name</span>
-                    <input type="text" class="controlPanelInput" id="arrowhead_input_Consumer_path" name="arrowhead_input_Consumer_path"><br>
+                    <input type="text" class="controlPanelInput" id="arrowhead_input_Consumer_name" name="arrowhead_input_Consumer_name"><br>
                     <span id="arrowhead_input_Consumer_service_span">Service definition</span>
                     <input type="text" class="controlPanelInput" id="arrowhead_input_Consumer_service" name="arrowhead_input_Consumer_service"><br>
                     <div id="ArrowheadConsumerConfigurationModalBody_buttons">
@@ -953,10 +962,10 @@
                         <button id="ArrowheadConsumerConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadConsumerConfigurationModalForm').reset()">
                             <em class="far fa-times-circle" style="font-size: 150%;"></em>
                         </button>
-                        <button id="ArrowheadConsumerConfigurationModal_export" class="iconButtons" onclick="exportArrowheadConsumerConfigFile()">
+                        <button id="ArrowheadConsumerConfigurationModal_export" class="iconButtons">
                             <em class="fas fa-file-download"></em>
                         </button>
-                        <button id="ArrowheadConsumerConfigurationModal_import" class="iconButtons" onclick="importArrowheadConsumerConfigFile()">
+                        <button id="ArrowheadConsumerConfigurationModal_import" class="iconButtons">
                             <em class="fas fa-file-upload"></em>
                         </button>
                     </div>
@@ -973,16 +982,16 @@
             </div>
             <div class="modal-body" id="ArrowheadAuthConfigurationModalBody">
                 <form id="ArrowheadAuthConfigurationModalForm">
-                    <span id="arrowhead_input_Auth_host_span">Host</span>
-                    <input type="text" class="controlPanelInput" id="arrowhead_input_Auth_host" name="arrowhead_input_Auth_host"><br>
-                    <span id="arrowhead_input_Auth_port_span">Port</span>
-                    <input type="text" class="controlPanelInput" id="arrowhead_input_Auth_port" name="arrowhead_input_Auth_port"><br>
+                    <span id="arrowhead_input_Authorization_host_span">Host</span>
+                    <input type="text" class="controlPanelInput" id="arrowhead_input_Authorization_host" name="arrowhead_input_Authorization_host"><br>
+                    <span id="arrowhead_input_Authorization_port_span">Port</span>
+                    <input type="text" class="controlPanelInput" id="arrowhead_input_Authorization_port" name="arrowhead_input_Authorization_port"><br>
                     <span id="arrowhead_input_Auth_name_span">Name</span>
-                    <input type="text" class="controlPanelInput" id="arrowhead_input_Auth_path" name="arrowhead_input_Auth_path"><br>
+                    <input type="text" class="controlPanelInput" id="arrowhead_input_Authorization_path" name="arrowhead_input_Authorization_path"><br>
                     <br>
-                    <input type="checkbox" class="" id="arrowhead_input_auth_tls_useKey" name="arrowhead_input_auth_tls_useKey">
-                    <span id="arrowhead_input_auth_tls_useKey_span">Use key and certificates from local files</span><br>
-                    <div class="arrowhead_input_auth_tls_local_div">
+                    <input type="checkbox" class="" id="arrowhead_input_Authorization_tls_useKey" name="arrowhead_input_Authorization_tls_useKey" onclick="document.getElementById('arrowhead_input_auth_tls_local_div').style.display = this.checked ? 'block' : 'none'">
+                    <span id="arrowhead_input_Authorization_tls_useKey_span">Use key and certificates from local files</span><br>
+                    <div id="arrowhead_input_auth_tls_local_div" class="arrowhead_input_auth_tls_local_div" style="display: none;">
                         <span id="arrowhead_input_auth_tls_local_path_span">Certificate path</span>
                         <input type="text" class="controlPanelInput" id="arrowhead_input_auth_tls_local_path" name="arrowhead_input_auth_tls_local_path"><br>
                         <span id="arrowhead_input_auth_tls_local_key_span">Private Key path</span>
@@ -992,9 +1001,9 @@
                         <span id="arrowhead_input_auth_tls_local_certificate_span">CA Certificate</span>
                         <input type="text" class="controlPanelInput" id="arrowhead_input_auth_tls_local_certificate" name="arrowhead_input_auth_tls_local_certificate"><br>
                     </div>
-                    <input type="checkbox" class="" id="arrowhead_input_auth_tls_server" name="arrowhead_input_auth_tls_server">
+                    <input type="checkbox" class="" id="arrowhead_input_auth_tls_server" name="arrowhead_input_auth_tls_server" onclick="document.getElementById('arrowhead_input_auth_tls_server_div').style.display = this.checked ? 'block' : 'none'">
                     <span id="arrowhead_input_auth_tls_server_span">Verify server certificate</span><br>
-                    <div class="arrowhead_input_auth_tls_server_div">
+                    <div id="arrowhead_input_auth_tls_server_div" class="arrowhead_input_auth_tls_server_div" style="display: none;">
                         <span id="arrowhead_input_auth_tls_server_name_span">Server name</span>
                         <input type="text" class="controlPanelInput" id="arrowhead_input_auth_tls_server_name" name="arrowhead_input_auth_tls_server_name"><br>
                         <span id="arrowhead_input_auth_tls_server_protocol_span">ALPN Protocol</span>
@@ -1007,10 +1016,10 @@
                         <button id="ArrowheadAuthConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadAuthConfigurationModalForm').reset()">
                             <em class="far fa-times-circle" style="font-size: 150%;"></em>
                         </button>
-                        <button id="ArrowheadAuthConfigurationModal_export" class="iconButtons" onclick="exportArrowheadAuthConfigFile()">
+                        <button id="ArrowheadAuthConfigurationModal_export" class="iconButtons">
                             <em class="fas fa-file-download"></em>
                         </button>
-                        <button id="ArrowheadAuthConfigurationModal_import" class="iconButtons" onclick="importArrowheadAuthConfigFile()">
+                        <button id="ArrowheadAuthConfigurationModal_import" class="iconButtons">
                             <em class="fas fa-file-upload"></em>
                         </button>
                     </div>
@@ -1029,16 +1038,16 @@
                 <form id="ArrowheadOrchConfigurationModalForm">
                     <span id="arrowhead_input_orchestrator_span">Arrowhead Orchestrator Info</span><br>
                     <div class="arrowhead_input_orchestrator_div">
-                        <span id="arrowhead_input_orchestrator_host_span">Host</span>
-                        <input type="text" class="controlPanelInput" id="arrowhead_input_orchestrator_host" name="arrowhead_input_orchestrator_host"><br>
-                        <span id="arrowhead_input_orchestrator_port_span">Port</span>
-                        <input type="text" class="controlPanelInput" id="arrowhead_input_orchestrator_port" name="arrowhead_input_orchestrator_port"><br>
-                        <span id="arrowhead_input_orchestrator_path_span">Path</span>
-                        <input type="text" class="controlPanelInput" id="arrowhead_input_orchestrator_path" name="arrowhead_input_orchestrator_path"><br>
+                        <span id="arrowhead_input_Orchestrator_host_span">Host</span>
+                        <input type="text" class="controlPanelInput" id="arrowhead_input_Orchestrator_host" name="arrowhead_input_Orchestrator_host"><br>
+                        <span id="arrowhead_input_Orchestrator_port_span">Port</span>
+                        <input type="text" class="controlPanelInput" id="arrowhead_input_Orchestrator_port" name="arrowhead_input_Orchestrator_port"><br>
+                        <span id="arrowhead_input_Orchestrator_path_span">Path</span>
+                        <input type="text" class="controlPanelInput" id="arrowhead_input_Orchestrator_path" name="arrowhead_input_Orchestrator_path"><br>
                         <br>
-                        <input type="checkbox" class="" id="arrowhead_input_orchestrator_tls_useKey" name="arrowhead_input_orchestrator_tls_useKey">
-                        <span id="arrowhead_input_orchestrator_tls_useKey_span">Use key and certificates from local files</span><br>
-                        <div class="arrowhead_input_orchestrator_tls_local_div">
+                        <input type="checkbox" class="" id="arrowhead_input_Orchestrator_tls_useKey" name="arrowhead_input_Orchestrator_tls_useKey" onclick="document.getElementById('arrowhead_input_orchestrator_tls_local_div').style.display = this.checked ? 'block' : 'none'">
+                        <span id="arrowhead_input_Orchestrator_tls_useKey_span">Use key and certificates from local files</span><br>
+                        <div id="arrowhead_input_orchestrator_tls_local_div" class="arrowhead_input_orchestrator_tls_local_div" style="display: none;">
                             <span id="arrowhead_input_orchestrator_tls_local_path_span">Certificate path</span>
                             <input type="text" class="controlPanelInput" id="arrowhead_input_orchestrator_tls_local_path" name="arrowhead_input_orchestrator_tls_local_path"><br>
                             <span id="arrowhead_input_orchestrator_tls_local_key_span">Private Key path</span>
@@ -1048,9 +1057,9 @@
                             <span id="arrowhead_input_orchestrator_tls_local_certificate_span">CA Certificate</span>
                             <input type="text" class="controlPanelInput" id="arrowhead_input_orchestrator_tls_local_certificate" name="arrowhead_input_orchestrator_tls_local_certificate"><br>
                         </div>
-                        <input type="checkbox" class="" id="arrowhead_input_orchestrator_tls_server" name="arrowhead_input_orchestrator_tls_server">
+                        <input type="checkbox" class="" id="arrowhead_input_orchestrator_tls_server" name="arrowhead_input_orchestrator_tls_server" onclick="document.getElementById('arrowhead_input_orchestrator_tls_server_div').style.display = this.checked ? 'block' : 'none'">
                         <span id="arrowhead_input_orchestrator_tls_server_span">Verify server certificate</span><br>
-                        <div class="arrowhead_input_orchestrator_tls_server_div">
+                        <div id="arrowhead_input_orchestrator_tls_server_div" class="arrowhead_input_orchestrator_tls_server_div" style="display: none;">
                             <span id="arrowhead_input_orchestrator_tls_server_name_span">Server name</span>
                             <input type="text" class="controlPanelInput" id="arrowhead_input_orchestrator_tls_server_name" name="arrowhead_input_orchestrator_tls_server_name"><br>
                             <span id="arrowhead_input_orchestrator_tls_server_protocol_span">ALPN Protocol</span>
@@ -1064,10 +1073,10 @@
                         <button id="ArrowheadOrchConfigurationModal_cancel" class="modalDialogCancel" onclick="document.getElementById('ArrowheadOrchConfigurationModalForm').reset()">
                             <em class="far fa-times-circle" style="font-size: 150%;"></em>
                         </button>
-                        <button id="ArrowheadOrchConfigurationModal_export" class="iconButtons" onclick="exportArrowheadOrchConfigFile()">
+                        <button id="ArrowheadOrchConfigurationModal_export" class="iconButtons">
                             <em class="fas fa-file-download"></em>
                         </button>
-                        <button id="ArrowheadOrchConfigurationModal_import" class="iconButtons" onclick="importArrowheadOrchConfigFile()">
+                        <button id="ArrowheadOrchConfigurationModal_import" class="iconButtons">
                             <em class="fas fa-file-upload"></em>
                         </button>
                     </div>
@@ -1209,15 +1218,16 @@
     <script src="./@blockly/core/renderers/minimalist/renderer.js" async></script>
     <script src="./@blockly/core/theme/zelos.js" async></script>
     <!-- Blockly plugins -->
+    <script src="./@blockly/plugins/content-highlight/index.js"></script>
+    <!-- <script src="./@blockly/plugins/continuous-toolbox/index.js"></script> -->
+    <script src="./@blockly/plugins/cross-tab-copy-paste/index.js"></script>
     <script src="./@blockly/plugins/disable-top-blocks/index.js"></script>
     <script src="./@blockly/plugins/field-date/date_compressed.js"></script>
     <script src="./@blockly/plugins/field-grid-dropdown/index.js"></script>
     <script src="./@blockly/plugins/field-slider/index.js"></script>
     <script src="./@blockly/plugins/keyboard-navigation/index.js"></script>
-    <script src="./@blockly/plugins/theme-dark/index.js"></script>
+    <!-- <script src="./@blockly/plugins/theme-dark/index.js"></script> -->
     <script src="./@blockly/plugins/theme-modern/index.js"></script>
-    <script src="./@blockly/plugins/workspace-backpack/index.js"></script>
-    <script src="./@blockly/plugins/workspace-content-highlight/index.js"></script>
     <script src="./@blockly/plugins/workspace-search/index.js"></script>
     <script src="./@blockly/plugins/zoom-to-fit/index.js"></script>
     <!-- Blockly libraries of function, from different demos -->
@@ -1236,7 +1246,6 @@
     <script src="./S4E/categories/blockly/blockly.toolbox"></script>
     <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.toolbox"></script>
     <!-- Blockly libraries of function, hacked from different demos -->
-    <!-- <script src="./js/blockly/keyboard_nav.js"></script> -->
     <script src="./js/minimap.js"></script>
     <script src="./js/blockly_playground.js"></script>
     <script src="./js/keyboard_nav.js"></script>
@@ -1247,6 +1256,9 @@
     <script src="./js/renderingConstant.js"></script>
     <script src="./js/serialMonitor.js"></script>
     <script src="./js/toolbox.js"></script>
+    <script src="./js/open_save_locally_blocks.js"></script>
+    <script src="./js/personal_backpack.js"></script>
+    <script src="./js/pick_place_block.js"></script>
     <script src="./@blockly/demos/custom-dialogs/custom-dialog.js"></script>
     <!-- S4E libraries of external functions -->
     <script src="./js/lib/chart.min.js"></script>
@@ -1264,6 +1276,8 @@
     <script src="./S4E/themes/themes_blocks.js" async></script>
     <script src="./S4E/themes/themes_categories.js" async></script>
     <script src="./S4E/themes/themes_components_override.js" async></script>
+    <!-- Monaco editor themes added -->
+    <script src="./tools/vs/themes/themelist.json" async></script>
     <!-- S4E libraries of boards definition -->
     <script src="./S4E/js/boards.json"></script>
     <script src="./S4E/js/boards_arduino.json"></script>

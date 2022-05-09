@@ -11,14 +11,6 @@ var MSG = {
     btnClose: "fermer le logiciel",
     blocks: "Blocs",
     prog: "Programme",
-    catLogic: "Logique",
-    catLoops: "Boucles",
-    catMath: "Math",
-    catText: "Texte",
-    catLists: "Listes",
-    catColour: "Couleurs",
-    catVariables: "Variables",
-    catFunctions: "Fonctions",
     // listVariable: "liste",
     // textVariable: "texte",
     screenshot: "Télécharger une capture d'écran",
@@ -61,18 +53,37 @@ var MSG = {
     resetQuestion_span: "Réinitialiser S4E et ",
     helpButton_span: "aide",
     helpModalSpan_title: "Aide - à propos",
-    helpModalSpan_text: '<img src="./S4E/media/logo_only.png" alt="" style="height:100px; float:left; margin: 0 10px 10px 0;" />' +
-        '<p style="text-align: left;">Créé pour le projet <a href="https://www.arrowhead.eu/arrowheadtools" rel="nofollow"><strong>Arrowhead</strong></a>, S4E est un <strong>programme web d\'édition et de programmation visuelle par blocs pour les cartes <a href="https://www.st.com" rel="nofollow">STmicroelectronics</a></strong>, il est basé sur <a href="https://developers.google.com/blockly/" rel="nofollow">Blockly</a>, l\'éditeur graphique de programmation en ligne.</p>' +
-        '<p style="text-align: left;">STudio4Education fournit un environnement de programmation par blocs et leurs traductions en code C.</p>' +
-        '<p style="text-align: left;">Accessibilité : <a href="https://github.com/A-S-T-U-C-E/STudio4Education#accessibility">documentation en ligne</a>.</br>' +
-        'Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">sur Github</a>.</br>' +
-        'Un bug ? Merci d\'écrire ici : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">sur Github</a>.</br>' +
-        'Remerciements & bibliothèques : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki/Thanks">sur Github</a>.</p>' +
-        '<p style="text-align: center;">v0.9.3 - BSD3 license - Sébastien CANET' +
-        '<p style="text-align: center;"><a href = (https://www.paypal.com/fr/cgi-bin/webscr?cmd=_flow&SESSION=o8z3KNFl16Tjlxhk1mBekCcRsG_3_NDe0CfWh8b1vfSYIbMxJnwa92YwM3y&dispatch=5885d80a13c0db1f8e263663d3faee8d4fe1dd75ca3bd4f11d72275b28239088">Merci de faire un don pour soutenir les logiciels libres !</br><img src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif" alt="Paypal"/></a></p>' +
-        '<p style="text-align: left;color:red;">PROFS FRANCAIS & ASSOCIATIONS</br>' +
-        'vous pouvez aussi me demander une facture, légale, pour que votre établissement me fasse un <i>"don"</i> officiel par virement bancaire pour une activité de service de développement.</br>' +
-        'Je ne fais pas payer de licence mais je compte sur vous pour aider du montant auquel vous estimez mes travaux.</p>',
+    helpModalSpan_text: "<img src='./S4E/media/logo_only.png' alt='' style='height:100px; float:left; margin: 0 10px 10px 0;' />" +
+        "<p style='text-align: left;'>Créé pour le projet <a href='https://www.arrowhead.eu/arrowheadtools' rel='nofollow'><strong>Arrowhead</strong></a>, S4E est un <strong>programme web d\'édition et de programmation visuelle par blocs pour les cartes <a href='https://www.st.com' rel='nofollow'>STmicroelectronics</a></strong>, il est basé sur <a href='https://developers.google.com/blockly/' rel='nofollow'>Blockly</a>, l\'éditeur graphique de programmation en ligne.</p>" +
+        "<p style='text-align: left;'>STudio4Education fournit un environnement de programmation par blocs et leurs traductions en code C.</p>" +
+        "<p style='text-align: left;'>Accessibilité : <a href='https://github.com/A-S-T-U-C-E/STudio4Education#accessibility'>documentation en ligne</a>.</br>" +
+        "Wiki : <a href='https://github.com/A-S-T-U-C-E/STudio4Education/wiki'>sur Github</a>.</br>" +
+        "Un bug ? Merci d\'écrire ici : <a href='https://github.com/A-S-T-U-C-E/STudio4Education/issues'>sur Github</a>.</br>" +
+        "Remerciements & bibliothèques : <a href='https://github.com/A-S-T-U-C-E/STudio4Education/wiki/Thanks'>sur Github</a>.</p>" +
+        "<p style='text-align: center;'>v0.9.5 - BSD3 license - Sébastien CANET" +
+        "<p style='text-align: center;'><a href = 'https://www.paypal.com/donate/?business=KBQDU3S6FWQU8&no_recurring=0&item_name=Merci+de+faire+un+don+pour+soutenir+les+logiciels+libres+%21&currency_code=EUR'>Merci de faire un don pour soutenir les logiciels libres !</br><img src='https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif' alt='Paypal'/></a></p>" +
+        "<p style='text-align: left;color:red;'>PROFS FRANCAIS & ASSOCIATIONS</br>" +
+        "vous pouvez aussi me demander une facture, légale, pour que votre établissement me fasse un <i>'don'</i> officiel par virement bancaire pour une activité de service de développement.</br>" +
+        "Je ne fais pas payer de licence mais je compte sur vous pour aider du montant auquel vous estimez mes travaux.</p>",
+    CROSS_TAB_COPY: "copier",
+    CROSS_TAB_PASTE: "coller",
+    INSERTBLOCKS_WORKSPACE_BLOCK_EXPORT: "Exporter le bloc dans un fichier 'block'",
+    INSERTBLOCKS_WORKSPACE_BLOCK_INSERT: "Importer un bloc depuis un fichier 'block'",
+    PICKPLACEBLOCK_PICKPLACE_ENABLED: "Activer le 'prends & place'",
+    PICKPLACEBLOCK_PICKPLACE_DISABLED: "Désactiver le 'prends & place'",
+    PICKPLACEBLOCK_CLICK_TO_PICK: "Prendre un bloc",
+    PICKPLACEBLOCK_CLICK_TO_PLACE_NEXT: "Placer un bloc (suivant)",
+    PICKPLACEBLOCK_CLICK_TO_PLACE_PREVIOUS: "Placer un bloc (précédent)",
+    PICKPLACEBLOCK_CLICK_TO_PLACE_INPUT: "Placer un bloc [entrée: #]",
+    MYBACKPACK_REMOVE: "Retirer ce bloc du sac à dos",
+    MYBACKPACK_REMOVE_ALL: "Retirer tous les blocs du sac à dos",
+    MYBACKPACK_REMOVE_ALL_TITLE: "Voulez-vous supprimer tous les blocs du sac à dos ?",
+    MYBACKPACK_IMPORT_BLOCK: "Importer le bloc dans le sac à dos",
+    MYBACKPACK_IMPORT_FILE: "Importer un sac à dos depuis un fichier 'backpack'",
+    MYBACKPACK_IMPORT_WORKSPACE: "Importer tous les blocs de l'espace de travail dans le sac à dos",
+    MYBACKPACK_IMPORT_WORKSPACE_TITLE: "Voulez-vous importer tous les blocs dans le sac à dos ?",
+    MYBACKPACK_WORKSPACE_EXPORT_FILE: "Exporter dans un fichier 'backpack' tous les blocs de l'espace de travail",
+    MYBACKPACK_MYBACKPACK_EXPORT_FILE: "Exporter dans un fichier 'backpack'  tous les blocs du sac à dos",
     //menu tools
     toolsButton_span: "outils",
     wiringButton_span: "câblage de circuits",
@@ -108,6 +119,8 @@ var MSG = {
     cleanConsoleButton_span: "vider la console",
     //lateral panel
     highlightSpan: "surbrillance des blocs déposés",
+    toolboxAutocloseSpan: "fermeture automatique des blocs",
+    toolboxContinuousSpan: "menu classé ou continu",
     minimapSpan: "(dés)active la mini carte",
     accessibilitySpan: "activer le contrôle clavier",
     defaultCursorSpan: "curseur par défaut",
@@ -213,29 +226,29 @@ var MSG = {
     circuitJSmodal_run: "lancer la compilation et simulation du code",
     circuitJSmodal_stop: "arrêter la simulation du code",
     //IDE_functions.js
-    IDE_connect: 'Connexion au port ',
-    IDE_select_port: 'Sélectionner un port COM !!!',
-    IDE_select_board: 'Sélectionner une carte !',
-    IDE_verif_progress: '\nVérification : en cours...\n<i class="fa fa-spinner fa-pulse fa-1_5x fa-fw"></i>',
-    IDE_verif_ok: '\nVérification : OK',
-    IDE_upload1: 'Carte ',
-    IDE_upload2: ' sur port ',
-    IDE_upload3: '\nTéléversement : en cours...\n<i class="fa fa-spinner fa-pulse fa-1_5x fa-fw"></i>',
-    IDE_upload_ok: '\nTéléversement : OK',
-    serialModalTitle_titlebar_span: 'Moniteur série',
-    inputTextSerial: 'Texte',
-    btn_serialSend_span: 'Envoyer',
+    IDE_connect: "Connexion au port ",
+    IDE_select_port: "Sélectionner un port COM !!!",
+    IDE_select_board: "Sélectionner une carte !",
+    IDE_verif_progress: "\nVérification : en cours...\n<i class='fa fa-spinner fa-pulse fa-1_5x fa-fw'></i>",
+    IDE_verif_ok: "\nVérification : OK",
+    IDE_upload1: "Carte ",
+    IDE_upload2: " sur port ",
+    IDE_upload3: "\nTéléversement : en cours...\n<i class='fa fa-spinner fa-pulse fa-1_5x fa-fw'></i>",
+    IDE_upload_ok: "\nTéléversement : OK",
+    serialModalTitle_titlebar_span: "Moniteur série",
+    inputTextSerial: "Texte",
+    btn_serialSend_span: "Envoyer",
     btn_serialConnect_span: "Démarrer",
     btn_serialStop_span: "Déconnecter",
-    btn_serialPeekClear_span: 'Effacer',
-    btn_serialAddTimeStamp_span: 'Horodatage',
-    btn_serialPeekCSV_span: 'Exporter en CSV',
-    btn_serialPeekJSON_span: 'Exporter en JSON',
-    btn_serialChart_span: 'Graphique',
-    btn_serialChartPause_span: 'Pause',
-    btn_serialChartStart_span: 'Tracer',
-    btn_serialChartMin_span: 'Min.',
-    btn_serialChartMax_span: 'Max.',
-    btn_serialChartNb_span: 'Nb.',
-    input_serialChartJSONheaders_span: 'En-tête JSON (;)',
+    btn_serialPeekClear_span: "Effacer",
+    btn_serialAddTimeStamp_span: "Horodatage",
+    btn_serialPeekCSV_span: "Exporter en CSV",
+    btn_serialPeekJSON_span: "Exporter en JSON",
+    btn_serialChart_span: "Graphique",
+    btn_serialChartPause_span: "Pause",
+    btn_serialChartStart_span: "Tracer",
+    btn_serialChartMin_span: "Min.",
+    btn_serialChartMax_span: "Max.",
+    btn_serialChartNb_span: "Nb.",
+    input_serialChartJSONheaders_span: "En-tête JSON (;)",
 };

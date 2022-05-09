@@ -184,7 +184,7 @@ Blockly.Blocks['BOARD_SERIAL_FLUSH'] = {
 };
 Blockly.defineBlocksWithJsonArray(
     [{
-        "type": "bOARD_SERIAL_FORMAT_CSV",
+        "type": "BOARD_SERIAL_FORMAT_CSV",
         "message0": "serialize CSV %1",
         "args0": [{
             "type": "input_dummy"

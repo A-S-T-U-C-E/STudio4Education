@@ -98,6 +98,9 @@ Blockly.Themes.Zelos.categoryStyles = {
     },
     "variable_dynamic_category": {
         "colour": "#FF8C1A"
+    },
+    "backpack_category": {
+        "colour": "#B4BCC0"
     }
 };
 

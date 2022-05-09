@@ -209,6 +209,8 @@ document.getElementById('ArrowheadProviderConfigurationModalForm').addEventListe
 document.getElementById('ArrowheadConsumerConfigurationModalForm').addEventListener('submit', handleFormSubmit);
 document.getElementById('ArrowheadAuthConfigurationModalForm').addEventListener('submit', handleFormSubmit);
 document.getElementById('ArrowheadOrchConfigurationModalForm').addEventListener('submit', handleFormSubmit);
+document.getElementById('PapyrusConfigurationFormServer').addEventListener('submit', handleFormSubmit);
+document.getElementById('PapyrusConfigurationFormArrowhead').addEventListener('submit', handleFormSubmit);
 
 /*
  * WIP

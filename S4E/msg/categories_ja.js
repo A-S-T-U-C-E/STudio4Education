@@ -22,6 +22,7 @@ Blockly.Msg.CAT_ARRAY = "配列";
 Blockly.Msg.CAT_COLOUR = "色";
 Blockly.Msg.CAT_VARIABLES = "変数";
 Blockly.Msg.CAT_FUNCTIONS = "関数";
+Blockly.Msg.CAT_BACKPACK = "Backpack";
 //categories for boards
 Blockly.Msg.CAT_ONBOARD = "Board";
 Blockly.Msg.CAT_ONBOARD_IO = " 入力 / 出力";

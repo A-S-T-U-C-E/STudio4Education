@@ -169,10 +169,13 @@ Code.init = async function() {
     var renderer = match ? match[1] : 'thrasos';
     document.forms.options.elements.rendererMenu.value = renderer;
     Code.genWorkspace(rtl, Code.buildToolbox(), renderer);
-    Code.buildControlPanelForToolbox();
+    // Code.buildControlPanelForToolbox();
     // Skill level menu
-    match = location.search.match(/level=([^&]+)/);
-    var level = match ? match[1] : 'skill1';
+    let level;
+    if (match = location.search.match(/level=([^&]+)/)) {
+        let optionTest = document.getElementById('levelMenu').querySelector('[value="' + match[1] + '"]');
+        level = optionTest ? match[1] : 'skill1';
+    } else level = 'skill1';
     document.forms.options.elements.levelMenu.value = level;
     Code.changeLevel();
     levelMenu.addEventListener('change', Code.changeLevel, true);
@@ -196,24 +199,6 @@ Code.init = async function() {
     changeThemeBlockly(theme);
     changeThemeUI(document.getElementById('interfaceColorMenu').options[document.getElementById('interfaceColorMenu').selectedIndex].value);
     editorLoadThemeList();
-
-    //keyboard nav attribution
-    // var actions = [
-    //     Code.navigationController.ACTION_PREVIOUS,
-    //     Code.navigationController.ACTION_OUT,
-    //     Code.navigationController.ACTION_NEXT,
-    //     Code.navigationController.ACTION_IN,
-    //     Code.navigationController.ACTION_INSERT,
-    //     Code.navigationController.ACTION_MARK,
-    //     Code.navigationController.ACTION_DISCONNECT,
-    //     Code.navigationController.ACTION_TOOLBOX,
-    //     Code.navigationController.ACTION_EXIT,
-    //     Code.navigationController.ACTION_MOVE_WS_CURSOR_UP,
-    //     Code.navigationController.ACTION_MOVE_WS_CURSOR_LEFT,
-    //     Code.navigationController.ACTION_MOVE_WS_CURSOR_DOWN,
-    //     Code.navigationController.ACTION_MOVE_WS_CURSOR_RIGHT
-    // ];
-    // createKeyMappingList(actions);
 
     // function used for dragging and moving splitted windows
     // needs BlocklyWorkspaceOnresize function defined ahead
@@ -339,43 +324,46 @@ Code.init = async function() {
         Code.loadBlocks();
         // sessionStorage.removeItem('loadOnceBlocks');
     }
-    var categoriesKeywordsFilter = Code.getStringParamFromUrl('kwids', '');
-    if (categoriesKeywordsFilter) {
+    let categoriesKeywordsFilter = Code.getStringParamFromUrl('kwids', 'none');
+    if (categoriesKeywordsFilter != 'none') {
         let toolboxConcatFiltered = {
             "kind": "categoryToolbox",
             "contents": []
         };
-        toolboxConcatFiltered = createFilterCategoriesList(toolboxConcatFiltered, categoriesKeywordsFilter)
-        Code.mainWorkspace.updateToolbox(toolboxConcatFiltered);
-        Code.buildControlPanelForToolbox();
-    }
+        let result = createFilterCategoriesList(toolboxConcatFiltered, categoriesKeywordsFilter);
+        Code.mainWorkspace.updateToolbox(result);
+        Code.buildControlPanelForToolbox(result);
+    } else Code.buildControlPanelForToolbox();
+    // const options = {
+    //     contextMenu: true,
+    //     shortcut: true,
+    // }
 };
 
 Code.addPluginToWorkspace = function() {
     Code.mainWorkspace.configureContextMenu = configureContextualMenu.bind(Code.mainWorkspace);
-    //add plugin keyboard navigation
-    Code.navigationController = new NavigationController();
-    Code.navigationController.init();
-    Code.navigationController.addWorkspace(Code.mainWorkspace);
     //add plugin workspace search
     const workspaceSearch = new WorkspaceSearch(Code.mainWorkspace);
     workspaceSearch.init();
+
     //add plugin zoom-to-fit
     const zoomToFit = new ZoomToFitControl(Code.mainWorkspace);
     zoomToFit.init();
     //add workspace backpack plugin
-    const backpackOptions = {
-        contextMenu: {
-            emptyBackpack: true,
-            removeFromBackpack: true,
-            copyToBackpack: true,
-            copyAllToBackpack: true,
-            pasteAllToBackpack: true,
-            disablePreconditionChecks: true,
-        },
-    };
-    const backpack = new Backpack(Code.mainWorkspace, backpackOptions);
-    backpack.init();
+    const backpack = new MyBackpack(Code.mainWworkspace);
+
+    // add plugin CrossTabCopyPaste
+    // const copyPastePlugin = new CrossTabCopyPaste();
+    // const options = {
+    //     contextMenu: true,
+    //     shortcut: true,
+    // }
+    // copyPastePlugin.init(options);
+    // optional: Remove the duplication command from Blockly's context menu.
+    // Blockly.ContextMenuRegistry.registry.unregister('blockDuplicate');
+    // optional: You can change the position of the menu added to the context menu.
+    // Blockly.ContextMenuRegistry.registry.getItem('blockCopyToStorage').weight = 2;
+    // Blockly.ContextMenuRegistry.registry.getItem('blockPasteFromStorage').weight = 3;
 }
 
 /**
@@ -450,11 +438,10 @@ Code.injectLanguageStrings = function() {
     document.getElementById('saveCodeButton_span_menu').textContent = MSG['saveCodeButton_span'];
     document.getElementById('resetButton_span_menu').textContent = MSG['resetButton_span'];
     document.getElementById('helpButton_span_menu').textContent = MSG['helpButton_span'];
-    // document.getElementById('parametersButton_span_menu').textContent = MSG['setup_sideButton_span'];
     document.getElementById('lateral-panel-setup-label').title = MSG['setup_sideButton_span'];
     document.getElementById('sketch_name_wrapper').title = MSG['sketch_name_wrapper'];
     document.getElementById('sketch_name').title = MSG['sketch_name_wrapper'];
-    document.getElementsByName('sketch_name')[0].placeholder = MSG['sketch_name_default'];
+    // document.getElementsByName('sketch_name')[0].placeholder = MSG['sketch_name_default'];
     document.getElementById('helpButton').title = MSG['helpButton_span'];
     document.getElementById('helpModalSpan_title').innerHTML = MSG['helpModalSpan_title'];
     document.getElementById('helpModalSpan_text').innerHTML = MSG['helpModalSpan_text'];
@@ -468,7 +455,6 @@ Code.injectLanguageStrings = function() {
     // menu tools
     document.getElementById('toolsButton').title = MSG['toolsButton_span'];
     document.getElementById('wiringButton').title = MSG['wiringButton_span'];
-    document.getElementById('factoryButton').title = MSG['factoryButton_span'];
     document.getElementById('factoryButton').title = MSG['factoryButton_span'];
     document.getElementById('htmlButton').title = MSG['htmlButton_span'];
     document.getElementById('colorConversionButton').title = MSG['colorConversionButton_span'];
@@ -505,6 +491,8 @@ Code.injectLanguageStrings = function() {
     //setup panel
     document.getElementById('config_UI_title_span').textContent = MSG['config_UI_title_span'];
     document.getElementById('highlightSpan').textContent = MSG['highlightSpan'];
+    document.getElementById('toolboxAutocloseSpan').textContent = MSG['toolboxAutocloseSpan'];
+    document.getElementById('toolboxContinuousSpan').textContent = MSG['toolboxContinuousSpan'];
     document.getElementById('minimapSpan').textContent = MSG['minimapSpan'];
     document.getElementById('accessibilitySpan').textContent = MSG['accessibilitySpan'];
     document.getElementById('defaultCursorSpan').textContent = MSG['defaultCursorSpan'];
@@ -591,21 +579,6 @@ Code.injectLanguageStrings = function() {
     document.getElementById('circuitJSmodalTitle').textContent = MSG['circuitJSmodalTitle_titlebar'];
     // serial modal
     document.getElementById('serialModalTitle_titlebar_span').textContent = MSG['serialModalTitle_titlebar_span'];
-    //keyboard nav
-    // Blockly.navigation.ACTION_PREVIOUS.name = MSG['actionName0'];
-    // Blockly.navigation.ACTION_OUT.name = MSG['actionName1'];
-    // Blockly.navigation.ACTION_NEXT.name = MSG['actionName2'];
-    // Blockly.navigation.ACTION_IN.name = MSG['actionName3'];
-    // Blockly.navigation.ACTION_INSERT.name = MSG['actionName4'];
-    // Blockly.navigation.ACTION_MARK.name = MSG['actionName5'];
-    // Blockly.navigation.ACTION_DISCONNECT.name = MSG['actionName6'];
-    // Blockly.navigation.ACTION_TOOLBOX.name = MSG['actionName7'];
-    // Blockly.navigation.ACTION_EXIT.name = MSG['actionName8'];
-    // Blockly.navigation.ACTION_MOVE_WS_CURSOR_UP.name = MSG['actionName9'];
-    // Blockly.navigation.ACTION_MOVE_WS_CURSOR_LEFT.name = MSG['actionName10'];
-    // Blockly.navigation.ACTION_MOVE_WS_CURSOR_DOWN.name = MSG['actionName11'];
-    // Blockly.navigation.ACTION_MOVE_WS_CURSOR_RIGHT.name = MSG['actionName12'];
-
 };
 
 /**
@@ -632,11 +605,28 @@ Code.discard = function() {
 };
 
 // Load Blockly's language strings.
-document.write('<script async src="./@blockly/msg/js/' + Code.LANG + '.js"></script>\n');
+let script1 = document.createElement("script");
+script1.type = "text/javascript";
+script1.src = "./@blockly/msg/js/" + Code.LANG + ".js";
+(document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script1);
+let script2 = document.createElement("script");
+script2.type = "text/javascript";
+script2.src = "./msg/UI_" + Code.LANG + ".js";
+(document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script2);
+let script3 = document.createElement("script");
+script3.type = "text/javascript";
+script3.src = "./S4E/msg/blocks_" + Code.LANG + ".js";
+(document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script3);
+let script4 = document.createElement("script");
+script4.type = "text/javascript";
+script4.src = "./S4E/msg/categories_" + Code.LANG + ".js";
+(document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script4);
+
+// document.write('<script async src="./@blockly/msg/js/' + Code.LANG + '.js"></script>\n');
+// document.write('<script async src="./msg/UI_' + Code.LANG + '.js"></script>\n');
+// document.write('<script async src="./S4E/msg/blocks_' + Code.LANG + '.js"></script>\n');
+// document.write('<script async src="./S4E/msg/categories_' + Code.LANG + '.js"></script>\n');
 
 // Load language strings.
-document.write('<script async src="./msg/UI_' + Code.LANG + '.js"></script>\n');
-document.write('<script async src="./S4E/msg/blocks_' + Code.LANG + '.js"></script>\n');
-document.write('<script async src="./S4E/msg/categories_' + Code.LANG + '.js"></script>\n');
 
 window.addEventListener('load', Code.init);

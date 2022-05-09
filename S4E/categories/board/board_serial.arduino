@@ -130,7 +130,7 @@ Blockly.Arduino['board_serial_formatJSON'] = function(block) {
     return code;
 };
 
-Blockly.Arduino['bOARD_SERIAL_FORMAT_CSV'] = function(block) {
+Blockly.Arduino['BOARD_SERIAL_FORMAT_CSV'] = function(block) {
     var i = 0;
     var j = 0;
     var k = 0;

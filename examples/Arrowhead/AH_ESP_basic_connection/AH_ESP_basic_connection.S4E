@@ -1,0 +1,113 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="e|G?zr)v?n5+8}9Wd~XS">result</variable>
+  </variables>
+  <block type="BOARD_BASE_SETUP" id="sGbDV[[zQDWThUOb50nQ" x="63" y="113">
+    <statement name="SETUP">
+      <block type="BOARD_SERIAL_INIT" id="1.v5K,u^g/!$iIYO~A]j">
+        <field name="SPEED">115200</field>
+        <next>
+          <block type="AHF_ESP_DEFINE" id="nEzh.9g16=XOwe;9QTyz">
+            <value name="KEY">
+              <block type="text" id="UDaSCKBm~(qbkY@6`j(;">
+                <field name="TEXT"></field>
+              </block>
+            </value>
+            <value name="CONFIG_NETWORK">
+              <block type="text" id="4AZtq5_V=)k(,nD4WHs,">
+                <field name="TEXT">netConfig.json</field>
+              </block>
+            </value>
+            <value name="CONFIG_SSL">
+              <block type="text" id="YBB./P}w5=P%n`.F9XP$">
+                <field name="TEXT">sslConfig.json</field>
+              </block>
+            </value>
+            <value name="CONFIG_PROVIDER">
+              <block type="text" id="!*z.ks3%wnL%ScV6[^tA">
+                <field name="TEXT">providerConfig.json</field>
+              </block>
+            </value>
+            <next>
+              <block type="AHF_ESP_SERVICE_REGISTRY_DEF" id="*aHnqe*?=9p64rN0lc-b">
+                <field name="SECURE">NOT_SECURE</field>
+                <value name="INTERFACE">
+                  <block type="text" id="t}0t~wrI$DyGZST-d]@H">
+                    <field name="TEXT">HTTP-INSECURE-SenML</field>
+                  </block>
+                </value>
+                <value name="endOfValidity">
+                  <block type="text_date" id="|JtIK0`O6YljO%fx=:_h">
+                    <field name="DATE">2021-12-01</field>
+                  </block>
+                </value>
+                <value name="VERSION">
+                  <block type="math_number" id="I8]KqSeZYUWK;.X$p2?*">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <value name="PATH">
+                  <block type="text" id="Y*NN4uxHqrf2a#GfC1(U">
+                    <field name="TEXT">/</field>
+                  </block>
+                </value>
+                <value name="NAME">
+                  <block type="text" id="1.lrPbbY%[Vz^@h^!?D0">
+                    <field name="TEXT">esp4ds18b20</field>
+                  </block>
+                </value>
+                <value name="SERVICE_DEFINITION">
+                  <block type="text" id="_dliYOtEz]BWv(cj`JlX">
+                    <field name="TEXT">tempESP4</field>
+                  </block>
+                </value>
+                <value name="IP">
+                  <block type="text" id="Pajqf@K9~sb#%LVC60V:">
+                    <field name="TEXT">91.161.102.110</field>
+                  </block>
+                </value>
+                <value name="PORT">
+                  <block type="math_number" id=";0O]duw#Me_fK5{Br3t(">
+                    <field name="NUM">8993</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="W_]yzbJ+tw_Ca6.$CO7A">
+                    <field name="VAR" id="e|G?zr)v?n5+8}9Wd~XS">result</field>
+                    <value name="VALUE">
+                      <block type="AHF_ESP_SR_REGISTER_TEST" id="jb]i=.;2ZZk$,*w_v@YL"></block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="BOARD_BASE_LOOP" id="UXh/7Cre=TJp-f6k4n%9" x="63" y="812">
+    <statement name="LOOP">
+      <block type="AHF_ESP_KEEP_CONNECTION" id="taq.E2K|qj|s~F`vm[*q">
+        <next>
+          <block type="BOARD_SERIAL_PRINT" id="W6E!u5#v+GD!m.|H525`">
+            <value name="CONTENT">
+              <block type="variables_get" id="kzP27c]@(QdyRG7m.(%z">
+                <field name="VAR" id="e|G?zr)v?n5+8}9Wd~XS">result</field>
+              </block>
+            </value>
+            <next>
+              <block type="BOARD_BASE_TIME_DELAY" id="FNQZ$+.gPvk0Jufh?hEl">
+                <value name="DELAY_TIME">
+                  <block type="math_number" id="$H^?PVJ]$eRcsABZP,#P">
+                    <field name="NUM">1000</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

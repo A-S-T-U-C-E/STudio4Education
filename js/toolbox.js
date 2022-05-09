@@ -21,15 +21,16 @@ jsonToolbox["contents"][4] = toolbox_standard["contents"][4];
 jsonToolbox["contents"][5] = toolbox_standard["contents"][5];
 jsonToolbox["contents"][6] = toolbox_standard["contents"][6];
 jsonToolbox["contents"][7] = toolbox_standard["contents"][7];
-jsonToolbox["contents"][8] = toolbox_board["contents"][0];
-jsonToolbox["contents"][9] = toolbox_servo["contents"][0];
-jsonToolbox["contents"][10] = toolbox_ds18b20["contents"][0];
-jsonToolbox["contents"][11] = toolbox_relay["contents"][0];
-jsonToolbox["contents"][12] = toolbox_DHT["contents"][0];
-jsonToolbox["contents"][13] = toolbox_X_NUCLEO_IKS01A3["contents"][0];
-jsonToolbox["contents"][14] = toolbox_arrowhead["contents"][0];
-jsonToolbox["contents"][15] = toolbox_GROVE["contents"][0];
-jsonToolbox["contents"][16] = toolbox_communication["contents"][0];
+jsonToolbox["contents"][8] = toolbox_standard["contents"][8];
+jsonToolbox["contents"][9] = toolbox_board["contents"][0];
+jsonToolbox["contents"][10] = toolbox_servo["contents"][0];
+jsonToolbox["contents"][11] = toolbox_ds18b20["contents"][0];
+jsonToolbox["contents"][12] = toolbox_relay["contents"][0];
+jsonToolbox["contents"][13] = toolbox_DHT["contents"][0];
+jsonToolbox["contents"][14] = toolbox_X_NUCLEO_IKS01A3["contents"][0];
+jsonToolbox["contents"][15] = toolbox_arrowhead["contents"][0];
+jsonToolbox["contents"][16] = toolbox_GROVE["contents"][0];
+jsonToolbox["contents"][17] = toolbox_communication["contents"][0];
 /**
  * Build the toolbox using toolbox definition in json files
  */
@@ -128,20 +129,26 @@ Code.filterCategoriesKeywords = function() {
                 })
             toolboxIds = toolboxIds.slice(0, -1);
             window.localStorage.toolboxids = toolboxIds;
-            toolboxIds = toolboxIds.split(",");
             var search = window.location.search;
             if (search.length <= 1) {
-                search = '?cat=' + toolboxIds;
-            } else if (search.match(/[?&]cat=[^&]*/)) {
-                search = search.replace(/([?&]cat=)[^&]*/, '$1' + toolboxIds);
+                search = '?kwids=' + window.localStorage.toolboxKwIds;
+            } else if (search.match(/[?&]kwids=[^&]*/)) {
+                search = search.replace(/([?&]kwids=)[^&]*/, '$1' + window.localStorage.toolboxKwIds);
             } else {
-                search = search.replace(/\?/, '?cat=' + toolboxIds + '&');
+                search = search.replace(/\?/, '?kwids=' + window.localStorage.toolboxKwIds + '&');
             }
             history.replaceState({}, 'search', search);
             document.getElementById(id).style.display = 'none';
         }
         if (btnName == "filterModalDialog_filter") {
-            let result = createFilterCategoriesList(toolboxConcatFiltered, '');
+            var markedCheckbox = document.getElementsByName('filterCategory');
+            let markedCheckboxValues = '';
+            for (let checkboxToTest of markedCheckbox) {
+                if (checkboxToTest.checked)
+                    markedCheckboxValues += checkboxToTest.value + ',';
+            }
+            markedCheckboxValues = markedCheckboxValues.slice(0, -1);
+            let result = createFilterCategoriesList(toolboxConcatFiltered, markedCheckboxValues);
             if (result != 'noCheckedCategory') {
                 Code.mainWorkspace.updateToolbox(result);
                 Code.buildControlPanelForToolbox();
@@ -158,25 +165,34 @@ Code.filterCategoriesKeywords = function() {
             $('#categories_content')[0].innerHTML = '';
             let toolboxReload = Code.buildToolbox();
             Code.buildControlPanelForToolbox(toolboxReload);
+            let sourceURL = window.location.href;
+            let rtn = sourceURL.split("?")[0],
+                param,
+                params_arr = [],
+                queryString = (sourceURL.indexOf("?") !== -1) ? sourceURL.split("?")[1] : "";
+            if (queryString !== "") {
+                params_arr = queryString.split("&");
+                for (let i = params_arr.length - 1; i >= 0; i -= 1) {
+                    param = params_arr[i].split("=")[0];
+                    if (param === 'kwids') {
+                        params_arr.splice(i, 1);
+                    }
+                }
+                if (params_arr.length) rtn = rtn + "?" + params_arr.join("&");
+            }
+            history.pushState({}, '', rtn);
         }
     }
 }
 
 function createFilterCategoriesList(toolboxConcatFiltered, markedCheckboxValues) {
     let skillLevel = document.getElementById('levelMenu').value.slice(-1);
-    if (!markedCheckboxValues) {
-        var markedCheckbox = document.getElementsByName('filterCategory');
-        for (let checkboxToTest of markedCheckbox) {
-            if (checkboxToTest.checked)
-                markedCheckboxValues += checkboxToTest.value + ',';
-        }
-    }
     if (typeof markedCheckboxValues !== 'undefined' && markedCheckboxValues.length > 0) {
-        markedCheckboxValues = markedCheckboxValues.slice(0, -1).split(",");
+        markedCheckboxValues = markedCheckboxValues.split(",");
         toolboxConcatFiltered["contents"] = [];
         // copy first algorithmic elements: logic, loops, etc
         // ONLY WAY TO DEEP COPY AN ARRAY!
-        for (let i = 0; i < 8; i++)
+        for (let i = 0; i < 9; i++)
             toolboxConcatFiltered["contents"][i] = JSON.parse(JSON.stringify(jsonToolbox["contents"][i]));
         //needed for recursive search in array
         function checkVal(array, value) {
@@ -192,6 +208,8 @@ function createFilterCategoriesList(toolboxConcatFiltered, markedCheckboxValues)
                 return entry === value;
             });
         }
+        // var jsonToolboxFilteredTemp;
+        let jsonToolboxFilteredTempToKeep = [];
         for (let value of markedCheckboxValues) {
             let jsonToolboxFiltered = {};
             // ONLY WAY TO DEEP COPY AN ARRAY!
@@ -215,15 +233,18 @@ function createFilterCategoriesList(toolboxConcatFiltered, markedCheckboxValues)
                     });
                 }
             });
-            // "filter": delete empty keys and categories
             let jsonToolboxFilteredTemp = jsonToolboxFiltered.filter(block =>
                 (block.kind == "category" && Array.isArray(block.contents) && block.contents.length > 0) ||
                 (block.kind == "block" && (block.levels.indexOf(skillLevel) > -1) && (block.id.indexOf(value) > -1))
             );
-            //concat new elements with older ones
-            toolboxConcatFiltered["contents"] = [...new Set([...toolboxConcatFiltered["contents"], ...jsonToolboxFilteredTemp])];
+            for (let i = 0; i < jsonToolboxFilteredTemp.length; i++) {
+                if (JSON.stringify(jsonToolboxFilteredTempToKeep).indexOf(jsonToolboxFilteredTemp[i].name) < 0)
+                    jsonToolboxFilteredTempToKeep.push(JSON.parse(JSON.stringify(jsonToolboxFilteredTemp[i])));
+            }
         }
+        toolboxConcatFiltered["contents"] = [...new Set([...toolboxConcatFiltered["contents"], ...jsonToolboxFilteredTempToKeep])];
         toolboxConcatFiltered["contents"].sort();
+        window.localStorage.toolboxKwIds = markedCheckboxValues.toString();
         return toolboxConcatFiltered;
     } else return 'noCheckedCategory';
 }
@@ -238,10 +259,10 @@ Code.buildToolbox = function() {
     // set the default toolbox if none
     if (toolboxIds === undefined || toolboxIds === "") {
         if (boardSelected) {
-            toolboxIds = 'LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES_TYPED,FUNCTIONS,ONBOARD';
+            toolboxIds = 'LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES_TYPED,FUNCTIONS,BACKPACK,ONBOARD';
             window.localStorage.defaultToolbox = 1;
         } else {
-            toolboxIds = 'LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES_TYPED,FUNCTIONS';
+            toolboxIds = 'LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES_TYPED,FUNCTIONS,BACKPACK';
             window.localStorage.defaultToolbox = 0;
         }
     } else {
@@ -309,35 +330,6 @@ Code.buildControlPanelForToolbox = function(newToolbox) {
             $('#categoriesSelectList')[0].innerHTML += ligne;
         }
     }
-}
-Code.buildControlPanelForToolbox3 = function() {
-    var ligne = '';
-    var rankInDisplayedToolbox = {};
-    var level = Code.getStringParamFromUrl('level', '').slice(-1);
-    for (let i = 0; i < jsonToolbox.contents.length; i++) {
-        if (jsonToolbox.contents[i].level == level) {
-            rankInDisplayedToolbox = Code.mainWorkspace.getToolbox().getToolboxItems().findIndex(x => x['id_'] == jsonToolbox.contents[i].toolboxitemid);
-            if (rankInDisplayedToolbox >= 0) {
-                ligne = '<input type="checkbox" checked="checked" onchange="toggleCategory(' + rankInDisplayedToolbox + ')" name="checkbox_' + rankInDisplayedToolbox + '" id="checkbox_' + rankInDisplayedToolbox + '"/> ' +
-                    '<span id="checkboxSpan_' + rankInDisplayedToolbox + '">' + Code.mainWorkspace.getToolbox().getToolboxItems()[rankInDisplayedToolbox]['name_'] + '</span><br/>';
-                id_liste += jsonToolbox.contents[i].toolboxitemid + ',';
-                $('#categories_content')[0].innerHTML += ligne;
-            } else if (window.localStorage.defaultToolbox != 2) {
-                ligne = '<input type="checkbox" onchange="toggleCategory(' + rankInDisplayedToolbox + ')" name="checkbox_' + rankInDisplayedToolbox + '" id="checkbox_' + rankInDisplayedToolbox + '"/> ' +
-                    '<span id="checkboxSpan_' + rankInDisplayedToolbox + '">' + Code.mainWorkspace.getToolbox().getToolboxItems()[rankInDisplayedToolbox]['name_'] + '</span><br/>';
-                $('#categories_content')[0].innerHTML += ligne;
-            }
-        }
-        // if (Code.mainWorkspace.getToolbox().getToolboxItems()[i]['parent_'] == null) {
-        //     ligne = '<input type="checkbox" onchange="toggleCategory(' + jsonToolbox.contents[i].toolboxitemid + ')" name="checkbox_' + jsonToolbox.contents[i].toolboxitemid + '" id="checkbox_' + jsonToolbox.contents[i].toolboxitemid + '"/> ' +
-        //         '<span id="checkboxSpan_' + jsonToolbox.contents[i].toolboxitemid + '">' + Code.mainWorkspace.getToolbox().getToolboxItems()[i]['name_'] + '</span><br/>';
-        //     $('#categories_content')[0].innerHTML += ligne;
-        // }
-    }
-    // default is hiding everything else than basis categories
-    for (var j = (8 + parseInt(window.localStorage.defaultToolbox)); j <= rankInDisplayedToolbox; j++)
-        if (document.getElementById('checkbox_' + j) != null)
-            document.getElementById('checkbox_' + j).click();
 }
 
 /**

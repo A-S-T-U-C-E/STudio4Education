@@ -19,7 +19,7 @@ dht.grove ;Grove DHT sensor;Grove DHT11/21/22 temperature sensor;s;1,2,3
 led_bar.grove ;Grove bar graphe;Grove bar graphe;a;1,2,3
 wifi_uart.grove ;Grove UART WiFi module;Grove UART WiFi module, use ESP as gateway;c;1,2,3
 lcd_rgb.grove ;Grove LCD with RGB backlight;Grove LCD with RGB backlight;a;1,2,3
-angular.servo;Angular servomotor;Servomotor 0~180°;a;2,3
+angular.servo;Angular servomotor;Servomotor 0~180Â°;2,3
 continuous.servo;Continuous rotation servomotor;continuous rotation servomotor;a;2,3
 temperature.x_nucleo_iks01a3;Onboard temperature sensor;X-NUCLEO-IKS01A3 temperature sensor;s;2,3
 humidity.x_nucleo_iks01a3;Onboard humidity sensor;X-NUCLEO-IKS01A3 humidity sensor;s;2,3

@@ -11,14 +11,6 @@ var MSG = {
     btnClose: "close application",
     blocks: "Blocks",
     prog: "Program",
-    catLogic: "Logic",
-    catLoops: "Loops",
-    catMath: "Math",
-    catText: "Text",
-    catLists: "Lists",
-    catColour: "Colour",
-    catVariables: "Variables",
-    catFunctions: "Functions",
     listVariable: "list",
     textVariable: "text",
     screenshot: "Download Screenshot",
@@ -61,15 +53,34 @@ var MSG = {
     resetQuestion_span: "Reset S4E and",
     helpButton_span: "help",
     helpModalSpan_title: "Help / About",
-    helpModalSpan_text: '<img src="./S4E/media/logo_only.png" alt="" style="height:100px; float:left; margin: 0 10px 10px 0;" />' +
-        '<p style="text-align: left;">Designed for <a href="https://www.arrowhead.eu/arrowheadtools" rel="nofollow"><strong>Arrowhead</strong> Tools Project</a>, S4E is a <strong>web-based visual programming editor for <a href="https://www.st.com" rel="nofollow">STmicroelectronics</a></strong> boards, thanks to <a href="https://developers.google.com/blockly/" rel="nofollow">Blockly</a>, the web-based, graphical programming editor.</p>' +
-        '<p style="text-align: left;">STudio4Education provides static type language blocks and code generators for simple C programming.</p>' +
-        '<p style="text-align: left;">Accessibility: <a href="https://github.com/A-S-T-U-C-E/STudio4Education#accessibility">online documentation</a>.</br>' +
-        'Wiki : <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki">on Github</a>.</br>' +
-        'A bug? Post it here: <a href="https://github.com/A-S-T-U-C-E/STudio4Education/issues">on Github</a>.</br>' +
-        'Thanks & libraries: <a href="https://github.com/A-S-T-U-C-E/STudio4Education/wiki/Thanks">on Github</a>.</p>' +
-        '<p style="text-align: center;">v0.9.3 - BSD3 license - Sébastien CANET' +
-        '<p style="text-align: center;"><a href = (https://www.paypal.com/fr/cgi-bin/webscr?cmd=_flow&SESSION=o8z3KNFl16Tjlxhk1mBekCcRsG_3_NDe0CfWh8b1vfSYIbMxJnwa92YwM3y&dispatch=5885d80a13c0db1f8e263663d3faee8d4fe1dd75ca3bd4f11d72275b28239088">Thanks for donation with Paypal to help me improve this software.</br><img src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif" alt="Paypal"/></a></p>',
+    helpModalSpan_text: "<img src='./S4E/media/logo_only.png' alt='' style='height:100px; float:left; margin: 0 10px 10px 0;' />" +
+        "<p style='text-align: left;'>Designed for <a href='https://www.arrowhead.eu/arrowheadtools' rel='nofollow'><strong>Arrowhead</strong> Tools Project</a>, S4E is a <strong>web-based visual programming editor for <a href='https://www.st.com' rel='nofollow'>STmicroelectronics</a></strong> boards, thanks to <a href='https://developers.google.com/blockly/' rel='nofollow'>Blockly</a>, the web-based, graphical programming editor.</p>" +
+        "<p style='text-align: left;'>STudio4Education provides static type language blocks and code generators for simple C programming.</p>" +
+        "<p style='text-align: left;'>Accessibility: <a href='https://github.com/A-S-T-U-C-E/STudio4Education#accessibility'>online documentation</a>.</br>" +
+        "Wiki : <a href='https://github.com/A-S-T-U-C-E/STudio4Education/wiki'>on Github</a>.</br>" +
+        "A bug? Post it here: <a href='https://github.com/A-S-T-U-C-E/STudio4Education/issues'>on Github</a>.</br>" +
+        "Thanks & libraries: <a href='https://github.com/A-S-T-U-C-E/STudio4Education/wiki/Thanks'>on Github</a>.</p>" +
+        "<p style='text-align: center;'>v0.9.5 - BSD3 license - Sébastien CANET" +
+        "<p style='text-align: center;'><a href='https://www.paypal.com/donate/?business=KBQDU3S6FWQU8&no_recurring=0&item_name=Thanks+for+donation+with+Paypal+to+help+me+improve+this+software.&currency_code=EUR'>Thanks for donation with Paypal to help me improve this software.</br><img src='https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif' alt='Paypal'/></a></p>",
+    CROSS_TAB_COPY: "Copy",
+    CROSS_TAB_PASTE: "Paste",
+    INSERTBLOCKS_WORKSPACE_BLOCK_EXPORT: "Export selected block to block file",
+    INSERTBLOCKS_WORKSPACE_BLOCK_INSERT: "Insert a block into workspace from block file",
+    PICKPLACEBLOCK_PICKPLACE_ENABLED: "Enable pick/place block",
+    PICKPLACEBLOCK_PICKPLACE_DISABLED: "Disable pick/place block",
+    PICKPLACEBLOCK_CLICK_TO_PICK: "Pick block",
+    PICKPLACEBLOCK_CLICK_TO_PLACE_NEXT: "Place block (next)",
+    PICKPLACEBLOCK_CLICK_TO_PLACE_PREVIOUS: "Place block (previous)",
+    PICKPLACEBLOCK_CLICK_TO_PLACE_INPUT: "Place block [input: #]",
+    MYBACKPACK_REMOVE: "Remove this block from backpack",
+    MYBACKPACK_REMOVE_ALL: "Remove all blocks from backpack",
+    MYBACKPACK_REMOVE_ALL_TITLE: "Are you sure to remove all blocks from backpack?",
+    MYBACKPACK_IMPORT_BLOCK: "Copy block to backpack",
+    MYBACKPACK_IMPORT_FILE: "Import a backpack from backpack file",
+    MYBACKPACK_IMPORT_WORKSPACE: "Import to backpack all blocks from workspace",
+    MYBACKPACK_IMPORT_WORKSPACE_TITLE: "Are you sure to copy to backpack all blocks from workspace?",
+    MYBACKPACK_WORKSPACE_EXPORT_FILE: "Export to backpack file all blocks from workspace",
+    MYBACKPACK_MYBACKPACK_EXPORT_FILE: "Export to backpack file all blocks from backpack",
     //menu tools
     toolsButton_span: "tools",
     wiringButton_span: "wiring",
@@ -105,6 +116,8 @@ var MSG = {
     cleanConsoleButton_span: "clean console content",
     //lateral panel
     highlightSpan: "highlights the content on the workspace",
+    toolboxAutocloseSpan: "toolbox autoclose",
+    toolboxContinuousSpan: "continuous toolbox",
     minimapSpan: "(de)activate minimap",
     accessibilitySpan: "enable Accessibility Mode",
     defaultCursorSpan: "Default Cursor",
@@ -210,29 +223,29 @@ var MSG = {
     circuitJSmodal_run: "compile and run code simulation",
     circuitJSmodal_stop: "stop simulation",
     //IDE_functions.js
-    IDE_connect: 'Connect to port ',
-    IDE_select_port: 'Select a port !',
-    IDE_select_board: 'Select a board !',
-    IDE_verif_progress: '\nVerification: in progress...\n<i class="fa fa-spinner fa-pulse fa-1_5x fa-fw"></i>',
-    IDE_verif_ok: '\nVerification: OK',
-    IDE_upload1: 'Board ',
-    IDE_upload2: ' on port ',
-    IDE_upload3: '\nupload: in progress...\n<i class="fa fa-spinner fa-pulse fa-1_5x fa-fw"></i>',
-    IDE_upload_ok: '\nupload: OK',
-    serialModalTitle_titlebar_span: 'Serial monitor',
-    inputTextSerial: 'Text',
-    btn_serialSend_span: 'Send',
-    btn_serialConnect_span: 'Start connection',
+    IDE_connect: "Connect to port ",
+    IDE_select_port: "Select a port !",
+    IDE_select_board: "Select a board !",
+    IDE_verif_progress: "\nVerification: in progress...\n<i class='fa fa-spinner fa-pulse fa-1_5x fa-fw'></i>",
+    IDE_verif_ok: "\nVerification: OK",
+    IDE_upload1: "Board ",
+    IDE_upload2: " on port ",
+    IDE_upload3: "\nupload: in progress...\n<i class='fa fa-spinner fa-pulse fa-1_5x fa-fw'></i>",
+    IDE_upload_ok: "\nupload: OK",
+    serialModalTitle_titlebar_span: "Serial monitor",
+    inputTextSerial: "Text",
+    btn_serialSend_span: "Send",
+    btn_serialConnect_span: "Start connection",
     btn_serialStop_span: "Stop",
-    btn_serialPeekClear_span: 'Clean',
-    btn_serialAddTimeStamp_span: 'Timestamp',
-    btn_serialPeekCSV_span: 'Export CSV',
-    btn_serialPeekJSON_span: 'Export JSON',
-    btn_serialChart_span: 'Graph',
-    btn_serialChartPause_span: 'Pause',
-    btn_serialChartStart_span: 'Restart',
-    btn_serialChartMin_span: 'Min.',
-    btn_serialChartMax_span: 'Max.',
-    btn_serialChartNb_span: 'Nb.',
-    input_serialChartJSONheaders_span: 'JSON headers (;)'
+    btn_serialPeekClear_span: "Clean",
+    btn_serialAddTimeStamp_span: "Timestamp",
+    btn_serialPeekCSV_span: "Export CSV",
+    btn_serialPeekJSON_span: "Export JSON",
+    btn_serialChart_span: "Graph",
+    btn_serialChartPause_span: "Pause",
+    btn_serialChartStart_span: "Restart",
+    btn_serialChartMin_span: "Min.",
+    btn_serialChartMax_span: "Max.",
+    btn_serialChartNb_span: "Nb.",
+    input_serialChartJSONheaders_span: "En-tête JSON (;)",
 };

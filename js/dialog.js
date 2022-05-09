@@ -255,7 +255,7 @@ function serialMonitorModalDialog_maxi_mini() {
 // return a matrix if an element has right class
 if (!document.getElementsByClassName) {
     document.getElementsByClassName = function(cl, tag) {
-        var els, matches = [],
+        let els, matches = [],
             i = 0,
             len,
             regex = new RegExp('(?:\\s|^)' + cl + '(?:\\s|$)');
@@ -370,17 +370,30 @@ for (var i = 0; i < accordion.length; i++) {
     });
 }
 
-var accordion2 = document.getElementsByClassName("accordion2nde");
-for (var i = 0; i < accordion2.length; i++) {
-    accordion2[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.maxHeight) {
-            panel.style.maxHeight = null;
-        } else {
-            panel.style.maxHeight = panel.scrollHeight + 15 + "px";
-        }
-    });
+var accordionSub = document.getElementsByClassName("accordionSub");
+for (var i = 0; i < accordionSub.length; i++) {
+    if (accordionSub[i].id != "arrowheadConfig")
+        accordionSub[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + 15 + "px";
+            }
+        });
+    else
+        accordionSub[i].addEventListener("click", function() {
+            if (document.getElementById('arrowheadManagementInput').value == process.env.ARROWHEAD_SETTINGS) {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + 15 + "px";
+                }
+            } else Blockly.alert("Wrong password");
+        });
 }
 /*
  * Icons button mouser over
@@ -512,12 +525,6 @@ function iconsButtonMouserOver() {
     document.getElementById('resetButton').onmouseout = function() {
         document.getElementById("content_hoverButton").textContent = "";
     };
-    // document.getElementById('parametersButton').onmouseover = function() {
-    //     document.getElementById("content_hoverButton").textContent = MSG['setup_sideButton_span'];
-    // };
-    // document.getElementById('parametersButton').onmouseout = function() {
-    //     document.getElementById("content_hoverButton").textContent = "";
-    // };
     document.getElementById('sketch_name_wrapper').onmouseover = function() {
         document.getElementById("content_hoverButton").textContent = MSG['sketch_name_wrapper'];
     };

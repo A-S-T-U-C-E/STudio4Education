@@ -525,7 +525,7 @@ flex.content_wrapper {
     height: 97%;
     right: 0px;
     bottom: 0px;
-    padding: 5px;
+    /* padding: 5px; */
     margin: 0;
     border: 0;
     background-color: #ffffff;

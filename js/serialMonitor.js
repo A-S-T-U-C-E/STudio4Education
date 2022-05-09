@@ -84,11 +84,86 @@ function createGraph() {
     });
 }
 
-
 /**
  * @name readLoop
  * Reads data from the input stream and displays it on screen.
  */
+async function readLoopToTest() {
+    let labels = ["toto", "titi", "tutu", "tata"];
+    var datagueule = [];
+    document.getElementById("input_serialChartJSONheaders").addEventListener('input', (event) => {
+        datagueule = [25, 30, 12, 18];
+        Code.chart.data.datasets = [];
+        for (let i = 0; i < datagueule.length; i++) {
+            let newDataSet = {
+                label: labels[i],
+                borderColor: "#FF" + String(i) + String(i),
+                // backgroundColor: '#03234b',
+                data: datagueule[i],
+                fill: false,
+                pointStyle: 'circle',
+                pointRadius: 2,
+                pointHoverRadius: 7,
+                lineTension: 0,
+            }
+            Code.chart.data.datasets.push(newDataSet);
+        }
+        Code.chart.update();
+        if (!document.getElementById("input_serialChartJSONheaders").value)
+            document.getElementById("input_serialChartJSONheaders").removeEventListener('change');
+    });
+    while (true) {
+        const { value, done } = await reader.read();
+        if (value) {
+            if (document.getElementById('btn_serialAddTimeStamp').checked) {
+                document.getElementById('inputSerialPeek').value += getDateString() + " -> ";
+            }
+            document.getElementById("inputSerialPeek").value += value + "\n";
+            document.getElementById('inputSerialPeek').scrollTop = document.getElementById('inputSerialPeek').scrollHeight;
+            document.getElementById('inputSerialPeek').animate({
+                scrollTop: document.getElementById('inputSerialPeek').scrollHeight
+            });
+            if (graph) {
+                let today = new Date();
+                let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                let truc = Math.round(Math.random(value) * 100);
+                if (Code.chart.data.labels.length != document.getElementById("input_serialChartZoomLength").value) { //If we have less than 15 data points in the graph
+                    Code.chart.data.labels.push(time); //Add time in x-asix
+                    Code.chart.data.datasets.forEach(dataset => {
+                        console.log(Code.chart.data.datasets);
+                        dataset.data = truc;
+                    });
+                    // for (let i = 0; i < datagueule.length; i++) {
+                    //     console.log(Code.chart.data.datasets);
+                    //     Code.chart.data.datasets[i].data = truc; //Add temp in y-axis
+                    // };
+                } else { //If there are already 15 data points in the graph.
+                    Code.chart.data.labels.shift(); //Remove first time data
+                    Code.chart.data.labels.push(time); //Insert latest time data
+
+                    Code.chart.data.datasets.forEach(dataset => {
+                        console.log(Code.chart.data.datasets);
+                        dataset.data.shift();
+                        dataset.data = truc;
+                    });
+                    // for (let i = 0; i < datagueule.length; i++) {
+                    //     Code.chart.data.dataset.data.shift(); //Remove first temp data
+                    //     Code.chart.data.datasets[i].data = truc; //Add temp in y-axis
+                    // };
+                    // Code.chart.data.datasets.forEach((dataset) => {
+                    //     dataset.data.shift(); //Remove first temp data
+                    //     dataset.data.push(value); //Insert latest temp data
+                    // });
+                }
+                Code.chart.update();
+            } else Code.chart.stop();
+        }
+        if (done) {
+            reader.releaseLock();
+            break;
+        }
+    }
+}
 async function readLoop() {
     var today = new Date();
     while (true) {

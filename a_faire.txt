@@ -1,2 +1,0 @@
-utiliser catégorie backpack avec icone de chez Blockly
-rajouter fonctions du backpack : enregistrer, ouvrir/replier
