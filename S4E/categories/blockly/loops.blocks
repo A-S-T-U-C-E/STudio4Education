@@ -243,7 +243,7 @@ Blockly.Constants.Loops.CUSTOM_CONTEXT_MENU_CREATE_VARIABLES_GET_MIXIN = {
             var xmlBlock = Blockly.utils.xml.createElement('block');
             xmlBlock.setAttribute('type', 'variables_get');
             xmlBlock.appendChild(xmlField);
-            option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
+            option.callback = Blockly.ContextMenu.Factory(this, xmlBlock);
             options.push(option);
         }
     }

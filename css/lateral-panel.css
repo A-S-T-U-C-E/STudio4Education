@@ -72,10 +72,10 @@
 
 #lateral-panel-setup-bloc {
     background-image: url('../S4E/media/circuit_animation.gif');
-    background-size: 350px;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: calc(100% - 40px);
+    background-size: contain;
 }
 
 #lateral-panel-setup-input:checked~#lateral-panel-setup-label {
@@ -155,7 +155,7 @@
 /* Style the accordion panel. Note: hidden by default */
 
 .panel {
-    padding: 0 18px;
+    /* padding: 0 18px; */
     background-color: var(--textColor);
     max-height: 0;
     overflow: hidden;

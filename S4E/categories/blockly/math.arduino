@@ -19,7 +19,7 @@ goog.require('Blockly.Arduino');
 
 Blockly.Arduino['math_number'] = function(block) {
     // Numeric value.
-    var code = window.parseFloat(block.getFieldValue('NUM'));
+    let code = window.parseFloat(block.getFieldValue('NUM'));
     // -4 is actually an operator and a number.  Reflect block in the order.
     var order = code < 0 ?
         Blockly.Arduino.ORDER_UNARY_PREFIX : Blockly.Arduino.ORDER_ATOMIC;
@@ -61,7 +61,7 @@ Blockly.Arduino['math_interval'] = function(block) {
     var value_valeur = Blockly.Arduino.valueToCode(block, 'valeur', Blockly.Arduino.ORDER_ATOMIC);
     var dropdown_comp_sup = OPERATORS[block.getFieldValue('comp_sup')];
     var value_sup = Blockly.Arduino.valueToCode(block, 'sup', Blockly.Arduino.ORDER_ATOMIC);
-    var code = '(( ' + value_inf + ' ' + dropdown_comp_inf + ' ' + value_valeur + ') && (' + value_valeur + ' ' + dropdown_comp_sup + ' ' + value_sup + '))';
+    let code = '(( ' + value_inf + ' ' + dropdown_comp_inf + ' ' + value_valeur + ') && (' + value_valeur + ' ' + dropdown_comp_sup + ' ' + value_sup + '))';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
@@ -224,7 +224,7 @@ Blockly.Arduino['math_change'] = function(block) {
     // Add to a variable in place.
     var argument0 = Blockly.Arduino.valueToCode(block, 'DELTA', Blockly.Arduino.ORDER_ADDITIVE) || '0';
     var varName = Blockly.Arduino.nameDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-    var code = varName + ' = ' + varName + ' + ' + argument0 + ';\n';
+    let code = varName + ' = ' + varName + ' + ' + argument0 + ';\n';
     return code;
 };
 
@@ -369,7 +369,7 @@ Blockly.Arduino['math_modulo'] = function(block) {
     // Remainder computation.
     var argument0 = Blockly.Arduino.valueToCode(block, 'DIVIDEND', Blockly.Arduino.ORDER_ATOMIC) || '0';
     var argument1 = Blockly.Arduino.valueToCode(block, 'DIVISOR', Blockly.Arduino.ORDER_ATOMIC) || '0';
-    var code = '(' + argument0 + ' % ' + argument1 + ')';
+    let code = '(' + argument0 + ' % ' + argument1 + ')';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
@@ -381,7 +381,7 @@ Blockly.Arduino['math_constrain'] = function(block) {
         Blockly.Arduino.ORDER_COMMA) || '0';
     var argument2 = Blockly.Arduino.valueToCode(block, 'HIGH',
         Blockly.Arduino.ORDER_COMMA) || 'Infinity';
-    var code = 'min(max(' + argument0 + ', ' + argument1 + '), ' +
+    let code = 'min(max(' + argument0 + ', ' + argument1 + '), ' +
         argument2 + ')';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
@@ -404,7 +404,7 @@ Blockly.Arduino['math_random_int'] = function(block) {
             '  return random(a,b);',
             '}'
         ]);
-    var code = functionName + '(' + argument0 + ', ' + argument1 + ')';
+    let code = functionName + '(' + argument0 + ', ' + argument1 + ')';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
@@ -422,6 +422,6 @@ Blockly.Arduino['math_random_float'] = function(block) {
 Blockly.Arduino['math_atan2'] = function(block) {
     var value_X = Blockly.Arduino.valueToCode(block, 'X', Blockly.Arduino.ORDER_COMMA) || '0';
     var value_Y = Blockly.Arduino.valueToCode(block, 'Y', Blockly.Arduino.ORDER_COMMA) || '0';
-    var code = 'atan2(' + value_X + ', ' + value_Y + ')';
+    let code = 'atan2(' + value_X + ', ' + value_Y + ')';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

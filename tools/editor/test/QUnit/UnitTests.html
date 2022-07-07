@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit tests made with QUnit</title>
+
+    <!-- Start Unit Tests init section -->
+
+    <link type="text/css" rel="stylesheet" href="lib/qunit-1.11.0.css">
+    <script type="text/javascript" src="lib/qunit-1.11.0.js"></script>
+
+    <script type="text/javascript" src="../../assets/javascript/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../assets/javascript/json2.js"></script>
+    <script type="text/javascript" src="../../assets/javascript/colorPicker_new.js"></script>
+
+    <!--<script src="../../assets/javascript/excanvas.js"></script>-->
+
+    <script type="text/javascript" src="../../lib/commands/FigureCreateCommand.js"></script>
+    <script type="text/javascript" src="../../lib/commands/ContainerCreateCommand.js"></script>
+    <script type="text/javascript" src="../../lib/commands/ShapeChangePropertyCommand.js"></script>
+
+    <script type="text/javascript" src="../../lib/dashed.js"></script>
+    <script type="text/javascript" src="../../lib/browserReady.js"></script>
+    <script type="text/javascript" src="../../lib/handles.js"></script>
+    <script type="text/javascript" src="../../lib/log.js"></script>
+    <script type="text/javascript" src="../../lib/minimap.js"></script>
+    <script type="text/javascript" src="../../lib/matrix.js"></script>
+    <script type="text/javascript" src="../../lib/builder.js"></script>
+    <script type="text/javascript" src="../../lib/text.js"></script>
+    <script type="text/javascript" src="../../lib/connections.js"></script>
+    <script type="text/javascript" src="../../lib/containers.js"></script>
+    <script type="text/javascript" src="../../lib/groups.js"></script>
+    <script type="text/javascript" src="../../lib/key.js"></script>
+
+    <script type="text/javascript" src="../../lib/style.js"></script>
+    <script type="text/javascript" src="../../lib/primitives.js"></script>
+    <script type="text/javascript" src="../../lib/util.js"></script>
+    <script type="text/javascript" src="../../lib/canvasprops.js"></script>
+    <script type="text/javascript" src="../../lib/connectionManagers.js"></script>
+    <script type="text/javascript" src="../../lib/stack.js"></script>
+    <script type="text/javascript" src="../../lib/containers.js"></script>
+    <script type="text/javascript" src="../../lib/main.js"></script>
+
+    <script type="text/javascript" src="../../lib/sets/basic/basic.js"></script>
+
+    <script type="text/javascript" src="tests/Diagramo-init.js"></script>
+
+    <!-- End Unit Tests init section -->
+
+    <!-- Start Unit Tests section -->
+    <script type="text/javascript" src="tests/unitPrimitives.js"></script>
+    <script type="text/javascript" src="tests/unitBrowserReady.js"></script>
+    <script type="text/javascript" src="tests/unitSerialization.js"></script>
+    <script type="text/javascript" src="tests/unitText.js"></script>
+    <script type="text/javascript" src="tests/unitUtil.js"></script>
+    <script type="text/javascript" src="tests/unitStack.js"></script>
+    <script type="text/javascript" src="tests/unitCommands.js"></script>
+    <script type="text/javascript" src="tests/unitDashed.js"></script>
+    <script type="text/javascript" src="tests/unitMatrix.js"></script>
+    <!-- End Unit Tests section -->
+    <base href="/editor/" /> <!--fix the color picker image references-->
+</head>
+<body>
+    <div id="qunit"></div>
+
+    <div id="qunit-fixture">
+        <div id="minimap"></div>
+        <canvas id="a" width="800" height="600" style="cursor: default;">
+            Your browser does not support HTML5. Please upgrade your browser to any modern version.
+        </canvas>
+        <div id="edit"></div>
+        <div id="text-editor"></div>
+        <div id="text-editor-tools"></div>
+    </div>
+</body>
+</html>

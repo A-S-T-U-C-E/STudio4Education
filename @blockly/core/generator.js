@@ -97,7 +97,7 @@ Blockly.Generator.prototype.workspaceToCode = function(workspace) {
         console.warn('No workspace specified in workspaceToCode call.  Guessing.');
         workspace = Code.mainWorkspace;
     }
-    var code = [];
+    let code = [];
     this.init(workspace);
     var blocks = workspace.getTopBlocks(true);
     for (var i = 0, block;
@@ -202,7 +202,7 @@ Blockly.Generator.prototype.blockToCode = function(block, opt_thisOnly) {
     // Prior to 24 September 2013 'this' was the only way to access the block.
     // The current preferred method of accessing the block is through the second
     // argument to func.call, which becomes the first parameter to the generator.
-    var code = func.call(block, block);
+    let code = func.call(block, block);
     if (Array.isArray(code)) {
         // Value blocks return tuples of code and operator order.
         if (!block.outputConnection) {
@@ -251,7 +251,7 @@ Blockly.Generator.prototype.valueToCode = function(block, name, outerOrder) {
     if (!Array.isArray(tuple)) {
         throw TypeError('Expecting tuple from value block: ' + targetBlock.type);
     }
-    var code = tuple[0];
+    let code = tuple[0];
     var innerOrder = tuple[1];
     if (isNaN(innerOrder)) {
         throw TypeError('Expecting valid order from value block: ' +
@@ -306,7 +306,7 @@ Blockly.Generator.prototype.valueToCode = function(block, name, outerOrder) {
  */
 Blockly.Generator.prototype.statementToCode = function(block, name) {
     var targetBlock = block.getInputTargetBlock(name);
-    var code = this.blockToCode(targetBlock);
+    let code = this.blockToCode(targetBlock);
     // Value blocks must return code and order of operations info.
     // Statement blocks must only return code.
     if (typeof code != 'string') {

@@ -1,0 +1,21 @@
+Blockly.Blocks.AHF_ESP_DEFINE.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.AHF_ESP_SERVICE_REGISTRY_DEF.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.AHF_ESP_CONNECTION_REGISTRY_TEST.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.AHF_ESP_SR_REGISTER_TEST.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.AHF_ESP_SR_UNREGISTER_TEST.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.AHF_ESP_FORMAT_DATA_SENML.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.AHF_ESP_KEEP_CONNECTION.getBlockType = function() {
+    return Blockly.Types.NULL;
+};

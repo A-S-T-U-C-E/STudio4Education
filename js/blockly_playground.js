@@ -56,6 +56,8 @@ Code.genWorkspace = function(rtlArg, toolboxArg, rendererArg) {
         }
     });
     Blockly.Variables.createFlyoutCategory(Code.mainWorkspace);
+
+    Code.mainWorkspace.registerToolboxCategoryCallback('BLOCKFACTORY_CAT', Code.blockFactoryFlyoutCallback);
 }
 
 /* Creating a mini workspace that is a zoomed out version of the main workspace. */
@@ -270,7 +272,6 @@ function setOnOffLine() {
             document.getElementById('verifyButton').disabled = true;
             document.getElementById('uploadButton').disabled = true;
             document.getElementById('wiringButton').setAttribute('onclick', "Code.HackCable()");
-            document.getElementById('factoryButton').setAttribute('onclick', "Code.BlockFactory()");
             document.getElementById('htmlButton').setAttribute('onclick', "Code.HTMLFactory()");
             document.getElementById('installSTBoards').setAttribute('onclick', 'Code.installBoards("ST");');
             document.getElementById('installArduinoBoards').setAttribute('onclick', 'Code.installBoards("arduino");');
@@ -290,7 +291,6 @@ function setOnOffLine() {
         document.getElementById('serialMenu').disabled = true;
         // not same button if in Electron or browser, if web just webpages launched in browser
         document.getElementById('wiringButton').setAttribute('onclick', "Code.HackCable()");
-        document.getElementById('factoryButton').setAttribute('onclick', "Code.BlockFactory()");
         document.getElementById('htmlButton').setAttribute('onclick', "Code.HTMLFactory()");
         document.getElementById('installSTBoards').setAttribute('onclick', 'Code.installBoards("ST");');
         document.getElementById('installArduinoBoards').setAttribute('onclick', 'Code.installBoards("arduino");');

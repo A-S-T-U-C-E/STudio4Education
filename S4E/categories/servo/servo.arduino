@@ -24,7 +24,7 @@ Blockly.Arduino['SERVO_MOVE_EXTERNAL'] = function(block) {
     Blockly.Arduino.definitions_['var_servo' + dropdown_pin] = 'Servo servo_' + dropdown_pin + ';';
     Blockly.Arduino.setups_['setup_servo_' + dropdown_pin] = 'servo_' + dropdown_pin + '.attach(' + dropdown_pin + ');';
 
-    var code = 'servo_' + dropdown_pin + '.write(' + value_degree + ');\n';
+    let code = 'servo_' + dropdown_pin + '.write(' + value_degree + ');\n';
     return code;
 };
 
@@ -36,7 +36,7 @@ Blockly.Arduino['SERVO_MOVE_SLIDER'] = function(block) {
     Blockly.Arduino.definitions_['var_servo' + dropdown_pin] = 'Servo servo_' + dropdown_pin + ';';
     Blockly.Arduino.setups_['setup_servo_' + dropdown_pin] = 'servo_' + dropdown_pin + '.attach(' + dropdown_pin + ');';
 
-    var code = 'servo_' + dropdown_pin + '.write(' + value_degree + ');\n';
+    let code = 'servo_' + dropdown_pin + '.write(' + value_degree + ');\n';
     return code;
 };
 
@@ -47,6 +47,6 @@ Blockly.Arduino['SERVO_READ_DEGREES'] = function(block) {
     Blockly.Arduino.definitions_['var_servo' + dropdown_pin] = 'Servo servo_' + dropdown_pin + ';';
     Blockly.Arduino.setups_['setup_servo_' + dropdown_pin] = 'servo_' + dropdown_pin + '.attach(' + dropdown_pin + ');';
 
-    var code = 'servo_' + dropdown_pin + '.read()';
+    let code = 'servo_' + dropdown_pin + '.read()';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

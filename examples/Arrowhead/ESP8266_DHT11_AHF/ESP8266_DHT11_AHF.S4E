@@ -1,0 +1,396 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="B$e}4ou`v0o)]^BOn5mZ">humidity</variable>
+    <variable id="rp?%UKx=,bQFC_ACL*$D">temp_c</variable>
+    <variable id="e|G?zr)v?n5+8}9Wd~XS">result</variable>
+  </variables>
+  <comment id="*lRrFaxnbD94xTYRv~~O" x="8" y="-80" h="80" w="550">TO DO FIRST! Modify and upload the configuration files saved in \examples\AH_ESP_basic_connection\data to the board (open the .ino then "ESP8266 Sketch Data uploader" via the Arduino IDE), or add them in \compiler\tmp\data folder</comment>
+  <comment id="Ljm#S*R9b1FhzkI:-W$M" x="662" y="224" h="119" w="413">For difference between the Arduino and WeMos D1 mini pins, see: https://chewett.co.uk/blog/1066/pin-numbering-for-wemos-d1-mini-esp8266/</comment>
+  <block type="BOARD_BASE_SETUP" id="sGbDV[[zQDWThUOb50nQ" x="13" y="13">
+    <statement name="SETUP">
+      <block type="BOARD_SERIAL_INIT" id="1.v5K,u^g/!$iIYO~A]j">
+        <field name="SPEED">115200</field>
+        <next>
+          <block type="WIFI_ESP_SERVER_SERVER_DEFINE" id="4[s}03^p]]E%Z)W$sg:X">
+            <field name="NAME">FALSE</field>
+            <comment pinned="false" h="80" w="160">header are already included if use of Arrowhead ESP library</comment>
+            <value name="NAME">
+              <block type="text" id="Aanb9G)6YOd#`+QnU($G">
+                <field name="TEXT">server</field>
+              </block>
+            </value>
+            <value name="PORT">
+              <block type="math_number" id="LsEFtrA%Qd7NoE!|W.#~">
+                <field name="NUM">9995</field>
+              </block>
+            </value>
+            <next>
+              <block type="AHF_ESP_DEFINE" id="nEzh.9g16=XOwe;9QTyz">
+                <value name="KEY">
+                  <block type="text" id="UDaSCKBm~(qbkY@6`j(;">
+                    <field name="TEXT"></field>
+                  </block>
+                </value>
+                <value name="CONFIG_NETWORK">
+                  <block type="text" id="4AZtq5_V=)k(,nD4WHs,">
+                    <field name="TEXT">netConfig.json</field>
+                  </block>
+                </value>
+                <value name="CONFIG_SSL">
+                  <block type="text" id="YBB./P}w5=P%n`.F9XP$">
+                    <field name="TEXT">sslConfig.json</field>
+                  </block>
+                </value>
+                <value name="CONFIG_PROVIDER">
+                  <block type="text" id="!*z.ks3%wnL%ScV6[^tA">
+                    <field name="TEXT">providerConfig.json</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="AHF_ESP_SERVICE_REGISTRY_DEF" id="*aHnqe*?=9p64rN0lc-b">
+                    <field name="SECURE">NOT_SECURE</field>
+                    <value name="INTERFACE">
+                      <block type="text" id="t}0t~wrI$DyGZST-d]@H">
+                        <field name="TEXT">HTTP-INSECURE-SenML</field>
+                      </block>
+                    </value>
+                    <value name="endOfValidity">
+                      <block type="text_date" id="|JtIK0`O6YljO%fx=:_h">
+                        <field name="DATE">2022-07-01</field>
+                      </block>
+                    </value>
+                    <value name="VERSION">
+                      <block type="math_number" id="I8]KqSeZYUWK;.X$p2?*">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <value name="PATH">
+                      <block type="text" id="Y*NN4uxHqrf2a#GfC1(U">
+                        <field name="TEXT">/</field>
+                      </block>
+                    </value>
+                    <value name="NAME">
+                      <block type="text" id="1.lrPbbY%[Vz^@h^!?D0">
+                        <field name="TEXT">esp01dht</field>
+                      </block>
+                    </value>
+                    <value name="SERVICE_DEFINITION">
+                      <block type="text" id="_dliYOtEz]BWv(cj`JlX">
+                        <field name="TEXT">temp1ESP01</field>
+                      </block>
+                    </value>
+                    <value name="IP">
+                      <block type="text" id="Pajqf@K9~sb#%LVC60V:">
+                        <field name="TEXT">192.168.0.21</field>
+                      </block>
+                    </value>
+                    <value name="PORT">
+                      <block type="math_number" id=";0O]duw#Me_fK5{Br3t(">
+                        <field name="NUM">9995</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="W_]yzbJ+tw_Ca6.$CO7A">
+                        <field name="VAR" id="e|G?zr)v?n5+8}9Wd~XS">result</field>
+                        <value name="VALUE">
+                          <block type="AHF_ESP_CONNECTION_REGISTRY_TEST" id="IMs{v0cdGTPMX*|2Tek^"></block>
+                        </value>
+                        <next>
+                          <block type="BOARD_SERIAL_PRINT" id="FqSCdGPI]WJHPlSo~D5S">
+                            <value name="CONTENT">
+                              <block type="variables_get" id="uh;,]|is7J$Y-(eVZShq">
+                                <field name="VAR" id="e|G?zr)v?n5+8}9Wd~XS">result</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="R*3ehEz/OJ1lAkgSKp{g">
+                                <field name="VAR" id="e|G?zr)v?n5+8}9Wd~XS">result</field>
+                                <value name="VALUE">
+                                  <block type="AHF_ESP_SR_REGISTER_TEST" id="-5*n4@e:G@i73!?{wl;4"></block>
+                                </value>
+                                <next>
+                                  <block type="BOARD_SERIAL_PRINT" id="W6E!u5#v+GD!m.|H525`">
+                                    <value name="CONTENT">
+                                      <block type="variables_get" id="kzP27c]@(QdyRG7m.(%z">
+                                        <field name="VAR" id="e|G?zr)v?n5+8}9Wd~XS">result</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="WIFI_ESP_SERVER_SERVER_ON" id="KEM_,~+v#weKBc[I.?[h">
+                                        <value name="SERVER_NAME">
+                                          <block type="text" id="zH%1$/0Dq*u;#pgcr+AS">
+                                            <field name="TEXT">server</field>
+                                          </block>
+                                        </value>
+                                        <value name="CLIENT_REQUEST">
+                                          <block type="text" id="FEWE?`0(r~(%!iwCM;(d">
+                                            <field name="TEXT">/temp</field>
+                                          </block>
+                                        </value>
+                                        <statement name="HANDLER">
+                                          <block type="procedures_callnoreturn" id="jwxSpEIX!HK(}N{$+gmK">
+                                            <mutation xmlns="http://www.w3.org/1999/xhtml" name="getmeteo"></mutation>
+                                            <next>
+                                              <block type="WIFI_ESP_SERVER_SERVER_SEND" id="(;UgZwrl6E{zA,nAQ/{1">
+                                                <value name="SERVER_NAME">
+                                                  <block type="text" id="J~:9K)H%n%Lw*2~ln`@6">
+                                                    <field name="TEXT">server</field>
+                                                  </block>
+                                                </value>
+                                                <value name="CODE">
+                                                  <block type="math_number" id="2Psha#^P+p7fzA)=SpmR">
+                                                    <field name="NUM">200</field>
+                                                  </block>
+                                                </value>
+                                                <value name="CONTENT_TYPE">
+                                                  <block type="text" id="fGbe8L@HU,[:oQca~%UA">
+                                                    <field name="TEXT">text/plain</field>
+                                                  </block>
+                                                </value>
+                                                <value name="CONTENT">
+                                                  <block type="text_join" id="w4@d6J,~?|LVKi6s$-8z">
+                                                    <mutation items="3"></mutation>
+                                                    <value name="ADD0">
+                                                      <block type="text" id=";aaj8gq9VV*5H9I}~8wl">
+                                                        <field name="TEXT">Humidity</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="ADD1">
+                                                      <block type="variables_set_type" id="A(D+XV6C-j=MKgAoQ}Hn">
+                                                        <field name="VARIABLE_SETTYPE_TYPE">NUMBER</field>
+                                                        <value name="VARIABLE_SETTYPE_INPUT">
+                                                          <block type="variables_get" id="iB{+CnP#$qo,MXot!yT%">
+                                                            <field name="VAR" id="B$e}4ou`v0o)]^BOn5mZ">humidity</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <value name="ADD2">
+                                                      <block type="text" id="^[2Cy%Y`yC1t|.*sY|w=">
+                                                        <field name="TEXT">%</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="BOARD_BASE_TIME_DELAY" id="|zDBYdRt$u6mD2~%IbJ.">
+                                                    <value name="DELAY_TIME">
+                                                      <shadow type="math_number" id="+[|3~iC7hGg^Q|2FPepw">
+                                                        <field name="NUM">100</field>
+                                                      </shadow>
+                                                    </value>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </statement>
+                                        <next>
+                                          <block type="WIFI_ESP_SERVER_SERVER_ON" id="C^nj:IB:n{:b||JS@e=}">
+                                            <value name="SERVER_NAME">
+                                              <block type="text" id="V2h$lO5l6s]6Hs/%:PTb">
+                                                <field name="TEXT">server</field>
+                                              </block>
+                                            </value>
+                                            <value name="CLIENT_REQUEST">
+                                              <block type="text" id="(GQh*=^KbMTqtc@7%}9E">
+                                                <field name="TEXT">/humidity</field>
+                                              </block>
+                                            </value>
+                                            <statement name="HANDLER">
+                                              <block type="procedures_callnoreturn" id="^RsU~B1Z?u*G26P|?TN4">
+                                                <mutation xmlns="http://www.w3.org/1999/xhtml" name="getmeteo"></mutation>
+                                                <next>
+                                                  <block type="WIFI_ESP_SERVER_SERVER_SEND" id="d5G!*(=#=]U1gP:/%|+U">
+                                                    <value name="SERVER_NAME">
+                                                      <block type="text" id="c}5f]`gt_#mw7]3(9Cg-">
+                                                        <field name="TEXT">server</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="CODE">
+                                                      <block type="math_number" id="{=1r$IBnwKBRl.kE$of|">
+                                                        <field name="NUM">200</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="CONTENT_TYPE">
+                                                      <block type="text" id="_UvEScq,Y_!`7hUjS=9M">
+                                                        <field name="TEXT">text/plain</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="CONTENT">
+                                                      <block type="text_join" id="LpaV7dx%E(4rg6z-scxi">
+                                                        <mutation items="3"></mutation>
+                                                        <value name="ADD0">
+                                                          <block type="text" id="%@H,4*=oZgIKTbPWJHr|">
+                                                            <field name="TEXT">Temperature</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD1">
+                                                          <block type="variables_set_type" id="X5]^7[y2W6nelYk|-Qi8">
+                                                            <field name="VARIABLE_SETTYPE_TYPE">NUMBER</field>
+                                                            <value name="VARIABLE_SETTYPE_INPUT">
+                                                              <block type="variables_get" id="GzAU,4?w1YO),xza%q,c">
+                                                                <field name="VAR" id="rp?%UKx=,bQFC_ACL*$D">temp_c</field>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD2">
+                                                          <block type="text" id="vSZ]3Z/NCk?@u^aI`Q3^">
+                                                            <field name="TEXT">°C</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="BOARD_BASE_TIME_DELAY" id="by^-wGOr661q,%o@.DQ|">
+                                                        <value name="DELAY_TIME">
+                                                          <shadow type="math_number" id="ayzJh=T@NdpC[LT=hf!X">
+                                                            <field name="NUM">100</field>
+                                                          </shadow>
+                                                        </value>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </statement>
+                                            <next>
+                                              <block type="WIFI_ESP_SERVER_SERVER_ON" id="%K,,PtnSXTE41JN|3#MM">
+                                                <value name="SERVER_NAME">
+                                                  <block type="text" id="R)2$caybCXZwMY(`A^j1">
+                                                    <field name="TEXT">server</field>
+                                                  </block>
+                                                </value>
+                                                <value name="CLIENT_REQUEST">
+                                                  <block type="text" id="Ui-;uv(CF[1{1^F|J@{G">
+                                                    <field name="TEXT">/</field>
+                                                  </block>
+                                                </value>
+                                                <statement name="HANDLER">
+                                                  <block type="WIFI_ESP_SERVER_SERVER_SEND" id="8X@DYLFnDWd3K8IitIqL">
+                                                    <value name="SERVER_NAME">
+                                                      <block type="text" id="psEx[nK5`~0);G^SMgw0">
+                                                        <field name="TEXT">server</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="CODE">
+                                                      <block type="math_number" id="A~[eOE*MZ)NY9*W#Q;GP">
+                                                        <field name="NUM">200</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="CONTENT_TYPE">
+                                                      <block type="text" id="7CCrN$6a?dRl%vaXTn5a">
+                                                        <field name="TEXT">text/plain</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="CONTENT">
+                                                      <block type="text" id="c+nF3-:5dlmNW`*G}_RF">
+                                                        <field name="TEXT">Hello from the weather esp8266, read from /temp or /humidity</field>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="BOARD_BASE_TIME_DELAY" id="K|9T`Y-i7Kj#x1?XOZ1)">
+                                                        <value name="DELAY_TIME">
+                                                          <shadow type="math_number" id="?;TN{rUBuM6++,9GHDg/">
+                                                            <field name="NUM">100</field>
+                                                          </shadow>
+                                                        </value>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </statement>
+                                                <next>
+                                                  <block type="WIFI_ESP_SERVER_SERVER_BEGIN" id="CdgkUJ%BCom$,e^QKi`t">
+                                                    <value name="NAME">
+                                                      <block type="text" id="LP0OQ;`~:xRrk`3az7UJ">
+                                                        <field name="TEXT">server</field>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="BOARD_SERIAL_PRINT" id="x^v?fdI)ic7qQIV2t[)C">
+                                                        <value name="CONTENT">
+                                                          <block type="text" id="8XaKR5l4V)M#s,Wc#|wL">
+                                                            <field name="TEXT">HTTP server started</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="BOARD_BASE_LOOP" id="UXh/7Cre=TJp-f6k4n%9" x="663" y="38">
+    <statement name="LOOP">
+      <block type="AHF_ESP_KEEP_CONNECTION" id="taq.E2K|qj|s~F`vm[*q">
+        <next>
+          <block type="BOARD_BASE_TIME_DELAY" id="FNQZ$+.gPvk0Jufh?hEl">
+            <value name="DELAY_TIME">
+              <block type="math_number" id="$H^?PVJ]$eRcsABZP,#P">
+                <field name="NUM">1000</field>
+              </block>
+            </value>
+            <next>
+              <block type="WIFI_ESP_SERVER_CLIENT_HANDLE" id=")GRHj1p0$M6}pTsEs=:`">
+                <value name="NAME">
+                  <block type="text" id="}4.9-^GY1=V7OSBR!979">
+                    <field name="TEXT">server</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="0[7r/7i%/gXzV|)0eau|" x="663" y="362">
+    <field name="NAME">getmeteo</field>
+    <comment pinned="false" h="80" w="160">Request the DHT sensor on D4, aka pin 2 in Arduino code.</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="0yjvGF]RK7Kl+Mw,}`-+">
+        <field name="VAR" id="B$e}4ou`v0o)]^BOn5mZ">humidity</field>
+        <value name="VALUE">
+          <block type="DHT_READ" id=".A5~?;Nf^n.6PYoL`7lB">
+            <field name="DHT_sensor">H</field>
+            <field name="DHT_type">DHT11</field>
+            <field name="DHT_pin">2</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="z7k^K8c7I*;dsr~F~/pY">
+            <field name="VAR" id="rp?%UKx=,bQFC_ACL*$D">temp_c</field>
+            <value name="VALUE">
+              <block type="DHT_READ" id="wM}!7(gD]N,;cFli;hwm">
+                <field name="DHT_sensor">Tc</field>
+                <field name="DHT_type">DHT11</field>
+                <field name="DHT_pin">2</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

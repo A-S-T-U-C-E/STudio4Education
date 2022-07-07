@@ -45,7 +45,8 @@
     /* change allowed */
     left: 16px;
     /* change NOT allowed */
-    overflow: auto;
+    /* overflow: auto; */
+    overflow: hidden;
     font-size: 1em;
 }
 

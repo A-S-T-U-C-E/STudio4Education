@@ -2,7 +2,8 @@
   <variables>
     <variable id="e|G?zr)v?n5+8}9Wd~XS">result</variable>
   </variables>
-  <block type="BOARD_BASE_SETUP" id="sGbDV[[zQDWThUOb50nQ" x="63" y="113">
+  <comment id="*lRrFaxnbD94xTYRv~~O" x="8" y="-80" h="80" w="550">TO DO FIRST! Modify and upload the configuration files saved in \examples\AH_ESP_basic_connection\data to the board (open the .ino then "ESP8266 Sketch Data uploader" via the Arduino IDE), or add them in \compiler\tmp\data folder</comment>
+  <block type="BOARD_BASE_SETUP" id="sGbDV[[zQDWThUOb50nQ" x="13" y="13">
     <statement name="SETUP">
       <block type="BOARD_SERIAL_INIT" id="1.v5K,u^g/!$iIYO~A]j">
         <field name="SPEED">115200</field>
@@ -38,7 +39,7 @@
                 </value>
                 <value name="endOfValidity">
                   <block type="text_date" id="|JtIK0`O6YljO%fx=:_h">
-                    <field name="DATE">2021-12-01</field>
+                    <field name="DATE">2022-07-01</field>
                   </block>
                 </value>
                 <value name="VERSION">
@@ -53,30 +54,127 @@
                 </value>
                 <value name="NAME">
                   <block type="text" id="1.lrPbbY%[Vz^@h^!?D0">
-                    <field name="TEXT">esp4ds18b20</field>
+                    <field name="TEXT">wemosdht</field>
                   </block>
                 </value>
                 <value name="SERVICE_DEFINITION">
                   <block type="text" id="_dliYOtEz]BWv(cj`JlX">
-                    <field name="TEXT">tempESP4</field>
+                    <field name="TEXT">tempWEMOS</field>
                   </block>
                 </value>
                 <value name="IP">
                   <block type="text" id="Pajqf@K9~sb#%LVC60V:">
-                    <field name="TEXT">91.161.102.110</field>
+                    <field name="TEXT">192.168.0.28</field>
                   </block>
                 </value>
                 <value name="PORT">
                   <block type="math_number" id=";0O]duw#Me_fK5{Br3t(">
-                    <field name="NUM">8993</field>
+                    <field name="NUM">9995</field>
                   </block>
                 </value>
                 <next>
-                  <block type="variables_set" id="W_]yzbJ+tw_Ca6.$CO7A">
-                    <field name="VAR" id="e|G?zr)v?n5+8}9Wd~XS">result</field>
-                    <value name="VALUE">
-                      <block type="AHF_ESP_SR_REGISTER_TEST" id="jb]i=.;2ZZk$,*w_v@YL"></block>
+                  <block type="BOARD_SERIAL_PRINT" id="1nC/?NE4S%.B]Qmsk0w`">
+                    <value name="CONTENT">
+                      <block type="text" id="81HH3da-)DqRlRg!g/n-">
+                        <field name="TEXT">test</field>
+                      </block>
                     </value>
+                    <next>
+                      <block type="variables_set" id="W_]yzbJ+tw_Ca6.$CO7A">
+                        <field name="VAR" id="e|G?zr)v?n5+8}9Wd~XS">result</field>
+                        <value name="VALUE">
+                          <block type="AHF_ESP_CONNECTION_REGISTRY_TEST" id="`zh{+Q3IMEMk%-FZ=Tpq"></block>
+                        </value>
+                        <next>
+                          <block type="BOARD_SERIAL_PRINT" id="W6E!u5#v+GD!m.|H525`">
+                            <value name="CONTENT">
+                              <block type="variables_get" id="kzP27c]@(QdyRG7m.(%z">
+                                <field name="VAR" id="e|G?zr)v?n5+8}9Wd~XS">result</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="BOARD_BASE_TIME_DELAY" id="tvpa^E]_[~:$mKW/4I^Q">
+                                <value name="DELAY_TIME">
+                                  <shadow type="math_number" id="IC2qcXokxfL1]pJYGu%Y">
+                                    <field name="NUM">2000</field>
+                                  </shadow>
+                                </value>
+                                <next>
+                                  <block type="BOARD_SERIAL_PRINT" id="URQ{^q$t@(VQ3{JeiS`1">
+                                    <value name="CONTENT">
+                                      <block type="text" id="Q:|5t(1~d}_bxV48njyI">
+                                        <field name="TEXT">register service</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="s7g*S(Co!j+kgJkh(rAD">
+                                        <field name="VAR" id="e|G?zr)v?n5+8}9Wd~XS">result</field>
+                                        <value name="VALUE">
+                                          <block type="AHF_ESP_SR_REGISTER_TEST" id="jb]i=.;2ZZk$,*w_v@YL"></block>
+                                        </value>
+                                        <next>
+                                          <block type="BOARD_SERIAL_PRINT" id="-MmsLPT/*jX1n)HQ2ILr">
+                                            <value name="CONTENT">
+                                              <block type="variables_get" id="zEZk|^KLTyh_3+((z^o;">
+                                                <field name="VAR" id="e|G?zr)v?n5+8}9Wd~XS">result</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="BOARD_BASE_TIME_DELAY" id="yas}p5z`,7}M(#Ly_R4J">
+                                                <value name="DELAY_TIME">
+                                                  <shadow type="math_number" id="Q|#^3eHV:nUd?}Z1UQY3">
+                                                    <field name="NUM">2000</field>
+                                                  </shadow>
+                                                </value>
+                                                <next>
+                                                  <block type="BOARD_SERIAL_PRINT" id="qKz}*K]7pJX0{bJWRs{z">
+                                                    <value name="CONTENT">
+                                                      <block type="text" id="Al,~Lolrnz7@]g_NJNaE">
+                                                        <field name="TEXT">register service</field>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="variables_set" id="(.R|/c:f;9gt7+j20oDU">
+                                                        <field name="VAR" id="e|G?zr)v?n5+8}9Wd~XS">result</field>
+                                                        <value name="VALUE">
+                                                          <block type="AHF_ESP_SR_UNREGISTER_TEST" id="/Ks1(b@FX;MFNwxWffTl"></block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="BOARD_SERIAL_PRINT" id="b~oD:NdHnm]R.LF=(pFf">
+                                                            <value name="CONTENT">
+                                                              <block type="variables_get" id="eq4zKjkB9-IQfLMw$9Er">
+                                                                <field name="VAR" id="e|G?zr)v?n5+8}9Wd~XS">result</field>
+                                                              </block>
+                                                            </value>
+                                                            <next>
+                                                              <block type="BOARD_BASE_TIME_DELAY" id="j.Y}}zG:k#Dl.OgY6Xxn">
+                                                                <value name="DELAY_TIME">
+                                                                  <shadow type="math_number" id=":d/vS`%]F8t=y$cSdfF0">
+                                                                    <field name="NUM">2000</field>
+                                                                  </shadow>
+                                                                </value>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
                   </block>
                 </next>
               </block>
@@ -86,25 +184,16 @@
       </block>
     </statement>
   </block>
-  <block type="BOARD_BASE_LOOP" id="UXh/7Cre=TJp-f6k4n%9" x="63" y="812">
+  <block type="BOARD_BASE_LOOP" id="UXh/7Cre=TJp-f6k4n%9" disabled="true" x="13" y="1013">
     <statement name="LOOP">
       <block type="AHF_ESP_KEEP_CONNECTION" id="taq.E2K|qj|s~F`vm[*q">
         <next>
-          <block type="BOARD_SERIAL_PRINT" id="W6E!u5#v+GD!m.|H525`">
-            <value name="CONTENT">
-              <block type="variables_get" id="kzP27c]@(QdyRG7m.(%z">
-                <field name="VAR" id="e|G?zr)v?n5+8}9Wd~XS">result</field>
+          <block type="BOARD_BASE_TIME_DELAY" id="FNQZ$+.gPvk0Jufh?hEl">
+            <value name="DELAY_TIME">
+              <block type="math_number" id="$H^?PVJ]$eRcsABZP,#P">
+                <field name="NUM">1000</field>
               </block>
             </value>
-            <next>
-              <block type="BOARD_BASE_TIME_DELAY" id="FNQZ$+.gPvk0Jufh?hEl">
-                <value name="DELAY_TIME">
-                  <block type="math_number" id="$H^?PVJ]$eRcsABZP,#P">
-                    <field name="NUM">1000</field>
-                  </block>
-                </value>
-              </block>
-            </next>
           </block>
         </next>
       </block>

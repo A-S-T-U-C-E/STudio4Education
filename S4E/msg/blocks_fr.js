@@ -332,6 +332,7 @@ Blockly.Msg['GROVE_WIFI_UART_DEFINE_HELPURL'] = "https://wiki.seeedstudio.com/Gr
 
 // WiFi ESP library
 
+Blockly.Msg['WIFI_ESP_UART_CONNECTION'] = "communication avec l'ESP";
 Blockly.Msg['WIFI_ESP_LIBRARY_HELPURL'] = "https://github.com/bportaluri/WiFiEsp";
 Blockly.Msg['WIFI_ESP_SERVER_DEFINE'] = "démarrer le serveur WiFi ";
 Blockly.Msg['WIFI_ESP_SERVER_SERIAL_NAME'] = "nom de l'objet de communication";
@@ -352,6 +353,8 @@ Blockly.Msg['WIFI_ESP_SERVER_BEGIN'] = "lancer le serveur web, avec le nom";
 Blockly.Msg['WIFI_ESP_SERVER_BEGIN_TOOLTIP'] = "lance le serveur web avec l'objet de communication\ndéfini dans le bloc de communication";
 Blockly.Msg['WIFI_ESP_SERVER_AVAILABLE'] = "mettre en écoute disponible aux clients le serveur :";
 Blockly.Msg['WIFI_ESP_SERVER_AVAILABLE_TOOLTIP'] = "attente par le serveur de requête de connexion de client";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_HANDLE'] = "attend une requête HTTP sur le serveur";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_HANDLE_TOOLTIP'] = "écoute si des requêtes HTTP proviennent de clients, cela permet d'exécuter des fonctions pour chaque requête.";
 Blockly.Msg['WIFI_ESP_SERVER_CLIENT_OBJECT'] = "un client envoie des données pour se connecter";
 Blockly.Msg['WIFI_ESP_SERVER_CLIENT_OBJECT_TOOLTIP'] = "vérifie si un client envoie des données lisibles afin d'y répondre, sinon renvoie 'faux'";
 Blockly.Msg['WIFI_ESP_SERVER_CLIENT_CONNECTED'] = "un client est connecté au serveur";

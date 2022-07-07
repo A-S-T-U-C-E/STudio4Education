@@ -1,0 +1,133 @@
+/**
+ * @license
+ * Copyright 2020 Sébastien CANET
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+/**
+ * @fileoverview Arrowhead framework specifics
+ * @author scanet@libreduc.cc (Sébastien Canet)
+ */
+
+'use strict';
+
+goog.provide('Blockly.Arduino.arrowhead_esp');
+
+goog.require('Blockly.Arduino');
+
+Blockly.Arduino['AHF_ESP_DEFINE'] = function(block) {
+    var system_public_key = Blockly.Arduino.valueToCode(block, 'KEY', Blockly.Arduino.ORDER_ATOMIC);
+    var config_network = Blockly.Arduino.valueToCode(block, 'CONFIG_NETWORK', Blockly.Arduino.ORDER_ATOMIC);
+    var config_ssl = Blockly.Arduino.valueToCode(block, 'CONFIG_SSL', Blockly.Arduino.ORDER_ATOMIC);
+    var config_provider = Blockly.Arduino.valueToCode(block, 'CONFIG_PROVIDER', Blockly.Arduino.ORDER_ATOMIC);
+
+    Blockly.Arduino.includes_['AHF_ESP_DEFINE'] = '#include <ArrowheadESP.h>';
+    Blockly.Arduino.definitions_['AHF_ESP_DEFINE'] = 'ArrowheadESP Arrowhead;';
+    Blockly.Arduino.definitions_['AHF_ESP_DEFINE_systemName'] = 'const char* publicKey = ' + system_public_key + ';';
+    Blockly.Arduino.setups_['AHF_ESP_DEFINE_setup'] = 'Arrowhead.getArrowheadESPFS().loadConfigFile(' + config_network + ');\n' +
+        '  Arrowhead.getArrowheadESPFS().loadSSLConfigFile(' + config_ssl + ');\n' +
+        '  Arrowhead.getArrowheadESPFS().loadProviderConfigFile(' + config_provider + ');';
+    let code = '';
+    return code;
+};
+
+Blockly.Arduino['AHF_ESP_SERVICE_REGISTRY_DEF'] = function(block) {
+    var system_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
+    var system_port = Blockly.Arduino.valueToCode(block, 'PORT', Blockly.Arduino.ORDER_ATOMIC);
+    var service_definition = Blockly.Arduino.valueToCode(block, 'SERVICE_DEFINITION', Blockly.Arduino.ORDER_ATOMIC);
+    var dropdown_security = block.getFieldValue('SECURE');
+    sessionStorage.setItem('AHF_secure', dropdown_security);
+    var dropdown_interface = (Blockly.Arduino.valueToCode(block, 'INTERFACE', Blockly.Arduino.ORDER_ATOMIC)).replaceAll('"', '');
+    var value_endofvalidity = (Blockly.Arduino.valueToCode(block, 'endOfValidity', Blockly.Arduino.ORDER_ATOMIC) + " 00:00:00").replaceAll('"', '');
+    var value_version = Blockly.Arduino.valueToCode(block, 'VERSION', Blockly.Arduino.ORDER_ATOMIC);
+    var value_path = Blockly.Arduino.valueToCode(block, 'PATH', Blockly.Arduino.ORDER_ATOMIC);
+    var value_address = Blockly.Arduino.valueToCode(block, 'IP', Blockly.Arduino.ORDER_ATOMIC);
+    Blockly.Arduino.variables_['AHF_ESP_SERVICE_REGISTRY_serviceregistry'] = 'const char* systemName = ' + system_name + ';\n' +
+        'const char* serviceDefinition = ' + service_definition + ';\n' +
+        'String providerIP = ' + value_address + ';\n' +
+        'int port = ' + system_port + ';\n' +
+        'String serviceRegistryEntry = "{\\"endOfValidity\\":\\"' + value_endofvalidity + '\\",\\"interfaces\\":[\\"' +
+        dropdown_interface + '\\"],\\"providerSystem\\":{\\"address\\":\\"" + providerIP + "\\",\\"authenticationInfo\\":\\"\\",\\"port\\":" + port + ",\\"systemName\\":\\"" + systemName + "\\"},\\"secure\\":\\"' + dropdown_security + '\\",\\"serviceDefinition\\":\\"" + serviceDefinition + "\\",\\"serviceUri\\":\\"' + value_path.replaceAll('"', '') + '\\",\\"version\\":' + value_version + '}";';
+    Blockly.Arduino.setups_['AHF_ESP_SERVICE_REGISTRY_setup'] = 'Arrowhead.setServiceRegistryAddress(\n' +
+        '    Arrowhead.getArrowheadESPFS().getProviderInfo().serviceRegistryAddress,\n' +
+        '    Arrowhead.getArrowheadESPFS().getProviderInfo().serviceRegistryPort\n' +
+        '  );';
+    return "";
+};
+
+Blockly.Arduino['AHF_ESP_CONNECTION_REGISTRY_TEST'] = function(block) {
+    if (sessionStorage.getItem('AHF_secure') == 'NOT_SECURE')
+        sessionStorage.setItem('AHF_secure_bool', false);
+    else sessionStorage.setItem('AHF_secure_bool', true);
+    Blockly.Arduino.userFunctions_['AHF_ESP_CONNECTION_REGISTRY_TEST'] =
+    'String connect_WiFi_and_load_Certificates(bool secureOnOff) {\n' +
+    '  String responseTo = "";\n' +
+    '  bool startupSuccess = Arrowhead.begin(secureOnOff);\n' +
+    '  if(startupSuccess){\n' +
+    '    String response = "";\n' +
+    '    int statusCode = Arrowhead.serviceRegistryEcho(secureOnOff, &response);\n' +
+    '    responseTo = "Ping status code from server: " + String(statusCode) + "\\n";\n' +
+    '    responseTo += "Ping response body from server: " + String(response) + "\\n";\n' +
+    '    }\n' +
+    '  return responseTo;\n' +
+        '}';
+    let code = 'connect_WiFi_and_load_Certificates(' + sessionStorage.getItem('AHF_secure_bool') + ')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['AHF_ESP_SR_REGISTER_TEST'] = function(block) {
+    if (sessionStorage.getItem('AHF_secure') == 'NOT_SECURE')
+        sessionStorage.setItem('AHF_secure_bool', false);
+    else sessionStorage.setItem('AHF_secure_bool', true);
+    Blockly.Arduino.userFunctions_['AHF_ESP_SR_REGISTER_TEST'] =
+        'String registerToArrowhead(bool secureOnOff) {\n' +
+        '  String response = "";\n' +
+        '  int statusCode = Arrowhead.serviceRegistryRegister(secureOnOff, serviceRegistryEntry.c_str(), &response);\n' +
+        '  String responseTo = "Status code from server: " + String(statusCode) + "\\n";\n' +
+        '  responseTo += "Response body from server: " + String(response) + "\\n";\n' +
+        '  return responseTo;\n' +
+        '}';
+    let code = 'registerToArrowhead(' + sessionStorage.getItem('AHF_secure_bool') + ')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['AHF_ESP_SR_UNREGISTER_TEST'] = function(block) {
+    if (sessionStorage.getItem('AHF_secure') == 'NOT_SECURE')
+        sessionStorage.setItem('AHF_secure_bool', false);
+    else sessionStorage.setItem('AHF_secure_bool', true);
+    Blockly.Arduino.userFunctions_['AHF_ESP_SR_UNREGISTER_TEST'] =
+        'String unregisterToArrowhead(bool secureOnOff) {\n' +
+        '  String response = "";\n' +
+        '  int statusCode = Arrowhead.serviceRegistryUnregister(secureOnOff, systemName, port, serviceDefinition, &response);\n' +
+        '  String responseTo = "Status code from server: " + String(statusCode) + "\\n";\n' +
+        '  responseTo += "Response body from server: " + String(response) + "\\n";\n' +
+        '  return responseTo;\n' +
+        '}';
+        let code = 'unregisterToArrowhead(' + sessionStorage.getItem('AHF_secure_bool') + ')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['AHF_ESP_FORMAT_DATA_SENML'] = function(block) {
+    Blockly.Arduino.userFunctions_['AHF_ESP_FORMAT_DATA_TO_SENML'] =
+        'void handleServiceRequest(float dataToFormat) {\n' +
+        '  StaticJsonDocument<500> root;\n' +
+        '  root["bn"]  = Arrowhead.getArrowheadESPFS().getProviderInfo().systemName;\n' +
+        '  root["t"]  = epochTime;\n' +
+        '  root["bu"]  = "celsius";\n' +
+        '  root["ver"] = 1;\n' +
+        '  JsonArray e = root.createNestedArray("e");\n' +
+        '  JsonObject meas = e.createNestedObject();\n' +
+        '  meas["n"] = Arrowhead.getArrowheadESPFS().getProviderInfo().systemName;\n' +
+        '  meas["sv"] = (String)dataToFormat;\n' +
+        '  String response;\n' +
+        '  serializeJson(root, response);\n' +
+        '  Arrowhead.getWebServer().send(200, "application/json", response); // or use getSecureWebServer()\n' +
+        '}';
+    let code = '';
+    return '';
+};
+
+Blockly.Arduino['AHF_ESP_KEEP_CONNECTION'] = function(block) {
+    let code = 'Arrowhead.loop();\nyield();\n'
+    return code;
+};

@@ -17,7 +17,7 @@ goog.require('Blockly.Arduino');
 
 Blockly.Arduino['BOARD_IOT_AUTOFORMATWEBSOCKET'] = function(block) {
     var elements = new Array(block.itemCount_);
-    var code = '';
+    let code = '';
     for (var i = 0; i < block.itemCount_; i++) {
         elements[i] = Blockly.Arduino.valueToCode(block, 'ADD' + i,
             Blockly.Arduino.ORDER_NONE) || 'null';

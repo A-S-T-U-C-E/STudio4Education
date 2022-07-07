@@ -13,24 +13,36 @@ var jsonToolbox = {
     "kind": "categoryToolbox",
     "contents": []
 };
-jsonToolbox["contents"][0] = toolbox_standard["contents"][0];
-jsonToolbox["contents"][1] = toolbox_standard["contents"][1];
-jsonToolbox["contents"][2] = toolbox_standard["contents"][2];
-jsonToolbox["contents"][3] = toolbox_standard["contents"][3];
-jsonToolbox["contents"][4] = toolbox_standard["contents"][4];
-jsonToolbox["contents"][5] = toolbox_standard["contents"][5];
-jsonToolbox["contents"][6] = toolbox_standard["contents"][6];
-jsonToolbox["contents"][7] = toolbox_standard["contents"][7];
-jsonToolbox["contents"][8] = toolbox_standard["contents"][8];
-jsonToolbox["contents"][9] = toolbox_board["contents"][0];
-jsonToolbox["contents"][10] = toolbox_servo["contents"][0];
-jsonToolbox["contents"][11] = toolbox_ds18b20["contents"][0];
-jsonToolbox["contents"][12] = toolbox_relay["contents"][0];
-jsonToolbox["contents"][13] = toolbox_DHT["contents"][0];
-jsonToolbox["contents"][14] = toolbox_X_NUCLEO_IKS01A3["contents"][0];
-jsonToolbox["contents"][15] = toolbox_arrowhead["contents"][0];
-jsonToolbox["contents"][16] = toolbox_GROVE["contents"][0];
-jsonToolbox["contents"][17] = toolbox_communication["contents"][0];
+var toolbox_blockFactory = {
+    "kind": "category",
+    "name": "%{BKY_CAT_BLOCKFACTORY}",
+    "toolboxitemid": "BLOCKFACTORY",
+    "hidden": "true",
+    "levels": "1, 2, 3",
+    "custom": "BLOCKFACTORY_CAT",
+    "categorystyle": "arrowhead_category",
+    "contents": []
+};
+jsonToolbox["contents"][0] = toolbox_blockFactory;
+jsonToolbox["contents"][1] = toolbox_standard["contents"][0];
+jsonToolbox["contents"][2] = toolbox_standard["contents"][1];
+jsonToolbox["contents"][3] = toolbox_standard["contents"][2];
+jsonToolbox["contents"][4] = toolbox_standard["contents"][3];
+jsonToolbox["contents"][5] = toolbox_standard["contents"][4];
+jsonToolbox["contents"][6] = toolbox_standard["contents"][5];
+jsonToolbox["contents"][7] = toolbox_standard["contents"][6];
+jsonToolbox["contents"][8] = toolbox_standard["contents"][7];
+jsonToolbox["contents"][9] = toolbox_standard["contents"][8];
+jsonToolbox["contents"][10] = toolbox_board["contents"][0];
+jsonToolbox["contents"][11] = toolbox_servo["contents"][0];
+jsonToolbox["contents"][12] = toolbox_ds18b20["contents"][0];
+jsonToolbox["contents"][13] = toolbox_relay["contents"][0];
+jsonToolbox["contents"][14] = toolbox_DHT["contents"][0];
+jsonToolbox["contents"][15] = toolbox_X_NUCLEO_IKS01A3["contents"][0];
+jsonToolbox["contents"][16] = toolbox_arrowhead["contents"][0];
+jsonToolbox["contents"][17] = toolbox_GROVE["contents"][0];
+jsonToolbox["contents"][18] = toolbox_communication["contents"][0];
+jsonToolbox["contents"][19] = toolbox_ESP["contents"][0];
 /**
  * Build the toolbox using toolbox definition in json files
  */
@@ -319,7 +331,7 @@ Code.buildControlPanelForToolbox = function(newToolbox) {
     let toolboxIds = window.localStorage.toolboxids.split(",");
     let jsonToolboxToKeep = Code.mainWorkspace.getToolbox();
     let ligne = '';
-    for (let i = 0; i < jsonToolboxToKeep.contents_.length; i++) {
+    for (let i = 1; i < jsonToolboxToKeep.contents_.length; i++) {
         if ((!jsonToolboxToKeep.contents_[i].parent_) && (jsonToolboxToKeep.contents_[i].toolboxItemDef_.levels.indexOf(level) > -1)) {
             ligne = '<li><input type="checkbox" ';
             if (toolboxIds.indexOf(jsonToolboxToKeep.contents_[i].id_) > -1)

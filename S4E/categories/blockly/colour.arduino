@@ -16,68 +16,68 @@ goog.provide('Blockly.Arduino.Colour');
 
 goog.require('Blockly.Arduino');
 
-Blockly.Arduino['colour_picker'] = function (block) {
-	// Colour picker.
-	var code = '\"' + block.getFieldValue('COLOUR') + '\"';
-	return [code, Blockly.Arduino.ORDER_ATOMIC];
+Blockly.Arduino['colour_picker'] = function(block) {
+    // Colour picker.
+    let code = '\"' + block.getFieldValue('COLOUR') + '\"';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino['colour_random'] = function (block) {
-	// Generate a random colour.
-	Blockly.Arduino.userFunctions_['colourRandom'] =
-		'String colourRandom() {\n' +
-		'  String colorRand = "";\n' +
-		'  for (int i = 0; i < 6; i++) {\n' +
-		'    int randNum = random(0, 16);\n' +
-		'    colorRand += String(randNum, HEX);\n' +
-		'  }\n' +
-		'  return (\'#\' + colorRand);\n' +
-		'}';
-	var code = 'colourRandom()';
-	return [code, Blockly.Arduino.ORDER_ATOMIC];
+Blockly.Arduino['colour_random'] = function(block) {
+    // Generate a random colour.
+    Blockly.Arduino.userFunctions_['colourRandom'] =
+        'String colourRandom() {\n' +
+        '  String colorRand = "";\n' +
+        '  for (int i = 0; i < 6; i++) {\n' +
+        '    int randNum = random(0, 16);\n' +
+        '    colorRand += String(randNum, HEX);\n' +
+        '  }\n' +
+        '  return (\'#\' + colorRand);\n' +
+        '}';
+    let code = 'colourRandom()';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino['colour_rgb'] = function (block) {
-	// Compose a colour from RGB components expressed as percentages.
-	var red = block.getFieldValue('RED');
-	var green = block.getFieldValue('GREEN');
-	var blue = block.getFieldValue('BLUE');
-	Blockly.Arduino.userFunctions_['colourRgb'] =
-		'String colourRgb(int r, int g, int b) {\n' +
-		'  r = max(min(r * 2.55, 255), 0);\n' +
-		'  g = max(min(g * 2.55, 255), 0);\n' +
-		'  b = max(min(b * 2.55, 255), 0);\n' +
-		'  return (\'#\' + String(r, HEX) + String(g, HEX) + String(b, HEX));\n' +
-		'}';
-	var code = 'colourRgb(' + red + ', ' + green + ', ' + blue + ')';
-	return [code, Blockly.Arduino.ORDER_ATOMIC];
+Blockly.Arduino['colour_rgb'] = function(block) {
+    // Compose a colour from RGB components expressed as percentages.
+    var red = block.getFieldValue('RED');
+    var green = block.getFieldValue('GREEN');
+    var blue = block.getFieldValue('BLUE');
+    Blockly.Arduino.userFunctions_['colourRgb'] =
+        'String colourRgb(int r, int g, int b) {\n' +
+        '  r = max(min(r * 2.55, 255), 0);\n' +
+        '  g = max(min(g * 2.55, 255), 0);\n' +
+        '  b = max(min(b * 2.55, 255), 0);\n' +
+        '  return (\'#\' + String(r, HEX) + String(g, HEX) + String(b, HEX));\n' +
+        '}';
+    let code = 'colourRgb(' + red + ', ' + green + ', ' + blue + ')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino['colour_blend'] = function (block) {
-	// Blend two colours together.
-	var c1 = Blockly.Arduino.valueToCode(block, 'COLOUR1', Blockly.Arduino.ORDER_COMMA) || '\'#000000\'';
-	var c2 = Blockly.Arduino.valueToCode(block, 'COLOUR2', Blockly.Arduino.ORDER_COMMA) || '\'#000000\'';
-	var ratio = Blockly.Arduino.valueToCode(block, 'RATIO', Blockly.Arduino.ORDER_COMMA) || 0.5;
-	Blockly.Arduino.userFunctions_['colourBlend'] =
-		'String colourBlend(String c1, String c2, float ratio) {\n' +
-		'  ratio = max(min(ratio, 1), 0);\n' +
-		'  int r1 = (c1.substring(1, 3)).toInt();\n' +
-		'  int g1 = (c1.substring(3, 5)).toInt();\n' +
-		'  int b1 = (c1.substring(5, 7)).toInt();\n' +
-		'  int r2 = (c2.substring(1, 3)).toInt();\n' +
-		'  int g2 = (c2.substring(3, 5)).toInt();\n' +
-		'  int b2 = (c2.substring(5, 7)).toInt();\n' +
-		'  int r = round(r1 * (1 - ratio) + r2 * ratio);\n' +
-		'  int g = round(g1 * (1 - ratio) + g2 * ratio);\n' +
-		'  int b = round(b1 * (1 - ratio) + b2 * ratio);\n' +
-		'  return (\'#\' + String(r) + String(g) + String(b));\n' +
-		'}';
-	var code = 'colourBlend(' + c1 + ', ' + c2 + ', ' + ratio + ')';
-	return [code, Blockly.Arduino.ORDER_ATOMIC];
+Blockly.Arduino['colour_blend'] = function(block) {
+    // Blend two colours together.
+    var c1 = Blockly.Arduino.valueToCode(block, 'COLOUR1', Blockly.Arduino.ORDER_COMMA) || '\'#000000\'';
+    var c2 = Blockly.Arduino.valueToCode(block, 'COLOUR2', Blockly.Arduino.ORDER_COMMA) || '\'#000000\'';
+    var ratio = Blockly.Arduino.valueToCode(block, 'RATIO', Blockly.Arduino.ORDER_COMMA) || 0.5;
+    Blockly.Arduino.userFunctions_['colourBlend'] =
+        'String colourBlend(String c1, String c2, float ratio) {\n' +
+        '  ratio = max(min(ratio, 1), 0);\n' +
+        '  int r1 = (c1.substring(1, 3)).toInt();\n' +
+        '  int g1 = (c1.substring(3, 5)).toInt();\n' +
+        '  int b1 = (c1.substring(5, 7)).toInt();\n' +
+        '  int r2 = (c2.substring(1, 3)).toInt();\n' +
+        '  int g2 = (c2.substring(3, 5)).toInt();\n' +
+        '  int b2 = (c2.substring(5, 7)).toInt();\n' +
+        '  int r = round(r1 * (1 - ratio) + r2 * ratio);\n' +
+        '  int g = round(g1 * (1 - ratio) + g2 * ratio);\n' +
+        '  int b = round(b1 * (1 - ratio) + b2 * ratio);\n' +
+        '  return (\'#\' + String(r) + String(g) + String(b));\n' +
+        '}';
+    let code = 'colourBlend(' + c1 + ', ' + c2 + ', ' + ratio + ')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino["color_picker_custom"] = function (block) {
-	const rgb = block.getFieldValue("COLOR");
-	var code = '"' + rgb + '"';
-	return [code, Blockly.Arduino.ORDER_ATOMIC];
+Blockly.Arduino["color_picker_custom"] = function(block) {
+    const rgb = block.getFieldValue("COLOR");
+    let code = '"' + rgb + '"';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

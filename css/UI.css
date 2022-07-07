@@ -28,7 +28,7 @@ html,
 body {
     height: 100%;
     width: 100%;
-    background-image: url('../S4E/media/STudio4Education_logo.png');
+    background-image: url('../S4E/media/Studio4Education_logo.png');
     background-repeat: no-repeat;
     background-position: center;
     animation: fadeInAnimation ease 2s;
@@ -629,7 +629,7 @@ flex.content_wrapper {
 .modal-header {
     padding: 10px;
     color: white;
-    border-radius: 15px !important;
+    /* border-radius: 15px !important; */
     border-top-left-radius: 15px !important;
     border-top-right-radius: 15px !important;
 }
@@ -708,6 +708,8 @@ flex.content_wrapper {
     outline: none;
     font-size: large;
     font-weight: bold;
+    border-bottom-left-radius: 15px !important;
+    border-bottom-right-radius: 15px !important;
 }
 
 

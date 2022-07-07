@@ -73,6 +73,11 @@ Blockly.Themes.blackWhite.defaultBlockStyles = {
         "colourSecondary": "#000000",
         "colourTertiary": "#000000"
     },
+    "esp_blocks": {
+        "colourPrimary": "#000000",
+        "colourSecondary": "#000000",
+        "colourTertiary": "#000000"
+    },
     "ds18b20_blocks": {
         "colourPrimary": "#000000",
         "colourSecondary": "#000000",
@@ -142,6 +147,9 @@ Blockly.Themes.blackWhite.categoryStyles = {
         "colour": "#000000"
     },
     "board_category": {
+        "colour": "#000000"
+    },
+    "esp_category": {
         "colour": "#000000"
     },
     "ds18b20_category": {

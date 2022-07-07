@@ -1,9 +1,9 @@
-# STudio4Education
+# Studio4Education
 ![logo](https://github.com/A-S-T-U-C-E/S4E_Electron/blob/master/www/S4E/media/logos.png)
 
-Designed for **Arrowhead** Tools Project ([https://www.arrowhead.eu/arrowheadtools](https://www.arrowhead.eu/arrowheadtools)), STudio4Education is a **web-based visual programming editor for [ST microelectronics](https://www.st.com)** boards, thanks to [Blockly](https://developers.google.com/blockly/), the web-based, graphical programming editor.
+Designed for **Arrowhead** Tools Project ([https://www.arrowhead.eu/arrowheadtools](https://www.arrowhead.eu/arrowheadtools)), Studio4Education is a **web-based visual programming editor for [ST microelectronics](https://www.st.com)** boards, thanks to [Blockly](https://developers.google.com/blockly/), the web-based, graphical programming editor.
 
-STudio4Education provides static type language blocks and code generators for simple C programming.
+Studio4Education provides static type language blocks and code generators for simple C programming.
 
 
 ## Features
@@ -48,7 +48,7 @@ The cursor controls how the user navigates the blocks, inputs, fields and connec
 
 ## Demo
 
-STudio4Education is a web tool. You can give it a try at [Web](https://a-s-t-u-c-e.github.io/STudio4Education/).
+Studio4Education is a web tool. You can give it a try at [Web](https://a-s-t-u-c-e.github.io/Studio4Education/).
 
 ### Run locally on your web browser
 
@@ -60,7 +60,7 @@ An [Electron](https://www.electronjs.org/) version with [arduino-cli](https://gi
 
 ## Usage
 
-1. Open browser to STudio4Education folder and select your board, your language, your favorite theme + renderer.
+1. Open browser to Studio4Education folder and select your board, your language, your favorite theme + renderer.
 2. Drag and drop blocks to make a program.
 3. Copy all of the source code into an existing or new project in the Arduino IDE with [STM32Duino](https://github.com/stm32duino/Arduino_Core_STM32) installed
 4. Configure your Arduino IDE with the right board and communication port.
@@ -68,7 +68,7 @@ An [Electron](https://www.electronjs.org/) version with [arduino-cli](https://gi
 
 ## ChangeLog
 
-Check changelog [here](https://github.com/A-S-T-U-C-E/STudio4Education/blob/master/CHANGELOG.txt)
+Check changelog [here](https://github.com/A-S-T-U-C-E/Studio4Education/blob/master/CHANGELOG.txt)
 
 ## Tools used
 
@@ -104,7 +104,7 @@ Check changelog [here](https://github.com/A-S-T-U-C-E/STudio4Education/blob/mast
 
 Sébastien Canet ([scanet@libreduc.cc](scanet@libreduc.cc)).
 
-The STudio4Education project is also inspired by [Blockly@rduino](https://github.com/technologiescollege/Blockly-at-rduino), [ardublockly](https://github.com/carlosperate/ardublockly) (**great thanks to Carlos Pereira Atencio @carlosperate for this great automatic typing variable script**) and [Blocklino](https://github.com/fontainejp/blocklino).
+The Studio4Education project is also inspired by [Blockly@rduino](https://github.com/technologiescollege/Blockly-at-rduino), [ardublockly](https://github.com/carlosperate/ardublockly) (**great thanks to Carlos Pereira Atencio @carlosperate for this great automatic typing variable script**) and [Blocklino](https://github.com/fontainejp/blocklino).
 
 
 ## License

@@ -748,7 +748,7 @@
         Blockly.svgResize(workspace);
 
         function myUpdateFunction(event) {
-            var code = HtmlGenerator.workspaceToCode(workspace);
+            let code = HtmlGenerator.workspaceToCode(workspace);
             document.getElementById('sourcecode').innerText = code;
             document.getElementById('website').src = "data:text/html;charset=utf-8," + encodeURIComponent(code);
 
@@ -767,7 +767,7 @@
         document.getElementById("saveButton").onclick = saveWorkspaceToDownload;
 
         function saveHtmlToDownload() {
-            var code = HtmlGenerator.workspaceToCode(workspace);
+            let code = HtmlGenerator.workspaceToCode(workspace);
             newWindow = window.open("data:application/octet-stream," + encodeURIComponent(code), 'website_blockly.html');
         }
         document.getElementById("exportButton").onclick = saveHtmlToDownload;

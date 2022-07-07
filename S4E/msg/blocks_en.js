@@ -332,8 +332,9 @@ Blockly.Msg['GROVE_WIFI_UART_DEFINE_HELPURL'] = "https://wiki.seeedstudio.com/Gr
 
 // WiFi ESP library
 
+Blockly.Msg['WIFI_ESP_UART_CONNECTION'] = "define communication with ESP";
 Blockly.Msg['WIFI_ESP_LIBRARY_HELPURL'] = "https://github.com/bportaluri/WiFiEsp";
-Blockly.Msg['WIFI_ESP_SERVER_DEFINE'] = "start WiFi server";
+Blockly.Msg['WIFI_ESP_SERVER_DEFINE'] = "start web server";
 Blockly.Msg['WIFI_ESP_SERVER_SERIAL_NAME'] = "serial name";
 Blockly.Msg['WIFI_ESP_SERVER_NAME'] = "server name";
 Blockly.Msg['WIFI_ESP_SERVER_PORT'] = "server port";
@@ -352,8 +353,8 @@ Blockly.Msg['WIFI_ESP_SERVER_BEGIN'] = "launch web server, named";
 Blockly.Msg['WIFI_ESP_SERVER_BEGIN_TOOLTIP'] = "launch webserver which name was declared in previous block";
 Blockly.Msg['WIFI_ESP_SERVER_AVAILABLE'] = "listen for available client for server";
 Blockly.Msg['WIFI_ESP_SERVER_AVAILABLE_TOOLTIP'] = "listen for incoming clients";
-Blockly.Msg['WIFI_ESP_SERVER_AVAILABLE'] = "listen for available client for server";
-Blockly.Msg['WIFI_ESP_SERVER_AVAILABLE_TOOLTIP'] = "listen for incoming clients";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_HANDLE'] = "listen for HTTP requests from client on server";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_HANDLE_TOOLTIP'] = "listen for HTTP requests from client on server and can redirect on specific function";
 Blockly.Msg['WIFI_ESP_SERVER_CLIENT_OBJECT'] = "client has data available for reading";
 Blockly.Msg['WIFI_ESP_SERVER_CLIENT_OBJECT_TOOLTIP'] = "check if client has data available for reading, false if not";
 Blockly.Msg['WIFI_ESP_SERVER_CLIENT_CONNECTED'] = "client is connected to server";
@@ -363,7 +364,7 @@ Blockly.Msg['WIFI_ESP_SERVER_CLIENT_AVAILABLE_TOOLTIP'] = "check if client is av
 Blockly.Msg['WIFI_ESP_SERVER_CLIENT_READ'] = "datas from server's client";
 Blockly.Msg['WIFI_ESP_SERVER_CLIENT_READ_TOOLTIP'] = "get datas from client connected to server";
 Blockly.Msg['WIFI_ESP_SERVER_CLIENT_STOP'] = "stop client connection";
-Blockly.Msg['WIFI_ESP_SERVER_CLIENT_STOP_TOOLTIP'] = "stop connection of client";
+Blockly.Msg['WIFI_ESP_SERVER_CLIENT_STOP_TOOLTIP'] = "disconnect client from server";
 Blockly.Msg['WIFI_ESP_SERVER_CLIENT_PRINT'] = "send to client HTML code";
 Blockly.Msg['WIFI_ESP_SERVER_CLIENT_PRINT_TOOLTIP'] = "HTML response to client, line by line if needed";
 Blockly.Msg['WIFI_ESP_SERVER_CLIENT_PRINT_MULTILINETEXTINPUT'] = "send to client HTML code";

@@ -1,0 +1,299 @@
+/**
+ * @license
+ * Copyright 2020 Sébastien CANET
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+/**
+ * @fileoverview DHT temperature & humidity sensors blocks for Blockly.
+ * @author scanet@libreduc.cc (Sébastien Canet)
+ */
+
+'use strict';
+
+goog.provide('Blockly.Constants.WIFI_ESP_SERVER');
+
+goog.require('Blockly');
+goog.require('Blockly.Blocks');
+goog.require('Blockly.Types');
+
+var WIFI_ESP_SERVERMediaFolder = "./S4E/categories/ESP/wifi_esp_server/";
+
+Blockly.Blocks['WIFI_ESP_SERVER_SERVER_DEFINE'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(WIFI_ESP_SERVERMediaFolder + "wifi_esp_server.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField("define ESP web server:");
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldCheckbox("TRUE"), "NAME")
+            .appendField("need header include");
+        this.appendValueInput("NAME")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("server's name");
+        this.appendValueInput("PORT")
+            .setCheck("Number")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("server's port");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip("The Server Class creates servers that provide functionality to other programs or devices, called clients.");
+        this.setHelpUrl("https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html");
+        this.setStyle('esp_blocks');
+    }
+};
+
+Blockly.Blocks['WIFI_ESP_SERVER_SERVER_BEGIN'] = {
+    init: function() {
+        this.appendValueInput("NAME")
+            .setCheck("String")
+            .appendField(new Blockly.FieldImage(WIFI_ESP_SERVERMediaFolder + "wifi_esp_server.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField(Blockly.Msg['WIFI_ESP_SERVER_BEGIN']);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg['WIFI_ESP_SERVER_BEGIN_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['WIFI_ESP_LIBRARY_TOOLTIP']);
+        this.setStyle('esp_blocks');
+    }
+};
+
+Blockly.Blocks['WIFI_ESP_SERVER_WIFI_BEGIN'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(WIFI_ESP_SERVERMediaFolder + "wifi_esp_server.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField(Blockly.Msg['WIFI_ESP_BEGIN']);
+        this.appendValueInput("SSID")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg['WIFI_ESP_BEGIN_SSID']);
+        this.appendValueInput("PASS")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg['WIFI_ESP_BEGIN_PASS']);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg['WIFI_ESP_BEGIN_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['WIFI_ESP_LIBRARY_TOOLTIP']);
+        this.setStyle('esp_blocks');
+    }
+};
+
+Blockly.Blocks['WIFI_ESP_SERVER_SERVER_SEND'] = {
+    init: function() {
+        this.appendValueInput("SERVER_NAME")
+            .appendField(new Blockly.FieldImage(WIFI_ESP_SERVERMediaFolder + "wifi_esp_server.png", Code.imageSize / 3, Code.imageSize / 3))
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("server");
+        this.appendDummyInput()
+            .appendField("send response to client");
+        this.appendValueInput("CODE")
+            .setCheck("Number")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("code");
+        this.appendValueInput("CONTENT_TYPE")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("content type ");
+        this.appendValueInput("CONTENT")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("content");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip("Sending responses to the client");
+        this.setHelpUrl("https://github.com/esp8266/Arduino/blob/master/libraries/ESP8266WebServer/README.rst");
+        this.setStyle('esp_blocks');
+    }
+};
+
+Blockly.Blocks['WIFI_ESP_SERVER_SERVER_ON'] = {
+    init: function() {
+        this.appendValueInput("SERVER_NAME")
+            .appendField(new Blockly.FieldImage(WIFI_ESP_SERVERMediaFolder + "wifi_esp_server.png", Code.imageSize / 3, Code.imageSize / 3))
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("server");
+        this.appendValueInput("CLIENT_REQUEST")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("on client request");
+        this.appendStatementInput("HANDLER")
+            .setCheck(null)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("does");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip("Client request handlers");
+        this.setHelpUrl("https://github.com/esp8266/Arduino/blob/master/libraries/ESP8266WebServer/README.rst");
+        this.setStyle('esp_blocks');
+    }
+};
+
+Blockly.Blocks['WIFI_ESP_SERVER_SERVER_ON_HANDLER'] = {
+    init: function() {
+        this.appendValueInput("SERVER_NAME")
+            .appendField(new Blockly.FieldImage(WIFI_ESP_SERVERMediaFolder + "wifi_esp_server.png", Code.imageSize / 3, Code.imageSize / 3))
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("server");
+        this.appendValueInput("CLIENT_REQUEST")
+            .setCheck("String")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("on client request");
+        this.appendValueInput("HANDLER")
+            .setCheck(null)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("do");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip("Client request handlers");
+        this.setHelpUrl("https://github.com/esp8266/Arduino/blob/master/libraries/ESP8266WebServer/README.rst");
+        this.setStyle('esp_blocks');
+    }
+};
+
+Blockly.Blocks['WIFI_ESP_SERVER_LOCALIP'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(WIFI_ESP_SERVERMediaFolder + "wifi_esp_server.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField(Blockly.Msg['WIFI_ESP_LOCALIP']);
+        this.setOutput(true, null);
+        this.setTooltip(Blockly.Msg['WIFI_ESP_LOCALIP_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['WIFI_ESP_LIBRARY_TOOLTIP']);
+        this.setStyle('esp_blocks');
+    }
+};
+
+Blockly.Blocks['WIFI_ESP_SERVER_SSID'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(WIFI_ESP_SERVERMediaFolder + "wifi_esp_server.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField(Blockly.Msg['WIFI_ESP_SSID']);
+        this.setOutput(true, null);
+        this.setTooltip(Blockly.Msg['WIFI_ESP_SSID_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['WIFI_ESP_LIBRARY_TOOLTIP']);
+        this.setStyle('esp_blocks');
+    }
+};
+
+Blockly.Blocks['WIFI_ESP_SERVER_CLIENT_ACCEPT'] = {
+    init: function() {
+        this.appendValueInput("NAME")
+            .setCheck("String")
+            .appendField(new Blockly.FieldImage(WIFI_ESP_SERVERMediaFolder + "wifi_esp_server.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField(Blockly.Msg['WIFI_ESP_SERVER_AVAILABLE']);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg['WIFI_ESP_SERVER_AVAILABLE_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['WIFI_ESP_LIBRARY_TOOLTIP']);
+        this.setStyle('esp_blocks');
+    }
+};
+
+Blockly.Blocks['WIFI_ESP_SERVER_CLIENT_AVAILABLE'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(WIFI_ESP_SERVERMediaFolder + "wifi_esp_server.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField(Blockly.Msg['WIFI_ESP_SERVER_CLIENT_AVAILABLE']);
+        this.setOutput(true, "Boolean");
+        this.setTooltip(Blockly.Msg['WIFI_ESP_SERVER_CLIENT_AVAILABLE_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['WIFI_ESP_LIBRARY_TOOLTIP']);
+        this.setStyle('esp_blocks');
+    }
+};
+
+Blockly.Blocks['WIFI_ESP_SERVER_CLIENT_HANDLE'] = {
+    init: function() {
+        this.appendValueInput("NAME")
+            .setCheck("String")
+            .appendField(new Blockly.FieldImage(WIFI_ESP_SERVERMediaFolder + "wifi_esp_server.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField(Blockly.Msg['WIFI_ESP_SERVER_CLIENT_HANDLE']);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg['WWIFI_ESP_SERVER_CLIENT_HANDLE_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['WIFI_ESP_LIBRARY_TOOLTIP']);
+        this.setStyle('esp_blocks');
+    }
+};
+
+Blockly.Blocks['WIFI_ESP_SERVER_CLIENT_OBJECT'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(WIFI_ESP_SERVERMediaFolder + "wifi_esp_server.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField(Blockly.Msg['WIFI_ESP_SERVER_CLIENT_OBJECT']);
+        this.setOutput(true, "Boolean");
+        this.setTooltip(Blockly.Msg['WIFI_ESP_SERVER_CLIENT_OBJECT_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['WIFI_ESP_LIBRARY_TOOLTIP']);
+        this.setStyle('esp_blocks');
+    }
+};
+
+Blockly.Blocks['WIFI_ESP_SERVER_CLIENT_CONNECTED'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(WIFI_ESP_SERVERMediaFolder + "wifi_esp_server.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField(Blockly.Msg['WIFI_ESP_SERVER_CLIENT_CONNECTED']);
+        this.setOutput(true, "Boolean");
+        this.setTooltip(Blockly.Msg['WIFI_ESP_SERVER_CLIENT_CONNECTED_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['WIFI_ESP_LIBRARY_TOOLTIP']);
+        this.setStyle('esp_blocks');
+    }
+};
+
+Blockly.Blocks['WIFI_ESP_SERVER_CLIENT_READ'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(WIFI_ESP_SERVERMediaFolder + "wifi_esp_server.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField(Blockly.Msg['WIFI_ESP_SERVER_CLIENT_READ']);
+        this.setOutput(true, "String");
+        this.setTooltip(Blockly.Msg['WIFI_ESP_SERVER_CLIENT_READ_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['WIFI_ESP_LIBRARY_TOOLTIP']);
+        this.setStyle('esp_blocks');
+    }
+};
+
+Blockly.Blocks['WIFI_ESP_SERVER_CLIENT_STOP'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(WIFI_ESP_SERVERMediaFolder + "wifi_esp_server.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField(Blockly.Msg['WIFI_ESP_SERVER_CLIENT_STOP']);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg['WIFI_ESP_SERVER_CLIENT_STOP_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['WIFI_ESP_LIBRARY_TOOLTIP']);
+        this.setStyle('esp_blocks');
+    }
+};
+
+Blockly.Blocks['WIFI_ESP_SERVER_CLIENT_PRINT'] = {
+    init: function() {
+        this.appendValueInput("NAME")
+            .setCheck("String")
+            .appendField(new Blockly.FieldImage(WIFI_ESP_SERVERMediaFolder + "wifi_esp_server.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField(Blockly.Msg['WIFI_ESP_SERVER_CLIENT_PRINT']);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg['WIFI_ESP_SERVER_CLIENT_PRINT_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['WIFI_ESP_LIBRARY_TOOLTIP']);
+        this.setStyle('esp_blocks');
+    }
+};
+
+Blockly.Blocks['WIFI_ESP_SERVER_CLIENT_PRINT_MULTILINETEXTINPUT'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage(WIFI_ESP_SERVERMediaFolder + "wifi_esp_server.png", Code.imageSize / 3, Code.imageSize / 3))
+            .appendField(Blockly.Msg['WIFI_ESP_SERVER_CLIENT_PRINT_MULTILINETEXTINPUT'])
+            .appendField(new Blockly.FieldMultilineInput('default text\n with newline character'), 'NAME');
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg['WIFI_ESP_SERVER_CLIENT_PRINT_MULTILINETEXTINPUT_TOOLTIP']);
+        this.setHelpUrl(Blockly.Msg['WIFI_ESP_LIBRARY_TOOLTIP']);
+        this.setStyle('esp_blocks');
+    }
+};

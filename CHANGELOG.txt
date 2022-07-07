@@ -1,3 +1,7 @@
+v0.9.6
+- embed Block Factory
+- add Draw.io + Gaphor diagrams import
+
 v0.9.5
 - auto indentation in Monaco code editor
 - add pick & place block function

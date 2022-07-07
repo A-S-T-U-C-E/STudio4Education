@@ -1,0 +1,51 @@
+Blockly.Blocks.WIFI_ESP_SERVER_SERVER_DEFINE.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.WIFI_ESP_SERVER_SERVER_BEGIN.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.WIFI_ESP_SERVER_WIFI_BEGIN.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.WIFI_ESP_SERVER_SERVER_SEND.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.WIFI_ESP_SERVER_SERVER_ON.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.WIFI_ESP_SERVER_SERVER_ON_HANDLER.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.WIFI_ESP_SERVER_LOCALIP.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.WIFI_ESP_SERVER_SSID.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.WIFI_ESP_SERVER_CLIENT_ACCEPT.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.WIFI_ESP_SERVER_CLIENT_AVAILABLE.getBlockType = function() {
+    return Blockly.Types.TEXT;
+};
+Blockly.Blocks.WIFI_ESP_SERVER_CLIENT_HANDLE.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.WIFI_ESP_SERVER_CLIENT_OBJECT.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
+};
+Blockly.Blocks.WIFI_ESP_SERVER_CLIENT_CONNECTED.getBlockType = function() {
+    return Blockly.Types.BOOLEAN;
+};
+Blockly.Blocks.WIFI_ESP_SERVER_CLIENT_READ.getBlockType = function() {
+    return Blockly.Types.CHARACTER;
+};
+Blockly.Blocks.WIFI_ESP_SERVER_CLIENT_STOP.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.WIFI_ESP_SERVER_CLIENT_PRINT.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
+Blockly.Blocks.WIFI_ESP_SERVER_CLIENT_PRINT_MULTILINETEXTINPUT.getBlockType = function() {
+    return Blockly.Types.NULL;
+};

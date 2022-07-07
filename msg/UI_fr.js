@@ -16,7 +16,7 @@ var MSG = {
     screenshot: "Télécharger une capture d'écran",
     xmlError: "Impossible de charger le fichier de sauvegarde.  Peut être a t-il été créé avec une autre version ?",
     xmlLoad: "Voulez-vous remplacer les blocs actuels ?\n 'Annuler' les fera fusionner.",
-    badXml: "Erreur d’analyse du fichier :\n%1\n\nSélectionner 'OK' pour abandonner vos modifications ou 'Annuler' pour continuer à modifier le fichier.",
+    badXml: "Erreur d’analyse du fichier.",
     languageSpan: "langue",
     levelSpan: "niveau",
     skill1_menu_span: "novice (padawan)",
@@ -39,6 +39,8 @@ var MSG = {
     serialMonitorButton_span: "moniteur série",
     nodeRedFlowButton_span: "node-Red - fichiers",
     supervisionButton_span: "supervision",
+    importPapyrusButton_span: "importer une configuration Papyrus",
+    importSysMLButton_span: "importer une configuration SysML",
     saveCodeButton_span: "exporte le code",
     menuButton_span: "menu fichiers",
     newButton_span: "nouveau projet",
@@ -55,11 +57,11 @@ var MSG = {
     helpModalSpan_title: "Aide - à propos",
     helpModalSpan_text: "<img src='./S4E/media/logo_only.png' alt='' style='height:100px; float:left; margin: 0 10px 10px 0;' />" +
         "<p style='text-align: left;'>Créé pour le projet <a href='https://www.arrowhead.eu/arrowheadtools' rel='nofollow'><strong>Arrowhead</strong></a>, S4E est un <strong>programme web d\'édition et de programmation visuelle par blocs pour les cartes <a href='https://www.st.com' rel='nofollow'>STmicroelectronics</a></strong>, il est basé sur <a href='https://developers.google.com/blockly/' rel='nofollow'>Blockly</a>, l\'éditeur graphique de programmation en ligne.</p>" +
-        "<p style='text-align: left;'>STudio4Education fournit un environnement de programmation par blocs et leurs traductions en code C.</p>" +
-        "<p style='text-align: left;'>Accessibilité : <a href='https://github.com/A-S-T-U-C-E/STudio4Education#accessibility'>documentation en ligne</a>.</br>" +
-        "Wiki : <a href='https://github.com/A-S-T-U-C-E/STudio4Education/wiki'>sur Github</a>.</br>" +
-        "Un bug ? Merci d\'écrire ici : <a href='https://github.com/A-S-T-U-C-E/STudio4Education/issues'>sur Github</a>.</br>" +
-        "Remerciements & bibliothèques : <a href='https://github.com/A-S-T-U-C-E/STudio4Education/wiki/Thanks'>sur Github</a>.</p>" +
+        "<p style='text-align: left;'>Studio4Education fournit un environnement de programmation par blocs et leurs traductions en code C.</p>" +
+        "<p style='text-align: left;'>Accessibilité : <a href='https://github.com/A-S-T-U-C-E/Studio4Education#accessibility'>documentation en ligne</a>.</br>" +
+        "Wiki : <a href='https://github.com/A-S-T-U-C-E/Studio4Education/wiki'>sur Github</a>.</br>" +
+        "Un bug ? Merci d\'écrire ici : <a href='https://github.com/A-S-T-U-C-E/Studio4Education/issues'>sur Github</a>.</br>" +
+        "Remerciements & bibliothèques : <a href='https://github.com/A-S-T-U-C-E/Studio4Education/wiki/Thanks'>sur Github</a>.</p>" +
         "<p style='text-align: center;'>v0.9.5 - BSD3 license - Sébastien CANET" +
         "<p style='text-align: center;'><a href = 'https://www.paypal.com/donate/?business=KBQDU3S6FWQU8&no_recurring=0&item_name=Merci+de+faire+un+don+pour+soutenir+les+logiciels+libres+%21&currency_code=EUR'>Merci de faire un don pour soutenir les logiciels libres !</br><img src='https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif' alt='Paypal'/></a></p>" +
         "<p style='text-align: left;color:red;'>PROFS FRANCAIS & ASSOCIATIONS</br>" +
@@ -94,7 +96,9 @@ var MSG = {
     dataConversionButton_span: "encodage de données",
     //menu IoT
     iotConnectButton_span: "connexion aux serveurs",
-    launchNodeRed_span: "lancer le serveur Node-RED",
+    drawio_span: "diagrammes",
+    launchNodeRed_span: "lancer Node-RED",
+    launchNodeRedServer_span: "lancer le serveur Node-RED",
     launchWebServer_span: "lancer le serveur local",
     papyrusConnect_span: "connexion à Papyrus",
     papyrusConnect_helper_span: "Papyrus configuration",

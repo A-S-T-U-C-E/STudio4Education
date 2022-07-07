@@ -29,14 +29,14 @@ Blockly.Arduino['X_NUCLEO_IKS01A3_HTS221_TEMP_HUMIDITY_READ'] = function(block) 
             '  HumTemp.GetTemperature(&temperature);\n' +
             '  return temperature;\n' +
             '}'
-        var code = 'tempFromBoard()';
+        let code = 'tempFromBoard()';
     } else {
         Blockly.Arduino.codeFunctions_['function_IKS01A3_HTS221_humidity'] = 'float humFromHS221() {\n' +
             '  float humidity = 0;\n' +
             '  HumTemp.GetHumidity(&humidity);\n' +
             '  return humidity;\n' +
             '}'
-        var code = 'humFromBoard()';
+        let code = 'humFromBoard()';
     }
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
@@ -53,7 +53,7 @@ Blockly.Arduino['X_NUCLEO_IKS01A3_STTS751_TEMPERATURE_READ'] = function(block) {
         '  TempSensor.GetTemperature(&temperature);\n' +
         '  return temperature;\n' +
         '}'
-    var code = 'tempFromSTTS751()';
+    let code = 'tempFromSTTS751()';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
@@ -71,14 +71,14 @@ Blockly.Arduino['X_NUCLEO_IKS01A3_LPS22HH_PRESSURE_READ'] = function(block) {
             '  PressTemp.GetTemperature(&temperature);\n' +
             '  return temperature;\n' +
             '}'
-        var code = 'tempFromBoard()';
+        let code = 'tempFromBoard()';
     } else {
         Blockly.Arduino.codeFunctions_['function_IKS01A3_LPS22HH_humidity'] = 'float pressionFromLPS22HH() {\n' +
             '  float pressure = 0;\n' +
             '  PressTemp.GetPressure(&pressure);\n' +
             '  return pressure;\n' +
             '}'
-        var code = 'pressionFromBoard()';
+        let code = 'pressionFromBoard()';
     }
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
@@ -97,7 +97,7 @@ Blockly.Arduino['X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER'] = function(block) {
             '  Accelero.Get_X_Axes(accelerometer);\n' +
             '  return accelerometer[0];\n' +
             '}';
-        var code = 'accelerometerLIS2DW12_X()';
+        let code = 'accelerometerLIS2DW12_X()';
     }
     if (dropdown_LIS2DW12_sensor == 'Y_AXIS') {
         Blockly.Arduino.codeFunctions_['function_LIS2DW12_ACCEL_Y'] = 'float accelerometerLIS2DW12_Y() {\n' +
@@ -105,7 +105,7 @@ Blockly.Arduino['X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER'] = function(block) {
             '  Accelero.Get_X_Axes(accelerometer);\n' +
             '  return accelerometer[1];\n' +
             '}';
-        var code = 'accelerometerLIS2DW12_Y()';
+        let code = 'accelerometerLIS2DW12_Y()';
     }
     if (dropdown_LIS2DW12_sensor == 'Z_AXIS') {
         Blockly.Arduino.codeFunctions_['function_LIS2DW12_ACCEL_Z'] = 'float accelerometerLIS2DW12_Z() {\n' +
@@ -113,7 +113,7 @@ Blockly.Arduino['X_NUCLEO_IKS01A3_LIS2DW12_ACCELEROMETER'] = function(block) {
             '  Accelero.Get_X_Axes(accelerometer);\n' +
             '  return accelerometer[2];\n' +
             '}';
-        var code = 'accelerometerLIS2DW12_Z()';
+        let code = 'accelerometerLIS2DW12_Z()';
     }
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
@@ -134,7 +134,7 @@ Blockly.Arduino['X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION'] = function(block) {
                 '  AccGyr.Get_X_Axes(accelerometer);\n' +
                 '  return accelerometer[0];\n' +
                 '}';
-            var code = 'accelerometerLSM6DSO_X()';
+            let code = 'accelerometerLSM6DSO_X()';
         }
         if (dropdown_LSM6DSO_axis == 'Y_AXIS') {
             Blockly.Arduino.codeFunctions_['function_LSM6DSO_ACCEL_Y'] = 'float accelerometerLSM6DSO_Y() {\n' +
@@ -142,7 +142,7 @@ Blockly.Arduino['X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION'] = function(block) {
                 '  AccGyr.Get_X_Axes(accelerometer);\n' +
                 '  return accelerometer[1];\n' +
                 '}';
-            var code = 'accelerometerLSM6DSO_Y()';
+            let code = 'accelerometerLSM6DSO_Y()';
         }
         if (dropdown_LSM6DSO_axis == 'Z_AXIS') {
             Blockly.Arduino.codeFunctions_['function_LSM6DSO_ACCEL_Z'] = 'float accelerometerLSM6DSO_Z() {\n' +
@@ -150,7 +150,7 @@ Blockly.Arduino['X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION'] = function(block) {
                 '  AccGyr.Get_X_Axes(accelerometer);\n' +
                 '  return accelerometer[2];\n' +
                 '}';
-            var code = 'accelerometerLSM6DSO_Z()';
+            let code = 'accelerometerLSM6DSO_Z()';
         }
     } else {
         Blockly.Arduino.setups_['setup_IKS01A3_LIS2DW12'] += '  AccGyr.Enable_G();';
@@ -160,7 +160,7 @@ Blockly.Arduino['X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION'] = function(block) {
                 '  AccGyr.Get_G_Axes(gyroscope);\n' +
                 '  return gyroscope[0];\n' +
                 '}';
-            var code = 'gyroscopeLSM6DSO_X()';
+            let code = 'gyroscopeLSM6DSO_X()';
         }
         if (dropdown_LSM6DSO_axis == 'Y_AXIS') {
             Blockly.Arduino.codeFunctions_['function_LSM6DSO_ACCEL_Y'] = 'float gyroscopeLSM6DSO_Y() {\n' +
@@ -168,7 +168,7 @@ Blockly.Arduino['X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION'] = function(block) {
                 '  AccGyr.Get_G_Axes(gyroscope);\n' +
                 '  return gyroscope[1];\n' +
                 '}';
-            var code = 'gyroscopeLSM6DSO_Y()';
+            let code = 'gyroscopeLSM6DSO_Y()';
         }
         if (dropdown_LSM6DSO_axis == 'Z_AXIS') {
             Blockly.Arduino.codeFunctions_['function_LSM6DSO_ACCEL_Z'] = 'float gyroscopeLSM6DSO_Z() {\n' +
@@ -176,7 +176,7 @@ Blockly.Arduino['X_NUCLEO_IKS01A3_LSM6DSO_6DORIENTATION'] = function(block) {
                 '  AccGyr.Get_G_Axes(gyroscope);\n' +
                 '  return gyroscope[2];\n' +
                 '}';
-            var code = 'gyroscopeLSM6DSO_Z()';
+            let code = 'gyroscopeLSM6DSO_Z()';
         }
     }
     return [code, Blockly.Arduino.ORDER_ATOMIC];
@@ -196,7 +196,7 @@ Blockly.Arduino['X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC'] = function(block) {
             '  Magnet.GetAxes(magnetometer);\n' +
             '  return magnetometer[0];\n' +
             '}';
-        var code = 'magnetometerLIS2MDL_X()';
+        let code = 'magnetometerLIS2MDL_X()';
     }
     if (dropdown_LIS2MDL_sensor == 'Y_AXIS') {
         Blockly.Arduino.codeFunctions_['function_LIS2MDL_ACCEL_Y'] = 'float magnetometerLIS2MDL_Y() {\n' +
@@ -204,7 +204,7 @@ Blockly.Arduino['X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC'] = function(block) {
             '  Magnet.GetAxes(magnetometer);\n' +
             '  return magnetometer[1];\n' +
             '}';
-        var code = 'magnetometerLIS2MDL_Y()';
+        let code = 'magnetometerLIS2MDL_Y()';
     }
     if (dropdown_LIS2MDL_sensor == 'Z_AXIS') {
         Blockly.Arduino.codeFunctions_['function_LIS2MDL_ACCEL_Z'] = 'float magnetometerLIS2MDL_Z() {\n' +
@@ -212,7 +212,7 @@ Blockly.Arduino['X_NUCLEO_IKS01A3_LIS2MDL_MAGNETIC'] = function(block) {
             '  Magnet.GetAxes(magnetometer);\n' +
             '  return magnetometer[2];\n' +
             '}';
-        var code = 'magnetometerLIS2MDL_Z()';
+        let code = 'magnetometerLIS2MDL_Z()';
     }
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

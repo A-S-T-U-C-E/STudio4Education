@@ -16,7 +16,7 @@ var MSG = {
     screenshot: "Download Screenshot",
     xmlError: "Could not load your saved file. Maybe it was created with a different version of S4E?",
     xmlLoad: "Do you want to replace the current blocks? \n 'Cancel' will merge",
-    badXml: "Error parsing XML:\n%1\n\nSelect 'OK' to abandon your changes or 'Cancel' to further edit the file.",
+    badXml: "Error parsing file.",
     languageSpan: "choose language",
     levelSpan: "skill level",
     skill1_menu_span: "novice (padawan)",
@@ -39,6 +39,8 @@ var MSG = {
     serialMonitorButton_span: "Serial monitor",
     nodeRedFlowButton_span: "node-Red flows",
     supervisionButton_span: "supervision",
+    importPapyrusButton_span: "Import Papyrus config file",
+    importSysMLButton_span: "Import SysML config file",
     saveCodeButton_span: "Export Code",
     menuButton_span: "File menu",
     newButton_span: "New project",
@@ -55,11 +57,11 @@ var MSG = {
     helpModalSpan_title: "Help / About",
     helpModalSpan_text: "<img src='./S4E/media/logo_only.png' alt='' style='height:100px; float:left; margin: 0 10px 10px 0;' />" +
         "<p style='text-align: left;'>Designed for <a href='https://www.arrowhead.eu/arrowheadtools' rel='nofollow'><strong>Arrowhead</strong> Tools Project</a>, S4E is a <strong>web-based visual programming editor for <a href='https://www.st.com' rel='nofollow'>STmicroelectronics</a></strong> boards, thanks to <a href='https://developers.google.com/blockly/' rel='nofollow'>Blockly</a>, the web-based, graphical programming editor.</p>" +
-        "<p style='text-align: left;'>STudio4Education provides static type language blocks and code generators for simple C programming.</p>" +
-        "<p style='text-align: left;'>Accessibility: <a href='https://github.com/A-S-T-U-C-E/STudio4Education#accessibility'>online documentation</a>.</br>" +
-        "Wiki : <a href='https://github.com/A-S-T-U-C-E/STudio4Education/wiki'>on Github</a>.</br>" +
-        "A bug? Post it here: <a href='https://github.com/A-S-T-U-C-E/STudio4Education/issues'>on Github</a>.</br>" +
-        "Thanks & libraries: <a href='https://github.com/A-S-T-U-C-E/STudio4Education/wiki/Thanks'>on Github</a>.</p>" +
+        "<p style='text-align: left;'>Studio4Education provides static type language blocks and code generators for simple C programming.</p>" +
+        "<p style='text-align: left;'>Accessibility: <a href='https://github.com/A-S-T-U-C-E/Studio4Education#accessibility'>online documentation</a>.</br>" +
+        "Wiki : <a href='https://github.com/A-S-T-U-C-E/Studio4Education/wiki'>on Github</a>.</br>" +
+        "A bug? Post it here: <a href='https://github.com/A-S-T-U-C-E/Studio4Education/issues'>on Github</a>.</br>" +
+        "Thanks & libraries: <a href='https://github.com/A-S-T-U-C-E/Studio4Education/wiki/Thanks'>on Github</a>.</p>" +
         "<p style='text-align: center;'>v0.9.5 - BSD3 license - Sébastien CANET" +
         "<p style='text-align: center;'><a href='https://www.paypal.com/donate/?business=KBQDU3S6FWQU8&no_recurring=0&item_name=Thanks+for+donation+with+Paypal+to+help+me+improve+this+software.&currency_code=EUR'>Thanks for donation with Paypal to help me improve this software.</br><img src='https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif' alt='Paypal'/></a></p>",
     CROSS_TAB_COPY: "Copy",
@@ -91,7 +93,9 @@ var MSG = {
     dataConversionButton_span: "data encoding",
     //menu IoT
     iotConnectButton_span: "servers",
-    launchNodeRed_span: "Node-RED server",
+    drawio_span: "diagrams",
+    launchNodeRed_span: "Node-RED",
+    launchNodeRedServer_span: "Node-RED server",
     launchWebServer_span: "local server",
     papyrusConnect_span: "Papyrus connect",
     papyrusConnect_helper_span: "Papyrus configuration",

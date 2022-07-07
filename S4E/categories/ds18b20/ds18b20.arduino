@@ -21,7 +21,7 @@ Blockly.Arduino['DS18B20_SEARCH'] = function() {
     Blockly.Arduino.includes_['ds18b20_include'] = '#include <OneWire.h>';
     Blockly.Arduino.definitions_['ds18b20_def_' + ds18b20_pin] = 'OneWire ds18b20(' + ds18b20_pin + '); // connected on pin' + ds18b20_pin + ' (a 4.7k resistor needed)'
     Blockly.Arduino.definitions_['ds18b20_def_' + ds18b20_addr] = 'byte addr_ds18b20_' + ds18b20_addr + '[' + ds18b20_addr + '];';
-    var code = 'ds18b20.search(addr_ds18b20_' + ds18b20_addr + ')';
+    let code = 'ds18b20.search(addr_ds18b20_' + ds18b20_addr + ')';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
@@ -47,6 +47,6 @@ Blockly.Arduino['DS18B20_TEMP'] = function() {
         '       else if (cfg == 0x40) raw = raw & ~1; // 11 bit res, 375 ms\n' +
         '   return (float)raw / 16.0;\n' +
         '}';
-    var code = 'dstemp(' + ds18b20_addr + ')';
+    let code = 'dstemp(' + ds18b20_addr + ')';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

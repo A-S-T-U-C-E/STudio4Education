@@ -337,13 +337,14 @@ var dialogCircuitJS;
 Code.CircuitJS = function() {
     if (!dialogCircuitJS)
         dialogCircuitJS = new DialogBox('circuitJSmodal', callbackButtons);
-    var ifrm = document.createElement("iframe");
+    let ifrm = document.createElement("iframe");
+    ifrm.setAttribute('id', "circuitFrame");
     ifrm.setAttribute("src", "./tools/circuitjs/circuitjs.html?startCircuit=blank.txt&running=false");
-    ifrm.style.width = "100%";
-    ifrm.style.height = "100%";
-    ifrm.id = "circuitFrame";
+    ifrm.setAttribute('width', '100%');
+    ifrm.setAttribute('height', '100%');
+    ifrm.setAttribute('frameBorder', '0');
     document.getElementById("content_CircuitJS").appendChild(ifrm);
-    var tag = document.createElement('script');
+    let tag = document.createElement('script');
     tag.async = false;
     tag.src = './tools/circuitjs/avr8js/src.avr8js.js';
     document.body.appendChild(tag);
@@ -439,18 +440,6 @@ function circuitJSmodal_replace_Blockly() {
     }
 }
 
-
-
-/**
- * Launch blockFatcory with language argument
- */
-Code.BlockFactory = function() {
-    var lang = Code.getStringParamFromUrl('lang', '');
-    if (!lang) {
-        lang = "en";
-    }
-    window.open('tools/blockFactory/blockFactory.html?lang=' + lang, '_blank').focus();
-};
 Code.HackCable = function() {
     var lang = Code.getStringParamFromUrl('lang', '');
     if (!lang) {
@@ -458,6 +447,7 @@ Code.HackCable = function() {
     }
     window.open('tools/hackcable/index.html', '_blank').focus();
 };
+
 Code.HTMLFactory = function() {
     var lang = Code.getStringParamFromUrl('lang', '');
     if (!lang) {
@@ -635,26 +625,18 @@ Code.ResetWorkspace = function() {
         }
     });
 };
+
 /**
  * Change font family in webpage
  */
-
 Code.changeFontFamily = function(fontType) {
-    var oldFont = '';
-    if (document.querySelector('.blocklyText').style.fontFamily)
-        oldFont = document.querySelector('.blocklyText').style.fontFamily;
-    document.body.style.fontFamily = fontType;
-    Array.from(document.querySelectorAll(".blocklyText"))
-        .forEach((element) => element.style.fontFamily = fontType);
-    Array.from(document.querySelectorAll(".blocklyTreeLabel"))
-        .forEach((element) => element.style.fontFamily = fontType);
-    document.body.className = document.body.className.replace(oldFont, fontType);
-
-
-    // let actualTheme = Code.mainWorkspace.getTheme();
-    // console.log(actualTheme)
-    // Blockly.Themes[actualTheme.name].setComponentStyle('fontStyle', fontType);
-    // Code.mainWorkspace.setTheme(Blockly.Themes[actualTheme]);
+    var fontStyle = {
+        'family': fontType
+    };
+    Code.mainWorkspace.getTheme().setFontStyle(fontStyle);
+    // Refresh theme.
+    Code.mainWorkspace.setTheme(Code.mainWorkspace.getTheme());
+    Code.mainWorkspace.render();
     window.localStorage.setItem('choosedFont', fontType);
 }
 
@@ -669,12 +651,8 @@ Code.changeRenderingConstant = function(value) {
                 'size': value
             };
             Code.mainWorkspace.getTheme().setFontStyle(fontStyle);
-            var labelsToolbox = document.getElementsByClassName("blocklyTreeLabel")
-            for (var x = 0; x < labelsToolbox.length; x++)
-                labelsToolbox[x].style.fontSize = value + "px";
-            var labelsIconsToolbox = document.getElementsByClassName("customIcon")
-            for (var x = 0; x < labelsIconsToolbox.length; x++)
-                labelsIconsToolbox[x].style.width = value + "px";
+            // Refresh theme.
+            Code.mainWorkspace.setTheme(Code.mainWorkspace.getTheme());
             break;
         case 'iconSize':
             var labelsIconsMenu = document.getElementsByClassName("iconButtons")
@@ -730,6 +708,8 @@ function toggleDisplayHelpModal() {
 
 /**
  * Add convert bin <-> text
+ * It takes the text from the first textarea, converts it to binary, and then outputs it to the second
+ * textarea.
  */
 function text2bin() {
     var output = document.getElementById("ti2");
@@ -748,8 +728,16 @@ function text2bin() {
         datEncode += pad + ' ';
     }
     output.value = datEncode;
-};
+}
 
+/**
+ * It takes a string, a character, and a number, and returns the string padded with the character on
+ * the left until the string is the length of the number.
+ * @param s - The string to pad.
+ * @param c - the character to pad with
+ * @param n - The length of the string you want to return
+ * @returns the string s.
+ */
 function padding_left(s, c, n) {
     if (!s || !c || s.length >= n) {
         return s;
@@ -760,8 +748,12 @@ function padding_left(s, c, n) {
         s = c + s;
     }
     return s;
-};
+}
 
+/**
+ * It takes the binary string from the input field, removes all spaces, and then converts each 8-bit
+ * binary string into a character.
+ */
 function bin2text() {
     var output = document.getElementById("ti4");
     var input = document.getElementById("ti3").value;
@@ -780,7 +772,7 @@ function bin2text() {
         }
     }
     output.value = data;
-};
+}
 
 
 /**
@@ -795,9 +787,9 @@ function convert2Dec(numR, numG, numB, doneString) {
     numR = numR.toUpperCase();
     numG = numG.toUpperCase();
     numB = numB.toUpperCase();
-    decRval = hex2dec(numR)
-    decGval = hex2dec(numG);
-    decBval = hex2dec(numB);
+    let decRval = hex2dec(numR)
+    let decGval = hex2dec(numG);
+    let decBval = hex2dec(numB);
     if ((decRval == "BAD") || (decGval == "BAD") || (decBval == "BAD")) {
         return false;
     } else {
@@ -807,7 +799,7 @@ function convert2Dec(numR, numG, numB, doneString) {
         document.converter.hexR.value = numR;
         document.converter.hexG.value = numG;
         document.converter.hexB.value = numB;
-        hexStringOut = "" + numR + numG + numB;
+        let hexStringOut = "" + numR + numG + numB;
         hexStringOut.toUpperCase();
         document.bgColor = "#" + hexStringOut;
         document.converter.hexString.value = hexStringOut;
@@ -824,14 +816,12 @@ function hex2dec(theHex) {
         alert("Code hexad�cimal (00-FF) uniquement.");
         return "BAD";
     }
-    var retDec = parseInt(theHex, 16);
-    return retDec;
+    return parseInt(theHex, 16);
 }
 
 function fixHex(theDec) {
     var hNum = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F");
-    var retHex = hNum[theDec];
-    return retHex;
+    return hNum[theDec];
 }
 
 function dec2hex(theDec) {
@@ -865,9 +855,9 @@ function convert2Hex(numR, numG, numB, doneString) {
         alert("Entrez une valeur dans chaque case.");
         return false;
     }
-    hexRval = dec2hex(numR);
-    hexGval = dec2hex(numG);
-    hexBval = dec2hex(numB);
+    let hexRval = dec2hex(numR);
+    let hexGval = dec2hex(numG);
+    let hexBval = dec2hex(numB);
     if ((hexRval == "BAD") || (hexGval == "BAD") || (hexBval == "BAD")) {
         return false;
     } else {
@@ -887,9 +877,9 @@ function showHex(hexStringIn) {
         return false;
     }
 
-    hexRval = "" + hexStringIn.charAt(0) + hexStringIn.charAt(1);
-    hexGval = "" + hexStringIn.charAt(2) + hexStringIn.charAt(3);
-    hexBval = "" + hexStringIn.charAt(4) + hexStringIn.charAt(5);
+    let hexRval = "" + hexStringIn.charAt(0) + hexStringIn.charAt(1);
+    let hexGval = "" + hexStringIn.charAt(2) + hexStringIn.charAt(3);
+    let hexBval = "" + hexStringIn.charAt(4) + hexStringIn.charAt(5);
 
     convert2Dec(hexRval, hexGval, hexBval, "DONE");
     convert2Hex(decRval, decGval, decBval, "DONE");
@@ -932,22 +922,23 @@ function increaseVal(theType) {
  **/
 
 Code.getPorts = async function() {
-    if (!('serial' in navigator)) {
-        Blockly.alert("This site requires the experimental Web Serial API. Your browser either does not support this, or does not have it enabled.");
-    } else try {
-        // request WebSerial API for port list
-        // in Electron it fires 'select-serial-port' in main.js
-        Code.serialPort = await navigator.serial.requestPort();
-        document.getElementById('serialButton').className = 'iconButtonsClicked';
-        window.sessionStorage.setItem('portSelected', true);
-    } catch (error) {
-        if (!Code.serialPort) {
-            Blockly.alert('no port selected')
-            document.getElementById('serialButton').className = 'iconButtons';
-            window.sessionStorage.setItem('portSelected', false);
+        if (!('serial' in navigator)) {
+            Blockly.alert("This site requires the experimental Web Serial API. Your browser either does not support this, or does not have it enabled.");
+        } else try {
+            // request WebSerial API for port list
+            // in Electron it fires 'select-serial-port' in main.js
+            Code.serialPort = await navigator.serial.requestPort();
+            document.getElementById('serialButton').className = 'iconButtonsClicked';
+            window.sessionStorage.setItem('portSelected', true);
+        } catch (error) {
+            if (!Code.serialPort) {
+                Blockly.alert('no port selected')
+                document.getElementById('serialButton').className = 'iconButtons';
+                window.sessionStorage.setItem('portSelected', false);
+            }
         }
     }
-}
+    /* Listening for the connect and disconnect events. */
 if (navigator.serial) {
     navigator.serial.addEventListener("connect", (event) => {
         Blockly.alert('New device connected');
@@ -969,11 +960,11 @@ Code.configurationPapyrusImport = function() {
             if (reader.result != null) {
                 var idsCategories = JSON.parse(reader.result);
                 var categoryIdsList = "";
-                for (let i = 0; i < idsCategories.jsonComponents.length; i++)
-                    categoryIdsList += idsCategories.jsonComponents[i].id + ',';
+                for (const element of idsCategories.jsonComponents)
+                    categoryIdsList += element.id + '.';
                 /* Taking the categoryIdsList and removing the last character (which is a comma) and
                 replacing all commas with periods. Then it is splitting the string into an array. */
-                var uniqueCategoryIdsList = categoryIdsList.slice(0, -1).replaceAll(',', '.').split('.');
+                var uniqueCategoryIdsList = categoryIdsList.slice(0, -1).split('.');
                 /* Removing duplicate values from an array. */
                 uniqueCategoryIdsList = [...new Set(uniqueCategoryIdsList)];
                 var urlToLoad = '?cat=LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES_TYPED,FUNCTIONS&level=skill3';
@@ -983,22 +974,92 @@ Code.configurationPapyrusImport = function() {
                     urlToLoad += '&kwids=' + uniqueCategoryIdsList.toString();
                 self.location = urlToLoad;
             } else {
-                Blockly.alert(MSG['badXml'], callback);
+                Blockly.alert(MSG['badXml'], {});
             }
         };
         reader.readAsText(files[0]);
     };
     // Create once invisible browse button with event listener, and click it
-    var selectFile = document.getElementById('select_file');
+    var selectFile = document.getElementById('select_papyrus_file');
     if (selectFile === null) {
         var selectFileDom = document.createElement('INPUT');
         selectFileDom.type = 'file';
-        selectFileDom.id = 'select_file';
+        selectFileDom.id = 'select_papyrus_file';
         selectFileDom.accept = '.json';
         selectFileDom.style.display = 'none';
         document.body.appendChild(selectFileDom);
-        selectFile = document.getElementById('select_file');
+        selectFile = document.getElementById('select_papyrus_file');
         selectFile.addEventListener('change', parseInputPapyrusfile, false);
+    }
+    selectFile.onclick = function destroyClickedElement(event) {
+        document.body.removeChild(event.target);
+    };
+    selectFile.click();
+};
+
+/**
+ * SysML diagram configuration file import
+ **/
+Code.configurationSysMLimport = function() {
+    // Create event listener function
+    var parseInputSysMLfile = function(e) {
+        var µcBoard = "";
+        var files = e.target.files;
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            if (reader.result != null) {
+                let extension = files[0].name.split('.').pop();
+                let parser = new DOMParser();
+                let xmlDoc = parser.parseFromString(reader.result, "text/xml");
+                var categoryIdsList = "";
+                if (extension == "gaphor") {
+                    let keys = xmlDoc.getElementsByTagName('val');
+                    for (const element of keys) {
+                        let data = element.childNodes[0].data;
+                        if (data.indexOf('S4E=') > -1) {
+                            if (data.indexOf('µc') > -1)
+                                µcBoard = data.substring(data.indexOf(":") + 1);
+                            else
+                                categoryIdsList += data.substring(4) + '.';
+                        }
+                    }
+                }
+                if (extension == "xml") {
+                    let keys = xmlDoc.getElementsByTagName('object');;
+                    for (const element of keys) {
+                        if (element.getAttribute("S4E").indexOf('µc') < 0)
+                            categoryIdsList += element.getAttribute("S4E") + '.';
+                        else µcBoard = element.getAttribute("S4E").substring(element.getAttribute("S4E").indexOf(":") + 1);
+                    }
+                }
+                /* Taking the categoryIdsList and removing the last character (which is a comma) and
+                replacing all commas with periods. Then it is splitting the string into an array. */
+                var uniqueCategoryIdsList = categoryIdsList.slice(0, -1).split('.');
+                /* Removing duplicate values from an array. */
+                uniqueCategoryIdsList = [...new Set(uniqueCategoryIdsList)];
+                var urlToLoad = '?cat=LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES_TYPED,FUNCTIONS&level=skill3';
+                if (uniqueCategoryIdsList)
+                    urlToLoad += '&kwids=' + uniqueCategoryIdsList.toString();
+                if (µcBoard)
+                    urlToLoad += '&board=' + µcBoard;
+                self.location = urlToLoad;
+            } else {
+                Blockly.alert(MSG['badXml'], {});
+            }
+        };
+        reader.readAsText(files[0]);
+    };
+    // Create once invisible browse button with event listener, and click it
+    var selectFile = document.getElementById('select_sysml_file');
+    if (selectFile === null) {
+        var selectFileDom = document.createElement('INPUT');
+        selectFileDom.type = 'file';
+        selectFileDom.id = 'select_sysml_file';
+        selectFileDom.accept = '.xml, .gaphor';
+        selectFileDom.style.display = 'none';
+        document.body.appendChild(selectFileDom);
+        selectFile = document.getElementById('select_sysml_file');
+        selectFile.addEventListener('change', parseInputSysMLfile, false);
     }
     selectFile.onclick = function destroyClickedElement(event) {
         document.body.removeChild(event.target);

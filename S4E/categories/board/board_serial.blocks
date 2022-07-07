@@ -96,7 +96,7 @@ Blockly.Blocks['BOARD_SERIAL_READ'] = {
         this.appendDummyInput("")
             .appendField(Blockly.Msg.SERIAL_READ);
         this.setInputsInline(true);
-        this.setOutput(true, "Number");
+        this.setOutput(true, "String");
         this.setTooltip(Blockly.Msg.SERIAL_PRINT_TOOLTIP);
         this.setHelpUrl(Blockly.Msg.SERIAL_PRINT_HELPURL);
         this.setStyle('board_blocks');

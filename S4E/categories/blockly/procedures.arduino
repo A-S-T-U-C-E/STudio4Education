@@ -18,85 +18,84 @@ goog.require('Blockly.Arduino');
 
 
 Blockly.Arduino.procedures_defreturn = function() {
-  // Define a procedure with a return value.
-  var funcName = Blockly.Arduino.nameDB_.getName(this.getFieldValue('NAME'),
-      Blockly.Procedures.NAME_TYPE);
-  this.name = funcName;
-  var branch = Blockly.Arduino.statementToCode(this, 'STACK');
-  var localsetup='';
-  for (var name in Blockly.Arduino.variables_) {
-      if(name.split(' ')[1]== this.id) {
-        if (Blockly.Arduino.variables_[name].search('_LOCAL')!=-1) {
-        localsetup += Blockly.Arduino.variables_[name].split(' ')[1] + " " +Blockly.Arduino.variables_[name].split(' ')[2]+"\n";
-      }
-    }
-  }
-
-  if (Blockly.Arduino.INFINITE_LOOP_TRAP) {
-    branch = Blockly.Arduino.INFINITE_LOOP_TRAP.replace(/%1/g,
-        '\'' + this.id + '\'') + branch;
-  }
-  var returnValue = Blockly.Arduino.valueToCode(this, 'RETURN',
-      Blockly.Arduino.ORDER_NONE) || '';
-  if (returnValue) {
-    var returnValueStr = '  return ' + returnValue + ';\n';
-    // find type in variables_ dictinonary
-    if(Blockly.Arduino.variables_[returnValue +" "+ this.id]){
-      // stored as '_LOCAL <type< <variable>'
-      returnType = Blockly.Arduino.variables_[returnValue +" "+ this.id].split(' ')[1];
-    }else{
-      // find the first defined type
-      var thisBlock = this.getInput('RETURN').connection.targetBlock(); //.getBlockType()
-      do{
-        if(!thisBlock.getBlockType) {
-          // no type registered for this block
-          if(thisBlock.connection)
-            // if another block is connected, try this one...
-            thisBlock = thisBlock.connection.targetBlock();
-          else{
-            thisBlock = null;
-            break;  // no type reached till the end of branch
-          }
-        }else{
-          break;
+    // Define a procedure with a return value.
+    var funcName = Blockly.Arduino.nameDB_.getName(this.getFieldValue('NAME'),
+        Blockly.Procedures.NAME_TYPE);
+    this.name = funcName;
+    var branch = Blockly.Arduino.statementToCode(this, 'STACK');
+    var localsetup = '';
+    for (var name in Blockly.Arduino.variables_) {
+        if (name.split(' ')[1] == this.id) {
+            if (Blockly.Arduino.variables_[name].search('_LOCAL') != -1) {
+                localsetup += Blockly.Arduino.variables_[name].split(' ')[1] + " " + Blockly.Arduino.variables_[name].split(' ')[2] + "\n";
+            }
         }
-      }while(1);
-      returnType =  thisBlock ? Blockly.Arduino.getArduinoType_(thisBlock.getBlockType()) : 'void';
     }
 
-  }
-  if(!returnValue) {
-    var returnType = 'void';
-    var returnValueStr ='';
-  }
-  var args = '';
-  for (var x = 0; x < this.arguments_.length; x++) {
-	  var arg = '';
-	  var argType = '';
-    if(this.arguments_[x].indexOf(' ')!=-1) { // if x contains more than one arg
-      argType = this.arguments_[x].split(' ')[0];
-      arg=this.arguments_[x].split(' ')[1];
-      if(this.argumentsTypes_[x]===undefined) {
-        this.argumentsTypes_[x]=Blockly.Arduino.getArduinoReverseType_(argType);
-      }
+    if (Blockly.Arduino.INFINITE_LOOP_TRAP) {
+        branch = Blockly.Arduino.INFINITE_LOOP_TRAP.replace(/%1/g,
+            '\'' + this.id + '\'') + branch;
     }
-    else { // x is a single word
-      arg = Blockly.Arduino.nameDB_.getName(this.arguments_[x], Blockly.Variables.NAME_TYPE);
-  	  if (this.argumentsTypes_[x]) {
-  		  argType = Blockly.Arduino.getArduinoType_(this.argumentsTypes_[x]);
-  	  } else {
-  		  argType = Blockly.Arduino.getArduinoType_(Blockly.Types.UNDEF);
-  	  }
-      this.arguments_.splice(x,1,argType + ' ' + arg); // remove x and add  argtype + arg
+    var returnValue = Blockly.Arduino.valueToCode(this, 'RETURN',
+        Blockly.Arduino.ORDER_NONE) || '';
+    if (returnValue) {
+        var returnValueStr = '  return ' + returnValue + ';\n';
+        // find type in variables_ dictinonary
+        if (Blockly.Arduino.variables_[returnValue + " " + this.id]) {
+            // stored as '_LOCAL <type< <variable>'
+            returnType = Blockly.Arduino.variables_[returnValue + " " + this.id].split(' ')[1];
+        } else {
+            // find the first defined type
+            var thisBlock = this.getInput('RETURN').connection.targetBlock(); //.getBlockType()
+            do {
+                if (!thisBlock.getBlockType) {
+                    // no type registered for this block
+                    if (thisBlock.connection)
+                    // if another block is connected, try this one...
+                        thisBlock = thisBlock.connection.targetBlock();
+                    else {
+                        thisBlock = null;
+                        break; // no type reached till the end of branch
+                    }
+                } else {
+                    break;
+                }
+            } while (1);
+            returnType = thisBlock ? Blockly.Arduino.getArduinoType_(thisBlock.getBlockType()) : 'void';
+        }
+
     }
-    args += argType + ' ' + arg + ', ';
-  }
-  
-  var code = returnType + ' ' + funcName + '(' + args.slice(0, -2) + ') {\n' + localsetup +
-      branch + returnValueStr + '}\n';
-  code = Blockly.Arduino.scrub_(this, code);
-  Blockly.Arduino.codeFunctions_[funcName] = code;
-  return null;
+    if (!returnValue) {
+        var returnType = 'void';
+        var returnValueStr = '';
+    }
+    var args = '';
+    for (var x = 0; x < this.arguments_.length; x++) {
+        var arg = '';
+        var argType = '';
+        if (this.arguments_[x].indexOf(' ') != -1) { // if x contains more than one arg
+            argType = this.arguments_[x].split(' ')[0];
+            arg = this.arguments_[x].split(' ')[1];
+            if (this.argumentsTypes_[x] === undefined) {
+                this.argumentsTypes_[x] = Blockly.Arduino.getArduinoReverseType_(argType);
+            }
+        } else { // x is a single word
+            arg = Blockly.Arduino.nameDB_.getName(this.arguments_[x], Blockly.Variables.NAME_TYPE);
+            if (this.argumentsTypes_[x]) {
+                argType = Blockly.Arduino.getArduinoType_(this.argumentsTypes_[x]);
+            } else {
+                argType = Blockly.Arduino.getArduinoType_(Blockly.Types.UNDEF);
+            }
+            this.arguments_.splice(x, 1, argType + ' ' + arg); // remove x and add  argtype + arg
+        }
+        args += argType + ' ' + arg + ', ';
+    }
+
+    let code = returnType + ' ' + funcName + '(' + args.slice(0, -2) + ') {\n' + localsetup +
+        branch + returnValueStr + '}\n';
+    code = Blockly.Arduino.scrub_(this, code);
+    Blockly.Arduino.codeFunctions_[funcName] = code;
+    return null;
 };
 
 // Defining a procedure without a return value uses the same generator as
@@ -104,43 +103,43 @@ Blockly.Arduino.procedures_defreturn = function() {
 Blockly.Arduino.procedures_defnoreturn = Blockly.Arduino.procedures_defreturn;
 
 Blockly.Arduino.procedures_callreturn = function() {
-  // Call a procedure with a return value.
-  var funcName = Blockly.Arduino.nameDB_.getName(this.getFieldValue('NAME'),
-      Blockly.Procedures.NAME_TYPE);
-  var args = [];
-  for (var x = 0; x < this.arguments_.length; x++) {
-    args[x] = Blockly.Arduino.valueToCode(this, 'ARG' + x,
-        Blockly.Arduino.ORDER_NONE) || 'null';
-  }
-  var code = funcName + '(' + args.join(', ') + ')';
-  return [code, Blockly.Arduino.ORDER_UNARY_POSTFIX];
+    // Call a procedure with a return value.
+    var funcName = Blockly.Arduino.nameDB_.getName(this.getFieldValue('NAME'),
+        Blockly.Procedures.NAME_TYPE);
+    var args = [];
+    for (var x = 0; x < this.arguments_.length; x++) {
+        args[x] = Blockly.Arduino.valueToCode(this, 'ARG' + x,
+            Blockly.Arduino.ORDER_NONE) || 'null';
+    }
+    let code = funcName + '(' + args.join(', ') + ')';
+    return [code, Blockly.Arduino.ORDER_UNARY_POSTFIX];
 };
 
 Blockly.Arduino.procedures_callnoreturn = function() {
-  // Call a procedure with no return value.
-  var funcName = Blockly.Arduino.nameDB_.getName(this.getFieldValue('NAME'),
-      Blockly.Procedures.NAME_TYPE);
-  var args = [];
-  for (var x = 0; x < this.arguments_.length; x++) {
-    args[x] = Blockly.Arduino.valueToCode(this, 'ARG' + x,
-        Blockly.Arduino.ORDER_NONE) || 'null';
-  }
-  var code = funcName + '(' + args.join(', ') + ');\n';
-  return code;
+    // Call a procedure with no return value.
+    var funcName = Blockly.Arduino.nameDB_.getName(this.getFieldValue('NAME'),
+        Blockly.Procedures.NAME_TYPE);
+    var args = [];
+    for (var x = 0; x < this.arguments_.length; x++) {
+        args[x] = Blockly.Arduino.valueToCode(this, 'ARG' + x,
+            Blockly.Arduino.ORDER_NONE) || 'null';
+    }
+    let code = funcName + '(' + args.join(', ') + ');\n';
+    return code;
 };
 
 Blockly.Arduino.procedures_ifreturn = function() {
-  // Conditionally return value from a procedure.
-  var condition = Blockly.Arduino.valueToCode(this, 'CONDITION',
-      Blockly.Arduino.ORDER_NONE) || 'false';
-  var code = 'if (' + condition + ') {\n';
-  if (this.hasReturnValue_) {
-    var value = Blockly.Arduino.valueToCode(this, 'VALUE',
-        Blockly.Arduino.ORDER_NONE) || 'null';
-    code += '  return ' + value + ';\n';
-  } else {
-    code += '  return;\n';
-  }
-  code += '}\n';
-  return code;
+    // Conditionally return value from a procedure.
+    var condition = Blockly.Arduino.valueToCode(this, 'CONDITION',
+        Blockly.Arduino.ORDER_NONE) || 'false';
+    let code = 'if (' + condition + ') {\n';
+    if (this.hasReturnValue_) {
+        var value = Blockly.Arduino.valueToCode(this, 'VALUE',
+            Blockly.Arduino.ORDER_NONE) || 'null';
+        code += '  return ' + value + ';\n';
+    } else {
+        code += '  return;\n';
+    }
+    code += '}\n';
+    return code;
 };

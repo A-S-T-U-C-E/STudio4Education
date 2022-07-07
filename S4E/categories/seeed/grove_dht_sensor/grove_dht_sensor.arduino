@@ -47,6 +47,6 @@ Blockly.Arduino['GROVE_DHT_SENSOR_READ'] = function() {
             break;
     }
     Blockly.Arduino.definitions_['define_dht_' + pin + '_' + sensor] = 'Simple' + sensor + ' ' + sensor + '_' + pin + '(' + pin + ');';
-    var code = 'grove_dht_sensor_' + type + '()';
+    let code = 'grove_dht_sensor_' + type + '()';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

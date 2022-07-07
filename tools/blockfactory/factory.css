@@ -1,0 +1,258 @@
+/**
+ * @license
+ * Copyright 2016 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+html,
+body {
+    height: 100%;
+    min-height: 375px;
+}
+
+body {
+    background-color: #fff;
+    font-family: sans-serif;
+    margin: 0 5px;
+    overflow: hidden;
+    overflow-y: hidden;
+}
+
+h1 {
+    font-weight: normal;
+    font-size: 140%;
+}
+
+h3 {
+    margin-top: 5px;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+table {
+    border: none;
+    border-collapse: collapse;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+td {
+    vertical-align: top;
+    padding: 0;
+}
+
+p {
+    display: block;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    padding: 5px 0;
+}
+
+#factoryHeader {
+    display: table;
+    height: 10%;
+}
+
+#blockly {
+    position: absolute;
+}
+
+#blocklyMask {
+    background-color: #000;
+    cursor: not-allowed;
+    display: none;
+    position: fixed;
+    opacity: 0.2;
+    z-index: 9;
+}
+
+#preview {
+    position: absolute;
+}
+
+pre,
+#languageTA,
+#generatorTA {
+    border: #ddd 1px solid;
+    margin-top: 0;
+    position: absolute;
+    overflow: scroll;
+}
+
+#languageTA,
+#generatorTA {
+    display: none;
+    font: 10pt monospace;
+}
+
+.downloadButton {
+    padding: 5px;
+}
+
+.disabled {
+    color: #888;
+}
+
+button:disabled,
+.buttonStyle:disabled {
+    opacity: 0.6;
+}
+
+button>*,
+.buttonStyle>* {
+    opacity: 1;
+    vertical-align: text-bottom;
+}
+
+button,
+.buttonStyle {
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: #00abdf;
+    color: #ffffff;
+    padding: 5px;
+    font-size: large;
+}
+
+.buttonStyle:hover:not(:disabled),
+button:hover:not(:disabled) {
+    box-shadow: 2px 2px 5px #888;
+}
+
+.buttonStyle:hover:not(:disabled)>*,
+button:hover:not(:disabled)>* {
+    opacity: 1;
+}
+
+#blockFactoryContent {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: hidden;
+}
+
+#blockLibraryContainer {
+    vertical-align: bottom;
+}
+
+#blockLibraryControls {
+    text-align: right;
+    vertical-align: middle;
+}
+
+#files {
+    position: absolute;
+    visibility: hidden;
+}
+
+.toolbox {
+    display: none;
+}
+
+#blocklyWorkspaceContainer {
+    width: 50%;
+}
+
+#workspaceFactoryContent {
+    clear: both;
+    display: none;
+    height: 90%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #ccc;
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+
+/* The container <div> - needed to position the dropdown content */
+
+.dropdown {
+    display: inline-block;
+}
+
+
+/* Dropdown Content (Hidden by Default) */
+
+.dropdown-content {
+    background-color: #fff;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
+    display: none;
+    min-width: 170px;
+    opacity: 1;
+    position: absolute;
+    z-index: 101;
+    /* On top of the modal Shadow. */
+}
+
+
+/* Links inside the dropdown */
+
+.dropdown-content a,
+.dropdown-content label {
+    color: black;
+    display: block;
+    font-size: small;
+    padding: 12px 16px;
+    text-decoration: none;
+}
+
+
+/* Change colour of dropdown links on hover. */
+
+.dropdown-content a:hover,
+.dropdown-content label:hover {
+    background-color: #EEE;
+}
+
+
+/* Change colour of dropdown links on selected. */
+
+.dropdown-content-selected {
+    background-color: #DDD;
+}
+
+
+/* Show the dropdown menu */
+
+.show {
+    display: block;
+}
+
+#dropdownDiv_editCategory {
+    padding: 0 1ex;
+}
+
+#dropdownDiv_editCategory>img {
+    vertical-align: middle;
+}
+
+.cp_swatch {
+    vertical-align: middle !important;
+}
+
+#cp_popup {
+    z-index: 999;
+}
+
+.shadowBlock>.blocklyPath {
+    fill-opacity: .5;
+    stroke-opacity: .5;
+}
+
+.shadowBlock>.blocklyPathLight,
+.shadowBlock>.blocklyPathDark {
+    display: none;
+}

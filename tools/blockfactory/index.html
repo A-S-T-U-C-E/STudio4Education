@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, height=660, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Blockly Demo: Block Factory</title>
+    <script src="factory.js"></script>
+    <script src="../../@blockly/blockly_compressed.js"></script>
+    <script src="../../@blockly/msg/js/en.js"></script>
+    <script src="blocks.js"></script>
+    <link rel="stylesheet" href="factory.css">
+    <link rel="stylesheet" href="../../css/font_awesome_all.min.css">
+    <link href="../../js/prettify/prettify.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="../../js/prettify/prettify.js"></script>
+</head>
+
+<body>
+    <table>
+        <tr width="50%" height="5%">
+            <td width="50%" height="5%">
+                <button id="helpButton" title="View documentation in new window.">
+                <span>Help</span>
+              </button>
+                <button id="blockFactoryModal_newBlockCreation" name="blockFactoryModal_newBlockCreation" class="iconButtons fas fa-file">
+              </button>
+                <button id="blockFactoryModal_openBlockCreation" name="blockFactoryModal_openBlockCreation" class="iconButtons fas fa-file-upload">
+              </button>
+                <button id="blockFactoryModal_saveBlockCreation" name="blockFactoryModal_saveBlockCreation" class="iconButtons fas fa-file-download">
+              </button>
+                <button id="blockFactoryModal_undoBlockCreation" name="blockFactoryModal_undoBlockCreation" class="iconButtons fas fa-undo">
+              </button>
+                <button id="blockFactoryModal_redoBlockCreation" name="blockFactoryModal_redoBlockCreation" class="iconButtons fas fa-redo">
+              </button>
+            </td>
+            <td height="5%">
+                <h3>Preview:
+                    <select id="direction">
+                      <option value="ltr">LTR</option>
+                      <option value="rtl">RTL</option>
+                  </select>
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td width="50%" height="95%" style="padding: 2px;">
+                <div id="blockly"></div>
+                <div id="blocklyMask"></div>
+            </td>
+            <td width="50%" height="95%">
+                <table>
+                    <tr>
+                        <td height="30%">
+                            <div id="preview"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="5%">
+                            <h3>
+                                <button id="blockFactoryModal_saveBlockDefinition" name="blockFactoryModal_saveBlockDefinition" class="iconButtons fas fa-file-download">
+                                </button> Block Definition:
+                                <select id="format">
+                                    <option value="JSON">JSON</option>
+                                    <option value="JavaScript">JavaScript</option>
+                                    <option value="ManualDef">Manual edit&hellip;</option>
+                                </select>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="30%">
+                            <pre id="languagePre" class="prettyprint lang-js"></pre>
+                            <textarea id="languageTA"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="5%">
+                            <h3>
+                                <button id="blockFactoryModal_saveCodeDefinition" name="blockFactoryModal_saveCodeDefinition" class="iconButtons fas fa-file-download">
+                                </button> Generator stub:
+                                <select id="language">
+                                    <option value="Arduino">Arduino</option>
+                                    <option value="Python">Python</option>
+                                    <option value="ManualCode">Manual edit&hellip;</option>
+                                </select>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="30%">
+                            <pre id="generatorPre" class="prettyprint lang-js"></pre>
+                            <textarea id="generatorTA" style="width: 50%;height: 30%;"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+        window.addEventListener("message", function(e) {
+            window.parent.postMessage({
+                call: 'sendValueFromBlockFactory',
+                blockLang: document.getElementById('format').value,
+                blockDefinition: document.getElementById('languageTA').value,
+                blockCodeLang: document.getElementById('language').value,
+                blockCode: document.getElementById('generatorTA').value,
+                blockType: sessionStorage.getItem("blockFactory_blockType"),
+                workspace: sessionStorage.getItem("blockFactory_previewWorkspace")
+            }, "*");
+        }, false);
+    </script>
+    <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+        <category name="Input">
+            <block type="input_value">
+                <value name="TYPE">
+                    <shadow type="type_null"></shadow>
+                </value>
+            </block>
+            <block type="input_statement">
+                <value name="TYPE">
+                    <shadow type="type_null"></shadow>
+                </value>
+            </block>
+            <block type="input_dummy"></block>
+        </category>
+        <category name="Field">
+            <block type="field_static"></block>
+            <block type="field_input"></block>
+            <block type="field_number"></block>
+            <block type="field_angle"></block>
+            <block type="field_dropdown"></block>
+            <block type="field_checkbox"></block>
+            <block type="field_colour"></block>
+            <block type="field_variable"></block>
+            <block type="field_image"></block>
+        </category>
+        <category name="Type">
+            <block type="type_group"></block>
+            <block type="type_null"></block>
+            <block type="type_boolean"></block>
+            <block type="type_number"></block>
+            <block type="type_string"></block>
+            <block type="type_list"></block>
+            <block type="type_other"></block>
+        </category>
+        <category name="Colour" id="colourCategory">
+            <block type="colour_hue">
+                <mutation colour="20"></mutation>
+                <field name="HUE">20</field>
+            </block>
+            <block type="colour_hue">
+                <mutation colour="65"></mutation>
+                <field name="HUE">65</field>
+            </block>
+            <block type="colour_hue">
+                <mutation colour="120"></mutation>
+                <field name="HUE">120</field>
+            </block>
+            <block type="colour_hue">
+                <mutation colour="160"></mutation>
+                <field name="HUE">160</field>
+            </block>
+            <block type="colour_hue">
+                <mutation colour="210"></mutation>
+                <field name="HUE">210</field>
+            </block>
+            <block type="colour_hue">
+                <mutation colour="230"></mutation>
+                <field name="HUE">230</field>
+            </block>
+            <block type="colour_hue">
+                <mutation colour="260"></mutation>
+                <field name="HUE">260</field>
+            </block>
+            <block type="colour_hue">
+                <mutation colour="290"></mutation>
+                <field name="HUE">290</field>
+            </block>
+            <block type="colour_hue">
+                <mutation colour="330"></mutation>
+                <field name="HUE">330</field>
+            </block>
+        </category>
+    </xml>
+</body>
+
+</html>

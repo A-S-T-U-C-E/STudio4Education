@@ -40,6 +40,9 @@ Blockly.Themes.Classic.categoryStyles['arrowhead_category'] = {
 Blockly.Themes.Classic.categoryStyles['DHT_category'] = {
     "colour": "#47A3D2"
 };
+Blockly.Themes.Classic.categoryStyles['esp_category'] = {
+    "colour": "#E7352C"
+};
 //Deuteranopia theme
 Blockly.Themes.Deuteranopia.categoryStyles['backpack_category'] = {
     "colour": "#B4BCC0"
@@ -70,6 +73,9 @@ Blockly.Themes.Deuteranopia.categoryStyles['arrowhead_category'] = {
 };
 Blockly.Themes.Deuteranopia.categoryStyles['DHT_category'] = {
     "colour": "#47A3D2"
+};
+Blockly.Themes.Deuteranopia.categoryStyles['esp_category'] = {
+    "colour": "#E7352C"
 };
 //Tritanopia theme
 Blockly.Themes.Tritanopia.categoryStyles['backpack_category'] = {
@@ -102,6 +108,9 @@ Blockly.Themes.Tritanopia.categoryStyles['arrowhead_category'] = {
 Blockly.Themes.Tritanopia.categoryStyles['DHT_category'] = {
     "colour": "#47A3D2"
 };
+Blockly.Themes.Tritanopia.categoryStyles['esp_category'] = {
+    "colour": "#E7352C"
+};
 //Zelos theme
 Blockly.Themes.Zelos.categoryStyles['backpack_category'] = {
     "colour": "#B4BCC0"
@@ -133,6 +142,9 @@ Blockly.Themes.Zelos.categoryStyles['arrowhead_category'] = {
 Blockly.Themes.Zelos.categoryStyles['DHT_category'] = {
     "colour": "#47A3D2"
 };
+Blockly.Themes.Zelos.categoryStyles['esp_category'] = {
+    "colour": "#E7352C"
+};
 //High Contrast theme
 Blockly.Themes.HighContrast.categoryStyles['backpack_category'] = {
     "colour": "#7C8488"
@@ -163,4 +175,7 @@ Blockly.Themes.HighContrast.categoryStyles['arrowhead_category'] = {
 };
 Blockly.Themes.HighContrast.categoryStyles['DHT_category'] = {
     "colour": "#47A3D2"
+};
+Blockly.Themes.HighContrast.categoryStyles['esp_category'] = {
+    "colour": "#E7352C"
 };

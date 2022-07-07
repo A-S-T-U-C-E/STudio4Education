@@ -19,7 +19,7 @@ Blockly.Arduino['DHT_READ'] = function() {
     var dht_sensor = this.getFieldValue('DHT_sensor');
     var dht_type = this.getFieldValue('DHT_type');
     var dht_pin = this.getFieldValue('DHT_pin');
-    var code = '';
+    let code = '';
     switch (dht_sensor) {
         case 'H':
             //      code += 'floatToStr(DHT' + dht_type + '_' + dht_pin + '.readHumidity()) + "%"';

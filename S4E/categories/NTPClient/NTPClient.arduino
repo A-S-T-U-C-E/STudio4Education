@@ -32,30 +32,30 @@ Blockly.Arduino['NTPCLIENT_DEFINE_NTPCLIENT'] = function(block) {
 
 Blockly.Arduino['NTPCLIENT_BEGIN'] = function(block) {
     var value_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
-    var code = value_name + '.begin();\n';
+    let code = value_name + '.begin();\n';
     return code;
 };
 
 Blockly.Arduino['NTPCLIENT_UPDATE'] = function(block) {
     var value_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
-    var code = value_name + '.update();\n';
+    let code = value_name + '.update();\n';
     return code;
 };
 
 Blockly.Arduino['NTPCLIENT_FORCEUPDATE'] = function(block) {
     var value_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
-    var code = value_name + '.forceUpdate();\n';
+    let code = value_name + '.forceUpdate();\n';
     return code;
 };
 
 Blockly.Arduino['NTPCLIENT_GET_EPOCH_TIME'] = function(block) {
     var value_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
-    var code = value_name + '.getEpochTime()';
+    let code = value_name + '.getEpochTime()';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino['NTPCLIENT_GET_FORMATTED_TIME'] = function(block) {
     var value_name = Blockly.Arduino.valueToCode(block, 'NAME', Blockly.Arduino.ORDER_ATOMIC);
-    var code = value_name + '.getFormattedTime()';
+    let code = value_name + '.getFormattedTime()';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

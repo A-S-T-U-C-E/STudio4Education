@@ -31,6 +31,13 @@ Blockly.Blocks['SERVO_MOVE_EXTERNAL'] = {
             .setCheck(Blockly.Types.UNS_NUMBER)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg["SERVO_MOVE_DEGREE"]);
+        // this.appendDummyInput("")
+        //     .setAlign(Blockly.ALIGN_RIGHT)
+        //     .appendField(
+        //         new Blockly.FieldInstance('toto',
+        //             'SERVOMOT',
+        //             false, false, false),
+        //         'SERVO_NAME');
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg["SERVO_MOVE_TOOLTIP"]);

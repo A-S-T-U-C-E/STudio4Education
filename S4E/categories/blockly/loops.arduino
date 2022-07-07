@@ -27,7 +27,7 @@ Blockly.Arduino['controls_repeat_ext'] = function(block) {
             '\'' + block.id + '\'') + branch;
     }
     var loopVar = Blockly.Arduino.nameDB_.getName('count', Blockly.Variables.NAME_TYPE);
-    var code = 'for (int ' + loopVar + ' = 0; ' +
+    let code = 'for (int ' + loopVar + ' = 0; ' +
         loopVar + ' < ' + repeats + '; ' +
         loopVar + '++) {\n' +
         branch + '}\n';
@@ -44,7 +44,7 @@ Blockly.Arduino['controls_repeat'] = function(block) {
     }
     var loopVar = Blockly.Arduino.nameDB_.getDistinctName(
         'count', Blockly.Variables.NAME_TYPE);
-    var code = 'for (int ' + loopVar + ' = 0; ' +
+    let code = 'for (int ' + loopVar + ' = 0; ' +
         loopVar + ' < ' + repeats + '; ' +
         loopVar + '++) {\n' +
         branch + '}\n';
@@ -138,7 +138,7 @@ Blockly.Arduino['controls_forEach'] = function(block) {
     var arrayToParse = Blockly.Arduino.valueToCode(block, 'LIST',
         Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
     var branchCode = Blockly.Arduino.statementToCode(block, 'DO');
-    var code = 'for (' + variable + ' = 0; ' + variable + ' < (sizeof(' + arrayToParse + ') / sizeof(' + arrayToParse + '[0])); ' + variable + '++) {\n' +
+    let code = 'for (' + variable + ' = 0; ' + variable + ' < (sizeof(' + arrayToParse + ') / sizeof(' + arrayToParse + '[0])); ' + variable + '++) {\n' +
         branchCode + '\n' +
         '}\n';
     return code;

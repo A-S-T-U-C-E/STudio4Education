@@ -1,0 +1,173 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="_3M=L.^6{xT)rgU=~7g0">SRentry</variable>
+  </variables>
+  <block type="AHF_CUSTOM_BUILD_SERVICEREGISTRYENTRY" id="KS4f0ttf6Gm*4ZKS7PBl" x="0" y="0"></block>
+  <block type="GROVE_WIFI_UART_DEFINE" id=")Mywg00q(Knarj,;GZMR" x="-88" y="12">
+    <value name="Rx">
+      <block type="math_number" id=":z72Mm0Y|VZfX.#s2IrH">
+        <field name="NUM">6</field>
+      </block>
+    </value>
+    <value name="Tx">
+      <block type="math_number" id="GqHVK!sv5}}1i#slfQ(W">
+        <field name="NUM">7</field>
+      </block>
+    </value>
+    <value name="NAME">
+      <block type="text" id="RH:6=|=d-9R4LA=rWVD9">
+        <field name="TEXT">serialWifi</field>
+      </block>
+    </value>
+    <value name="SPEED">
+      <block type="math_number" id="ta(Y=x$*7]`yi-Pk#Cy2">
+        <field name="NUM">115200</field>
+      </block>
+    </value>
+    <next>
+      <block type="BOARD_SERIAL_INIT" id="9bPCfN)bZ/{t[GDO$6bc">
+        <field name="SPEED">115200</field>
+        <next>
+          <block type="WIFI_ESP_UART_CONNECTION" id="/HFdAA_43]^cB;0;aFim">
+            <value name="SERIAL_NAME">
+              <block type="text" id="-d-a#[P)McwUj)53!DU~">
+                <field name="TEXT">serialWifi</field>
+              </block>
+            </value>
+            <next>
+              <block type="WIFI_ESP_UART_SERVER_DEFINE" id="x~*(*,6LGix/!M)RQdJF">
+                <value name="NAME">
+                  <block type="text" id="{~*xp(giB,y.)Dj^J]]+">
+                    <field name="TEXT">tempESPserver</field>
+                  </block>
+                </value>
+                <value name="PORT">
+                  <block type="math_number" id="J:E#`q@P1yUbB|:[b%D1">
+                    <field name="NUM">9995</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="WIFI_ESP_UART_CHECK_SHIELD" id="DdTXKHWf,jgw6o=Jg+p}">
+                    <next>
+                      <block type="WIFI_ESP_UART_BEGIN" id="Sykx%N]vH?i_2)^5e~cD">
+                        <value name="SSID">
+                          <block type="text" id="BAj?bWgp`S%iKR/v4lZf">
+                            <field name="TEXT">Sebouille</field>
+                          </block>
+                        </value>
+                        <value name="PASS">
+                          <block type="text" id="Ko7sbdiCz`Yhk~9opCsi">
+                            <field name="TEXT">666C@C@666</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="BOARD_SERIAL_PRINT" id="h(25Wy]=%VSe~[^3Y*|z">
+                            <value name="CONTENT">
+                              <block type="text" id="j{q]s|LuDPjK#n}WJ.]t">
+                                <field name="TEXT">Connected to</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="BOARD_SERIAL_PRINT" id="52OAO}Y!K=5Gp|TQ7c0I">
+                                <value name="CONTENT">
+                                  <block type="WIFI_ESP_UART_SSID" id="CmAxSDw_%M,u@KS=#s/u"></block>
+                                </value>
+                                <next>
+                                  <block type="BOARD_SERIAL_PRINT" id="|]fr]{aAGLLFy{#$`@]f">
+                                    <value name="CONTENT">
+                                      <block type="text" id="Ch!/SGJ}#IP|OYsG~h-c">
+                                        <field name="TEXT">IP address</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="BOARD_SERIAL_PRINT" id="dd#7tG}y$=Zs9RKU#|bh">
+                                        <value name="CONTENT">
+                                          <block type="WIFI_ESP_UART_LOCALIP" id="!:/+]2;GW,Om@$#cSC8/"></block>
+                                        </value>
+                                        <next>
+                                          <block type="variables_set" id="^+;k!DtJ*@dm0TzU|Vhq">
+                                            <field name="VAR" id="_3M=L.^6{xT)rgU=~7g0">SRentry</field>
+                                            <value name="VALUE">
+                                              <block type="AHF_CUSTOM_BUILD_SERVICEREGISTRYENTRY" id="w`9u:O`z7.@4!snW%Ue3">
+                                                <value name="serviceURI">
+                                                  <block type="text" id="YDzp,v5iO[e:P5[*.nU0">
+                                                    <field name="TEXT">/</field>
+                                                  </block>
+                                                </value>
+                                                <value name="version">
+                                                  <block type="math_number" id="6ir/f6.h7V?2dUg;//HQ">
+                                                    <field name="NUM">1</field>
+                                                  </block>
+                                                </value>
+                                                <value name="endOfValidity">
+                                                  <block type="text_date" id="KO6p~L1kQu,Dv29v(Yov">
+                                                    <field name="DATE">2022-07-01</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="AHF_CUSTOM_PARAMETERS_SR" id="6+o{IT**.|krI%#:MoQs" x="513" y="-12">
+    <field name="SERVER_SSL_ENABLED">FALSE</field>
+    <field name="TOKEN_SECURITY_FILTER_ENABLED">FALSE</field>
+    <value name="SR_ADDRESS">
+      <block type="text" id="C;=LdpbE#RNUP{z42lwa">
+        <field name="TEXT">192.168.0.36</field>
+      </block>
+    </value>
+    <value name="SR_PORT">
+      <block type="math_number" id="o}r,`]=Wz,*to!tG4a%Q">
+        <field name="NUM">8443</field>
+      </block>
+    </value>
+  </block>
+  <block type="AHF_CUSTOM_PARAMETERS_SYSTEM" id="0z:Km`B7u864wBO*9Z%y" x="388" y="413">
+    <value name="SYSTEM_NAME">
+      <block type="text" id="g#i~Ipd12Yk6i.Xs7+Q.">
+        <field name="TEXT">tempESP</field>
+      </block>
+    </value>
+    <value name="SYSTEM_ADDRESS">
+      <block type="text" id="*W9_Ksju#B|~LyG9:2[q">
+        <field name="TEXT">192.168.0.18</field>
+      </block>
+    </value>
+    <value name="SYSTEM_PORT">
+      <block type="math_number" id="X),gSlZUaY9DG{FRfhl=">
+        <field name="NUM">9995</field>
+      </block>
+    </value>
+  </block>
+  <block type="AHF_CUSTOM_PARAMETERS_SERVICE" id="6Oh*CXa6%dJS)~0(^R2T" x="388" y="563">
+    <value name="SERVICE_DEFINITION">
+      <block type="text" id=";@hNr-NOUYjsXvUgTHAs">
+        <field name="TEXT">esp1dht</field>
+      </block>
+    </value>
+    <value name="SERVICE_INTERFACE">
+      <block type="text" id="8n)5^9n_!2g2#Os(rL-%">
+        <field name="TEXT">HTTP-INSECURE-JSON</field>
+      </block>
+    </value>
+  </block>
+</xml>

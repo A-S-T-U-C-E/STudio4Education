@@ -11,6 +11,7 @@
 // goog.require('Blockly.Msg');
 
 // toolbox categories name
+Blockly.Msg.CAT_BLOCKFACTORY = "fabrique à blocs";
 Blockly.Msg.CAT_LOOPS = "boucles";
 Blockly.Msg.CAT_LOGIC = "logique";
 Blockly.Msg.CAT_IF = "si...";
@@ -47,4 +48,7 @@ Blockly.Msg.CAT_ARROWHEAD_RJ = " Ethernet";
 Blockly.Msg.CAT_COMMUNICATION = "communication";
 Blockly.Msg.CAT_DHT = "DHT sensor";
 Blockly.Msg.CAT_NTPCLIENT = "temps NTP";
-Blockly.Msg.CAT_WIFI_ESP = "WiFi ESP";
+Blockly.Msg.CAT_WIFI_ESP = "ESP - communication";
+Blockly.Msg.CAT_WIFI_ESP_UART = "ESP UART WiFi";
+Blockly.Msg.CAT_WIFI_ESP_SERVER = "ESP Serveur";
+Blockly.Msg.CAT_WIFI_ESP_GATEWAY = "ESP en passerelle";

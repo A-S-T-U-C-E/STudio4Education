@@ -107,7 +107,7 @@ function showSerialMonitorModalDialog() {
             if (_maximiniSerial == 'maxi') {
                 document.getElementById("serialMonitorModalDialog_mini").style.display = 'block';
                 document.getElementById("serialMonitorModalDialog_maxi").style.display = 'none';
-                document.body.appendChild(_serialModal);
+                document.body.appendChild(_blockFactoryModal);
                 document.getElementById("content_console").style.position = "absolute";
                 _serialModal.style.left = serialModal_old_X + "px";
                 _serialModal.style.top = serialModal_old_Y + "px";
@@ -115,8 +115,134 @@ function showSerialMonitorModalDialog() {
                 _serialModal.style.height = serialModal_old_height + "px";
                 document.getElementById("serialMonitorModalDialogContent").style.width = "calc(100% - 32px)";
                 document.getElementById("serialModalTitle_titlebar").style.width = "calc(100% - 32px)";
-                _maximiniSerial = 'mini'
+                _maximiniSerial = 'mini';
             }
+        }
+    }
+}
+/*
+ * False modal with serial monitor WebSerial API
+ */
+var _dialogBlockFactory;
+
+function getBlockDefinitions(blockXmlMap, definitionFormat) {
+    var blockCode = [];
+    var xml = blockXmlMap[blockType];
+    if (xml) {
+        // Render and get block from hidden workspace.
+        var rootBlock = this.getRootBlockFromXml_(xml);
+        if (rootBlock) {
+            // Generate the block's definition.
+            let code = FactoryUtils.getBlockDefinition(blockType, rootBlock,
+                definitionFormat, this.hiddenWorkspace);
+            // Add block's definition to the definitions to return.
+        } else {
+            // Append warning comment and write to console.
+            let code = '// No block definition generated for ' + blockType +
+                '. Could not find root block in XML stored for this block.';
+            console.log('No block definition generated for ' + blockType +
+                '. Could not find root block in XML stored for this block.');
+        }
+    } else {
+        // Append warning comment and write to console.
+        let code = '// No block definition generated for ' + blockType +
+            '. Block was not found in Block Library Storage.';
+        console.log('No block definition generated for ' + blockType +
+            '. Block was not found in Block Library Storage.');
+    }
+    blockCode.push(code);
+
+    // Surround json with [] and comma separate items.
+    if (definitionFormat === "JSON") {
+        return "[" + blockCode.join(",\n") + "]";
+    }
+    return blockCode.join("\n\n");
+}
+
+
+Code.blockFactoryFlyoutCallback = function() {
+    let blockList = [{
+        "kind": "block",
+        "type": sessionStorage.getItem("blockFactory_blockType")
+    }];
+    return blockList;
+};
+
+function showBlockFactoryModalDialog() {
+    let lang = Code.getStringParamFromUrl('lang', '') ? Code.getStringParamFromUrl('lang', '') : 'en';
+    let id = 'blockFactoryModalDialog';
+    if (!_dialogBlockFactory) {
+        _dialogBlockFactory = new DialogBox(id, callbackDialogBlockFactoryModal);
+        let iframe = document.createElement('iframe');
+        iframe.src = "./tools/blockfactory/index.html";
+        iframe.id = "blockFactoryModalDialogContent_iframe";
+        iframe.width = "100%";
+        iframe.height = "100%";
+        iframe.style.border = "0";
+        id.sandbox = "allow-same-origin";
+        document.getElementById("blockFactoryModalDialogContent").appendChild(iframe);
+    }
+    _dialogBlockFactory.showDialog();
+
+
+    function datasFromBlockFactory(e) {
+        e.preventDefault();
+        if (e.data.call === "sendValueFromBlockFactory") {
+            sessionStorage.setItem("blockFactory_definition_language", e.data.blockLang);
+            sessionStorage.setItem("blockFactory_definition", JSON.stringify(e.data.blockDefinition));
+            sessionStorage.setItem("blockFactory_code_language", e.data.blockCodeLang);
+            sessionStorage.setItem("blockFactory_code", e.data.blockCode);
+            sessionStorage.setItem("blockFactory_blockType", e.data.blockType);
+            sessionStorage.setItem("blockFactory_previewWorkspace", e.data.workspace);
+            if (e.data.blockLang.includes('JSON')) {
+                Blockly.defineBlocksWithJsonArray([JSON.parse(e.data.blockDefinition)]);
+                eval(e.data.blockCode);
+            } else {
+                var appendData = e.data.blockDefinition + "\n" + e.data.blockCode + "\n";
+                eval(appendData);
+                var newBlock = document.createElement("block");
+                var attr = document.createAttribute("type");
+                attr.value = e.data.blockType;
+                newBlock.setAttributeNode(attr);
+            }
+            let nBlock = Code.mainWorkspace.newBlock(e.data.blockType);
+            nBlock.initSvg();
+            nBlock.render();
+            let actualToolbox = Blockly.getMainWorkspace().toolbox_;
+            actualToolbox.contents_[0].isHidden_ = false;
+            actualToolbox.contents_[0].show();
+        }
+    }
+    const controller = new AbortController();
+
+    function callbackDialogBlockFactoryModal(btnName) {
+        switch (btnName) {
+            case "blockFactoryModalDialog_save":
+                console.log("blockFactoryModalDialog_save");
+                break;
+            case "blockFactoryModalDialog_update":
+                let iFrame = document.getElementById('blockFactoryModalDialogContent_iframe');
+                let iFrameContent = iFrame.contentWindow;
+                iFrameContent.postMessage("sendCode", '*');
+                window.addEventListener("message", datasFromBlockFactory, { signal: controller.signal });
+                break;
+            case "blockFactoryModalDialog_close":
+                window.removeEventListener("message", datasFromBlockFactory);
+                document.getElementById(id).style.display = 'none';
+                if (_maximiniBlockFactory == 'maxi') {
+                    document.getElementById("blockFactoryModalDialog_mini").style.display = 'block';
+                    document.getElementById("blockFactoryModalDialog_maxi").style.display = 'none';
+                    document.body.appendChild(_blockFactoryModal);
+                    document.getElementById("content_console").style.position = "absolute";
+                    _blockFactoryModal.style.left = blockFactoryModal_old_X + "px";
+                    _blockFactoryModal.style.top = blockFactoryModal_old_Y + "px";
+                    _blockFactoryModal.style.width = blockFactoryModal_old_width + "px";
+                    _blockFactoryModal.style.height = blockFactoryModal_old_height + "px";
+                    document.getElementById("blockFactoryModalDialogContent").style.width = "calc(100% - 32px)";
+                    document.getElementById("blockFactoryModalTitle_titlebar").style.width = "calc(100% - 32px)";
+                    _maximiniBlockFactory = 'mini';
+                }
+                break;
         }
     }
 }
@@ -168,7 +294,7 @@ function dragElement(elmnt) {
         document.onmouseup = null;
         document.onmousemove = null;
     }
-};
+}
 
 
 /*
@@ -248,6 +374,49 @@ function serialMonitorModalDialog_maxi_mini() {
         document.getElementById("serialMonitorModalDialogContent").style.width = "calc(100% - 32px)";
         document.getElementById("serialModalTitle_titlebar").style.width = "calc(100% - 32px)";
         _maximiniSerial = 'mini';
+    }
+}
+
+var _maximiniBlockFactory = "mini";
+const _blockFactoryModal = document.getElementById("blockFactoryModalDialog");
+let blockFactoryModal_old_X = 0;
+let blockFactoryModal_old_Y = 0;
+let blockFactoryModal_old_width = 0;
+let blockFactoryModal_old_height = 0;
+
+function blockFactoryModalDialog_maxi_mini() {
+    if (_maximiniBlockFactory == 'mini') {
+        blockFactoryModal_old_X = _blockFactoryModal.getBoundingClientRect().left;
+        blockFactoryModal_old_Y = _blockFactoryModal.getBoundingClientRect().top;
+        blockFactoryModal_old_width = _blockFactoryModal.getBoundingClientRect().right - _blockFactoryModal.getBoundingClientRect().left;
+        blockFactoryModal_old_height = _blockFactoryModal.getBoundingClientRect().bottom - _blockFactoryModal.getBoundingClientRect().top;
+        document.getElementById("blockFactoryModalDialog_mini").style.display = 'none';
+        document.getElementById("blockFactoryModalDialog_maxi").style.display = 'block';
+        document.getElementById("content_console").appendChild(_blockFactoryModal);
+        document.getElementById("content_console").style.position = "relative";
+        _blockFactoryModal.style.left = "0px";
+        _blockFactoryModal.style.top = "0px";
+        _blockFactoryModal.style.width = "100%";
+        _blockFactoryModal.style.height = "100%";
+        document.getElementById("blockFactoryModalDialogContent").style.width = "calc(100% - 32px)";
+        document.getElementById("blockFactoryModalTitle_titlebar").style.width = "calc(100% - 32px)";
+        _maximiniBlockFactory = 'maxi';
+        document.getElementById("resizer_v").addEventListener(MouseEvent.CLICK, function() {
+            document.getElementById("blockFactoryModalDialogContent").style.height = (document.getElementById("blockFactoryModalDialog").offsetHeight - 140) + "px";
+            console.log(document.getElementById("blockFactoryModalDialogContent").style.height)
+        })
+    } else {
+        document.getElementById("blockFactoryModalDialog_mini").style.display = 'block';
+        document.getElementById("blockFactoryModalDialog_maxi").style.display = 'none';
+        document.body.appendChild(_blockFactoryModal);
+        document.getElementById("content_console").style.position = "absolute";
+        _blockFactoryModal.style.left = blockFactoryModal_old_X + "px";
+        _blockFactoryModal.style.top = blockFactoryModal_old_Y + "px";
+        _blockFactoryModal.style.width = blockFactoryModal_old_width + "px";
+        _blockFactoryModal.style.height = blockFactoryModal_old_height + "px";
+        document.getElementById("blockFactoryModalDialogContent").style.width = "calc(100% - 32px)";
+        document.getElementById("blockFactoryModalTitle_titlebar").style.width = "calc(100% - 32px)";
+        _maximiniBlockFactory = 'mini';
     }
 }
 
@@ -384,7 +553,7 @@ for (var i = 0; i < accordionSub.length; i++) {
         });
     else
         accordionSub[i].addEventListener("click", function() {
-            if (document.getElementById('arrowheadManagementInput').value == process.env.ARROWHEAD_SETTINGS) {
+            if (document.getElementById('arrowheadManagementInput').value == process.env.ARROWHEAD_SETTINGS_PASSWORD) {
                 this.classList.toggle("active");
                 var panel = this.nextElementSibling;
                 if (panel.style.maxHeight) {
@@ -579,10 +748,28 @@ function iconsButtonMouserOver() {
     document.getElementById('iotConnectButton').onmouseout = function() {
         document.getElementById("content_hoverButton").textContent = "";
     };
+    document.getElementById('drawioButton').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['drawio_span'];
+    };
+    document.getElementById('drawioButton').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
     document.getElementById('launchNodeRed').onmouseover = function() {
         document.getElementById("content_hoverButton").textContent = MSG['launchNodeRed_span'];
     };
     document.getElementById('launchNodeRed').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('launchNodeRedServer').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['launchNodeRedServer_span'];
+    };
+    document.getElementById('launchNodeRedServer').onmouseout = function() {
+        document.getElementById("content_hoverButton").textContent = "";
+    };
+    document.getElementById('launchNodeRedServerPortable').onmouseover = function() {
+        document.getElementById("content_hoverButton").textContent = MSG['launchNodeRedServer_span'];
+    };
+    document.getElementById('launchNodeRedServerPortable').onmouseout = function() {
         document.getElementById("content_hoverButton").textContent = "";
     };
     document.getElementById('launchWebServer').onmouseover = function() {

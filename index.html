@@ -45,7 +45,7 @@
             context.drawImage(img1, x, y);
         };
         let img2 = new Image();
-        img2.src = "./S4E/media/STudio4Education_logo.png";
+        img2.src = "./S4E/media/Studio4Education_logo.png";
         img2.onload = function() {
             let x = (window.innerWidth - img2.width) / 2;
             let y = (window.innerHeight - img2.height) / 2;
@@ -56,7 +56,7 @@
         <div id="optionsTop">
             <img id="logo" src="./media/title.png" style="height: 35px; position: absolute; left: 250px;" alt="decoration" />
             <div id="optionsTopTitle">
-                <img id="logo" src="./S4E/media/STudio4Education_logo.png" style="height: 25px; vertical-align: middle;" alt="Studio4Education logo" />
+                <img id="logo" src="./S4E/media/Studio4Education_logo.png" style="height: 25px; vertical-align: middle;" alt="Studio4Education logo" />
             </div>
             <div id="optionsTopButtons" text-align="center">
                 <button id="fullScreenButton" type="button" class="iconButtonsTop" onclick="fullScreen()">
@@ -88,12 +88,24 @@
                         <span id="newButton_span_menu" class="menu_text"></span>
                         <span id="loadXMLfakeButton_span_menu" class="menu_text"></span>
                         <span id="saveXMLButton_span_menu" class="menu_text"></span>
+                        <span id="importPapyrusButton_span_menu" class="menu_text"></span>
+                        <span id="importSysMLButton_span_menu" class="menu_text"></span>
                         <span id="saveCodeButton_span_menu" class="menu_text"></span>
                         <span id="resetButton_span_menu" class="menu_text"></span>
                         <span id="helpButton_span_menu" class="menu_text"></span>
                     </div>
                 </div>
             </div>
+            <button id="importPapyrusButton" class="iconButtons" onclick="Code.configurationPapyrusImport()">
+                <span id="importPapyrusButton_span">
+                    <img id="importPapyrusButton_span_img" src="./S4E/media/Eclipse_papyrus_logo.png" style="width: 30px; height: 30px; vertical-align: middle;">
+                </span>
+            </button>
+            <button id="importSysMLButton" class="iconButtons" onclick="Code.configurationSysMLimport()">
+                <span id="importSysMLButton_span">
+                    <img id="importSysMLButton_span_img" src="./S4E/media/sysml.png" style="width: 30px; height: 30px; vertical-align: middle;" alt="logo">
+                </span>
+            </button>
             <button id="resetButton" class="iconButtons" onclick="Code.ResetWorkspace()">
                 <span id="resetButton_span" class="fas fa-power-off">
                 </span>
@@ -135,6 +147,22 @@
             <div id="toolsPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('toolsPopup').style.display = 'none';document.getElementById('toolsButton').classList.toggle('active');">
                 <div id="buttonsToolsPopup" class="menu_div">
                     <div id="buttonsToolsPopupInside">
+                        <button id="drawioButton" class="iconButtons CLI">
+                            <span id="">
+                                <img src="./S4E/media/drawio.png" style="width: 30px; height: 30px; vertical-align: middle;" />
+                            </span>
+                        </button>
+                        <span id="drawioButton_span_menu" class="menu_text"></span>
+                        <br>
+                        <hr>
+                        <button id="launchNodeRed" class="iconButtons CLI">
+                            <span id="">
+                                <img src="./S4E/media/node-red.png" style="width: 30px; height: 30px; vertical-align: middle;" />
+                            </span>
+                        </button>
+                        <span id="launchNodeRed_span_menu" class="menu_text"></span>
+                        <br>
+                        <hr>
                         <button id="wiringButton" class="iconButtons">
                             <span id="wiringButton_span" class="fas fa-code-branch">
                             </span>
@@ -142,7 +170,7 @@
                         <span id="wiringButton_span_menu" class="menu_text"></span>
                         <br>
                         <hr>
-                        <button id="factoryButton" class="iconButtons">
+                        <button id="factoryButton" class="iconButtons" onclick="showBlockFactoryModalDialog()">
                             <span id="factoryButton_span" class="fas fa-industry">
                             </span>
                         </button>
@@ -180,12 +208,12 @@
             <div id="iotPopup" class="popup_bckgrd" style="display:none" onclick="document.getElementById('iotPopup').style.display = 'none';document.getElementById('iotConnectButton').classList.toggle('active');">
                 <div id="buttonsIotPopup" class="menu_div">
                     <div id="buttonsIotPopupInside">
-                        <button id="launchNodeRed" class="iconButtons CLI">
-                            <span id="launchNodeRed_span">
+                        <button id="launchNodeRedServerPortable" class="iconButtons CLI">
+                            <span id="launchNodeRedServer_span">
                                 <img src="./S4E/media/node-red.png" style="width: 30px; height: 30px; vertical-align: middle;" />
                             </span>
                         </button>
-                        <span id="launchNodeRed_span_menu" class="menu_text"></span>
+                        <span id="launchNodeRedServer_span_menu" class="menu_text"></span>
                         <br>
                         <hr>
                         <button id="launchWebServer" class="iconButtons CLI">
@@ -621,8 +649,8 @@
                     </span>
                 </button>
                 <br>
-                <input type="text" class="controlPanelInput" id="nodeRedServerInput" name="nodeRedServerInput" placeholder="IP">
-                <button id="launchNodeRedServer" class="iconButtons CLI">
+                <input type="text" class="controlPanelInput" id="nodeRedServerInput" name="nodeRedServerInput" placeholder="IP:port">
+                <button id="launchNodeRedServer" class="iconButtons" style="margin: 5px;" disabled>
                     <img src="./S4E/media/node-red.png" style="width: 30px; height: 30px; vertical-align: middle;" />
                     <span id="nodeRedServerInput_span">
                     </span>
@@ -668,12 +696,6 @@
                     <span id="papyrusConnect_helper_span" aria-expanded="false" aria-controls="accordion_categories_content"></span>
                 </button>
                 <div id="IoT_controls_Papyrus" class="side_content config_content panel UIText">
-                    <span id="papyrusConfiguration_local_title_span" style="font-size: 1.2em;">Local file</span>
-                    <button id="papyrusConfiguration_local_load" class="iconButtons config_content_sub" onclick="Code.configurationPapyrusImport()">
-                        <em class="fas fa-file-upload"></em>
-                    </button>
-                    <span id="papyrusConfiguration_local_load_span"></span>
-                    <br>
                     <form id="PapyrusConfigurationFormServer">
                         <span id="papyrusConfiguration_server_title_span" style="font-size: 1.2em;">Server configuration</span>
                         <br>
@@ -732,6 +754,32 @@
                 <button id="circuitJSmodal_stop" name="circuitJSmodal_stop" class="iconButtons fas fa-stop">
                 </button>
                 <button id="circuitJSmodal_revert" name="circuitJSmodal_revert" class="iconButtons" style="display: none;">
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="blockFactoryModalDialog" class="dialog" style="z-index: 80; width: 600px; height: 500px;">
+        <div class="titlebar" id="blockFactoryModalTitle_titlebar">
+            <span id="blockFactoryModalTitle" class="modal-header">Block Factory</span>
+        </div>
+        <button name="blockFactoryModalDialog_close"></button>
+        <div id="blockFactoryModal_button_window" class="Modal_button_window">
+            <button id="blockFactoryModalDialog_maxi_mini" class="iconButtons" onclick="blockFactoryModalDialog_maxi_mini()">
+                <em id="blockFactoryModalDialog_mini" class="fas fa-thumbtack"></em>
+                <span id="blockFactoryModalDialog_maxi" class='fa-stack' style="font-size: .5em; display: none;">
+                    <em class='fas fa-thumbtack fa-stack-1x'></em>
+                    <em class='fas fa-ban fa-stack-2x'></em>
+                </span>
+            </button>
+        </div>
+        <div id="blockFactoryModalDialogContent" class="content" style="width: 100%; height: 100%;">
+        </div>
+        <div class="buttonpane">
+            <div id="blockFactoryModal_statusLabel" style="display: inline; vertical-align: middle; text-align: left;"></div>
+            <div class="buttonset">
+                <button id="blockFactoryModalDialog_save" name="blockFactoryModalDialog_save" class="iconButtons fas fa-file-download">
+                </button>
+                <button id="blockFactoryModalDialog_update" name="blockFactoryModalDialog_update" class="iconButtons fas fa-angle-double-up">
                 </button>
             </div>
         </div>
@@ -1193,11 +1241,6 @@
             </div>
         </div>
     </div>
-    <!-- Font Awesome v6 SVG+JS method -->
-    <!-- <script async src="./js/lib/fontawesome_brands.min.min.js"></script>
-    <script async src="./js/lib/fontawesome_regular.min.js"></script>
-    <script async src="./js/lib/fontawesome_solid.min.js"></script>
-    <script async src="./js/lib/fontawesome.min.js"></script> -->
     <!-- Blockly libraries -->
     <script src="./@blockly/blockly_compressed.js"></script>
     <script src="./@blockly/closure/goog/base.js"></script>
@@ -1235,15 +1278,16 @@
     <script src="./@blockly/tests/playgrounds/screenshot.js" async></script>
     <!-- S4E external toolbox hacked -->
     <script src="./S4E/categories/arrowhead/arrowhead.toolbox"></script>
+    <script src="./S4E/categories/blockly/blockly.toolbox"></script>
     <script src="./S4E/categories/board/board.toolbox"></script>
     <script src="./S4E/categories/communication/communication.toolbox"></script>
-    <script src="./S4E/categories/ds18b20/ds18b20.toolbox"></script>
     <script src="./S4E/categories/DHT/DHT.toolbox"></script>
+    <script src="./S4E/categories/ds18b20/ds18b20.toolbox"></script>
+    <script src="./S4E/categories/ESP/ESP.toolbox"></script>
     <script src="./S4E/categories/NTPClient/NTPClient.toolbox"></script>
-    <script src="./S4E/categories/seeed/grove.toolbox"></script>
     <script src="./S4E/categories/relay/relay.toolbox"></script>
+    <script src="./S4E/categories/seeed/grove.toolbox"></script>
     <script src="./S4E/categories/servo/servo.toolbox"></script>
-    <script src="./S4E/categories/blockly/blockly.toolbox"></script>
     <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.toolbox"></script>
     <!-- Blockly libraries of function, hacked from different demos -->
     <script src="./js/minimap.js"></script>
@@ -1305,6 +1349,8 @@
     <script src="./S4E/categories/board/board.types"></script>
     <script src="./S4E/categories/arrowhead/arrowhead.blocks"></script>
     <script src="./S4E/categories/arrowhead/arrowhead.types"></script>
+    <script src="./S4E/categories/arrowhead/ESP_library/arrowhead_esp.blocks"></script>
+    <script src="./S4E/categories/arrowhead/ESP_library/arrowhead_esp.types"></script>
     <script src="./S4E/categories/ds18b20/ds18b20.blocks"></script>
     <script src="./S4E/categories/ds18b20/ds18b20.types"></script>
     <script src="./S4E/categories/DHT/DHT.blocks"></script>
@@ -1323,8 +1369,10 @@
     <script src="./S4E/categories/seeed/grove_wifi_uart/grove_wifi_uart.types"></script>
     <script src="./S4E/categories/servo/servo.blocks"></script>
     <script src="./S4E/categories/servo/servo.types"></script>
-    <script src="./S4E/categories/wifi_esp/wifi_esp.blocks"></script>
-    <script src="./S4E/categories/wifi_esp/wifi_esp.types"></script>
+    <script src="./S4E/categories/ESP/wifi_esp_uart/wifi_esp_uart.blocks"></script>
+    <script src="./S4E/categories/ESP/wifi_esp_uart/wifi_esp_uart.types"></script>
+    <script src="./S4E/categories/ESP/wifi_esp_server/wifi_esp_server.blocks"></script>
+    <script src="./S4E/categories/ESP/wifi_esp_server/wifi_esp_server.types"></script>
     <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.blocks"></script>
     <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.types"></script>
     <!-- S4E specific: common generator code -->
@@ -1342,6 +1390,7 @@
     <script src="./S4E/categories/board/board_iot.arduino"></script>
     <script src="./S4E/categories/board/board_serial.arduino"></script>
     <script src="./S4E/categories/arrowhead/arrowhead.arduino"></script>
+    <script src="./S4E/categories/arrowhead/ESP_library/arrowhead_esp.arduino"></script>
     <script src="./S4E/categories/ds18b20/ds18b20.arduino"></script>
     <script src="./S4E/categories/DHT/DHT.arduino"></script>
     <script src="./S4E/categories/NTPClient/NTPClient.arduino"></script>
@@ -1351,7 +1400,8 @@
     <script src="./S4E/categories/seeed/grove_led_bar/grove_led_bar.arduino"></script>
     <script src="./S4E/categories/seeed/grove_wifi_uart/grove_wifi_uart.arduino"></script>
     <script src="./S4E/categories/servo/servo.arduino"></script>
-    <script src="./S4E/categories/wifi_esp/wifi_esp.arduino"></script>
+    <script src="./S4E/categories/ESP/wifi_esp_uart/wifi_esp_uart.arduino"></script>
+    <script src="./S4E/categories/ESP/wifi_esp_server/wifi_esp_server.arduino"></script>
     <script src="./S4E/categories/X-NUCLEO-IKS01A3/X-NUCLEO-IKS01A3.arduino"></script>
     <script>
         // require('../resources/app.asar/Arrowhead.js');

@@ -16,7 +16,7 @@
         </value>
         <next>
           <block type="GROVE_LED_BAR_SETALLOFF" id="?`h!2iU{EFB+JKArgD(T">
-            <field name="PIN">6</field>
+            <field name="PIN">1</field>
             <next>
               <block type="GROVE_WIFI_UART_DEFINE" id="8M[9+M#-!LpIeSx?cWd)">
                 <value name="Rx">
@@ -43,55 +43,59 @@
                   <block type="BOARD_SERIAL_INIT" id="@a%Uz8TuNGfhuSD40miR">
                     <field name="SPEED">115200</field>
                     <next>
-                      <block type="WIFI_ESP_UART_SERVER_DEFINE" id="pWUbXakDCcG[%Sqtu35o">
+                      <block type="WIFI_ESP_UART_CONNECTION" id="[*A|M5:2[hXRqlPX[r5y">
                         <value name="SERIAL_NAME">
-                          <block type="text" id="D|6:U]Mj=dUZ0=oiW6Z(">
+                          <block type="text" id="yb+CD!(U5!mVRaU4A`^]">
                             <field name="TEXT">SerialWiFi</field>
                           </block>
                         </value>
-                        <value name="NAME">
-                          <block type="text_no_quote" id="5?=:x2=uj@byOb:j%|2d">
-                            <field name="TEXT">server</field>
-                          </block>
-                        </value>
-                        <value name="PORT">
-                          <block type="math_number" id="%w?+v~ZT8e)obO*VvPi0">
-                            <field name="NUM">8088</field>
-                          </block>
-                        </value>
                         <next>
-                          <block type="WIFI_ESP_UART_CHECK_SHIELD" id="3Ci,TKF|g-:.M@c(=4C|">
+                          <block type="WIFI_ESP_UART_SERVER_DEFINE" id="pWUbXakDCcG[%Sqtu35o">
+                            <value name="NAME">
+                              <block type="text" id="`.~}UJCL_0{i_:?(8F2#">
+                                <field name="TEXT">server</field>
+                              </block>
+                            </value>
+                            <value name="PORT">
+                              <block type="math_number" id="dt/#HqpNjErD]{HS3B[q">
+                                <field name="NUM">9600</field>
+                              </block>
+                            </value>
                             <next>
-                              <block type="WIFI_ESP_UART_BEGIN" id="gc#p_Ql-ujj[pf!h3d}|">
-                                <value name="SSID">
-                                  <block type="text" id="F72]_gA28*9A@Qq:Ni6b">
-                                    <field name="TEXT">Sebouille</field>
-                                  </block>
-                                </value>
-                                <value name="PASS">
-                                  <block type="text" id="LZdu0WZeF{Rb}N5C:E?m">
-                                    <field name="TEXT">666C@C@666</field>
-                                  </block>
-                                </value>
+                              <block type="WIFI_ESP_UART_CHECK_SHIELD" id="3Ci,TKF|g-:.M@c(=4C|">
                                 <next>
-                                  <block type="BOARD_SERIAL_PRINT" id="QTt#q.O3L9qVBGa[4Z_}">
-                                    <value name="CONTENT">
-                                      <block type="text" id="Q@/i6!@zA-7d0o^|^,ZD">
-                                        <field name="TEXT">Connected to</field>
+                                  <block type="WIFI_ESP_UART_BEGIN" id="gc#p_Ql-ujj[pf!h3d}|">
+                                    <value name="SSID">
+                                      <block type="text" id="F72]_gA28*9A@Qq:Ni6b">
+                                        <field name="TEXT">Sebouille</field>
+                                      </block>
+                                    </value>
+                                    <value name="PASS">
+                                      <block type="text" id="LZdu0WZeF{Rb}N5C:E?m">
+                                        <field name="TEXT">666C@C@666</field>
                                       </block>
                                     </value>
                                     <next>
-                                      <block type="BOARD_SERIAL_PRINT" id="gf-6Z!I@i:Lw`F)vFKN,">
+                                      <block type="BOARD_SERIAL_PRINT" id="QTt#q.O3L9qVBGa[4Z_}">
                                         <value name="CONTENT">
-                                          <block type="WIFI_ESP_UART_SSID" id="X#n~N)]@:XlTKOKIex;s"></block>
+                                          <block type="text" id="Q@/i6!@zA-7d0o^|^,ZD">
+                                            <field name="TEXT">Connected to</field>
+                                          </block>
                                         </value>
                                         <next>
-                                          <block type="WIFI_ESP_UART_SERVER_BEGIN" id="(LWmcJg11-p7-kVN=0;R">
-                                            <value name="NAME">
-                                              <block type="text" id="|]jWyYY0k)+G*m4_TOl=">
-                                                <field name="TEXT">server</field>
-                                              </block>
+                                          <block type="BOARD_SERIAL_PRINT" id="gf-6Z!I@i:Lw`F)vFKN,">
+                                            <value name="CONTENT">
+                                              <block type="WIFI_ESP_UART_SSID" id="X#n~N)]@:XlTKOKIex;s"></block>
                                             </value>
+                                            <next>
+                                              <block type="WIFI_ESP_UART_SERVER_BEGIN" id="(LWmcJg11-p7-kVN=0;R">
+                                                <value name="NAME">
+                                                  <block type="text" id="|]jWyYY0k)+G*m4_TOl=">
+                                                    <field name="TEXT">server</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </next>
                                           </block>
                                         </next>
                                       </block>
@@ -113,7 +117,7 @@
       </block>
     </statement>
   </block>
-  <block type="BOARD_BASE_LOOP" id="d/PVN9R4XUEVi-l:9}AT" x="-87" y="563">
+  <block type="BOARD_BASE_LOOP" id="d/PVN9R4XUEVi-l:9}AT" x="-87" y="513">
     <statement name="LOOP">
       <block type="WIFI_ESP_UART_SERVER_AVAILABLE" id="K5Hp+/}TL.*w@cN*=Ejk">
         <value name="NAME">
@@ -262,7 +266,7 @@
                                                                               <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="eC+z:ZYHHIK~vfoEVMRg">
                                                                                 <value name="NAME">
                                                                                   <block type="text" id="gHJ4eil2)#)SD9S=h3SF">
-                                                                                    <field name="TEXT">&lt;h1&gt;STudio4Education&lt;/h1&gt;\r\n</field>
+                                                                                    <field name="TEXT">&lt;h1&gt;Studio4Education&lt;/h1&gt;\r\n</field>
                                                                                   </block>
                                                                                 </value>
                                                                                 <next>
@@ -444,7 +448,7 @@
                                     </value>
                                     <next>
                                       <block type="GROVE_LED_BAR_SETLEVEL" id="$v~0(4]ecBBs3.dL?)0v">
-                                        <field name="PIN">6</field>
+                                        <field name="PIN">1</field>
                                         <value name="LEVEL">
                                           <block type="math_arithmetic" id="[n-z_@[iHIbA(lQsHXC{">
                                             <field name="OP">DIVIDE</field>

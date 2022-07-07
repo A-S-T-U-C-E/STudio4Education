@@ -3,13 +3,13 @@
     <variable id="JM[nz+dViX5nWWjQ23ac">temp_sensor</variable>
     <variable id="nqa#dt^K.L^a/A7.*eL@">data</variable>
   </variables>
-  <block type="BOARD_BASE_SETUP" id="xR5_f!8({?YY?qS%CiOD" x="-88" y="-163">
+  <block type="BOARD_BASE_SETUP" id="xR5_f!8({?YY?qS%CiOD" x="-637" y="-588">
     <statement name="SETUP">
       <block type="GROVE_LCD_RGB_POWER" id="x3P/K+Ls:FTuZChj|,WH">
         <field name="STAT">ON</field>
         <next>
           <block type="GROVE_LED_BAR_SETALLOFF" id="?`h!2iU{EFB+JKArgD(T">
-            <field name="PIN">6</field>
+            <field name="PIN">1</field>
             <next>
               <block type="GROVE_WIFI_UART_DEFINE" id="4y5#{-ZjVXlkAQfJD+4i">
                 <value name="Rx">
@@ -37,19 +37,14 @@
                     <field name="SPEED">115200</field>
                     <next>
                       <block type="WIFI_ESP_UART_SERVER_DEFINE" id="pWUbXakDCcG[%Sqtu35o">
-                        <value name="SERIAL_NAME">
-                          <block type="text" id="D|6:U]Mj=dUZ0=oiW6Z(">
-                            <field name="TEXT">Serial1</field>
-                          </block>
-                        </value>
                         <value name="NAME">
-                          <block type="text_no_quote" id="5?=:x2=uj@byOb:j%|2d">
+                          <block type="text" id=",T@0|)nIO|0YOiJvY{d-">
                             <field name="TEXT">server</field>
                           </block>
                         </value>
                         <value name="PORT">
-                          <block type="math_number" id="%w?+v~ZT8e)obO*VvPi0">
-                            <field name="NUM">8088</field>
+                          <block type="math_number" id="0kDGgFj-V}y1+r32~mF#">
+                            <field name="NUM">555</field>
                           </block>
                         </value>
                         <next>
@@ -157,7 +152,7 @@
       </block>
     </statement>
   </block>
-  <block type="BOARD_BASE_LOOP" id="d/PVN9R4XUEVi-l:9}AT" x="-88" y="1062">
+  <block type="BOARD_BASE_LOOP" id="d/PVN9R4XUEVi-l:9}AT" x="-112" y="-563">
     <statement name="LOOP">
       <block type="variables_set" id="=6.bdIoP9wHUXZ76S/68">
         <field name="VAR" id="JM[nz+dViX5nWWjQ23ac">temp_sensor</field>
@@ -281,7 +276,7 @@
                                                                       <block type="WIFI_ESP_UART_SERVER_CLIENT_PRINT" id="eC+z:ZYHHIK~vfoEVMRg">
                                                                         <value name="NAME">
                                                                           <block type="text" id="gHJ4eil2)#)SD9S=h3SF">
-                                                                            <field name="TEXT">&lt;h1&gt;STudio4Education&lt;/h1&gt;\r\n</field>
+                                                                            <field name="TEXT">&lt;h1&gt;Studio4Education&lt;/h1&gt;\r\n</field>
                                                                           </block>
                                                                         </value>
                                                                         <next>
@@ -369,7 +364,7 @@
                                 </value>
                                 <next>
                                   <block type="GROVE_LED_BAR_SETLEVEL" id="Q%+sVVy44v@.q|0pd?K=">
-                                    <field name="PIN">0</field>
+                                    <field name="PIN">1</field>
                                     <value name="LEVEL">
                                       <block type="math_arithmetic" id="~`yuxoMe~TSOQgX_=ek#">
                                         <field name="OP">DIVIDE</field>

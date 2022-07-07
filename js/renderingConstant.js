@@ -106,6 +106,7 @@ function toggleCategory(categoryChecked) {
         category.show();
         toolboxIdsToKeep.push(category.id_);
     }
+    Blockly.getMainWorkspace().resize();
     window.localStorage.toolboxids = toolboxIdsToKeep;
     var search = window.location.search;
     if (search.length <= 1) {
