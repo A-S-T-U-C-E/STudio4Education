@@ -114,6 +114,9 @@ Blockly.Arduino.ORDER_OVERRIDES = [
  */
 Blockly.Arduino.DEF_FUNC_NAME = Blockly.Arduino.FUNCTION_NAME_PLACEHOLDER_;
 
+// Dictionnary of Type of each local variable
+Blockly.Arduino.TypeVarLocalFun = Object.create(null);
+
 /**
  * Initialise the database of variable names.
  * @param {!Blockly.Workspace} workspace Workspace to generate code from.
@@ -127,6 +130,8 @@ Blockly.Arduino.init = function(workspace) {
     Blockly.Arduino.variables_ = Object.create(null);
     // Create a dictionary of functions from the code generator
     Blockly.Arduino.codeFunctions_ = Object.create(null);
+    
+    
     // Create a dictionary of functions created by the user
     Blockly.Arduino.userFunctions_ = Object.create(null);
     // Create a dictionary mapping desired function names in definitions_
@@ -147,21 +152,41 @@ Blockly.Arduino.init = function(workspace) {
 
     // Iterate through to capture all blocks types and set the function arguments
     var varsWithTypes = Blockly.Arduino.StaticTyping.collectVarsWithTypes(workspace);
+    
     Blockly.Arduino.StaticTyping.setProcedureArgs(workspace, varsWithTypes);
 
     // Set variable declarations with their Arduino type in the defines dictionary
     for (var varName in varsWithTypes) {
         if (varsWithTypes[varName]) {
-            if (varsWithTypes[varName].arrayType) {
+            if (Array.isArray(varsWithTypes[varName])){
+                    var type = varsWithTypes[varName][0][0];
+                    var idProc = varsWithTypes[varName][0][1];
+                    var scope = varsWithTypes[varName][0][2];
+                    var idBlock = varsWithTypes[varName][0][4];
+                    var def = Blockly.Arduino.getArduinoType_(type) +
+                        ' ' +
+                        Blockly.Arduino.nameDB_.getName(varName, Blockly.Variables.NAME_TYPE) +
+                        ';';
+                    if (scope.startsWith("G")){
+                        Blockly.Arduino.addVariable(varName,def);
+                    }else{
+                        var name = Blockly.Arduino.nameDB_.getName(varName, Blockly.Variables.NAME_TYPE);
+                        console.log(Blockly.Arduino.TypeVarLocalFun[name]);
+                        if(Blockly.Arduino.TypeVarLocalFun[name]){
+                        }else{
+                            Blockly.Arduino.TypeVarLocalFun[name] = [];
+                        }
+                        console.log(Blockly.Arduino.TypeVarLocalFun[name]);
+                        Blockly.Arduino.TypeVarLocalFun[name].push([Blockly.Arduino.getArduinoType_(type),idProc,"local",idBlock]);
+                        console.log(Blockly.Arduino.TypeVarLocalFun[name]);
+                        
+                        
+                    }
+                    
+            } else if (varsWithTypes[varName].arrayType) {
                 var varType = Blockly.Arduino.recurseArrayType(varName, varsWithTypes);
                 Blockly.Arduino.addVariable(varName,
                     varType +
-                    ' ' +
-                    Blockly.Arduino.nameDB_.getName(varName, Blockly.Variables.NAME_TYPE) +
-                    ';');
-            } else {
-                Blockly.Arduino.addVariable(varName,
-                    Blockly.Arduino.getArduinoType_(varsWithTypes[varName]) +
                     ' ' +
                     Blockly.Arduino.nameDB_.getName(varName, Blockly.Variables.NAME_TYPE) +
                     ';');
@@ -301,6 +326,8 @@ Blockly.Arduino.finish = function(code) {
     delete Blockly.Arduino.functionNames_;
     delete Blockly.Arduino.setups_;
     delete Blockly.Arduino.pins_;
+    Blockly.Arduino.TypeVarLocalFun = Object.create(null);
+    
     Blockly.Arduino.nameDB_.reset();
 
     var allDefs = includes.join('\n') + definitions.join('\n') + variables.join('\n') + functions.join('\n');
@@ -656,4 +683,4 @@ Blockly.Arduino.noGeneratorCodeInline = function() {
 
 Blockly.Arduino.noGeneratorCodeLine = function() {
     return '';
-};
+};Blockly.Arduino.TypeVarLocalFun[name]

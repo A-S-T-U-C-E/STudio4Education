@@ -86,6 +86,9 @@ Blockly.Msg["VARIABLES_SET_CONST"] = "constant";
 Blockly.Msg["VARIABLES_SET_CONST_AT"] = "set";
 Blockly.Msg["VARIABLES_SET_CONST_TOOLTIP"] = "set a variable to non modifiable value";
 Blockly.Msg["VARIABLES_SET_CONST_HELPURL"] = "https://www.arduino.cc/reference/en/language/variables/variable-scope-qualifiers/const/";
+Blockly.Msg["VARIABLES_SET_SCOPE_GLOBAL"] = "GLOBAL";
+Blockly.Msg["VARIABLES_SET_SCOPE_LOCAL"] = "LOCAL";
+
 //blockly types
 Blockly.Msg["ARD_TYPE_ARRAY"] = "Array";
 Blockly.Msg["ARD_TYPE_BOOL"] = "Boolean";

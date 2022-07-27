@@ -13,6 +13,7 @@
  */
 'use strict';
 
+
 goog.provide('Blockly.StaticTyping');
 
 goog.require('Blockly.Block');
@@ -47,12 +48,32 @@ Blockly.StaticTyping.prototype.collectVarsWithTypes = function(workspace) {
         var blockVarAndTypes = Blockly.StaticTyping.getBlockVars(blocks[i]);
         for (var j = 0; j < blockVarAndTypes.length; j++) {
             var variableName = blockVarAndTypes[j][0];
+            console.log(variableName);
             var variableType = blockVarAndTypes[j][1];
+            console.log(variableType);
             // If the type comes from a variable, so it's not directly defined, it
             // returns an Array<String(block type), String(source variable name)>
             if (Array.isArray(variableType)) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
                 if (this.varTypeDict[variableType[1]]) {
                     variableType = this.varTypeDict[variableType[1]];
+                    console.log(variableType);
                 } else {
                     // Dependant variable undefined, add this var to the pending list
                     if (!Array.isArray(this.pendingVarTypeDict[variableType[1]])) {
@@ -68,6 +89,7 @@ Blockly.StaticTyping.prototype.collectVarsWithTypes = function(workspace) {
     }
     return this.varTypeDict;
 };
+
 
 /**
  * Navigates through each top level block in the workspace to collect all
@@ -143,9 +165,11 @@ Blockly.StaticTyping.getBlockVars = function(block) {
         // Iterate through the variables used in this block
         for (var i = 0; i < blockVariables.length; i++) {
             var varName = blockVariables[i];
+            console.log(varName);
             var getVarType = block.getVarType;
             if (getVarType) {
                 var varType = getVarType.call(block, varName);
+                console.log(varType);
                 blockVarAndTypes.push([varName, varType]);
             } else {
                 blockVarAndTypes.push([varName, Blockly.Types.NULL]);
@@ -154,6 +178,32 @@ Blockly.StaticTyping.getBlockVars = function(block) {
     } // else: !(block.getVars), block does not define variables, so do nothing
     return blockVarAndTypes;
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Manages the associative array of variables with their type.
@@ -183,6 +233,59 @@ Blockly.StaticTyping.prototype.assignTypeToVars =
                 break;
         }
     };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * When a block uses a variable this function can compare its type with the

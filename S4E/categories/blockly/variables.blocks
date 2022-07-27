@@ -7,6 +7,7 @@
 /**
  * @fileoverview Typed variable blocks for Blockly.
  * @author scanet@libreduc.cc (Sébastien CANET)
+ * @author kamalhammi2@gmail.com (Kamal HAMMI)
  */
 
 'use strict';
@@ -82,6 +83,41 @@ Blockly.Blocks['variables_set'] = {
         this.appendValueInput("VALUE")
             .appendField(Blockly.Msg["VARIABLES_SET"].substring(0, Blockly.Msg["VARIABLES_SET"].indexOf('%1')))
             .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'VAR')
+            .appendField(Blockly.Msg["VARIABLES_SET"].substring(Blockly.Msg["VARIABLES_SET"].indexOf('%1') + 2, Blockly.Msg["VARIABLES_SET"].indexOf('%2')));
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.VARIABLES_SET_TOOLTIP);
+        this.setHelpUrl(Blockly.Msg.HELPURL);
+        this.setStyle('variable_blocks');
+    },
+    contextMenuType_: 'variables_get',
+    customContextMenu: Blockly.Blocks['variables_get'].customContextMenu,
+    /**
+     * Searches through the nested blocks to find a variable type.
+     * @this Blockly.Block
+     * @param {!string} varName Name of this block variable to check type.
+     * @return {string} String to indicate the type of this block.
+     */
+    getVarType: function(varName) {
+        return Blockly.Types.getChildBlockType(this);
+    }
+};
+
+Blockly.Blocks['variables_set_scope'] = {
+    /**
+     * Block for variable'scope and value setter, set scope of variable to Globale or Locale and its value to whatever is connected.
+     * @this Blockly.Block
+     */
+    init: function() {
+        this.contextMenuMsg_ = Blockly.Msg.VARIABLES_SET_CREATE_GET;
+        this.appendValueInput("VALUE")
+            .appendField(Blockly.Msg["VARIABLES_SET"].substring(0, Blockly.Msg["VARIABLES_SET"].indexOf('%1')))
+            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_DEFAULT_NAME), 'VAR')
+            .appendField(Blockly.Msg.VARIABLES_AS)
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg["VARIABLES_SET_SCOPE_GLOBAL"], "G"],
+                [Blockly.Msg["VARIABLES_SET_SCOPE_LOCAL"], "L"]
+            ]), "SCOPE")
             .appendField(Blockly.Msg["VARIABLES_SET"].substring(Blockly.Msg["VARIABLES_SET"].indexOf('%1') + 2, Blockly.Msg["VARIABLES_SET"].indexOf('%2')));
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
