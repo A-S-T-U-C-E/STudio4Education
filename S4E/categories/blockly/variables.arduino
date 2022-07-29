@@ -37,7 +37,8 @@ Blockly.Arduino['variables_set_scope'] = function(block) {
     if (scope && scope.startsWith('L') && Blockly.Arduino.TypeVarLocalFun[varName]) {
     	console.log("L");
 	    for (var i = 0; i < Blockly.Arduino.TypeVarLocalFun[varName].length; i++){
-    	console.log("for");	 
+    	console.log("for");
+    	console.log(Blockly.Arduino.TypeVarLocalFun[varName].length);	 
     	   
 	    	var varType = Blockly.Arduino.TypeVarLocalFun[varName][i][0];
 	    	var varProc = Blockly.Arduino.TypeVarLocalFun[varName][i][1];
@@ -59,10 +60,10 @@ Blockly.Arduino['variables_set_scope'] = function(block) {
 		      collisionLabel);
               }
               		
-		    if (block.id === idBlock){
 		    	var collisionLabel = "collision of a local variables";
 			block.setWarningText(null,
 		      collisionLabel);
+		    if (block.id === idBlock){
 		    	if (varType){
 			    	result = varType + ' '+ result;
 			 }
