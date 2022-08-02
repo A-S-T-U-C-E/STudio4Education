@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileoverview JavaScript for Blockly's Code demo, truncated.
+ * @fileoverview 'Code' application creation, JavaScript for Blockly's Code demo, truncated.
  * @author fraser@google.com (Neil Fraser)
  * @author scanet@libreduc.cc (Sébastien CANET)
  */
@@ -107,9 +107,9 @@ Code.changeLanguage = function() {
     }
     history.replaceState({}, 'search', search);
     addScript("./@blockly/msg/js/" + newLang + ".js");
-    addScript("msg/UI_" + newLang + ".js");
-    addScript("S4E/msg/blocks_" + newLang + ".js");
-    addScript("S4E/msg/categories_" + newLang + ".js");
+    addScript("./msg/UI_" + newLang + ".js");
+    addScript("./S4E/msg/blocks_" + newLang + ".js");
+    addScript("./S4E/msg/categories_" + newLang + ".js");
     document.forms.options.elements.languageMenu.value = newLang;
     const state = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
     Code.mainWorkspace.dispose();
