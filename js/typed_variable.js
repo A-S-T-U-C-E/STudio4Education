@@ -59,6 +59,13 @@ var numVariablesCallBack = function(workspace) {
             block.appendChild(Blockly.Variables.generateVariableFieldDom(variableModelList[0]));
             xmlList.push(block);
         }
+        if (Blockly.Blocks['variables_set_scope']) {
+            var block = Blockly.utils.xml.createElement('block');
+            block.setAttribute('type', 'variables_set_scope');
+            block.setAttribute('gap', Blockly.Blocks['variables_set_scope'] ? 8 : 24);
+            block.appendChild(Blockly.Variables.generateVariableFieldDom(variableModelList[0]));
+            xmlList.push(block);
+        }
         if (Blockly.Blocks['variables_const']) {
             var block = Blockly.utils.xml.createElement('block');
             block.setAttribute('type', 'variables_const');
