@@ -309,7 +309,7 @@ Blockly.StaticTyping.prototype.setBlockTypeWarning =
   var warningLabel = 'varType';
   var collisionLabel = "collision of a local and global variables";
   if ((blockType == Blockly.Types.CHILD_BLOCK_MISSING) ||
-      (this.varTypeDict[varName] == Blockly.Types.CHILD_BLOCK_MISSING)) {
+      (this.varTypeDict[varName][0][0] == Blockly.Types.CHILD_BLOCK_MISSING)) {
     // User still has to attach a block to this variable or its first
     // declaration, so for now do not display any warning
     block.setWarningText(null, warningLabel);
