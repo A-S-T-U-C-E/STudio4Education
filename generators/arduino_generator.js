@@ -171,14 +171,13 @@ Blockly.Arduino.init = function(workspace) {
                         Blockly.Arduino.addVariable(varName,def);
                     }else{
                         var name = Blockly.Arduino.nameDB_.getName(varName, Blockly.Variables.NAME_TYPE);
-                        console.log(Blockly.Arduino.TypeVarLocalFun[name]);
+                        
                         if(Blockly.Arduino.TypeVarLocalFun[name]){
                         }else{
                             Blockly.Arduino.TypeVarLocalFun[name] = [];
                         }
-                        console.log(Blockly.Arduino.TypeVarLocalFun[name]);
                         Blockly.Arduino.TypeVarLocalFun[name].push([Blockly.Arduino.getArduinoType_(type),idProc,"local",idBlock]);
-                        console.log(Blockly.Arduino.TypeVarLocalFun[name]);
+                        
                         
                         
                     }
