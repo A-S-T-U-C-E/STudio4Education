@@ -76,18 +76,20 @@ Blockly.Instances.getAnyInstanceOf = function(instanceType, workspace) {
 
 /** Indicates if the given instance is present in the workspace. */
 Blockly.Instances.isInstancePresent = function(
-    instanceName, instanceType, block) {
+    instanceName, instanceType, block, workspace) {
     var blocks;
-    if (block.workspace && block.workspace.getAllBlocks) {
+    if (block && block.workspace && block.workspace.getAllBlocks) {
         blocks = block.workspace.getAllBlocks();
-    } else {
+    } else if (workspace){
+	blocks = workspace.getAllBlocks();
+    }else{
         throw 'Not a valid block: ' + block;
     }
 
     for (var i = 0; i < blocks.length; i++) {
         var blockInstances = blocks[i].getInstances(instanceType);
         for (var j = 0; j < blockInstances.length; j++) {
-            if ((blockInstances[j] === instanceName) && (blocks[i] !== block)) {
+            if ((blockInstances[j] === instanceName) /*&& (blocks[i] !== block)*/) {
                 return true;
             }
         }
@@ -130,6 +132,7 @@ Blockly.Instances.generateUniqueName = function(workspace) {
         var potName = letters.charAt(letterIndex);
         while (!newName) {
             var inUse = false;
+	    console.log(combinedList);
             for (var i = 0; i < combinedList.length; i++) {
                 if (combinedList[i].toLowerCase() == potName) {
                     // This potential name is already used.

@@ -126,7 +126,9 @@ Blockly.FieldInstance.prototype.setValue = function(newValue) {
             this.sourceBlock_, 'field', this.name, this.value_, newValue));
     }
     this.value_ = newValue;
-    this.forceRerender();
+    // this.textContent_.data = newValue;
+    // this.doValueUpdate_(newValue);
+    // this.forceRerender();
 };
 
 /**
@@ -221,9 +223,43 @@ Blockly.FieldInstance.prototype.onItemSelected_ = function(menu, menuItem) {
                 oldInstance, callbackRename);
             return;
         } else if (id == Blockly.Msg.ARD_NEW_INSTANCE) {
-            Blockly.Instances.generateUniqueName(workspace);
+	    var block = this.sourceBlock_;
+	    console.log("NEW_INSTANCE");
+            var callbackNewInstance = function(text) {
+                if (text) {
+	            var existing = Blockly.Variables.nameUsedWithAnyType(text, workspace);
+		    var msg = undefined;
+		    if (existing){
+			msg = Blockly.Msg['VARIABLE_ALREADY_EXISTS'].replace('%1', text);
+		    }else if (Blockly.Instances.isInstancePresent(text,undefined,block,workspace)){
+			msg = "An instance named '"+text+"' already exists.";
+		    }
+		    if (msg){
+			Blockly.alert(msg,undefined);
+		    }else{
+	                    block.addInstance(text);
+	            }
+                }
+            };
+            Blockly.prompt("New instance name:",null,callbackNewInstance);
+            // Blockly.Instances.generateUniqueName(workspace);
             return;
-        }
+        }else{
+		    var field = this;
+		    var newName = id;
+		    field.setValue(newName);
+		    field.selectedOption_ = [newName,newName];
+		    field.textContent_.data = newName;
+		    field.textContent_.nodeValue = newName;
+		    field.textContent_.textContent = newName;
+		    field.size_.width = 0;
+                    field.getOptions(false);
+                    // work around for https://github.com/google/blockly/issues/3553
+                    field.doValueUpdate_(newName);
+                    if (field.isDirty_) {
+   			 field.forceRerender();
+  		    }
+	}
     }
     // Handle unspecial case.
     this.setValue(id);
