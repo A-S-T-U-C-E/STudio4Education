@@ -215,8 +215,19 @@ Blockly.FieldInstance.prototype.onItemSelected_ = function(menu, menuItem) {
             var thisFieldInstance = this;
             var callbackRename = function(text) {
                 if (text) {
-                    Blockly.Instances.renameInstance(
-                        oldInstance, text, thisFieldInstance.instanceType_, workspace);
+		    var existing = Blockly.Variables.nameUsedWithAnyType(text, workspace);
+		    var msg = undefined;
+		    if (existing){
+			msg = Blockly.Msg['VARIABLE_ALREADY_EXISTS'].replace('%1', text);
+		    }else if (Blockly.Instances.isInstancePresent(text,undefined,block,workspace)){
+			msg = "An instance named '"+text+"' already exists.";
+		    }
+		    if (msg){
+			Blockly.alert(msg,undefined);
+		    }else{
+                    	Blockly.Instances.renameInstance(
+                        	oldInstance, text, thisFieldInstance.instanceType_, workspace);
+	            }
                 }
             };
             Blockly.prompt(Blockly.Msg.ARD_RENAME_INSTANCE_TITLE.replace('%1', oldInstance),
