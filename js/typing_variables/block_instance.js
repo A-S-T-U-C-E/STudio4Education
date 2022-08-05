@@ -49,9 +49,13 @@ Blockly.Block.prototype.getInstances = function(opt_instanceType) {
                 var validInstance = opt_instanceType ?
                     field.getInstanceTypeValue(opt_instanceType) :
                     field.getValue();
-                if (validInstance) {
+		for (var k = 0; k < (field.menuGenerator_.length-2); k++){
+			 vars.push(field.menuGenerator_[k][0]);
+			
+		}
+                /*if (validInstance) {
                     vars.push(validInstance);
-                }
+                }*/
             }
         }
     }
@@ -67,17 +71,50 @@ Blockly.Block.prototype.getInstances = function(opt_instanceType) {
  */
 Blockly.Block.prototype.renameInstance = function(
     oldName, newName, instanceType) {
+	console.log(oldName+" "+ newName +" " +instanceType);
     for (var i = 0, input; input = this.inputList[i]; i++) {
         for (var j = 0, field; field = input.fieldRow[j]; j++) {
             if (field instanceof Blockly.FieldInstance) {
+		console.log(field);
                 var validInstance = field.getInstanceTypeValue(instanceType);
                 if (validInstance && Blockly.Names.equals(oldName, validInstance)) {
                     field.setValue(newName);
+		    field.selectedOption_ = [newName,newName];
+		    for (var k = 0; k < field.menuGenerator_.length; k++){
+			if (field.menuGenerator_[k][0].indexOf(oldName) != -1){
+				field.menuGenerator_[k] = [newName,newName];
+				break;
+			}
+		    }
+		    field.textContent_.data = newName;
+		    field.textContent_.nodeValue = newName;
+		    field.textContent_.textContent = newName;
+		    field.size_.width = 0;
                     field.getOptions(false);
                     // work around for https://github.com/google/blockly/issues/3553
-                    // field.doValueUpdate_(field.getValue());
-                    field.forceRerender();
+                    field.doValueUpdate_(newName);
+                    if (field.isDirty_) {
+   			 field.forceRerender();
+  		    }
                 }
+            }
+        }
+    }
+};
+
+/**
+ * Notification that a new instance is creating.
+ * @param {string} name The instance's name.
+ */
+Blockly.Block.prototype.addInstance = function(name) {
+	console.log("crete instance");
+    for (var i = 0, input; input = this.inputList[i]; i++) {
+        for (var j = 0, field; field = input.fieldRow[j]; j++) {
+            if (field instanceof Blockly.FieldInstance) {
+		    console.log(field);
+		    var oldMenu = field.menuGenerator_;
+		    field.menuGenerator_ = [[name,name]].concat(oldMenu);
+                
             }
         }
     }

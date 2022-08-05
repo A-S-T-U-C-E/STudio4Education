@@ -26,6 +26,50 @@ Blockly.Arduino['variables_set'] = function(block) {
     return (varName + ' = ' + argument0 + ';\n');
 };
 
+
+Blockly.Arduino['variables_set_scope'] = function(block) {
+    var argument0 = Blockly.Arduino.valueToCode(block, 'VALUE', Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
+    var varName = Blockly.Arduino.nameDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    var result = varName + ' = ' + argument0 + ';\n';
+    var scope = block.getFieldValue('SCOPE');
+	var collisionLabel = "collision of a local and argument of a function";
+		      block.setWarningText(null,
+		      collisionLabel);      
+	collisionLabel = "collision of a local variables";
+			block.setWarningText(null,
+		      collisionLabel);
+    if (scope && scope.startsWith('L') && Blockly.Arduino.TypeVarLocalFun[varName]) {
+	    for (var i = 0; i < Blockly.Arduino.TypeVarLocalFun[varName].length; i++){ 
+    	   
+	    	var varType = Blockly.Arduino.TypeVarLocalFun[varName][i][0];
+	    	var varProc = Blockly.Arduino.TypeVarLocalFun[varName][i][1];
+	    	var scope = Blockly.Arduino.TypeVarLocalFun[varName][i][2];
+	    	var idBlock = Blockly.Arduino.TypeVarLocalFun[varName][i][3];
+	    	
+    		
+	    	if ((block.getRootBlock().id === varProc) && (scope === "arg")){
+	    		var collisionLabel = "collision of a local and argument of a function";
+		      block.setWarningText("You are trying to set a local variable with the same name as an argument of this function",
+		      collisionLabel);
+                }
+              		
+		    	
+		    if (block.id === idBlock){
+		    	if (varType){
+			    	result = varType + ' '+ result;
+			 }
+		    }else if(scope === "local"){
+    			var collisionLabel = "collision of a local variables";
+			      block.setWarningText("You are trying to set a local variable with the same name as a local variable already registred",
+			      collisionLabel);
+			}
+		
+	    
+	   }
+	}
+    return result;
+};
+
 Blockly.Arduino['variables_set_type'] = function(block) {
     var argument0 = Blockly.Arduino.valueToCode(block, 'VARIABLE_SETTYPE_INPUT', Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
     var varType = Blockly.Arduino.getArduinoType_(Blockly.Types[block.getFieldValue('VARIABLE_SETTYPE_TYPE')]);
