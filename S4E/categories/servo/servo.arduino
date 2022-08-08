@@ -16,38 +16,35 @@ goog.provide('Blockly.Arduino.servo');
 
 goog.require('Blockly.Arduino');
 
+Blockly.Arduino['SERVO_ATTACH'] = function(block) {
+    let instanceName = block.getFieldValue('SERVO_INSTANCE_NAME');
+    let value_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+
+    Blockly.Arduino.includes_['define_servo'] = '#include <Servo.h>';
+    Blockly.Arduino.definitions_['var_servo' + instanceName] = 'Servo ' + instanceName + ';';
+    Blockly.Arduino.setups_['setup_servo_' + instanceName] = instanceName + '.attach(' + value_pin + ');';
+    return '';
+};
+
 Blockly.Arduino['SERVO_MOVE_EXTERNAL'] = function(block) {
-    var dropdown_pin = block.getFieldValue('PIN');
-    var value_degree = Blockly.Arduino.valueToCode(block, 'DEGREE', Blockly.Arduino.ORDER_ATOMIC);
-    var instanceName = block.getFieldValue("SERVO_NAME");
+    let instanceName = block.getFieldValue("SERVO_INSTANCE_NAME");
+    let value_degree = Blockly.Arduino.valueToCode(block, 'DEGREE', Blockly.Arduino.ORDER_ATOMIC);
 
-    Blockly.Arduino.includes_['includes_servo'] = '#include <Servo.h>';
-    Blockly.Arduino.definitions_['var_servo' + dropdown_pin] = 'Servo '+instanceName  + ';';
-    Blockly.Arduino.setups_['setup_servo_' + dropdown_pin] = instanceName + '.attach(' + dropdown_pin + ');';
-
-    let code = instanceName  + '.write(' + value_degree + ');\n';
+    let code = instanceName + '.write(' + value_degree + ');\n';
     return code;
 };
 
 Blockly.Arduino['SERVO_MOVE_SLIDER'] = function(block) {
-    var dropdown_pin = block.getFieldValue('PIN');
-    var value_degree = block.getFieldValue('DEGREE');
+    let instanceName = block.getFieldValue("SERVO_INSTANCE_NAME");
+    let value_degree = block.getFieldValue('DEGREE');
 
-    Blockly.Arduino.includes_['includes_servo'] = '#include <Servo.h>';
-    Blockly.Arduino.definitions_['var_servo' + dropdown_pin] = 'Servo servo_' + dropdown_pin + ';';
-    Blockly.Arduino.setups_['setup_servo_' + dropdown_pin] = 'servo_' + dropdown_pin + '.attach(' + dropdown_pin + ');';
-
-    let code = 'servo_' + dropdown_pin + '.write(' + value_degree + ');\n';
+    let code = 'servo_' + instanceName + '.write(' + value_degree + ');\n';
     return code;
 };
 
 Blockly.Arduino['SERVO_READ_DEGREES'] = function(block) {
-    var dropdown_pin = block.getFieldValue('PIN');
+    let instanceName = block.getFieldValue("SERVO_INSTANCE_NAME");
 
-    Blockly.Arduino.includes_['includes_servo'] = '#include <Servo.h>';
-    Blockly.Arduino.definitions_['var_servo' + dropdown_pin] = 'Servo servo_' + dropdown_pin + ';';
-    Blockly.Arduino.setups_['setup_servo_' + dropdown_pin] = 'servo_' + dropdown_pin + '.attach(' + dropdown_pin + ');';
-
-    let code = 'servo_' + dropdown_pin + '.read()';
+    let code = 'servo_' + instanceName + '.read()';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

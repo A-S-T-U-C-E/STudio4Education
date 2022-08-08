@@ -10,15 +10,24 @@ var toolbox_servo = {
             "kind": "block",
             "id": "angular.servo",
             "levels": "2, 3",
-            "type": "SERVO_MOVE_EXTERNAL",
-            "value": {
-                "kind": "category",
-                "name": "DEGREE",
+            "type": "SERVO_ATTACH",
+            "inputs": {
                 "shadow": {
-                    "field": {
-                        "kind": "block",
-                        "name": "NUM",
-                        "text": "90"
+                    "fields": {
+                        "NUM": 3
+                    },
+                    "type": "math_number"
+                }
+            }
+        },{
+            "kind": "block",
+            "id": "angular.servo",
+            "levels": "2, 3",
+            "type": "SERVO_MOVE_EXTERNAL",
+            "inputs": {
+                "shadow": {
+                    "fields": {
+                        "NUM": 90
                     },
                     "type": "math_number"
                 }

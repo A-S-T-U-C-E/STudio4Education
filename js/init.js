@@ -238,6 +238,7 @@ Code.init = async function() {
             next.style.flexGrow = nextGrowNew;
             lastPos = pos;
             Code.BlocklyWorkspaceOnresize();
+            Minimap.resizeMinimap();
             if (Code.editor)
                 Code.editor.layout();
             //hide button if div si too thin
