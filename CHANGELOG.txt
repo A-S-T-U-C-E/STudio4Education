@@ -1,3 +1,9 @@
+v0.9.7
+- fix minimap automatic resize
+- add local # global variable scope
+- add instanciation in object blocks (see servomotor as example)
+- modify Arrowhead to use instances
+
 v0.9.6
 - embed Block Factory
 - add Draw.io + Gaphor diagrams import

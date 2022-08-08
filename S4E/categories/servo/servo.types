@@ -1,3 +1,6 @@
+Blockly.Blocks.SERVO_ATTACH.getBlockType = function() {
+    return Blockly.Types.NULL;
+};
 Blockly.Blocks.SERVO_MOVE_EXTERNAL.getBlockType = function() {
     return Blockly.Types.NULL;
 };

@@ -5,20 +5,20 @@
 
 /**
  * @fileoverview JavaScript for Blockly's Minimap demo.
- * @author kamalhammi2@gmail.com (Kamal Hammi)
  * @author karnpurohit@gmail.com (Karan Purohit)
- * @author scanet@libreduc.cc update code (Sébastien Canet)
+ * @author scanet@libreduc.cc (Sébastien Canet - https://www.linkedin.com/in/sebcanet/) update code
+ * @author kamalhammi2@gmail.com (Kamal Hammi - https://www.linkedin.com/in/kamal-hammi-11bbb61a2/) bug fix
  */
 'use strict';
 
 /**
  * Creating a seperate namespace for minimap.
  */
-var Minimap = {};
-var scrollHeightInitial = 0;
-var scrollWidthInitial = 0;
+const Minimap = {};
+let scrollHeightInitial = 0;
+let scrollWidthInitial = 0;
 // parameter which should be in setup control panel, change size of minimap div
-var globalSize_ = 10;
+let globalSize_ = 10;
 
 /**
  * Initialize the workspace and minimap.
@@ -36,13 +36,13 @@ Minimap.init = function(workspace, minimap, zoomFactor) {
     this.workspace.scrollbar.vScroll.setHandlePosition = function(newPosition) {
         this.handlePosition_ = newPosition;
         this.svgHandle_.setAttribute(this.positionAttribute_, this.handlePosition_);
-        var absolutePosition = this.handlePosition_ / Minimap.zoomFactor;
+        // var absolutePosition = this.handlePosition_ / Minimap.zoomFactor;
         Minimap.onScrollChange(newPosition, this.vertical_);
     };
     this.workspace.scrollbar.hScroll.setHandlePosition = function(newPosition) {
         this.handlePosition_ = newPosition;
         this.svgHandle_.setAttribute(this.positionAttribute_, this.handlePosition_);
-        var absolutePosition = this.handlePosition_ / Minimap.zoomFactor;
+        // var absolutePosition = this.handlePosition_ / Minimap.zoomFactor;
         Minimap.onScrollChange(newPosition, this.horizontal_);
     };
 
@@ -68,7 +68,7 @@ Minimap.init = function(workspace, minimap, zoomFactor) {
     this.svg.style.left = '0';
 
     // Creating a rectangle in the minimap that represents current view.
-    var workspaceMetrics = this.workspace.getMetrics();
+    let workspaceMetrics = this.workspace.getMetrics();
     scrollWidthInitial = workspaceMetrics.scrollWidth;
     scrollHeightInitial = workspaceMetrics.scrollHeight;
     this.mapDragger = Blockly.utils.dom.createSvgElement('rect', {
@@ -102,9 +102,9 @@ Minimap.init = function(workspace, minimap, zoomFactor) {
     //Boolen to check whether I am dragging the surface or not.
     this.isDragging = false;
 
-    var xmlMainWorkspace = Blockly.Xml.workspaceToDom(workspace);
+    let xmlMainWorkspace = Blockly.Xml.workspaceToDom(workspace);
     xmlMainWorkspace = Blockly.Xml.domToText(xmlMainWorkspace);
-    var xmlMiniMapWorkspace = Blockly.Xml.textToDom(xmlMainWorkspace);
+    let xmlMiniMapWorkspace = Blockly.Xml.textToDom(xmlMainWorkspace);
     Blockly.Xml.domToWorkspace(xmlMiniMapWorkspace, minimap);
     Blockly.svgResize(Minimap.minimap);
 };
@@ -147,7 +147,7 @@ Minimap.mirrorEvent = function(event) {
     // Convert JSON back into an event, then execute it.
     var minimapEvent = Blockly.Events.fromJson(json, Minimap.minimap);
     minimapEvent.run(true);
-    
+
     Minimap.scaleMinimap();
     Minimap.setDraggerHeight();
     Minimap.setDraggerWidth();
@@ -162,13 +162,13 @@ Minimap.mirrorEvent = function(event) {
  */
 Minimap.resizeMinimap = function() {
     // recalculate workspace's new size
-    var workspaceMetrics = Minimap.workspace.getMetrics();
+    let workspaceMetrics = Minimap.workspace.getMetrics();
     document.getElementById('minimapDiv').style.width = Math.round(workspaceMetrics.scrollWidth / Minimap.zoomFactor) + 'px';
     document.getElementById('minimapDiv').style.height = Math.round(workspaceMetrics.scrollHeight / Minimap.zoomFactor) + 'px';
     Minimap.svg.style.width = document.getElementById('minimapDiv').style.width;
     Minimap.svg.style.height = document.getElementById('minimapDiv').style.height;
-    Minimap.mapDragger.style.width = Math.round(workspaceMetrics.viewWidth * Minimap.minimap.scale / Minimap.workspace.scale/* Minimap.zoomFactor*/) + 'px';
-    Minimap.mapDragger.style.height = Math.round(workspaceMetrics.viewHeight * Minimap.minimap.scale / Minimap.workspace.scale/* Minimap.zoomFactor*/) + 'px';
+    Minimap.mapDragger.style.width = Math.round(workspaceMetrics.viewWidth * Minimap.minimap.scale / Minimap.workspace.scale /* Minimap.zoomFactor*/ ) + 'px';
+    Minimap.mapDragger.style.height = Math.round(workspaceMetrics.viewHeight * Minimap.minimap.scale / Minimap.workspace.scale /* Minimap.zoomFactor*/ ) + 'px';
     Blockly.svgResize(Minimap.minimap);
 };
 
@@ -176,13 +176,13 @@ Minimap.resizeMinimap = function() {
  * Updates the rectangle's height.
  */
 Minimap.setDraggerHeight = function() {
-    var workspaceMetrics = Minimap.workspace.getMetrics();
-    var draggerHeight = workspaceMetrics.viewHeight * Minimap.minimap.scale / Minimap.workspace.scale;
+    let workspaceMetrics = Minimap.workspace.getMetrics();
+    let draggerHeight = workspaceMetrics.viewHeight * Minimap.minimap.scale / Minimap.workspace.scale;
     // var draggerHeight = workspaceMetrics.viewHeight / Minimap.zoomFactor;
     // It's zero when first block is placed.
     if (draggerHeight != 0) {
         // Minimap.mapDragger.setAttribute("height", draggerHeight);
-        Minimap.mapDragger.style.height = Math.round(workspaceMetrics.viewHeight * Minimap.minimap.scale / Minimap.workspace.scale/* Minimap.zoomFactor*/) + 'px';
+        Minimap.mapDragger.style.height = Math.round(workspaceMetrics.viewHeight * Minimap.minimap.scale / Minimap.workspace.scale /* Minimap.zoomFactor*/ ) + 'px';
         Blockly.svgResize(Minimap.minimap);
     }
 };
@@ -197,7 +197,7 @@ Minimap.setDraggerWidth = function() {
     // It's zero when first block is placed.
     if (draggerWidth != 0) {
         // Minimap.mapDragger.setAttribute("width", draggerWidth);
-        Minimap.mapDragger.style.width = Math.round(workspaceMetrics.viewWidth * Minimap.minimap.scale / Minimap.workspace.scale/* Minimap.zoomFactor*/) + 'px';
+        Minimap.mapDragger.style.width = Math.round(workspaceMetrics.viewWidth * Minimap.minimap.scale / Minimap.workspace.scale /* Minimap.zoomFactor*/ ) + 'px';
         Blockly.svgResize(Minimap.minimap);
     }
 };
@@ -207,42 +207,47 @@ Minimap.setDraggerWidth = function() {
  * using translate functions.
  */
 Minimap.scaleMinimap = function() {
-  var minimapBoundingBox = Minimap.minimap.getBlocksBoundingBox();
-  var workspaceBoundingBox = Minimap.workspace.getBlocksBoundingBox();
-  var workspaceMetrics = Minimap.workspace.getMetrics();
-  var minimapMetrics = Minimap.minimap.getMetrics();
+    //let minimapBoundingBox = Minimap.minimap.getBlocksBoundingBox();
+    let workspaceBoundingBox = Minimap.workspace.getBlocksBoundingBox();
+    let workspaceMetrics = Minimap.workspace.getMetrics();
+    let minimapMetrics = Minimap.minimap.getMetrics();
 
-  // Scaling the mimimap such that all the blocks can be seen in the viewport.
-  // This padding is default because this is how to scrollbar(in main workspace)
-  // is implemented.
-  var topPadding = (workspaceMetrics.viewHeight) * Minimap.minimap.scale /
-      (2 * Minimap.workspace.scale);
-  var sidePadding = (workspaceMetrics.viewWidth) * Minimap.minimap.scale /
-      (2 * Minimap.workspace.scale);
-  // If actual padding is more than half view ports height,
-  // change it to actual padding.
-  if ((workspaceBoundingBox.y * Minimap.workspace.scale -
-      workspaceMetrics.contentTop) / Minimap.zoomFactor /*
-      Minimap.minimap.scale / Minimap.workspace.scale */ > topPadding) {
-    topPadding = (workspaceBoundingBox.y * Minimap.workspace.scale -
-        workspaceMetrics.contentTop) / Minimap.zoomFactor /*
-        Minimap.minimap.scale / Minimap.workspace.scale */;
-  }
+    // Scaling the mimimap such that all the blocks can be seen in the viewport.
+    // This padding is default because this is how to scrollbar(in main workspace)
+    // is implemented.
+    let topPadding = workspaceMetrics.viewHeight * Minimap.minimap.scale / (2 * Minimap.workspace.scale);
+    let sidePadding = workspaceMetrics.viewWidth * Minimap.minimap.scale / (2 * Minimap.workspace.scale);
+    // If actual padding is more than half view ports height,
+    // change it to actual padding.
+    if ((workspaceBoundingBox.y * Minimap.workspace.scale -
+            workspaceMetrics.contentTop) / Minimap.zoomFactor
+        /*
+             Minimap.minimap.scale / Minimap.workspace.scale */
+        >
+        topPadding) {
+        topPadding = (workspaceBoundingBox.y * Minimap.workspace.scale - workspaceMetrics.contentTop) / Minimap.zoomFactor
+            /*
+                   Minimap.minimap.scale / Minimap.workspace.scale */
+        ;
+    }
 
-  // If actual padding is more than half view ports height,
-  // change it to actual padding.
-  if ((workspaceBoundingBox.x * Minimap.workspace.scale -
-      workspaceMetrics.contentLeft) / Minimap.zoomFactor /*
-      Minimap.minimap.scale / Minimap.workspace.scale */> sidePadding) {
-    sidePadding = (workspaceBoundingBox.x * Minimap.workspace.scale -
-        workspaceMetrics.contentLeft) / Minimap.zoomFactor /*
-        Minimap.minimap.scale / Minimap.workspace.scale */;
-  } 
+    // If actual padding is more than half view ports height,
+    // change it to actual padding.
+    if ((workspaceBoundingBox.x * Minimap.workspace.scale -
+            workspaceMetrics.contentLeft) / Minimap.zoomFactor
+        /*
+             Minimap.minimap.scale / Minimap.workspace.scale */
+        >
+        sidePadding) {
+        sidePadding = (workspaceBoundingBox.x * Minimap.workspace.scale -
+                workspaceMetrics.contentLeft) / Minimap.zoomFactor
+            /*
+                   Minimap.minimap.scale / Minimap.workspace.scale */
+        ;
+    }
 
-  // Translating the minimap.
-  Minimap.minimap.translate(
-      -minimapMetrics.contentLeft * Minimap.minimap.scale + sidePadding,
-      -minimapMetrics.contentTop * Minimap.minimap.scale + topPadding);
+    // Translating the minimap.
+    Minimap.minimap.translate(-minimapMetrics.contentLeft * Minimap.minimap.scale + sidePadding, -minimapMetrics.contentTop * Minimap.minimap.scale + topPadding);
 };
 
 
@@ -254,12 +259,12 @@ Minimap.scaleMinimap = function() {
  * @param {!Event} e Event from the mouse click.
  */
 Minimap.updateMapDragger = function(e) {
-    var y = e.clientY;
-    var x = e.clientX;
-    var mapDraggerRect = Minimap.mapDragger.getBoundingClientRect();
-    var mapContainerRect = Minimap.svg.getBoundingClientRect();
+    let y = e.clientY;
+    let x = e.clientX;
+    let mapDraggerRect = Minimap.mapDragger.getBoundingClientRect();
+    let mapContainerRect = Minimap.svg.getBoundingClientRect();
     // drag'n'drop rectangle is from its center
-    var finalY = 0,
+    let finalY = 0,
         finalX = 0;
 
     if ((y + mapDraggerRect.height / 2) > mapContainerRect.bottom) {
@@ -272,7 +277,7 @@ Minimap.updateMapDragger = function(e) {
     } else if ((x - mapDraggerRect.width / 2) < mapContainerRect.left) {
         finalX = 0;
     } else finalX = x - mapContainerRect.left - (mapDraggerRect.width / 2);
-    
+
     Minimap.mapDragger.setAttribute("y", finalY);
     Minimap.mapDragger.setAttribute("x", finalX);
     // Required, otherwise creates a feedback loop.
@@ -284,7 +289,6 @@ Minimap.updateMapDragger = function(e) {
     Minimap.scaleMinimap();
     Minimap.setDraggerHeight();
     Minimap.setDraggerWidth();
-
 };
 
 /**
@@ -297,10 +301,10 @@ Minimap.updateMapDragger = function(e) {
 Minimap.onScrollChange = function(position, horizontal) {
     if (!Minimap.disableScrollChange) {
         // Minimap.workspace.scrollbar.vScroll.set(finalY * Minimap.workspace.scale / Minimap.minimap.scale);
-        Minimap.mapDragger.setAttribute(horizontal ? 'x' : 'y', 
+        Minimap.mapDragger.setAttribute(horizontal ? 'x' : 'y',
             // newPosition);
             // position / Minimap.zoomFactor);
-             position * Minimap.minimap.scale / Minimap.workspace.scale);
-        
+            position * Minimap.minimap.scale / Minimap.workspace.scale);
+
     }
 };

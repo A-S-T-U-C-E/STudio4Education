@@ -18,26 +18,44 @@ goog.require('Blockly');
 goog.require('Blockly.Blocks');
 goog.require('Blockly.Types');
 
-var servoMediaFolder = "./S4E/categories/servo/";
+const servoMediaFolder = "./S4E/categories/servo/";
+
+
+Blockly.Blocks['SERVO_ATTACH'] = {
+    init: function() {
+        this.appendDummyInput("")
+            .appendField(Blockly.Msg.SERVO_ATTACH1)
+            .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", Code.imageSize, Code.imageSize));
+        this.appendDummyInput("")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.SERVO_ATTACH2)
+            .appendField(new Blockly.FieldInstance('Servo', 'SERVOMOT', false, false, false), 'SERVO_INSTANCE_NAME');
+        this.appendValueInput("PIN")
+            .setCheck('Number')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.SERVO_PIN);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg["SERVO_MOVE_TOOLTIP"]);
+        this.setHelpUrl(Blockly.Msg["SERVO_MOVE_HELPURL"]);
+        this.setStyle('servo_blocks');
+    }
+};
 
 Blockly.Blocks['SERVO_MOVE_EXTERNAL'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg["SERVO_MOVE_INPUT"])
-            .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", Code.imageSize, Code.imageSize))
-            .appendField(Blockly.Msg["SERVO_PIN"])
-            .appendField(new Blockly.FieldDropdown(profile["default"][0].dropdownDigital), "PIN");
+            .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", Code.imageSize, Code.imageSize));
+        this.appendDummyInput("")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.SERVO_ATTACH2)
+            .appendField(new Blockly.FieldInstance('Servo', 'SERVOMOT', false, false, false), 'SERVO_INSTANCE_NAME');
         this.appendValueInput("DEGREE")
-            .setCheck(Blockly.Types.UNS_NUMBER)
+            .setCheck('Number')
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg["SERVO_MOVE_DEGREE"]);
-         this.appendDummyInput("")
-             .setAlign(Blockly.ALIGN_RIGHT)
-             .appendField(
-                 new Blockly.FieldInstance('Servo',
-                     'SERVOMOT',
-                     false, false, false),
-                 'SERVO_NAME');
+        this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg["SERVO_MOVE_TOOLTIP"]);
@@ -50,13 +68,16 @@ Blockly.Blocks['SERVO_MOVE_SLIDER'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg["SERVO_MOVE_INPUT"])
-            .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", Code.imageSize, Code.imageSize))
-            .appendField(Blockly.Msg["SERVO_PIN"])
-            .appendField(new Blockly.FieldDropdown(profile["default"][0].dropdownDigital), "PIN");
+            .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", Code.imageSize, Code.imageSize));
+        this.appendDummyInput("")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.SERVO_ATTACH2)
+            .appendField(new Blockly.FieldInstance('Servo', 'SERVOMOT', false, false, false), 'SERVO_INSTANCE_NAME');
         this.appendDummyInput("DEGREE")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg["SERVO_MOVE_DEGREE"])
             .appendField(new FieldSlider(90, 0, 180, 5), "DEGREE");
+        this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg["SERVO_MOVE_TOOLTIP"]);
@@ -69,9 +90,11 @@ Blockly.Blocks['SERVO_READ_DEGREES'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(Blockly.Msg["SERVO_READ_DEGREES_INPUT"])
-            .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", Code.imageSize, Code.imageSize))
-            .appendField(Blockly.Msg["SERVO_PIN"])
-            .appendField(new Blockly.FieldDropdown(profile["default"][0].dropdownDigital), "PIN");
+            .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", Code.imageSize, Code.imageSize));
+        this.appendDummyInput("")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.SERVO_ATTACH2)
+            .appendField(new Blockly.FieldInstance('Servo', 'SERVOMOT', false, false, false), 'SERVO_INSTANCE_NAME');
         this.setOutput(true, "Number");
         this.setTooltip(Blockly.Msg["SERVO_READ_DEGREES_TOOLTIP"]);
         this.setHelpUrl(Blockly.Msg["SERVO_READ_DEGREES_HELPURL"]);

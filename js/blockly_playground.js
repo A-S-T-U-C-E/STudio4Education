@@ -63,7 +63,7 @@ Code.genWorkspace = function(rtlArg, toolboxArg, rendererArg) {
 /* Creating a mini workspace that is a zoomed out version of the main workspace. */
 Code.genMiniWorkspace = function(zoomFactor) {
     document.getElementById('minimapDiv').style.display = 'inline';
-    var workspaceMetrics = Code.mainWorkspace.getMetrics();
+    let workspaceMetrics = Code.mainWorkspace.getMetrics();
     document.getElementById('minimapDiv').style.width = workspaceMetrics.scrollWidth / 10 + 'px';
     document.getElementById('minimapDiv').style.height = workspaceMetrics.scrollHeight / 10 + 'px';
     Code.minimapWorkspace = Blockly.inject('minimapDiv', {
@@ -434,7 +434,7 @@ function toggleMinimap(state) {
  * @param e - The event that triggered the context menu.
  */
 function configureContextualMenu(menuOptions, e) {
-    var screenshotOption = {
+    let screenshotOption = {
         text: MSG['screenshot'],
         enabled: Code.mainWorkspace.getTopBlocks().length,
         callback: function() {
