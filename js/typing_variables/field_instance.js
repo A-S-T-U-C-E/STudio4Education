@@ -34,15 +34,28 @@ goog.require('Blockly.utils');
 Blockly.FieldInstance = function(
     instanceType, instanceName, uniqueName, opt_lockNew, opt_lockRename,
     opt_editDropdownData, opt_validator) {
-
-    Blockly.FieldInstance.superClass_.constructor.call(this, this.dropdownCreate(instanceName), opt_validator);
+		
+    var names = Blockly.Arduino.InstanceTypeWithNames['Servo'];
+    var newName = instanceName;
+    if (names){
+	newName = names[0][0];
+    }else{
+	Blockly.Arduino.InstanceTypeWithNames['Servo'] = [];
+	Blockly.Arduino.InstanceTypeWithNames['Servo'].push(['SERVOMOT','SERVOMOT']);
+    }
+    Blockly.FieldInstance.superClass_.constructor.call(this, this.dropdownCreate(newName), opt_validator);
 
     this.instanceType_ = instanceType;
-    this.setValue(instanceName);
+    this.setValue(newName);
     this.uniqueName_ = (uniqueName === true);
     this.lockNew_ = (opt_lockNew === true);
     this.lockRename_ = (opt_lockRename === true);
     this.editDropdownData = (opt_editDropdownData instanceof Function) ? opt_editDropdownData : null;
+    
+    if (names){
+    	var len = this.menuGenerator_.length;
+    	this.menuGenerator_ = names.concat([this.menuGenerator_[len-2],this.menuGenerator_[len-1]]);
+    }
 };
 Blockly.utils.object.inherits(Blockly.FieldInstance, Blockly.FieldDropdown);
 
@@ -109,7 +122,8 @@ Blockly.FieldInstance.prototype.init = function() {
                 if (existingName) this.setValue(existingName);
             }
         }
-    }
+    }	
+		
 };
 
 Blockly.FieldInstance.prototype.getInstanceTypeValue = function(instanceType) {
