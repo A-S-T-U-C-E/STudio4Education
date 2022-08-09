@@ -26,10 +26,23 @@ Blockly.Blocks['SERVO_ATTACH'] = {
         this.appendDummyInput("")
             .appendField(Blockly.Msg.SERVO_ATTACH1)
             .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", Code.imageSize, Code.imageSize));
+		var fi = undefined;
+		
+		var names = Blockly.Arduino.InstanceTypeWithNames['Servo'];
+		if (names){
+			var newName = names[0][0];
+		    fi = new Blockly.FieldInstance('Servo', newName, false, false, false);
+			var len = fi.menuGenerator_.length;
+			fi.menuGenerator_ = names.concat([fi.menuGenerator_[len-2],fi.menuGenerator_[len-1]]);
+		}else{
+			fi = new Blockly.FieldInstance('Servo', 'SERVOMOT', false, false, false);
+			Blockly.Arduino.InstanceTypeWithNames['Servo'] = [];
+			Blockly.Arduino.InstanceTypeWithNames['Servo'].push(['SERVOMOT','SERVOMOT']);
+		}
         this.appendDummyInput("")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.SERVO_ATTACH2)
-            .appendField(new Blockly.FieldInstance('Servo', 'SERVOMOT', false, false, false), 'SERVO_INSTANCE_NAME');
+            .appendField(fi, 'SERVO_INSTANCE_NAME');
         this.appendValueInput("PIN")
             .setCheck('Number')
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -47,10 +60,23 @@ Blockly.Blocks['SERVO_MOVE_EXTERNAL'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg["SERVO_MOVE_INPUT"])
             .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", Code.imageSize, Code.imageSize));
-        this.appendDummyInput("")
+        	var fi = undefined;
+		
+		var names = Blockly.Arduino.InstanceTypeWithNames['Servo'];
+		if (names){
+			var newName = names[0][0];
+		    fi = new Blockly.FieldInstance('Servo', newName, false, false, false);
+			var len = fi.menuGenerator_.length;
+			fi.menuGenerator_ = names.concat([fi.menuGenerator_[len-2],fi.menuGenerator_[len-1]]);
+		}else{
+			fi = new Blockly.FieldInstance('Servo', 'SERVOMOT', false, false, false);
+			Blockly.Arduino.InstanceTypeWithNames['Servo'] = [];
+			Blockly.Arduino.InstanceTypeWithNames['Servo'].push(['SERVOMOT','SERVOMOT']);
+		}
+	this.appendDummyInput("")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.SERVO_ATTACH2)
-            .appendField(new Blockly.FieldInstance('Servo', 'SERVOMOT', false, false, false), 'SERVO_INSTANCE_NAME');
+            .appendField(fi, 'SERVO_INSTANCE_NAME');
         this.appendValueInput("DEGREE")
             .setCheck('Number')
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -69,10 +95,23 @@ Blockly.Blocks['SERVO_MOVE_SLIDER'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg["SERVO_MOVE_INPUT"])
             .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", Code.imageSize, Code.imageSize));
-        this.appendDummyInput("")
+       	 	var fi = undefined;
+		
+		var names = Blockly.Arduino.InstanceTypeWithNames['Servo'];
+		if (names){
+			var newName = names[0][0];
+		    fi = new Blockly.FieldInstance('Servo', newName, false, false, false);
+			var len = fi.menuGenerator_.length;
+			fi.menuGenerator_ = names.concat([fi.menuGenerator_[len-2],fi.menuGenerator_[len-1]]);
+		}else{
+			fi = new Blockly.FieldInstance('Servo', 'SERVOMOT', false, false, false);
+			Blockly.Arduino.InstanceTypeWithNames['Servo'] = [];
+			Blockly.Arduino.InstanceTypeWithNames['Servo'].push(['SERVOMOT','SERVOMOT']);
+		}
+	this.appendDummyInput("")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.SERVO_ATTACH2)
-            .appendField(new Blockly.FieldInstance('Servo', 'SERVOMOT', false, false, false), 'SERVO_INSTANCE_NAME');
+            .appendField(fi, 'SERVO_INSTANCE_NAME');
         this.appendDummyInput("DEGREE")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg["SERVO_MOVE_DEGREE"])
@@ -91,10 +130,23 @@ Blockly.Blocks['SERVO_READ_DEGREES'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg["SERVO_READ_DEGREES_INPUT"])
             .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", Code.imageSize, Code.imageSize));
-        this.appendDummyInput("")
+        	var fi = undefined;
+		
+		var names = Blockly.Arduino.InstanceTypeWithNames['Servo'];
+		if (names){
+			var newName = names[0][0];
+		    fi = new Blockly.FieldInstance('Servo', newName, false, false, false);
+			var len = fi.menuGenerator_.length;
+			fi.menuGenerator_ = names.concat([fi.menuGenerator_[len-2],fi.menuGenerator_[len-1]]);
+		}else{
+			fi = new Blockly.FieldInstance('Servo', 'SERVOMOT', false, false, false);
+			Blockly.Arduino.InstanceTypeWithNames['Servo'] = [];
+			Blockly.Arduino.InstanceTypeWithNames['Servo'].push(['SERVOMOT','SERVOMOT']);
+		}
+	this.appendDummyInput("")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.SERVO_ATTACH2)
-            .appendField(new Blockly.FieldInstance('Servo', 'SERVOMOT', false, false, false), 'SERVO_INSTANCE_NAME');
+            .appendField(fi, 'SERVO_INSTANCE_NAME');
         this.setOutput(true, "Number");
         this.setTooltip(Blockly.Msg["SERVO_READ_DEGREES_TOOLTIP"]);
         this.setHelpUrl(Blockly.Msg["SERVO_READ_DEGREES_HELPURL"]);

@@ -117,6 +117,9 @@ Blockly.Arduino.DEF_FUNC_NAME = Blockly.Arduino.FUNCTION_NAME_PLACEHOLDER_;
 // Dictionnary of Type of each local variable
 Blockly.Arduino.TypeVarLocalFun = Object.create(null);
 
+// Dictionnary of Type of each Instance
+Blockly.Arduino.InstanceTypeWithNames = Object.create(null);
+
 /**
  * Initialise the database of variable names.
  * @param {!Blockly.Workspace} workspace Workspace to generate code from.

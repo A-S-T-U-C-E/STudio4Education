@@ -78,27 +78,67 @@ Blockly.Block.prototype.renameInstance = function(
 		console.log(field);
                 var validInstance = field.getInstanceTypeValue(instanceType);
                 if (validInstance && Blockly.Names.equals(oldName, validInstance)) {
-                    field.setValue(newName);
-		    field.selectedOption_ = [newName,newName];
-		    for (var k = 0; k < field.menuGenerator_.length; k++){
-			if (field.menuGenerator_[k][0].indexOf(oldName) != -1){
-				field.menuGenerator_[k] = [newName,newName];
-				break;
-			}
-		    }
-		    field.textContent_.data = newName;
-		    field.textContent_.nodeValue = newName;
-		    field.textContent_.textContent = newName;
-		    field.size_.width = 0;
-                    field.getOptions(false);
-                    // work around for https://github.com/google/blockly/issues/3553
-                    field.doValueUpdate_(newName);
-                    if (field.isDirty_) {
-   			 field.forceRerender();
+					field.setValue(newName);
+					field.selectedOption_ = [newName,newName];
+					for (var k = 0; k < field.menuGenerator_.length; k++){
+						if (field.menuGenerator_[k][0].indexOf(oldName) != -1){
+							field.menuGenerator_[k] = [newName,newName];
+							break;
+						}
+					}
+					for (var k = 0; k < Blockly.Arduino.InstanceTypeWithNames['Servo'].length; k++){
+						if (Blockly.Arduino.InstanceTypeWithNames['Servo'][k][0].indexOf(oldName) != -1){
+							Blockly.Arduino.InstanceTypeWithNames['Servo'][k] = [newName,newName];
+							break;
+						}
+					}
+					field.textContent_.data = newName;
+					field.textContent_.nodeValue = newName;
+					field.textContent_.textContent = newName;
+					field.size_.width = 0;
+							field.getOptions(false);
+							// work around for https://github.com/google/blockly/issues/3553
+							field.doValueUpdate_(newName);
+							if (field.isDirty_) {
+					 field.forceRerender();
   		    }
                 }
             }
         }
+    }
+	
+	var blocks = this.workspace.getAllBlocks();
+	for (var k = 0; k < blocks.length; k++){
+		var block = blocks[k];
+		if (block !== this){
+			for (var i = 0, input; input = block.inputList[i]; i++) {
+				for (var j = 0, field; field = input.fieldRow[j]; j++) {
+					if (field instanceof Blockly.FieldInstance) {
+						for (var k = 0; k < field.menuGenerator_.length; k++){
+							if (field.menuGenerator_[k][0].indexOf(oldName) != -1){
+								field.menuGenerator_[k] = [newName,newName];
+								break;
+							}
+						}
+						if (field.getValue() === oldName){
+							field.setValue(newName);
+							field.selectedOption_ = [newName,newName];
+							field.textContent_.data = newName;
+							field.textContent_.nodeValue = newName;
+							field.textContent_.textContent = newName;
+							field.size_.width = 0;
+									field.getOptions(false);
+									// work around for https://github.com/google/blockly/issues/3553
+									field.doValueUpdate_(newName);
+									if (field.isDirty_) {
+										field.forceRerender();		
+									}
+						}
+									
+					}
+				}
+			}
+		}
     }
 };
 
@@ -114,8 +154,24 @@ Blockly.Block.prototype.addInstance = function(name) {
 		    console.log(field);
 		    var oldMenu = field.menuGenerator_;
 		    field.menuGenerator_ = [[name,name]].concat(oldMenu);
+			Blockly.Arduino.InstanceTypeWithNames['Servo'] = [[name,name]].concat(Blockly.Arduino.InstanceTypeWithNames['Servo']);
                 
             }
         }
+    }
+	var blocks = this.workspace.getAllBlocks();
+	for (var k = 0; k < blocks.length; k++){
+		var block = blocks[k];
+		if (block !== this){
+			for (var i = 0, input; input = block.inputList[i]; i++) {
+				for (var j = 0, field; field = input.fieldRow[j]; j++) {
+					if (field instanceof Blockly.FieldInstance) {
+						console.log(field);
+						var oldMenu = field.menuGenerator_;
+						field.menuGenerator_ = [[name,name]].concat(oldMenu);							
+					}
+				}
+			}
+		}
     }
 };
