@@ -30,21 +30,19 @@ Blockly.Arduino['SERVO_MOVE_EXTERNAL'] = function(block) {
     let instanceName = block.getFieldValue("SERVO_INSTANCE_NAME");
     let value_degree = Blockly.Arduino.valueToCode(block, 'DEGREE', Blockly.Arduino.ORDER_ATOMIC);
 
-    let code = instanceName + '.write(' + value_degree + ');\n';
-    return code;
+    return instanceName + '.write(' + value_degree + ');\n';
 };
 
 Blockly.Arduino['SERVO_MOVE_SLIDER'] = function(block) {
     let instanceName = block.getFieldValue("SERVO_INSTANCE_NAME");
     let value_degree = block.getFieldValue('DEGREE');
 
-    let code = 'servo_' + instanceName + '.write(' + value_degree + ');\n';
-    return code;
+    return instanceName + '.write(' + value_degree + ');\n';
 };
 
 Blockly.Arduino['SERVO_READ_DEGREES'] = function(block) {
     let instanceName = block.getFieldValue("SERVO_INSTANCE_NAME");
 
-    let code = 'servo_' + instanceName + '.read()';
+    let code = instanceName + '.read()';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

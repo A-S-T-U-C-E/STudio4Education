@@ -37,10 +37,10 @@ Blockly.Blocks['NTPCLIENT_DEFINE_NTPCLIENT'] = {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(NTPClientMediaFolder + "NTPClient.png", Code.imageSize, Code.imageSize))
             .appendField(Blockly.Msg['NTPCLIENT_DEFINE_NTPCLIENT']);
-        this.appendValueInput("NAME")
-            .setCheck("String")
+        this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg['NTPCLIENT_DEFINE_NTPCLIENT_NAME']);
+            .appendField(Blockly.Msg['NTPCLIENT_DEFINE_NTPCLIENT_NAME'])
+            .appendField(new Blockly.FieldInstance('NTP_Client', 'NTP_CLIENT_NAME', false, false, false), 'NTP_INSTANCE_NAME');
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setStyle('board_blocks');
@@ -54,10 +54,10 @@ Blockly.Blocks['NTPCLIENT_BEGIN'] = {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(NTPClientMediaFolder + "NTPClient.png", Code.imageSize, Code.imageSize))
             .appendField(Blockly.Msg['NTPCLIENT_BEGIN']);
-        this.appendValueInput("NAME")
-            .setCheck("String")
+        this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg['NTPCLIENT_BEGIN_NAME']);
+            .appendField(Blockly.Msg['NTPCLIENT_BEGIN_NAME'])
+            .appendField(new Blockly.FieldInstance('NTP_Client', 'NTP_CLIENT_NAME', false, false, false), 'NTP_INSTANCE_NAME');
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setStyle('board_blocks');
@@ -71,10 +71,10 @@ Blockly.Blocks['NTPCLIENT_UPDATE'] = {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(NTPClientMediaFolder + "NTPClient.png", Code.imageSize, Code.imageSize))
             .appendField(Blockly.Msg['NTPCLIENT_UPDATE']);
-        this.appendValueInput("NAME")
-            .setCheck("String")
+        this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg['NTPCLIENT_UPDATE_NAME']);
+            .appendField(Blockly.Msg['NTPCLIENT_UPDATE_NAME'])
+            .appendField(new Blockly.FieldInstance('NTP_Client', 'NTP_CLIENT_NAME', false, false, false), 'NTP_INSTANCE_NAME');
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setStyle('board_blocks');
@@ -88,10 +88,10 @@ Blockly.Blocks['NTPCLIENT_FORCEUPDATE'] = {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(NTPClientMediaFolder + "NTPClient.png", Code.imageSize, Code.imageSize))
             .appendField(Blockly.Msg['NTPCLIENT_FORCEUPDATE']);
-        this.appendValueInput("NAME")
-            .setCheck("String")
+        this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg['NTPCLIENT_FORCEUPDATE_NAME']);
+            .appendField(Blockly.Msg['NTPCLIENT_FORCEUPDATE_NAME'])
+            .appendField(new Blockly.FieldInstance('NTP_Client', 'NTP_CLIENT_NAME', false, false, false), 'NTP_INSTANCE_NAME');
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setStyle('board_blocks');
@@ -105,10 +105,10 @@ Blockly.Blocks['NTPCLIENT_GET_EPOCH_TIME'] = {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(NTPClientMediaFolder + "NTPClient.png", Code.imageSize, Code.imageSize))
             .appendField(Blockly.Msg['NTPCLIENT_GET_EPOCH_TIME']);
-        this.appendValueInput("NAME")
-            .setCheck("String")
+        this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg['NTPCLIENT_GET_EPOCH_TIME_NAME']);
+            .appendField(Blockly.Msg['NTPCLIENT_GET_EPOCH_TIME_NAME'])
+            .appendField(new Blockly.FieldInstance('NTP_Client', 'NTP_CLIENT_NAME', false, false, false), 'NTP_INSTANCE_NAME');
         this.setOutput(true, null);
         this.setStyle('board_blocks');
         this.setTooltip(Blockly.Msg['NTPCLIENT_GET_EPOCH_TIME_TOOLTIP']);
@@ -121,10 +121,10 @@ Blockly.Blocks['NTPCLIENT_GET_FORMATTED_TIME'] = {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage(NTPClientMediaFolder + "NTPClient.png", Code.imageSize, Code.imageSize))
             .appendField(Blockly.Msg['NTPCLIENT_GET_FORMATTED_TIME']);
-        this.appendValueInput("NAME")
-            .setCheck("String")
+        this.appendDummyInput()
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg['NTPCLIENT_GET_FORMATTED_TIME_NAME']);
+            .appendField(Blockly.Msg['NTPCLIENT_GET_FORMATTED_TIME_NAME'])
+            .appendField(new Blockly.FieldInstance('NTP_Client', 'NTP_CLIENT_NAME', false, false, false), 'NTP_INSTANCE_NAME');
         this.setOutput(true, null);
         this.setStyle('board_blocks');
         this.setTooltip(Blockly.Msg['NTPCLIENT_GET_FORMATTED_TIME_TOOLTIP']);
