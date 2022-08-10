@@ -52,9 +52,9 @@ Blockly.Block.prototype.getInstances = function(opt_instanceType) {
                 for (let k = 0; k < (field.menuGenerator_.length - 2); k++) {
                     vars.push(field.menuGenerator_[k][0]);
                 }
-                if (validInstance) {
+                /*if (validInstance) {
                     vars.push(validInstance);
-                }
+                }*/
             }
         }
     }
@@ -85,6 +85,12 @@ Blockly.Block.prototype.renameInstance = function(
                             break;
                         }
                     }
+		    for (var k = 0; k < Blockly.Arduino.InstanceTypeWithNames[instanceType].length; k++){
+						if (Blockly.Arduino.InstanceTypeWithNames[instanceType][k][0].indexOf(oldName) != -1){
+							Blockly.Arduino.InstanceTypeWithNames[instanceType][k] = [newName,newName];
+							break;
+						}
+		    }
                     field.textContent_.data = newName;
                     field.textContent_.nodeValue = newName;
                     field.textContent_.textContent = newName;
@@ -105,7 +111,7 @@ Blockly.Block.prototype.renameInstance = function(
         if (block !== this) {
             for (let i = 0, input; input = block.inputList[i]; i++) {
                 for (let j = 0, field; field = input.fieldRow[j]; j++) {
-                    if (field instanceof Blockly.FieldInstance) {
+                    if ((field instanceof Blockly.FieldInstance) && (field.instanceType_ === instanceType)) {
                         for (let k = 0; k < field.menuGenerator_.length; k++) {
                             if (field.menuGenerator_[k][0].indexOf(oldName) != -1) {
                                 field.menuGenerator_[k] = [newName, newName];
@@ -137,16 +143,16 @@ Blockly.Block.prototype.renameInstance = function(
  * Notification that a new instance is creating.
  * @param {string} name The instance's name.
  */
-Blockly.Block.prototype.addInstance = function(name) {
-    console.log("crete instance");
+Blockly.Block.prototype.addInstance = function(name,instanceType) {
+    console.log("create instance");
     for (let i = 0, input; input = this.inputList[i]; i++) {
         for (let j = 0, field; field = input.fieldRow[j]; j++) {
             if (field instanceof Blockly.FieldInstance) {
                 console.log(field);
                 let oldMenu = field.menuGenerator_;
-                field.menuGenerator_ = [
-                    [name, name]
-                ].concat(oldMenu);
+                field.menuGenerator_ = [[name, name]].concat(oldMenu);
+		Blockly.Arduino.InstanceTypeWithNames[instanceType] = [[name,name]].concat(Blockly.Arduino.InstanceTypeWithNames[instanceType]);
+                
             }
         }
     }
@@ -156,12 +162,10 @@ Blockly.Block.prototype.addInstance = function(name) {
         if (block !== this) {
             for (let i = 0, input; input = block.inputList[i]; i++) {
                 for (let j = 0, field; field = input.fieldRow[j]; j++) {
-                    if (field instanceof Blockly.FieldInstance) {
+                    if ((field instanceof Blockly.FieldInstance) && (field.instanceType_ === instanceType)) {
                         console.log(field);
                         let oldMenu = field.menuGenerator_;
-                        field.menuGenerator_ = [
-                            [name, name]
-                        ].concat(oldMenu);
+                        field.menuGenerator_ = [[name, name]].concat(oldMenu);
                     }
                 }
             }
