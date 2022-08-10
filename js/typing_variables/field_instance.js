@@ -34,15 +34,28 @@ goog.require('Blockly.utils');
 Blockly.FieldInstance = function(
     instanceType, instanceName, uniqueName, opt_lockNew, opt_lockRename,
     opt_editDropdownData, opt_validator) {
-
-    Blockly.FieldInstance.superClass_.constructor.call(this, this.dropdownCreate(instanceName), opt_validator);
+		
+    var names = Blockly.Arduino.InstanceTypeWithNames[instanceType];
+    var newName = instanceName;
+    if (names){
+	newName = names[0][0];
+    }else{
+	Blockly.Arduino.InstanceTypeWithNames[instanceType] = [];
+	Blockly.Arduino.InstanceTypeWithNames[instanceType].push([instanceName,instanceName]);
+    }
+    Blockly.FieldInstance.superClass_.constructor.call(this, this.dropdownCreate(newName), opt_validator);
 
     this.instanceType_ = instanceType;
-    this.setValue(instanceName);
+    this.setValue(newName);
     this.uniqueName_ = (uniqueName === true);
     this.lockNew_ = (opt_lockNew === true);
     this.lockRename_ = (opt_lockRename === true);
     this.editDropdownData = (opt_editDropdownData instanceof Function) ? opt_editDropdownData : null;
+    
+    if (names){
+    	var len = this.menuGenerator_.length;
+    	this.menuGenerator_ = names.concat([this.menuGenerator_[len-2],this.menuGenerator_[len-1]]);
+    }
 };
 Blockly.utils.object.inherits(Blockly.FieldInstance, Blockly.FieldDropdown);
 
@@ -109,7 +122,8 @@ Blockly.FieldInstance.prototype.init = function() {
                 if (existingName) this.setValue(existingName);
             }
         }
-    }
+    }	
+		
 };
 
 Blockly.FieldInstance.prototype.getInstanceTypeValue = function(instanceType) {
@@ -236,6 +250,7 @@ Blockly.FieldInstance.prototype.onItemSelected_ = function(menu, menuItem) {
         } else if (id == Blockly.Msg.ARD_NEW_INSTANCE) {
 	    var block = this.sourceBlock_;
 	    console.log("NEW_INSTANCE");
+            var thisFieldInstance = this;
             var callbackNewInstance = function(text) {
                 if (text) {
 	            var existing = Blockly.Variables.nameUsedWithAnyType(text, workspace);
@@ -248,7 +263,7 @@ Blockly.FieldInstance.prototype.onItemSelected_ = function(menu, menuItem) {
 		    if (msg){
 			Blockly.alert(msg,undefined);
 		    }else{
-	                    block.addInstance(text);
+	                    block.addInstance(text, thisFieldInstance.instanceType_);
 	            }
                 }
             };

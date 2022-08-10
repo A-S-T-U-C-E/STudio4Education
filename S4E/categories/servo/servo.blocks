@@ -47,7 +47,7 @@ Blockly.Blocks['SERVO_MOVE_EXTERNAL'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg["SERVO_MOVE_INPUT"])
             .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", Code.imageSize, Code.imageSize));
-        this.appendDummyInput("")
+	this.appendDummyInput("")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.SERVO_ATTACH2)
             .appendField(new Blockly.FieldInstance('Servo', 'SERVOMOT', false, false, false), 'SERVO_INSTANCE_NAME');
@@ -69,7 +69,7 @@ Blockly.Blocks['SERVO_MOVE_SLIDER'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg["SERVO_MOVE_INPUT"])
             .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", Code.imageSize, Code.imageSize));
-        this.appendDummyInput("")
+	this.appendDummyInput("")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.SERVO_ATTACH2)
             .appendField(new Blockly.FieldInstance('Servo', 'SERVOMOT', false, false, false), 'SERVO_INSTANCE_NAME');
@@ -91,7 +91,7 @@ Blockly.Blocks['SERVO_READ_DEGREES'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg["SERVO_READ_DEGREES_INPUT"])
             .appendField(new Blockly.FieldImage(servoMediaFolder + "servo.jpg", Code.imageSize, Code.imageSize));
-        this.appendDummyInput("")
+	this.appendDummyInput("")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.SERVO_ATTACH2)
             .appendField(new Blockly.FieldInstance('Servo', 'SERVOMOT', false, false, false), 'SERVO_INSTANCE_NAME');
