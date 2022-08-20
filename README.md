@@ -48,7 +48,7 @@ The cursor controls how the user navigates the blocks, inputs, fields and connec
 
 ## Demo
 
-Studio4Education is a web tool. You can give it a try at [Web](https://a-s-t-u-c-e.github.io/Studio4Education/).
+Studio4Education is a web tool. You can give it a try at [Web version](https://a-s-t-u-c-e.github.io/STudio4Education/).
 
 ### Run locally on your web browser
 
