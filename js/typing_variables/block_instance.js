@@ -85,12 +85,12 @@ Blockly.Block.prototype.renameInstance = function(
                             break;
                         }
                     }
-		    for (var k = 0; k < Blockly.Arduino.InstanceTypeWithNames[instanceType].length; k++){
-						if (Blockly.Arduino.InstanceTypeWithNames[instanceType][k][0].indexOf(oldName) != -1){
-							Blockly.Arduino.InstanceTypeWithNames[instanceType][k] = [newName,newName];
-							break;
-						}
-		    }
+                    for (var k = 0; k < Blockly.Arduino.InstanceTypeWithNames[instanceType].length; k++) {
+                        if (Blockly.Arduino.InstanceTypeWithNames[instanceType][k][0].indexOf(oldName) != -1) {
+                            Blockly.Arduino.InstanceTypeWithNames[instanceType][k] = [newName, newName];
+                            break;
+                        }
+                    }
                     field.textContent_.data = newName;
                     field.textContent_.nodeValue = newName;
                     field.textContent_.textContent = newName;
@@ -143,16 +143,20 @@ Blockly.Block.prototype.renameInstance = function(
  * Notification that a new instance is creating.
  * @param {string} name The instance's name.
  */
-Blockly.Block.prototype.addInstance = function(name,instanceType) {
+Blockly.Block.prototype.addInstance = function(name, instanceType) {
     console.log("create instance");
     for (let i = 0, input; input = this.inputList[i]; i++) {
         for (let j = 0, field; field = input.fieldRow[j]; j++) {
             if (field instanceof Blockly.FieldInstance) {
                 console.log(field);
                 let oldMenu = field.menuGenerator_;
-                field.menuGenerator_ = [[name, name]].concat(oldMenu);
-		Blockly.Arduino.InstanceTypeWithNames[instanceType] = [[name,name]].concat(Blockly.Arduino.InstanceTypeWithNames[instanceType]);
-                
+                field.menuGenerator_ = [
+                    [name, name]
+                ].concat(oldMenu);
+                Blockly.Arduino.InstanceTypeWithNames[instanceType] = [
+                    [name, name]
+                ].concat(Blockly.Arduino.InstanceTypeWithNames[instanceType]);
+
             }
         }
     }
@@ -165,7 +169,9 @@ Blockly.Block.prototype.addInstance = function(name,instanceType) {
                     if ((field instanceof Blockly.FieldInstance) && (field.instanceType_ === instanceType)) {
                         console.log(field);
                         let oldMenu = field.menuGenerator_;
-                        field.menuGenerator_ = [[name, name]].concat(oldMenu);
+                        field.menuGenerator_ = [
+                            [name, name]
+                        ].concat(oldMenu);
                     }
                 }
             }

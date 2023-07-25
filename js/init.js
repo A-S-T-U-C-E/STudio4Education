@@ -238,7 +238,8 @@ Code.init = async function() {
             next.style.flexGrow = nextGrowNew;
             lastPos = pos;
             Code.BlocklyWorkspaceOnresize();
-            Minimap.resizeMinimap();
+            if (minimapDiv.style.visibility == 'visible')
+                Minimap.resizeMinimap();
             if (Code.editor)
                 Code.editor.layout();
             //hide button if div si too thin
@@ -371,11 +372,6 @@ Code.addPluginToWorkspace = function() {
  * Initialize the page language.
  */
 Code.initLanguage = function() {
-    // Set the HTML's language and direction.
-    var rtl = Code.isRtl();
-    document.dir = rtl ? 'rtl' : 'ltr';
-    document.head.parentElement.setAttribute('lang', Code.LANG);
-
     // Sort languages alphabetically.
     var languages = [];
     for (var lang in Code.LANGUAGE_NAME) {

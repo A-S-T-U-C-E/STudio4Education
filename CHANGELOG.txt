@@ -3,6 +3,7 @@ v0.9.7
 - add local # global variable scope
 - add instanciation in object blocks (see servomotor as example)
 - modify Arrowhead to use instances
+- fix arabic RTL workspace
 
 v0.9.6
 - embed Block Factory

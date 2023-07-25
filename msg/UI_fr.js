@@ -62,7 +62,7 @@ var MSG = {
         "Wiki : <a href='https://github.com/A-S-T-U-C-E/Studio4Education/wiki'>sur Github</a>.</br>" +
         "Un bug ? Merci d\'écrire ici : <a href='https://github.com/A-S-T-U-C-E/Studio4Education/issues'>sur Github</a>.</br>" +
         "Remerciements & bibliothèques : <a href='https://github.com/A-S-T-U-C-E/Studio4Education/wiki/Thanks'>sur Github</a>.</p>" +
-        "<p style='text-align: center;'>v0.9.5 - BSD3 license - Sébastien CANET" +
+        "<p style='text-align: center;'>v0.9.7 - BSD3 license - Sébastien CANET" +
         "<p style='text-align: center;'><a href = 'https://www.paypal.com/donate/?business=KBQDU3S6FWQU8&no_recurring=0&item_name=Merci+de+faire+un+don+pour+soutenir+les+logiciels+libres+%21&currency_code=EUR'>Merci de faire un don pour soutenir les logiciels libres !</br><img src='https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif' alt='Paypal'/></a></p>" +
         "<p style='text-align: left;color:red;'>PROFS FRANCAIS & ASSOCIATIONS</br>" +
         "vous pouvez aussi me demander une facture, légale, pour que votre établissement me fasse un <i>'don'</i> officiel par virement bancaire pour une activité de service de développement.</br>" +

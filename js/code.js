@@ -15,7 +15,7 @@
 /**
  * Create a namespace for the application.
  */
-var Code = {};
+let Code = {};
 
 /**
  * Lookup for names of supported languages.  Keys should be in ISO 639 format.
@@ -49,7 +49,7 @@ Code.mainWorkspace = null;
  * @return {string} The parameter value or the default value if not found.
  */
 Code.getStringParamFromUrl = function(name, defaultValue) {
-    var val = location.search.match(new RegExp('[?&]' + name + '=([^&]+)'));
+    let val = location.search.match(new RegExp('[?&]' + name + '=([^&]+)'));
     return val ? decodeURIComponent(val[1].replace(/\+/g, '%20')) : defaultValue;
 };
 
@@ -61,8 +61,8 @@ Code.getStringParamFromUrl = function(name, defaultValue) {
  * @return {string} The url completed with parameter and value
  */
 Code.addReplaceParamToUrl = function(url, param, value) {
-    var re = new RegExp("([?&])" + param + "=.*?(&|$)", "i");
-    var separator = url.indexOf('?') !== -1 ? "&" : "?";
+    let re = new RegExp("([?&])" + param + "=.*?(&|$)", "i");
+    let separator = url.indexOf('?') !== -1 ? "&" : "?";
     if (url.match(re)) {
         return url.replace(re, '$1' + param + "=" + value + '$2');
     } else {
@@ -75,7 +75,7 @@ Code.addReplaceParamToUrl = function(url, param, value) {
  * @return {string} User's language.
  */
 Code.getLang = function() {
-    var lang = Code.getStringParamFromUrl('lang', '');
+    let lang = Code.getStringParamFromUrl('lang', '');
     if (Code.LANGUAGE_NAME[lang] === undefined) {
         // Default to English.
         lang = 'en';
@@ -88,16 +88,16 @@ Code.getLang = function() {
  * @return {boolean} True if RTL, false if LTR.
  */
 Code.isRtl = function() {
-    return Code.LANGUAGE_RTL.indexOf(Code.LANG) != -1;
+    return Code.LANGUAGE_RTL.indexOf(Code.getLang()) != -1;
 };
 
 /**
  * Save the blocks and reload with a different language.
  */
 Code.changeLanguage = function() {
-    var languageMenu = document.getElementById('languageMenu');
-    var newLang = encodeURIComponent(languageMenu.options[languageMenu.selectedIndex].value);
-    var search = window.location.search;
+    let languageMenu = document.getElementById('languageMenu');
+    let newLang = encodeURIComponent(languageMenu.options[languageMenu.selectedIndex].value);
+    let search = window.location.search;
     if (search.length <= 1) {
         search = '?lang=' + newLang;
     } else if (search.match(/[?&]lang=[^&]*/)) {
@@ -123,16 +123,15 @@ Code.changeLanguage = function() {
         changeThemeBlockly(document.getElementById('themeMenu').value);
     }, 50);
     // Code.addPluginToWorkspace();
-
-};
+}
 
 /**
  * Modify interface for different skill levels
  */
 Code.changeLevel = async function() {
-    var levelMenuSelection = document.getElementById('levelMenu').options[levelMenu.selectedIndex].value;
+    let levelMenuSelection = document.getElementById('levelMenu').options[levelMenu.selectedIndex].value;
     window.sessionStorage.setItem('filtersAlreadyOpened', "false");
-    var search = window.location.search;
+    let search = window.location.search;
     if (search.length <= 1) {
         search = '?level=' + levelMenuSelection;
     } else if (search.match(/[?&]level=[^&]*/)) {
@@ -476,11 +475,11 @@ Code.changeLevel = async function() {
             else
                 btnCircuitJS.setAttribute('onclick', './tools/circuitjs/circuitjs.html');
             document.getElementById("buttonsToolsPopupInside").appendChild(btnCircuitJS);
-            var btnCircuitSpan = document.createElement('span');
+            let btnCircuitSpan = document.createElement('span');
             btnCircuitSpan.id = "circuitjsButton_span_menu";
             btnCircuitSpan.setAttribute('class', 'menu_text');
             document.getElementById("buttonsToolsPopupInside").appendChild(btnCircuitSpan);
-            var btnCircuitHrBr = document.createElement('span');
+            let btnCircuitHrBr = document.createElement('span');
             btnCircuitHrBr.id = "circuitjsButton_br_hr";
             btnCircuitHrBr.innerHTML = "<br><hr>";
             btnCircuitHrBr.setAttribute('class', 'menu_text');
@@ -538,7 +537,7 @@ Code.changeLevel = async function() {
  * the selected language in the codeMenu.
  */
 Code.changeCodingLanguage = function() {
-    var codeMenu = document.getElementById('code_menu');
+    let codeMenu = document.getElementById('code_menu');
     Code.tabClick(codeMenu.options[codeMenu.selectedIndex].value);
 }
 
@@ -560,7 +559,7 @@ Code.bindClick = function(el, func) {
  * Load the Prettify CSS and JavaScript.
  */
 Code.importPrettify = function() {
-    var script = document.createElement('script');
+    let script = document.createElement('script');
     script.setAttribute('src', 'https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js');
     document.head.appendChild(script);
 };
@@ -572,10 +571,10 @@ Code.importPrettify = function() {
  * @private
  */
 Code.getBBox_ = function(element) {
-    var height = element.offsetHeight;
-    var width = element.offsetWidth;
-    var x = 0;
-    var y = 0;
+    let height = element.offsetHeight;
+    let width = element.offsetWidth;
+    let x = 0;
+    let y = 0;
     do {
         x += element.offsetLeft;
         y += element.offsetTop;

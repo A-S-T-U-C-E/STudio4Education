@@ -1,1 +1,0 @@
-alert('Bau! from remote');

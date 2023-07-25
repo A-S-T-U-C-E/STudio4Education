@@ -23,7 +23,7 @@ Blockly.Arduino.procedures_defreturn = function() {
     var funcName = Blockly.Arduino.nameDB_.getName(this.getFieldValue('NAME'),
         Blockly.Procedures.NAME_TYPE);
     this.name = funcName;
-    
+
     var args = '';
     for (var x = 0; x < this.arguments_.length; x++) {
         var arg = '';
@@ -43,15 +43,15 @@ Blockly.Arduino.procedures_defreturn = function() {
             }
             this.arguments_.splice(x, 1, argType + ' ' + arg); // remove x and add  argtype + arg
         }
-        
-        console.log(Blockly.Arduino.TypeVarLocalFun[arg]);
-        if(Blockly.Arduino.TypeVarLocalFun[arg]){
-        }else{
-        	Blockly.Arduino.TypeVarLocalFun[arg] = [];
+
+        console.log(Blockly.Arduino.TypeEachLocalVar[arg]);
+        if (Blockly.Arduino.TypeEachLocalVar[arg]) {} else {
+            Blockly.Arduino.TypeEachLocalVar[arg] = [];
         }
-        console.log(Blockly.Arduino.TypeVarLocalFun[arg]);	Blockly.Arduino.TypeVarLocalFun[arg].push([argType,this.id,"arg",this.id]);
+        console.log(Blockly.Arduino.TypeEachLocalVar[arg]);
+        Blockly.Arduino.TypeEachLocalVar[arg].push([argType, this.id, "arg", this.id]);
         console.log("after add");
-        console.log(Blockly.Arduino.TypeVarLocalFun[arg]);
+        console.log(Blockly.Arduino.TypeEachLocalVar[arg]);
         args += argType + ' ' + arg + ', ';
     }
     var branch = Blockly.Arduino.statementToCode(this, 'STACK');

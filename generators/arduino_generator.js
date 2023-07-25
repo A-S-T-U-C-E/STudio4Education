@@ -115,7 +115,7 @@ Blockly.Arduino.ORDER_OVERRIDES = [
 Blockly.Arduino.DEF_FUNC_NAME = Blockly.Arduino.FUNCTION_NAME_PLACEHOLDER_;
 
 // Dictionnary of Type of each local variable
-Blockly.Arduino.TypeVarLocalFun = Object.create(null);
+Blockly.Arduino.TypeEachLocalVar = Object.create(null);
 
 // Dictionnary of Type of each Instance
 Blockly.Arduino.InstanceTypeWithNames = Object.create(null);
@@ -133,8 +133,8 @@ Blockly.Arduino.init = function(workspace) {
     Blockly.Arduino.variables_ = Object.create(null);
     // Create a dictionary of functions from the code generator
     Blockly.Arduino.codeFunctions_ = Object.create(null);
-    
-    
+
+
     // Create a dictionary of functions created by the user
     Blockly.Arduino.userFunctions_ = Object.create(null);
     // Create a dictionary mapping desired function names in definitions_
@@ -154,39 +154,34 @@ Blockly.Arduino.init = function(workspace) {
     Blockly.Arduino.nameDB_.setVariableMap(workspace.getVariableMap());
 
     // Iterate through to capture all blocks types and set the function arguments
-    var varsWithTypes = Blockly.Arduino.StaticTyping.collectVarsWithTypes(workspace);
-    
+    let varsWithTypes = Blockly.Arduino.StaticTyping.collectVarsWithTypes(workspace);
+
     Blockly.Arduino.StaticTyping.setProcedureArgs(workspace, varsWithTypes);
 
     // Set variable declarations with their Arduino type in the defines dictionary
-    for (var varName in varsWithTypes) {
+    for (let varName in varsWithTypes) {
         if (varsWithTypes[varName]) {
-            if (Array.isArray(varsWithTypes[varName])){
-                    var type = varsWithTypes[varName][0][0];
-                    var idProc = varsWithTypes[varName][0][1];
-                    var scope = varsWithTypes[varName][0][2];
-                    var idBlock = varsWithTypes[varName][0][4];
-                    var def = Blockly.Arduino.getArduinoType_(type) +
-                        ' ' +
-                        Blockly.Arduino.nameDB_.getName(varName, Blockly.Variables.NAME_TYPE) +
-                        ';';
-                    if (scope.startsWith("G")){
-                        Blockly.Arduino.addVariable(varName,def);
-                    }else{
-                        var name = Blockly.Arduino.nameDB_.getName(varName, Blockly.Variables.NAME_TYPE);
-                        
-                        if(Blockly.Arduino.TypeVarLocalFun[name]){
-                        }else{
-                            Blockly.Arduino.TypeVarLocalFun[name] = [];
-                        }
-                        Blockly.Arduino.TypeVarLocalFun[name].push([Blockly.Arduino.getArduinoType_(type),idProc,"local",idBlock]);
-                        
-                        
-                        
+            if (Array.isArray(varsWithTypes[varName])) {
+                let type = varsWithTypes[varName][0][0];
+                let idProc = varsWithTypes[varName][0][1];
+                let scope = varsWithTypes[varName][0][2];
+                let idBlock = varsWithTypes[varName][0][4];
+                let def = Blockly.Arduino.getArduinoType_(type) +
+                    ' ' +
+                    Blockly.Arduino.nameDB_.getName(varName, Blockly.Variables.NAME_TYPE) +
+                    ';';
+                if (scope.startsWith("G")) {
+                    Blockly.Arduino.addVariable(varName, def);
+                } else {
+                    let name = Blockly.Arduino.nameDB_.getName(varName, Blockly.Variables.NAME_TYPE);
+
+                    if (Blockly.Arduino.TypeEachLocalVar[name]) {} else {
+                        Blockly.Arduino.TypeEachLocalVar[name] = [];
                     }
-                    
+                    Blockly.Arduino.TypeEachLocalVar[name].push([Blockly.Arduino.getArduinoType_(type), idProc, "local", idBlock]);
+                }
             } else if (varsWithTypes[varName].arrayType) {
-                var varType = Blockly.Arduino.recurseArrayType(varName, varsWithTypes);
+                let varType = Blockly.Arduino.recurseArrayType(varName, varsWithTypes);
                 Blockly.Arduino.addVariable(varName,
                     varType +
                     ' ' +
@@ -328,8 +323,8 @@ Blockly.Arduino.finish = function(code) {
     delete Blockly.Arduino.functionNames_;
     delete Blockly.Arduino.setups_;
     delete Blockly.Arduino.pins_;
-    Blockly.Arduino.TypeVarLocalFun = Object.create(null);
-    
+    Blockly.Arduino.TypeEachLocalVar = Object.create(null);
+
     Blockly.Arduino.nameDB_.reset();
 
     var allDefs = includes.join('\n') + definitions.join('\n') + variables.join('\n') + functions.join('\n');
@@ -473,10 +468,10 @@ Blockly.Arduino.quote_ = function(string) {
  * @protected
  */
 Blockly.Arduino.multiline_quote_ = function(string) {
-  // Can't use goog.string.quote since Google's style guide recommends
-  // JS string literals use single quotes.
-  var lines = string.split(/\n/g).map(Blockly.Arduino.quote_);
-  return lines.join(' + \'\\n\' +\n');
+    // Can't use goog.string.quote since Google's style guide recommends
+    // JS string literals use single quotes.
+    var lines = string.split(/\n/g).map(Blockly.Arduino.quote_);
+    return lines.join(' + \'\\n\' +\n');
 };
 
 /**
@@ -578,29 +573,29 @@ Blockly.Arduino.getArduinoType_ = function(typeBlockly) {
 Blockly.Arduino.getArduinoTypeByArduinoId_ = function(typeBlockly) {
     switch (typeBlockly) {
         case 'volatile int':
-          return 'VOLATIL_NUMBER';
+            return 'VOLATIL_NUMBER';
         case 'byte':
-          return 'SHORT_NUMBER';
+            return 'SHORT_NUMBER';
         case 'int':
-          return 'NUMBER';
+            return 'NUMBER';
         case 'unsigned int':
-          return 'UNS_NUMBER';
+            return 'UNS_NUMBER';
         case 'long':
-          return 'LARGE_NUMBER';
+            return 'LARGE_NUMBER';
         case 'unsigned long':
-          return 'LARGE_UNS_NUMBER';
+            return 'LARGE_UNS_NUMBER';
         case 'float':
-          return 'DECIMAL';
+            return 'DECIMAL';
         case 'String':
-          return 'TEXT';
+            return 'TEXT';
         case 'char':
-          return 'CHARACTER';
+            return 'CHARACTER';
         case 'boolean':
-          return 'BOOLEAN';
+            return 'BOOLEAN';
         case 'void':
-          return 'NULL';
+            return 'NULL';
         default:
-          return 'UNDEF';
+            return 'UNDEF';
     }
 };
 
@@ -650,31 +645,31 @@ Blockly.Arduino.getArduinoTypeById_ = function(Id) {
  * @private
  */
 Blockly.Arduino.getArduinoReverseType_ = function(ArduinoType) {
-  switch (ArduinoType) {
-    case 'volatile int':
-      return Blockly.Types.VOLATIL_NUMBER.typeId;
-    case 'byte':
-      return Blockly.Types.SHORT_NUMBER.typeId;
-    case 'int':
-      return Blockly.Types.NUMBER.typeId;
-    case 'unsigned int':
-      return Blockly.Types.UNS_NUMBER.typeId;
-    case 'long':
-      return Blockly.Types.LARGE_NUMBER.typeId;
-    case 'unsigned long':
-      return Blockly.Types.LARGE_UNS_NUMBER.typeId;
-    case 'float':
-      return Blockly.Types.DECIMAL.typeId;
-    case 'String':
-      return Blockly.Types.TEXT.typeId;
-    case 'char':
-      return Blockly.Types.CHARACTER.typeId;
-    case 'boolean':
-      return Blockly.Types.BOOLEAN.typeId;
-    case 'void':
-      return Blockly.Types.NULL.typeId;
-    default:
-      return Blockly.Types.UNDEF.typeId;
+    switch (ArduinoType) {
+        case 'volatile int':
+            return Blockly.Types.VOLATIL_NUMBER.typeId;
+        case 'byte':
+            return Blockly.Types.SHORT_NUMBER.typeId;
+        case 'int':
+            return Blockly.Types.NUMBER.typeId;
+        case 'unsigned int':
+            return Blockly.Types.UNS_NUMBER.typeId;
+        case 'long':
+            return Blockly.Types.LARGE_NUMBER.typeId;
+        case 'unsigned long':
+            return Blockly.Types.LARGE_UNS_NUMBER.typeId;
+        case 'float':
+            return Blockly.Types.DECIMAL.typeId;
+        case 'String':
+            return Blockly.Types.TEXT.typeId;
+        case 'char':
+            return Blockly.Types.CHARACTER.typeId;
+        case 'boolean':
+            return Blockly.Types.BOOLEAN.typeId;
+        case 'void':
+            return Blockly.Types.NULL.typeId;
+        default:
+            return Blockly.Types.UNDEF.typeId;
     }
 };
 
@@ -685,4 +680,4 @@ Blockly.Arduino.noGeneratorCodeInline = function() {
 
 Blockly.Arduino.noGeneratorCodeLine = function() {
     return '';
-};Blockly.Arduino.TypeVarLocalFun[name]
+};

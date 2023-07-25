@@ -14,19 +14,19 @@
  */
 function auto_save_and_restore_blocks() {
     // Store the blocks for the duration of the reload.
-    var xml = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
-    var text = Blockly.Xml.domToText(xml);
+    let xml = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
+    let text = Blockly.Xml.domToText(xml);
     window.sessionStorage.loadOnceBlocks = text;
 }
 
-var fullScreen_ = false;
+let fullScreen_ = false;
 
 /**
  * Full screen, thanks to HTML5 API
  * @argument {type} _element 
  */
 function fullScreen(_element) {
-    var elementClicked = _element || document.documentElement;
+    let elementClicked = _element || document.documentElement;
     // HTML5
     if (document.fullscreenEnabled) {
         if (!document.fullscreenElement) {
@@ -80,7 +80,7 @@ Code.imageSize = 48;
 Code.imageSizeOld = 48;
 
 Code.blockPicture = function() {
-    var xmlBlocks = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
+    let xmlBlocks = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
     Code.imageBlocksBool = !Code.imageBlocksBool;
     if (Code.imageBlocksBool) {
         document.getElementById("blocksPictureButton_span").classList.add('fa-eye-slash');
@@ -103,7 +103,7 @@ Code.blockPicture = function() {
  */
 Code.copyCodeToClipboard = function() {
     if (document.selection) { // IE
-        var range = document.body.createTextRange();
+        let range = document.body.createTextRange();
         if (Code.editor)
             range.moveToElementText(Code.editor.getValue());
         else range.moveToElementText(Blockly.Arduino.workspaceToCode(Code.mainWorkspace));
@@ -126,7 +126,7 @@ Code.copyCodeToClipboard = function() {
  */
 Code.copyConsoleToClipboard = function() {
     if (document.selection) { // IE
-        var range = document.body.createTextRange();
+        let range = document.body.createTextRange();
         range.moveToElementText(document.getElementById("content_console").textContent);
         range.select();
         document.execCommand("copy");
@@ -148,7 +148,7 @@ Code.cleanConsole = function() {
 /**
  * modal controllers
  */
-var dialogMonacoEditor;
+let dialogMonacoEditor;
 let diffOrNot = false;
 document.getElementById("content_code_Monaco").style.display = 'block';
 document.getElementById("content_diffCode_Monaco").style.display = 'none';
@@ -203,9 +203,10 @@ Code.editorMonacoModalShow = function() {
                 document.getElementById("editorMonacoModal").style.display = "none";
                 break;
             case 'editorMonacoModal_ok':
+                let codeModified;
                 if (diffOrNot === true) {
-                    var codeModified = Code.diffEditor.getModifiedEditor().getValue();
-                } else var codeModified = Code.editor.getValue();
+                    codeModified = Code.diffEditor.getModifiedEditor().getValue();
+                } else codeModified = Code.editor.getValue();
                 document.getElementById('content_pre_code').innerHTML = prettyPrintOne(codeModified, 'cpp', false);
                 break;
             case 'editorMonacoModal_cancel':
@@ -240,7 +241,7 @@ Code.editorMonacoModalShow = function() {
 Code.boardsListModalShow = function() {
     document.getElementById('overlayForModals').style.display = "block";
     document.getElementById('boardListModal').classList.add('show');
-    for (var i = 0; i < document.getElementById("boardDescriptionSelector").length; i++)
+    for (let i = 0; i < document.getElementById("boardDescriptionSelector").length; i++)
         document.getElementById("boardDescriptionSelector").options[i].style.backgroundColor = 'white';
     if (sessionStorage.getItem("boardIndex")) {
         document.getElementById("boardDescriptionSelector").selectedIndex = sessionStorage.getItem('board');
@@ -254,7 +255,7 @@ Code.boardsListModalShow = function() {
 Code.portsListModalShow = async function() {
     document.getElementById('overlayForModals').style.display = "block";
     document.getElementById('portListModal').classList.add('show');
-    var portValue = document.getElementById("serialMenu").value;
+    let portValue = document.getElementById("serialMenu").value;
     if (portValue !== 'none') {
         document.getElementById("serialMenu").selectedIndex = portValue;
         document.getElementById("serialMenu").value = portValue;
@@ -309,7 +310,7 @@ Code.flowsListModalHide = function(event) {
  * change information in the boards modal
  **/
 Code.boardDescription = function() {
-    var boardValue = document.getElementById("boardDescriptionSelector").value;
+    let boardValue = document.getElementById("boardDescriptionSelector").value;
     if (!boardValue)
         boardValue = 'none';
     document.getElementById("board_mini_picture").setAttribute("src", profile[boardValue][0].picture);
@@ -333,7 +334,7 @@ Code.Redo = function() {
  * Launch CircuitJS simulator
  * The above code is creating a web page that allows you to program your Arduino using CircuitJS.
  */
-var dialogCircuitJS;
+let dialogCircuitJS;
 Code.CircuitJS = function() {
     if (!dialogCircuitJS)
         dialogCircuitJS = new DialogBox('circuitJSmodal', callbackButtons);
@@ -371,8 +372,8 @@ Code.CircuitJS = function() {
 /*
  * Modify position of CircuitJS modal
  */
-var _maximini = "mini";
-var _leftright = "right";
+let _maximini = "mini";
+let _leftright = "right";
 const _circuitJSmodal = document.getElementById("circuitJSmodal");
 let circuitJSmodal_old_X = 0;
 let circuitJSmodal_old_Y = 0;
@@ -441,15 +442,15 @@ function circuitJSmodal_replace_Blockly() {
 }
 
 Code.HackCable = function() {
-    var lang = Code.getStringParamFromUrl('lang', '');
+    let lang = Code.getStringParamFromUrl('lang', '');
     if (!lang) {
         lang = "en";
     }
-    window.open('tools/hackcable/index.html', '_blank').focus();
+    window.open('tools/hakable/index.html', '_blank').focus();
 };
 
 Code.HTMLFactory = function() {
-    var lang = Code.getStringParamFromUrl('lang', '');
+    let lang = Code.getStringParamFromUrl('lang', '');
     if (!lang) {
         lang = "en";
     }
@@ -461,7 +462,7 @@ Code.HTMLFactory = function() {
  * prompts the users to save it into their local file system.
  */
 Code.newProject = function() {
-    var count = Code.mainWorkspace.getAllBlocks().length;
+    let count = Code.mainWorkspace.getAllBlocks().length;
     if (count > 0) {
         Blockly.confirm(Blockly.Msg['DELETE_ALL_BLOCKS'].replace('%1', count), function(confirm) {
             if (confirm)
@@ -476,14 +477,14 @@ Code.newProject = function() {
  * prompts the users to save it into their local file system.
  */
 Code.saveCodeFile = function() {
-    var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '_');
-    var dataToSave = Blockly.Arduino.workspaceToCode(Code.mainWorkspace);
-    var blob = new Blob([dataToSave], {
+    let utc = new Date().toJSON().slice(0, 10).replace(/-/g, '_');
+    let dataToSave = Blockly.Arduino.workspaceToCode(Code.mainWorkspace);
+    let blob = new Blob([dataToSave], {
         type: 'text/plain;charset=utf-8'
     });
     Blockly.prompt(MSG['save_span'], document.getElementById('sketch_name').value, function(fileNameSave) {
         if (fileNameSave) {
-            var fakeDownloadLink = document.createElement("a");
+            let fakeDownloadLink = document.createElement("a");
             fakeDownloadLink.download = fileNameSave + ".ino";
             fakeDownloadLink.href = window.URL.createObjectURL(blob);
             fakeDownloadLink.onclick = function destroyClickedElement(event) {
@@ -501,14 +502,14 @@ Code.saveCodeFile = function() {
  * prompts the users to save it into their local file system.
  */
 Code.saveXmlBlocklyFile = function() {
-    var xmlData = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
-    var dataToSave = Blockly.Xml.domToPrettyText(xmlData);
-    var blob = new Blob([dataToSave], {
+    let xmlData = Blockly.Xml.workspaceToDom(Code.mainWorkspace);
+    let dataToSave = Blockly.Xml.domToPrettyText(xmlData);
+    let blob = new Blob([dataToSave], {
         type: 'text/xml;charset=utf-8'
     });
     Blockly.prompt(MSG['save_span'], document.getElementById('sketch_name').value, function(fileNameSave) {
         if (fileNameSave) {
-            var fakeDownloadLink = document.createElement("a");
+            let fakeDownloadLink = document.createElement("a");
             fakeDownloadLink.download = fileNameSave + ".S4E";
             fakeDownloadLink.href = window.URL.createObjectURL(blob);
             fakeDownloadLink.onclick = function destroyClickedElement(event) {
@@ -526,13 +527,13 @@ Code.saveXmlBlocklyFile = function() {
  */
 Code.loadXmlBlocklyFile = function() {
     // Create event listener function
-    var parseInputXMLfile = function(e) {
-        var files = e.target.files;
-        var reader = new FileReader();
+    let parseInputXMLfile = function(e) {
+        let files = e.target.files;
+        let reader = new FileReader();
         reader.onloadend = function() {
-            // var success = Code.loadBlocksfromXml(reader.result);
+            // let success = Code.loadBlocksfromXml(reader.result);
             // Destroying the element after being clicked
-            var success = false;
+            let success = false;
             if (reader.result != null) {
                 Code.loadBlocksfromXml(reader.result);
                 success = true;
@@ -546,9 +547,9 @@ Code.loadXmlBlocklyFile = function() {
         reader.readAsText(files[0]);
     };
     // Create once invisible browse button with event listener, and click it
-    var selectFile = document.getElementById('select_file');
+    let selectFile = document.getElementById('select_file');
     if (selectFile === null) {
-        var selectFileDom = document.createElement('INPUT');
+        let selectFileDom = document.createElement('INPUT');
         selectFileDom.type = 'file';
         selectFileDom.id = 'select_file';
         selectFileDom.accept = '.S4E, .xml';
@@ -570,8 +571,8 @@ Code.loadXmlBlocklyFile = function() {
  * @return {!boolean} Indicates if the XML into blocks parse was successful.
  */
 Code.loadBlocksfromXml = function(defaultXml) {
-    var count = Code.mainWorkspace.getAllBlocks().length;
-    var xml = Blockly.Xml.textToDom(defaultXml);
+    let count = Code.mainWorkspace.getAllBlocks().length;
+    let xml = Blockly.Xml.textToDom(defaultXml);
     if (count > 0) {
         Blockly.confirm(MSG['loadXML_span'], function(confirm) {
             if (confirm)
@@ -593,8 +594,8 @@ Code.loadBlocksfromXml = function(defaultXml) {
  * @return {string} The url completed with parameter and value
  */
 Code.addReplaceParamToUrl = function(url, param, value) {
-    var re = new RegExp("([?&])" + param + "=.*?(&|$)", "i");
-    var separator = url.indexOf('?') !== -1 ? "&" : "?";
+    let re = new RegExp("([?&])" + param + "=.*?(&|$)", "i");
+    let separator = url.indexOf('?') !== -1 ? "&" : "?";
     if (url.match(re)) {
         return url.replace(re, '$1' + param + "=" + value + '$2');
     } else {
@@ -606,7 +607,7 @@ Code.addReplaceParamToUrl = function(url, param, value) {
  * Reset workspace and parameters
  */
 Code.ResetWorkspace = function() {
-    var count = Blockly.mainWorkspace.getAllBlocks(false).length;
+    let count = Blockly.mainWorkspace.getAllBlocks(false).length;
     Blockly.confirm(MSG['resetQuestion_span'] + ' ' + Blockly.Msg['DELETE_ALL_BLOCKS'].replace('%1', count), function(answer) {
         if (answer) {
             Blockly.Events.disable();
@@ -630,7 +631,7 @@ Code.ResetWorkspace = function() {
  * Change font family in webpage
  */
 Code.changeFontFamily = function(fontType) {
-    var fontStyle = {
+    let fontStyle = {
         'family': fontType
     };
     Code.mainWorkspace.getTheme().setFontStyle(fontStyle);
@@ -644,10 +645,10 @@ Code.changeFontFamily = function(fontType) {
  * Change font size in blocks in all workspace
  */
 Code.changeRenderingConstant = function(value) {
-    var type = document.getElementById('rendering-constant-selector').value;
+    let type = document.getElementById('rendering-constant-selector').value;
     switch (type) {
         case 'fontSizeBlocks':
-            var fontStyle = {
+            let fontStyle = {
                 'size': value
             };
             Code.mainWorkspace.getTheme().setFontStyle(fontStyle);
@@ -655,9 +656,9 @@ Code.changeRenderingConstant = function(value) {
             Code.mainWorkspace.setTheme(Code.mainWorkspace.getTheme());
             break;
         case 'iconSize':
-            var labelsIconsMenu = document.getElementsByClassName("iconButtons")
+            let labelsIconsMenu = document.getElementsByClassName("iconButtons")
                 //transform slider value in percent
-            for (var x = 0; x < labelsIconsMenu.length; x++) {
+            for (let x = 0; x < labelsIconsMenu.length; x++) {
                 labelsIconsMenu[x].style.fontSize = value + "px";
             }
             break;
@@ -667,11 +668,11 @@ Code.changeRenderingConstant = function(value) {
             if (Code.diffEditor) Code.diffEditor.updateOptions(options);
             break;
         case 'fontSizePage':
-            var labelsPanel = document.getElementsByClassName("UIText");
-            for (var x = 0; x < labelsPanel.length; x++)
+            let labelsPanel = document.getElementsByClassName("UIText");
+            for (let x = 0; x < labelsPanel.length; x++)
                 labelsPanel[x].style.fontSize = value + "px";
-            var labelsMenu = document.getElementsByClassName("menu_text");
-            for (var x = 0; x < labelsMenu.length; x++)
+            let labelsMenu = document.getElementsByClassName("menu_text");
+            for (let x = 0; x < labelsMenu.length; x++)
                 labelsMenu[x].style.fontSize = value + "px";
             document.getElementById("content_hoverButton").style.fontSize = value + "px";
             break;
@@ -689,7 +690,7 @@ Code.changeRenderingConstant = function(value) {
  * @param {boolean} state The state of the checkbox. True if checked, false
  *     otherwise.
  */
-var HelpModalDisplay_ = false;
+let HelpModalDisplay_ = false;
 
 function toggleDisplayHelpModal() {
     if (!HelpModalDisplay_) {
@@ -712,19 +713,19 @@ function toggleDisplayHelpModal() {
  * textarea.
  */
 function text2bin() {
-    var output = document.getElementById("ti2");
-    var input = document.getElementById("ti1").value;
+    let output = document.getElementById("ti2");
+    let input = document.getElementById("ti1").value;
     output.value = "";
-    var data = input;
-    var binArray = [];
-    var datEncode = "";
-    var i;
+    let data = input;
+    let binArray = [];
+    let datEncode = "";
+    let i;
     for (i = 0; i < data.length; i++) {
         binArray.push(data[i].charCodeAt(0).toString(2));
     }
-    var j;
+    let j;
     for (j = 0; j < binArray.length; j++) {
-        var pad = padding_left(binArray[j], '0', 8);
+        let pad = padding_left(binArray[j], '0', 8);
         datEncode += pad + ' ';
     }
     output.value = datEncode;
@@ -743,8 +744,8 @@ function padding_left(s, c, n) {
         return s;
     }
 
-    var max = (n - s.length) / c.length;
-    for (var i = 0; i < max; i++) {
+    let max = (n - s.length) / c.length;
+    for (let i = 0; i < max; i++) {
         s = c + s;
     }
     return s;
@@ -755,19 +756,19 @@ function padding_left(s, c, n) {
  * binary string into a character.
  */
 function bin2text() {
-    var output = document.getElementById("ti4");
-    var input = document.getElementById("ti3").value;
+    let output = document.getElementById("ti4");
+    let input = document.getElementById("ti3").value;
     output.value = "";
-    var s = input;
+    let s = input;
     s = s.replace(/\s/g, "");
-    var data = "";
+    let data = "";
     if (s.length % 8 != 0) {
         data = "???:";
     } else {
         while (s.length > 0) {
-            var first8 = s.substring(0, 8);
+            let first8 = s.substring(0, 8);
             s = s.substring(8);
-            var chr = parseInt(first8, 2);
+            let chr = parseInt(first8, 2);
             data += String.fromCharCode(chr);
         }
     }
@@ -820,23 +821,23 @@ function hex2dec(theHex) {
 }
 
 function fixHex(theDec) {
-    var hNum = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F");
+    let hNum = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F");
     return hNum[theDec];
 }
 
 function dec2hex(theDec) {
-    for (var k = 0; k < theDec.length; k++) {
-        var thisChar = theDec.charAt(k);
+    for (let k = 0; k < theDec.length; k++) {
+        let thisChar = theDec.charAt(k);
         if ((thisChar < "0") || (thisChar > "9")) {
             alert("Code d�cimal (0-255) uniquement.");
             return "BAD";
         }
     }
-    var leftNum;
-    var rightNum;
-    var leftNumS;
-    var rightNumS;
-    var retNum;
+    let leftNum;
+    let rightNum;
+    let leftNumS;
+    let rightNumS;
+    let retNum;
     if (theDec > 255) {
         alert("Pas plus que 255.");
         return "BAD";
@@ -953,21 +954,21 @@ if (navigator.serial) {
  **/
 Code.configurationPapyrusImport = function() {
     // Create event listener function
-    var parseInputPapyrusfile = function(e) {
-        var files = e.target.files;
-        var reader = new FileReader();
+    let parseInputPapyrusfile = function(e) {
+        let files = e.target.files;
+        let reader = new FileReader();
         reader.onloadend = function() {
             if (reader.result != null) {
-                var idsCategories = JSON.parse(reader.result);
-                var categoryIdsList = "";
+                let idsCategories = JSON.parse(reader.result);
+                let categoryIdsList = "";
                 for (const element of idsCategories.jsonComponents)
                     categoryIdsList += element.id + '.';
                 /* Taking the categoryIdsList and removing the last character (which is a comma) and
                 replacing all commas with periods. Then it is splitting the string into an array. */
-                var uniqueCategoryIdsList = categoryIdsList.slice(0, -1).split('.');
+                let uniqueCategoryIdsList = categoryIdsList.slice(0, -1).split('.');
                 /* Removing duplicate values from an array. */
                 uniqueCategoryIdsList = [...new Set(uniqueCategoryIdsList)];
-                var urlToLoad = '?cat=LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES_TYPED,FUNCTIONS&level=skill3';
+                let urlToLoad = '?cat=LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES_TYPED,FUNCTIONS&level=skill3';
                 if (idsCategories.arguments)
                     urlToLoad += '&' + idsCategories.arguments;
                 if (uniqueCategoryIdsList)
@@ -980,9 +981,9 @@ Code.configurationPapyrusImport = function() {
         reader.readAsText(files[0]);
     };
     // Create once invisible browse button with event listener, and click it
-    var selectFile = document.getElementById('select_papyrus_file');
+    let selectFile = document.getElementById('select_papyrus_file');
     if (selectFile === null) {
-        var selectFileDom = document.createElement('INPUT');
+        let selectFileDom = document.createElement('INPUT');
         selectFileDom.type = 'file';
         selectFileDom.id = 'select_papyrus_file';
         selectFileDom.accept = '.json';
@@ -1002,16 +1003,16 @@ Code.configurationPapyrusImport = function() {
  **/
 Code.configurationSysMLimport = function() {
     // Create event listener function
-    var parseInputSysMLfile = function(e) {
-        var µcBoard = "";
-        var files = e.target.files;
-        var reader = new FileReader();
+    let parseInputSysMLfile = function(e) {
+        let µcBoard = "";
+        let files = e.target.files;
+        let reader = new FileReader();
         reader.onloadend = function() {
             if (reader.result != null) {
                 let extension = files[0].name.split('.').pop();
                 let parser = new DOMParser();
                 let xmlDoc = parser.parseFromString(reader.result, "text/xml");
-                var categoryIdsList = "";
+                let categoryIdsList = "";
                 if (extension == "gaphor") {
                     let keys = xmlDoc.getElementsByTagName('val');
                     for (const element of keys) {
@@ -1034,10 +1035,10 @@ Code.configurationSysMLimport = function() {
                 }
                 /* Taking the categoryIdsList and removing the last character (which is a comma) and
                 replacing all commas with periods. Then it is splitting the string into an array. */
-                var uniqueCategoryIdsList = categoryIdsList.slice(0, -1).split('.');
+                let uniqueCategoryIdsList = categoryIdsList.slice(0, -1).split('.');
                 /* Removing duplicate values from an array. */
                 uniqueCategoryIdsList = [...new Set(uniqueCategoryIdsList)];
-                var urlToLoad = '?cat=LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES_TYPED,FUNCTIONS&level=skill3';
+                let urlToLoad = '?cat=LOGIC,LOOPS,MATH,TEXT,LIST,COLOUR,VARIABLES_TYPED,FUNCTIONS&level=skill3';
                 if (uniqueCategoryIdsList)
                     urlToLoad += '&kwids=' + uniqueCategoryIdsList.toString();
                 if (µcBoard)
@@ -1050,9 +1051,9 @@ Code.configurationSysMLimport = function() {
         reader.readAsText(files[0]);
     };
     // Create once invisible browse button with event listener, and click it
-    var selectFile = document.getElementById('select_sysml_file');
+    let selectFile = document.getElementById('select_sysml_file');
     if (selectFile === null) {
-        var selectFileDom = document.createElement('INPUT');
+        let selectFileDom = document.createElement('INPUT');
         selectFileDom.type = 'file';
         selectFileDom.id = 'select_sysml_file';
         selectFileDom.accept = '.xml, .gaphor';

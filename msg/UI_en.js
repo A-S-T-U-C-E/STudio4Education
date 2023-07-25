@@ -62,7 +62,7 @@ var MSG = {
         "Wiki : <a href='https://github.com/A-S-T-U-C-E/Studio4Education/wiki'>on Github</a>.</br>" +
         "A bug? Post it here: <a href='https://github.com/A-S-T-U-C-E/Studio4Education/issues'>on Github</a>.</br>" +
         "Thanks & libraries: <a href='https://github.com/A-S-T-U-C-E/Studio4Education/wiki/Thanks'>on Github</a>.</p>" +
-        "<p style='text-align: center;'>v0.9.5 - BSD3 license - Sébastien CANET" +
+        "<p style='text-align: center;'>v0.9.7 - BSD3 license - Sébastien CANET" +
         "<p style='text-align: center;'><a href='https://www.paypal.com/donate/?business=KBQDU3S6FWQU8&no_recurring=0&item_name=Thanks+for+donation+with+Paypal+to+help+me+improve+this+software.&currency_code=EUR'>Thanks for donation with Paypal to help me improve this software.</br><img src='https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif' alt='Paypal'/></a></p>",
     CROSS_TAB_COPY: "Copy",
     CROSS_TAB_PASTE: "Paste",

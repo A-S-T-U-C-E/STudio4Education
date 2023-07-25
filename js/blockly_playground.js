@@ -14,7 +14,6 @@ goog.require('Blockly.WorkspaceCommentSvg');
 goog.require('Blockly.WorkspaceCommentSvg.render');
 
 'use strict';
-var Code;
 
 Code.genWorkspace = function(rtlArg, toolboxArg, rendererArg) {
     let pluginToAdd = {};
