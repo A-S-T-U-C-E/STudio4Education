@@ -15,5 +15,5 @@ jobs:
     - uses: wangchucheng/git-repo-sync@v0.1.0
       with:
         target-url: https://forge.apps.education.fr/canetsebastien/STudio4Education
-        target-username: @canetsebastien
+        target-username: canetsebastien
         target-token: ${{ secrets.GITLAB_TOKEN }}
